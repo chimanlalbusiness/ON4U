@@ -8,18 +8,11 @@ newPaths = newPaths.replace(/<!-- COPY THESE DISTANCES -->[\s\S]*$/, '');
 
 // Add mask logic for top fade out and general edge fade
 const fadeMaskDef = `  <radialGradient id="edgeFade" cx="50%" cy="50%" r="50%">
-                <stop offset="35%" stop-color="white" stop-opacity="1" />
-                <stop offset="90%" stop-color="white" stop-opacity="0" />
+                <stop offset="40%" stop-color="white" stop-opacity="1" />
+                <stop offset="80%" stop-color="white" stop-opacity="0" />
               </radialGradient>
-              <linearGradient id="topFade" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="black" stop-opacity="1" />
-                <stop offset="20%" stop-color="white" stop-opacity="0" />
-              </linearGradient>
               <mask id="fadeMask" maskUnits="userSpaceOnUse" x="0" y="0" width="960" height="520">
-                <!-- Apply radial fade for left/right/bottom edges -->
                 <rect width="960" height="520" fill="url(#edgeFade)" />
-                <!-- Apply strong linear fade at the top to hide northern islands/borders -->
-                <rect width="960" height="520" fill="url(#topFade)" style="mix-blend-mode: multiply;" />
               </mask>
             </defs>`;
 
