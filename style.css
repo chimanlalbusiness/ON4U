@@ -728,8 +728,8 @@ button {
 
 /* Layer 3: routes — stroke-draw */
 .map-route {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
 }
 
 /* Layer 4: hub elements */
@@ -785,7 +785,7 @@ button {
 
 @keyframes drawRoutePulse {
   0% {
-    stroke-dashoffset: 1;
+    stroke-dashoffset: 1000;
     opacity: 0;
   }
 

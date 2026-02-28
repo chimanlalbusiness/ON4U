@@ -30,15 +30,15 @@ ${newPaths}
 
 <!-- Routes from PT (490, 180) -->
 <!-- PT -> Africa -->
-<path class="map-route map-route-1" pathLength="1" stroke="#f97316" stroke-width="1.6" fill="none" stroke-linecap="round" d="M490 180 C 510 260, 560 320, 621 375" />
+<path class="map-route map-route-1" pathLength="1000" stroke="#f97316" stroke-width="1.6" fill="none" stroke-linecap="round" d="M490 180 C 510 260, 560 320, 621 375" />
 <!-- PT -> Europe -->
-<path class="map-route map-route-2" pathLength="1" stroke="#f97316" stroke-width="1.5" fill="none" stroke-linecap="round" d="M490 180 C 520 140, 570 110, 620 105" />
+<path class="map-route map-route-2" pathLength="1000" stroke="#f97316" stroke-width="1.5" fill="none" stroke-linecap="round" d="M490 180 C 520 140, 570 110, 620 105" />
 <!-- PT -> North America -->
-<path class="map-route map-route-3" pathLength="1" stroke="#f97316" stroke-width="1.4" fill="none" stroke-linecap="round" d="M490 180 C 350 160, 200 150, 90 178" />
+<path class="map-route map-route-3" pathLength="1000" stroke="#f97316" stroke-width="1.4" fill="none" stroke-linecap="round" d="M490 180 C 350 160, 200 150, 90 178" />
 <!-- PT -> South America -->
-<path class="map-route map-route-4" pathLength="1" stroke="#f97316" stroke-width="1.2" fill="none" stroke-linecap="round" d="M490 180 C 420 280, 380 340, 344 420" />
+<path class="map-route map-route-4" pathLength="1000" stroke="#f97316" stroke-width="1.2" fill="none" stroke-linecap="round" d="M490 180 C 420 280, 380 340, 344 420" />
 <!-- PT -> Central Asia -->
-<path class="map-route map-route-5" pathLength="1" stroke="#f97316" stroke-width="1.3" fill="none" stroke-linecap="round" d="M490 180 C 600 150, 720 140, 840 166" />
+<path class="map-route map-route-5" pathLength="1000" stroke="#f97316" stroke-width="1.3" fill="none" stroke-linecap="round" d="M490 180 C 600 150, 720 140, 840 166" />
 
 <!-- Destination Nodes -->
 <circle cx="621" cy="375" r="4" fill="#f97316" opacity="0.85" />     <!-- Africa -->
