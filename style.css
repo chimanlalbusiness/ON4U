@@ -18,7 +18,7 @@
   --c-dark-muted: #9ca3af;
   --c-dark-border: #27272a;
 
-  --font: 'Inter', system-ui, sans-serif;
+  --font: "Inter", system-ui, sans-serif;
   --max-w: 1200px;
   --pad: clamp(1rem, 4vw, 2rem);
 
@@ -37,7 +37,8 @@
 .reveal {
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity var(--dur-2) ease-out,
+  transition:
+    opacity var(--dur-2) ease-out,
     transform var(--dur-2) ease-out;
 }
 
@@ -73,7 +74,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
@@ -82,7 +83,7 @@ body {
   color: var(--c-text);
   background: var(--c-bg);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {
@@ -163,7 +164,8 @@ button {
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background var(--dur-1) ease,
+  transition:
+    background var(--dur-1) ease,
     color var(--dur-1) ease,
     border-color var(--dur-1) ease,
     transform var(--dur-1) ease,
@@ -323,7 +325,7 @@ button {
 
 .hamburger::before,
 .hamburger::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   width: 22px;
@@ -427,7 +429,9 @@ button {
 .hero-visual {
   opacity: 0;
   transform: translateX(12px);
-  transition: opacity var(--dur-2) ease-out, transform var(--dur-2) ease-out;
+  transition:
+    opacity var(--dur-2) ease-out,
+    transform var(--dur-2) ease-out;
 }
 
 /* Entrance stagger */
@@ -597,7 +601,8 @@ button {
   position: relative;
   overflow: hidden;
   /* Fixed height context — no size change on active */
-  transition: box-shadow var(--dur-1) ease,
+  transition:
+    box-shadow var(--dur-1) ease,
     transform var(--dur-1) ease;
 }
 
@@ -703,9 +708,11 @@ button {
   margin-bottom: 3rem;
   /* Vignette: fade edges to dark on all sides */
   mask-image: radial-gradient(ellipse 80% 85% at 50% 50%,
-      black 30%, transparent 100%);
+      black 30%,
+      transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 85% at 50% 50%,
-      black 30%, transparent 100%);
+      black 30%,
+      transparent 100%);
 }
 
 .map-svg {
@@ -771,7 +778,7 @@ button {
 }
 
 .internacional.is-visible .map-route-4 {
-  animation: drawRoutePulse 4s ease-out 0.90s infinite;
+  animation: drawRoutePulse 4s ease-out 0.9s infinite;
 }
 
 .internacional.is-visible .map-route-5 {
@@ -831,9 +838,31 @@ button {
    PROCESSO — Process Explorer (3 Layers)
    ============================================================ */
 .processo {
-  padding: 6rem 0;
-  background: var(--c-bg);
-  border-bottom: 1px solid var(--c-border);
+  background: var(--c-bg-dark);
+  color: var(--c-dark-text);
+  border-bottom: 1px solid var(--c-dark-border);
+  height: 400vh;
+  /* scroll length */
+  position: relative;
+}
+
+.processo .container {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.processo .overline {
+  color: var(--c-accent);
+}
+
+.processo .section-header .sep {
+  background: var(--c-dark-border);
 }
 
 .processo-layout {
@@ -847,176 +876,211 @@ button {
 
 /* ── Layer 3: Progress Rail & Sticky Steps ── */
 .processo-steps-wrap {
-  position: sticky;
-  top: 6rem;
-  /* stick below header */
-  display: flex;
-  gap: 2rem;
-}
-
-.progress-rail {
-  width: 2px;
-  background: var(--c-border-md);
-  margin-top: 22px;
-  /* align with first step center */
-  margin-bottom: 22px;
   position: relative;
-  flex-shrink: 0;
 }
 
-.progress-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--c-accent);
-  border-radius: 50%;
-  position: absolute;
-  left: -5px;
-  /* center on 2px rail */
-  top: 0;
-  /* dot position gets updated via JS transform: translateY(...) */
-  transition: transform var(--dur-2) cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .progress-dot {
-    transition: none;
-  }
-}
-
-.processo-steps {
+.processo-phases {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
   padding-bottom: 4rem;
-  /* padding for scroll space */
 }
 
-.processo-step {
+.processo-phase {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: flex-start;
   cursor: pointer;
   opacity: 0.5;
-  transition: opacity var(--dur-1) ease;
+  transition:
+    opacity var(--dur-1) ease,
+    background var(--dur-1) ease,
+    border-color var(--dur-1) ease;
+  position: relative;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid transparent;
+  border-radius: 0 8px 8px 0;
 }
 
-.processo-step:hover {
-  opacity: 0.75;
+.processo-phase:hover {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.processo-step.is-active {
+.processo-phase.is-active {
   opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: var(--c-accent);
 }
 
-.step-num {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 2px solid var(--c-border-md);
+.phase-rail {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--c-muted);
-  transition: border-color var(--ease), background var(--ease), color var(--ease);
+  align-self: stretch;
+  margin-top: 4px;
+  width: 14px;
 }
 
-.processo-step.is-active .step-num {
-  border-color: var(--c-accent);
+.phase-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--c-dark-border);
+  flex-shrink: 0;
+  transition:
+    background var(--ease),
+    box-shadow var(--ease);
+}
+
+.processo-phase.is-active .phase-dot {
   background: var(--c-accent);
-  color: #fff;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
 }
 
-.step-body h3 {
+.phase-line {
+  flex-grow: 1;
+  width: 2px;
+  background: var(--c-dark-border);
+  margin-top: 8px;
+  min-height: 24px;
+}
+
+.phase-body h3 {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 0.2rem;
+  transition: font-weight 0.2s ease;
+  color: var(--c-dark-text);
 }
 
-.step-body p {
+.processo-phase.is-active .phase-body h3 {
+  font-weight: 800;
+}
+
+.phase-body p {
   font-size: 0.9rem;
-  color: var(--c-muted);
+  color: var(--c-dark-muted);
   line-height: 1.55;
+  margin: 0;
 }
 
 .processo-note {
   font-size: 0.85rem;
-  color: var(--c-muted);
+  color: var(--c-dark-muted);
   padding-top: 0.5rem;
+  padding-left: 1.5rem;
 }
 
-/* ── Layer 2: Live Diagram ── */
+/* ── Layer 2: Live Diagram (Tenscope-style) ── */
 .processo-diagram {
-  background: var(--c-bg-subtle);
-  border: 1px solid var(--c-border);
+  background: transparent;
+  border: 1px solid var(--c-dark-border);
   border-radius: 12px;
-  padding: 2.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 360px;
-  position: sticky;
-  /* stays fixed while left side scrolls */
-  top: 6rem;
+  overflow: hidden;
 }
 
-.diag-svg {
+.modern-flow-svg {
   width: 100%;
-  max-width: 360px;
-  height: auto;
+  height: 100%;
+  min-height: 300px;
 }
 
-/* Nodes: default inactive state */
-.diag-box {
-  transition: fill var(--dur-1) ease, stroke var(--dur-1) ease;
-  fill: #f9fafb;
-  /* subtle resting state */
-  stroke: var(--c-border-md);
+/* Nodes */
+.node-bg {
+  transition:
+    stroke var(--dur-1) ease,
+    fill var(--dur-1) ease;
 }
 
-/* Nodes: Active highlight */
-.diag-box.is-active {
-  fill: #fff7ed !important;
-  stroke: var(--c-accent) !important;
+.node-text {
+  transition: fill var(--dur-1) ease;
 }
 
-/* Final box */
-.diag-box-final {
-  fill: #f9fafb;
-  stroke: var(--c-border-md);
-}
-
-.diag-box-final.is-active {
-  fill: #fff7ed;
+.flow-node.is-active .node-bg {
   stroke: var(--c-accent);
+  fill: #1f1209;
+  /* Subtle warm tint on dark mode */
 }
 
-/* Links: stroke-draw when activated */
-.diag-link {
-  opacity: 0.15;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
+.flow-node.is-active .node-text {
+  fill: #fff;
+}
+
+/* Base pulse for start node */
+.flow-node[data-node="start"].is-active .node-pulse {
+  animation: pulse-out 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes pulse-out {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+    stroke-width: 2px;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+}
+
+/* Node Glows */
+.node-glow {
   transition: opacity var(--dur-1) ease;
 }
 
-.diag-link.is-active {
+.flow-node.is-active .node-glow {
   opacity: 1;
-  stroke: var(--c-accent) !important;
-  animation: drawLink 0.5s ease-out forwards;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .diag-link.is-active {
-    animation: none;
+/* Links (Base state hidden overlay) */
+.flow-link.active-overlay {
+  opacity: 0;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: opacity 0.1s ease;
+}
+
+/* Highlight Links with Draw Animation */
+.flow-link.active-overlay.is-active {
+  opacity: 1;
+  animation: drawFlowLink 0.4s ease-out forwards;
+}
+
+@keyframes drawFlowLink {
+  to {
     stroke-dashoffset: 0;
   }
 }
 
-@keyframes drawLink {
-  to {
+.flow-ball {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Media reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .flow-ball {
+    transition: none !important;
+  }
+
+  .flow-link.active-overlay.is-active {
+    animation: none;
     stroke-dashoffset: 0;
+  }
+
+  .flow-node.is-active .node-glow {
+    opacity: 0;
+    /* no glows */
+  }
+
+  .flow-node[data-node="start"].is-active .node-pulse {
+    animation: none;
+    opacity: 0;
   }
 }
 
@@ -1027,8 +1091,22 @@ button {
 
 @media (min-width: 900px) {
   .processo-layout {
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: center;
+  }
+}
+
+@media (min-width: 900px) {
+  .processo-phase {
+    padding: 1.75rem 2rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .processo-layout {
+    gap: 10rem;
+    transform: scale(1.15);
   }
 }
 
@@ -1101,7 +1179,9 @@ button {
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  transition: transform var(--ease), box-shadow var(--ease);
+  transition:
+    transform var(--ease),
+    box-shadow var(--ease);
 }
 
 .div-card:hover {
@@ -1145,7 +1225,7 @@ button {
 }
 
 .div-bullets li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: var(--c-accent);
