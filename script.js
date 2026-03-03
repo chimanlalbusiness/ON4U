@@ -1,7 +1,7 @@
 /* ============================================================
-   ON4U — Homepage v2 · Motion System + Interactions
-   Tasks: Global reveal · Diferencial scroll-spy · Processo sync
-          · Internacional map entrance · Hover polish (CSS only)
+   ON4U — Homepage v3 · Visual System v2 · Motion + Interactions
+   Tasks: Quiet sticky header · Global reveal · Diferencial active rail
+          · Processo scroll-sync · Internacional map entrance · Drawers
    No layout shift. No libraries. prefers-reduced-motion respected.
    ============================================================ */
 
@@ -29,6 +29,40 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileNav.setAttribute("hidden", "");
       }),
     );
+  }
+
+  // ─────────────────────────────────────────────────────────
+  // TASK 0b — HEADER: Quiet Sticky (no shrink, gentle settle)
+  // Adds .is-scrolled after first scroll for shadow.
+  // Active nav links via IntersectionObserver on sections.
+  // ─────────────────────────────────────────────────────────
+  const header = document.querySelector(".header");
+  if (header) {
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    }, { passive: true });
+  }
+
+  // Active nav link highlighting — state-driven, no scroll drama
+  const navLinks = document.querySelectorAll(".header-nav a[href^='#'], .mobile-nav a[href^='#']");
+
+  if (navLinks.length && !REDUCED) {
+    const sectionsToWatch = document.querySelectorAll("[data-section]");
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id || entry.target.dataset.section;
+          navLinks.forEach((link) => {
+            const href = link.getAttribute("href").replace("#", "");
+            link.classList.toggle("is-active", href === id);
+          });
+        }
+      });
+    }, { rootMargin: "-40% 0px -40% 0px", threshold: 0 });
+
+    sectionsToWatch.forEach((s) => {
+      if (s.id) navObserver.observe(s);
+    });
   }
 
   // ─────────────────────────────────────────────────────────

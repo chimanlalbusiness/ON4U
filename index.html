@@ -7,7 +7,7 @@
   <title>ON4U — Importação. Fornecimento. Distribuição Internacional.</title>
   <meta name="description"
     content="ON4U — Importação, fornecimento e distribuição internacional estruturada. Health & Care, Informática, Produção & Criatividade." />
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -85,8 +85,33 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="hero-image-wrap">
-            <div class="hero-image-placeholder" aria-hidden="true"></div>
+          <!-- Hero card with overlay panel — content from Internacional section -->
+          <div class="hero-card" aria-label="Operação internacional da ON4U">
+            <!-- Image placeholder — replace src with real asset -->
+            <img class="hero-card-img" src="" alt="ON4U — Importação e Distribuição Internacional"
+              onerror="this.style.display='none'" />
+            <!-- Overlay panel: text already exists on the site (Internacional section) -->
+            <div class="hero-card-overlay">
+              <div class="hero-overlay-region">
+                <span class="hero-overlay-dot" aria-hidden="true"></span>
+                <span class="hero-overlay-region-text">Europa | África</span>
+              </div>
+              <p class="hero-overlay-modes">Aérea &bull; Marítima &bull; Terrestre</p>
+              <div class="hero-overlay-metrics">
+                <div class="hero-overlay-metric">
+                  <span class="hero-overlay-metric-val">+20 Anos</span>
+                  <span class="hero-overlay-metric-lbl">de operação</span>
+                </div>
+                <div class="hero-overlay-metric">
+                  <span class="hero-overlay-metric-val">Exportação</span>
+                  <span class="hero-overlay-metric-lbl">ativa</span>
+                </div>
+                <div class="hero-overlay-metric">
+                  <span class="hero-overlay-metric-val">Distribuição</span>
+                  <span class="hero-overlay-metric-lbl">estruturada</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -108,17 +133,18 @@
           <div class="logo-item" role="listitem">LOGO</div>
           <div class="logo-item" role="listitem">LOGO</div>
         </div>
+        <!-- Metrics: single inline row with separator motif -->
         <div class="trust-metrics">
           <div class="trust-metric" data-metric>
-            <span class="metric-value">+20 ANOS</span>
+            <span class="metric-value">+20 Anos</span>
             <span class="metric-label">de operação</span>
           </div>
           <div class="trust-metric" data-metric>
-            <span class="metric-value">EXPORTAÇÃO</span>
+            <span class="metric-value">Exportação</span>
             <span class="metric-label">ativa</span>
           </div>
           <div class="trust-metric" data-metric>
-            <span class="metric-value">DISTRIBUIÇÃO</span>
+            <span class="metric-value">Distribuição</span>
             <span class="metric-label">internacional estruturada</span>
           </div>
         </div>
@@ -167,19 +193,7 @@
       </div>
     </section>
 
-    <!-- ===================== CTA BAND ===================== -->
-    <section class="cta-band" data-section="cta">
-      <div class="container cta-inner text-center">
-        <h2>Precisa de Fornecimento ou<br />Distribuição Internacional?</h2>
-        <div class="sep sep-center"></div>
-        <div class="cta-group">
-          <a href="https://wa.me/MESSAGE_LINK?text=Olá.%20Preciso%20de%20um%20orçamento." class="btn btn-primary"
-            target="_blank" rel="noopener">Solicitar Orçamento</a>
-          <a href="https://wa.me/MESSAGE_LINK?text=Olá.%20Gostaria%20de%20falar%20com%20um%20especialista."
-            class="btn btn-secondary" target="_blank" rel="noopener">Falar com Especialista</a>
-        </div>
-      </div>
-    </section>
+    <!-- CTA BAND moved to after Processo — see below -->
 
     <!-- ===================== OPERAÇÃO INTERNACIONAL ===================== -->
     <section class="internacional dark-section" id="internacional" data-section="internacional">
@@ -474,6 +488,19 @@
       </div>
     </section>
 
+    <!-- ===================== CTA BAND — after Processo, before Divisões ===================== -->
+    <section class="cta-band" data-section="cta" id="cta-band">
+      <div class="container cta-inner">
+        <h2>Precisa de Fornecimento ou<br />Distribuição Internacional?</h2>
+        <div class="cta-group">
+          <a href="https://wa.me/MESSAGE_LINK?text=Olá.%20Preciso%20de%20um%20orçamento." class="btn btn-primary"
+            target="_blank" rel="noopener">Solicitar Orçamento</a>
+          <a href="https://wa.me/MESSAGE_LINK?text=Olá.%20Gostaria%20de%20falar%20com%20um%20especialista."
+            class="btn btn-secondary" target="_blank" rel="noopener">Falar com Especialista</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== ÁREAS DE ATUAÇÃO / DIVISÕES ===================== -->
     <section class="divisoes" id="divisoes" data-section="divisoes">
       <div class="container">
@@ -683,7 +710,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 
 </html>
