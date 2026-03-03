@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-const htmlFile = 'index.html';
-const mapFile = 'world-map.svg';
+const htmlFile = new URL('../index.html', import.meta.url);
+const mapFile = new URL('../maps-data/world-map.svg', import.meta.url);
 
 let html = fs.readFileSync(htmlFile, 'utf8');
 const mapSvg = fs.readFileSync(mapFile, 'utf8');

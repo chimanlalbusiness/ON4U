@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-let content = fs.readFileSync('index.html', 'utf8');
+let content = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
 const regex = /(<!-- PT → C\. Europe \(Germany\/France\) -->)[\s\S]*?(<\/svg>)/;
 
@@ -28,5 +28,5 @@ const newSection = `$1
 
 content = content.replace(regex, newSection);
 
-fs.writeFileSync('index.html', content);
+fs.writeFileSync(new URL('../index.html', import.meta.url), content);
 console.log('done');

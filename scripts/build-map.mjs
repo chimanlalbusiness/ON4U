@@ -27,7 +27,7 @@ async function buildMap() {
     return `<path class="map-land" d="${path(f)}" stroke="#f97316" stroke-width="1.0" opacity="0.65" fill="none" stroke-linejoin="round" stroke-linecap="round" />`;
   }).join('\n');
 
-  fs.writeFileSync('svg-paths.html', svgPaths);
+  fs.writeFileSync(new URL('../maps-generated/svg-paths.html', import.meta.url), svgPaths);
 
   console.log('Map paths generated with zoom and land-only. Wrote to svg-paths.html');
 

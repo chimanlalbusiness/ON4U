@@ -42,7 +42,7 @@ https.get('https://unpkg.com/world-atlas@2.0.2/countries-50m.json', (res) => {
             pathsHtml += `  <path class="map-land" d="${d}" stroke="#f97316" stroke-width="1.0" fill="none" stroke-linejoin="round" stroke-linecap="round" />\n`;
         }
 
-        fs.writeFileSync('new-paths-mesh.html', pathsHtml);
+        fs.writeFileSync(new URL('../maps-generated/new-paths-mesh.html', import.meta.url), pathsHtml);
         console.log('Saved new-paths-mesh.html');
     });
 }).on('error', (e) => {

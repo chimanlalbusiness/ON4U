@@ -79,7 +79,7 @@ E.AFR: ${eafCoords[0].toFixed(1)}, ${eafCoords[1].toFixed(1)}
 -->
 `;
 
-        fs.writeFileSync('new-paths.html', pathsHtml);
+        fs.writeFileSync(new URL('../maps-generated/new-paths.html', import.meta.url), pathsHtml);
         console.log('Saved new-paths.html');
     });
 }).on('error', (e) => {

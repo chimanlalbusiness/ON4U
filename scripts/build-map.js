@@ -1,4 +1,4 @@
-q21const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 const d3 = require('d3-geo');
 

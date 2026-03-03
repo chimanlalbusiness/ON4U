@@ -55,7 +55,7 @@ https.get('https://unpkg.com/world-atlas@2.0.2/land-50m.json', (res) => {
             if (d) pathsHtml += `  <path class="map-land" d="${d}" stroke="#f97316" stroke-width="1.0" fill="none" stroke-linejoin="round" stroke-linecap="round" />\n`;
         }
 
-        fs.writeFileSync('new-paths-pure-land.html', pathsHtml);
+        fs.writeFileSync(new URL('../maps-generated/new-paths-pure-land.html', import.meta.url), pathsHtml);
         console.log('Saved new-paths-pure-land.html');
     });
 }).on('error', (e) => {

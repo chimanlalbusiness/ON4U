@@ -67,7 +67,7 @@ SA: ${saCoords[0].toFixed(1)}, ${saCoords[1].toFixed(1)}
 ASIA: ${asiaCoords[0].toFixed(1)}, ${asiaCoords[1].toFixed(1)}
 -->`;
 
-        fs.writeFileSync('new-paths-land.html', pathsHtml);
+        fs.writeFileSync(new URL('../maps-generated/new-paths-land.html', import.meta.url), pathsHtml);
         console.log('Saved new-paths-land.html');
     });
 });

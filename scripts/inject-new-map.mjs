@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-let html = fs.readFileSync('index.html', 'utf8');
-let newPaths = fs.readFileSync('new-paths-land.html', 'utf8');
+let html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+let newPaths = fs.readFileSync(new URL('../maps-generated/new-paths-land.html', import.meta.url), 'utf8');
 
 // remove distances comment
 newPaths = newPaths.replace(/<!-- COPY THESE DISTANCES -->[\s\S]*$/, '');
@@ -63,5 +63,5 @@ ${newPaths}
           `;
 
 html = html.substring(0, chunkStart) + newContent + html.substring(chunkEnd);
-fs.writeFileSync('index.html', html);
+fs.writeFileSync(new URL('../index.html', import.meta.url), html);
 console.log('index.html updated successfully with Central Asia route and scaled mapping.');

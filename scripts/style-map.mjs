@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const file = 'world-map.svg';
+const file = new URL('../maps-data/world-map.svg', import.meta.url);
 let content = fs.readFileSync(file, 'utf8');
 
 // The d3 map generator creates strokes that are 1.2px bright orange.
