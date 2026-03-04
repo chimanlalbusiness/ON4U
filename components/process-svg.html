@@ -1,0 +1,116 @@
+<div class="processo-diagram" aria-label="Diagrama de fluxo do pedido">
+            <svg class="modern-flow-svg" viewBox="0 0 500 240" preserveAspectRatio="xMidYMid meet" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="diag-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                </pattern>
+
+                <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#f97316" stop-opacity="0.3"></stop>
+                  <stop offset="100%" stop-color="#f97316" stop-opacity="0"></stop>
+                </radialGradient>
+
+                <!-- Thin Arrow markers -->
+                <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                  <polygon points="0 0, 6 2, 0 4" fill="#374151" class="arrow-tip" />
+                </marker>
+                <marker id="arrowhead-active" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+                  <polygon points="0 0, 6 2, 0 4" fill="#f97316" />
+                </marker>
+              </defs>
+
+              <rect width="100%" height="100%" fill="url(#diag-grid)" rx="12" />
+
+              <!-- Master Layout Base Path (Static Dark) -->
+              <!-- Start(30,120) > Pedido(110,120) > Validar(190,120) -->
+              <!-- Validar Splits: up to Orcamento(280,60) & down to Logistica(280,180) -->
+              <!-- Branch merges: to Entrega(430,120) -->
+              <path class="flow-base-path"
+                d="M 30 120 L 110 120 L 190 120 L 220 120 C 240 120, 240 60, 280 60 L 360 60 C 390 60, 390 120, 430 120 M 190 120 L 220 120 C 240 120, 240 180, 280 180 L 360 180 C 390 180, 390 120, 430 120"
+                stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+
+              <!-- Dynamic Path Outlines (Highlighted states based on active branch) -->
+              <!-- Phase 1: Start to Pedido -->
+              <path class="flow-link active-overlay p1-path" data-phase-target="1" d="M 30 120 L 110 120"
+                stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowhead-active)" />
+              <!-- Phase 2: Pedido to Validar -->
+              <path class="flow-link active-overlay p2-path" data-phase-target="2" d="M 110 120 L 190 120"
+                stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowhead-active)" />
+              <!-- Phase 3: Validar to Branches -->
+              <path class="flow-link active-overlay p3-path" data-phase-target="3"
+                d="M 190 120 L 220 120 C 240 120, 240 60, 280 60 M 190 120 L 220 120 C 240 120, 240 180, 280 180"
+                stroke="#f97316" stroke-width="1.5" />
+              <path class="flow-link active-overlay p3-arrow" data-phase-target="3"
+                d="M 270 60 L 280 60 M 270 180 L 280 180" stroke="#f97316" stroke-width="1.5"
+                marker-end="url(#arrowhead-active)" />
+              <!-- Phase 4: Branches to Merge (Entrega) -->
+              <path class="flow-link active-overlay p4-path" data-phase-target="4"
+                d="M 280 60 L 360 60 C 390 60, 390 120, 430 120 M 280 180 L 360 180 C 390 180, 390 120, 430 120"
+                stroke="#f97316" stroke-width="1.5" />
+              <path class="flow-link active-overlay p4-arrow" data-phase-target="4" d="M 420 120 L 430 120"
+                stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowhead-active)" />
+
+              <!-- Single SVG Marker Ball -->
+              <circle class="flow-ball" cx="30" cy="120" r="4" fill="#f97316" />
+
+              <!-- Nodes -->
+              <g class="flow-nodes">
+                <!-- Start Node (Circle) -->
+                <g class="flow-node" data-node="start">
+                  <circle class="node-bg" cx="30" cy="120" r="8" fill="#111827" stroke="#374151" stroke-width="1.5" />
+                  <!-- No text -->
+                </g>
+
+                <!-- Phase 1: Pedido (Rounded Rect) -->
+                <g class="flow-node" data-node="pedido">
+                  <rect class="node-bg" x="80" y="105" width="60" height="30" rx="6" fill="#111827" stroke="#374151"
+                    stroke-width="1.5" />
+                  <circle class="node-glow" cx="110" cy="120" r="40" fill="url(#node-glow)" opacity="0"
+                    pointer-events="none" />
+                  <text x="110" y="124" text-anchor="middle" font-size="10" font-weight="600" fill="#9ca3af"
+                    font-family="Inter, sans-serif" class="node-text">Pedido</text>
+                </g>
+
+                <!-- Phase 2: Validação (Diamond) -->
+                <g class="flow-node" data-node="validacao">
+                  <polygon class="node-bg" points="190,95 215,120 190,145 165,120" fill="#111827" stroke="#374151"
+                    stroke-width="1.5" stroke-linejoin="round" />
+                  <circle class="node-glow" cx="190" cy="120" r="40" fill="url(#node-glow)" opacity="0"
+                    pointer-events="none" />
+                  <text x="190" y="123" text-anchor="middle" font-size="9" font-weight="600" fill="#9ca3af"
+                    font-family="Inter, sans-serif" class="node-text">Validar</text>
+                </g>
+
+                <!-- Phase 3A: Orçamento (Parallelogram) -->
+                <g class="flow-node" data-node="orcamento">
+                  <polygon class="node-bg" points="280,45 345,45 340,75 275,75" fill="#111827" stroke="#374151"
+                    stroke-width="1.5" stroke-linejoin="round" />
+                  <circle class="node-glow" cx="310" cy="60" r="40" fill="url(#node-glow)" opacity="0"
+                    pointer-events="none" />
+                  <text x="310" y="64" text-anchor="middle" font-size="10" font-weight="600" fill="#9ca3af"
+                    font-family="Inter, sans-serif" class="node-text">Orçamento</text>
+                </g>
+
+                <!-- Phase 3B: Logística (Process) -->
+                <g class="flow-node" data-node="logistica">
+                  <rect class="node-bg" x="280" y="165" width="60" height="30" rx="4" fill="#111827" stroke="#374151"
+                    stroke-width="1.5" />
+                  <circle class="node-glow" cx="310" cy="180" r="40" fill="url(#node-glow)" opacity="0"
+                    pointer-events="none" />
+                  <text x="310" y="184" text-anchor="middle" font-size="10" font-weight="600" fill="#9ca3af"
+                    font-family="Inter, sans-serif" class="node-text">Logística</text>
+                </g>
+
+                <!-- Phase 4: Final Capsule -->
+                <g class="flow-node" data-node="entrega">
+                  <rect class="node-bg" x="380" y="105" width="100" height="30" rx="15" fill="#111827" stroke="#374151"
+                    stroke-width="1.5" />
+                  <circle class="node-glow" cx="430" cy="120" r="50" fill="url(#node-glow)" opacity="0"
+                    pointer-events="none" />
+                  <text x="430" y="124" text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af"
+                    font-family="Inter, sans-serif" class="node-text">Entrega Internacional</text>
+                </g>
+              </g>
+            </svg>
+          </div>
