@@ -1,24 +1,25 @@
 /*
-  New Scrollytelling Engine for ON4U
+  Scrollytelling Engine for ON4U
+  v3 — event-driven (no rAF loop), passive listeners, process state fixed
 */
 
 document.addEventListener("DOMContentLoaded", () => {
     const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Header
+    // ── Header scroll state ──────────────────────────────────────────────
     const header = document.querySelector(".header");
     if (header) {
         window.addEventListener("scroll", () => {
             header.classList.toggle("is-scrolled", window.scrollY > 8);
         }, { passive: true });
 
-        // Auto Logo Swap based on pinned section theme
+        // Header theme = data-theme of the section whose top has passed the header height
         function updateHeaderTheme() {
-            let activeTheme = 'light';
-            let passedSections = Array.from(document.querySelectorAll('[data-theme]'));
-            for (let i = passedSections.length - 1; i >= 0; i--) {
-                const s = passedSections[i];
-                if (window.scrollY >= s.offsetTop - 100) {
+            let activeTheme = 'dark'; // hero starts dark
+            const sections = Array.from(document.querySelectorAll('[data-theme]'));
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const s = sections[i];
+                if (window.scrollY >= s.offsetTop - 80) {
                     activeTheme = s.getAttribute('data-theme') || 'light';
                     break;
                 }
@@ -30,9 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         window.addEventListener("scroll", updateHeaderTheme, { passive: true });
-        updateHeaderTheme(); // Init
+        updateHeaderTheme();
     }
 
+    // ── Mobile menu ──────────────────────────────────────────────────────
     const menuToggle = document.querySelector(".mobile-menu-toggle");
     const mobileNav = document.getElementById("mobile-nav");
     if (menuToggle && mobileNav) {
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-    // Drawers
+    // ── Divisões drawers ─────────────────────────────────────────────────
     const exploreButtons = document.querySelectorAll(".btn-explore");
     const divDrawers = document.querySelectorAll(".div-drawer");
     const closeButtons = document.querySelectorAll(".drawer-close");
@@ -79,30 +81,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // ── Reduced-motion bail-out ──────────────────────────────────────────
     if (REDUCED) {
         document.querySelectorAll('.scrolly-section').forEach(s => {
             s.style.setProperty('--opacity-in', 1);
             s.style.setProperty('--y-in', 0);
             s.style.setProperty('--opacity-out', 1);
             s.style.setProperty('--scale-out', 1);
+            s.style.setProperty('--text-in', 1);
+            s.style.setProperty('--vis-in', 1);
             s.style.setProperty('--p', 0.5);
         });
-        const mapSection = document.querySelector('.map-component-wrapper');
-        if (mapSection) mapSection.classList.add('is-visible');
-        return; // Stop here if reduced motion
+        // Show all process phases normally
+        document.querySelectorAll('.processo-phase').forEach(p => p.classList.remove('is-active'));
+        const firstPhase = document.querySelector('.processo-phase[data-phase="1"]');
+        if (firstPhase) firstPhase.classList.add('is-active');
+        const mapWrapper = document.querySelector('.map-component-wrapper');
+        if (mapWrapper) mapWrapper.classList.add('is-visible');
+        return;
     }
 
-    // Scrollytelling Engine
+    // ── Scrollytelling Engine ────────────────────────────────────────────
     const sections = document.querySelectorAll('.scrolly-section');
     const processPhases = document.querySelectorAll('.processo-phase');
     const svgNodes = document.querySelectorAll('.flow-node');
     const svgLinks = document.querySelectorAll('.flow-link.active-overlay');
     const svgBall = document.querySelector('.flow-ball');
 
-    const mapSection = document.querySelector('#map-hub');
     const mapWrapper = document.querySelector('.map-component-wrapper');
     let mapTriggered = false;
 
+    // Process section: reset to phase 1 when entering, advance via scroll within section
     const nodeMap = {
         1: ["start", "pedido"],
         2: ["start", "pedido", "validacao"],
@@ -116,13 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
         4: { cx: 430, cy: 120 },
     };
 
+    // Normalise t (0-1 over the settle window 0.40-0.85) → phase 1-4
     function updateProcessLogic(t) {
-        // Process section is active during its own timeline
-        // 0-1 over 400vh. Inside settle (0.25 - 0.75), we scroll 200vh.
+        // Map settle window (t=0.40..0.85) to 0..1
+        const settleT = Math.max(0, Math.min(1, (t - 0.40) / 0.45));
         let phase = 1;
-        if (t > 0.35) phase = 2;
-        if (t > 0.45) phase = 3;
-        if (t > 0.60) phase = 4;
+        if (settleT > 0.25) phase = 2;
+        if (settleT > 0.50) phase = 3;
+        if (settleT > 0.75) phase = 4;
 
         processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === phase));
         const targetNodes = nodeMap[phase] || [];
@@ -134,89 +144,98 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    let raf;
+    // Reset process to phase 1
+    function resetProcess() {
+        processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === 1));
+        const targetNodes = nodeMap[1] || [];
+        svgNodes.forEach(n => n.classList.toggle("is-active", targetNodes.includes(n.getAttribute("data-node"))));
+        svgLinks.forEach(l => l.classList.remove("is-active"));
+        if (svgBall && ballTargetMap[1]) {
+            const bTarget = ballTargetMap[1];
+            svgBall.style.transform = `translate(${bTarget.cx - 30}px, ${bTarget.cy - 120}px)`;
+        }
+    }
+
+    // ── Compute + apply scroll variables for ONE section ─────────────────
+    function updateSection(sec, idx, y, vh) {
+        const top = sec.offsetTop;
+        const h = sec.offsetHeight; // 400vh
+
+        let scrollInto = y - (top - vh);
+        let t = scrollInto / h;
+
+        if (idx === 0 && y < 0) t = 0.25; // mobile rubber-band guard
+
+        t = Math.min(1, Math.max(0, t));
+
+        sec.style.setProperty('--p', t.toFixed(3));
+
+        // 0→0.40: bg in
+        const pBgIn = t <= 0.40 ? t / 0.40 : 1;
+
+        // 0.35→0.50: text in (start slightly before it fully sticks)
+        let pTextIn = 0;
+        if (t > 0.35 && t <= 0.50) pTextIn = (t - 0.35) / 0.15;
+        else if (t > 0.50) pTextIn = 1;
+
+        // 0.45→0.60: visual in
+        let pVisIn = 0;
+        if (t > 0.45 && t <= 0.60) pVisIn = (t - 0.45) / 0.15;
+        else if (t > 0.60) pVisIn = 1;
+
+        // 0.85→1.0: exit
+        const pOut = t > 0.85 ? (t - 0.85) / 0.15 : 0;
+
+        const easeText = 1 - Math.pow(1 - pTextIn, 3);
+        const easeVis = 1 - Math.pow(1 - pVisIn, 3);
+        const opacityOut = Math.max(0, 1 - pOut * 1.5);
+        const scaleOut = 1 - pOut * 0.05;
+
+        sec.style.setProperty('--bg-in', pBgIn.toFixed(3));
+        sec.style.setProperty('--opacity-out', opacityOut.toFixed(3));
+        sec.style.setProperty('--scale-out', scaleOut.toFixed(3));
+        sec.style.setProperty('--text-in', easeText.toFixed(3));
+        sec.style.setProperty('--vis-in', easeVis.toFixed(3));
+
+        // Process section — only advance phases while settled (0.40 < t < 0.90)
+        if (sec.id === 'process') {
+            if (t >= 0.38 && t <= 0.95) {
+                updateProcessLogic(t);
+            } else if (t < 0.38) {
+                resetProcess();
+            }
+        }
+
+        // Map trigger
+        if (sec.id === 'map-hub' && t > 0.15 && !mapTriggered) {
+            mapTriggered = true;
+            if (mapWrapper && window.initWorldMap) {
+                window.initWorldMap();
+                mapWrapper.classList.add('is-visible');
+            }
+        }
+    }
+
+    // ── EVENT-DRIVEN scroll handler (passive, no rAF loop) ───────────────
     function onScroll() {
         const y = window.scrollY;
         const vh = window.innerHeight;
-
-        sections.forEach((sec, idx) => {
-            const top = sec.offsetTop;
-            const h = sec.offsetHeight; // usually 400vh
-
-            // Calculate t = 0 to 1 over the 400vh window
-            // Window starts when viewport top reaches (top - vh) -> wrapper top enters viewport bottom
-            let scrollInto = y - (top - vh);
-            let t = scrollInto / h;
-
-            if (idx === 0) {
-                // Hero is unique because we can't scroll above 0.
-                // It's essentially born into t=0.25 (settle). 
-                // We override scrollInto to force an organic entrance based dynamically on load.
-                // But CSS transitions handles initial drop gracefully.
-                if (y < 0) t = 0.25; // mobile rubber banding
-            }
-
-            if (t < 0) t = 0;
-            if (t > 1) t = 1;
-
-            sec.style.setProperty('--p', t.toFixed(3));
-
-            let pBgIn = 0, pTextIn = 0, pVisIn = 0, pOut = 0;
-
-            // Background settling (0 to 0.20)
-            if (t <= 0.20) pBgIn = t / 0.20;
-            else pBgIn = 1;
-
-            // Text mounting (0.20 to 0.45)
-            if (t <= 0.20) pTextIn = 0;
-            else if (t <= 0.45) pTextIn = (t - 0.20) / 0.25;
-            else pTextIn = 1;
-
-            // Visual mounting (0.45 to 0.70)
-            if (t <= 0.45) pVisIn = 0;
-            else if (t <= 0.70) pVisIn = (t - 0.45) / 0.25;
-            else pVisIn = 1;
-
-            // Exit (0.70 to 1.0)
-            if (t <= 0.70) pOut = 0;
-            else pOut = (t - 0.70) / 0.30;
-
-            const easeText = 1 - Math.pow(1 - pTextIn, 3);
-            const easeVis = 1 - Math.pow(1 - pVisIn, 3);
-            const opacityOut = 1 - pOut * 1.5;
-            const scaleOut = 1 - pOut * 0.05;
-
-            sec.style.setProperty('--bg-in', pBgIn.toFixed(3));
-            sec.style.setProperty('--opacity-out', Math.max(0, opacityOut).toFixed(3));
-            sec.style.setProperty('--scale-out', scaleOut.toFixed(3));
-            sec.style.setProperty('--text-in', easeText.toFixed(3));
-            sec.style.setProperty('--vis-in', easeVis.toFixed(3));
-
-            // Specific section logic
-            if (sec.id === 'process' && t > 0.1 && t < 0.9) {
-                updateProcessLogic(t);
-            }
-
-            if (sec.id === 'map-hub' && t > 0.15 && !mapTriggered) {
-                mapTriggered = true;
-                if (mapWrapper && window.initWorldMap) {
-                    window.initWorldMap();
-                    mapWrapper.classList.add('is-visible');
-                    // add to wrapper manually or let Observer do it. The wrapper relies on the class to animate.
-                }
-            }
-        });
-
-        raf = requestAnimationFrame(onScroll);
+        sections.forEach((sec, idx) => updateSection(sec, idx, y, vh));
     }
 
-    // Set initial transitions for smooth entrance on load
+    // Kick-off once on load
+    onScroll();
+
+    // Listen to scroll events (passive = browser never waits for us)
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Also update on resize (layout might shift)
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    // Enable CSS transitions after first paint
     setTimeout(() => {
         document.querySelectorAll('.anim-text, .anim-visual').forEach(el => {
             el.style.transition = 'opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
         });
-    }, 100); // Give variables a moment to apply via scroll loop
-
-    onScroll();
+    }, 100);
 });
-
