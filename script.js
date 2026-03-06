@@ -125,15 +125,12 @@ document.addEventListener("DOMContentLoaded", () => {
         4: { cx: 430, cy: 120 },
     };
 
-    // Normalise t (0-1 over the settle window 0.50-0.85) → phase 1-4
-    function updateProcessLogic(t) {
-        // Map settle window (t=0.65..0.95) to 0..1
-        const settleT = Math.max(0, Math.min(1, (t - 0.65) / 0.30));
+    // updateProcessLogic based on stuck progress (0 to 1)
+    function updateProcessLogic(pStuck) {
         let phase = 1;
-        if (settleT > 0.25) phase = 2;
-        if (settleT > 0.50) phase = 3;
-        if (settleT > 0.75) phase = 4;
-
+        if (pStuck > 0.20) phase = 2;
+        if (pStuck > 0.50) phase = 3;
+        if (pStuck > 0.80) phase = 4;
 
         processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === phase));
         const targetNodes = nodeMap[phase] || [];
@@ -160,43 +157,47 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── Compute + apply scroll variables for ONE section ─────────────────
     function updateSection(sec, idx, y, vh) {
         const top = sec.offsetTop;
-        const h = sec.offsetHeight; // 400vh
+        const h = sec.offsetHeight;
 
-        let scrollInto = y - (top - vh);
-        let t = scrollInto / h;
+        // Entrance progress (0 to 1 as section slides up to stick)
+        let pEnter = (y - (top - vh)) / vh;
+        pEnter = Math.min(1, Math.max(0, pEnter));
 
-        if (idx === 0 && y < 0) t = 0.25; // mobile rubber-band guard
+        // Stuck progress (0 to 1 while pinned)
+        let stickTime = Math.max(1, h - vh);
+        let pStuck = (y - top) / stickTime;
+        pStuck = Math.min(1, Math.max(0, pStuck));
 
-        t = Math.min(1, Math.max(0, t));
-
-        sec.style.setProperty('--p', t.toFixed(3));
-
-        // 0.33→0.50: background fade in (once section is stuck)
-        let pBgIn = t <= 0.33 ? 0 : (t <= 0.50 ? (t - 0.33) / 0.17 : 1);
-        if (idx === 0) pBgIn = 1; // Hero starts visible
-
-        // 0.50→0.65: text in
-        let pTextIn = 0;
-        if (t > 0.50 && t <= 0.65) pTextIn = (t - 0.50) / 0.15;
-        else if (t > 0.65) pTextIn = 1;
-
-        // 0.60→0.75: visual in
-        let pVisIn = 0;
-        if (t > 0.60 && t <= 0.75) pVisIn = (t - 0.60) / 0.15;
-        else if (t > 0.75) pVisIn = 1;
-
-        if (idx === 0) {
-            pTextIn = 1;
-            pVisIn = 1;
+        if (idx === 0 && y < 0) {
+            pEnter = 1;
+            pStuck = 0; // mobile rubber-band guard
         }
 
-        // 0.92→1.00: exit (delayed)
-        const pOut = t > 0.92 ? (t - 0.92) / 0.08 : 0;
+        // Base background fades in mid-entrance
+        let pBgIn = pEnter;
+
+        let pTextIn = 0;
+        let pVisIn = 0;
+        let pOut = pStuck > 0.85 ? (pStuck - 0.85) / 0.15 : 0;
+
+        if (idx === 0) {
+            pBgIn = 1;
+            pTextIn = 1;
+            pVisIn = 1;
+            // Hero exits earlier so it doesn't stay dead on screen
+            pOut = pStuck > 0.60 ? (pStuck - 0.60) / 0.40 : 0;
+        } else {
+            // normal sections fade explicitly when stuck
+            if (pStuck > 0) {
+                pTextIn = pStuck <= 0.20 ? pStuck / 0.20 : 1;
+                pVisIn = pStuck <= 0.10 ? 0 : (pStuck <= 0.30 ? (pStuck - 0.10) / 0.20 : 1);
+            }
+        }
 
         const easeText = 1 - Math.pow(1 - pTextIn, 3);
         const easeVis = 1 - Math.pow(1 - pVisIn, 3);
         const opacityOut = Math.max(0, 1 - pOut);
-        const scaleOut = 1 - pOut * 0.02;
+        const scaleOut = 1 - pOut * 0.05;
 
         sec.style.setProperty('--bg-in', pBgIn.toFixed(3));
         sec.style.setProperty('--opacity-out', opacityOut.toFixed(3));
@@ -204,17 +205,20 @@ document.addEventListener("DOMContentLoaded", () => {
         sec.style.setProperty('--text-in', easeText.toFixed(3));
         sec.style.setProperty('--vis-in', easeVis.toFixed(3));
 
-        // Process section — update between 0.60 and 0.98
+        // Expose pStuck as generic p just in case
+        sec.style.setProperty('--p', pStuck.toFixed(3));
+
+        // Process section
         if (sec.id === 'process') {
-            if (t >= 0.60 && t <= 0.98) {
-                updateProcessLogic(t);
-            } else if (t < 0.60) {
+            if (pStuck > 0) {
+                updateProcessLogic(pStuck);
+            } else {
                 resetProcess();
             }
         }
 
         // Map trigger
-        if (sec.id === 'map-hub' && t > 0.15 && !mapTriggered) {
+        if (sec.id === 'map-hub' && pEnter > 0.5 && !mapTriggered) {
             mapTriggered = true;
             if (mapWrapper && window.initWorldMap) {
                 window.initWorldMap();
