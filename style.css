@@ -281,8 +281,10 @@ button {
    Fixed height, no shrink on scroll. Backdrop blur on scroll.
    ============================================================ */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
   background: rgba(255, 255, 255, 0.97);
   border-bottom: 1px solid var(--c-border);
@@ -1118,7 +1120,7 @@ button {
 
 .processo-phase {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: flex-start;
   cursor: pointer;
   opacity: 0.5;
@@ -1127,7 +1129,7 @@ button {
     background var(--dur-1) ease,
     border-color var(--dur-1) ease;
   position: relative;
-  padding: 1.25rem 1.5rem;
+  padding: 0.75rem 1rem;
   border-left: 3px solid transparent;
   border-radius: 0 8px 8px 0;
 }
@@ -2050,11 +2052,13 @@ body {
 }
 
 .header.is-dark .header-nav a {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
 
 .header.is-dark .header-nav a:hover {
   color: #fff;
+  font-weight: 600;
 }
 
 .header-nav a.is-active {
@@ -2144,11 +2148,11 @@ body {
 /* Enforce white text on dark sections (Readability) */
 .scrolly-section[data-theme="dark"] .scrolly-sub,
 .scrolly-section[data-theme="dark"] p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .scrolly-section[data-theme="dark"] .card-micro-line {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .scrolly-section[data-theme="dark"] h1,
@@ -2199,4 +2203,185 @@ body {
 .scrolly-section[data-theme="dark"] .btn-outline:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: #fff;
+}
+
+   
+
+/* Hero Dashboard Card */
+.hero-dashboard-card {
+  background: rgba(15, 15, 17, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-dashboard-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-accent), transparent);
+  opacity: 0.5;
+}
+
+.dash-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-indicator::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  animation: dashPulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes dashPulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.dash-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dash-card-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.dash-card-item:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dash-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #d4d4d8;
+  flex-shrink: 0;
+}
+
+.dash-card-icon.highlight {
+  color: var(--c-accent);
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.dash-card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dash-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.dash-card-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #71717a;
+  letter-spacing: 0.05em;
+}
+
+.dash-card-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dash-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--c-accent);
+  border-radius: 2px;
+  transform-origin: left;
+  animation: progressFill 3s ease-out infinite;
+}
+
+@keyframes progressFill {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(1);
+    opacity: 0.5;
+  }
 }

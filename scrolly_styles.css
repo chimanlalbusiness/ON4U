@@ -20,9 +20,14 @@ body {
 .scrolly-section {
   position: relative;
   width: 100%;
-  height: 250vh;
+  height: 300vh;
   /* Entrance, Settle, Exit Y distances */
   z-index: 10;
+  --text-in: 0;
+  --vis-in: 0;
+  --bg-in: 0;
+  --opacity-out: 1;
+  --scale-out: 1;
 }
 
 .scrolly-section#hero {
@@ -30,7 +35,7 @@ body {
 }
 
 .scrolly-section:not(#hero) {
-  margin-top: -100vh;
+  margin-top: -50vh;
   /* Slides OVER previous section */
 }
 
@@ -73,6 +78,8 @@ body {
   inset: 0;
   z-index: 1;
   background: var(--c-bg-dark, #09090b);
+  opacity: var(--bg-in, 1);
+  transform-origin: center top;
 }
 
 .scrolly-glow {
@@ -318,9 +325,19 @@ body {
 }
 
 /* Animation Variables exposed by JS */
+.anim-text {
+  opacity: calc(var(--text-in) * var(--opacity-out));
+  transform: translateY(calc((1 - var(--text-in)) * 20px)) scale(calc(var(--scale-out)));
+}
+
+.anim-visual {
+  opacity: calc(var(--vis-in) * var(--opacity-out));
+  transform: translateY(calc((1 - var(--vis-in)) * 30px)) scale(calc(var(--scale-out)));
+}
+
 .anim-entrance {
-  opacity: calc(var(--opacity-in) * var(--opacity-out));
-  transform: translateY(calc(var(--y-in) * 1px)) scale(calc(var(--scale-out)));
+  opacity: calc(var(--opacity-out));
+  transform: scale(calc(var(--scale-out)));
 }
 
 .delay-1 {

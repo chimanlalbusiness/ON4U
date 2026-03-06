@@ -125,14 +125,15 @@ document.addEventListener("DOMContentLoaded", () => {
         4: { cx: 430, cy: 120 },
     };
 
-    // Normalise t (0-1 over the settle window 0.40-0.85) → phase 1-4
+    // Normalise t (0-1 over the settle window 0.50-0.85) → phase 1-4
     function updateProcessLogic(t) {
-        // Map settle window (t=0.40..0.85) to 0..1
-        const settleT = Math.max(0, Math.min(1, (t - 0.40) / 0.45));
+        // Map settle window (t=0.65..0.95) to 0..1
+        const settleT = Math.max(0, Math.min(1, (t - 0.65) / 0.30));
         let phase = 1;
         if (settleT > 0.25) phase = 2;
         if (settleT > 0.50) phase = 3;
         if (settleT > 0.75) phase = 4;
+
 
         processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === phase));
         const targetNodes = nodeMap[phase] || [];
@@ -170,26 +171,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sec.style.setProperty('--p', t.toFixed(3));
 
-        // 0→0.40: bg in
-        const pBgIn = t <= 0.40 ? t / 0.40 : 1;
+        // 0.33→0.50: background fade in (once section is stuck)
+        let pBgIn = t <= 0.33 ? 0 : (t <= 0.50 ? (t - 0.33) / 0.17 : 1);
+        if (idx === 0) pBgIn = 1; // Hero starts visible
 
-        // 0.35→0.50: text in (start slightly before it fully sticks)
+        // 0.50→0.65: text in
         let pTextIn = 0;
-        if (t > 0.35 && t <= 0.50) pTextIn = (t - 0.35) / 0.15;
-        else if (t > 0.50) pTextIn = 1;
+        if (t > 0.50 && t <= 0.65) pTextIn = (t - 0.50) / 0.15;
+        else if (t > 0.65) pTextIn = 1;
 
-        // 0.45→0.60: visual in
+        // 0.60→0.75: visual in
         let pVisIn = 0;
-        if (t > 0.45 && t <= 0.60) pVisIn = (t - 0.45) / 0.15;
-        else if (t > 0.60) pVisIn = 1;
+        if (t > 0.60 && t <= 0.75) pVisIn = (t - 0.60) / 0.15;
+        else if (t > 0.75) pVisIn = 1;
 
-        // 0.85→1.0: exit
-        const pOut = t > 0.85 ? (t - 0.85) / 0.15 : 0;
+        if (idx === 0) {
+            pTextIn = 1;
+            pVisIn = 1;
+        }
+
+        // 0.92→1.00: exit (delayed)
+        const pOut = t > 0.92 ? (t - 0.92) / 0.08 : 0;
 
         const easeText = 1 - Math.pow(1 - pTextIn, 3);
         const easeVis = 1 - Math.pow(1 - pVisIn, 3);
-        const opacityOut = Math.max(0, 1 - pOut * 1.5);
-        const scaleOut = 1 - pOut * 0.05;
+        const opacityOut = Math.max(0, 1 - pOut);
+        const scaleOut = 1 - pOut * 0.02;
 
         sec.style.setProperty('--bg-in', pBgIn.toFixed(3));
         sec.style.setProperty('--opacity-out', opacityOut.toFixed(3));
@@ -197,11 +204,11 @@ document.addEventListener("DOMContentLoaded", () => {
         sec.style.setProperty('--text-in', easeText.toFixed(3));
         sec.style.setProperty('--vis-in', easeVis.toFixed(3));
 
-        // Process section — only advance phases while settled (0.40 < t < 0.90)
+        // Process section — update between 0.60 and 0.98
         if (sec.id === 'process') {
-            if (t >= 0.38 && t <= 0.95) {
+            if (t >= 0.60 && t <= 0.98) {
                 updateProcessLogic(t);
-            } else if (t < 0.38) {
+            } else if (t < 0.60) {
                 resetProcess();
             }
         }
