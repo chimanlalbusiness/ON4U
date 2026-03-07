@@ -128,9 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // updateProcessLogic based on stuck progress (0 to 1)
     function updateProcessLogic(pStuck) {
         let phase = 1;
-        if (pStuck > 0.20) phase = 2;
+        if (pStuck > 0.25) phase = 2;
         if (pStuck > 0.50) phase = 3;
-        if (pStuck > 0.80) phase = 4;
+        if (pStuck > 0.75) phase = 4;
 
         processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === phase));
         const targetNodes = nodeMap[phase] || [];
@@ -173,8 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
             pStuck = 0; // mobile rubber-band guard
         }
 
-        // Base background fades in mid-entrance
-        let pBgIn = pEnter;
+        // Base background is opaque from the start to prevent overlapping gradient transparency
+        let pBgIn = 1;
 
         let pTextIn = 0;
         let pVisIn = 0;
@@ -187,10 +187,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // Hero exits earlier so it doesn't stay dead on screen
             pOut = pStuck > 0.60 ? (pStuck - 0.60) / 0.40 : 0;
         } else {
-            // normal sections fade explicitly when stuck
+            // normal sections fade explicitly when entering so they are fully visible upon snap
+            pTextIn = pEnter > 0.5 ? (pEnter - 0.5) / 0.5 : 0;
+            pVisIn = pEnter > 0.6 ? (pEnter - 0.6) / 0.4 : 0;
+
             if (pStuck > 0) {
-                pTextIn = pStuck <= 0.20 ? pStuck / 0.20 : 1;
-                pVisIn = pStuck <= 0.10 ? 0 : (pStuck <= 0.30 ? (pStuck - 0.10) / 0.20 : 1);
+                pTextIn = 1;
+                pVisIn = 1;
             }
         }
 

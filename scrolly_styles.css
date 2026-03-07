@@ -41,8 +41,8 @@ body {
 }
 
 .scrolly-section:not(#hero) {
-  margin-top: -50vh;
-  /* Slides OVER previous section */
+  /* Slides sequentially instead of overlapping to prevent double backgrounds */
+  margin-top: 0;
 }
 
 .scrolly-section#presence {
@@ -141,11 +141,11 @@ body {
 
 .scrolly-title {
   color: #fff;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.2rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 .scrolly-sub {

@@ -1668,8 +1668,8 @@ body {
 }
 
 .scrolly-section:not(#hero) {
-  margin-top: -100vh;
-  /* Slides OVER previous section */
+  /* Slides sequentially instead of overlapping to prevent double backgrounds */
+  margin-top: 0;
 }
 
 .scrolly-section#presence {
@@ -1766,11 +1766,11 @@ body {
 
 .scrolly-title {
   color: #fff;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.2rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 .scrolly-sub {
@@ -2388,4 +2388,21 @@ body {
     transform: scaleX(1);
     opacity: 0.5;
   }
+}
+
+/* Gradient Utility */
+.text-gradient {
+  background: linear-gradient(180deg,
+      #ffffff 0%,
+      #fed7aa 20%,
+      #f97316 55%,
+      #c2410c 80%,
+      #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  /* subtle drop shadow for text to enhance the satin pop effect */
+  filter: drop-shadow(0 4px 12px rgba(249, 115, 22, 0.25));
 }
