@@ -1,133 +1,131 @@
-   INTERNACIONAL (dark map) — layered SVG map
-   ============================================================ */
-.map-component-wrapper {
-  padding: 6rem 0;
-}
+   INTERNACIONAL (dark map) — layered SVG map============================================================*/ .map-component-wrapper {
+     padding: 6rem 0;
+   }
 
-.map-container {
-  width: 100%;
-  height: 480px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 3rem;
-  mask-image: radial-gradient(ellipse 80% 85% at 50% 50%,
-      black 30%,
-      transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 85% at 50% 50%,
-      black 30%,
-      transparent 100%);
-}
+   .map-container {
+     width: 100%;
+     height: 480px;
+     position: relative;
+     overflow: hidden;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 3rem;
+     mask-image: radial-gradient(ellipse 80% 85% at 50% 50%,
+         black 30%,
+         transparent 100%);
+     -webkit-mask-image: radial-gradient(ellipse 80% 85% at 50% 50%,
+         black 30%,
+         transparent 100%);
+   }
 
-.map-svg {
-  width: 100%;
-  height: 100%;
-  max-width: 960px;
-}
+   .map-svg {
+     width: 100%;
+     height: 100%;
+     max-width: 960px;
+   }
 
-.map-coastlines {
-  opacity: 0;
-  transition: opacity 0.9s ease-out;
-}
+   .map-coastlines {
+     opacity: 0;
+     transition: opacity 0.9s ease-out;
+   }
 
-.map-bg-glow {
-  opacity: 0;
-  transition: opacity 2s ease;
-}
+   .map-bg-glow {
+     opacity: 0;
+     transition: opacity 2s ease;
+   }
 
-.map-route {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-}
+   .map-route {
+     stroke-dasharray: 1000;
+     stroke-dashoffset: 1000;
+   }
 
-.map-hub-glow {
-  opacity: 0;
-  transition: opacity 1.8s ease 0.5s;
-}
+   .map-hub-glow {
+     opacity: 0;
+     transition: opacity 1.8s ease 0.5s;
+   }
 
-.map-hub-ring {
-  transform-origin: 490px 180px;
-  opacity: 0;
-}
+   .map-hub-ring {
+     transform-origin: 490px 180px;
+     opacity: 0;
+   }
 
-.map-component-wrapper.is-visible .map-coastlines {
-  opacity: 1;
-}
+   .map-component-wrapper.is-visible .map-coastlines {
+     opacity: 1;
+   }
 
-.map-component-wrapper.is-visible .map-bg-glow {
-  opacity: 1;
-}
+   .map-component-wrapper.is-visible .map-bg-glow {
+     opacity: 1;
+   }
 
-.map-component-wrapper.is-visible .map-hub-glow {
-  opacity: 1;
-}
+   .map-component-wrapper.is-visible .map-hub-glow {
+     opacity: 1;
+   }
 
-.map-component-wrapper.is-visible .map-route-1 {
-  animation: drawRoutePulse 4s ease-out 0.35s infinite;
-}
+   .map-component-wrapper.is-visible .map-route-1 {
+     animation: drawRoutePulse 4s ease-out 0.35s infinite;
+   }
 
-.map-component-wrapper.is-visible .map-route-2 {
-  animation: drawRoutePulse 4s ease-out 0.55s infinite;
-}
+   .map-component-wrapper.is-visible .map-route-2 {
+     animation: drawRoutePulse 4s ease-out 0.55s infinite;
+   }
 
-.map-component-wrapper.is-visible .map-route-3 {
-  animation: drawRoutePulse 4s ease-out 0.75s infinite;
-}
+   .map-component-wrapper.is-visible .map-route-3 {
+     animation: drawRoutePulse 4s ease-out 0.75s infinite;
+   }
 
-.map-component-wrapper.is-visible .map-route-4 {
-  animation: drawRoutePulse 4s ease-out 0.9s infinite;
-}
+   .map-component-wrapper.is-visible .map-route-4 {
+     animation: drawRoutePulse 4s ease-out 0.9s infinite;
+   }
 
-.map-component-wrapper.is-visible .map-route-5 {
-  animation: drawRoutePulse 4s ease-out 1.05s infinite;
-}
+   .map-component-wrapper.is-visible .map-route-5 {
+     animation: drawRoutePulse 4s ease-out 1.05s infinite;
+   }
 
-.map-component-wrapper.is-visible .map-hub-ring {
-  animation: hubPulse 4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s infinite;
-}
+   .map-component-wrapper.is-visible .map-hub-ring {
+     animation: hubPulse 4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s infinite;
+   }
 
-@keyframes drawRoutePulse {
-  0% {
-    stroke-dashoffset: 1000;
-    opacity: 0;
-  }
+   @keyframes drawRoutePulse {
+     0% {
+       stroke-dashoffset: 1000;
+       opacity: 0;
+     }
 
-  15% {
-    stroke-dashoffset: 0;
-    opacity: 0.85;
-  }
+     15% {
+       stroke-dashoffset: 0;
+       opacity: 0.85;
+     }
 
-  80% {
-    stroke-dashoffset: 0;
-    opacity: 0.85;
-  }
+     80% {
+       stroke-dashoffset: 0;
+       opacity: 0.85;
+     }
 
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0;
-  }
-}
+     100% {
+       stroke-dashoffset: 0;
+       opacity: 0;
+     }
+   }
 
-@keyframes hubPulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.85;
-  }
+   @keyframes hubPulse {
+     0% {
+       transform: scale(1);
+       opacity: 0.85;
+     }
 
-  30%,
-  100% {
-    transform: scale(6);
-    opacity: 0;
-  }
-}
+     30%,
+     100% {
+       transform: scale(6);
+       opacity: 0;
+     }
+   }
 
-.map-footer {
-  padding-top: 1.5rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--c-dark-muted);
-}
+   .map-footer {
+     padding-top: 1.5rem;
+     font-size: 0.72rem;
+     font-weight: 700;
+     letter-spacing: 0.12em;
+     text-transform: uppercase;
+     color: var(--c-dark-muted);
+   }
