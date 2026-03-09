@@ -78,6 +78,32 @@ body {
   /* Force GPU compositing and stacking context */
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE: COMPLETELY DISABLE SCROLLYTELLING (< 600px)
+   This must come early to override all sticky/pinned behavior
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .scrolly-section,
+  .scrolly-section#hero,
+  .scrolly-section#presence,
+  .scrolly-section#network,
+  .scrolly-section#hub,
+  .scrolly-section#process,
+  .scrolly-section#map-hub {
+    height: auto !important;
+    position: relative !important;
+    margin-top: 0 !important;
+  }
+
+  .scrolly-sticky {
+    position: relative !important;
+    height: auto !important;
+    top: auto !important;
+    overflow: visible !important;
+    clip-path: none !important;
+  }
+}
+
 /* Global Background for pinned */
 .scrolly-bg {
   position: absolute;
@@ -766,6 +792,12 @@ body {
     overflow: visible !important;
   }
 
+  .scrolly-content {
+    position: static !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
   #hero .scrolly-content {
     position: static !important;
     display: flex !important;
@@ -774,7 +806,14 @@ body {
     justify-content: flex-start !important;
     width: 100% !important;
     height: auto !important;
+    min-height: auto !important;
     padding: 80px 16px calc(32px + env(safe-area-inset-bottom)) 16px !important;
+    gap: 2rem !important;
+  }
+
+  #hero .scrolly-grid {
+    display: flex !important;
+    flex-direction: column !important;
     gap: 2rem !important;
   }
 
