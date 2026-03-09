@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "build-map.js",
   "scripts": {
-    "dev": "npx serve@14 -l 5000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
