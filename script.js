@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ── Mobile viewport guard: disable scrollytelling on mobile/tablet ──────
     if (window.innerWidth < 1024) {
+        console.log("[v0] Mobile viewport detected (" + window.innerWidth + "px) - disabling scrollytelling");
         // Mobile: render static layout, no scrollytelling snap/pin effects
         document.querySelectorAll('.scrolly-section').forEach(s => {
             s.style.setProperty('--opacity-in', 1);
