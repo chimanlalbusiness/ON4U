@@ -101,29 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // ── Mobile viewport guard: disable scrollytelling on mobile/tablet ──────
-    if (window.innerWidth < 1024) {
-        console.log("[v0] Mobile viewport detected (" + window.innerWidth + "px) - disabling scrollytelling");
-        // Mobile: render static layout, no scrollytelling snap/pin effects
-        document.querySelectorAll('.scrolly-section').forEach(s => {
-            s.style.setProperty('--opacity-in', 1);
-            s.style.setProperty('--y-in', 0);
-            s.style.setProperty('--opacity-out', 1);
-            s.style.setProperty('--scale-out', 1);
-            s.style.setProperty('--text-in', 1);
-            s.style.setProperty('--vis-in', 1);
-            s.style.setProperty('--p', 0.5);
-        });
-        // Reset process to phase 1
-        document.querySelectorAll('.processo-phase').forEach(p => p.classList.remove('is-active'));
-        const firstPhase = document.querySelector('.processo-phase[data-phase="1"]');
-        if (firstPhase) firstPhase.classList.add('is-active');
-        // Trigger map rendering
-        const mapWrapper = document.querySelector('.map-component-wrapper');
-        if (mapWrapper) mapWrapper.classList.add('is-visible');
-        return;
-    }
-
     // ── Scrollytelling Engine ────────────────────────────────────────────
     const sections = document.querySelectorAll('.scrolly-section');
     const processPhases = document.querySelectorAll('.processo-phase');

@@ -78,61 +78,6 @@ body {
   /* Force GPU compositing and stacking context */
 }
 
-/* MOBILE: DISABLE SCROLLYTELLING (max-width: 600px) */
-@media (max-width: 600px) {
-  /* Reset all scrolly container behavior */
-  body,
-  html {
-    scroll-snap-type: none !important;
-  }
-
-  .scrolly-section,
-  .scrolly-section#hero,
-  .scrolly-section#presence,
-  .scrolly-section#network,
-  .scrolly-section#hub,
-  .scrolly-section#process,
-  .scrolly-section#map-hub {
-    height: auto !important;
-    position: relative !important;
-    margin-top: 0 !important;
-    min-height: auto !important;
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-  }
-
-  .scrolly-sticky {
-    position: relative !important;
-    height: auto !important;
-    top: auto !important;
-    overflow: visible !important;
-    clip-path: none !important;
-    sticky: none !important;
-  }
-
-  .scrolly-content {
-    position: relative !important;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-  }
-
-  #hero .scrolly-content {
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    padding: 80px 16px 32px 16px !important;
-    gap: 2rem !important;
-  }
-
-  .hero-dashboard-card {
-    transform: none !important;
-    margin: 0 auto 24px auto !important;
-    width: 100% !important;
-    max-width: 380px !important;
-  }
-}
-
 /* Global Background for pinned */
 .scrolly-bg {
   position: absolute;
