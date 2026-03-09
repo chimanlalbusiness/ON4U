@@ -721,15 +721,40 @@ body {
 }
 
 @media (max-width: 599px) {
-  #hero .scrolly-content {
-    align-items: flex-start;
-    padding-top: max(80px, 12vh);
+  /* Disable scrollytelling snap/pin effects on mobile */
+  scroll-snap-type: none !important;
+  scroll-snap-align: none !important;
+  
+  /* Mobile hero: disable 100vh fixed height, scroll naturally */
+  .scrolly-sticky {
+    position: static !important;
+    top: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip-path: none !important;
   }
 
+  .scrolly-section#hero {
+    height: auto !important;
+    margin-top: 0 !important;
+  }
+
+  #hero .scrolly-content {
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: max(80px, 6vh);
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Operator card: natural flow, fully visible, no scale hacks */
   .hero-dashboard-card {
-    transform: scale(0.85);
-    transform-origin: top center;
-    margin-bottom: -40px;
+    transform: none;
+    transform-origin: unset;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 380px;
   }
 
   .floating-card {
