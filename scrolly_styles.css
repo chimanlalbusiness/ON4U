@@ -78,10 +78,7 @@ body {
   /* Force GPU compositing and stacking context */
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE: COMPLETELY DISABLE SCROLLYTELLING (< 600px)
-   This must come early to override all sticky/pinned behavior
-   ═══════════════════════════════════════════════════════════════ */
+/* MOBILE: DISABLE SCROLLYTELLING (max-width: 600px) */
 @media (max-width: 600px) {
   .scrolly-section,
   .scrolly-section#hero,
