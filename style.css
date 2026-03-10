@@ -1546,6 +1546,74 @@ button {
   margin-top: auto;
 }
 
+/* Infarmed Certification Badge */
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.65rem 1rem;
+  background: rgba(249, 115, 22, 0.06);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 220ms ease;
+  width: 100%;
+}
+
+.cert-badge:hover {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px -4px rgba(249, 115, 22, 0.25);
+}
+
+.cert-badge-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #f97316;
+}
+
+.cert-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+}
+
+.cert-badge-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #f97316;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.cert-badge-sub {
+  font-size: 0.68rem;
+  color: var(--c-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.cert-badge-arrow {
+  color: rgba(249, 115, 22, 0.5);
+  flex-shrink: 0;
+  transition: transform 220ms ease, color 220ms ease;
+}
+
+.cert-badge:hover .cert-badge-arrow {
+  transform: translate(2px, -2px);
+  color: #f97316;
+}
+
 .btn-explore {
   min-height: var(--tap);
 }
