@@ -127,9 +127,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Always attach click handlers (they check viewport at click time)
     processPhases.forEach(phaseEl => {
-        phaseEl.addEventListener('click', () => {
+        phaseEl.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("[v0] Phase tab clicked:", phaseEl.dataset.phase, "isMobile:", isMobileView());
             if (!isMobileView()) return; // Only handle on mobile
             mobilePhase = parseInt(phaseEl.dataset.phase);
+            console.log("[v0] Updating to phase:", mobilePhase);
             updatePhaseDisplay(mobilePhase);
             phaseEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         });
@@ -137,7 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Add click handlers to mobile stepper steps
     mobileSteps.forEach(step => {
-        step.addEventListener('click', () => {
+        step.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("[v0] Step clicked:", step.dataset.step);
             mobilePhase = parseInt(step.dataset.step);
             updatePhaseDisplay(mobilePhase);
             // Also update the tab to match

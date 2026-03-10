@@ -154,6 +154,66 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // ── Mobile Process Phase Handlers ────────────────────────────────────
+    const mobileSteps = document.querySelectorAll('.mobile-step');
+    let mobilePhase = 1;
+
+    function isMobileView() {
+        return window.innerWidth < 900;
+    }
+
+    function updateMobilePhase(phase) {
+        // Update tab pills
+        processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === phase));
+        
+        // Update mobile stepper
+        mobileSteps.forEach(step => {
+            const stepNum = parseInt(step.dataset.step);
+            step.classList.toggle("is-complete", stepNum < phase);
+            step.classList.toggle("is-active", stepNum === phase);
+        });
+
+        // Update SVG diagram (in case it's visible)
+        const targetNodes = nodeMap[phase] || [];
+        svgNodes.forEach(n => n.classList.toggle("is-active", targetNodes.includes(n.getAttribute("data-node"))));
+        svgLinks.forEach(l => l.classList.toggle("is-active", parseInt(l.getAttribute("data-phase-target")) <= phase));
+        if (svgBall && ballTargetMap[phase]) {
+            const bTarget = ballTargetMap[phase];
+            svgBall.style.transform = `translate(${bTarget.cx - 30}px, ${bTarget.cy - 120}px)`;
+        }
+    }
+
+    // Attach click handlers to phase tabs (mobile only)
+    processPhases.forEach(phaseEl => {
+        phaseEl.addEventListener('click', (e) => {
+            if (!isMobileView()) return;
+            e.preventDefault();
+            e.stopPropagation();
+            mobilePhase = parseInt(phaseEl.dataset.phase);
+            updateMobilePhase(mobilePhase);
+            phaseEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+    });
+
+    // Attach click handlers to mobile stepper steps
+    mobileSteps.forEach(step => {
+        step.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            mobilePhase = parseInt(step.dataset.step);
+            updateMobilePhase(mobilePhase);
+            const matchingPhase = document.querySelector(`.processo-phase[data-phase="${mobilePhase}"]`);
+            if (matchingPhase) {
+                matchingPhase.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        });
+    });
+
+    // Initialize mobile phase on load
+    if (isMobileView()) {
+        updateMobilePhase(mobilePhase);
+    }
+
     // ── Compute + apply scroll variables for ONE section ─────────────────
     function updateSection(sec, idx, y, vh) {
         const top = sec.offsetTop;
@@ -211,8 +271,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Expose pStuck as generic p just in case
         sec.style.setProperty('--p', pStuck.toFixed(3));
 
-        // Process section
-        if (sec.id === 'process') {
+        // Process section (skip on mobile - use click handlers instead)
+        if (sec.id === 'process' && !isMobileView()) {
             if (pStuck > 0) {
                 updateProcessLogic(pStuck);
             } else {
