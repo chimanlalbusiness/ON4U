@@ -358,12 +358,58 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #a1a1aa;
+}
+
+/* Transport Modes */
+.transport-modes {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.transport-mode {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #f97316;
+  transition: all 200ms ease;
+}
+
+.transport-mode:hover {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: rgba(249, 115, 22, 0.4);
+  transform: translateY(-1px);
+}
+
+.transport-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(249, 115, 22, 0.15);
+  border-radius: 6px;
+  font-size: 0.7rem;
+}
+
+.route-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin-bottom: 1.5rem;
 }
 
 .route-rail {
@@ -660,11 +706,34 @@ body {
   }
 
   .route-rail-wrapper {
-    padding: 1.5rem !important;
+    padding: 1.25rem !important;
   }
 
   .route-rail-header {
-    margin-bottom: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .transport-modes {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .transport-mode {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.7rem !important;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .transport-icon {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 0.6rem !important;
+  }
+
+  .route-divider {
+    margin-bottom: 1rem !important;
   }
 
   .route-rail {
