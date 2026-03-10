@@ -27,12 +27,12 @@
 
    @media (max-width: 599px) {
      .map-component-wrapper {
-       padding: 2rem 0;
+       padding: 0;
      }
 
      .map-container {
-       height: 500px;
-       margin-bottom: 1.5rem;
+       height: 260px;
+       margin-bottom: 0;
      }
 
      .map-svg {
