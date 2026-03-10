@@ -25,6 +25,23 @@
      max-width: 960px;
    }
 
+   @media (max-width: 599px) {
+     .map-component-wrapper {
+       padding: 1rem 0;
+     }
+
+     .map-container {
+       height: 380px;
+       margin-bottom: 0.5rem;
+     }
+
+     .map-svg {
+       width: 100%;
+       height: 100%;
+       max-width: 100%;
+     }
+   }
+
    .map-coastlines {
      opacity: 0;
      transition: opacity 0.9s ease-out;

@@ -262,12 +262,6 @@
                     aduaneiros</span><span class="mobile-only">documentação</span> e entrega <span
                     class="hide-mobile">,</span>(quando necessário)</li>
                 <li>Seguimento por marcos<span class="hide-mobile"> operacionais</span> até ao fecho</li>
-                <li
-                  style="list-style: none; margin-top: 1rem; display: flex; gap: 1rem; color: #f97316; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">
-                  <span><i class="fas fa-plane"></i> Aéreo</span>
-                  <span><i class="fas fa-ship"></i> Marítimo</span>
-                  <span><i class="fas fa-truck"></i> Rodoviário</span>
-                </li>
               </ul>
               <p class="proof-line"><span class="hide-mobile">Equipa ON4U e parceiros locais coordenados para dar
                   continuidade à operação do início ao fim.</span><span class="mobile-only">Equipa ON4U + parceiros
@@ -281,6 +275,25 @@
                   <div class="pulse-indicator"></div>
                   <span>Rastreio Operacional</span>
                 </div>
+                
+                <!-- Transport Modes -->
+                <div class="transport-modes">
+                  <div class="transport-mode">
+                    <div class="transport-icon"><i class="fas fa-plane"></i></div>
+                    <span>Aéreo</span>
+                  </div>
+                  <div class="transport-mode">
+                    <div class="transport-icon"><i class="fas fa-ship"></i></div>
+                    <span>Marítimo</span>
+                  </div>
+                  <div class="transport-mode">
+                    <div class="transport-icon"><i class="fas fa-truck"></i></div>
+                    <span>Rodoviário</span>
+                  </div>
+                </div>
+
+                <div class="route-divider"></div>
+
                 <div class="route-rail">
                   <div class="route-node completed">
                     <div class="node-point"></div>
@@ -454,6 +467,50 @@
                 </div>
               </div>
             </div>
+            <!-- Mobile Vertical Stepper (hidden on desktop) -->
+            <div class="processo-mobile-stepper" aria-label="Fluxo do processo">
+              <div class="mobile-step is-active" data-step="1">
+                <div class="step-indicator">
+                  <div class="step-dot">1</div>
+                </div>
+                <div class="step-content">
+                  <span class="step-label">Fase 1</span>
+                  <h4 class="step-title">Pedido</h4>
+                  <p class="step-desc">Receção dos requisitos: especificações, quantidades, destino e prazo.</p>
+                </div>
+              </div>
+              <div class="mobile-step" data-step="2">
+                <div class="step-indicator">
+                  <div class="step-dot">2</div>
+                </div>
+                <div class="step-content">
+                  <span class="step-label">Fase 2</span>
+                  <h4 class="step-title">Validação</h4>
+                  <p class="step-desc">Análise de viabilidade, condições e documentação necessária.</p>
+                </div>
+              </div>
+              <div class="mobile-step" data-step="3">
+                <div class="step-indicator">
+                  <div class="step-dot">3</div>
+                </div>
+                <div class="step-content">
+                  <span class="step-label">Fase 3</span>
+                  <h4 class="step-title">Orçamento & Logística</h4>
+                  <p class="step-desc">Proposta detalhada com planeamento de transporte e prazos.</p>
+                </div>
+              </div>
+              <div class="mobile-step" data-step="4">
+                <div class="step-indicator">
+                  <div class="step-dot">4</div>
+                </div>
+                <div class="step-content">
+                  <span class="step-label">Fase 4</span>
+                  <h4 class="step-title">Entrega Internacional</h4>
+                  <p class="step-desc">Coordenação operacional por marcos até entrega final.</p>
+                </div>
+              </div>
+            </div>
+
             <div class="processo-diagram" aria-label="Diagrama de fluxo do pedido" style="height:100%;">
               <svg class="modern-flow-svg" viewBox="0 0 500 240" preserveAspectRatio="xMidYMid meet" fill="none"
                 xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
@@ -694,31 +751,55 @@
     </section>
   </main>
 
-  <!-- TRUST STRIP -->
-  <section class="trust-strip normal-section">
+  <!-- CLIENTS TESTIMONIAL CAROUSEL -->
+  <section class="clients-section normal-section">
     <div class="container">
-      <div class="trust-inner">
-        <p class="trust-label">Confiança e Presença Internacional</p>
-        <div class="trust-logos">
-          <div class="logo-item">HOSPITAIS</div>
-          <div class="logo-item">INDÚSTRIA</div>
-          <div class="logo-item">LOGÍSTICA</div>
-          <div class="logo-item">GOVERNO</div>
-          <div class="logo-item">PRODUÇÃO</div>
-          <div class="logo-item">VAREJO</div>
+      <div class="clients-inner">
+        <!-- Section Header -->
+        <div class="clients-header">
+          <p class="clients-label">Confiança de empresas em todo o mundo</p>
+          <h2 class="clients-title">Parceiros que confiam em nós</h2>
         </div>
-        <div class="trust-metrics">
-          <div class="trust-metric">
-            <span class="metric-value">+10 ANOS</span>
-            <span class="metric-label">de operação</span>
+
+        <!-- Stats Row -->
+        <div class="clients-stats">
+          <div class="clients-stat">
+            <div class="stat-content">
+              <span class="stat-number">+10</span>
+              <span class="stat-text">Anos de operação</span>
+            </div>
           </div>
-          <div class="trust-metric is-active">
-            <span class="metric-value">4 CONTINENTES</span>
-            <span class="metric-label">com cobertura</span>
+          <div class="clients-stat featured">
+            <div class="stat-content">
+              <span class="stat-number">4</span>
+              <span class="stat-text">Continentes com cobertura</span>
+            </div>
           </div>
-          <div class="trust-metric">
-            <span class="metric-value">3 FILIAIS</span>
-            <span class="metric-label">internacionais</span>
+          <div class="clients-stat">
+            <div class="stat-content">
+              <span class="stat-number">3</span>
+              <span class="stat-text">Filiais internacionais</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clients Logo Carousel -->
+        <div class="clients-carousel-wrapper">
+          <div class="clients-carousel">
+            <!-- First set of logos -->
+            <div class="client-logo">EDP</div>
+            <div class="client-logo">ADI</div>
+            <div class="client-logo">Atlantica</div>
+            <div class="client-logo">AXE</div>
+            <div class="client-logo">Banco Central</div>
+            <div class="client-logo">FT</div>
+            <!-- Duplicated for seamless loop -->
+            <div class="client-logo">EDP</div>
+            <div class="client-logo">ADI</div>
+            <div class="client-logo">Atlantica</div>
+            <div class="client-logo">AXE</div>
+            <div class="client-logo">Banco Central</div>
+            <div class="client-logo">FT</div>
           </div>
         </div>
       </div>
@@ -752,14 +833,26 @@
             <li>Validação manual antes da proposta (requisitos e documentação)</li>
             <li>Resposta com orçamento + próximos passos</li>
           </ul>
-          <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-            <img src="https://www.infarmed.pt/documents/15786/0/Logotipo+Infarmed/578f5f8b-9d41-477c-a44c-0c3d9a5b3a8c"
-              alt="Infarmed" style="height: 20px; opacity: 0.8;">
-            <a href="https://www.infarmed.pt" target="_blank"
-              style="font-size: 0.75rem; color: #666; text-decoration: underline;">Certificado Infarmed</a>
+          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="cert-badge cert-badge-premium">
+            <div class="cert-badge-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <div class="cert-badge-text">
+              <span class="cert-badge-title">Distribuidor Certificado</span>
+              <span class="cert-badge-sub">Cert. 1866/DM/2023</span>
+              <span class="cert-badge-issuer">Infarmed - Autoridade Nacional</span>
+            </div>
+            <svg class="cert-badge-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </a>
+          <div class="div-footer">
+            <p class="div-tagline">Produtos e equipamentos para saúde e bem-estar</p>
+            <a href="#" class="btn btn-outline btn-full">Pedir Orçamento</a>
           </div>
-          <p class="div-tagline">Produtos e equipamentos para saúde e bem-estar</p>
-          <a href="#" class="btn btn-outline btn-full">Pedir Orçamento</a>
         </div>
 
         <div class="div-card">
@@ -778,8 +871,20 @@
             <li>Identidade ON4U para consistência e confiança</li>
             <li>Fluxo simples para consulta e pedido</li>
           </ul>
-          <p class="div-tagline">Hardware, periféricos e soluções tecnológicas</p>
-          <a href="#" class="btn btn-outline btn-full">Aceder à área</a>
+          <div class="div-meta">
+            <span class="div-meta-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Parceiro certificado
+            </span>
+            <span class="div-meta-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Catálogo ativo
+            </span>
+          </div>
+          <div class="div-footer">
+            <p class="div-tagline">Hardware, periféricos e soluções tecnológicas</p>
+            <a href="#" class="btn btn-outline btn-full">Aceder à área</a>
+          </div>
         </div>
 
         <div class="div-card">
@@ -787,8 +892,7 @@
           <div class="div-card-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon
-                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
           </div>
           <h3>Produção &amp; Criatividade</h3>
@@ -797,8 +901,20 @@
             <li>Coordenação de produção com foco em prazos e execução</li>
             <li>Integração com a operação internacional quando necessário</li>
           </ul>
-          <p class="div-tagline">Projetos corporativos e eventos com execução estruturada</p>
-          <a href="#" class="btn btn-outline btn-full">Falar sobre um projeto</a>
+          <div class="div-meta">
+            <span class="div-meta-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Eventos & stands
+            </span>
+            <span class="div-meta-tag">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Coordenação total
+            </span>
+          </div>
+          <div class="div-footer">
+            <p class="div-tagline">Projetos corporativos e eventos com execução estruturada</p>
+            <a href="#" class="btn btn-outline btn-full">Falar sobre um projeto</a>
+          </div>
         </div>
 
       </div>
