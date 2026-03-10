@@ -653,52 +653,125 @@ button {
 }
 
 /* ============================================================
-   TRUST STRIP — "Desenhado": row logos + inline metrics
+   TRUST STRIP — Impactful Stats + Sectors Carousel
    ============================================================ */
 .trust-strip {
-  padding: 3rem 0;
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-bg);
+  padding: 5rem 0;
+  background: linear-gradient(180deg, var(--c-bg) 0%, rgba(249, 115, 22, 0.02) 50%, var(--c-bg) 100%);
+  border-top: 1px solid rgba(249, 115, 22, 0.1);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.1);
 }
 
 .trust-inner {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
 }
 
-.trust-label {
-  font-size: 0.68rem;
-  font-weight: 700;
+/* Stats Grid - Big Impact Numbers */
+.trust-stats {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 3rem;
+}
+
+.trust-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: all 300ms ease;
+  position: relative;
+}
+
+.trust-stat:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.trust-stat.featured {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.02) 100%);
+  border-color: rgba(249, 115, 22, 0.25);
+}
+
+.trust-stat.featured:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--c-text);
+  letter-spacing: -0.03em;
+}
+
+.trust-stat.featured .stat-number {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-unit {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-text);
+  margin-top: 0.5rem;
+}
+
+.stat-desc {
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  margin-top: 0.75rem;
+  max-width: 140px;
+}
+
+/* Sectors Carousel */
+.trust-sectors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sectors-label {
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--c-muted);
-  text-align: center;
 }
 
-/* Logos carousel wrapper */
-.trust-logos-wrapper {
+.sectors-carousel-wrapper {
   width: 100%;
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
 
-/* Logos row — auto-scrolling carousel */
-.trust-logos {
+.sectors-carousel {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
   flex-wrap: nowrap;
   width: max-content;
-  animation: scroll-logos 20s linear infinite;
+  animation: scroll-sectors 18s linear infinite;
 }
 
-.trust-logos:hover {
+.sectors-carousel:hover {
   animation-play-state: paused;
 }
 
-@keyframes scroll-logos {
+@keyframes scroll-sectors {
   0% {
     transform: translateX(0);
   }
@@ -707,105 +780,75 @@ button {
   }
 }
 
-.logo-item {
+.sector-tag {
   flex: 0 0 auto;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--c-text);
-  opacity: 0.5;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  min-width: 100px;
-  transition: all 200ms ease;
-}
-
-.logo-item:hover {
-  opacity: 1;
-  border-color: rgba(249, 115, 22, 0.3);
-  background: rgba(249, 115, 22, 0.05);
-}
-
-/* Metrics — single inline row with separator motif */
-.trust-metrics {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-}
-
-.trust-metric {
-  display: flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  padding: 0 1.25rem;
-  position: relative;
-}
-
-/* Separator between metrics */
-.trust-metric+.trust-metric::before {
-  content: "|";
-  position: absolute;
-  left: 0;
-  transform: translateX(-50%);
-  color: var(--c-border-md);
+  padding: 0.6rem 1.5rem;
   font-size: 0.85rem;
-  line-height: 1;
-}
-
-.metric-value {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 500;
   color: var(--c-text);
-  transition: color var(--dur-1) ease;
+  opacity: 0.6;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  transition: all 250ms ease;
+  cursor: default;
 }
 
-.metric-label {
-  font-size: 0.75rem;
-  color: var(--c-muted);
-  font-weight: 400;
-}
-
-.trust-metric.is-active .metric-value {
-  color: var(--c-accent);
+.sector-tag:hover {
+  opacity: 1;
+  color: #f97316;
+  border-color: #f97316;
+  background: rgba(249, 115, 22, 0.08);
+  transform: scale(1.05);
 }
 
 @media (max-width: 599px) {
+  .trust-strip {
+    padding: 3rem 0;
+  }
 
-  /* Mobile: faster animation for smaller viewport */
-  .trust-logos {
-    gap: 1.25rem;
+  .trust-inner {
+    gap: 2.5rem;
+  }
+
+  .trust-stats {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .trust-stat {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    min-width: 70px;
+  }
+
+  .stat-unit {
+    font-size: 0.9rem;
+    margin-top: 0;
+  }
+
+  .stat-desc {
+    margin-top: 0.25rem;
+    max-width: none;
+  }
+
+  .sectors-carousel {
+    gap: 0.75rem;
     animation-duration: 12s;
   }
 
-  .logo-item {
-    font-size: 0.7rem;
-    padding: 0 0.75rem;
-    min-width: 80px;
-    height: 32px;
-  }
-
-  .trust-metrics {
-    flex-direction: column;
-    gap: 0.625rem;
-  }
-
-  .trust-metric+.trust-metric::before {
-    display: none;
-  }
-
-  .trust-metric {
-    padding: 0;
+  .sector-tag {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 }
 
