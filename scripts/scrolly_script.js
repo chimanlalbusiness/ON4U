@@ -96,10 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
         4: { cx: 430, cy: 120 },
     };
 
-    // Mobile phase selector
-    const isMobile = window.innerWidth < 900;
+    // Mobile phase selector - always attach handlers, check width dynamically
     let mobilePhase = 1;
     const mobileSteps = document.querySelectorAll('.mobile-step');
+
+    function isMobileView() {
+        return window.innerWidth < 900;
+    }
 
     function updatePhaseDisplay(phase) {
         // Update tab pills
@@ -122,26 +125,31 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    if (isMobile) {
-        // Add click handlers to phase pills on mobile
-        processPhases.forEach(phaseEl => {
-            phaseEl.addEventListener('click', () => {
-                mobilePhase = parseInt(phaseEl.dataset.phase);
-                updatePhaseDisplay(mobilePhase);
-                // Scroll the active phase into view
-                phaseEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            });
+    // Always attach click handlers (they check viewport at click time)
+    processPhases.forEach(phaseEl => {
+        phaseEl.addEventListener('click', () => {
+            if (!isMobileView()) return; // Only handle on mobile
+            mobilePhase = parseInt(phaseEl.dataset.phase);
+            updatePhaseDisplay(mobilePhase);
+            phaseEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         });
-        
-        // Add click handlers to mobile stepper steps
-        mobileSteps.forEach(step => {
-            step.addEventListener('click', () => {
-                mobilePhase = parseInt(step.dataset.step);
-                updatePhaseDisplay(mobilePhase);
-            });
+    });
+    
+    // Add click handlers to mobile stepper steps
+    mobileSteps.forEach(step => {
+        step.addEventListener('click', () => {
+            mobilePhase = parseInt(step.dataset.step);
+            updatePhaseDisplay(mobilePhase);
+            // Also update the tab to match
+            const matchingPhase = document.querySelector(`.processo-phase[data-phase="${mobilePhase}"]`);
+            if (matchingPhase) {
+                matchingPhase.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
         });
-        
-        // Set initial phase display
+    });
+    
+    // Set initial phase display on mobile
+    if (isMobileView()) {
         updatePhaseDisplay(mobilePhase);
     }
 
@@ -149,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Process section is active during its own timeline
         // 0-1 over 400vh. Inside settle (0.25 - 0.75), we scroll 200vh.
         // Skip this on mobile - we use manual phase selection instead
-        if (isMobile) return;
+        if (isMobileView()) return;
 
         let phase = 1;
         if (t > 0.35) phase = 2;

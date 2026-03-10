@@ -946,99 +946,114 @@ body {
     flex-direction: column;
     gap: 0;
     width: 100%;
-    padding: 1.5rem;
-    background: rgba(17, 24, 39, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+    padding: 0;
+    gap: 0.75rem;
   }
 
   .mobile-step {
     display: flex;
-    gap: 1rem;
+    gap: 0;
     position: relative;
-    opacity: 0.4;
-    transition: opacity 300ms ease, transform 300ms ease;
     cursor: pointer;
+    background: rgba(17, 24, 39, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 300ms ease;
   }
 
   .mobile-step:hover {
-    opacity: 0.7;
+    background: rgba(17, 24, 39, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
-  .mobile-step.is-active,
   .mobile-step.is-complete {
-    opacity: 1;
+    background: rgba(249, 115, 22, 0.05);
+    border-color: rgba(249, 115, 22, 0.15);
   }
 
-  .mobile-step.is-active:hover,
-  .mobile-step.is-complete:hover {
-    opacity: 1;
-  }
-
-  .mobile-step.is-active .step-content {
-    transform: translateX(4px);
+  .mobile-step.is-active {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0.05) 100%);
+    border-color: rgba(249, 115, 22, 0.4);
+    box-shadow: 0 4px 20px -4px rgba(249, 115, 22, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   .step-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    width: 24px;
+    width: 56px;
+    background: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem 0;
+  }
+
+  .mobile-step.is-active .step-indicator {
+    background: rgba(249, 115, 22, 0.15);
+    border-right-color: rgba(249, 115, 22, 0.2);
+  }
+
+  .mobile-step.is-complete .step-indicator {
+    background: rgba(249, 115, 22, 0.08);
   }
 
   .step-dot {
-    width: 12px;
-    height: 12px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: #374151;
+    background: rgba(55, 65, 81, 0.5);
     border: 2px solid #4b5563;
     transition: all 300ms ease;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #6b7280;
   }
 
-  .mobile-step.is-active .step-dot,
   .mobile-step.is-complete .step-dot {
     background: #f97316;
     border-color: #f97316;
-    box-shadow: 0 0 12px rgba(249, 115, 22, 0.5);
+    color: #fff;
+  }
+
+  .mobile-step.is-active .step-dot {
+    background: #f97316;
+    border-color: #f97316;
+    box-shadow: 0 0 16px rgba(249, 115, 22, 0.6), 0 0 32px rgba(249, 115, 22, 0.3);
+    color: #fff;
+    transform: scale(1.1);
   }
 
   .step-line {
-    width: 2px;
-    flex: 1;
-    min-height: 40px;
-    background: #374151;
-    margin-top: 4px;
-    transition: background 300ms ease;
-  }
-
-  .mobile-step.is-complete .step-line {
-    background: linear-gradient(180deg, #f97316 0%, #f97316 100%);
-  }
-
-  .mobile-step:last-child .step-line {
     display: none;
   }
 
   .step-content {
-    padding-bottom: 1.5rem;
-    transition: transform 300ms ease;
-  }
-
-  .mobile-step:last-child .step-content {
-    padding-bottom: 0;
+    padding: 1rem 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .step-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     color: #6b7280;
     margin-bottom: 0.25rem;
     display: block;
+  }
+
+  .mobile-step.is-complete .step-label {
+    color: #9ca3af;
   }
 
   .mobile-step.is-active .step-label {
@@ -1046,11 +1061,15 @@ body {
   }
 
   .step-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #e5e7eb;
-    margin: 0 0 0.35rem 0;
+    color: #9ca3af;
+    margin: 0 0 0.25rem 0;
     line-height: 1.3;
+  }
+
+  .mobile-step.is-complete .step-title {
+    color: #d1d5db;
   }
 
   .mobile-step.is-active .step-title {
@@ -1058,10 +1077,18 @@ body {
   }
 
   .step-desc {
-    font-size: 0.85rem;
-    color: #9ca3af;
+    font-size: 0.8rem;
+    color: #6b7280;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.45;
+  }
+
+  .mobile-step.is-complete .step-desc {
+    color: #9ca3af;
+  }
+
+  .mobile-step.is-active .step-desc {
+    color: #d1d5db;
   }
 }
 
