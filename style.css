@@ -1552,7 +1552,7 @@ button {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
-  padding: 0.65rem 1rem;
+  padding: 0.75rem 1.25rem;
   background: rgba(249, 115, 22, 0.06);
   border: 1px solid rgba(249, 115, 22, 0.2);
   border-radius: 10px;
@@ -1564,27 +1564,43 @@ button {
 .cert-badge:hover {
   background: rgba(249, 115, 22, 0.1);
   border-color: rgba(249, 115, 22, 0.4);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px -4px rgba(249, 115, 22, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px rgba(249, 115, 22, 0.3);
+}
+
+.cert-badge-premium {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.03) 100%);
+  border: 1.5px solid rgba(249, 115, 22, 0.25);
+}
+
+.cert-badge-premium:hover {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0.05) 100%);
+  border-color: rgba(249, 115, 22, 0.4);
 }
 
 .cert-badge-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: rgba(249, 115, 22, 0.15);
-  border: 1px solid rgba(249, 115, 22, 0.3);
+  border: 1.5px solid rgba(249, 115, 22, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: #f97316;
+  transition: all 220ms ease;
+}
+
+.cert-badge:hover .cert-badge-icon {
+  background: rgba(249, 115, 22, 0.25);
+  border-color: rgba(249, 115, 22, 0.5);
 }
 
 .cert-badge-text {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  gap: 0.2rem;
   flex: 1;
 }
 
@@ -1592,15 +1608,24 @@ button {
   font-size: 0.8rem;
   font-weight: 700;
   color: #f97316;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .cert-badge-sub {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+.cert-badge-issuer {
+  font-size: 0.65rem;
   color: var(--c-muted);
   letter-spacing: 0.02em;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .cert-badge-arrow {
