@@ -1538,12 +1538,53 @@ button {
   font-size: 0.9rem;
 }
 
+/* Card footer — always pinned to bottom */
+.div-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 .div-tagline {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--c-text);
-  margin-bottom: 1.75rem;
-  margin-top: auto;
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+}
+
+/* Card meta tags — fills visual gap between bullets and footer */
+.div-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.div-meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--c-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--c-border-md);
+  border-radius: 100px;
+}
+
+.divisoes[data-theme="light"] .div-meta-tag {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #666;
+}
+
+.div-meta-tag svg {
+  color: var(--c-accent);
+  flex-shrink: 0;
 }
 
 /* Infarmed Certification Badge */
