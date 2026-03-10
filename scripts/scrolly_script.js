@@ -96,14 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
         4: { cx: 430, cy: 120 },
     };
 
-    function updateProcessLogic(t) {
-        // Process section is active during its own timeline
-        // 0-1 over 400vh. Inside settle (0.25 - 0.75), we scroll 200vh.
-        let phase = 1;
-        if (t > 0.35) phase = 2;
-        if (t > 0.45) phase = 3;
-        if (t > 0.60) phase = 4;
+    // Mobile phase selector
+    const isMobile = window.innerWidth < 900;
+    let mobilePhase = 1;
 
+    function updatePhaseDisplay(phase) {
         processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === phase));
         const targetNodes = nodeMap[phase] || [];
         svgNodes.forEach(n => n.classList.toggle("is-active", targetNodes.includes(n.getAttribute("data-node"))));
@@ -112,6 +109,34 @@ document.addEventListener("DOMContentLoaded", () => {
             const bTarget = ballTargetMap[phase];
             svgBall.style.transform = `translate(${bTarget.cx - 30}px, ${bTarget.cy - 120}px)`;
         }
+    }
+
+    if (isMobile) {
+        // Add click handlers to phase pills on mobile
+        processPhases.forEach(phase => {
+            phase.addEventListener('click', () => {
+                mobilePhase = parseInt(phase.dataset.phase);
+                updatePhaseDisplay(mobilePhase);
+                // Scroll the active phase into view
+                phase.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            });
+        });
+        // Set initial phase display
+        updatePhaseDisplay(mobilePhase);
+    }
+
+    function updateProcessLogic(t) {
+        // Process section is active during its own timeline
+        // 0-1 over 400vh. Inside settle (0.25 - 0.75), we scroll 200vh.
+        // Skip this on mobile - we use manual phase selection instead
+        if (isMobile) return;
+
+        let phase = 1;
+        if (t > 0.35) phase = 2;
+        if (t > 0.45) phase = 3;
+        if (t > 0.60) phase = 4;
+
+        updatePhaseDisplay(phase);
     }
 
     let raf;
