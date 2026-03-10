@@ -99,9 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mobile phase selector
     const isMobile = window.innerWidth < 900;
     let mobilePhase = 1;
+    const mobileSteps = document.querySelectorAll('.mobile-step');
 
     function updatePhaseDisplay(phase) {
+        // Update tab pills
         processPhases.forEach(p => p.classList.toggle("is-active", parseInt(p.dataset.phase) === phase));
+        
+        // Update SVG diagram (desktop)
         const targetNodes = nodeMap[phase] || [];
         svgNodes.forEach(n => n.classList.toggle("is-active", targetNodes.includes(n.getAttribute("data-node"))));
         svgLinks.forEach(l => l.classList.toggle("is-active", parseInt(l.getAttribute("data-phase-target")) <= phase));
@@ -109,18 +113,34 @@ document.addEventListener("DOMContentLoaded", () => {
             const bTarget = ballTargetMap[phase];
             svgBall.style.transform = `translate(${bTarget.cx - 30}px, ${bTarget.cy - 120}px)`;
         }
+        
+        // Update mobile stepper
+        mobileSteps.forEach(step => {
+            const stepNum = parseInt(step.dataset.step);
+            step.classList.toggle("is-complete", stepNum < phase);
+            step.classList.toggle("is-active", stepNum === phase);
+        });
     }
 
     if (isMobile) {
         // Add click handlers to phase pills on mobile
-        processPhases.forEach(phase => {
-            phase.addEventListener('click', () => {
-                mobilePhase = parseInt(phase.dataset.phase);
+        processPhases.forEach(phaseEl => {
+            phaseEl.addEventListener('click', () => {
+                mobilePhase = parseInt(phaseEl.dataset.phase);
                 updatePhaseDisplay(mobilePhase);
                 // Scroll the active phase into view
-                phase.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                phaseEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             });
         });
+        
+        // Add click handlers to mobile stepper steps
+        mobileSteps.forEach(step => {
+            step.addEventListener('click', () => {
+                mobilePhase = parseInt(step.dataset.step);
+                updatePhaseDisplay(mobilePhase);
+            });
+        });
+        
         // Set initial phase display
         updatePhaseDisplay(mobilePhase);
     }
