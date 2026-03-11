@@ -73,9 +73,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  clip-path: inset(0 0 0 0);
-  /* Force GPU compositing and stacking context */
+  clip-path: inset(-1px 0 -1px 0);
+  /* Force GPU compositing and stacking context, -1px prevents visual seams */
 }
 
 /* Global Background for pinned */
@@ -143,7 +142,7 @@ body {
   color: #fff;
   font-size: clamp(2rem, 3.5vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.3;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
 }
@@ -642,11 +641,27 @@ body {
 }
 
 @media (max-width: 899px) {
+  .scrolly-glow {
+    display: none !important;
+  }
+  
+  .scrolly-section {
+    height: auto !important;
+    margin-top: -1px !important;
+  }
+  
+  .scrolly-sticky {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip-path: none !important;
+  }
+
   .scrolly-content {
     height: auto !important;
     min-height: auto !important;
-    padding-top: max(70px, 10vh);
-    padding-bottom: max(30px, 4vh);
+    padding-top: calc(max(80px, 12vh) + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: calc(max(60px, 8vh) + env(safe-area-inset-bottom, 0px)) !important;
   }
 
   .scrolly-grid {
@@ -810,10 +825,24 @@ body {
 
   .hero-dashboard-card {
     width: 100%;
-    max-height: calc(100vh - 400px);
-    overflow-y: auto;
     margin: 0;
     transform: none;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.85rem;
+    white-space: normal;
+    line-height: 1.2;
   }
 
   .floating-card {
@@ -938,6 +967,8 @@ body {
     gap: 0;
     padding-right: 0 !important;
     overflow: hidden;
+    min-width: 0; /* Prevents CSS Grid blowout so child can scroll */
+    width: 100%;
   }
 
   .scrolly-dynamic-phases {
@@ -966,9 +997,10 @@ body {
   }
 
   .processo-phase {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: max-content;
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+    width: auto !important;
+    min-width: max-content !important;
     flex-direction: row !important;
     align-items: center !important;
     gap: 0.5rem;
