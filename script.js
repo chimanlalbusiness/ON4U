@@ -262,11 +262,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const opacityOut = Math.max(0, 1 - pOut);
         const scaleOut = 1 - pOut * 0.05;
 
-        sec.style.setProperty('--bg-in', pBgIn.toFixed(3));
-        sec.style.setProperty('--opacity-out', opacityOut.toFixed(3));
-        sec.style.setProperty('--scale-out', scaleOut.toFixed(3));
-        sec.style.setProperty('--text-in', easeText.toFixed(3));
-        sec.style.setProperty('--vis-in', easeVis.toFixed(3));
+        if (isMobileView()) {
+            sec.style.setProperty('--bg-in', '1');
+            sec.style.setProperty('--opacity-out', '1');
+            sec.style.setProperty('--scale-out', '1');
+            sec.style.setProperty('--text-in', '1');
+            sec.style.setProperty('--vis-in', '1');
+            sec.style.setProperty('--p', '0.5');
+        } else {
+            sec.style.setProperty('--bg-in', pBgIn.toFixed(3));
+            sec.style.setProperty('--opacity-out', opacityOut.toFixed(3));
+            sec.style.setProperty('--scale-out', scaleOut.toFixed(3));
+            sec.style.setProperty('--text-in', easeText.toFixed(3));
+            sec.style.setProperty('--vis-in', easeVis.toFixed(3));
+            sec.style.setProperty('--p', pStuck.toFixed(3));
+        }
 
         // Expose pStuck as generic p just in case
         sec.style.setProperty('--p', pStuck.toFixed(3));
@@ -281,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Map trigger
-        if (sec.id === 'map-hub' && pEnter > 0.5 && !mapTriggered) {
+        if (sec.id === 'map-hub' && (pEnter > 0.5 || isMobileView()) && !mapTriggered) {
             mapTriggered = true;
             if (mapWrapper && window.initWorldMap) {
                 window.initWorldMap();

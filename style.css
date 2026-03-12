@@ -500,8 +500,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.875rem;
-  opacity: 0;
-  transform: translateY(10px);
+  /* Entrance handled by .anim-visual so we don't force opacity: 0 here */
 }
 
 /* Entrance animations */
@@ -517,9 +516,6 @@ button {
   animation: heroSlideUp var(--ease-md) 170ms forwards;
 }
 
-.hero.is-visible .hero-actions {
-  animation: heroSlideUp var(--ease-md) 250ms forwards;
-}
 
 @keyframes heroSlideUp {
   to {
@@ -1799,7 +1795,7 @@ button {
 
 .footer-nav {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
@@ -1852,6 +1848,10 @@ button {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .footer-bottom {
@@ -2417,14 +2417,38 @@ body {
 }
 
 .scrolly-section[data-theme="dark"] .btn-primary {
-  background: var(--c-accent);
+  background: linear-gradient(135deg, var(--c-accent) 0%, #ea580c 50%, #c2410c 100%);
   color: #fff;
   border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.scrolly-section[data-theme="dark"] .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shinyBtn 3.5s infinite;
+  z-index: -1;
+}
+
+@keyframes shinyBtn {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
 }
 
 .scrolly-section[data-theme="dark"] .btn-primary:hover {
-  background: #fff;
-  color: #000;
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 50%, #9a3412 100%);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
 }
 
 .scrolly-section[data-theme="dark"] .btn-outline {
