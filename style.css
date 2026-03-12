@@ -2184,6 +2184,12 @@ body {
   background: var(--c-bg-subtle, #f4f4f5);
 }
 
+/* Inside light-zone, sections must be transparent so the shared gradient shows through */
+.light-zone .normal-section {
+  background: transparent !important;
+  z-index: 1;
+}
+
 .scrolly-dynamic-phases {
   flex-direction: column !important;
   justify-content: center;
