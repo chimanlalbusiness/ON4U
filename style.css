@@ -651,15 +651,21 @@ button {
 /* ============================================================
    CLIENTS TESTIMONIAL SECTION — Impactful Social Proof
    ============================================================ */
+/* Shared seamless background for clients + divisoes */
+.light-zone {
+  background:
+    radial-gradient(ellipse 800px 600px at 0% 10%, rgba(249, 115, 22, 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse 700px 500px at 100% 40%, rgba(249, 115, 22, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 500px 400px at 30% 80%, rgba(249, 115, 22, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 600px 500px at 80% 100%, rgba(249, 115, 22, 0.09) 0%, transparent 50%),
+    #f8f8f8;
+  position: relative;
+}
+
 section.clients-section {
   padding: 6rem 0 !important;
-  background: 
-    radial-gradient(ellipse 700px 500px at 0% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 600px 450px at 100% 100%, rgba(249, 115, 22, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 400px 300px at 50% 50%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
-    #fafafa !important;
+  background: transparent !important;
   position: relative !important;
-  overflow: hidden !important;
 }
 
 .clients-inner {
@@ -1468,13 +1474,8 @@ section.clients-section {
    ============================================================ */
 section.divisoes {
   padding: 6rem 0 !important;
-  background: 
-    radial-gradient(ellipse 600px 500px at 0% 50%, rgba(249, 115, 22, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse 550px 400px at 100% 30%, rgba(249, 115, 22, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 400px 300px at 60% 100%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
-    #f8f8f8 !important;
+  background: transparent !important;
   position: relative !important;
-  overflow: hidden !important;
 }
 
 .divisoes-grid {
