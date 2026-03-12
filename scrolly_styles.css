@@ -65,6 +65,10 @@ body {
   z-index: 15;
 }
 
+.scrolly-section#final-cta {
+  z-index: 16;
+}
+
 .scrolly-sticky {
   position: sticky;
   top: 0;

@@ -216,7 +216,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ── Compute + apply scroll variables for ONE section ─────────────────
     function updateSection(sec, idx, y, vh) {
-        const top = sec.offsetTop;
+        // Use getBoundingClientRect().top + scrollY for absolute position, as offsetTop 
+        // can be relative to parent containers (like .light-zone)
+        const rect = sec.getBoundingClientRect();
+        const top = rect.top + y;
         const h = sec.offsetHeight;
 
         // Entrance progress (0 to 1 as section slides up to stick)
@@ -250,14 +253,15 @@ document.addEventListener("DOMContentLoaded", () => {
             // Hero exits earlier so it doesn't stay dead on screen
             pOut = pStuck > 0.60 ? (pStuck - 0.60) / 0.40 : 0;
         } else {
-            // Make content visible earlier to prevent the "big empty space" effect
-            pTextIn = pEnter > 0.1 ? Math.min(1, (pEnter - 0.1) / 0.5) : 0;
-            pVisIn = pEnter > 0.2 ? Math.min(1, (pEnter - 0.2) / 0.5) : 0;
+            // Make content visible even earlier for a smoother transition
+            pTextIn = pEnter > 0.05 ? Math.min(1, (pEnter - 0.05) / 0.4) : 0;
+            pVisIn = pEnter > 0.1 ? Math.min(1, (pEnter - 0.1) / 0.4) : 0;
+            pGlow = pEnter > 0.1 ? Math.min(1, (pEnter - 0.1) / 0.5) : 0;
 
             if (pStuck > 0) {
                 pTextIn = 1;
                 pVisIn = 1;
-                pGlow = 1; // Gradient only appears when locked (pStuck > 0)
+                pGlow = 1;
             }
         }
 
