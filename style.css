@@ -654,12 +654,12 @@ button {
 .clients-section {
   padding: 6rem 0;
   background: 
-    radial-gradient(ellipse 600px 400px at 15% 20%, rgba(249, 115, 22, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 500px 350px at 85% 80%, rgba(249, 115, 22, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 300px 300px at 50% 50%, rgba(249, 115, 22, 0.04) 0%, transparent 60%),
-    linear-gradient(180deg, var(--c-bg) 0%, rgba(249, 115, 22, 0.02) 50%, var(--c-bg) 100%);
-  border-top: 1px solid rgba(249, 115, 22, 0.1);
-  border-bottom: 1px solid rgba(249, 115, 22, 0.1);
+    radial-gradient(ellipse 700px 500px at 0% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 450px at 100% 100%, rgba(249, 115, 22, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 50% 50%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+    #fafafa;
+  border-top: 1px solid rgba(249, 115, 22, 0.15);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -1471,10 +1471,10 @@ button {
 .divisoes {
   padding: 6rem 0;
   background: 
-    radial-gradient(ellipse 500px 400px at 10% 30%, rgba(249, 115, 22, 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 450px 350px at 90% 70%, rgba(249, 115, 22, 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 350px 250px at 50% 100%, rgba(249, 115, 22, 0.04) 0%, transparent 60%),
-    var(--c-bg-subtle);
+    radial-gradient(ellipse 600px 500px at 0% 50%, rgba(249, 115, 22, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 550px 400px at 100% 30%, rgba(249, 115, 22, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 400px 300px at 60% 100%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+    #f8f8f8;
   position: relative;
   overflow: hidden;
 }
