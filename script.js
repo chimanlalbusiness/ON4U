@@ -240,20 +240,24 @@ document.addEventListener("DOMContentLoaded", () => {
         let pVisIn = 0;
         let pOut = pStuck > 0.85 ? (pStuck - 0.85) / 0.15 : 0;
 
+        let pGlow = 0; // The glow element opacity
+
         if (idx === 0) {
             pBgIn = 1;
             pTextIn = 1;
             pVisIn = 1;
+            pGlow = 1; // Hero glow is visible initially
             // Hero exits earlier so it doesn't stay dead on screen
             pOut = pStuck > 0.60 ? (pStuck - 0.60) / 0.40 : 0;
         } else {
-            // normal sections fade explicitly when entering so they are fully visible upon snap
-            pTextIn = pEnter > 0.5 ? (pEnter - 0.5) / 0.5 : 0;
-            pVisIn = pEnter > 0.6 ? (pEnter - 0.6) / 0.4 : 0;
+            // Make content visible earlier to prevent the "big empty space" effect
+            pTextIn = pEnter > 0.1 ? Math.min(1, (pEnter - 0.1) / 0.5) : 0;
+            pVisIn = pEnter > 0.2 ? Math.min(1, (pEnter - 0.2) / 0.5) : 0;
 
             if (pStuck > 0) {
                 pTextIn = 1;
                 pVisIn = 1;
+                pGlow = 1; // Gradient only appears when locked (pStuck > 0)
             }
         }
 
@@ -268,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
             sec.style.setProperty('--scale-out', '1');
             sec.style.setProperty('--text-in', '1');
             sec.style.setProperty('--vis-in', '1');
+            sec.style.setProperty('--glow-in', '0'); // Optional: hide glow on mobile
             sec.style.setProperty('--p', '0.5');
         } else {
             sec.style.setProperty('--bg-in', pBgIn.toFixed(3));
@@ -275,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
             sec.style.setProperty('--scale-out', scaleOut.toFixed(3));
             sec.style.setProperty('--text-in', easeText.toFixed(3));
             sec.style.setProperty('--vis-in', easeVis.toFixed(3));
+            sec.style.setProperty('--glow-in', pGlow.toString());
             sec.style.setProperty('--p', pStuck.toFixed(3));
         }
 
