@@ -4,41 +4,88 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio | ON4U</title>
-  <meta name="description" content="Projetos e trabalhos realizados." />
-  <link rel="stylesheet" href="style.css?v=8" />
+  <link rel="stylesheet" href="style.css?v=9" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="header is-dark" data-section="header" id="top">
+  <header class="header is-dark" id="top">
     <div class="container header-inner">
-      <a href="/" class="header-logo">ON4U</a>
+      <a href="/" class="header-logo" aria-label="ON4U Homepage">
+        <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="30" r="13" class="logo-text-stroke" stroke-width="14" />
+          <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
+          <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="129" cy="43" r="7" fill="#f97316" />
+          <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
+        </svg>
+      </a>
       <nav class="header-nav desktop-only">
         <a href="/">Início</a>
-        <a href="/producao">Produção</a>
-        <a href="/importacao-e-exportacao">Importação & Exportação</a>
-        <a href="/portfolio">Portfólio</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/contactos">Contactos</a>
+        <a href="/producao.html">Produção</a>
+        <a href="/importacao-e-exportacao.html">Importação & Exportação</a>
+        <a href="/portfolio.html" class="active">Portfólio</a>
+        <a href="/sobre.html">Sobre</a>
+        <a href="/contactos.html">Contactos</a>
       </nav>
       <div class="header-actions">
-        <a href="/contactos" class="btn btn-primary">Pedir Orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
       </div>
     </div>
   </header>
+
   <main>
-    <section class="normal-section" style="text-align: center; padding: 8rem 0;">
+    <section class="normal-section" style="padding-top: 8rem;">
       <div class="container">
-        <h1>Portfólio</h1>
-        <p style="font-size: 1.1rem; color: #666; margin: 2rem 0;">Projetos e Trabalhos Realizados</p>
-        <p>Galeria de projetos em desenvolvimento. Para mais detalhes, <a href="/contactos">entre em contacto</a>.</p>
-        <a href="/" class="btn btn-outline" style="margin-top: 2rem;">Voltar ao Início</a>
+        <div class="section-header">
+          <p class="overline">Trabalhos realizados</p>
+          <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">Portfólio</h1>
+          <p class="proof-line" style="max-width: 600px;">Projetos de produção, stands, impressão e design que realizámos.</p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 2rem 0;">
+          <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Todos</button>
+          <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Stands</button>
+          <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Impressão</button>
+          <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Design</button>
+          <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Eventos</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          <div style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
+            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Stands</span>
+            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo 1</span>
+          </div>
+          <div style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
+            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Impressão</span>
+            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo 2</span>
+          </div>
+          <div style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
+            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Design</span>
+            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo 3</span>
+          </div>
+          <div style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
+            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Eventos</span>
+            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo 4</span>
+          </div>
+          <div style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
+            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Stands</span>
+            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo 5</span>
+          </div>
+          <div style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
+            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Impressão</span>
+            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo 6</span>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="/contactos.html" class="btn btn-primary">Falar sobre um Projeto</a>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="footer normal-section" style="background:#09090b; color:#a1a1aa;">
-    <div class="container">
-      <p>&copy; 2026 ON4U.</p>
-    </div>
+
+  <footer class="footer" style="background: var(--c-bg-dark); color: var(--c-dark-muted); padding: 2rem 0; text-align: center; font-size: 0.8rem;">
+    <div class="container">&copy; 2026 ON4U. Todos os direitos reservados.</div>
   </footer>
 </body>
 </html>

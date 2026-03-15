@@ -4,43 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Health & Care | ON4U</title>
-  <meta name="description" content="Produtos e equipamentos para saúde e bem-estar." />
-  <link rel="stylesheet" href="style.css?v=8" />
+  <link rel="stylesheet" href="style.css?v=9" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="header is-dark" data-section="header" id="top">
+  <header class="header is-dark" id="top">
     <div class="container header-inner">
-      <a href="/" class="header-logo">ON4U</a>
+      <a href="/" class="header-logo" aria-label="ON4U Homepage">
+        <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="30" r="13" class="logo-text-stroke" stroke-width="14" />
+          <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
+          <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="129" cy="43" r="7" fill="#f97316" />
+          <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
+        </svg>
+      </a>
       <nav class="header-nav desktop-only">
         <a href="/">Início</a>
-        <a href="/producao">Produção</a>
-        <a href="/importacao-e-exportacao">Importação & Exportação</a>
-        <a href="/portfolio">Portfólio</a>
-        <a href="/sobre">Sobre</a>
-        <a href="/contactos">Contactos</a>
+        <a href="/producao.html">Produção</a>
+        <a href="/importacao-e-exportacao.html">Importação & Exportação</a>
+        <a href="/portfolio.html">Portfólio</a>
+        <a href="/sobre.html">Sobre</a>
+        <a href="/contactos.html">Contactos</a>
       </nav>
       <div class="header-actions">
-        <a href="/contactos" class="btn btn-primary">Pedir Orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
       </div>
     </div>
   </header>
+
   <main>
-    <section class="normal-section" style="text-align: center; padding: 8rem 0;">
+    <section class="normal-section" style="padding-top: 8rem;">
       <div class="container">
-        <h1>Health & Care</h1>
-        <p style="font-size: 1.1rem; color: #666; margin: 2rem 0;">Produtos e Equipamentos para Saúde e Bem-Estar</p>
-        <p><strong>Certificado Infarmed</strong> - Cert. 1866/DM/2023</p>
-        <p style="margin: 2rem 0;">Distribuidor certificado de produtos e equipamentos para saúde com validação manual de cada requisição.</p>
-        <a href="/contactos" class="btn btn-primary" style="margin-top: 2rem;">Pedir Orçamento</a>
-        <a href="/" class="btn btn-outline">Voltar ao Início</a>
+        <div class="section-header">
+          <p class="overline">Health & Care</p>
+          <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">Produtos e equipamentos para saúde e bem-estar</h1>
+          <p class="proof-line" style="max-width: 600px;">Distribuidor certificado Infarmed. Validação manual de cada pedido antes da proposta.</p>
+        </div>
+
+        <div style="max-width: 400px; margin: 3rem 0;">
+          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="cert-badge cert-badge-premium">
+            <div class="cert-badge-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <div class="cert-badge-text">
+              <span class="cert-badge-title">Distribuidor Certificado</span>
+              <span class="cert-badge-sub">Cert. 1866/DM/2023</span>
+              <span class="cert-badge-issuer">Infarmed - Autoridade Nacional</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="divisoes-grid" style="margin-top: 3rem;">
+          <div class="div-card">
+            <div class="div-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Dispositivos Médicos</h3>
+            <p class="div-tagline" style="margin-top: 0.75rem;">Equipamentos e consumíveis certificados</p>
+          </div>
+          <div class="div-card">
+            <div class="div-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Bem-estar</h3>
+            <p class="div-tagline" style="margin-top: 0.75rem;">Produtos para saúde e qualidade de vida</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 4rem;">
+          <h3 style="font-weight: 700; margin-bottom: 1rem;">Como funciona</h3>
+          <ol style="padding-left: 1.5rem; line-height: 2; color: var(--c-muted);">
+            <li>Seleção por itens e envio de pedido para orçamento</li>
+            <li>Validação manual antes da proposta (requisitos e documentação)</li>
+            <li>Resposta com orçamento + próximos passos</li>
+          </ol>
+        </div>
+
+        <div style="margin-top: 3rem;">
+          <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="footer normal-section" style="background:#09090b; color:#a1a1aa;">
-    <div class="container">
-      <p>&copy; 2026 ON4U.</p>
-    </div>
+
+  <footer class="footer" style="background: var(--c-bg-dark); color: var(--c-dark-muted); padding: 2rem 0; text-align: center; font-size: 0.8rem;">
+    <div class="container">&copy; 2026 ON4U. Todos os direitos reservados.</div>
   </footer>
 </body>
 </html>
