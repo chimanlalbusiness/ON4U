@@ -74,22 +74,33 @@
           </div>
         </div>
 
-        <!-- Hero media placeholder — reserved, intentional -->
-        <div class="hub-hero-media reveal" aria-hidden="true">
-          <div class="hub-hero-media-noise"></div>
-          <div class="hub-hero-media-glow"></div>
-          <div class="hub-hero-media-tag">
+        <!-- Hero media — premium static cinematic block -->
+        <div class="hub-hero-media hub-hero-media--cine reveal" aria-hidden="true">
+          <!-- Layered gradient fills acting as image placeholder -->
+          <div class="hub-hero-cine-fill"></div>
+          <div class="hub-hero-cine-grain"></div>
+          <div class="hub-hero-cine-vignette"></div>
+          <!-- Operator stats bar pinned bottom -->
+          <div class="hub-hero-stats">
+            <div class="hub-hero-stat">
+              <span class="hub-hero-stat-val">PT · STP · GW</span>
+              <span class="hub-hero-stat-lbl">Presença Directa</span>
+            </div>
+            <div class="hub-hero-stat-div" aria-hidden="true"></div>
+            <div class="hub-hero-stat">
+              <span class="hub-hero-stat-val">CN · IN</span>
+              <span class="hub-hero-stat-lbl">Sourcing</span>
+            </div>
+            <div class="hub-hero-stat-div" aria-hidden="true"></div>
+            <div class="hub-hero-stat">
+              <span class="hub-hero-stat-val">4 Áreas</span>
+              <span class="hub-hero-stat-lbl">Especialização</span>
+            </div>
+          </div>
+          <!-- Live status pill -->
+          <div class="hub-hero-media-tag hub-hero-media-tag--dark">
             <span class="hub-hero-media-dot"></span>
             <span>Operação Ativa</span>
-          </div>
-          <!-- decorative stat chips -->
-          <div class="hub-hero-media-chip hub-hero-media-chip--a">
-            <span class="chip-val">PT · STP · GW</span>
-            <span class="chip-lbl">Presença Directa</span>
-          </div>
-          <div class="hub-hero-media-chip hub-hero-media-chip--b">
-            <span class="chip-val">CN · IN</span>
-            <span class="chip-lbl">Sourcing</span>
           </div>
         </div>
       </div>
@@ -186,7 +197,7 @@
     </section>
 
     <!-- ─── 3) PORTFÓLIO PREVIEW ──────────────────────────── -->
-    <section class="hub-section hub-section--warm">
+    <section class="hub-section hub-section--warm hub-cine-section" data-cine="portfolio">
       <div class="container">
         <header class="hub-section-header">
           <p class="hub-kicker">Trabalhos realizados</p>
@@ -229,7 +240,7 @@
     </section>
 
     <!-- ─── 4) COMO TRABALHAMOS ───────────────────────────── -->
-    <section class="hub-section hub-section--light">
+    <section class="hub-section hub-section--light hub-cine-section" data-cine="process">
       <div class="container">
         <header class="hub-section-header">
           <p class="hub-kicker">Metodologia</p>
