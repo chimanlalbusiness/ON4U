@@ -19,12 +19,24 @@
           <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
         </svg>
       </a>
-      <nav class="header-nav desktop-only">
-        <a href="/">Início</a>
-        <a href="/producao.html">Produção</a>
-        <a href="/importacao-e-exportacao.html">Importação & Exportação</a>
-        <a href="/portfolio.html">Portfólio</a>
-        <a href="/sobre.html" class="active">Sobre</a>
+      <nav class="header-nav desktop-only" aria-label="Principal">
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Serviços
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação &amp; Exportação</a>
+            <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
+            <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/portfolio.html" role="menuitem"><span class="nav-dropdown-dot"></span>Portfólio</a>
+          </div>
+        </div>
+        <a href="/sobre.html" class="is-active">Sobre</a>
         <a href="/contactos.html">Contactos</a>
       </nav>
       <div class="header-actions">

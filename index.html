@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ON4U | Produção, Importação & Exportação, Distribuição</title>
-  <meta name="description" content="Produção & Criatividade, Operação Internacional, Health & Care e Informática. ON4U: solução integrada para seus projetos." />
-  <link rel="stylesheet" href="style.css?v=9" />
+  <title>ON4U | Produção, Importação &amp; Exportação, Distribuição</title>
+  <meta name="description" content="Produção &amp; Criatividade, Operação Internacional, Health &amp; Care e Informática. ON4U: solução integrada para seus projetos." />
+  <link rel="stylesheet" href="style.css?v=11" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
@@ -25,10 +25,22 @@
         </svg>
       </a>
       <nav class="header-nav desktop-only" aria-label="Principal">
-        <a href="/">Início</a>
-        <a href="/producao.html">Produção</a>
-        <a href="/importacao-e-exportacao.html">Importação & Exportação</a>
-        <a href="/portfolio.html">Portfólio</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Serviços
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação &amp; Exportação</a>
+            <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
+            <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/portfolio.html" role="menuitem"><span class="nav-dropdown-dot"></span>Portfólio</a>
+          </div>
+        </div>
         <a href="/sobre.html">Sobre</a>
         <a href="/contactos.html">Contactos</a>
       </nav>
@@ -39,89 +51,106 @@
   </header>
 
   <main>
-    <!-- 1) HERO SECTION -->
-    <section class="hero" data-theme="light">
-      <div class="hero-bg-gradient"></div>
-      <div class="container hero-content">
-        <div class="hero-text reveal-group">
-          <p class="overline reveal">Soluções Integradas</p>
-          <h1 class="reveal" style="font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.15; font-weight: 800; max-width: 700px;">
+    <!-- ─── 1) HERO ─────────────────────────────────────────── -->
+    <section class="hub-hero">
+      <div class="hub-hero-bg"></div>
+      <div class="container hub-hero-inner">
+        <div class="hub-hero-text reveal-group">
+          <p class="hub-kicker reveal">Soluções Integradas</p>
+          <h1 class="hub-hero-title reveal">
             Produção, operação internacional e soluções especializadas
           </h1>
-          <p class="hero-sub reveal" style="font-size: 1.125rem; color: var(--c-muted); max-width: 540px; margin-top: 1.5rem;">
+          <p class="hub-hero-sub reveal">
             Da criatividade à entrega. Estrutura própria em Portugal, África e Ásia.
           </p>
-          <div class="hero-ctas reveal" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+          <div class="hub-hero-ctas reveal">
             <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
             <a href="#areas" class="btn btn-outline">Conhecer Áreas</a>
           </div>
-          <div class="hero-pills reveal" style="display: flex; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap;">
-            <span style="font-size: 0.8rem; color: var(--c-muted);">Produção & Criatividade</span>
-            <span style="font-size: 0.8rem; color: var(--c-muted);">Operação Internacional</span>
-            <span style="font-size: 0.8rem; color: var(--c-muted);">Fornecimento por Pedido</span>
+          <div class="hub-hero-pills reveal">
+            <span class="hub-pill">Produção &amp; Criatividade</span>
+            <span class="hub-pill">Operação Internacional</span>
+            <span class="hub-pill">Fornecimento por Pedido</span>
           </div>
         </div>
-        <div class="hero-image reveal" style="flex: 1; min-width: 300px; max-width: 500px;">
-          <div style="background: linear-gradient(135deg, rgba(249,115,22,0.15) 0%, rgba(249,115,22,0.05) 100%); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
-            <span style="color: var(--c-muted); font-size: 0.875rem;">Imagem de apresentação</span>
+
+        <!-- Hero media placeholder — reserved, intentional -->
+        <div class="hub-hero-media reveal" aria-hidden="true">
+          <div class="hub-hero-media-noise"></div>
+          <div class="hub-hero-media-glow"></div>
+          <div class="hub-hero-media-tag">
+            <span class="hub-hero-media-dot"></span>
+            <span>Operação Ativa</span>
+          </div>
+          <!-- decorative stat chips -->
+          <div class="hub-hero-media-chip hub-hero-media-chip--a">
+            <span class="chip-val">PT · STP · GW</span>
+            <span class="chip-lbl">Presença Directa</span>
+          </div>
+          <div class="hub-hero-media-chip hub-hero-media-chip--b">
+            <span class="chip-val">CN · IN</span>
+            <span class="chip-lbl">Sourcing</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2) O QUE FAZEMOS — 4 Services Grid -->
-    <section class="divisoes normal-section" id="areas" data-theme="light">
+    <!-- ─── 2) O QUE FAZEMOS ──────────────────────────────── -->
+    <section class="hub-section hub-section--light" id="areas">
       <div class="container">
-        <div class="section-header">
-          <p class="overline">As nossas áreas</p>
-          <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">O que fazemos</h2>
-          <p class="proof-line">Quatro áreas de especialização, uma estrutura integrada</p>
-        </div>
+        <header class="hub-section-header">
+          <p class="hub-kicker">As nossas áreas</p>
+          <h2 class="hub-section-title">O que fazemos</h2>
+          <span class="hub-rule" aria-hidden="true"></span>
+          <p class="hub-section-sub">Quatro áreas de especialização, uma estrutura integrada</p>
+        </header>
 
-        <div class="divisoes-grid" style="margin-top: 3rem;">
-          <!-- Card: Produção -->
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
+        <div class="hub-services-grid">
+          <!-- Card 1 -->
+          <article class="hub-card">
+            <div class="hub-card-top-accent" aria-hidden="true"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
               </svg>
             </div>
-            <h3>Produção & Criatividade</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Stands, impressão, mobiliário, fardamentos e campanhas</p>
-            <div class="div-footer" style="margin-top: auto; padding-top: 1.5rem;">
+            <h3 class="hub-card-title">Produção &amp; Criatividade</h3>
+            <p class="hub-card-body">Stands, impressão, mobiliário, fardamentos e campanhas</p>
+            <div class="hub-card-footer">
               <a href="/producao.html" class="btn btn-outline btn-full">Ver Área</a>
             </div>
-          </div>
+          </article>
 
-          <!-- Card: Import/Export -->
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Card 2 -->
+          <article class="hub-card">
+            <div class="hub-card-top-accent" aria-hidden="true"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
                 <line x1="7" y1="7" x2="7.01" y2="7"/>
               </svg>
             </div>
-            <h3>Importação & Exportação</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Operação internacional do requisito ao destino</p>
-            <div class="div-footer" style="margin-top: auto; padding-top: 1.5rem;">
+            <h3 class="hub-card-title">Importação &amp; Exportação</h3>
+            <p class="hub-card-body">Operação internacional do requisito ao destino</p>
+            <div class="hub-card-footer">
               <a href="/importacao-e-exportacao.html" class="btn btn-outline btn-full">Ver Área</a>
             </div>
-          </div>
+          </article>
 
-          <!-- Card: Health & Care -->
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Card 3 -->
+          <article class="hub-card">
+            <div class="hub-card-top-accent" aria-hidden="true"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
               </svg>
             </div>
-            <h3>Health & Care</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Produtos e equipamentos para saúde e bem-estar</p>
-            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="cert-badge cert-badge-premium" style="margin-top: 1rem;">
+            <h3 class="hub-card-title">Health &amp; Care</h3>
+            <p class="hub-card-body">Produtos e equipamentos para saúde e bem-estar</p>
+            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="cert-badge cert-badge-premium hub-cert-badge">
               <div class="cert-badge-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   <polyline points="9 12 11 14 15 10"/>
                 </svg>
@@ -131,193 +160,239 @@
                 <span class="cert-badge-sub">Cert. 1866/DM/2023</span>
               </div>
             </a>
-            <div class="div-footer" style="margin-top: auto; padding-top: 1.5rem;">
+            <div class="hub-card-footer">
               <a href="/health-care.html" class="btn btn-outline btn-full">Ver Área</a>
             </div>
-          </div>
+          </article>
 
-          <!-- Card: Informática -->
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Card 4 -->
+          <article class="hub-card">
+            <div class="hub-card-top-accent" aria-hidden="true"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                 <line x1="8" y1="21" x2="16" y2="21"/>
                 <line x1="12" y1="17" x2="12" y2="21"/>
               </svg>
             </div>
-            <h3>Informática</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Hardware, periféricos e soluções tecnológicas</p>
-            <div class="div-footer" style="margin-top: auto; padding-top: 1.5rem;">
+            <h3 class="hub-card-title">Informática</h3>
+            <p class="hub-card-body">Hardware, periféricos e soluções tecnológicas</p>
+            <div class="hub-card-footer">
               <a href="/informatica.html" class="btn btn-outline btn-full">Ver Área</a>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- 3) PORTFOLIO PREVIEW -->
-    <section class="normal-section" data-theme="light" style="background: var(--c-bg);">
+    <!-- ─── 3) PORTFÓLIO PREVIEW ──────────────────────────── -->
+    <section class="hub-section hub-section--warm">
       <div class="container">
-        <div class="section-header">
-          <p class="overline">Trabalhos realizados</p>
-          <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">Portfólio</h2>
-          <p class="proof-line">Projetos de produção, stands, impressão e design</p>
+        <header class="hub-section-header">
+          <p class="hub-kicker">Trabalhos realizados</p>
+          <h2 class="hub-section-title">Portfólio</h2>
+          <span class="hub-rule" aria-hidden="true"></span>
+          <p class="hub-section-sub">Projetos de produção, stands, impressão e design</p>
+        </header>
+
+        <div class="hub-portfolio-grid">
+          <div class="hub-portfolio-item">
+            <div class="hub-portfolio-bg hub-portfolio-bg--1"></div>
+            <div class="hub-portfolio-scrim"></div>
+            <div class="hub-portfolio-body">
+              <span class="hub-portfolio-tag">Stands</span>
+              <p class="hub-portfolio-title">Projeto exemplo</p>
+            </div>
+          </div>
+          <div class="hub-portfolio-item">
+            <div class="hub-portfolio-bg hub-portfolio-bg--2"></div>
+            <div class="hub-portfolio-scrim"></div>
+            <div class="hub-portfolio-body">
+              <span class="hub-portfolio-tag">Impressão</span>
+              <p class="hub-portfolio-title">Projeto exemplo</p>
+            </div>
+          </div>
+          <div class="hub-portfolio-item">
+            <div class="hub-portfolio-bg hub-portfolio-bg--3"></div>
+            <div class="hub-portfolio-scrim"></div>
+            <div class="hub-portfolio-body">
+              <span class="hub-portfolio-tag">Design</span>
+              <p class="hub-portfolio-title">Projeto exemplo</p>
+            </div>
+          </div>
         </div>
 
-        <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-          <div class="portfolio-item" style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
-            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Stands</span>
-            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo</span>
-          </div>
-          <div class="portfolio-item" style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
-            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Impressão</span>
-            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo</span>
-          </div>
-          <div class="portfolio-item" style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border: 1px solid var(--c-border-md);">
-            <span style="font-size: 0.75rem; color: var(--c-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Design</span>
-            <span style="font-weight: 700; margin-top: 0.25rem;">Projeto exemplo</span>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 2.5rem;">
+        <div class="hub-cta-row">
           <a href="/portfolio.html" class="btn btn-outline">Ver Todo Portfólio</a>
         </div>
       </div>
     </section>
 
-    <!-- 4) COMO TRABALHAMOS — Process Steps -->
-    <section class="normal-section" data-theme="light" style="background: var(--c-bg-subtle);">
+    <!-- ─── 4) COMO TRABALHAMOS ───────────────────────────── -->
+    <section class="hub-section hub-section--light">
       <div class="container">
-        <div class="section-header">
-          <p class="overline">Metodologia</p>
-          <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">Como trabalhamos</h2>
-          <p class="proof-line">Processo criativo e de produção em 4 fases</p>
+        <header class="hub-section-header">
+          <p class="hub-kicker">Metodologia</p>
+          <h2 class="hub-section-title">Como trabalhamos</h2>
+          <span class="hub-rule" aria-hidden="true"></span>
+          <p class="hub-section-sub">Processo criativo e de produção em 4 fases</p>
+        </header>
+
+        <!-- Process rail: connector line + 4 steps -->
+        <div class="hub-process" id="hubProcess">
+          <!-- Connector rail (desktop only, hidden on mobile) -->
+          <div class="hub-process-rail" aria-hidden="true"></div>
+
+          <div class="hub-process-step is-active" data-step="0">
+            <div class="hub-process-num">1</div>
+            <h4 class="hub-process-label">Briefing &amp; Enquadramento</h4>
+            <p class="hub-process-body">Entender requisitos, contexto e objetivos</p>
+          </div>
+          <div class="hub-process-step" data-step="1">
+            <div class="hub-process-num">2</div>
+            <h4 class="hub-process-label">Conceito &amp; Proposta</h4>
+            <p class="hub-process-body">Desenvolver solução e validar abordagem</p>
+          </div>
+          <div class="hub-process-step" data-step="2">
+            <div class="hub-process-num">3</div>
+            <h4 class="hub-process-label">Produção &amp; Validação</h4>
+            <p class="hub-process-body">Executar e validar cada etapa</p>
+          </div>
+          <div class="hub-process-step" data-step="3">
+            <div class="hub-process-num">4</div>
+            <h4 class="hub-process-label">Entrega &amp; Acompanhamento</h4>
+            <p class="hub-process-body">Entregar e acompanhar até sucesso</p>
+          </div>
         </div>
 
-        <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 3rem;">
-          <div class="process-step" style="text-align: center;">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--c-accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.125rem; margin: 0 auto 1rem;">1</div>
-            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">Briefing & Enquadramento</h4>
-            <p style="font-size: 0.875rem; color: var(--c-muted);">Entender requisitos, contexto e objetivos</p>
-          </div>
-          <div class="process-step" style="text-align: center;">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--c-accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.125rem; margin: 0 auto 1rem;">2</div>
-            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">Conceito & Proposta</h4>
-            <p style="font-size: 0.875rem; color: var(--c-muted);">Desenvolver solução e validar abordagem</p>
-          </div>
-          <div class="process-step" style="text-align: center;">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--c-accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.125rem; margin: 0 auto 1rem;">3</div>
-            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">Produção & Validação</h4>
-            <p style="font-size: 0.875rem; color: var(--c-muted);">Executar e validar cada etapa</p>
-          </div>
-          <div class="process-step" style="text-align: center;">
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--c-accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.125rem; margin: 0 auto 1rem;">4</div>
-            <h4 style="font-weight: 700; margin-bottom: 0.5rem;">Entrega & Acompanhamento</h4>
-            <p style="font-size: 0.875rem; color: var(--c-muted);">Entregar e acompanhar até sucesso</p>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem;">
+        <div class="hub-cta-row">
           <a href="/contactos.html" class="btn btn-primary">Falar sobre um Projeto</a>
         </div>
       </div>
     </section>
 
-    <!-- 5) PRESENÇA INTERNACIONAL -->
-    <section class="normal-section" data-theme="light" style="background: var(--c-bg);">
+    <!-- ─── 5) PRESENÇA INTERNACIONAL ────────────────────── -->
+    <section class="hub-section hub-section--warm">
       <div class="container">
-        <div class="section-header">
-          <p class="overline">Onde estamos</p>
-          <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">Presença Internacional</h2>
-          <p class="proof-line">Operação em múltiplas geografias</p>
-        </div>
+        <header class="hub-section-header">
+          <p class="hub-kicker">Onde estamos</p>
+          <h2 class="hub-section-title">Presença Internacional</h2>
+          <span class="hub-rule" aria-hidden="true"></span>
+          <p class="hub-section-sub">Operação em múltiplas geografias</p>
+        </header>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start;">
-          <div class="locations-list">
-            <div style="margin-bottom: 1.5rem;">
-              <h4 style="font-weight: 700; margin-bottom: 0.25rem;">Portugal</h4>
-              <p style="font-size: 0.875rem; color: var(--c-muted);">Base central de operações</p>
-            </div>
-            <div style="margin-bottom: 1.5rem;">
-              <h4 style="font-weight: 700; margin-bottom: 0.25rem;">São Tomé e Príncipe & Guiné-Bissau</h4>
-              <p style="font-size: 0.875rem; color: var(--c-muted);">Suporte local</p>
-            </div>
-            <div style="margin-bottom: 1.5rem;">
-              <h4 style="font-weight: 700; margin-bottom: 0.25rem;">China & Índia</h4>
-              <p style="font-size: 0.875rem; color: var(--c-muted);">Escritórios de sourcing</p>
-            </div>
-            <div>
-              <h4 style="font-weight: 700; margin-bottom: 0.25rem;">Parceiros Globais</h4>
-              <p style="font-size: 0.875rem; color: var(--c-muted);">Rede de execução por destino</p>
-            </div>
-            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a href="/importacao-e-exportacao.html" class="btn btn-outline">Ver Importação & Exportação</a>
+        <div class="hub-presenca">
+          <!-- Left: location list with hover-active rows -->
+          <div class="hub-location-list">
+            <button class="hub-location-item is-active" data-loc="0">
+              <span class="hub-location-marker" aria-hidden="true"></span>
+              <div class="hub-location-body">
+                <strong class="hub-location-name">Portugal</strong>
+                <span class="hub-location-desc">Base central de operações</span>
+              </div>
+            </button>
+            <button class="hub-location-item" data-loc="1">
+              <span class="hub-location-marker" aria-hidden="true"></span>
+              <div class="hub-location-body">
+                <strong class="hub-location-name">São Tomé e Príncipe &amp; Guiné-Bissau</strong>
+                <span class="hub-location-desc">Suporte local</span>
+              </div>
+            </button>
+            <button class="hub-location-item" data-loc="2">
+              <span class="hub-location-marker" aria-hidden="true"></span>
+              <div class="hub-location-body">
+                <strong class="hub-location-name">China &amp; Índia</strong>
+                <span class="hub-location-desc">Escritórios de sourcing</span>
+              </div>
+            </button>
+            <button class="hub-location-item" data-loc="3">
+              <span class="hub-location-marker" aria-hidden="true"></span>
+              <div class="hub-location-body">
+                <strong class="hub-location-name">Parceiros Globais</strong>
+                <span class="hub-location-desc">Rede de execução por destino</span>
+              </div>
+            </button>
+            <div class="hub-presenca-ctas">
+              <a href="/importacao-e-exportacao.html" class="btn btn-outline">Ver Importação &amp; Exportação</a>
               <a href="/portfolio.html" class="btn btn-outline">Ver Portfólio</a>
             </div>
           </div>
-          <div class="map-placeholder" style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border: 1px solid var(--c-border-md);">
-            <span style="color: var(--c-muted); font-size: 0.875rem;">Mapa com presença operacional</span>
+
+          <!-- Right: premium map card -->
+          <div class="hub-map-card" aria-label="Mapa de presença operacional">
+            <div class="hub-map-grid" aria-hidden="true"></div>
+            <div class="hub-map-glow" aria-hidden="true"></div>
+            <span class="hub-map-chip">Presença Operacional</span>
+            <div class="hub-map-placeholder">
+              <div class="hub-map-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              <p class="hub-map-label">Mapa com presença operacional<br>Portugal · África · Ásia</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 6) FINAL CTA -->
-    <section class="final-cta" data-theme="dark" style="background: var(--c-bg-dark); padding: 5rem 0;">
-      <div class="container" style="text-align: center;">
-        <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; color: var(--c-dark-text); margin-bottom: 1rem;">Pronto para começar?</h2>
-        <p style="color: var(--c-dark-muted); max-width: 480px; margin: 0 auto 2rem;">Contacte-nos para discutir seu projeto. Validamos a viabilidade e apresentamos uma proposta clara.</p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+    <!-- ─── 6) FINAL CTA ──────────────────────────────────── -->
+    <section class="hub-final-cta">
+      <div class="container hub-final-cta-inner">
+        <h2 class="hub-final-cta-title">Pronto para começar?</h2>
+        <p class="hub-final-cta-sub">Contacte-nos para discutir seu projeto. Validamos a viabilidade e apresentamos uma proposta clara.</p>
+        <div class="hub-final-cta-btns">
           <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
-          <a href="/importacao-e-exportacao.html" class="btn btn-outline" style="border-color: var(--c-dark-border); color: var(--c-dark-text);">Ver Operação</a>
+          <a href="/importacao-e-exportacao.html" class="btn hub-btn-ghost">Ver Operação</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer normal-section" style="background: var(--c-bg-dark); color: var(--c-dark-muted); padding: 4rem 0 2rem;" data-theme="dark">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
-        <div>
-          <h4 style="color: var(--c-dark-text); font-weight: 700; margin-bottom: 1rem;">ON4U</h4>
-          <p style="font-size: 0.875rem; line-height: 1.6;">Produção, operação internacional e soluções especializadas integradas.</p>
-        </div>
-        <div>
-          <h4 style="color: var(--c-dark-text); font-weight: 700; margin-bottom: 1rem;">Navegação</h4>
-          <ul style="font-size: 0.875rem; line-height: 2;">
-            <li><a href="/" style="color: var(--c-dark-muted);">Início</a></li>
-            <li><a href="/producao.html" style="color: var(--c-dark-muted);">Produção</a></li>
-            <li><a href="/importacao-e-exportacao.html" style="color: var(--c-dark-muted);">Importação & Exportação</a></li>
-            <li><a href="/portfolio.html" style="color: var(--c-dark-muted);">Portfólio</a></li>
-            <li><a href="/sobre.html" style="color: var(--c-dark-muted);">Sobre</a></li>
-            <li><a href="/contactos.html" style="color: var(--c-dark-muted);">Contactos</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="color: var(--c-dark-text); font-weight: 700; margin-bottom: 1rem;">Contacto</h4>
-          <ul style="font-size: 0.875rem; line-height: 2;">
-            <li><a href="mailto:info@on4u.pt" style="color: var(--c-accent);">info@on4u.pt</a></li>
-            <li>+351</li>
-            <li>WhatsApp</li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="color: var(--c-dark-text); font-weight: 700; margin-bottom: 1rem;">Legal</h4>
-          <ul style="font-size: 0.875rem; line-height: 2;">
-            <li><a href="#" style="color: var(--c-dark-muted);">Termos de Serviço</a></li>
-            <li><a href="#" style="color: var(--c-dark-muted);">Privacidade</a></li>
-            <li><a href="https://www.infarmed.pt" target="_blank" style="color: var(--c-dark-muted);">Certificação Infarmed</a></li>
-          </ul>
-        </div>
+  <!-- ─── FOOTER ────────────────────────────────────────── -->
+  <footer class="hub-footer">
+    <div class="container hub-footer-grid">
+      <div>
+        <p class="hub-footer-brand">ON4U</p>
+        <p class="hub-footer-brand-text">Produção, operação internacional e soluções especializadas integradas.</p>
       </div>
-      <div style="border-top: 1px solid var(--c-dark-border); padding-top: 2rem; text-align: center; font-size: 0.8rem;">
-        &copy; 2026 ON4U. Todos os direitos reservados.
+      <div>
+        <p class="hub-footer-col-title">Navegação</p>
+        <ul class="hub-footer-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/producao.html">Produção</a></li>
+          <li><a href="/importacao-e-exportacao.html">Importação &amp; Exportação</a></li>
+          <li><a href="/portfolio.html">Portfólio</a></li>
+          <li><a href="/sobre.html">Sobre</a></li>
+          <li><a href="/contactos.html">Contactos</a></li>
+        </ul>
       </div>
+      <div>
+        <p class="hub-footer-col-title">Contacto</p>
+        <ul class="hub-footer-links">
+          <li><a href="mailto:info@on4u.pt" class="hub-footer-email">info@on4u.pt</a></li>
+          <li>+351</li>
+          <li>WhatsApp</li>
+        </ul>
+      </div>
+      <div>
+        <p class="hub-footer-col-title">Legal</p>
+        <ul class="hub-footer-links">
+          <li><a href="#">Termos de Serviço</a></li>
+          <li><a href="#">Privacidade</a></li>
+          <li><a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer">Certificação Infarmed</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container hub-footer-bottom">
+      <span>&copy; 2026 ON4U. Todos os direitos reservados.</span>
     </div>
   </footer>
 
   <script src="scripts/reveal.js" defer></script>
+  <script src="scripts/hub.js" defer></script>
 </body>
 
 </html>
