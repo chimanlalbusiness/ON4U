@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>ON4U | Soluções B2B, Produção e Operação Internacional</title>
-  <link rel="stylesheet" href="style.css?v=13" />
+  <title>Contactos | ON4U</title>
+  <link rel="stylesheet" href="style.css?v=11" />
   <link rel="stylesheet" href="scrolly_styles.css?v=5" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -34,11 +34,12 @@
             <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação &amp; Exportação</a>
             <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
             <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/portfolio.html" role="menuitem"><span class="nav-dropdown-dot"></span>Portfólio</a>
           </div>
         </div>
-        <a href="/portfolio.html">Portfólio</a>
         <a href="/sobre.html">Sobre</a>
-        <a href="/contactos.html">Contactos</a>
+        <a href="/contactos.html" class="is-active">Contactos</a>
       </nav>
       <div class="header-actions">
         <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
@@ -47,8 +48,8 @@
   </header>
 
   <main class="scrolly-container">
-    <!-- Section 1: Hero -->
-    <section class="scrolly-section" id="hero" data-theme="dark">
+    <!-- Section 1: Hero & Contacts Row -->
+    <section class="scrolly-section" id="contact-hero" data-theme="dark">
       <div class="scrolly-sticky">
         <div class="scrolly-bg">
           <div class="scrolly-glow"></div>
@@ -56,33 +57,39 @@
         <div class="scrolly-content container">
           <div class="scrolly-grid">
             <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Soluções B2B integradas</p>
-              <h1 class="scrolly-title">Executamos o que a sua <span class="text-gradient">empresa precisa</span></h1>
-              <p class="scrolly-sub">Da produção criativa à operação internacional e fornecimento especializado. Quatro divisões focadas em acelerar a sua execução.</p>
-              <div class="scrolly-hero-ctas">
-                <a href="#divisoes" class="btn btn-primary">Nossas Divisões</a>
-                <a href="/contactos.html" class="btn btn-outline">Proposta Rápida</a>
+              <p class="scrolly-eyebrow">Fale connosco</p>
+              <h1 class="scrolly-title"><span class="text-gradient">Contactos</span> Oficiais</h1>
+              <p class="scrolly-sub">Estamos disponíveis para discutir o seu projeto. Utilize os canais oficiais para uma resposta direta e profissional.</p>
+              
+              <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <div class="dash-card-icon" style="flex-shrink: 0;"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Morada</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Núcleo Empresarial da Abrunheira, Lote 11, Armazém M<br>2710-089 Sintra, Portugal</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="dash-card-icon highlight" style="flex-shrink: 0;"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Email</h4>
+                        <a href="mailto:info@on4u.pt" style="font-size: 0.85rem; color: var(--c-accent);">info@on4u.pt</a>
+                    </div>
+                </div>
               </div>
             </div>
             <div class="scrolly-visual-block anim-visual">
                <div class="hero-dashboard-card floating-card">
                  <div class="dash-card-header">
                    <div class="pulse-indicator"></div>
-                   <span>Operação Centralizada</span>
+                   <span>Suporte Ativo</span>
                  </div>
                  <div class="dash-card-grid">
                    <div class="dash-card-item">
-                     <div class="dash-card-icon highlight"><i class="fas fa-microchip"></i></div>
+                     <div class="dash-card-icon highlight"><i class="fab fa-whatsapp"></i></div>
                      <div class="dash-card-content">
-                       <span class="dash-card-label">Divisões</span>
-                       <span class="dash-card-value">4 Especializadas</span>
-                     </div>
-                   </div>
-                   <div class="dash-card-item">
-                     <div class="dash-card-icon"><i class="fas fa-shipping-fast"></i></div>
-                     <div class="dash-card-content">
-                       <span class="dash-card-label">Supply Chain</span>
-                       <span class="dash-card-value">Global Direct</span>
+                       <span class="dash-card-label">WhatsApp</span>
+                       <span class="dash-card-value">Resposta Rápida</span>
                      </div>
                    </div>
                  </div>
@@ -93,36 +100,31 @@
       </div>
     </section>
 
-    <!-- Section 2: Divisões (Hub) -->
-    <section class="scrolly-section" id="divisoes" data-theme="dark">
+    <!-- Section 2: Form -->
+    <section class="scrolly-section" id="contact-form" data-theme="dark">
       <div class="scrolly-sticky">
         <div class="scrolly-bg">
           <div class="scrolly-glow"></div>
         </div>
         <div class="scrolly-content container scrolly-flex-col">
-          <div class="anim-text" style="width: 100%;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-               <!-- P&C -->
-               <div class="fact-card hover-lift" style="padding: 2rem;">
-                 <div class="fact-card-icon"><i class="fas fa-palette"></i></div>
-                 <h3 style="margin: 1rem 0 0.5rem 0;">Produção & Criatividade</h3>
-                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Stands, eventos, fardamentos e produção corporativa.</p>
-                 <a href="/producao.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
-               </div>
-               <!-- I&E -->
-               <div class="fact-card hover-lift" style="padding: 2rem;">
-                 <div class="fact-card-icon"><i class="fas fa-globe-africa"></i></div>
-                 <h3 style="margin: 1rem 0 0.5rem 0;">Importação & Exportação</h3>
-                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Op. internacional por pedido, ajustada ao destino.</p>
-                 <a href="/importacao-e-exportacao.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
-               </div>
-               <!-- H&C -->
-               <div class="fact-card hover-lift" style="padding: 2rem;">
-                 <div class="fact-card-icon"><i class="fas fa-hand-holding-medical"></i></div>
-                 <h3 style="margin: 1rem 0 0.5rem 0;">Health & Care</h3>
-                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Fornecimento especializado com certificado Infarmed.</p>
-                 <a href="/health-care.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
-               </div>
+          <div class="anim-text" style="width: 100%; max-width: 600px; margin: 0 auto;">
+            <div class="fact-card" style="padding: 2.5rem; background: rgba(255,255,255,0.03);">
+                <h3 style="font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Envie a sua Mensagem</h3>
+                <form>
+                  <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Nome</label>
+                    <input type="text" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit;" placeholder="Seu nome" />
+                  </div>
+                  <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Email</label>
+                    <input type="email" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit;" placeholder="seu@email.com" />
+                  </div>
+                  <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Mensagem</label>
+                    <textarea rows="4" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit; resize: none;" placeholder="Descreva o seu projeto..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-full">Enviar Pedido</button>
+                </form>
             </div>
           </div>
         </div>
@@ -130,7 +132,6 @@
     </section>
   </main>
 
-  <!-- Official Footer -->
   <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
     <div class="container">
       <div class="footer-official-grid">
