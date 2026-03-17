@@ -2,13 +2,15 @@
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Produção & Criatividade | ON4U</title>
-  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="scrolly_styles.css?v=5" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body>
-  <header class="header is-dark" id="top">
+<body class="scrolly-body">
+  <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
         <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,56 +47,109 @@
     </div>
   </header>
 
-  <main>
-    <section class="normal-section" style="padding-top: 8rem;">
-      <div class="container">
-        <div class="section-header">
-          <p class="overline">Produção & Criatividade</p>
-          <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">Stands, impressão, mobiliário, fardamentos e campanhas</h1>
-          <p class="proof-line" style="max-width: 600px;">Da concepção à execução. Coordenação completa de projetos corporativos com foco em prazos e qualidade.</p>
+  <main class="scrolly-container">
+    <!-- Section 1: Hero -->
+    <section class="scrolly-section" id="production-hero" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
         </div>
-
-        <div class="divisoes-grid" style="margin-top: 4rem;">
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        <div class="scrolly-content container">
+          <div class="scrolly-grid">
+            <div class="scrolly-text-block anim-text">
+              <p class="scrolly-eyebrow">Produção & Criatividade</p>
+              <h1 class="scrolly-title"><span class="text-gradient">Do Design</span> à Montagem Final</h1>
+              <p class="scrolly-sub">Operação 360º em produção de stands, impressão de grande formato, fardamentos e mobiliário. Focados em prazos críticos e qualidade de execução.</p>
+              <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <a href="/contactos.html" class="btn btn-primary">Falar sobre um Projeto</a>
+                <a href="/portfolio.html" class="btn btn-outline">Ver Portfólio</a>
+              </div>
             </div>
-            <h3>Stands & Expositores</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Design, construção e montagem para feiras e eventos</p>
-          </div>
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <div class="scrolly-visual-block anim-visual">
+               <div class="hero-dashboard-card floating-card">
+                 <div class="dash-card-header">
+                   <div class="pulse-indicator"></div>
+                   <span>Oficina Ativa</span>
+                 </div>
+                 <div class="dash-card-grid">
+                   <div class="dash-card-item">
+                     <div class="dash-card-icon highlight"><i class="fas fa-hammer"></i></div>
+                     <div class="dash-card-content">
+                       <span class="dash-card-label">Montagens</span>
+                       <span class="dash-card-value">Stands & Eventos</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
             </div>
-            <h3>Impressão</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Grande formato, materiais promocionais e sinalética</p>
-          </div>
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10"/><path d="M2 10.6L12 2l10 8.6"/></svg>
-            </div>
-            <h3>Mobiliário</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Mobiliário corporativo e soluções de espaço</p>
-          </div>
-          <div class="div-card">
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
-            </div>
-            <h3>Fardamentos</h3>
-            <p class="div-tagline" style="margin-top: 0.75rem;">Uniformes corporativos e vestuário personalizado</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div style="text-align: center; margin-top: 4rem;">
-          <a href="/contactos.html" class="btn btn-primary">Falar sobre um Projeto</a>
-          <a href="/portfolio.html" class="btn btn-outline" style="margin-left: 1rem;">Ver Portfólio</a>
+    <!-- Section 2: Areas -->
+    <section class="scrolly-section" id="production-areas" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
+        </div>
+        <div class="scrolly-content container scrolly-flex-col">
+          <div class="anim-text" style="width: 100%;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+               <div class="fact-card hover-lift" style="padding: 2rem;">
+                 <div class="fact-card-icon"><i class="fas fa-layer-group"></i></div>
+                 <h4>Stands</h4>
+                 <p style="font-size: 0.85rem; opacity: 0.7;">Concepção e estruturação para feiras.</p>
+               </div>
+               <div class="fact-card hover-lift" style="padding: 2rem;">
+                 <div class="fact-card-icon"><i class="fas fa-print"></i></div>
+                 <h4>Impressão</h4>
+                 <p style="font-size: 0.85rem; opacity: 0.7;">Grande formato e materiais rídigo.</p>
+               </div>
+               <div class="fact-card hover-lift" style="padding: 2rem;">
+                 <div class="fact-card-icon"><i class="fas fa-tshirt"></i></div>
+                 <h4>Fardamentos</h4>
+                 <p style="font-size: 0.85rem; opacity: 0.7;">Uniformes e vestuário técnico.</p>
+               </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" style="background: var(--c-bg-dark); color: var(--c-dark-muted); padding: 2rem 0; text-align: center; font-size: 0.8rem;">
-    <div class="container">&copy; 2026 ON4U. Todos os direitos reservados.</div>
+  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container">
+      <div class="footer-official-grid">
+        <div>
+          <h4 class="footer-title">ON4U</h4>
+          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e Health & Care.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Sede Portugal</h4>
+          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Contactos Oficiais</h4>
+          <ul class="footer-links">
+            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
+            <li>Tel: (+351) 214 326 102</li>
+            <li>Fax: (+351) 214 326 103</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Certificação</h4>
+          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
+            <i class="fas fa-check-circle"></i> Infarmed Certificado
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 ON4U. Todos os direitos reservados.
+      </div>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

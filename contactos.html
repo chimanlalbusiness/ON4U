@@ -2,13 +2,15 @@
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Contactos | ON4U</title>
-  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="scrolly_styles.css?v=5" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body>
-  <header class="header is-dark" id="top">
+<body class="scrolly-body">
+  <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
         <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,79 +47,123 @@
     </div>
   </header>
 
-  <main>
-    <section class="normal-section" style="padding-top: 8rem;">
-      <div class="container">
-        <div class="section-header">
-          <p class="overline">Fale connosco</p>
-          <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">Contactos</h1>
-          <p class="proof-line" style="max-width: 600px;">Estamos disponíveis para discutir seu projeto e apresentar soluções.</p>
+  <main class="scrolly-container">
+    <!-- Section 1: Hero & Contacts Row -->
+    <section class="scrolly-section" id="contact-hero" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
         </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem;">
-          <div>
-            <h3 style="font-weight: 700; margin-bottom: 2rem;">Informações de contacto</h3>
-            
-            <div style="margin-bottom: 2rem;">
-              <div class="div-card-icon" style="margin-bottom: 0.75rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="scrolly-content container">
+          <div class="scrolly-grid">
+            <div class="scrolly-text-block anim-text">
+              <p class="scrolly-eyebrow">Fale connosco</p>
+              <h1 class="scrolly-title"><span class="text-gradient">Contactos</span> Oficiais</h1>
+              <p class="scrolly-sub">Estamos disponíveis para discutir o seu projeto. Utilize os canais oficiais para uma resposta direta e profissional.</p>
+              
+              <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <div class="dash-card-icon" style="flex-shrink: 0;"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Morada</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Núcleo Empresarial da Abrunheira, Lote 11, Armazém M<br>2710-089 Sintra, Portugal</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="dash-card-icon highlight" style="flex-shrink: 0;"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Email</h4>
+                        <a href="mailto:info@on4u.pt" style="font-size: 0.85rem; color: var(--c-accent);">info@on4u.pt</a>
+                    </div>
+                </div>
               </div>
-              <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Email</h4>
-              <a href="mailto:info@on4u.pt" style="color: var(--c-accent);">info@on4u.pt</a>
             </div>
-
-            <div style="margin-bottom: 2rem;">
-              <div class="div-card-icon" style="margin-bottom: 0.75rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
-              <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Telefone</h4>
-              <span style="color: var(--c-muted);">+351 (número a definir)</span>
-            </div>
-
-            <div>
-              <div class="div-card-icon" style="margin-bottom: 0.75rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              </div>
-              <h4 style="font-weight: 600; margin-bottom: 0.25rem;">WhatsApp</h4>
-              <span style="color: var(--c-muted);">Resposta rápida</span>
+            <div class="scrolly-visual-block anim-visual">
+               <div class="hero-dashboard-card floating-card">
+                 <div class="dash-card-header">
+                   <div class="pulse-indicator"></div>
+                   <span>Suporte Ativo</span>
+                 </div>
+                 <div class="dash-card-grid">
+                   <div class="dash-card-item">
+                     <div class="dash-card-icon highlight"><i class="fab fa-whatsapp"></i></div>
+                     <div class="dash-card-content">
+                       <span class="dash-card-label">WhatsApp</span>
+                       <span class="dash-card-value">Resposta Rápida</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="div-card" style="padding: 2rem;">
-            <h3 style="font-weight: 700; margin-bottom: 1.5rem;">Envie uma mensagem</h3>
-            <form>
-              <div style="margin-bottom: 1rem;">
-                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Nome</label>
-                <input type="text" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--c-border-md); border-radius: var(--radius); font-family: inherit; font-size: 0.9rem;" placeholder="Seu nome" />
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Email</label>
-                <input type="email" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--c-border-md); border-radius: var(--radius); font-family: inherit; font-size: 0.9rem;" placeholder="seu@email.com" />
-              </div>
-              <div style="margin-bottom: 1rem;">
-                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Área de interesse</label>
-                <select style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--c-border-md); border-radius: var(--radius); font-family: inherit; font-size: 0.9rem; background: white;">
-                  <option>Produção & Criatividade</option>
-                  <option>Importação & Exportação</option>
-                  <option>Health & Care</option>
-                  <option>Informática</option>
-                  <option>Outro</option>
-                </select>
-              </div>
-              <div style="margin-bottom: 1.5rem;">
-                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">Mensagem</label>
-                <textarea rows="4" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--c-border-md); border-radius: var(--radius); font-family: inherit; font-size: 0.9rem; resize: vertical;" placeholder="Descreva seu projeto ou pedido..."></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-full">Enviar Mensagem</button>
-            </form>
+    <!-- Section 2: Form -->
+    <section class="scrolly-section" id="contact-form" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
+        </div>
+        <div class="scrolly-content container scrolly-flex-col">
+          <div class="anim-text" style="width: 100%; max-width: 600px; margin: 0 auto;">
+            <div class="fact-card" style="padding: 2.5rem; background: rgba(255,255,255,0.03);">
+                <h3 style="font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Envie a sua Mensagem</h3>
+                <form>
+                  <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Nome</label>
+                    <input type="text" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit;" placeholder="Seu nome" />
+                  </div>
+                  <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Email</label>
+                    <input type="email" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit;" placeholder="seu@email.com" />
+                  </div>
+                  <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Mensagem</label>
+                    <textarea rows="4" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit; resize: none;" placeholder="Descreva o seu projeto..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-full">Enviar Pedido</button>
+                </form>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" style="background: var(--c-bg-dark); color: var(--c-dark-muted); padding: 2rem 0; text-align: center; font-size: 0.8rem;">
-    <div class="container">&copy; 2026 ON4U. Todos os direitos reservados.</div>
+  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container">
+      <div class="footer-official-grid">
+        <div>
+          <h4 class="footer-title">ON4U</h4>
+          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e Health & Care.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Sede Portugal</h4>
+          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Contactos Oficiais</h4>
+          <ul class="footer-links">
+            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
+            <li>Tel: (+351) 214 326 102</li>
+            <li>Fax: (+351) 214 326 103</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Certificação</h4>
+          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
+            <i class="fas fa-check-circle"></i> Infarmed Certificado
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 ON4U. Todos os direitos reservados.
+      </div>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

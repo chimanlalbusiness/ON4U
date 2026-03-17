@@ -573,6 +573,61 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* --- Certification Badge --- */
+.cert-badge-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.cert-badge-premium:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--c-accent);
+  transform: translateY(-2px);
+}
+
+.cert-badge-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(249, 115, 22, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--c-accent);
+}
+
+.cert-badge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-badge-title {
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.cert-badge-sub {
+  color: var(--c-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0.1rem 0;
+}
+
+.cert-badge-issuer {
+  color: var(--c-dark-muted);
+  font-size: 0.75rem;
+}
+
 /* Animation Variables exposed by JS */
 .anim-text {
   opacity: calc(var(--text-in) * var(--opacity-out));
@@ -1352,4 +1407,88 @@ body {
   height: 12px;
   border-radius: 50%;
   border: 2px solid #3f3f46;
+}
+
+/* ============================================================
+   OFFICIAL FOOTER STYLES
+   ============================================================ */
+
+.footer {
+  background: #09090b !important;
+  color: #a1a1aa;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  z-index: 50;
+  line-height: 1.5;
+}
+
+.footer.is-dark {
+  background: #09090b !important;
+  color: rgba(255,255,255,0.6);
+}
+
+.footer-official-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 4rem;
+}
+
+.footer-title {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--c-accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem 0;
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0.5;
+}
+
+@media (max-width: 899px) {
+  .footer-official-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .footer-official-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }

@@ -2,13 +2,15 @@
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Sobre | ON4U</title>
-  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="scrolly_styles.css?v=5" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body>
-  <header class="header is-dark" id="top">
+<body class="scrolly-body">
+  <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
         <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,54 +47,105 @@
     </div>
   </header>
 
-  <main>
-    <section class="normal-section" style="padding-top: 8rem;">
-      <div class="container">
-        <div class="section-header">
-          <p class="overline">Quem somos</p>
-          <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">Sobre a ON4U</h1>
-          <p class="proof-line" style="max-width: 600px;">Produção, operação internacional e soluções especializadas integradas.</p>
+  <main class="scrolly-container">
+    <!-- Section 1: Hero -->
+    <section class="scrolly-section" id="about-hero" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
         </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: start;">
-          <div>
-            <h3 style="font-weight: 700; margin-bottom: 1rem;">A nossa história</h3>
-            <p style="color: var(--c-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-              A ON4U nasceu da necessidade de integrar diferentes áreas de especialização numa única estrutura de confiança.
-            </p>
-            <p style="color: var(--c-muted); line-height: 1.8;">
-              Com presença em Portugal, África e Ásia, oferecemos soluções completas desde a produção criativa até à operação internacional de importação e exportação.
-            </p>
-          </div>
-          <div style="background: var(--c-bg-subtle); border-radius: var(--radius); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border: 1px solid var(--c-border-md);">
-            <span style="color: var(--c-muted); font-size: 0.875rem;">Imagem da equipa</span>
-          </div>
-        </div>
-
-        <div class="divisoes-grid" style="margin-top: 4rem;">
-          <div class="div-card" style="text-align: center;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--c-accent);">+15</h3>
-            <p class="div-tagline">Anos de experiência</p>
-          </div>
-          <div class="div-card" style="text-align: center;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--c-accent);">4</h3>
-            <p class="div-tagline">Continentes com cobertura</p>
-          </div>
-          <div class="div-card" style="text-align: center;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: var(--c-accent);">3</h3>
-            <p class="div-tagline">Entidades independentes</p>
+        <div class="scrolly-content container">
+          <div class="scrolly-grid">
+            <div class="scrolly-text-block anim-text">
+              <p class="scrolly-eyebrow">Quem somos</p>
+              <h1 class="scrolly-title"><span class="text-gradient">Estrutura</span> e Confiança</h1>
+              <p class="scrolly-sub">A ON4U integra áreas de especialização complementares numa única rede de coordenação internacional. Do requisito ao destino, com rigor operacional.</p>
+            </div>
+            <div class="scrolly-visual-block anim-visual">
+               <div class="hero-dashboard-card floating-card">
+                 <div class="dash-card-header">
+                   <div class="pulse-indicator"></div>
+                   <span>Operação Global</span>
+                 </div>
+                 <div class="dash-card-grid">
+                   <div class="dash-card-item">
+                     <div class="dash-card-icon highlight"><i class="fas fa-globe"></i></div>
+                     <div class="dash-card-content">
+                       <span class="dash-card-label">Alcance</span>
+                       <span class="dash-card-value">4 Continentes</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div style="text-align: center; margin-top: 4rem;">
-          <a href="/contactos.html" class="btn btn-primary">Entrar em Contacto</a>
+    <!-- Section 2: Values/Metrics -->
+    <section class="scrolly-section" id="about-metrics" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
+        </div>
+        <div class="scrolly-content container scrolly-flex-col">
+          <div class="anim-text" style="width: 100%;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+               <div class="fact-card hover-lift" style="text-align: center; padding: 3rem 2rem;">
+                 <h3 style="font-size: 3rem; font-weight: 800; color: var(--c-accent); margin-bottom: 0.5rem;">+15</h3>
+                 <p style="text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; opacity: 0.6;">Anos de Experiência</p>
+               </div>
+               <div class="fact-card hover-lift" style="text-align: center; padding: 3rem 2rem;">
+                 <h3 style="font-size: 3rem; font-weight: 800; color: var(--c-accent); margin-bottom: 0.5rem;">3</h3>
+                 <p style="text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; opacity: 0.6;">Entidades Independentes</p>
+               </div>
+               <div class="fact-card hover-lift" style="text-align: center; padding: 3rem 2rem;">
+                 <h3 style="font-size: 3rem; font-weight: 800; color: var(--c-accent); margin-bottom: 0.5rem;">100%</h3>
+                 <p style="text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; opacity: 0.6;">Foco em Execução</p>
+               </div>
+            </div>
+            <div style="text-align: center; margin-top: 4rem;">
+              <a href="/contactos.html" class="btn btn-primary">Entrar em Contacto</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" style="background: var(--c-bg-dark); color: var(--c-dark-muted); padding: 2rem 0; text-align: center; font-size: 0.8rem;">
-    <div class="container">&copy; 2026 ON4U. Todos os direitos reservados.</div>
+  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container">
+      <div class="footer-official-grid">
+        <div>
+          <h4 class="footer-title">ON4U</h4>
+          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e Health & Care.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Sede Portugal</h4>
+          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Contactos Oficiais</h4>
+          <ul class="footer-links">
+            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
+            <li>Tel: (+351) 214 326 102</li>
+            <li>Fax: (+351) 214 326 103</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Certificação</h4>
+          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
+            <i class="fas fa-check-circle"></i> Infarmed Certificado
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 ON4U. Todos os direitos reservados.
+      </div>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

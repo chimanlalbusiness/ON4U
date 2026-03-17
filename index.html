@@ -1,395 +1,168 @@
 <!doctype html>
 <html lang="pt-PT">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ON4U | Soluções B2B, Produção, Operação Internacional e Supply</title>
-  <meta name="description"
-    content="Ajudamos empresas a executar o que precisam através de quatro divisões especializadas. Da produção à operação internacional." />
-  <link rel="stylesheet" href="style.css?v=12" />
-  <link rel="stylesheet" href="components/world-map.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>ON4U | Soluções B2B, Produção e Operação Internacional</title>
+  <link rel="stylesheet" href="style.css?v=13" />
+  <link rel="stylesheet" href="scrolly_styles.css?v=5" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-
-<body>
-  <!-- ─── 1) HEADER ────────────────────────────────────────── -->
-  <header class="header is-dark" data-section="header" id="top">
+<body class="scrolly-body">
+  <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
-        <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
+        <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="30" r="13" class="logo-text-stroke" stroke-width="14" />
-          <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" class="logo-text-stroke" stroke-width="14"
-            stroke-linecap="round" />
-          <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round"
-            stroke-linejoin="round" />
+          <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
+          <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
           <circle cx="129" cy="43" r="7" fill="#f97316" />
-          <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14"
-            stroke-linecap="round" />
+          <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
         </svg>
       </a>
       <nav class="header-nav desktop-only" aria-label="Principal">
-        <a href="#divisoes">Divisões</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Serviços
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação &amp; Exportação</a>
+            <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
+            <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
+          </div>
+        </div>
         <a href="/portfolio.html">Portfólio</a>
         <a href="/sobre.html">Sobre</a>
         <a href="/contactos.html">Contactos</a>
       </nav>
       <div class="header-actions">
-        <a href="/contactos.html" class="btn btn-primary">Solicitar Orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- ─── 2) HERO ─────────────────────────────────────────── -->
-    <section class="hub-hero">
-      <div class="hub-hero-bg"></div>
-      <div class="container hub-hero-inner">
-        <div class="hub-hero-text reveal-group">
-          <p class="hub-kicker reveal">Soluções B2B em quatro divisões</p>
-          <h1 class="hub-hero-title reveal">
-            Ajudamos empresas a executar o que precisam, com equipas e parceiros
-          </h1>
-          <p class="hub-hero-sub reveal">
-            Da produção à operação internacional e fornecimento especializado. Quatro divisões para encaminhar o seu
-            pedido e acelerar a execução.
-          </p>
-
-          <div class="hub-hero-bullets reveal">
-            <div class="hub-bullet">
-              <span class="hub-bullet-dot"></span>
-              <span>Quatro divisões, um ponto de contacto</span>
-            </div>
-            <div class="hub-bullet">
-              <span class="hub-bullet-dot"></span>
-              <span>Pedido &rarr; validação &rarr; proposta</span>
-            </div>
-            <div class="hub-bullet">
-              <span class="hub-bullet-dot"></span>
-              <span>Execução coordenada até ao fecho</span>
-            </div>
-          </div>
-
-          <div class="hub-hero-ctas reveal">
-            <a href="#divisoes" class="btn btn-primary">Ver Divisões</a>
-            <a href="/contactos.html" class="btn btn-outline">Solicitar Orçamento</a>
-          </div>
+  <main class="scrolly-container">
+    <!-- Section 1: Hero -->
+    <section class="scrolly-section" id="hero" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
         </div>
-
-        <!-- Hero media, premium static cinematic block -->
-        <div class="hub-hero-media hub-hero-media--cine reveal" aria-hidden="true">
-          <div class="hub-hero-cine-fill"></div>
-          <div class="hub-hero-cine-grain"></div>
-          <div class="hub-hero-cine-vignette"></div>
-          <div class="hub-hero-stats">
-            <div class="hub-hero-stat">
-              <span class="hub-hero-stat-val">PT · STP · GW</span>
-              <span class="hub-hero-stat-lbl">Presença Directa</span>
-            </div>
-            <div class="hub-hero-stat-div" aria-hidden="true"></div>
-            <div class="hub-hero-stat">
-              <span class="hub-hero-stat-val">CN · IN</span>
-              <span class="hub-hero-stat-lbl">Sourcing</span>
-            </div>
-            <div class="hub-hero-stat-div" aria-hidden="true"></div>
-            <div class="hub-hero-stat">
-              <span class="hub-hero-stat-val">4 Áreas</span>
-              <span class="hub-hero-stat-lbl">Especialização</span>
-            </div>
-          </div>
-          <div class="hub-hero-media-tag hub-hero-media-tag--dark">
-            <span class="hub-hero-media-dot"></span>
-            <span>Operação Ativa</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── 3) QUATRO DIVISÕES ────────────────────────────── -->
-    <section class="hub-section hub-section--light" id="divisoes">
-      <div class="container">
-        <header class="hub-section-header">
-          <p class="hub-kicker">Divisões</p>
-          <h2 class="hub-section-title">Escolha a área certa e avance já</h2>
-          <span class="hub-rule" aria-hidden="true"></span>
-          <p class="hub-section-sub">Cada divisão tem fluxo próprio. Clique para ver detalhes, exemplos e como solicitar
-            orçamento.</p>
-        </header>
-
-        <div class="hub-services-grid">
-          <!-- Card 1 -->
-          <article class="hub-card">
-            <div class="hub-card-top-accent" aria-hidden="true"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-              </svg>
-            </div>
-            <h3 class="hub-card-title">Produção &amp; Criatividade</h3>
-            <p class="hub-card-short">Produção e execução para projetos corporativos.</p>
-            <ul class="hub-card-list">
-              <li>Stands, eventos e ativações</li>
-              <li>Impressão e materiais</li>
-              <li>Montagens e produção</li>
-            </ul>
-            <div class="hub-card-footer">
-              <a href="/producao.html" class="btn btn-outline btn-full">Ver Produção &amp; Criatividade</a>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="hub-card">
-            <div class="hub-card-top-accent" aria-hidden="true"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-                <line x1="7" y1="7" x2="7.01" y2="7" />
-              </svg>
-            </div>
-            <h3 class="hub-card-title">Importação &amp; Exportação</h3>
-            <p class="hub-card-short">Operação internacional por pedido, ajustada ao destino.</p>
-            <ul class="hub-card-list">
-              <li>Fornecimento e coordenação</li>
-              <li>Documentação e processos</li>
-              <li>Aéreo • Terrestre • Marítimo</li>
-            </ul>
-            <div class="hub-card-footer">
-              <a href="/importacao-e-exportacao.html" class="btn btn-outline btn-full">Ver Importação &amp;
-                Exportação</a>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="hub-card">
-            <div class="hub-card-top-accent" aria-hidden="true"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-              </svg>
-            </div>
-            <h3 class="hub-card-title">Health &amp; Care</h3>
-            <p class="hub-card-short">Consumíveis e equipamentos com pedido para orçamento.</p>
-            <ul class="hub-card-list">
-              <li>Catálogos por categoria</li>
-              <li>Pedido &rarr; validação &rarr; proposta</li>
-              <li>Certificado Infarmed disponível</li>
-            </ul>
-            <div class="hub-card-footer">
-              <a href="/health-care.html" class="btn btn-outline btn-full">Ver Health &amp; Care</a>
-            </div>
-          </article>
-
-          <!-- Card 4 -->
-          <article class="hub-card">
-            <div class="hub-card-top-accent" aria-hidden="true"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </div>
-            <h3 class="hub-card-title">Informática</h3>
-            <p class="hub-card-short">Catálogo suportado por parceiro especializado.</p>
-            <ul class="hub-card-list">
-              <li>Acesso direto ao catálogo</li>
-              <li>Pedidos no ambiente dedicado</li>
-              <li>Encaminhamento simplificado</li>
-            </ul>
-            <div class="hub-card-footer">
-              <a href="/informatica.html" class="btn btn-outline btn-full">Aceder à Informática</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── 4) PORTFÓLIO PREVIEW ──────────────────────────── -->
-    <section class="hub-section hub-section--warm hub-cine-section" data-cine="portfolio">
-      <div class="container">
-        <header class="hub-section-header">
-          <p class="hub-kicker">Prova</p>
-          <h2 class="hub-section-title">Trabalhos selecionados</h2>
-          <span class="hub-rule" aria-hidden="true"></span>
-          <p class="hub-section-sub">Uma amostra de projetos executados pela ON4U em diferentes contextos e
-            necessidades.</p>
-        </header>
-
-        <div class="hub-portfolio-grid">
-          <div class="hub-portfolio-item">
-            <div class="hub-portfolio-bg hub-portfolio-bg--1"></div>
-            <div class="hub-portfolio-scrim"></div>
-            <div class="hub-portfolio-body">
-              <span class="hub-portfolio-tag">Stands</span>
-              <p class="hub-portfolio-title">Projeto exemplo</p>
-            </div>
-          </div>
-          <div class="hub-portfolio-item">
-            <div class="hub-portfolio-bg hub-portfolio-bg--2"></div>
-            <div class="hub-portfolio-scrim"></div>
-            <div class="hub-portfolio-body">
-              <span class="hub-portfolio-tag">Impressão</span>
-              <p class="hub-portfolio-title">Projeto exemplo</p>
-            </div>
-          </div>
-          <div class="hub-portfolio-item">
-            <div class="hub-portfolio-bg hub-portfolio-bg--3"></div>
-            <div class="hub-portfolio-scrim"></div>
-            <div class="hub-portfolio-body">
-              <span class="hub-portfolio-tag">Eventos</span>
-              <p class="hub-portfolio-title">Projeto exemplo</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="hub-cta-row">
-          <a href="/portfolio.html" class="btn btn-outline">Ver portfólio completo</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── 5) SOBRE / CREDIBILIDADE ─────────────────────── -->
-    <section class="hub-section hub-section--light" id="sobre">
-      <div class="container">
-        <div class="hub-sobre-layout">
-          <div class="hub-sobre-content">
-            <header class="hub-section-header">
-              <p class="hub-kicker">Sobre a ON4U</p>
-              <h2 class="hub-section-title">Estrutura e presença para executar com consistência</h2>
-              <span class="hub-rule" aria-hidden="true"></span>
-              <p class="hub-section-sub">
-                Coordenação a partir de Portugal, com sedes em São Tomé e Príncipe e Guiné-Bissau, e escritórios na
-                China e Índia, para suportar operações e fornecimento quando aplicável.
-              </p>
-            </header>
-
-            <div class="hub-sobre-bullets">
-              <div class="hub-bullet">
-                <span class="hub-bullet-dot"></span>
-                <span>Um ponto de contacto e próximos passos claros</span>
-              </div>
-              <div class="hub-bullet">
-                <span class="hub-bullet-dot"></span>
-                <span>Rede de parceiros para execução por destino</span>
-              </div>
-              <div class="hub-bullet">
-                <span class="hub-bullet-dot"></span>
-                <span>Operação por pedido com validação antes de avançar</span>
+        <div class="scrolly-content container">
+          <div class="scrolly-grid">
+            <div class="scrolly-text-block anim-text">
+              <p class="scrolly-eyebrow">Soluções B2B integradas</p>
+              <h1 class="scrolly-title">Executamos o que a sua <span class="text-gradient">empresa precisa</span></h1>
+              <p class="scrolly-sub">Da produção criativa à operação internacional e fornecimento especializado. Quatro divisões focadas em acelerar a sua execução.</p>
+              <div class="scrolly-hero-ctas">
+                <a href="#divisoes" class="btn btn-primary">Nossas Divisões</a>
+                <a href="/contactos.html" class="btn btn-outline">Proposta Rápida</a>
               </div>
             </div>
-
-            <div class="hub-sobre-contacts">
-              <p><strong>Contactos rápidos:</strong> info@on4u.pt &bull; +351 214 326 102</p>
-            </div>
-
-            <div class="hub-sobre-ctas">
-              <a href="/contactos.html" class="btn btn-primary">Contactos</a>
-              <a href="/contactos.html" class="btn btn-outline">Solicitar orçamento</a>
-            </div>
-
-            <p class="hub-sobre-micro">
-              <a href="/importacao-e-exportacao.html" class="hub-link-arrow">Cobertura internacional por destino e
-                projeto &rarr;</a>
-            </p>
-          </div>
-
-          <div class="hub-sobre-media">
-            <!-- Small integrated map card for credibility -->
-            <div class="hub-map-card hub-map-card--small" aria-hidden="true">
-              <div class="hub-map-grid"></div>
-              <div class="hub-map-glow"></div>
-              <div class="hub-map-placeholder">
-                <div class="hub-map-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" width="20" height="20">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path
-                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                </div>
-                <p class="hub-map-label">Portugal &bull; África &bull; Ásia</p>
-              </div>
+            <div class="scrolly-visual-block anim-visual">
+               <div class="hero-dashboard-card floating-card">
+                 <div class="dash-card-header">
+                   <div class="pulse-indicator"></div>
+                   <span>Operação Centralizada</span>
+                 </div>
+                 <div class="dash-card-grid">
+                   <div class="dash-card-item">
+                     <div class="dash-card-icon highlight"><i class="fas fa-microchip"></i></div>
+                     <div class="dash-card-content">
+                       <span class="dash-card-label">Divisões</span>
+                       <span class="dash-card-value">4 Especializadas</span>
+                     </div>
+                   </div>
+                   <div class="dash-card-item">
+                     <div class="dash-card-icon"><i class="fas fa-shipping-fast"></i></div>
+                     <div class="dash-card-content">
+                       <span class="dash-card-label">Supply Chain</span>
+                       <span class="dash-card-value">Global Direct</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ─── 6) FINAL CTA ──────────────────────────────────── -->
-    <section class="hub-final-cta">
-      <div class="container hub-final-cta-inner">
-        <h2 class="hub-final-cta-title">Diga-nos o que precisa. Receba proposta e próximos passos.</h2>
-        <p class="hub-final-cta-sub">Envie requisitos, destino e prazo. Confirmamos o essencial, validamos viabilidade e
-          devolvemos proposta com etapas claras.</p>
-        <div class="hub-final-cta-btns">
-          <a href="/contactos.html" class="btn btn-primary">Solicitar orçamento</a>
-          <a href="/contactos.html" class="btn hub-btn-ghost">Falar connosco</a>
+    <!-- Section 2: Divisões (Hub) -->
+    <section class="scrolly-section" id="divisoes" data-theme="dark">
+      <div class="scrolly-sticky">
+        <div class="scrolly-bg">
+          <div class="scrolly-glow"></div>
+        </div>
+        <div class="scrolly-content container scrolly-flex-col">
+          <div class="anim-text" style="width: 100%;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+               <!-- P&C -->
+               <div class="fact-card hover-lift" style="padding: 2rem;">
+                 <div class="fact-card-icon"><i class="fas fa-palette"></i></div>
+                 <h3 style="margin: 1rem 0 0.5rem 0;">Produção & Criatividade</h3>
+                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Stands, eventos, fardamentos e produção corporativa.</p>
+                 <a href="/producao.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
+               </div>
+               <!-- I&E -->
+               <div class="fact-card hover-lift" style="padding: 2rem;">
+                 <div class="fact-card-icon"><i class="fas fa-globe-africa"></i></div>
+                 <h3 style="margin: 1rem 0 0.5rem 0;">Importação & Exportação</h3>
+                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Op. internacional por pedido, ajustada ao destino.</p>
+                 <a href="/importacao-e-exportacao.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
+               </div>
+               <!-- H&C -->
+               <div class="fact-card hover-lift" style="padding: 2rem;">
+                 <div class="fact-card-icon"><i class="fas fa-hand-holding-medical"></i></div>
+                 <h3 style="margin: 1rem 0 0.5rem 0;">Health & Care</h3>
+                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Fornecimento especializado com certificado Infarmed.</p>
+                 <a href="/health-care.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
+               </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ─── 7) FOOTER ────────────────────────────────────────── -->
-  <footer class="hub-footer">
-    <div class="container hub-footer-grid">
-      <div class="hub-footer-info">
-        <p class="hub-footer-brand">ON4U</p>
-        <p class="hub-footer-brand-text">A ON4U resolve necessidades B2B através de Produção &amp; Criatividade,
-          Importação &amp; Exportação, Health &amp; Care e Informática.</p>
-        <p class="hub-footer-address">
-          Núcleo Empresarial da Abrunheira (Zona Poente), Pavilhão 14<br>
-          2710-679 Sintra, Portugal
-        </p>
-      </div>
-      <div>
-        <p class="hub-footer-col-title">Divisões</p>
-        <ul class="hub-footer-links">
-          <li><a href="/producao.html">Produção &amp; Criatividade</a></li>
-          <li><a href="/importacao-e-exportacao.html">Importação &amp; Exportação</a></li>
-          <li><a href="/health-care.html">Health &amp; Care</a></li>
-          <li><a href="/informatica.html">Informática</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="hub-footer-col-title">Contacto</p>
-        <ul class="hub-footer-links">
-          <li><a href="mailto:info@on4u.pt" class="hub-footer-email">info@on4u.pt</a></li>
-          <li>+351 214 326 102</li>
-          <li>+351 214 326 103</li>
-        </ul>
-      </div>
-      <div>
-        <p class="hub-footer-col-title">Institucional</p>
-        <ul class="hub-footer-links">
-          <li><a href="/portfolio.html">Portfólio</a></li>
-          <li><a href="/sobre.html">Sobre nós</a></li>
-          <li><a href="/contactos.html">Falar com Consultor</a></li>
-          <li><a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer">Consultar Certificado
-              Infarmed</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container hub-footer-bottom">
-      <div class="footer-bottom-inner">
-        <span>&copy; 2026 ON4U. Todos os direitos reservados.</span>
-        <div class="footer-legal-links">
-          <a href="#">Privacidade</a>
-          <a href="#">Termos</a>
+  <!-- Official Footer -->
+  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container">
+      <div class="footer-official-grid">
+        <div>
+          <h4 class="footer-title">ON4U</h4>
+          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e Health & Care.</p>
         </div>
+        <div>
+          <h4 class="footer-title">Sede Portugal</h4>
+          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Contactos Oficiais</h4>
+          <ul class="footer-links">
+            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
+            <li>Tel: (+351) 214 326 102</li>
+            <li>Fax: (+351) 214 326 103</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Certificação</h4>
+          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
+            <i class="fas fa-check-circle"></i> Infarmed Certificado
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 ON4U. Todos os direitos reservados.
       </div>
     </div>
   </footer>
 
-  <script src="scripts/reveal.js" defer></script>
-  <script src="scripts/hub.js" defer></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
