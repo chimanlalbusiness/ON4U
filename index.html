@@ -3,15 +3,589 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>ON4U | Soluções B2B, Produção e Operação Internacional</title>
-  <link rel="stylesheet" href="style.css?v=13" />
-  <link rel="stylesheet" href="scrolly_styles.css?v=5" />
+  <title>ON4U | Soluções B2B — Produção, Importação, Health & Care e Informática</title>
+  <meta name="description" content="ON4U é uma empresa B2B organizada em quatro divisões: Produção & Criatividade, Importação & Exportação, Health & Care e Informática. Execução coordenada, pedido a pedido." />
+  <link rel="stylesheet" href="style.css?v=14" />
+  <link rel="stylesheet" href="scrolly_styles.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* ── INDEX-ONLY OVERRIDES ─────────────────────────────── */
+
+    /* Hero bullets on dark bg */
+    .hero-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .hero-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.9rem;
+      color: #d4d4d8;
+    }
+    .hero-bullets li::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #f97316;
+      flex-shrink: 0;
+    }
+
+    /* Scrolly hero CTA row */
+    .scrolly-hero-ctas {
+      display: flex;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── DIVISÕES (light section) ─────────────────────────── */
+    .divisoes-section {
+      background: var(--c-bg);
+      padding: 5rem 0;
+    }
+    @media (max-width: 767px) { .divisoes-section { padding: 3.5rem 0; } }
+
+    /* Section intro header */
+    .section-intro {
+      margin-bottom: 2.75rem;
+    }
+    .section-intro .overline {
+      color: var(--c-accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .section-intro h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.625rem;
+    }
+    .section-intro p {
+      color: var(--c-muted);
+      font-size: 0.975rem;
+      max-width: 540px;
+      line-height: 1.65;
+    }
+
+    /* 4-column hub cards grid */
+    .divisoes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+    @media (max-width: 1023px) { .divisoes-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 499px) { .divisoes-grid { grid-template-columns: 1fr; } }
+
+    /* ── PORTFOLIO SECTION ─────────────────────────────────── */
+    .portfolio-section {
+      background: var(--c-bg-subtle);
+      padding: 5rem 0;
+    }
+    @media (max-width: 767px) { .portfolio-section { padding: 3.5rem 0; } }
+
+    .portfolio-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .portfolio-chip {
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--c-border-md);
+      color: var(--c-muted);
+      background: var(--c-bg);
+      cursor: pointer;
+      transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+    }
+    .portfolio-chip:hover,
+    .portfolio-chip.is-active {
+      border-color: var(--c-accent);
+      color: var(--c-accent);
+      background: rgba(249,115,22,0.05);
+    }
+
+    /* ── SOBRE SECTION ─────────────────────────────────────── */
+    .sobre-section {
+      background: var(--c-bg);
+      padding: 5rem 0;
+    }
+    @media (max-width: 767px) { .sobre-section { padding: 3.5rem 0; } }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+    @media (max-width: 899px) {
+      .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-visual { order: -1; }
+    }
+
+    .sobre-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 1.75rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    .sobre-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--c-text);
+      line-height: 1.5;
+    }
+    .sobre-bullets li .bul-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: rgba(249,115,22,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-accent);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .sobre-contacts {
+      font-size: 0.85rem;
+      color: var(--c-text);
+      margin-bottom: 1.75rem;
+      padding: 0.875rem 1rem;
+      background: rgba(249,115,22,0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(249,115,22,0.12);
+      line-height: 1.7;
+    }
+    .sobre-contacts a {
+      color: var(--c-accent);
+      font-weight: 600;
+    }
+
+    .sobre-ctas {
+      display: flex;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .sobre-micro {
+      font-size: 0.8rem;
+      color: var(--c-muted);
+    }
+    .sobre-micro a {
+      color: var(--c-accent);
+      font-weight: 600;
+    }
+
+    /* Visual card — presence map-like widget */
+    .sobre-presence-card {
+      background: var(--c-bg-subtle);
+      border: 1px solid var(--c-border-md);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .sobre-presence-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      margin-bottom: 1.25rem;
+    }
+    .presence-nodes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+    .presence-node {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 0.875rem;
+      border-radius: 8px;
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      transition: border-color 200ms ease;
+    }
+    .presence-node:hover { border-color: rgba(249,115,22,0.3); }
+    .presence-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      flex-shrink: 0;
+    }
+    .presence-dot.muted { background: #d1d5db; }
+    .presence-node-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--c-text);
+    }
+    .presence-node-sub {
+      font-size: 0.725rem;
+      color: var(--c-muted);
+      margin-left: auto;
+    }
+
+    /* ── INSTITUTIONAL BLOCK (Section 6) ──────────────────── */
+    .inst-section {
+      background: var(--c-bg-subtle);
+      padding: 4rem 0;
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+    }
+    @media (max-width: 767px) { .inst-section { padding: 3rem 0; } }
+
+    .inst-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 767px) { .inst-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .inst-statement {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--c-text);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+    .inst-sub {
+      font-size: 0.9rem;
+      color: var(--c-muted);
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    .inst-trust-cues {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+    .inst-cue {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--c-muted);
+    }
+    .inst-cue i {
+      color: var(--c-accent);
+      width: 16px;
+      text-align: center;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--c-bg-dark);
+      color: var(--c-dark-muted);
+      padding: 4rem 0 0;
+    }
+    .site-footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+    }
+    @media (max-width: 899px) {
+      .site-footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 499px) {
+      .site-footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    }
+
+    .footer-brand-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--c-dark-text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    .footer-brand-desc {
+      font-size: 0.8125rem;
+      line-height: 1.65;
+      max-width: 270px;
+      margin-bottom: 1.25rem;
+    }
+    .footer-address {
+      font-size: 0.75rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-dark-text);
+      margin-bottom: 1rem;
+    }
+    .footer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.8125rem;
+    }
+    .footer-list a {
+      color: var(--c-dark-muted);
+      text-decoration: none;
+      transition: color 130ms ease;
+    }
+    .footer-list a:hover { color: var(--c-dark-text); }
+    .footer-list .email-link { color: var(--c-accent) !important; font-weight: 600; }
+    .footer-cert {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--c-accent);
+      text-decoration: none;
+      transition: opacity 150ms ease;
+    }
+    .footer-cert:hover { opacity: 0.8; }
+
+    .footer-bottom-bar {
+      border-top: 1px solid var(--c-dark-border);
+      padding: 1.5rem 0;
+    }
+    .footer-bottom-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.725rem;
+      opacity: 0.55;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-legal-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+    .footer-legal-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .footer-legal-links a:hover { opacity: 0.8; }
+
+    /* ── reveal animation for non-scrolly sections ─────────── */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+    }
+    .reveal-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-up.delay-1 { transition-delay: 80ms; }
+    .reveal-up.delay-2 { transition-delay: 160ms; }
+    .reveal-up.delay-3 { transition-delay: 240ms; }
+
+    /* ── Portfolio grid row 2 hides by default (show CTA reveals) ─ */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 767px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 499px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+    .portfolio-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+    }
+    .portfolio-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .portfolio-bg--1 {
+      background:
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
+        linear-gradient(160deg, rgba(249,115,22,0.1) 0%, rgba(220,200,180,0.3) 100%),
+        #ece8e3;
+    }
+    .portfolio-bg--2 {
+      background:
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
+        linear-gradient(200deg, rgba(249,115,22,0.14) 0%, rgba(200,190,180,0.35) 100%),
+        #e8e3df;
+    }
+    .portfolio-bg--3 {
+      background:
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
+        linear-gradient(140deg, rgba(249,115,22,0.2) 0%, rgba(190,185,178,0.35) 100%),
+        #e5dfd9;
+    }
+    .portfolio-bg--4 {
+      background:
+        repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(0,0,0,0.02) 22px, rgba(0,0,0,0.02) 23px),
+        linear-gradient(160deg, rgba(100,120,160,0.15) 0%, rgba(210,215,225,0.4) 100%),
+        #dde2ea;
+    }
+    .portfolio-bg--5 {
+      background:
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
+        linear-gradient(180deg, rgba(80,160,120,0.1) 0%, rgba(200,220,210,0.35) 100%),
+        #e0eae5;
+    }
+    .portfolio-bg--6 {
+      background:
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
+        linear-gradient(140deg, rgba(249,115,22,0.08) 0%, rgba(230,200,170,0.3) 100%),
+        #ede5da;
+    }
+    .portfolio-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,9,11,0.72) 0%, rgba(9,9,11,0.15) 40%, transparent 65%);
+    }
+    .portfolio-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.25rem 1.25rem 1.125rem;
+    }
+    .portfolio-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--c-accent);
+      margin-bottom: 0.25rem;
+    }
+    .portfolio-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .portfolio-cta-row {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    /* Hover lift for cards */
+    .hover-lift {
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+    }
+
+    /* ── SVG logo stroke color on dark bg ─────────────────── */
+    .logo-text-stroke { stroke: #ffffff; }
+    .header.is-dark .logo-text-stroke { stroke: #ffffff; }
+
+    /* ── Hero dashboard card (used inside .floating-card) ──── */
+    .dash-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    .pulse-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
+      50%       { box-shadow: 0 0 0 6px rgba(74,222,128,0.06); }
+    }
+    .dash-card-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .dash-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .dash-card-icon.highlight {
+      background: rgba(249,115,22,0.12);
+      border-color: rgba(249,115,22,0.25);
+      color: #f97316;
+    }
+    .dash-card-label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.4);
+    }
+    .dash-card-value {
+      display: block;
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+    }
+  </style>
 </head>
 <body class="scrolly-body">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 1 — HEADER
+       ═══════════════════════════════════════════════════════════ -->
   <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
+      <!-- Logo -->
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
         <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="30" r="13" class="logo-text-stroke" stroke-width="14" />
@@ -21,10 +595,12 @@
           <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
         </svg>
       </a>
+
+      <!-- Desktop nav -->
       <nav class="header-nav desktop-only" aria-label="Principal">
         <div class="nav-dropdown">
-          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
-            Serviços
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="nav-divisoes-btn">
+            Divisões
             <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="2 4 6 8 10 4"/>
             </svg>
@@ -36,133 +612,539 @@
             <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
           </div>
         </div>
-        <a href="/portfolio.html">Portfólio</a>
+        <a href="/portfolio.html">Portefólio</a>
         <a href="/sobre.html">Sobre</a>
         <a href="/contactos.html">Contactos</a>
       </nav>
+
+      <!-- CTA button -->
       <div class="header-actions">
-        <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary" id="header-cta">Solicitar orçamento</a>
       </div>
+
+      <!-- Mobile toggle -->
+      <button class="mobile-menu-toggle" aria-controls="mobile-nav" aria-expanded="false" id="mobile-menu-btn" aria-label="Abrir menu">
+        <span class="hamburger"></span>
+      </button>
     </div>
+
+    <!-- Mobile nav panel -->
+    <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Mobile">
+      <a href="/producao.html">Produção &amp; Criatividade</a>
+      <a href="/importacao-e-exportacao.html">Importação &amp; Exportação</a>
+      <a href="/health-care.html">Health &amp; Care</a>
+      <a href="/informatica.html">Informática</a>
+      <a href="/portfolio.html">Portefólio</a>
+      <a href="/sobre.html">Sobre</a>
+      <a href="/contactos.html">Contactos</a>
+      <a href="/contactos.html" class="btn btn-primary" style="margin-top:0.5rem;">Solicitar orçamento</a>
+    </nav>
   </header>
 
-  <main class="scrolly-container">
-    <!-- Section 1: Hero -->
-    <section class="scrolly-section" id="hero" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 2 — HERO (scrolly dark)
+       ═══════════════════════════════════════════════════════════ -->
+  <main>
+    <div class="scrolly-container">
+      <section class="scrolly-section" id="hero" data-theme="dark">
+        <div class="scrolly-sticky">
+          <div class="scrolly-bg">
+            <div class="scrolly-glow"></div>
+          </div>
+          <div class="scrolly-content container">
+            <div class="scrolly-grid">
+
+              <!-- Text block -->
+              <div class="scrolly-text-block anim-text">
+                <p class="scrolly-eyebrow">Soluções B2B em quatro divisões</p>
+                <h1 class="scrolly-title">Ajudamos empresas a executar o que precisam — com equipas e parceiros</h1>
+                <p class="scrolly-sub">Da produção à operação internacional e fornecimento especializado. Quatro divisões para encaminhar o seu pedido e acelerar a execução.</p>
+                <ul class="hero-bullets">
+                  <li>Quatro divisões, um ponto de contacto</li>
+                  <li>Pedido → validação → proposta</li>
+                  <li>Execução coordenada até ao fecho</li>
+                </ul>
+                <div class="scrolly-hero-ctas">
+                  <a href="#divisoes" class="btn btn-primary" id="hero-cta-divisoes">Ver divisões</a>
+                  <a href="/contactos.html" class="btn btn-outline" id="hero-cta-orcamento" style="color:#fff;border-color:rgba(255,255,255,0.3);">Solicitar orçamento</a>
+                </div>
+              </div>
+
+              <!-- Visual block — operation status card -->
+              <div class="scrolly-visual-block anim-visual">
+                <div class="hero-dashboard-card floating-card" style="width:100%;max-width:360px;">
+                  <div class="dash-card-header">
+                    <div class="pulse-indicator"></div>
+                    <span>Operação Centralizada</span>
+                  </div>
+                  <div class="dash-card-grid" style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem;">
+                    <div class="dash-card-item">
+                      <div class="dash-card-icon highlight"><i class="fas fa-layer-group"></i></div>
+                      <div class="dash-card-content">
+                        <span class="dash-card-label">Divisões</span>
+                        <span class="dash-card-value">4 Especializadas</span>
+                      </div>
+                    </div>
+                    <div class="dash-card-item">
+                      <div class="dash-card-icon"><i class="fas fa-route"></i></div>
+                      <div class="dash-card-content">
+                        <span class="dash-card-label">Fluxo</span>
+                        <span class="dash-card-value">Pedido → Proposta</span>
+                      </div>
+                    </div>
+                    <div class="dash-card-item">
+                      <div class="dash-card-icon"><i class="fas fa-globe-europe"></i></div>
+                      <div class="dash-card-content">
+                        <span class="dash-card-label">Cobertura</span>
+                        <span class="dash-card-value">Portugal · África · Ásia</span>
+                      </div>
+                    </div>
+                    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:0.875rem;margin-top:0.25rem;">
+                      <div style="display:flex;align-items:center;gap:0.5rem;">
+                        <i class="fas fa-check-circle" style="color:#f97316;font-size:0.8rem;"></i>
+                        <span style="font-size:0.75rem;color:#a1a1aa;font-weight:600;">Certificado Infarmed — Health &amp; Care</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Soluções B2B integradas</p>
-              <h1 class="scrolly-title">Executamos o que a sua <span class="text-gradient">empresa precisa</span></h1>
-              <p class="scrolly-sub">Da produção criativa à operação internacional e fornecimento especializado. Quatro divisões focadas em acelerar a sua execução.</p>
-              <div class="scrolly-hero-ctas">
-                <a href="#divisoes" class="btn btn-primary">Nossas Divisões</a>
-                <a href="/contactos.html" class="btn btn-outline">Proposta Rápida</a>
+      </section>
+    </div><!-- /scrolly-container -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 3 — QUATRO DIVISÕES (light section, non-scrolly)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="divisoes-section" id="divisoes" data-theme="light">
+      <div class="container">
+        <div class="section-intro reveal-up">
+          <span class="overline">Divisões</span>
+          <h2>Escolha a área certa e avance já</h2>
+          <p>Cada divisão tem fluxo próprio. Clique para ver detalhes, exemplos e como solicitar orçamento.</p>
+        </div>
+
+        <div class="divisoes-grid">
+
+          <!-- Card 1: Produção & Criatividade -->
+          <article class="hub-card hover-lift reveal-up" id="card-producao">
+            <div class="hub-card-top-accent"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="10" r="8"/>
+                <path d="M7 10l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Produção &amp; Criatividade</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Produção e execução para projetos corporativos.</p>
+            <ul class="hub-card-list">
+              <li>Stands, eventos e ativações</li>
+              <li>Impressão e materiais</li>
+              <li>Montagens e fardamentos</li>
+            </ul>
+            <div class="hub-card-footer">
+              <a href="/producao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-producao">Ver Produção &amp; Criatividade</a>
+            </div>
+          </article>
+
+          <!-- Card 2: Importação & Exportação -->
+          <article class="hub-card hover-lift reveal-up delay-1" id="card-importacao">
+            <div class="hub-card-top-accent"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="10" r="8"/>
+                <path d="M10 6v4l3 3"/>
+              </svg>
+            </div>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Importação &amp; Exportação</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Operação internacional por pedido, ajustada ao destino.</p>
+            <ul class="hub-card-list">
+              <li>Fornecimento e coordenação</li>
+              <li>Documentação e processos</li>
+              <li>Aéreo · Terrestre · Marítimo</li>
+            </ul>
+            <div class="hub-card-footer">
+              <a href="/importacao-e-exportacao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-importacao">Ver Importação &amp; Exportação</a>
+            </div>
+          </article>
+
+          <!-- Card 3: Health & Care -->
+          <article class="hub-card hover-lift reveal-up delay-2" id="card-health">
+            <div class="hub-card-top-accent"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 3v14M3 10h14"/>
+              </svg>
+            </div>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Health &amp; Care</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Consumíveis e equipamentos com pedido para orçamento.</p>
+            <ul class="hub-card-list">
+              <li>Catálogos por categoria</li>
+              <li>Pedido → validação → proposta</li>
+              <li>Certificado Infarmed disponível</li>
+            </ul>
+            <div class="hub-card-footer">
+              <a href="/health-care.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-health">Ver Health &amp; Care</a>
+            </div>
+          </article>
+
+          <!-- Card 4: Informática -->
+          <article class="hub-card hover-lift reveal-up delay-3" id="card-informatica">
+            <div class="hub-card-top-accent"></div>
+            <div class="hub-card-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="16" height="11" rx="2"/>
+                <path d="M7 18h6"/>
+                <path d="M10 15v3"/>
+              </svg>
+            </div>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Informática</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Catálogo suportado por parceiro especializado.</p>
+            <ul class="hub-card-list">
+              <li>Acesso direto ao catálogo</li>
+              <li>Pedidos no ambiente dedicado</li>
+              <li>Encaminhamento simplificado</li>
+            </ul>
+            <div class="hub-card-footer">
+              <a href="/informatica.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-informatica">Aceder à Informática</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 4 — PORTFÓLIO / TRABALHOS SELECIONADOS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="portfolio-section" id="portfolio" data-theme="light">
+      <div class="container">
+        <div class="section-intro reveal-up">
+          <span class="overline">Prova</span>
+          <h2>Trabalhos selecionados</h2>
+          <p>Uma amostra de projetos executados pela ON4U em diferentes contextos e necessidades.</p>
+        </div>
+
+        <!-- Category chips -->
+        <div class="portfolio-chips reveal-up delay-1">
+          <button class="portfolio-chip is-active" data-filter="todos">Todos</button>
+          <button class="portfolio-chip" data-filter="stands">Stands</button>
+          <button class="portfolio-chip" data-filter="eventos">Eventos</button>
+          <button class="portfolio-chip" data-filter="impressao">Impressão</button>
+          <button class="portfolio-chip" data-filter="design">Design</button>
+          <button class="portfolio-chip" data-filter="remodelacoes">Remodelações</button>
+          <button class="portfolio-chip" data-filter="mobiliario">Mobiliário</button>
+          <button class="portfolio-chip" data-filter="saude">Saúde</button>
+          <button class="portfolio-chip" data-filter="fardamentos">Fardamentos</button>
+        </div>
+
+        <!-- Portfolio grid -->
+        <div class="portfolio-grid reveal-up delay-2">
+
+          <article class="portfolio-item" id="portfolio-1">
+            <div class="portfolio-bg portfolio-bg--1"></div>
+            <div class="portfolio-scrim"></div>
+            <div class="portfolio-body">
+              <p class="portfolio-tag">Stands &amp; Eventos</p>
+              <h3 class="portfolio-title">Stand Corporativo — Feira Industrial</h3>
+            </div>
+          </article>
+
+          <article class="portfolio-item" id="portfolio-2">
+            <div class="portfolio-bg portfolio-bg--2"></div>
+            <div class="portfolio-scrim"></div>
+            <div class="portfolio-body">
+              <p class="portfolio-tag">Impressão &amp; Materiais</p>
+              <h3 class="portfolio-title">Campanha de Comunicação Visual</h3>
+            </div>
+          </article>
+
+          <article class="portfolio-item" id="portfolio-3">
+            <div class="portfolio-bg portfolio-bg--3"></div>
+            <div class="portfolio-scrim"></div>
+            <div class="portfolio-body">
+              <p class="portfolio-tag">Fardamentos</p>
+              <h3 class="portfolio-title">Fardamento Corporativo — Equipa de Campo</h3>
+            </div>
+          </article>
+
+          <article class="portfolio-item" id="portfolio-4">
+            <div class="portfolio-bg portfolio-bg--4"></div>
+            <div class="portfolio-scrim"></div>
+            <div class="portfolio-body">
+              <p class="portfolio-tag">Remodelações &amp; Mobiliário</p>
+              <h3 class="portfolio-title">Espaço Comercial — Intervenção Interior</h3>
+            </div>
+          </article>
+
+          <article class="portfolio-item" id="portfolio-5">
+            <div class="portfolio-bg portfolio-bg--5"></div>
+            <div class="portfolio-scrim"></div>
+            <div class="portfolio-body">
+              <p class="portfolio-tag">Health &amp; Care</p>
+              <h3 class="portfolio-title">Fornecimento de Consumíveis — Unidade de Saúde</h3>
+            </div>
+          </article>
+
+          <article class="portfolio-item" id="portfolio-6">
+            <div class="portfolio-bg portfolio-bg--6"></div>
+            <div class="portfolio-scrim"></div>
+            <div class="portfolio-body">
+              <p class="portfolio-tag">Importação &amp; Exportação</p>
+              <h3 class="portfolio-title">Operação de Sourcing — Destino África</h3>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="portfolio-cta-row reveal-up delay-3">
+          <a href="/portfolio.html" class="btn btn-secondary" id="portfolio-ver-mais">Ver portefólio completo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 5 — SOBRE / CREDIBILIDADE
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sobre-section" id="sobre" data-theme="light">
+      <div class="container">
+        <div class="sobre-grid">
+
+          <!-- Text column -->
+          <div class="sobre-text">
+            <div class="reveal-up">
+              <span class="overline" style="display:block;color:var(--c-accent);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Sobre a ON4U</span>
+              <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.025em;margin-bottom:1rem;">Estrutura e presença para executar com consistência</h2>
+              <p style="font-size:0.95rem;color:var(--c-muted);line-height:1.7;max-width:520px;">Coordenação a partir de Portugal, com sedes em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e Índia — para suportar operações e fornecimento quando aplicável.</p>
+            </div>
+
+            <ul class="sobre-bullets reveal-up delay-1">
+              <li>
+                <span class="bul-icon"><i class="fas fa-user-tie"></i></span>
+                <span>Um ponto de contacto e próximos passos claros</span>
+              </li>
+              <li>
+                <span class="bul-icon"><i class="fas fa-handshake"></i></span>
+                <span>Rede de parceiros para execução por destino</span>
+              </li>
+              <li>
+                <span class="bul-icon"><i class="fas fa-check-double"></i></span>
+                <span>Operação por pedido com validação antes de avançar</span>
+              </li>
+            </ul>
+
+            <div class="sobre-contacts reveal-up delay-2">
+              Contactos rápidos:
+              <a href="mailto:info@on4u.pt">info@on4u.pt</a>
+              &nbsp;·&nbsp;
+              <a href="tel:+351214326102">+351 214 326 102</a>
+              &nbsp;/&nbsp;
+              <a href="tel:+351214326103">+351 214 326 103</a>
+            </div>
+
+            <div class="sobre-ctas reveal-up delay-3">
+              <a href="/contactos.html" class="btn btn-secondary" id="sobre-cta-contactos">Contactos</a>
+              <a href="/contactos.html" class="btn btn-primary" id="sobre-cta-orcamento">Solicitar orçamento</a>
+            </div>
+
+            <p class="sobre-micro reveal-up">
+              Cobertura internacional por destino e projeto.
+              <a href="/importacao-e-exportacao.html">Ver Importação &amp; Exportação →</a>
+            </p>
+          </div>
+
+          <!-- Visual column — presence nodes -->
+          <div class="sobre-visual reveal-up delay-1">
+            <div class="sobre-presence-card">
+              <p class="sobre-presence-title">Presença operacional</p>
+              <div class="presence-nodes">
+                <div class="presence-node">
+                  <span class="presence-dot"></span>
+                  <span class="presence-node-label">Portugal</span>
+                  <span class="presence-node-sub">Sede</span>
+                </div>
+                <div class="presence-node">
+                  <span class="presence-dot"></span>
+                  <span class="presence-node-label">São Tomé &amp; Príncipe</span>
+                  <span class="presence-node-sub">Sede local</span>
+                </div>
+                <div class="presence-node">
+                  <span class="presence-dot"></span>
+                  <span class="presence-node-label">Guiné-Bissau</span>
+                  <span class="presence-node-sub">Sede local</span>
+                </div>
+                <div class="presence-node">
+                  <span class="presence-dot muted"></span>
+                  <span class="presence-node-label">China</span>
+                  <span class="presence-node-sub">Escritório</span>
+                </div>
+                <div class="presence-node">
+                  <span class="presence-dot muted"></span>
+                  <span class="presence-node-label">Índia</span>
+                  <span class="presence-node-sub">Escritório</span>
+                </div>
+                <div class="presence-node">
+                  <span class="presence-dot muted"></span>
+                  <span class="presence-node-label">Rede de parceiros</span>
+                  <span class="presence-node-sub">Outros destinos</span>
+                </div>
               </div>
             </div>
-            <div class="scrolly-visual-block anim-visual">
-               <div class="hero-dashboard-card floating-card">
-                 <div class="dash-card-header">
-                   <div class="pulse-indicator"></div>
-                   <span>Operação Centralizada</span>
-                 </div>
-                 <div class="dash-card-grid">
-                   <div class="dash-card-item">
-                     <div class="dash-card-icon highlight"><i class="fas fa-microchip"></i></div>
-                     <div class="dash-card-content">
-                       <span class="dash-card-label">Divisões</span>
-                       <span class="dash-card-value">4 Especializadas</span>
-                     </div>
-                   </div>
-                   <div class="dash-card-item">
-                     <div class="dash-card-icon"><i class="fas fa-shipping-fast"></i></div>
-                     <div class="dash-card-content">
-                       <span class="dash-card-label">Supply Chain</span>
-                       <span class="dash-card-value">Global Direct</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 6 — BLOCO INSTITUCIONAL CURTO
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="inst-section" id="institucional" data-theme="light">
+      <div class="container">
+        <div class="inst-inner">
+          <div class="reveal-up">
+            <p class="inst-statement">ON4U — empresa B2B organizada em divisões especializadas para execução por pedido.</p>
+            <p class="inst-sub">Apoiamos diferentes tipos de necessidades empresariais, coordenando resposta com equipas e parceiros, do pedido ao fecho.</p>
+          </div>
+          <div class="inst-trust-cues reveal-up delay-1">
+            <div class="inst-cue"><i class="fas fa-building"></i> Sede em Portugal (Sintra)</div>
+            <div class="inst-cue"><i class="fas fa-globe"></i> Operação internacional por pedido</div>
+            <div class="inst-cue"><i class="fas fa-certificate"></i> Certificado Infarmed</div>
+            <div class="inst-cue"><i class="fas fa-layer-group"></i> 4 divisões especializadas</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: Divisões (Hub) -->
-    <section class="scrolly-section" id="divisoes" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container scrolly-flex-col">
-          <div class="anim-text" style="width: 100%;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-               <!-- P&C -->
-               <div class="fact-card hover-lift" style="padding: 2rem;">
-                 <div class="fact-card-icon"><i class="fas fa-palette"></i></div>
-                 <h3 style="margin: 1rem 0 0.5rem 0;">Produção & Criatividade</h3>
-                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Stands, eventos, fardamentos e produção corporativa.</p>
-                 <a href="/producao.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
-               </div>
-               <!-- I&E -->
-               <div class="fact-card hover-lift" style="padding: 2rem;">
-                 <div class="fact-card-icon"><i class="fas fa-globe-africa"></i></div>
-                 <h3 style="margin: 1rem 0 0.5rem 0;">Importação & Exportação</h3>
-                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Op. internacional por pedido, ajustada ao destino.</p>
-                 <a href="/importacao-e-exportacao.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
-               </div>
-               <!-- H&C -->
-               <div class="fact-card hover-lift" style="padding: 2rem;">
-                 <div class="fact-card-icon"><i class="fas fa-hand-holding-medical"></i></div>
-                 <h3 style="margin: 1rem 0 0.5rem 0;">Health & Care</h3>
-                 <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Fornecimento especializado com certificado Infarmed.</p>
-                 <a href="/health-care.html" class="btn btn-outline btn-full" style="font-size: 0.75rem;">Ver Divisão</a>
-               </div>
-            </div>
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 8 — FINAL CTA (dark)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="hub-final-cta" id="final-cta" data-theme="dark">
+      <div class="container">
+        <div class="hub-final-cta-inner reveal-up">
+          <h2 class="hub-final-cta-title">Diga-nos o que precisa.<br>Receba proposta e próximos passos.</h2>
+          <p class="hub-final-cta-sub">Envie requisitos, destino e prazo. Confirmamos o essencial, validamos viabilidade e devolvemos proposta com etapas claras.</p>
+          <div class="hub-final-cta-btns">
+            <a href="/contactos.html" class="btn btn-primary" id="final-cta-orcamento">Solicitar orçamento</a>
+            <a href="/contactos.html" class="hub-btn-ghost" id="final-cta-falar" style="padding:0.75rem 1.75rem;min-height:44px;border-radius:8px;display:inline-flex;align-items:center;">Falar connosco</a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 9 — FOOTER
+         ═══════════════════════════════════════════════════════════ -->
+    <footer class="site-footer" id="footer">
+      <div class="container">
+        <div class="site-footer-grid">
+
+          <!-- Brand column -->
+          <div>
+            <!-- Logo -->
+            <a href="/" aria-label="ON4U Homepage" style="display:inline-block;margin-bottom:1rem;">
+              <svg width="90" height="32" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="30" r="13" stroke="#fff" stroke-width="14" />
+                <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+                <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="129" cy="43" r="7" fill="#f97316" />
+                <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+              </svg>
+            </a>
+            <p class="footer-brand-desc">ON4U — Soluções B2B através de Produção &amp; Criatividade, Importação &amp; Exportação, Health &amp; Care e Informática.</p>
+            <address class="footer-address" style="font-style:normal;">
+              Núcleo Empresarial da Abrunheira (Zona Poente), Pavilhão 14<br>
+              2710-679 Sintra, Portugal
+            </address>
+          </div>
+
+          <!-- Divisões -->
+          <div>
+            <p class="footer-col-title">Divisões</p>
+            <ul class="footer-list">
+              <li><a href="/producao.html">Produção &amp; Criatividade</a></li>
+              <li><a href="/importacao-e-exportacao.html">Importação &amp; Exportação</a></li>
+              <li><a href="/health-care.html">Health &amp; Care</a></li>
+              <li><a href="/informatica.html">Informática</a></li>
+            </ul>
+          </div>
+
+          <!-- Empresa -->
+          <div>
+            <p class="footer-col-title">Empresa</p>
+            <ul class="footer-list">
+              <li><a href="/portfolio.html">Portefólio</a></li>
+              <li><a href="/sobre.html">Sobre a ON4U</a></li>
+              <li><a href="/contactos.html">Contactos</a></li>
+            </ul>
+          </div>
+
+          <!-- Contactos & Certificação -->
+          <div>
+            <p class="footer-col-title">Contactos Oficiais</p>
+            <ul class="footer-list" style="margin-bottom:1.5rem;">
+              <li><a href="mailto:info@on4u.pt" class="email-link">info@on4u.pt</a></li>
+              <li><a href="tel:+351214326102">+351 214 326 102</a></li>
+              <li><a href="tel:+351214326103">+351 214 326 103</a></li>
+            </ul>
+            <p class="footer-col-title" style="margin-top:1.5rem;">Certificação</p>
+            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="footer-cert">
+              <i class="fas fa-check-circle"></i> Infarmed Certificado
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Footer bottom bar -->
+        <div class="footer-bottom-bar">
+          <div class="footer-bottom-inner">
+            <span>&copy; 2026 ON4U. Todos os direitos reservados.</span>
+            <nav class="footer-legal-links" aria-label="Legal">
+              <a href="/privacidade.html">Privacidade</a>
+              <a href="/termos.html">Termos</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </main>
 
-  <!-- Official Footer -->
-  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
-    <div class="container">
-      <div class="footer-official-grid">
-        <div>
-          <h4 class="footer-title">ON4U</h4>
-          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e Health & Care.</p>
-        </div>
-        <div>
-          <h4 class="footer-title">Sede Portugal</h4>
-          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
-        </div>
-        <div>
-          <h4 class="footer-title">Contactos Oficiais</h4>
-          <ul class="footer-links">
-            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
-            <li>Tel: (+351) 214 326 102</li>
-            <li>Fax: (+351) 214 326 103</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer-title">Certificação</h4>
-          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
-            <i class="fas fa-check-circle"></i> Infarmed Certificado
-          </a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        &copy; 2026 ON4U. Todos os direitos reservados.
-      </div>
-    </div>
-  </footer>
-
   <script src="script.js"></script>
+  <script>
+    // ── Reveal-up observer (for non-scrolly sections) ────────────
+    (function () {
+      const els = document.querySelectorAll('.reveal-up');
+      if (!els.length) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(el => io.observe(el));
+    })();
+
+    // ── Portfolio chip filter (visual only) ──────────────────────
+    (function () {
+      const chips = document.querySelectorAll('.portfolio-chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('is-active'));
+          chip.classList.add('is-active');
+        });
+      });
+    })();
+
+    // ── Smooth scroll for hero anchor ───────────────────────────
+    document.querySelector('#hero-cta-divisoes')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('divisoes')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
 </body>
 </html>
