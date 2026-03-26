@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="pt-PT">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>ON4U | Soluções B2B — Produção, Importação, Health & Care e Informática</title>
-  <meta name="description" content="ON4U é uma empresa B2B organizada em quatro divisões: Produção & Criatividade, Importação & Exportação, Health & Care e Informática. Execução coordenada, pedido a pedido." />
+  <title>ON4U | Soluções B2B, Produção, Importação, Health & Care e Informática</title>
+  <meta name="description"
+    content="ON4U é uma empresa B2B organizada em quatro divisões: Produção & Criatividade, Importação & Exportação, Health & Care e Informática. Execução coordenada, pedido a pedido." />
   <link rel="stylesheet" href="style.css?v=14" />
   <link rel="stylesheet" href="scrolly_styles.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- D3 v7 for globe rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <style>
     /* ── INDEX-ONLY OVERRIDES ─────────────────────────────── */
 
@@ -21,6 +25,7 @@
       flex-direction: column;
       gap: 0.6rem;
     }
+
     .hero-bullets li {
       display: flex;
       align-items: center;
@@ -28,6 +33,7 @@
       font-size: 0.9rem;
       color: #d4d4d8;
     }
+
     .hero-bullets li::before {
       content: '';
       display: block;
@@ -50,12 +56,18 @@
       background: var(--c-bg);
       padding: 5rem 0;
     }
-    @media (max-width: 767px) { .divisoes-section { padding: 3.5rem 0; } }
+
+    @media (max-width: 767px) {
+      .divisoes-section {
+        padding: 3.5rem 0;
+      }
+    }
 
     /* Section intro header */
     .section-intro {
       margin-bottom: 2.75rem;
     }
+
     .section-intro .overline {
       color: var(--c-accent);
       font-size: 0.7rem;
@@ -65,12 +77,14 @@
       margin-bottom: 0.5rem;
       display: block;
     }
+
     .section-intro h2 {
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 800;
       letter-spacing: -0.025em;
       margin-bottom: 0.625rem;
     }
+
     .section-intro p {
       color: var(--c-muted);
       font-size: 0.975rem;
@@ -85,15 +99,30 @@
       gap: 1.25rem;
       align-items: stretch;
     }
-    @media (max-width: 1023px) { .divisoes-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 499px) { .divisoes-grid { grid-template-columns: 1fr; } }
+
+    @media (max-width: 1023px) {
+      .divisoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 499px) {
+      .divisoes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* ── PORTFOLIO SECTION ─────────────────────────────────── */
     .portfolio-section {
       background: var(--c-bg-subtle);
       padding: 5rem 0;
     }
-    @media (max-width: 767px) { .portfolio-section { padding: 3.5rem 0; } }
+
+    @media (max-width: 767px) {
+      .portfolio-section {
+        padding: 3.5rem 0;
+      }
+    }
 
     .portfolio-chips {
       display: flex;
@@ -101,6 +130,7 @@
       gap: 0.5rem;
       margin-bottom: 2.5rem;
     }
+
     .portfolio-chip {
       font-size: 0.725rem;
       font-weight: 600;
@@ -112,11 +142,12 @@
       cursor: pointer;
       transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
     }
+
     .portfolio-chip:hover,
     .portfolio-chip.is-active {
       border-color: var(--c-accent);
       color: var(--c-accent);
-      background: rgba(249,115,22,0.05);
+      background: rgba(249, 115, 22, 0.05);
     }
 
     /* ── SOBRE SECTION ─────────────────────────────────────── */
@@ -124,7 +155,12 @@
       background: var(--c-bg);
       padding: 5rem 0;
     }
-    @media (max-width: 767px) { .sobre-section { padding: 3.5rem 0; } }
+
+    @media (max-width: 767px) {
+      .sobre-section {
+        padding: 3.5rem 0;
+      }
+    }
 
     .sobre-grid {
       display: grid;
@@ -132,9 +168,16 @@
       gap: 4.5rem;
       align-items: center;
     }
+
     @media (max-width: 899px) {
-      .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .sobre-visual { order: -1; }
+      .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .sobre-visual {
+        order: -1;
+      }
     }
 
     .sobre-bullets {
@@ -145,6 +188,7 @@
       flex-direction: column;
       gap: 0.875rem;
     }
+
     .sobre-bullets li {
       display: flex;
       align-items: flex-start;
@@ -153,11 +197,12 @@
       color: var(--c-text);
       line-height: 1.5;
     }
+
     .sobre-bullets li .bul-icon {
       width: 28px;
       height: 28px;
       border-radius: 7px;
-      background: rgba(249,115,22,0.08);
+      background: rgba(249, 115, 22, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -172,11 +217,12 @@
       color: var(--c-text);
       margin-bottom: 1.75rem;
       padding: 0.875rem 1rem;
-      background: rgba(249,115,22,0.04);
+      background: rgba(249, 115, 22, 0.04);
       border-radius: 8px;
-      border: 1px solid rgba(249,115,22,0.12);
+      border: 1px solid rgba(249, 115, 22, 0.12);
       line-height: 1.7;
     }
+
     .sobre-contacts a {
       color: var(--c-accent);
       font-weight: 600;
@@ -193,19 +239,21 @@
       font-size: 0.8rem;
       color: var(--c-muted);
     }
+
     .sobre-micro a {
       color: var(--c-accent);
       font-weight: 600;
     }
 
-    /* Visual card — presence map-like widget */
+    /* Visual card, presence map-like widget */
     .sobre-presence-card {
       background: var(--c-bg-subtle);
       border: 1px solid var(--c-border-md);
       border-radius: 12px;
       padding: 1.75rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
+
     .sobre-presence-title {
       font-size: 0.7rem;
       font-weight: 700;
@@ -214,11 +262,13 @@
       color: var(--c-muted);
       margin-bottom: 1.25rem;
     }
+
     .presence-nodes {
       display: flex;
       flex-direction: column;
       gap: 0.625rem;
     }
+
     .presence-node {
       display: flex;
       align-items: center;
@@ -229,7 +279,11 @@
       border: 1px solid var(--c-border);
       transition: border-color 200ms ease;
     }
-    .presence-node:hover { border-color: rgba(249,115,22,0.3); }
+
+    .presence-node:hover {
+      border-color: rgba(249, 115, 22, 0.3);
+    }
+
     .presence-dot {
       width: 8px;
       height: 8px;
@@ -237,12 +291,17 @@
       background: var(--c-accent);
       flex-shrink: 0;
     }
-    .presence-dot.muted { background: #d1d5db; }
+
+    .presence-dot.muted {
+      background: #d1d5db;
+    }
+
     .presence-node-label {
       font-size: 0.8125rem;
       font-weight: 600;
       color: var(--c-text);
     }
+
     .presence-node-sub {
       font-size: 0.725rem;
       color: var(--c-muted);
@@ -256,7 +315,12 @@
       border-top: 1px solid var(--c-border);
       border-bottom: 1px solid var(--c-border);
     }
-    @media (max-width: 767px) { .inst-section { padding: 3rem 0; } }
+
+    @media (max-width: 767px) {
+      .inst-section {
+        padding: 3rem 0;
+      }
+    }
 
     .inst-inner {
       display: grid;
@@ -264,7 +328,13 @@
       gap: 4rem;
       align-items: center;
     }
-    @media (max-width: 767px) { .inst-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+    @media (max-width: 767px) {
+      .inst-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
 
     .inst-statement {
       font-size: clamp(1.1rem, 2vw, 1.4rem);
@@ -274,6 +344,7 @@
       line-height: 1.4;
       margin-bottom: 0.75rem;
     }
+
     .inst-sub {
       font-size: 0.9rem;
       color: var(--c-muted);
@@ -286,6 +357,7 @@
       flex-direction: column;
       gap: 0.625rem;
     }
+
     .inst-cue {
       display: flex;
       align-items: center;
@@ -294,6 +366,7 @@
       font-weight: 600;
       color: var(--c-muted);
     }
+
     .inst-cue i {
       color: var(--c-accent);
       width: 16px;
@@ -306,17 +379,26 @@
       color: var(--c-dark-muted);
       padding: 4rem 0 0;
     }
+
     .site-footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
       padding-bottom: 3rem;
     }
+
     @media (max-width: 899px) {
-      .site-footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .site-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
     }
+
     @media (max-width: 499px) {
-      .site-footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+      .site-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
     }
 
     .footer-brand-name {
@@ -326,17 +408,20 @@
       margin-bottom: 0.5rem;
       letter-spacing: -0.01em;
     }
+
     .footer-brand-desc {
       font-size: 0.8125rem;
       line-height: 1.65;
       max-width: 270px;
       margin-bottom: 1.25rem;
     }
+
     .footer-address {
       font-size: 0.75rem;
       line-height: 1.65;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
+
     .footer-col-title {
       font-size: 0.7rem;
       font-weight: 700;
@@ -345,6 +430,7 @@
       color: var(--c-dark-text);
       margin-bottom: 1rem;
     }
+
     .footer-list {
       list-style: none;
       padding: 0;
@@ -354,13 +440,22 @@
       gap: 0.4rem;
       font-size: 0.8125rem;
     }
+
     .footer-list a {
       color: var(--c-dark-muted);
       text-decoration: none;
       transition: color 130ms ease;
     }
-    .footer-list a:hover { color: var(--c-dark-text); }
-    .footer-list .email-link { color: var(--c-accent) !important; font-weight: 600; }
+
+    .footer-list a:hover {
+      color: var(--c-dark-text);
+    }
+
+    .footer-list .email-link {
+      color: var(--c-accent) !important;
+      font-weight: 600;
+    }
+
     .footer-cert {
       display: inline-flex;
       align-items: center;
@@ -371,12 +466,16 @@
       text-decoration: none;
       transition: opacity 150ms ease;
     }
-    .footer-cert:hover { opacity: 0.8; }
+
+    .footer-cert:hover {
+      opacity: 0.8;
+    }
 
     .footer-bottom-bar {
       border-top: 1px solid var(--c-dark-border);
       padding: 1.5rem 0;
     }
+
     .footer-bottom-inner {
       display: flex;
       justify-content: space-between;
@@ -386,15 +485,20 @@
       flex-wrap: wrap;
       gap: 0.75rem;
     }
+
     .footer-legal-links {
       display: flex;
       gap: 1.25rem;
     }
+
     .footer-legal-links a {
       color: inherit;
       text-decoration: none;
     }
-    .footer-legal-links a:hover { opacity: 0.8; }
+
+    .footer-legal-links a:hover {
+      opacity: 0.8;
+    }
 
     /* ── reveal animation for non-scrolly sections ─────────── */
     .reveal-up {
@@ -402,13 +506,23 @@
       transform: translateY(16px);
       transition: opacity 0.55s ease-out, transform 0.55s ease-out;
     }
+
     .reveal-up.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-up.delay-1 { transition-delay: 80ms; }
-    .reveal-up.delay-2 { transition-delay: 160ms; }
-    .reveal-up.delay-3 { transition-delay: 240ms; }
+
+    .reveal-up.delay-1 {
+      transition-delay: 80ms;
+    }
+
+    .reveal-up.delay-2 {
+      transition-delay: 160ms;
+    }
+
+    .reveal-up.delay-3 {
+      transition-delay: 240ms;
+    }
 
     /* ── Portfolio grid row 2 hides by default (show CTA reveals) ─ */
     .portfolio-grid {
@@ -416,8 +530,18 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
     }
-    @media (max-width: 767px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 499px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+    @media (max-width: 767px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 499px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .portfolio-item {
       position: relative;
@@ -427,60 +551,73 @@
       cursor: pointer;
       transition: transform 220ms ease, box-shadow 220ms ease;
     }
+
     .portfolio-item:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
     }
+
     .portfolio-bg {
       position: absolute;
       inset: 0;
     }
+
     .portfolio-bg--1 {
       background:
-        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
-        linear-gradient(160deg, rgba(249,115,22,0.1) 0%, rgba(220,200,180,0.3) 100%),
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0, 0, 0, 0.025) 22px, rgba(0, 0, 0, 0.025) 23px),
+        linear-gradient(160deg, rgba(249, 115, 22, 0.1) 0%, rgba(220, 200, 180, 0.3) 100%),
         #ece8e3;
     }
+
     .portfolio-bg--2 {
       background:
-        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
-        linear-gradient(200deg, rgba(249,115,22,0.14) 0%, rgba(200,190,180,0.35) 100%),
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0, 0, 0, 0.025) 22px, rgba(0, 0, 0, 0.025) 23px),
+        linear-gradient(200deg, rgba(249, 115, 22, 0.14) 0%, rgba(200, 190, 180, 0.35) 100%),
         #e8e3df;
     }
+
     .portfolio-bg--3 {
       background:
-        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
-        linear-gradient(140deg, rgba(249,115,22,0.2) 0%, rgba(190,185,178,0.35) 100%),
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0, 0, 0, 0.025) 22px, rgba(0, 0, 0, 0.025) 23px),
+        linear-gradient(140deg, rgba(249, 115, 22, 0.2) 0%, rgba(190, 185, 178, 0.35) 100%),
         #e5dfd9;
     }
+
     .portfolio-bg--4 {
       background:
-        repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(0,0,0,0.02) 22px, rgba(0,0,0,0.02) 23px),
-        linear-gradient(160deg, rgba(100,120,160,0.15) 0%, rgba(210,215,225,0.4) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(0, 0, 0, 0.02) 22px, rgba(0, 0, 0, 0.02) 23px),
+        linear-gradient(160deg, rgba(100, 120, 160, 0.15) 0%, rgba(210, 215, 225, 0.4) 100%),
         #dde2ea;
     }
+
     .portfolio-bg--5 {
       background:
-        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
-        linear-gradient(180deg, rgba(80,160,120,0.1) 0%, rgba(200,220,210,0.35) 100%),
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0, 0, 0, 0.025) 22px, rgba(0, 0, 0, 0.025) 23px),
+        linear-gradient(180deg, rgba(80, 160, 120, 0.1) 0%, rgba(200, 220, 210, 0.35) 100%),
         #e0eae5;
     }
+
     .portfolio-bg--6 {
       background:
-        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0,0,0,0.025) 22px, rgba(0,0,0,0.025) 23px),
-        linear-gradient(140deg, rgba(249,115,22,0.08) 0%, rgba(230,200,170,0.3) 100%),
+        repeating-linear-gradient(135deg, transparent, transparent 22px, rgba(0, 0, 0, 0.025) 22px, rgba(0, 0, 0, 0.025) 23px),
+        linear-gradient(140deg, rgba(249, 115, 22, 0.08) 0%, rgba(230, 200, 170, 0.3) 100%),
         #ede5da;
     }
+
     .portfolio-scrim {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(9,9,11,0.72) 0%, rgba(9,9,11,0.15) 40%, transparent 65%);
+      background: linear-gradient(to top, rgba(9, 9, 11, 0.72) 0%, rgba(9, 9, 11, 0.15) 40%, transparent 65%);
     }
+
     .portfolio-body {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       padding: 1.25rem 1.25rem 1.125rem;
     }
+
     .portfolio-tag {
       font-size: 0.62rem;
       font-weight: 700;
@@ -489,6 +626,7 @@
       color: var(--c-accent);
       margin-bottom: 0.25rem;
     }
+
     .portfolio-title {
       font-size: 0.9rem;
       font-weight: 700;
@@ -506,82 +644,258 @@
     .hover-lift {
       transition: transform 220ms ease, box-shadow 220ms ease;
     }
+
     .hover-lift:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
     }
 
     /* ── SVG logo stroke color on dark bg ─────────────────── */
-    .logo-text-stroke { stroke: #ffffff; }
-    .header.is-dark .logo-text-stroke { stroke: #ffffff; }
+    .logo-text-stroke {
+      stroke: #ffffff;
+    }
 
-    /* ── Hero dashboard card (used inside .floating-card) ──── */
-    .dash-card-header {
+    .header.is-dark .logo-text-stroke {
+      stroke: #ffffff;
+    }
+
+    /* ── HERO (globe, 2-column, institutional) ────────────── */
+
+    /* Horizontal rule under eyebrow */
+    .hero-rule {
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: #f97316;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-right: 0.6rem;
+      margin-top: -2px;
+    }
+
+    /* Hero section: full viewport, dark, no scrolly pin */
+    .hero-section {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #09090b;
+      overflow: hidden;
+    }
+
+    /* Unified atmospheric background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      /* dark base */
+      background: #09090b;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      /* subtle dot grid — right-weighted to reinforce globe side */
+      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 90% 80% at 65% 50%, rgba(0,0,0,0.55) 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 65% 50%, rgba(0,0,0,0.55) 20%, transparent 80%);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      /* vignette + restrained orange warmth on globe side */
+      background:
+        radial-gradient(ellipse 50% 55% at 75% 52%, rgba(249,115,22,0.055) 0%, transparent 100%),
+        radial-gradient(ellipse 70% 100% at 0% 50%, rgba(9,9,11,0.7) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 70% at 50% 0%, rgba(9,9,11,0.45) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 70% at 50% 100%, rgba(9,9,11,0.55) 0%, transparent 55%);
+    }
+
+    /* 2-column layout inside hero */
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding-top: max(88px, 10vh);
+      padding-bottom: max(48px, 6vh);
+    }
+
+    @media (max-width: 899px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-top: max(80px, 9vh);
+        padding-bottom: max(40px, 5vh);
+      }
+    }
+
+    /* Left: text block */
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-eyebrow {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: #ffffff;
+      margin: 0 0 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.65;
       color: rgba(255,255,255,0.55);
+      max-width: 440px;
+      margin: 0 0 1.1rem;
     }
-    .pulse-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
-      flex-shrink: 0;
-      animation: pulse-dot 2s ease-in-out infinite;
+
+    /* Hero bullets */
+    .hero-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-    @keyframes pulse-dot {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
-      50%       { box-shadow: 0 0 0 6px rgba(74,222,128,0.06); }
-    }
-    .dash-card-item {
+
+    .hero-bullets li {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
     }
-    .dash-card-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+
+    .hero-bullets li::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #f97316;
+      flex-shrink: 0;
+    }
+
+    /* CTA row */
+    .hero-ctas {
+      display: flex;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+    }
+
+    /* Right: globe container */
+    .hero-globe-wrap {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.85rem;
-      flex-shrink: 0;
+      /* Reserve space so no layout shift */
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 540px;
+      margin: 0 auto;
     }
-    .dash-card-icon.highlight {
-      background: rgba(249,115,22,0.12);
-      border-color: rgba(249,115,22,0.25);
-      color: #f97316;
+
+    @media (max-width: 899px) {
+      .hero-globe-wrap {
+        max-width: 360px;
+        aspect-ratio: 1 / 1;
+      }
     }
-    .dash-card-label {
+
+    .hero-globe-wrap canvas {
       display: block;
-      font-size: 0.65rem;
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 50%;
+      /* Soft radial mask so globe bleeds into bg naturally */
+      -webkit-mask-image: radial-gradient(ellipse 96% 96% at 50% 50%, black 60%, transparent 100%);
+      mask-image: radial-gradient(ellipse 96% 96% at 50% 50%, black 60%, transparent 100%);
+    }
+
+    /* Marker tooltip on hover */
+    .globe-marker-tip {
+      position: absolute;
+      font-size: 0.68rem;
       font-weight: 600;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.75);
+      background: rgba(9,9,11,0.75);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      pointer-events: none;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 180ms ease;
+      z-index: 10;
     }
-    .dash-card-value {
-      display: block;
-      font-size: 0.825rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.85);
+    .globe-marker-tip.is-visible {
+      opacity: 1;
+    }
+
+    /* PT marker glow animation */
+    @keyframes globe-pt-glow {
+      0%, 100% { opacity: 0.35; r: 7px; }
+      50%       { opacity: 0.65; r: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .globe-pt-pulse { animation: none !important; }
+    }
+
+    /* Orange CTA override inside dark hero — style.css base uses #000 for btn-primary */
+    .hero-section .btn-primary {
+      background: #f97316;
+      color: #fff;
+    }
+    .hero-section .btn-primary:hover,
+    .hero-section .btn-primary:focus-visible {
+      background: #ea580c;
+      box-shadow: 0 8px 24px rgba(249,115,22,0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Fix grid: style.css has a conflicting .hero-inner rule (1-col) — override below */
+    section#hero .hero-inner {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    @media (max-width: 899px) {
+      section#hero .hero-inner {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
+
 <body class="scrolly-body">
 
   <!-- ═══════════════════════════════════════════════════════════
-       SECTION 1 — HEADER
+       SECTION 1, HEADER
        ═══════════════════════════════════════════════════════════ -->
   <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
@@ -589,10 +903,13 @@
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
         <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="30" r="13" class="logo-text-stroke" stroke-width="14" />
-          <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
-          <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" class="logo-text-stroke" stroke-width="14"
+            stroke-linecap="round" />
+          <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round"
+            stroke-linejoin="round" />
           <circle cx="129" cy="43" r="7" fill="#f97316" />
-          <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14" stroke-linecap="round" />
+          <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" class="logo-text-stroke" stroke-width="14"
+            stroke-linecap="round" />
         </svg>
       </a>
 
@@ -601,13 +918,16 @@
         <div class="nav-dropdown">
           <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="nav-divisoes-btn">
             Divisões
-            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="2 4 6 8 10 4"/>
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4" />
             </svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
-            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação &amp; Exportação</a>
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp;
+              Criatividade</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação
+              &amp; Exportação</a>
             <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
             <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
           </div>
@@ -623,7 +943,8 @@
       </div>
 
       <!-- Mobile toggle -->
-      <button class="mobile-menu-toggle" aria-controls="mobile-nav" aria-expanded="false" id="mobile-menu-btn" aria-label="Abrir menu">
+      <button class="mobile-menu-toggle" aria-controls="mobile-nav" aria-expanded="false" id="mobile-menu-btn"
+        aria-label="Abrir menu">
         <span class="hamburger"></span>
       </button>
     </div>
@@ -642,81 +963,48 @@
   </header>
 
   <!-- ═══════════════════════════════════════════════════════════
-       SECTION 2 — HERO (scrolly dark)
+       HERO — single section, 2-column, institutional globe
        ═══════════════════════════════════════════════════════════ -->
   <main>
-    <div class="scrolly-container">
-      <section class="scrolly-section" id="hero" data-theme="dark">
-        <div class="scrolly-sticky">
-          <div class="scrolly-bg">
-            <div class="scrolly-glow"></div>
-          </div>
-          <div class="scrolly-content container">
-            <div class="scrolly-grid">
+    <section class="hero-section" id="hero" data-theme="dark" aria-label="ON4U — Soluções B2B Internacionais">
 
-              <!-- Text block -->
-              <div class="scrolly-text-block anim-text">
-                <p class="scrolly-eyebrow">Soluções B2B em quatro divisões</p>
-                <h1 class="scrolly-title">Ajudamos empresas a executar o que precisam — com equipas e parceiros</h1>
-                <p class="scrolly-sub">Da produção à operação internacional e fornecimento especializado. Quatro divisões para encaminhar o seu pedido e acelerar a execução.</p>
-                <ul class="hero-bullets">
-                  <li>Quatro divisões, um ponto de contacto</li>
-                  <li>Pedido → validação → proposta</li>
-                  <li>Execução coordenada até ao fecho</li>
-                </ul>
-                <div class="scrolly-hero-ctas">
-                  <a href="#divisoes" class="btn btn-primary" id="hero-cta-divisoes">Ver divisões</a>
-                  <a href="/contactos.html" class="btn btn-outline" id="hero-cta-orcamento" style="color:#fff;border-color:rgba(255,255,255,0.3);">Solicitar orçamento</a>
-                </div>
-              </div>
+      <!-- Unified atmospheric background -->
+      <div class="hero-bg" aria-hidden="true"></div>
 
-              <!-- Visual block — operation status card -->
-              <div class="scrolly-visual-block anim-visual">
-                <div class="hero-dashboard-card floating-card" style="width:100%;max-width:360px;">
-                  <div class="dash-card-header">
-                    <div class="pulse-indicator"></div>
-                    <span>Operação Centralizada</span>
-                  </div>
-                  <div class="dash-card-grid" style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.25rem;">
-                    <div class="dash-card-item">
-                      <div class="dash-card-icon highlight"><i class="fas fa-layer-group"></i></div>
-                      <div class="dash-card-content">
-                        <span class="dash-card-label">Divisões</span>
-                        <span class="dash-card-value">4 Especializadas</span>
-                      </div>
-                    </div>
-                    <div class="dash-card-item">
-                      <div class="dash-card-icon"><i class="fas fa-route"></i></div>
-                      <div class="dash-card-content">
-                        <span class="dash-card-label">Fluxo</span>
-                        <span class="dash-card-value">Pedido → Proposta</span>
-                      </div>
-                    </div>
-                    <div class="dash-card-item">
-                      <div class="dash-card-icon"><i class="fas fa-globe-europe"></i></div>
-                      <div class="dash-card-content">
-                        <span class="dash-card-label">Cobertura</span>
-                        <span class="dash-card-value">Portugal · África · Ásia</span>
-                      </div>
-                    </div>
-                    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:0.875rem;margin-top:0.25rem;">
-                      <div style="display:flex;align-items:center;gap:0.5rem;">
-                        <i class="fas fa-check-circle" style="color:#f97316;font-size:0.8rem;"></i>
-                        <span style="font-size:0.75rem;color:#a1a1aa;font-weight:600;">Certificado Infarmed — Health &amp; Care</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <!-- 2-column layout -->
+      <div class="container hero-inner">
 
-            </div>
+        <!-- LEFT: copy anchor -->
+        <div class="hero-text">
+          <p class="hero-eyebrow">
+            <span class="hero-rule" aria-hidden="true"></span>Soluções B2B em quatro divisões
+          </p>
+          <h1 class="hero-h1">Ajudamos empresas a executar o que precisam, com equipas e parceiros</h1>
+          <p class="hero-sub">Da produção à operação internacional e fornecimento especializado. Quatro divisões para encaminhar o seu pedido e acelerar a execução.</p>
+          <ul class="hero-bullets" aria-label="Diferenciais">
+            <li>Quatro divisões, um ponto de contacto</li>
+            <li>Pedido → validação → proposta</li>
+            <li>Execução coordenada até ao fecho</li>
+          </ul>
+          <div class="hero-ctas">
+            <a href="#divisoes" class="btn btn-primary" id="hero-cta-divisoes">Ver divisões</a>
+            <a href="/contactos.html" class="btn btn-outline" id="hero-cta-orcamento"
+               style="color:#fff;border-color:rgba(255,255,255,0.28);">Solicitar orçamento</a>
           </div>
         </div>
-      </section>
-    </div><!-- /scrolly-container -->
+
+        <!-- RIGHT: globe visual anchor -->
+        <div class="hero-globe-wrap" aria-hidden="true">
+          <canvas id="hero-globe" aria-hidden="true"></canvas>
+          <!-- Marker tooltip (positioned by JS) -->
+          <div class="globe-marker-tip" id="globe-tip" aria-hidden="true"></div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 3 — QUATRO DIVISÕES (light section, non-scrolly)
+         SECTION 3, QUATRO DIVISÕES (light section, non-scrolly)
          ═══════════════════════════════════════════════════════════ -->
     <section class="divisoes-section" id="divisoes" data-theme="light">
       <div class="container">
@@ -732,20 +1020,24 @@
           <article class="hub-card hover-lift reveal-up" id="card-producao">
             <div class="hub-card-top-accent"></div>
             <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="10" cy="10" r="8"/>
-                <path d="M7 10l2 2 4-4"/>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" />
+                <path d="M7 10l2 2 4-4" />
               </svg>
             </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Produção &amp; Criatividade</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Produção e execução para projetos corporativos.</p>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
+              Produção &amp; Criatividade</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Produção e execução para projetos
+              corporativos.</p>
             <ul class="hub-card-list">
               <li>Stands, eventos e ativações</li>
               <li>Impressão e materiais</li>
               <li>Montagens e fardamentos</li>
             </ul>
             <div class="hub-card-footer">
-              <a href="/producao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-producao">Ver Produção &amp; Criatividade</a>
+              <a href="/producao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
+                id="div-cta-producao">Ver Produção &amp; Criatividade</a>
             </div>
           </article>
 
@@ -753,20 +1045,24 @@
           <article class="hub-card hover-lift reveal-up delay-1" id="card-importacao">
             <div class="hub-card-top-accent"></div>
             <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="10" cy="10" r="8"/>
-                <path d="M10 6v4l3 3"/>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" />
+                <path d="M10 6v4l3 3" />
               </svg>
             </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Importação &amp; Exportação</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Operação internacional por pedido, ajustada ao destino.</p>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
+              Importação &amp; Exportação</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Operação internacional por pedido,
+              ajustada ao destino.</p>
             <ul class="hub-card-list">
               <li>Fornecimento e coordenação</li>
               <li>Documentação e processos</li>
               <li>Aéreo · Terrestre · Marítimo</li>
             </ul>
             <div class="hub-card-footer">
-              <a href="/importacao-e-exportacao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-importacao">Ver Importação &amp; Exportação</a>
+              <a href="/importacao-e-exportacao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
+                id="div-cta-importacao">Ver Importação &amp; Exportação</a>
             </div>
           </article>
 
@@ -774,19 +1070,23 @@
           <article class="hub-card hover-lift reveal-up delay-2" id="card-health">
             <div class="hub-card-top-accent"></div>
             <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M10 3v14M3 10h14"/>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 3v14M3 10h14" />
               </svg>
             </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Health &amp; Care</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Consumíveis e equipamentos com pedido para orçamento.</p>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
+              Health &amp; Care</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Consumíveis e equipamentos com pedido
+              para orçamento.</p>
             <ul class="hub-card-list">
               <li>Catálogos por categoria</li>
               <li>Pedido → validação → proposta</li>
               <li>Certificado Infarmed disponível</li>
             </ul>
             <div class="hub-card-footer">
-              <a href="/health-care.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-health">Ver Health &amp; Care</a>
+              <a href="/health-care.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
+                id="div-cta-health">Ver Health &amp; Care</a>
             </div>
           </article>
 
@@ -794,21 +1094,25 @@
           <article class="hub-card hover-lift reveal-up delay-3" id="card-informatica">
             <div class="hub-card-top-accent"></div>
             <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="4" width="16" height="11" rx="2"/>
-                <path d="M7 18h6"/>
-                <path d="M10 15v3"/>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="16" height="11" rx="2" />
+                <path d="M7 18h6" />
+                <path d="M10 15v3" />
               </svg>
             </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">Informática</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Catálogo suportado por parceiro especializado.</p>
+            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
+              Informática</h3>
+            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Catálogo suportado por parceiro
+              especializado.</p>
             <ul class="hub-card-list">
               <li>Acesso direto ao catálogo</li>
               <li>Pedidos no ambiente dedicado</li>
               <li>Encaminhamento simplificado</li>
             </ul>
             <div class="hub-card-footer">
-              <a href="/informatica.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;" id="div-cta-informatica">Aceder à Informática</a>
+              <a href="/informatica.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
+                id="div-cta-informatica">Aceder à Informática</a>
             </div>
           </article>
 
@@ -817,7 +1121,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 4 — PORTFÓLIO / TRABALHOS SELECIONADOS
+         SECTION 4, PORTFÓLIO / TRABALHOS SELECIONADOS
          ═══════════════════════════════════════════════════════════ -->
     <section class="portfolio-section" id="portfolio" data-theme="light">
       <div class="container">
@@ -848,7 +1152,7 @@
             <div class="portfolio-scrim"></div>
             <div class="portfolio-body">
               <p class="portfolio-tag">Stands &amp; Eventos</p>
-              <h3 class="portfolio-title">Stand Corporativo — Feira Industrial</h3>
+              <h3 class="portfolio-title">Stand Corporativo, Feira Industrial</h3>
             </div>
           </article>
 
@@ -866,7 +1170,7 @@
             <div class="portfolio-scrim"></div>
             <div class="portfolio-body">
               <p class="portfolio-tag">Fardamentos</p>
-              <h3 class="portfolio-title">Fardamento Corporativo — Equipa de Campo</h3>
+              <h3 class="portfolio-title">Fardamento Corporativo, Equipa de Campo</h3>
             </div>
           </article>
 
@@ -875,7 +1179,7 @@
             <div class="portfolio-scrim"></div>
             <div class="portfolio-body">
               <p class="portfolio-tag">Remodelações &amp; Mobiliário</p>
-              <h3 class="portfolio-title">Espaço Comercial — Intervenção Interior</h3>
+              <h3 class="portfolio-title">Espaço Comercial, Intervenção Interior</h3>
             </div>
           </article>
 
@@ -884,7 +1188,7 @@
             <div class="portfolio-scrim"></div>
             <div class="portfolio-body">
               <p class="portfolio-tag">Health &amp; Care</p>
-              <h3 class="portfolio-title">Fornecimento de Consumíveis — Unidade de Saúde</h3>
+              <h3 class="portfolio-title">Fornecimento de Consumíveis, Unidade de Saúde</h3>
             </div>
           </article>
 
@@ -893,7 +1197,7 @@
             <div class="portfolio-scrim"></div>
             <div class="portfolio-body">
               <p class="portfolio-tag">Importação &amp; Exportação</p>
-              <h3 class="portfolio-title">Operação de Sourcing — Destino África</h3>
+              <h3 class="portfolio-title">Operação de Sourcing, Destino África</h3>
             </div>
           </article>
 
@@ -906,7 +1210,7 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 5 — SOBRE / CREDIBILIDADE
+         SECTION 5, SOBRE / CREDIBILIDADE
          ═══════════════════════════════════════════════════════════ -->
     <section class="sobre-section" id="sobre" data-theme="light">
       <div class="container">
@@ -915,9 +1219,15 @@
           <!-- Text column -->
           <div class="sobre-text">
             <div class="reveal-up">
-              <span class="overline" style="display:block;color:var(--c-accent);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Sobre a ON4U</span>
-              <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.025em;margin-bottom:1rem;">Estrutura e presença para executar com consistência</h2>
-              <p style="font-size:0.95rem;color:var(--c-muted);line-height:1.7;max-width:520px;">Coordenação a partir de Portugal, com sedes em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e Índia — para suportar operações e fornecimento quando aplicável.</p>
+              <span class="overline"
+                style="display:block;color:var(--c-accent);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Sobre
+                a ON4U</span>
+              <h2
+                style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.025em;margin-bottom:1rem;">
+                Estrutura e presença para executar com consistência</h2>
+              <p style="font-size:0.95rem;color:var(--c-muted);line-height:1.7;max-width:520px;">Coordenação a partir de
+                Portugal, com sedes em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e Índia, para suportar
+                operações e fornecimento quando aplicável.</p>
             </div>
 
             <ul class="sobre-bullets reveal-up delay-1">
@@ -955,7 +1265,7 @@
             </p>
           </div>
 
-          <!-- Visual column — presence nodes -->
+          <!-- Visual column, presence nodes -->
           <div class="sobre-visual reveal-up delay-1">
             <div class="sobre-presence-card">
               <p class="sobre-presence-title">Presença operacional</p>
@@ -999,14 +1309,16 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 6 — BLOCO INSTITUCIONAL CURTO
+         SECTION 6, BLOCO INSTITUCIONAL CURTO
          ═══════════════════════════════════════════════════════════ -->
     <section class="inst-section" id="institucional" data-theme="light">
       <div class="container">
         <div class="inst-inner">
           <div class="reveal-up">
-            <p class="inst-statement">ON4U — empresa B2B organizada em divisões especializadas para execução por pedido.</p>
-            <p class="inst-sub">Apoiamos diferentes tipos de necessidades empresariais, coordenando resposta com equipas e parceiros, do pedido ao fecho.</p>
+            <p class="inst-statement">ON4U, empresa B2B organizada em divisões especializadas para execução por pedido.
+            </p>
+            <p class="inst-sub">Apoiamos diferentes tipos de necessidades empresariais, coordenando resposta com equipas
+              e parceiros, do pedido ao fecho.</p>
           </div>
           <div class="inst-trust-cues reveal-up delay-1">
             <div class="inst-cue"><i class="fas fa-building"></i> Sede em Portugal (Sintra)</div>
@@ -1019,23 +1331,26 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 8 — FINAL CTA (dark)
+         SECTION 8, FINAL CTA (dark)
          ═══════════════════════════════════════════════════════════ -->
     <section class="hub-final-cta" id="final-cta" data-theme="dark">
       <div class="container">
         <div class="hub-final-cta-inner reveal-up">
           <h2 class="hub-final-cta-title">Diga-nos o que precisa.<br>Receba proposta e próximos passos.</h2>
-          <p class="hub-final-cta-sub">Envie requisitos, destino e prazo. Confirmamos o essencial, validamos viabilidade e devolvemos proposta com etapas claras.</p>
+          <p class="hub-final-cta-sub">Envie requisitos, destino e prazo. Confirmamos o essencial, validamos viabilidade
+            e devolvemos proposta com etapas claras.</p>
           <div class="hub-final-cta-btns">
             <a href="/contactos.html" class="btn btn-primary" id="final-cta-orcamento">Solicitar orçamento</a>
-            <a href="/contactos.html" class="hub-btn-ghost" id="final-cta-falar" style="padding:0.75rem 1.75rem;min-height:44px;border-radius:8px;display:inline-flex;align-items:center;">Falar connosco</a>
+            <a href="/contactos.html" class="hub-btn-ghost" id="final-cta-falar"
+              style="padding:0.75rem 1.75rem;min-height:44px;border-radius:8px;display:inline-flex;align-items:center;">Falar
+              connosco</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 9 — FOOTER
+         SECTION 9, FOOTER
          ═══════════════════════════════════════════════════════════ -->
     <footer class="site-footer" id="footer">
       <div class="container">
@@ -1047,13 +1362,17 @@
             <a href="/" aria-label="ON4U Homepage" style="display:inline-block;margin-bottom:1rem;">
               <svg width="90" height="32" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="20" cy="30" r="13" stroke="#fff" stroke-width="14" />
-                <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="#fff" stroke-width="14" stroke-linecap="round" />
-                <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="#fff" stroke-width="14"
+                  stroke-linecap="round" />
+                <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round"
+                  stroke-linejoin="round" />
                 <circle cx="129" cy="43" r="7" fill="#f97316" />
-                <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+                <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="#fff" stroke-width="14"
+                  stroke-linecap="round" />
               </svg>
             </a>
-            <p class="footer-brand-desc">ON4U — Soluções B2B através de Produção &amp; Criatividade, Importação &amp; Exportação, Health &amp; Care e Informática.</p>
+            <p class="footer-brand-desc">ON4U, Soluções B2B através de Produção &amp; Criatividade, Importação &amp;
+              Exportação, Health &amp; Care e Informática.</p>
             <address class="footer-address" style="font-style:normal;">
               Núcleo Empresarial da Abrunheira (Zona Poente), Pavilhão 14<br>
               2710-679 Sintra, Portugal
@@ -1113,6 +1432,297 @@
   </main>
 
   <script src="script.js"></script>
+  <!-- Globe init — ON4U hero -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ── Waypoints: 5 ON4U operational locations ─────────────────────────
+      const WAYPOINTS = [
+        { id: 'PT', label: 'Portugal',           lng: -8.2245,   lat: 39.4,    primary: true  },
+        { id: 'STP', label: 'São Tomé & Príncipe', lng: 6.6131,   lat: 0.19,   primary: false },
+        { id: 'GW',  label: 'Guiné-Bissau',       lng: -15.1804,  lat: 11.8,   primary: false },
+        { id: 'CN',  label: 'China',               lng: 104.0,     lat: 35.86,  primary: false },
+        { id: 'IN',  label: 'Índia',               lng: 78.96,     lat: 20.59,  primary: false },
+      ];
+
+      // ── Config ──────────────────────────────────────────────────
+      const ROTATION_SPEED = 0.12;   // deg/frame — slow and cinematic
+      const DRAG_SENSITIVITY = 0.4;
+      const DOT_SPACING    = 15;     // larger = fewer dots (performance)
+      const OCEAN_COLOR    = '#0a0a0d';
+      const LAND_DOT_COLOR = 'rgba(190,190,200,0.55)';
+      const GRATICULE_COLOR= 'rgba(255,255,255,0.055)';
+      const OUTLINE_COLOR  = 'rgba(255,255,255,0.12)';
+      const ORANGE         = '#f97316';
+      const NEUTRAL_MARKER = 'rgba(200,200,210,0.7)';
+
+      const canvas = document.getElementById('hero-globe');
+      if (!canvas) return;
+      const wrap  = canvas.parentElement;
+      const tip   = document.getElementById('globe-tip');
+      const ctx   = canvas.getContext('2d');
+      const dpr   = window.devicePixelRatio || 1;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Reserve size from container (aspect-ratio 1:1 set in CSS)
+      let W, H, radius;
+      function resize() {
+        const rect = wrap.getBoundingClientRect();
+        W = rect.width;
+        H = rect.height;
+        radius = Math.min(W, H) / 2 * 0.92;
+        canvas.width  = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.width  = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.scale(dpr, dpr);
+        projection.scale(radius).translate([W / 2, H / 2]);
+        render();
+      }
+
+      // ── Projection ─────────────────────────────────────────────────
+      // Start rotated so Atlantic/Europe/Africa face viewer
+      const rotation = [-10, -28, 0];
+      const projection = d3.geoOrthographic()
+        .scale(300)
+        .translate([300, 300])
+        .clipAngle(90)
+        .rotate(rotation);
+      const path = d3.geoPath().projection(projection).context(ctx);
+      const graticule = d3.geoGraticule()();
+
+      // ── Land dots ─────────────────────────────────────────────────
+      let allDots = [];  // [{lng, lat}]
+      let landFeatures = null;
+
+      function pointInPolygon(pt, ring) {
+        const [x, y] = pt;
+        let inside = false;
+        for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+          const [xi, yi] = ring[i], [xj, yj] = ring[j];
+          if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi)
+            inside = !inside;
+        }
+        return inside;
+      }
+
+      function pointInFeature(pt, feat) {
+        const g = feat.geometry;
+        if (g.type === 'Polygon') {
+          if (!pointInPolygon(pt, g.coordinates[0])) return false;
+          for (let i = 1; i < g.coordinates.length; i++)
+            if (pointInPolygon(pt, g.coordinates[i])) return false;
+          return true;
+        }
+        if (g.type === 'MultiPolygon') {
+          for (const poly of g.coordinates) {
+            if (!pointInPolygon(pt, poly[0])) continue;
+            let hole = false;
+            for (let i = 1; i < poly.length; i++)
+              if (pointInPolygon(pt, poly[i])) { hole = true; break; }
+            if (!hole) return true;
+          }
+        }
+        return false;
+      }
+
+      function buildDots(features) {
+        const step = DOT_SPACING * 0.08;
+        features.forEach(feat => {
+          const [[minLng, minLat], [maxLng, maxLat]] = d3.geoBounds(feat);
+          for (let lng = minLng; lng <= maxLng; lng += step)
+            for (let lat = minLat; lat <= maxLat; lat += step)
+              if (pointInFeature([lng, lat], feat))
+                allDots.push({ lng, lat });
+        });
+      }
+
+      // ── Render ──────────────────────────────────────────────────
+      function isVisible(lng, lat) {
+        // A point is on the visible hemisphere if it projects without clipping
+        const rot = projection.rotate();
+        const d = d3.geoDistance([lng, lat], [-rot[0], -rot[1]]);
+        return d < Math.PI / 2;
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, W, H);
+
+        // Ocean sphere
+        ctx.beginPath();
+        ctx.arc(W / 2, H / 2, projection.scale(), 0, 2 * Math.PI);
+        ctx.fillStyle = OCEAN_COLOR;
+        ctx.fill();
+        ctx.strokeStyle = OUTLINE_COLOR;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        if (!landFeatures) return;
+
+        // Graticule
+        ctx.beginPath();
+        path(graticule);
+        ctx.strokeStyle = GRATICULE_COLOR;
+        ctx.lineWidth = 0.6;
+        ctx.globalAlpha = 1;
+        ctx.stroke();
+
+        // Land outlines (very faint)
+        ctx.beginPath();
+        landFeatures.features.forEach(f => path(f));
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+
+        // Land halftone dots
+        allDots.forEach(({ lng, lat }) => {
+          if (!isVisible(lng, lat)) return;
+          const p = projection([lng, lat]);
+          if (!p) return;
+          ctx.beginPath();
+          ctx.arc(p[0], p[1], 1.1, 0, 2 * Math.PI);
+          ctx.fillStyle = LAND_DOT_COLOR;
+          ctx.fill();
+        });
+
+        // Waypoint markers
+        WAYPOINTS.forEach(wp => {
+          if (!isVisible(wp.lng, wp.lat)) return;
+          const p = projection([wp.lng, wp.lat]);
+          if (!p) return;
+          const [px, py] = p;
+          if (wp.primary) {
+            // PT: orange glow ring + filled dot
+            if (!reducedMotion) {
+              const t = (Date.now() % 3000) / 3000;  // 0‘1
+              const pulse = 4 + Math.sin(t * Math.PI * 2) * 2.5;
+              ctx.beginPath();
+              ctx.arc(px, py, pulse, 0, 2 * Math.PI);
+              ctx.strokeStyle = 'rgba(249,115,22,0.3)';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+            ctx.beginPath();
+            ctx.arc(px, py, 3.5, 0, 2 * Math.PI);
+            ctx.fillStyle = ORANGE;
+            ctx.fill();
+          } else {
+            // Neutral secondary markers
+            ctx.beginPath();
+            ctx.arc(px, py, 2.5, 0, 2 * Math.PI);
+            ctx.strokeStyle = NEUTRAL_MARKER;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(px, py, 1, 0, 2 * Math.PI);
+            ctx.fillStyle = NEUTRAL_MARKER;
+            ctx.fill();
+          }
+        });
+      }
+
+      // ── Auto-rotation ───────────────────────────────────────────────
+      let autoRotate = !reducedMotion;
+      let raf;
+
+      function tick() {
+        if (autoRotate) {
+          rotation[0] += ROTATION_SPEED;
+          projection.rotate(rotation);
+        }
+        render();
+        raf = requestAnimationFrame(tick);
+      }
+
+      // ── Drag rotate (optional, no instructional UI) ────────────────
+      canvas.addEventListener('mousedown', function (e) {
+        autoRotate = false;
+        const startX = e.clientX, startY = e.clientY;
+        const startR = [...rotation];
+
+        function onMove(me) {
+          rotation[0] = startR[0] + (me.clientX - startX) * DRAG_SENSITIVITY;
+          rotation[1] = Math.max(-80, Math.min(80,
+            startR[1] - (me.clientY - startY) * DRAG_SENSITIVITY));
+          projection.rotate(rotation);
+        }
+        function onUp() {
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onUp);
+          // Resume auto-rotate 2s after release
+          if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2000);
+        }
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+      });
+
+      // Touch drag
+      canvas.addEventListener('touchstart', function (e) {
+        autoRotate = false;
+        const t0 = e.touches[0];
+        const startX = t0.clientX, startY = t0.clientY;
+        const startR = [...rotation];
+        function onMove(te) {
+          const t = te.touches[0];
+          rotation[0] = startR[0] + (t.clientX - startX) * DRAG_SENSITIVITY;
+          rotation[1] = Math.max(-80, Math.min(80,
+            startR[1] - (t.clientY - startY) * DRAG_SENSITIVITY));
+          projection.rotate(rotation);
+        }
+        function onEnd() {
+          canvas.removeEventListener('touchmove', onMove);
+          canvas.removeEventListener('touchend', onEnd);
+          if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2000);
+        }
+        canvas.addEventListener('touchmove', onMove, { passive: true });
+        canvas.addEventListener('touchend', onEnd);
+      }, { passive: true });
+
+      // ── Marker hover tooltip ─────────────────────────────────────
+      const HIT_RADIUS = 12;
+      canvas.addEventListener('mousemove', function (e) {
+        if (!tip) return;
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        let hit = null;
+        WAYPOINTS.forEach(wp => {
+          if (!isVisible(wp.lng, wp.lat)) return;
+          const p = projection([wp.lng, wp.lat]);
+          if (!p) return;
+          const dx = mx - p[0], dy = my - p[1];
+          if (dx*dx + dy*dy < HIT_RADIUS * HIT_RADIUS) hit = { wp, p };
+        });
+        if (hit) {
+          tip.textContent = hit.wp.label;
+          tip.style.left = (hit.p[0] + 14) + 'px';
+          tip.style.top  = (hit.p[1] - 10) + 'px';
+          tip.classList.add('is-visible');
+        } else {
+          tip.classList.remove('is-visible');
+        }
+      });
+      canvas.addEventListener('mouseleave', () => tip && tip.classList.remove('is-visible'));
+
+      // ── Load land data then start ─────────────────────────────────
+      resize();
+      window.addEventListener('resize', resize);
+
+      fetch('https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/physical/ne_110m_land.json')
+        .then(r => r.json())
+        .then(data => {
+          landFeatures = data;
+          buildDots(data.features);
+          render();
+        })
+        .catch(() => {
+          // Silently fallback — globe still shows ocean + graticule
+        });
+
+      raf = requestAnimationFrame(tick);
+    })();
+  </script>
   <script>
     // ── Reveal-up observer (for non-scrolly sections) ────────────
     (function () {
@@ -1141,10 +1751,11 @@
     })();
 
     // ── Smooth scroll for hero anchor ───────────────────────────
-    document.querySelector('#hero-cta-divisoes')?.addEventListener('click', function(e) {
+    document.querySelector('#hero-cta-divisoes')?.addEventListener('click', function (e) {
       e.preventDefault();
       document.getElementById('divisoes')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   </script>
 </body>
+
 </html>
