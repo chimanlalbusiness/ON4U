@@ -659,9 +659,9 @@
       stroke: #ffffff;
     }
 
-    /* ── HERO (globe, 2-column, institutional) ────────────── */
+    /* ══ HERO — two-state scroll-reactive ════════════════════ */
 
-    /* Horizontal rule under eyebrow */
+    /* ── Utility: orange rule ── */
     .hero-rule {
       display: inline-block;
       width: 28px;
@@ -673,74 +673,97 @@
       margin-top: -2px;
     }
 
-    /* Hero section: full viewport, dark, no scrolly pin */
+    /* ── Hero scroll canvas: taller than viewport to drive transition ── */
     .hero-section {
       position: relative;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      height: 170vh;          /* 70vh of scroll room for opening→settled */
       background: #09090b;
-      overflow: hidden;
+    }
+    @media (max-width: 899px) {
+      .hero-section {
+        height: auto;
+        min-height: 100svh;
+      }
     }
 
-    /* Unified atmospheric background */
+
+
+    /* ── Atmospheric background ── */
     .hero-bg {
       position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      /* dark base */
       background: #09090b;
     }
     .hero-bg::before {
       content: '';
       position: absolute;
       inset: 0;
-      /* subtle dot grid — right-weighted to reinforce globe side */
-      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
       background-size: 28px 28px;
-      mask-image: radial-gradient(ellipse 90% 80% at 65% 50%, rgba(0,0,0,0.55) 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 65% 50%, rgba(0,0,0,0.55) 20%, transparent 80%);
+      /* dot grid fades out toward left edge (where text lives) */
+      mask-image: radial-gradient(ellipse 90% 80% at 60% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 60% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
     }
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      /* vignette + restrained orange warmth on globe side */
       background:
-        radial-gradient(ellipse 50% 55% at 75% 52%, rgba(249,115,22,0.055) 0%, transparent 100%),
-        radial-gradient(ellipse 70% 100% at 0% 50%, rgba(9,9,11,0.7) 0%, transparent 60%),
-        radial-gradient(ellipse 100% 70% at 50% 0%, rgba(9,9,11,0.45) 0%, transparent 55%),
-        radial-gradient(ellipse 100% 70% at 50% 100%, rgba(9,9,11,0.55) 0%, transparent 55%);
+        /* restrained orange warmth: shifts from center (opening) toward right (settled) via JS */
+        radial-gradient(ellipse 55% 60% at 62% 52%, rgba(249,115,22,0.06) 0%, transparent 100%),
+        /* edge darkening */
+        radial-gradient(ellipse 70% 100% at 0% 50%, rgba(9,9,11,0.65) 0%, transparent 58%),
+        radial-gradient(ellipse 100% 65% at 50% 0%, rgba(9,9,11,0.5) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 65% at 50% 100%, rgba(9,9,11,0.55) 0%, transparent 55%);
     }
 
-    /* 2-column layout inside hero */
-    .hero-inner {
-      position: relative;
-      z-index: 2;
+    /* ── Stage: sticky inner, stays in view while scrolling canvas ── */
+    .hero-stage {
+      position: sticky;
+      top: 0;
+      height: 100svh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
       align-items: center;
-      padding-top: max(88px, 10vh);
-      padding-bottom: max(48px, 6vh);
+      overflow: hidden;
+      z-index: 2;
     }
-
     @media (max-width: 899px) {
-      .hero-inner {
+      .hero-stage {
+        position: relative;
+        height: auto;
+        min-height: 100svh;
         grid-template-columns: 1fr;
-        gap: 2.5rem;
-        padding-top: max(80px, 9vh);
+        padding-top: max(80px, 10vh);
         padding-bottom: max(40px, 5vh);
       }
     }
 
-    /* Left: text block */
+    /* ── Left: text block ── */
     .hero-text {
       display: flex;
       flex-direction: column;
       gap: 0;
+      /* transform driven by --hp; will-change for GPU compositing */
+      will-change: transform, opacity;
+      /* padding keeps text off nav on desktop */
+      padding-top: max(80px, 9vh);
+      padding-bottom: max(40px, 5vh);
+    }
+    @media (max-width: 899px) {
+      .hero-text {
+        padding-top: 0;
+        padding-bottom: 0;
+        order: 1;
+      }
+    }
+
+    /* ── Detail elements that fade in as settled ── */
+    .hero-detail {
+      will-change: opacity;
+      transition: none; /* driven by JS, no CSS transition */
     }
 
     .hero-eyebrow {
@@ -806,23 +829,51 @@
       flex-wrap: wrap;
     }
 
-    /* Right: globe container */
+    /* ── Right: globe anchor column ── */
+    .hero-globe-col {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* padding keeps globe off nav */
+      padding-top: max(80px, 9vh);
+      padding-bottom: max(40px, 5vh);
+      will-change: transform, opacity;
+    }
+    @media (max-width: 899px) {
+      .hero-globe-col {
+        padding-top: 0;
+        padding-bottom: 2rem;
+        order: 2;
+      }
+    }
+
+    /* Globe wrapper: reserves space, never changes layout */
     .hero-globe-wrap {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      /* Reserve space so no layout shift */
       width: 100%;
       aspect-ratio: 1 / 1;
-      max-width: 540px;
+      max-width: 520px;
       margin: 0 auto;
+      /* Loading placeholder ring — visible before land data arrives */
+      border-radius: 50%;
+    }
+    .hero-globe-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 6%;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+      pointer-events: none;
+      z-index: 0;
     }
 
     @media (max-width: 899px) {
       .hero-globe-wrap {
-        max-width: 360px;
-        aspect-ratio: 1 / 1;
+        max-width: 340px;
       }
     }
 
@@ -831,12 +882,14 @@
       width: 100% !important;
       height: 100% !important;
       border-radius: 50%;
+      position: relative;
+      z-index: 1;
       /* Soft radial mask so globe bleeds into bg naturally */
-      -webkit-mask-image: radial-gradient(ellipse 96% 96% at 50% 50%, black 60%, transparent 100%);
-      mask-image: radial-gradient(ellipse 96% 96% at 50% 50%, black 60%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 94% 94% at 50% 50%, black 55%, transparent 100%);
+      mask-image: radial-gradient(ellipse 94% 94% at 50% 50%, black 55%, transparent 100%);
     }
 
-    /* Marker tooltip on hover */
+    /* ── Marker tooltip ── */
     .globe-marker-tip {
       position: absolute;
       font-size: 0.68rem;
@@ -858,35 +911,81 @@
       opacity: 1;
     }
 
-    /* PT marker glow animation */
-    @keyframes globe-pt-glow {
-      0%, 100% { opacity: 0.35; r: 7px; }
-      50%       { opacity: 0.65; r: 10px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .globe-pt-pulse { animation: none !important; }
-    }
-
-    /* Orange CTA override inside dark hero — style.css base uses #000 for btn-primary */
-    .hero-section .btn-primary {
+    /* ── CTA overrides on dark hero ── */
+    .hero-stage .btn-primary {
       background: #f97316;
       color: #fff;
     }
-    .hero-section .btn-primary:hover,
-    .hero-section .btn-primary:focus-visible {
+    .hero-stage .btn-primary:hover,
+    .hero-stage .btn-primary:focus-visible {
       background: #ea580c;
       box-shadow: 0 8px 24px rgba(249,115,22,0.3);
       transform: translateY(-2px);
     }
 
-    /* Fix grid: style.css has a conflicting .hero-inner rule (1-col) — override below */
-    section#hero .hero-inner {
-      grid-template-columns: 1fr 1fr !important;
+    /* ── Opening-state overlay: big centered label ── */
+    .hero-opening-label {
+      position: absolute;
+      /* sits centered over globe area at opening */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+      z-index: 4;
+      will-change: opacity, transform;
     }
-    @media (max-width: 899px) {
-      section#hero .hero-inner {
-        grid-template-columns: 1fr !important;
+    .hero-opening-label .ol-kicker {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .hero-opening-label .ol-kicker::before,
+    .hero-opening-label .ol-kicker::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: rgba(249,115,22,0.45);
+    }
+    .hero-opening-label .ol-h {
+      font-size: clamp(1.6rem, 3.2vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.06;
+      color: #ffffff;
+      display: block;
+      white-space: nowrap;
+    }
+
+    /* ── prefers-reduced-motion: skip to settled state ── */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-section {
+        height: auto !important;
+        min-height: 100svh !important;
+      }
+      .hero-stage {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100svh !important;
+      }
+      .hero-text,
+      .hero-globe-col {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+      .hero-opening-label {
+        display: none !important;
+      }
+      .hero-detail {
+        opacity: 1 !important;
       }
     }
   </style>
@@ -963,7 +1062,8 @@
   </header>
 
   <!-- ═══════════════════════════════════════════════════════════
-       HERO — single section, 2-column, institutional globe
+       HERO — two-state scroll-reactive, single section
+       Opens: globe dominant + centered; Settles: 2-col institutional
        ═══════════════════════════════════════════════════════════ -->
   <main>
     <section class="hero-section" id="hero" data-theme="dark" aria-label="ON4U — Soluções B2B Internacionais">
@@ -971,33 +1071,46 @@
       <!-- Unified atmospheric background -->
       <div class="hero-bg" aria-hidden="true"></div>
 
-      <!-- 2-column layout -->
-      <div class="container hero-inner">
+      <!-- Sticky stage: stays in view while scrolling through the 170vh canvas -->
+      <div class="container hero-stage" id="hero-stage">
 
-        <!-- LEFT: copy anchor -->
-        <div class="hero-text">
-          <p class="hero-eyebrow">
+        <!-- LEFT: copy anchor (text block) -->
+        <div class="hero-text" id="hero-text">
+
+          <!-- Eyebrow: fades in as hero settles -->
+          <p class="hero-eyebrow hero-detail" id="hero-eyebrow">
             <span class="hero-rule" aria-hidden="true"></span>Soluções B2B em quatro divisões
           </p>
-          <h1 class="hero-h1">Ajudamos empresas a executar o que precisam, com equipas e parceiros</h1>
-          <p class="hero-sub">Da produção à operação internacional e fornecimento especializado. Quatro divisões para encaminhar o seu pedido e acelerar a execução.</p>
-          <ul class="hero-bullets" aria-label="Diferenciais">
+
+          <!-- H1: always visible, shifts from center to left -->
+          <h1 class="hero-h1" id="hero-h1">Ajudamos empresas a executar o que precisam, com equipas e parceiros</h1>
+
+          <!-- Sub + bullets + CTAs: fade in as settled -->
+          <p class="hero-sub hero-detail" id="hero-sub">Da produção à operação internacional e fornecimento especializado. Quatro divisões para encaminhar o seu pedido e acelerar a execução.</p>
+          <ul class="hero-bullets hero-detail" id="hero-bullets" aria-label="Diferenciais">
             <li>Quatro divisões, um ponto de contacto</li>
             <li>Pedido → validação → proposta</li>
             <li>Execução coordenada até ao fecho</li>
           </ul>
-          <div class="hero-ctas">
+          <div class="hero-ctas hero-detail" id="hero-ctas">
             <a href="#divisoes" class="btn btn-primary" id="hero-cta-divisoes">Ver divisões</a>
             <a href="/contactos.html" class="btn btn-outline" id="hero-cta-orcamento"
                style="color:#fff;border-color:rgba(255,255,255,0.28);">Solicitar orçamento</a>
           </div>
         </div>
 
-        <!-- RIGHT: globe visual anchor -->
-        <div class="hero-globe-wrap" aria-hidden="true">
-          <canvas id="hero-globe" aria-hidden="true"></canvas>
-          <!-- Marker tooltip (positioned by JS) -->
-          <div class="globe-marker-tip" id="globe-tip" aria-hidden="true"></div>
+        <!-- RIGHT: globe visual column -->
+        <div class="hero-globe-col" id="hero-globe-col">
+          <div class="hero-globe-wrap">
+            <canvas id="hero-globe" aria-hidden="true"></canvas>
+            <div class="globe-marker-tip" id="globe-tip" aria-hidden="true"></div>
+          </div>
+
+          <!-- Opening-state centered label (fades OUT as hero settles) -->
+          <div class="hero-opening-label" id="hero-opening-label" aria-hidden="true">
+            <span class="ol-kicker">Presença Internacional</span>
+            <span class="ol-h">Quatro divisões.<br>Um ponto de contacto.</span>
+          </div>
         </div>
 
       </div>
@@ -1432,296 +1545,369 @@
   </main>
 
   <script src="script.js"></script>
-  <!-- Globe init — ON4U hero -->
+  <!-- ── Hero Globe + Scroll Transition Engine ─────────────────── -->
   <script>
-    (function () {
-      'use strict';
+  (function () {
+    'use strict';
 
-      // ── Waypoints: 5 ON4U operational locations ─────────────────────────
-      const WAYPOINTS = [
-        { id: 'PT', label: 'Portugal',           lng: -8.2245,   lat: 39.4,    primary: true  },
-        { id: 'STP', label: 'São Tomé & Príncipe', lng: 6.6131,   lat: 0.19,   primary: false },
-        { id: 'GW',  label: 'Guiné-Bissau',       lng: -15.1804,  lat: 11.8,   primary: false },
-        { id: 'CN',  label: 'China',               lng: 104.0,     lat: 35.86,  primary: false },
-        { id: 'IN',  label: 'Índia',               lng: 78.96,     lat: 20.59,  primary: false },
-      ];
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       1. GLOBE — ON4U canvas renderer
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const WAYPOINTS = [
+      { id: 'PT',  label: 'Portugal',             lng: -8.2245,  lat: 39.4,  primary: true  },
+      { id: 'STP', label: 'São Tomé & Príncipe',  lng:  6.6131,  lat:  0.19, primary: false },
+      { id: 'GW',  label: 'Guiné-Bissau',         lng:-15.1804,  lat: 11.8,  primary: false },
+      { id: 'CN',  label: 'China',                lng:104.0,     lat: 35.86, primary: false },
+      { id: 'IN',  label: 'Índia',                lng: 78.96,    lat: 20.59, primary: false },
+    ];
 
-      // ── Config ──────────────────────────────────────────────────
-      const ROTATION_SPEED = 0.12;   // deg/frame — slow and cinematic
-      const DRAG_SENSITIVITY = 0.4;
-      const DOT_SPACING    = 15;     // larger = fewer dots (performance)
-      const OCEAN_COLOR    = '#0a0a0d';
-      const LAND_DOT_COLOR = 'rgba(190,190,200,0.55)';
-      const GRATICULE_COLOR= 'rgba(255,255,255,0.055)';
-      const OUTLINE_COLOR  = 'rgba(255,255,255,0.12)';
-      const ORANGE         = '#f97316';
-      const NEUTRAL_MARKER = 'rgba(200,200,210,0.7)';
+    const ROTATION_SPEED  = 0.10;   // deg/frame — slow, cinematic
+    const DRAG_SENSITIVITY= 0.4;
+    const DOT_SPACING     = 15;
+    const OCEAN_COLOR     = '#080809';
+    const LAND_DOT_COLOR  = 'rgba(195,195,208,0.6)';
+    const GRATICULE_COLOR = 'rgba(255,255,255,0.07)';
+    const OUTLINE_COLOR   = 'rgba(255,255,255,0.13)';
+    const ORANGE          = '#f97316';
+    const NEUTRAL_MARKER  = 'rgba(210,210,220,0.75)';
 
-      const canvas = document.getElementById('hero-globe');
-      if (!canvas) return;
-      const wrap  = canvas.parentElement;
-      const tip   = document.getElementById('globe-tip');
-      const ctx   = canvas.getContext('2d');
-      const dpr   = window.devicePixelRatio || 1;
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canvas = document.getElementById('hero-globe');
+    if (!canvas) return;
+    const wrap = canvas.parentElement;
+    const tip  = document.getElementById('globe-tip');
+    const ctx  = canvas.getContext('2d');
+    const dpr  = window.devicePixelRatio || 1;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Reserve size from container (aspect-ratio 1:1 set in CSS)
-      let W, H, radius;
-      function resize() {
-        const rect = wrap.getBoundingClientRect();
-        W = rect.width;
-        H = rect.height;
-        radius = Math.min(W, H) / 2 * 0.92;
-        canvas.width  = W * dpr;
-        canvas.height = H * dpr;
-        canvas.style.width  = W + 'px';
-        canvas.style.height = H + 'px';
-        ctx.scale(dpr, dpr);
-        projection.scale(radius).translate([W / 2, H / 2]);
-        render();
+    let W, H, radius;
+
+    // ── Projection (start facing Atlantic/Europe/Africa) ──────────
+    const rotation = [-10, -28, 0];
+    const projection = d3.geoOrthographic()
+      .scale(300).translate([300, 300]).clipAngle(90).rotate(rotation);
+    const path      = d3.geoPath().projection(projection).context(ctx);
+    const graticule = d3.geoGraticule()();
+
+    // ── Land dots ────────────────────────────────────────────────
+    let allDots      = [];
+    let landFeatures = null;
+
+    function pointInPolygon(pt, ring) {
+      const [x, y] = pt; let inside = false;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        const [xi, yi] = ring[i], [xj, yj] = ring[j];
+        if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi)
+          inside = !inside;
       }
-
-      // ── Projection ─────────────────────────────────────────────────
-      // Start rotated so Atlantic/Europe/Africa face viewer
-      const rotation = [-10, -28, 0];
-      const projection = d3.geoOrthographic()
-        .scale(300)
-        .translate([300, 300])
-        .clipAngle(90)
-        .rotate(rotation);
-      const path = d3.geoPath().projection(projection).context(ctx);
-      const graticule = d3.geoGraticule()();
-
-      // ── Land dots ─────────────────────────────────────────────────
-      let allDots = [];  // [{lng, lat}]
-      let landFeatures = null;
-
-      function pointInPolygon(pt, ring) {
-        const [x, y] = pt;
-        let inside = false;
-        for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-          const [xi, yi] = ring[i], [xj, yj] = ring[j];
-          if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi)
-            inside = !inside;
+      return inside;
+    }
+    function pointInFeature(pt, feat) {
+      const g = feat.geometry;
+      if (g.type === 'Polygon') {
+        if (!pointInPolygon(pt, g.coordinates[0])) return false;
+        for (let i = 1; i < g.coordinates.length; i++)
+          if (pointInPolygon(pt, g.coordinates[i])) return false;
+        return true;
+      }
+      if (g.type === 'MultiPolygon') {
+        for (const poly of g.coordinates) {
+          if (!pointInPolygon(pt, poly[0])) continue;
+          let hole = false;
+          for (let i = 1; i < poly.length; i++)
+            if (pointInPolygon(pt, poly[i])) { hole = true; break; }
+          if (!hole) return true;
         }
-        return inside;
       }
+      return false;
+    }
+    function buildDots(features) {
+      const step = DOT_SPACING * 0.08;
+      features.forEach(feat => {
+        const [[mnLng, mnLat], [mxLng, mxLat]] = d3.geoBounds(feat);
+        for (let lng = mnLng; lng <= mxLng; lng += step)
+          for (let lat = mnLat; lat <= mxLat; lat += step)
+            if (pointInFeature([lng, lat], feat)) allDots.push({ lng, lat });
+      });
+    }
 
-      function pointInFeature(pt, feat) {
-        const g = feat.geometry;
-        if (g.type === 'Polygon') {
-          if (!pointInPolygon(pt, g.coordinates[0])) return false;
-          for (let i = 1; i < g.coordinates.length; i++)
-            if (pointInPolygon(pt, g.coordinates[i])) return false;
-          return true;
-        }
-        if (g.type === 'MultiPolygon') {
-          for (const poly of g.coordinates) {
-            if (!pointInPolygon(pt, poly[0])) continue;
-            let hole = false;
-            for (let i = 1; i < poly.length; i++)
-              if (pointInPolygon(pt, poly[i])) { hole = true; break; }
-            if (!hole) return true;
-          }
-        }
-        return false;
-      }
+    // ── Resize ───────────────────────────────────────────────────
+    function resize() {
+      const rect = wrap.getBoundingClientRect();
+      W = rect.width; H = rect.height;
+      if (!W || !H) return;
+      radius = Math.min(W, H) / 2 * 0.92;
+      canvas.width  = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width  = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.scale(dpr, dpr);
+      projection.scale(radius).translate([W / 2, H / 2]);
+    }
 
-      function buildDots(features) {
-        const step = DOT_SPACING * 0.08;
-        features.forEach(feat => {
-          const [[minLng, minLat], [maxLng, maxLat]] = d3.geoBounds(feat);
-          for (let lng = minLng; lng <= maxLng; lng += step)
-            for (let lat = minLat; lat <= maxLat; lat += step)
-              if (pointInFeature([lng, lat], feat))
-                allDots.push({ lng, lat });
-        });
-      }
+    // ── Visibility ───────────────────────────────────────────────
+    function isVisible(lng, lat) {
+      const rot = projection.rotate();
+      return d3.geoDistance([lng, lat], [-rot[0], -rot[1]]) < Math.PI / 2;
+    }
 
-      // ── Render ──────────────────────────────────────────────────
-      function isVisible(lng, lat) {
-        // A point is on the visible hemisphere if it projects without clipping
-        const rot = projection.rotate();
-        const d = d3.geoDistance([lng, lat], [-rot[0], -rot[1]]);
-        return d < Math.PI / 2;
-      }
+    // ── Render ───────────────────────────────────────────────────
+    // BUG FIX: graticule is drawn BEFORE the landFeatures guard
+    // so the globe always shows as a structured sphere, never a dead circle.
+    function render() {
+      if (!W || !H) return;
+      ctx.clearRect(0, 0, W, H);
 
-      function render() {
-        ctx.clearRect(0, 0, W, H);
+      // 1. Ocean base
+      ctx.beginPath();
+      ctx.arc(W / 2, H / 2, projection.scale(), 0, 2 * Math.PI);
+      ctx.fillStyle = OCEAN_COLOR;
+      ctx.fill();
 
-        // Ocean sphere
+      // 2. Subtle outer ring (always visible — prevents dead circle)
+      ctx.strokeStyle = OUTLINE_COLOR;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      // 3. Graticule (ALWAYS rendered — no longer behind the early return)
+      ctx.beginPath();
+      path(graticule);
+      ctx.strokeStyle = GRATICULE_COLOR;
+      ctx.lineWidth = 0.6;
+      ctx.globalAlpha = 1;
+      ctx.stroke();
+
+      // 4. Land — only once fetched
+      if (!landFeatures) return;
+
+      ctx.beginPath();
+      landFeatures.features.forEach(f => path(f));
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+
+      // 5. Halftone dots
+      allDots.forEach(({ lng, lat }) => {
+        if (!isVisible(lng, lat)) return;
+        const p = projection([lng, lat]);
+        if (!p) return;
         ctx.beginPath();
-        ctx.arc(W / 2, H / 2, projection.scale(), 0, 2 * Math.PI);
-        ctx.fillStyle = OCEAN_COLOR;
+        ctx.arc(p[0], p[1], 1.1, 0, 2 * Math.PI);
+        ctx.fillStyle = LAND_DOT_COLOR;
         ctx.fill();
-        ctx.strokeStyle = OUTLINE_COLOR;
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
+      });
 
-        if (!landFeatures) return;
-
-        // Graticule
-        ctx.beginPath();
-        path(graticule);
-        ctx.strokeStyle = GRATICULE_COLOR;
-        ctx.lineWidth = 0.6;
-        ctx.globalAlpha = 1;
-        ctx.stroke();
-
-        // Land outlines (very faint)
-        ctx.beginPath();
-        landFeatures.features.forEach(f => path(f));
-        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-        ctx.lineWidth = 0.6;
-        ctx.stroke();
-
-        // Land halftone dots
-        allDots.forEach(({ lng, lat }) => {
-          if (!isVisible(lng, lat)) return;
-          const p = projection([lng, lat]);
-          if (!p) return;
-          ctx.beginPath();
-          ctx.arc(p[0], p[1], 1.1, 0, 2 * Math.PI);
-          ctx.fillStyle = LAND_DOT_COLOR;
-          ctx.fill();
-        });
-
-        // Waypoint markers
-        WAYPOINTS.forEach(wp => {
-          if (!isVisible(wp.lng, wp.lat)) return;
-          const p = projection([wp.lng, wp.lat]);
-          if (!p) return;
-          const [px, py] = p;
-          if (wp.primary) {
-            // PT: orange glow ring + filled dot
-            if (!reducedMotion) {
-              const t = (Date.now() % 3000) / 3000;  // 0‘1
-              const pulse = 4 + Math.sin(t * Math.PI * 2) * 2.5;
-              ctx.beginPath();
-              ctx.arc(px, py, pulse, 0, 2 * Math.PI);
-              ctx.strokeStyle = 'rgba(249,115,22,0.3)';
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
+      // 6. Waypoint markers (5 only)
+      WAYPOINTS.forEach(wp => {
+        if (!isVisible(wp.lng, wp.lat)) return;
+        const p = projection([wp.lng, wp.lat]);
+        if (!p) return;
+        const [px, py] = p;
+        if (wp.primary) {
+          if (!reducedMotion) {
+            const t = (Date.now() % 3200) / 3200;
+            const pulse = 4.5 + Math.sin(t * Math.PI * 2) * 2.8;
             ctx.beginPath();
-            ctx.arc(px, py, 3.5, 0, 2 * Math.PI);
-            ctx.fillStyle = ORANGE;
-            ctx.fill();
-          } else {
-            // Neutral secondary markers
-            ctx.beginPath();
-            ctx.arc(px, py, 2.5, 0, 2 * Math.PI);
-            ctx.strokeStyle = NEUTRAL_MARKER;
-            ctx.lineWidth = 1;
+            ctx.arc(px, py, pulse, 0, 2 * Math.PI);
+            ctx.strokeStyle = 'rgba(249,115,22,0.28)';
+            ctx.lineWidth = 1.2;
             ctx.stroke();
-            ctx.beginPath();
-            ctx.arc(px, py, 1, 0, 2 * Math.PI);
-            ctx.fillStyle = NEUTRAL_MARKER;
-            ctx.fill();
           }
-        });
-      }
-
-      // ── Auto-rotation ───────────────────────────────────────────────
-      let autoRotate = !reducedMotion;
-      let raf;
-
-      function tick() {
-        if (autoRotate) {
-          rotation[0] += ROTATION_SPEED;
-          projection.rotate(rotation);
-        }
-        render();
-        raf = requestAnimationFrame(tick);
-      }
-
-      // ── Drag rotate (optional, no instructional UI) ────────────────
-      canvas.addEventListener('mousedown', function (e) {
-        autoRotate = false;
-        const startX = e.clientX, startY = e.clientY;
-        const startR = [...rotation];
-
-        function onMove(me) {
-          rotation[0] = startR[0] + (me.clientX - startX) * DRAG_SENSITIVITY;
-          rotation[1] = Math.max(-80, Math.min(80,
-            startR[1] - (me.clientY - startY) * DRAG_SENSITIVITY));
-          projection.rotate(rotation);
-        }
-        function onUp() {
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('mouseup', onUp);
-          // Resume auto-rotate 2s after release
-          if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2000);
-        }
-        document.addEventListener('mousemove', onMove);
-        document.addEventListener('mouseup', onUp);
-      });
-
-      // Touch drag
-      canvas.addEventListener('touchstart', function (e) {
-        autoRotate = false;
-        const t0 = e.touches[0];
-        const startX = t0.clientX, startY = t0.clientY;
-        const startR = [...rotation];
-        function onMove(te) {
-          const t = te.touches[0];
-          rotation[0] = startR[0] + (t.clientX - startX) * DRAG_SENSITIVITY;
-          rotation[1] = Math.max(-80, Math.min(80,
-            startR[1] - (t.clientY - startY) * DRAG_SENSITIVITY));
-          projection.rotate(rotation);
-        }
-        function onEnd() {
-          canvas.removeEventListener('touchmove', onMove);
-          canvas.removeEventListener('touchend', onEnd);
-          if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2000);
-        }
-        canvas.addEventListener('touchmove', onMove, { passive: true });
-        canvas.addEventListener('touchend', onEnd);
-      }, { passive: true });
-
-      // ── Marker hover tooltip ─────────────────────────────────────
-      const HIT_RADIUS = 12;
-      canvas.addEventListener('mousemove', function (e) {
-        if (!tip) return;
-        const rect = canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
-        let hit = null;
-        WAYPOINTS.forEach(wp => {
-          if (!isVisible(wp.lng, wp.lat)) return;
-          const p = projection([wp.lng, wp.lat]);
-          if (!p) return;
-          const dx = mx - p[0], dy = my - p[1];
-          if (dx*dx + dy*dy < HIT_RADIUS * HIT_RADIUS) hit = { wp, p };
-        });
-        if (hit) {
-          tip.textContent = hit.wp.label;
-          tip.style.left = (hit.p[0] + 14) + 'px';
-          tip.style.top  = (hit.p[1] - 10) + 'px';
-          tip.classList.add('is-visible');
+          ctx.beginPath();
+          ctx.arc(px, py, 3.5, 0, 2 * Math.PI);
+          ctx.fillStyle = ORANGE;
+          ctx.fill();
         } else {
-          tip.classList.remove('is-visible');
+          ctx.beginPath();
+          ctx.arc(px, py, 2.5, 0, 2 * Math.PI);
+          ctx.strokeStyle = NEUTRAL_MARKER;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(px, py, 1, 0, 2 * Math.PI);
+          ctx.fillStyle = NEUTRAL_MARKER;
+          ctx.fill();
         }
       });
-      canvas.addEventListener('mouseleave', () => tip && tip.classList.remove('is-visible'));
+    }
 
-      // ── Load land data then start ─────────────────────────────────
+    // ── Animation loop ───────────────────────────────────────────
+    let autoRotate = !reducedMotion;
+
+    function tick() {
+      if (autoRotate) {
+        rotation[0] += ROTATION_SPEED;
+        projection.rotate(rotation);
+      }
+      render();
+      requestAnimationFrame(tick);
+    }
+
+    // ── Drag rotate ──────────────────────────────────────────────
+    canvas.addEventListener('mousedown', e => {
+      autoRotate = false;
+      const sx = e.clientX, sy = e.clientY, sr = [...rotation];
+      const onMove = me => {
+        rotation[0] = sr[0] + (me.clientX - sx) * DRAG_SENSITIVITY;
+        rotation[1] = Math.max(-80, Math.min(80, sr[1] - (me.clientY - sy) * DRAG_SENSITIVITY));
+        projection.rotate(rotation);
+      };
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2200);
+      };
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+    canvas.addEventListener('touchstart', e => {
+      autoRotate = false;
+      const t0 = e.touches[0], sx = t0.clientX, sy = t0.clientY, sr = [...rotation];
+      const onMove = te => {
+        const t = te.touches[0];
+        rotation[0] = sr[0] + (t.clientX - sx) * DRAG_SENSITIVITY;
+        rotation[1] = Math.max(-80, Math.min(80, sr[1] - (t.clientY - sy) * DRAG_SENSITIVITY));
+        projection.rotate(rotation);
+      };
+      const onEnd = () => {
+        canvas.removeEventListener('touchmove', onMove);
+        canvas.removeEventListener('touchend', onEnd);
+        if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2200);
+      };
+      canvas.addEventListener('touchmove', onMove, { passive: true });
+      canvas.addEventListener('touchend', onEnd);
+    }, { passive: true });
+
+    // ── Hover tooltip ────────────────────────────────────────────
+    const HIT = 12;
+    canvas.addEventListener('mousemove', e => {
+      if (!tip) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      let hit = null;
+      WAYPOINTS.forEach(wp => {
+        if (!isVisible(wp.lng, wp.lat)) return;
+        const p = projection([wp.lng, wp.lat]);
+        if (!p) return;
+        const dx = mx - p[0], dy = my - p[1];
+        if (dx*dx + dy*dy < HIT*HIT) hit = { wp, p };
+      });
+      if (hit) {
+        tip.textContent = hit.wp.label;
+        tip.style.left = (hit.p[0] + 14) + 'px';
+        tip.style.top  = (hit.p[1] - 10) + 'px';
+        tip.classList.add('is-visible');
+      } else {
+        tip.classList.remove('is-visible');
+      }
+    });
+    canvas.addEventListener('mouseleave', () => tip && tip.classList.remove('is-visible'));
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       2. SCROLL-REACTIVE HERO TRANSITION
+       Progress 0 → 1 over the 170vh scroll canvas.
+       Opening  (p=0): globe centered+large, copy centered & dimmed
+       Settled  (p=1): globe right col, copy left col — normal layout
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const heroSection  = document.getElementById('hero');
+    const heroStage    = document.getElementById('hero-stage');
+    const heroText     = document.getElementById('hero-text');
+    const heroGlobeCol = document.getElementById('hero-globe-col');
+    const heroOpenLbl  = document.getElementById('hero-opening-label');
+    const details      = document.querySelectorAll('.hero-detail');
+    const heroH1       = document.getElementById('hero-h1');
+
+    // On mobile or reduced-motion: skip all transforms entirely
+    const isMobile = () => window.innerWidth < 900;
+
+    function easeInOut(t) {
+      return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+    }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    let lastProgress = -1;
+
+    function applyHeroProgress(raw) {
+      if (reducedMotion || isMobile()) {
+        heroText.style.transform     = '';
+        heroText.style.opacity       = '';
+        heroGlobeCol.style.transform = '';
+        heroGlobeCol.style.opacity   = '';
+        if (heroOpenLbl) { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
+        details.forEach(el => { el.style.opacity = ''; });
+        if (heroH1) heroH1.style.opacity = '';
+        return;
+      }
+
+      const p = Math.max(0, Math.min(1, raw));
+      if (Math.abs(p - lastProgress) < 0.001) return;
+      lastProgress = p;
+      const e = easeInOut(p);
+
+      /* ── GLOBE: centered at opening, moves right to column position   ── */
+      const globeTx = lerp(-13, 0, e);
+      const globeSc = lerp(1.16, 1.0, e);
+      heroGlobeCol.style.transform = `translateX(${globeTx}vw) scale(${globeSc})`;
+
+      /* ── OPENING LABEL: visible at e=0, fades out by e=0.5            ── */
+      const lblOp = Math.max(0, 1 - e / 0.5);
+      if (heroOpenLbl) {
+        heroOpenLbl.style.opacity   = (lblOp * 0.95).toFixed(3);
+        heroOpenLbl.style.transform = `translate(-50%, calc(-50% + ${lerp(0, -10, e)}px))`;
+        heroOpenLbl.style.display   = lblOp < 0.01 ? 'none' : '';
+      }
+
+      /* ── TEXT BLOCK: hidden in first third, fades in from left        ── */
+      // textPhase: 0→1 starting at e=0.25
+      const textPhase = Math.max(0, Math.min(1, (e - 0.25) / 0.75));
+      const textTx    = lerp(-8, 0, textPhase);   // slides in from left
+      heroText.style.transform = `translateX(${textTx}vw)`;
+      heroText.style.opacity   = textPhase.toFixed(3);
+
+      /* ── H1 follows same fade as text block                           ── */
+      if (heroH1) heroH1.style.opacity = textPhase.toFixed(3);
+
+      /* ── DETAIL ELEMENTS (sub, bullets, CTAs): appear in last 35%     ── */
+      const detOp = Math.max(0, Math.min(1, (e - 0.65) / 0.35));
+      details.forEach(el => { el.style.opacity = detOp.toFixed(3); });
+    }
+
+    function onScroll() {
+      if (!heroSection) return;
+      const rect = heroSection.getBoundingClientRect();
+      // scroll distance within the 70vh extra canvas (170vh total - 100vh stage)
+      const scrollRoom = heroSection.offsetHeight - window.innerHeight;
+      const scrolled   = Math.max(0, -rect.top);  // px scrolled into hero
+      const raw        = scrollRoom > 0 ? scrolled / scrollRoom : 1;
+      applyHeroProgress(raw);
+    }
+
+    // ── Init: set opening state immediately (p=0) ─────────────────
+    function initHero() {
       resize();
-      window.addEventListener('resize', resize);
+      // Force opening transforms synchronously before first paint
+      applyHeroProgress(window.scrollY < 10 ? 0 : 1);
+    }
 
-      fetch('https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/physical/ne_110m_land.json')
-        .then(r => r.json())
-        .then(data => {
-          landFeatures = data;
-          buildDots(data.features);
-          render();
-        })
-        .catch(() => {
-          // Silently fallback — globe still shows ocean + graticule
-        });
+    // ── Load land data ────────────────────────────────────────────
+    fetch('https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/physical/ne_110m_land.json')
+      .then(r => r.json())
+      .then(data => {
+        landFeatures = data;
+        buildDots(data.features);
+      })
+      .catch(() => {/* graceful degradation: graticule still shows */});
 
-      raf = requestAnimationFrame(tick);
-    })();
+    // ── Bootstrap ────────────────────────────────────────────────
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => { resize(); onScroll(); });
+
+    // Wait one frame so layout is settled, then init
+    requestAnimationFrame(() => {
+      initHero();
+      requestAnimationFrame(tick);
+    });
+
+  })();
   </script>
   <script>
     // ── Reveal-up observer (for non-scrolly sections) ────────────
