@@ -51,6 +51,126 @@
       flex-wrap: wrap;
     }
 
+    /* ── Hero secondary sub ── */
+    .hero-sub-2 {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.4);
+      max-width: 420px;
+      margin: 0 0 0.9rem;
+      font-style: italic;
+    }
+
+    /* ── Opening label sub text ── */
+    .hero-opening-label .ol-sub {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(249,115,22,0.8);
+      margin-top: 1rem;
+      text-transform: uppercase;
+    }
+
+    /* ── Portfolio & References Refinement ── */
+    .pf-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #161618;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+      cursor: pointer;
+    }
+    .pf-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      border-color: rgba(249,115,22,0.25);
+    }
+    .pf-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 500ms ease, opacity 300ms ease;
+    }
+    .pf-card:hover .pf-img {
+      transform: scale(1.05);
+      opacity: 0.6;
+    }
+    .pf-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,9,11,0.95) 0%, rgba(9,9,11,0.3) 45%, transparent 80%);
+      transition: background 300ms ease;
+    }
+    .pf-card:hover .pf-overlay {
+      background: linear-gradient(to top, rgba(9,9,11,0.95) 0%, rgba(249,115,22,0.15) 50%, rgba(249,115,22,0.05) 100%);
+    }
+    .pf-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.2rem 1.25rem 1rem;
+      z-index: 2;
+    }
+    .pf-hover-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      opacity: 0;
+      background: rgba(249,115,22,0.95);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      transition: all 300ms ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .pf-card:hover .pf-hover-btn {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    .ref-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 899px) { .ref-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 599px) { .ref-grid { grid-template-columns: 1fr; } }
+    
+    .ref-card {
+      background: #161618;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: border-color 220ms ease, box-shadow 220ms ease;
+    }
+    .ref-card:hover {
+      border-color: rgba(249,115,22,0.2);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .hero-opening-label .ol-sub {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(249,115,22,0.65);
+      margin-top: 0.75rem;
+      text-transform: uppercase;
+    }
+
     /* ── DIVISÕES (light section) ─────────────────────────── */
     .divisoes-section {
       background: var(--c-bg);
@@ -676,7 +796,7 @@
     /* ── Hero scroll canvas: taller than viewport to drive transition ── */
     .hero-section {
       position: relative;
-      height: 170vh;          /* 70vh of scroll room for opening→settled */
+      height: 125vh;          /* Reduced height to snap efficiently to next section */
       background: #09090b;
     }
     @media (max-width: 899px) {
@@ -688,35 +808,35 @@
 
 
 
-    /* ── Atmospheric background ── */
+    /* ── Atmospheric background (DOTS VARIANT) ── */
     .hero-bg {
       position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
       background: #09090b;
+      overflow: hidden;
     }
+    /* Grid/Dots pattern */
     .hero-bg::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 28px 28px;
-      /* dot grid fades out toward left edge (where text lives) */
-      mask-image: radial-gradient(ellipse 90% 80% at 60% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 60% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+      /* fade-edges mask */
+      -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+      mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+      opacity: 0.8;
     }
+    /* Base dark fade at bottom */
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        /* restrained orange warmth: shifts from center (opening) toward right (settled) via JS */
-        radial-gradient(ellipse 55% 60% at 62% 52%, rgba(249,115,22,0.06) 0%, transparent 100%),
-        /* edge darkening */
-        radial-gradient(ellipse 70% 100% at 0% 50%, rgba(9,9,11,0.65) 0%, transparent 58%),
-        radial-gradient(ellipse 100% 65% at 50% 0%, rgba(9,9,11,0.5) 0%, transparent 55%),
-        radial-gradient(ellipse 100% 65% at 50% 100%, rgba(9,9,11,0.55) 0%, transparent 55%);
+      background: linear-gradient(180deg, transparent 50%, #09090b 100%);
     }
 
     /* ── Stage: sticky inner, stays in view while scrolling canvas ── */
@@ -926,43 +1046,64 @@
     /* ── Opening-state overlay: big centered label ── */
     .hero-opening-label {
       position: absolute;
-      /* sits centered over globe area at opening */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      text-align: center;
+      pointer-events: none;
+      z-index: 4;
+      will-change: opacity, transform;
+      background: radial-gradient(circle at center, rgba(9,9,11,0.6) 0%, transparent 80%);
+      padding: 3rem;
+      width: 100%;
+    }
+    .hero-opening-label .ol-kicker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .hero-opening-label .ol-kicker::before,
+    .hero-opening-label .ol-kicker::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: rgba(249,115,22,0.5);
+    }
+    .hero-opening-label .ol-h {
+      font-size: clamp(1.4rem, 2.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #ffffff;
+      display: block;
+      white-space: nowrap;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.8);
+      margin: 0.4rem 0;
+    }
+
+    .hero-transition-label {
+      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       pointer-events: none;
       z-index: 4;
-      will-change: opacity, transform;
-    }
-    .hero-opening-label .ol-kicker {
-      font-size: 0.65rem;
+      will-change: opacity;
+      opacity: 0;
+      font-size: clamp(1.3rem, 2.2vw, 2.2rem);
       font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .hero-opening-label .ol-kicker::before,
-    .hero-opening-label .ol-kicker::after {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: rgba(249,115,22,0.45);
-    }
-    .hero-opening-label .ol-h {
-      font-size: clamp(1.6rem, 3.2vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.06;
-      color: #ffffff;
-      display: block;
+      color: #fff;
       white-space: nowrap;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.8);
     }
 
     /* ── prefers-reduced-motion: skip to settled state ── */
@@ -987,6 +1128,54 @@
       .hero-detail {
         opacity: 1 !important;
       }
+    }
+
+    @media (max-width: 899px) {
+      .hero-opening-label {
+        display: none !important;
+      }
+      .hero-detail {
+        opacity: 1 !important;
+      }
+      #hero-text {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      #hero-globe-col {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .pf-grid-resp {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+    }
+
+    /* Mobile Nav Fixes */
+    .mobile-nav {
+      position: absolute;
+      top: 68px;
+      left: 0;
+      width: 100%;
+      background: #09090b;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 99;
+      transform: translateY(-10px);
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+    .mobile-nav:not([hidden]) {
+      display: flex !important;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .mobile-menu-toggle.is-active .hamburger {
+      background: transparent !important;
+    }
+    .mobile-menu-toggle.is-active .hamburger::before {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .mobile-menu-toggle.is-active .hamburger::after {
+      transform: translateY(-7px) rotate(-45deg);
     }
   </style>
 </head>
@@ -1023,22 +1212,20 @@
             </svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp;
-              Criatividade</a>
-            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação
-              &amp; Exportação</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Opera&ccedil;&atilde;o Internacional</a>
             <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
-            <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
+            <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Inform&aacute;tica</a>
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produ&ccedil;&atilde;o &amp; Criatividade</a>
           </div>
         </div>
-        <a href="/portfolio.html">Portefólio</a>
-        <a href="/sobre.html">Sobre</a>
-        <a href="/contactos.html">Contactos</a>
+        <a href="/portfolio.html" id="nav-trabalhos">Trabalhos</a>
+        <a href="#referencias" id="nav-referencias">Refer&ecirc;ncias</a>
+        <a href="/contactos.html" id="nav-contacto">Contacto</a>
       </nav>
 
       <!-- CTA button -->
       <div class="header-actions">
-        <a href="/contactos.html" class="btn btn-primary" id="header-cta">Solicitar orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary" id="header-cta">Pedir or&ccedil;amento</a>
       </div>
 
       <!-- Mobile toggle -->
@@ -1050,14 +1237,14 @@
 
     <!-- Mobile nav panel -->
     <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Mobile">
-      <a href="/producao.html">Produção &amp; Criatividade</a>
-      <a href="/importacao-e-exportacao.html">Importação &amp; Exportação</a>
+      <a href="/importacao-e-exportacao.html">Operação Internacional</a>
       <a href="/health-care.html">Health &amp; Care</a>
       <a href="/informatica.html">Informática</a>
-      <a href="/portfolio.html">Portefólio</a>
-      <a href="/sobre.html">Sobre</a>
-      <a href="/contactos.html">Contactos</a>
-      <a href="/contactos.html" class="btn btn-primary" style="margin-top:0.5rem;">Solicitar orçamento</a>
+      <a href="/producao.html">Produção &amp; Criatividade</a>
+      <a href="/portfolio.html">Trabalhos</a>
+      <a href="#referencias">Referências</a>
+      <a href="/contactos.html">Contacto</a>
+      <a href="/contactos.html" class="btn btn-primary" style="margin-top:0.5rem;">Pedir orçamento</a>
     </nav>
   </header>
 
@@ -1071,45 +1258,53 @@
       <!-- Unified atmospheric background -->
       <div class="hero-bg" aria-hidden="true"></div>
 
-      <!-- Sticky stage: stays in view while scrolling through the 170vh canvas -->
+      <!-- Sticky stage: stays in view while scrolling through the scroll canvas -->
       <div class="container hero-stage" id="hero-stage">
 
         <!-- LEFT: copy anchor (text block) -->
-        <div class="hero-text" id="hero-text">
+        <div class="hero-text" id="hero-text" style="opacity: 0; transform: translateX(50%) scale(0.9);">
 
           <!-- Eyebrow: fades in as hero settles -->
           <p class="hero-eyebrow hero-detail" id="hero-eyebrow">
-            <span class="hero-rule" aria-hidden="true"></span>Soluções B2B em quatro divisões
+            <span class="hero-rule" aria-hidden="true"></span>Para equipas de Compras e Opera&ccedil;&otilde;es
           </p>
 
           <!-- H1: always visible, shifts from center to left -->
-          <h1 class="hero-h1" id="hero-h1">Ajudamos empresas a executar o que precisam, com equipas e parceiros</h1>
+          <h1 class="hero-h1" id="hero-h1">Fornecimento e opera&ccedil;&atilde;o internacional por pedido &mdash; com controlo.</h1>
 
           <!-- Sub + bullets + CTAs: fade in as settled -->
-          <p class="hero-sub hero-detail" id="hero-sub">Da produção à operação internacional e fornecimento especializado. Quatro divisões para encaminhar o seu pedido e acelerar a execução.</p>
+          <p class="hero-sub hero-detail" id="hero-sub">Recebemos requisitos, validamos viabilidade e documenta&ccedil;&atilde;o, e coordenamos a execu&ccedil;&atilde;o at&eacute; &agrave; entrega.</p>
+          <p class="hero-sub-2 hero-detail">Sem cat&aacute;logo fixo: cada pedido &eacute; tratado como opera&ccedil;&atilde;o.</p>
           <ul class="hero-bullets hero-detail" id="hero-bullets" aria-label="Diferenciais">
-            <li>Quatro divisões, um ponto de contacto</li>
-            <li>Pedido → validação → proposta</li>
-            <li>Execução coordenada até ao fecho</li>
+            <li>Valida&ccedil;&atilde;o antes de avan&ccedil;ar (requisitos, condi&ccedil;&otilde;es e pr&oacute;ximos passos)</li>
+            <li>Documenta&ccedil;&atilde;o integrada no processo (n&atilde;o &ldquo;no fim&rdquo;)</li>
+            <li>Acompanhamento por etapas at&eacute; entrega e fecho</li>
           </ul>
           <div class="hero-ctas hero-detail" id="hero-ctas">
-            <a href="#divisoes" class="btn btn-primary" id="hero-cta-divisoes">Ver divisões</a>
-            <a href="/contactos.html" class="btn btn-outline" id="hero-cta-orcamento"
-               style="color:#fff;border-color:rgba(255,255,255,0.28);">Solicitar orçamento</a>
+            <a href="/contactos.html" class="btn btn-primary" id="hero-cta-orcamento">Pedir or&ccedil;amento</a>
+            <a href="#divisoes" class="btn btn-outline" id="hero-cta-divisoes"
+               style="color:rgba(255,255,255,0.72);border-color:rgba(255,255,255,0.2);">Ver como funciona</a>
           </div>
+          <p class="hero-micro hero-detail">Base em Portugal, com presen&ccedil;a em S&atilde;o Tom&eacute; e Pr&iacute;ncipe e Guin&eacute;-Bissau, e escrit&oacute;rios na China e na &Iacute;ndia.<br>Opera&ccedil;&atilde;o ajustada ao destino, prazo e restri&ccedil;&otilde;es do pedido.</p>
         </div>
 
         <!-- RIGHT: globe visual column -->
-        <div class="hero-globe-col" id="hero-globe-col">
+        <div class="hero-globe-col" id="hero-globe-col" style="transform: translateX(-50%) scale(1.45);">
           <div class="hero-globe-wrap">
             <canvas id="hero-globe" aria-hidden="true"></canvas>
             <div class="globe-marker-tip" id="globe-tip" aria-hidden="true"></div>
           </div>
 
-          <!-- Opening-state centered label (fades OUT as hero settles) -->
+          <!-- Opening-state centered label (fades OUT as hero transitions) -->
           <div class="hero-opening-label" id="hero-opening-label" aria-hidden="true">
-            <span class="ol-kicker">Presença Internacional</span>
-            <span class="ol-h">Quatro divisões.<br>Um ponto de contacto.</span>
+            <span class="ol-kicker">Opera&ccedil;&atilde;o internacional B2B</span>
+            <span class="ol-h">Importa&ccedil;&atilde;o &middot; Exporta&ccedil;&atilde;o<br>&middot; Distribui&ccedil;&atilde;o</span>
+            <span class="ol-sub">Valida&ccedil;&atilde;o &rarr; documenta&ccedil;&atilde;o &rarr; execu&ccedil;&atilde;o</span>
+          </div>
+
+          <!-- Transition-state centered label -->
+          <div class="hero-transition-label" id="hero-transition-label" aria-hidden="true" style="opacity: 0;">
+            Do requisito ao destino &mdash; com processo.
           </div>
         </div>
 
@@ -1117,353 +1312,310 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 3, QUATRO DIVISÕES (light section, non-scrolly)
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="divisoes-section" id="divisoes" data-theme="light">
+         SECTION 3 — DIVISÕES
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="divisoes" style="background:#0d0d0f;border-top:1px solid rgba(255,255,255,0.055);padding:5rem 0;">
       <div class="container">
-        <div class="section-intro reveal-up">
-          <span class="overline">Divisões</span>
-          <h2>Escolha a área certa e avance já</h2>
-          <p>Cada divisão tem fluxo próprio. Clique para ver detalhes, exemplos e como solicitar orçamento.</p>
+        <div class="reveal-up" style="margin-bottom:2.75rem;">
+          <span style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Divis&otilde;es</span>
+          <h2 style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin-bottom:0.6rem;line-height:1.2;">Servi&ccedil;os por linha &mdash; o mesmo padr&atilde;o: valida&ccedil;&atilde;o e execu&ccedil;&atilde;o.</h2>
+          <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;line-height:1.65;">Entradas diferentes. Processo consistente. Um ponto de contacto.</p>
         </div>
 
-        <div class="divisoes-grid">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;" class="div-grid-resp reveal-up delay-1">
 
-          <!-- Card 1: Produção & Criatividade -->
-          <article class="hub-card hover-lift reveal-up" id="card-producao">
-            <div class="hub-card-top-accent"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <circle cx="10" cy="10" r="8" />
-                <path d="M7 10l2 2 4-4" />
-              </svg>
+          <!-- Operação Internacional -->
+          <article id="card-operacao" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+            onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
+            onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
+            <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 010 16"/></svg>
             </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
-              Produção &amp; Criatividade</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Produção e execução para projetos
-              corporativos.</p>
-            <ul class="hub-card-list">
-              <li>Stands, eventos e ativações</li>
-              <li>Impressão e materiais</li>
-              <li>Montagens e fardamentos</li>
+            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Opera&ccedil;&atilde;o Internacional</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">Importa&ccedil;&atilde;o, exporta&ccedil;&atilde;o e distribui&ccedil;&atilde;o por pedido, com coordena&ccedil;&atilde;o de ponta a ponta.</p>
+            <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fornecimento &amp; coordena&ccedil;&atilde;o log&iacute;stica</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Documenta&ccedil;&atilde;o e processos alfandeg&aacute;rios</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>A&eacute;reo &middot; Terrestre &middot; Mar&iacute;timo</li>
             </ul>
-            <div class="hub-card-footer">
-              <a href="/producao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
-                id="div-cta-producao">Ver Produção &amp; Criatividade</a>
+            <div style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:rgba(255,255,255,0.35);">
+              <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10b981;"></span> Certificado Pagamento Pontual
             </div>
+            <a href="/importacao-e-exportacao.html" id="div-cta-operacao" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+              onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver opera&ccedil;&atilde;o &rarr;</a>
           </article>
 
-          <!-- Card 2: Importação & Exportação -->
-          <article class="hub-card hover-lift reveal-up delay-1" id="card-importacao">
-            <div class="hub-card-top-accent"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <circle cx="10" cy="10" r="8" />
-                <path d="M10 6v4l3 3" />
-              </svg>
+          <!-- Health & Care -->
+          <article id="card-health" class="div-card" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+            onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
+            onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
+            <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
             </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
-              Importação &amp; Exportação</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Operação internacional por pedido,
-              ajustada ao destino.</p>
-            <ul class="hub-card-list">
-              <li>Fornecimento e coordenação</li>
-              <li>Documentação e processos</li>
-              <li>Aéreo · Terrestre · Marítimo</li>
+            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Health &amp; Care</h3>
+            <ul class="div-bullets" style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Sele&ccedil;&atilde;o por itens e envio de pedido</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Valida&ccedil;&atilde;o manual antes da proposta</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Resposta com or&ccedil;amento + pr&oacute;ximos passos</li>
             </ul>
-            <div class="hub-card-footer">
-              <a href="/importacao-e-exportacao.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
-                id="div-cta-importacao">Ver Importação &amp; Exportação</a>
-            </div>
-          </article>
-
-          <!-- Card 3: Health & Care -->
-          <article class="hub-card hover-lift reveal-up delay-2" id="card-health">
-            <div class="hub-card-top-accent"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M10 3v14M3 10h14" />
-              </svg>
-            </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
-              Health &amp; Care</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Consumíveis e equipamentos com pedido
-              para orçamento.</p>
-            <ul class="hub-card-list">
-              <li>Catálogos por categoria</li>
-              <li>Pedido → validação → proposta</li>
-              <li>Certificado Infarmed disponível</li>
-            </ul>
-            <div class="hub-card-footer">
-              <a href="/health-care.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
-                id="div-cta-health">Ver Health &amp; Care</a>
-            </div>
-          </article>
-
-          <!-- Card 4: Informática -->
-          <article class="hub-card hover-lift reveal-up delay-3" id="card-informatica">
-            <div class="hub-card-top-accent"></div>
-            <div class="hub-card-icon">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="4" width="16" height="11" rx="2" />
-                <path d="M7 18h6" />
-                <path d="M10 15v3" />
-              </svg>
-            </div>
-            <h3 class="hub-card-short" style="font-size:1rem;font-weight:700;color:var(--c-text);margin-bottom:0.5rem;">
-              Informática</h3>
-            <p style="font-size:0.825rem;color:var(--c-muted);margin-bottom:1rem;">Catálogo suportado por parceiro
-              especializado.</p>
-            <ul class="hub-card-list">
-              <li>Acesso direto ao catálogo</li>
-              <li>Pedidos no ambiente dedicado</li>
-              <li>Encaminhamento simplificado</li>
-            </ul>
-            <div class="hub-card-footer">
-              <a href="/informatica.html" class="btn btn-secondary btn-full" style="font-size:0.8rem;"
-                id="div-cta-informatica">Aceder à Informática</a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-         SECTION 4, PORTFÓLIO / TRABALHOS SELECIONADOS
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="portfolio-section" id="portfolio" data-theme="light">
-      <div class="container">
-        <div class="section-intro reveal-up">
-          <span class="overline">Prova</span>
-          <h2>Trabalhos selecionados</h2>
-          <p>Uma amostra de projetos executados pela ON4U em diferentes contextos e necessidades.</p>
-        </div>
-
-        <!-- Category chips -->
-        <div class="portfolio-chips reveal-up delay-1">
-          <button class="portfolio-chip is-active" data-filter="todos">Todos</button>
-          <button class="portfolio-chip" data-filter="stands">Stands</button>
-          <button class="portfolio-chip" data-filter="eventos">Eventos</button>
-          <button class="portfolio-chip" data-filter="impressao">Impressão</button>
-          <button class="portfolio-chip" data-filter="design">Design</button>
-          <button class="portfolio-chip" data-filter="remodelacoes">Remodelações</button>
-          <button class="portfolio-chip" data-filter="mobiliario">Mobiliário</button>
-          <button class="portfolio-chip" data-filter="saude">Saúde</button>
-          <button class="portfolio-chip" data-filter="fardamentos">Fardamentos</button>
-        </div>
-
-        <!-- Portfolio grid -->
-        <div class="portfolio-grid reveal-up delay-2">
-
-          <article class="portfolio-item" id="portfolio-1">
-            <div class="portfolio-bg portfolio-bg--1"></div>
-            <div class="portfolio-scrim"></div>
-            <div class="portfolio-body">
-              <p class="portfolio-tag">Stands &amp; Eventos</p>
-              <h3 class="portfolio-title">Stand Corporativo, Feira Industrial</h3>
-            </div>
-          </article>
-
-          <article class="portfolio-item" id="portfolio-2">
-            <div class="portfolio-bg portfolio-bg--2"></div>
-            <div class="portfolio-scrim"></div>
-            <div class="portfolio-body">
-              <p class="portfolio-tag">Impressão &amp; Materiais</p>
-              <h3 class="portfolio-title">Campanha de Comunicação Visual</h3>
-            </div>
-          </article>
-
-          <article class="portfolio-item" id="portfolio-3">
-            <div class="portfolio-bg portfolio-bg--3"></div>
-            <div class="portfolio-scrim"></div>
-            <div class="portfolio-body">
-              <p class="portfolio-tag">Fardamentos</p>
-              <h3 class="portfolio-title">Fardamento Corporativo, Equipa de Campo</h3>
-            </div>
-          </article>
-
-          <article class="portfolio-item" id="portfolio-4">
-            <div class="portfolio-bg portfolio-bg--4"></div>
-            <div class="portfolio-scrim"></div>
-            <div class="portfolio-body">
-              <p class="portfolio-tag">Remodelações &amp; Mobiliário</p>
-              <h3 class="portfolio-title">Espaço Comercial, Intervenção Interior</h3>
-            </div>
-          </article>
-
-          <article class="portfolio-item" id="portfolio-5">
-            <div class="portfolio-bg portfolio-bg--5"></div>
-            <div class="portfolio-scrim"></div>
-            <div class="portfolio-body">
-              <p class="portfolio-tag">Health &amp; Care</p>
-              <h3 class="portfolio-title">Fornecimento de Consumíveis, Unidade de Saúde</h3>
-            </div>
-          </article>
-
-          <article class="portfolio-item" id="portfolio-6">
-            <div class="portfolio-bg portfolio-bg--6"></div>
-            <div class="portfolio-scrim"></div>
-            <div class="portfolio-body">
-              <p class="portfolio-tag">Importação &amp; Exportação</p>
-              <h3 class="portfolio-title">Operação de Sourcing, Destino África</h3>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="portfolio-cta-row reveal-up delay-3">
-          <a href="/portfolio.html" class="btn btn-secondary" id="portfolio-ver-mais">Ver portefólio completo</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-         SECTION 5, SOBRE / CREDIBILIDADE
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="sobre-section" id="sobre" data-theme="light">
-      <div class="container">
-        <div class="sobre-grid">
-
-          <!-- Text column -->
-          <div class="sobre-text">
-            <div class="reveal-up">
-              <span class="overline"
-                style="display:block;color:var(--c-accent);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Sobre
-                a ON4U</span>
-              <h2
-                style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.025em;margin-bottom:1rem;">
-                Estrutura e presença para executar com consistência</h2>
-              <p style="font-size:0.95rem;color:var(--c-muted);line-height:1.7;max-width:520px;">Coordenação a partir de
-                Portugal, com sedes em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e Índia, para suportar
-                operações e fornecimento quando aplicável.</p>
-            </div>
-
-            <ul class="sobre-bullets reveal-up delay-1">
-              <li>
-                <span class="bul-icon"><i class="fas fa-user-tie"></i></span>
-                <span>Um ponto de contacto e próximos passos claros</span>
-              </li>
-              <li>
-                <span class="bul-icon"><i class="fas fa-handshake"></i></span>
-                <span>Rede de parceiros para execução por destino</span>
-              </li>
-              <li>
-                <span class="bul-icon"><i class="fas fa-check-double"></i></span>
-                <span>Operação por pedido com validação antes de avançar</span>
-              </li>
-            </ul>
-
-            <div class="sobre-contacts reveal-up delay-2">
-              Contactos rápidos:
-              <a href="mailto:info@on4u.pt">info@on4u.pt</a>
-              &nbsp;·&nbsp;
-              <a href="tel:+351214326102">+351 214 326 102</a>
-              &nbsp;/&nbsp;
-              <a href="tel:+351214326103">+351 214 326 103</a>
-            </div>
-
-            <div class="sobre-ctas reveal-up delay-3">
-              <a href="/contactos.html" class="btn btn-secondary" id="sobre-cta-contactos">Contactos</a>
-              <a href="/contactos.html" class="btn btn-primary" id="sobre-cta-orcamento">Solicitar orçamento</a>
-            </div>
-
-            <p class="sobre-micro reveal-up">
-              Cobertura internacional por destino e projeto.
-              <a href="/importacao-e-exportacao.html">Ver Importação &amp; Exportação →</a>
-            </p>
-          </div>
-
-          <!-- Visual column, presence nodes -->
-          <div class="sobre-visual reveal-up delay-1">
-            <div class="sobre-presence-card">
-              <p class="sobre-presence-title">Presença operacional</p>
-              <div class="presence-nodes">
-                <div class="presence-node">
-                  <span class="presence-dot"></span>
-                  <span class="presence-node-label">Portugal</span>
-                  <span class="presence-node-sub">Sede</span>
-                </div>
-                <div class="presence-node">
-                  <span class="presence-dot"></span>
-                  <span class="presence-node-label">São Tomé &amp; Príncipe</span>
-                  <span class="presence-node-sub">Sede local</span>
-                </div>
-                <div class="presence-node">
-                  <span class="presence-dot"></span>
-                  <span class="presence-node-label">Guiné-Bissau</span>
-                  <span class="presence-node-sub">Sede local</span>
-                </div>
-                <div class="presence-node">
-                  <span class="presence-dot muted"></span>
-                  <span class="presence-node-label">China</span>
-                  <span class="presence-node-sub">Escritório</span>
-                </div>
-                <div class="presence-node">
-                  <span class="presence-dot muted"></span>
-                  <span class="presence-node-label">Índia</span>
-                  <span class="presence-node-sub">Escritório</span>
-                </div>
-                <div class="presence-node">
-                  <span class="presence-dot muted"></span>
-                  <span class="presence-node-label">Rede de parceiros</span>
-                  <span class="presence-node-sub">Outros destinos</span>
-                </div>
+            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="cert-badge cert-badge-premium" style="margin-bottom:1.25rem;display:flex;padding:0.75rem;gap:0.75rem;background:linear-gradient(to right, rgba(16,185,129,0.05), transparent);border:1px solid rgba(16,185,129,0.15);border-radius:8px;text-decoration:none;transition:background 0.2s ease, border-color 0.2s ease;">
+              <div class="cert-badge-icon" style="flex-shrink:0;color:#10b981;display:flex;align-items:center;justify-content:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></svg>
               </div>
+              <div class="cert-badge-text" style="display:flex;flex-direction:column;gap:0.15rem;">
+                <span class="cert-badge-title" style="font-size:0.75rem;font-weight:700;color:#10b981;">Distribuidor Certificado</span>
+                <span class="cert-badge-sub" style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Cert. 1866/DM/2023</span>
+                <span class="cert-badge-issuer" style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Infarmed - Autoridade Nacional</span>
+              </div>
+              <div style="margin-left:auto;display:flex;align-items:center;color:rgba(255,255,255,0.2);">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="9 18 15 12 9 6" /></svg>
+              </div>
+            </a>
+            <a href="/health-care.html" id="div-cta-health" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+              onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver Health &amp; Care &rarr;</a>
+          </article>
+
+          <!-- Informática -->
+          <article id="card-informatica" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+            onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
+            onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
+            <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="11" rx="2"/><path d="M7 18h6M10 15v3"/></svg>
             </div>
-          </div>
+            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Inform&aacute;tica</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">Cat&aacute;logo suportado por parceiro especializado — acesso direto e encaminhamento simplificado.</p>
+            <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Acesso direto ao cat&aacute;logo</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Pedidos no ambiente dedicado</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Encaminhamento simplificado</li>
+            </ul>
+            <a href="/informatica.html" id="div-cta-informatica" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+              onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Aceder &rarr;</a>
+          </article>
+
+          <!-- Produção & Criatividade -->
+          <article id="card-producao" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+            onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
+            onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
+            <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><circle cx="14" cy="14" r="3"/></svg>
+            </div>
+            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Produ&ccedil;&atilde;o &amp; Criatividade</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">Produ&ccedil;&atilde;o, comunica&ccedil;&atilde;o visual e execu&ccedil;&atilde;o para projetos corporativos.</p>
+            <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Stands, eventos e brinde corporativo</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Impress&atilde;o, sinalética e materiais</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fardamentos e identidade visual</li>
+            </ul>
+            <a href="/producao.html" id="div-cta-producao" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+              onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver produ&ccedil;&atilde;o &rarr;</a>
+          </article>
 
         </div>
+        <p class="reveal-up delay-2" style="margin-top:1.75rem;font-size:0.78rem;color:rgba(255,255,255,0.25);font-style:italic;">Sem promessas vagas: pedido &rarr; valida&ccedil;&atilde;o &rarr; proposta &rarr; execu&ccedil;&atilde;o.</p>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 6, BLOCO INSTITUCIONAL CURTO
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="inst-section" id="institucional" data-theme="light">
+         SECTION 4 — PORTFÓLIO / TRABALHOS SELECIONADOS
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="portfolio" style="background:#111113;border-top:1px solid rgba(255,255,255,0.055);padding:5rem 0;">
       <div class="container">
-        <div class="inst-inner">
-          <div class="reveal-up">
-            <p class="inst-statement">ON4U, empresa B2B organizada em divisões especializadas para execução por pedido.
-            </p>
-            <p class="inst-sub">Apoiamos diferentes tipos de necessidades empresariais, coordenando resposta com equipas
-              e parceiros, do pedido ao fecho.</p>
-          </div>
-          <div class="inst-trust-cues reveal-up delay-1">
-            <div class="inst-cue"><i class="fas fa-building"></i> Sede em Portugal (Sintra)</div>
-            <div class="inst-cue"><i class="fas fa-globe"></i> Operação internacional por pedido</div>
-            <div class="inst-cue"><i class="fas fa-certificate"></i> Certificado Infarmed</div>
-            <div class="inst-cue"><i class="fas fa-layer-group"></i> 4 divisões especializadas</div>
-          </div>
+        <div class="reveal-up" style="margin-bottom:2.5rem;">
+          <span style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Trabalhos selecionados</span>
+          <h2 style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin-bottom:0.6rem;line-height:1.2;">Execu&ccedil;&atilde;o vis&iacute;vel.</h2>
+          <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;line-height:1.65;margin-bottom:1.5rem;">Exemplos de projetos e entregas onde o importante foi coordenar requisitos, prazos e opera&ccedil;&atilde;o.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem;font-size:0.8rem;color:rgba(255,255,255,0.5);">
+            <li style="display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi pedido (requisitos)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi validado (condi&ccedil;&otilde;es/documenta&ccedil;&atilde;o)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi entregue (resultado operacional)</li>
+          </ul>
         </div>
+
+        <div class="pf-grid-resp reveal-up delay-1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;">
+
+          <!-- Repsol Stand -->
+          <article id="pf-repsol" class="pf-card" onclick="location.href='/portfolio.html'">
+            <img src="images/stands/repsol.jpeg" alt="Stand Repsol" class="pf-img" loading="lazy">
+            <div class="pf-overlay"></div>
+            <div class="pf-content">
+              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Stands &amp; Eventos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Stand Repsol &mdash; Ativa&ccedil;&atilde;o Corporativa</h3>
+            </div>
+            <div class="pf-hover-btn">Ver detalhes</div>
+          </article>
+
+          <!-- Santa Casa Stand -->
+          <article id="pf-santacasa" class="pf-card" onclick="location.href='/portfolio.html'">
+            <img src="images/stands/santaCasa.jpg" alt="Stand Santa Casa da Misericórdia" class="pf-img" loading="lazy">
+            <div class="pf-overlay"></div>
+            <div class="pf-content">
+              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Stands &amp; Eventos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Santa Casa da Miseric&oacute;rdia &mdash; Presen&ccedil;a Institucional</h3>
+            </div>
+            <div class="pf-hover-btn">Ver detalhes</div>
+          </article>
+
+          <!-- Bissau Stand -->
+          <article id="pf-bissau" class="pf-card" onclick="location.href='/portfolio.html'">
+            <img src="images/stands/bissau.png" alt="Stand Guiné-Bissau" class="pf-img" loading="lazy">
+            <div class="pf-overlay"></div>
+            <div class="pf-content">
+              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Stands &amp; Eventos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Guin&eacute;-Bissau &mdash; Presen&ccedil;a Local &amp; Opera&ccedil;&atilde;o</h3>
+            </div>
+            <div class="pf-hover-btn">Ver detalhes</div>
+          </article>
+
+          <!-- Banco Central STP -->
+          <article id="pf-bcstp" class="pf-card" onclick="location.href='/portfolio.html'">
+            <img src="images/IV/logoBancoCentralSTP.jpg" alt="Banco Central de São Tomé e Príncipe" class="pf-img" loading="lazy">
+            <div class="pf-overlay"></div>
+            <div class="pf-content">
+              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Identidade Visual &amp; Produ&ccedil;&atilde;o</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Banco Central &mdash; S&atilde;o Tom&eacute; e Pr&iacute;ncipe</h3>
+            </div>
+            <div class="pf-hover-btn">Ver detalhes</div>
+          </article>
+
+          <!-- Mockups FF -->
+          <article id="pf-ff" class="pf-card" onclick="location.href='/portfolio.html'">
+            <img src="images/IV/mockupsFF.jpg" alt="Mockups de identidade visual" class="pf-img" loading="lazy">
+            <div class="pf-overlay"></div>
+            <div class="pf-content">
+              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Produ&ccedil;&atilde;o &amp; Criatividade</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Identidade Visual &amp; Materiais Corporativos</h3>
+            </div>
+            <div class="pf-hover-btn">Ver detalhes</div>
+          </article>
+
+          <!-- Equipamento Principal -->
+          <article id="pf-equip" class="pf-card" onclick="location.href='/portfolio.html'">
+            <img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="Equipamento industrial" class="pf-img" loading="lazy">
+            <div class="pf-overlay"></div>
+            <div class="pf-content">
+              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Fornecimento &amp; Equipamentos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Equipamento Especializado &mdash; Opera&ccedil;&atilde;o Internacional</h3>
+            </div>
+            <div class="pf-hover-btn">Ver detalhes</div>
+          </article>
+
+        </div>
+
+        <div class="reveal-up delay-2" style="margin-top:2.25rem;display:flex;gap:0.875rem;flex-wrap:wrap;">
+          <a href="/portfolio.html" id="portfolio-ver-mais" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:transparent;color:rgba(255,255,255,0.62);border:1.5px solid rgba(255,255,255,0.15);transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+            onmouseenter="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.38)';this.style.background='rgba(255,255,255,0.04)';"
+            onmouseleave="this.style.color='rgba(255,255,255,0.62)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.background='transparent';">Ver trabalhos</a>
+          <a href="/contactos.html" id="portfolio-orcamento" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:#f97316;color:#fff;transition:background 220ms ease,transform 220ms ease,box-shadow 220ms ease;text-decoration:none;"
+            onmouseenter="this.style.background='#ea580c';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 22px rgba(249,115,22,0.28)';"
+            onmouseleave="this.style.background='#f97316';this.style.transform='';this.style.boxShadow='';">Pedir or&ccedil;amento</a>
+        </div>
+        <p class="reveal-up" style="margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.25);font-style:italic;">Mostramos apenas o que pode ser partilhado.</p>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 8, FINAL CTA (dark)
-         ═══════════════════════════════════════════════════════════ -->
-    <section class="hub-final-cta" id="final-cta" data-theme="dark">
+         SECTION 5 — REFERÊNCIAS / LOGO CLOUD
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="referencias" style="background:#09090b;padding:6rem 0;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.055);">
+      <div class="container relative z-10">
+        <!-- Glow matching demo component -->
+        <div style="position:absolute;top:-50%;left:50%;transform:translate(-50%,-50%);width:120vmin;height:120vmin;border-radius:0 0 50% 50%;background:radial-gradient(ellipse at center, rgba(255,255,255,0.04), transparent 50%);filter:blur(30px);pointer-events:none;z-index:-1;"></div>
+
+        <h2 style="margin-bottom:2rem;text-align:center;font-size:clamp(1.25rem, 3vw, 1.875rem);font-weight:500;color:#f5f5f7;letter-spacing:-0.025em;line-height:1.2;">
+          <span style="color:rgba(255,255,255,0.42);">Trusted by experts.</span><br>
+          <span style="font-weight:600;">Used by the leaders.</span>
+        </h2>
+        
+        <div style="margin:2rem auto;height:1px;max-width:384px;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);"></div>
+
+        <div class="logo-cloud" style="overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+          <div class="logo-cloud-track">
+            <!-- First set -->
+            <img src="https://svgl.app/library/nvidia-wordmark-light.svg" alt="Nvidia Logo" loading="lazy">
+            <img src="https://svgl.app/library/supabase_wordmark_light.svg" alt="Supabase Logo" loading="lazy">
+            <img src="https://svgl.app/library/openai_wordmark_light.svg" alt="OpenAI Logo" loading="lazy">
+            <img src="https://svgl.app/library/turso-wordmark-light.svg" alt="Turso Logo" loading="lazy">
+            <img src="https://svgl.app/library/vercel_wordmark.svg" alt="Vercel Logo" loading="lazy">
+            <img src="https://svgl.app/library/github_wordmark_light.svg" alt="GitHub Logo" loading="lazy">
+            <img src="https://svgl.app/library/claude-ai-wordmark-icon_light.svg" alt="Claude AI Logo" loading="lazy">
+            <img src="https://svgl.app/library/clerk-wordmark-light.svg" alt="Clerk Logo" loading="lazy">
+            <!-- Second set for infinite scroll loop -->
+            <img src="https://svgl.app/library/nvidia-wordmark-light.svg" alt="Nvidia Logo" loading="lazy">
+            <img src="https://svgl.app/library/supabase_wordmark_light.svg" alt="Supabase Logo" loading="lazy">
+            <img src="https://svgl.app/library/openai_wordmark_light.svg" alt="OpenAI Logo" loading="lazy">
+            <img src="https://svgl.app/library/turso-wordmark-light.svg" alt="Turso Logo" loading="lazy">
+            <img src="https://svgl.app/library/vercel_wordmark.svg" alt="Vercel Logo" loading="lazy">
+            <img src="https://svgl.app/library/github_wordmark_light.svg" alt="GitHub Logo" loading="lazy">
+            <img src="https://svgl.app/library/claude-ai-wordmark-icon_light.svg" alt="Claude AI Logo" loading="lazy">
+            <img src="https://svgl.app/library/clerk-wordmark-light.svg" alt="Clerk Logo" loading="lazy">
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;height:1px;width:100%;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);"></div>
+      </div>
+      
+      <style>
+        /* Logo Cloud Animations & Styling */
+        @keyframes scroll-logos {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-50% - 21px)); } /* 21px is half the 42px gap */
+        }
+        .logo-cloud-track {
+          display: flex;
+          width: max-content;
+          gap: 42px;
+          animation: scroll-logos 45s linear infinite;
+        }
+        .logo-cloud-track:hover {
+          animation-duration: 90s; /* Simulate speedOnHover deceleration */
+        }
+        .logo-cloud-track img {
+          pointer-events: none;
+          user-select: none;
+          height: 20px;
+          filter: brightness(0) invert(1);
+          opacity: 0.8;
+          transition: opacity 0.3s ease;
+        }
+        @media (max-width: 768px) {
+          .logo-cloud-track img { height: 16px; }
+        }
+      </style>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 6 — CTA FINAL
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="final-cta" style="background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(249,115,22,0.07) 0%,transparent 65%),#09090b;border-top:1px solid rgba(249,115,22,0.12);padding:5rem 0;text-align:center;">
       <div class="container">
-        <div class="hub-final-cta-inner reveal-up">
-          <h2 class="hub-final-cta-title">Diga-nos o que precisa.<br>Receba proposta e próximos passos.</h2>
-          <p class="hub-final-cta-sub">Envie requisitos, destino e prazo. Confirmamos o essencial, validamos viabilidade
-            e devolvemos proposta com etapas claras.</p>
-          <div class="hub-final-cta-btns">
-            <a href="/contactos.html" class="btn btn-primary" id="final-cta-orcamento">Solicitar orçamento</a>
-            <a href="/contactos.html" class="hub-btn-ghost" id="final-cta-falar"
-              style="padding:0.75rem 1.75rem;min-height:44px;border-radius:8px;display:inline-flex;align-items:center;">Falar
-              connosco</a>
+        <div class="reveal-up">
+          <span style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Pr&oacute;ximo passo</span>
+          <h2 style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin:0 auto 0.7rem;max-width:620px;line-height:1.2;">Envie o pedido. Receba proposta operacional e pr&oacute;ximos passos.</h2>
+          <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;margin:0 auto 0.65rem;line-height:1.65;text-align:center;">Partilhe o que precisa, destino e prazo. Validamos viabilidade e devolvemos uma proposta com etapas claras.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1.5rem;margin:0 0 2rem;font-size:0.82rem;color:rgba(255,255,255,0.38);">
+            <li style="display:flex;align-items:center;gap:0.45rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>O que &eacute; (categoria + especifica&ccedil;&atilde;o)</li>
+            <li style="display:flex;align-items:center;gap:0.45rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Quantidade / volumes (se souber)</li>
+            <li style="display:flex;align-items:center;gap:0.45rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Destino e prazo desejado</li>
+          </ul>
+          <div style="display:flex;gap:0.875rem;justify-content:center;flex-wrap:wrap;">
+            <a href="/contactos.html" id="final-cta-orcamento" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:#f97316;color:#fff;transition:background 220ms ease,transform 220ms ease,box-shadow 220ms ease;text-decoration:none;"
+              onmouseenter="this.style.background='#ea580c';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 22px rgba(249,115,22,0.28)';"
+              onmouseleave="this.style.background='#f97316';this.style.transform='';this.style.boxShadow='';">Pedir or&ccedil;amento</a>
+            <a href="#divisoes" id="final-cta-how" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:transparent;color:rgba(255,255,255,0.62);border:1.5px solid rgba(255,255,255,0.15);transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+              onmouseenter="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.38)';"
+              onmouseleave="this.style.color='rgba(255,255,255,0.62)';this.style.borderColor='rgba(255,255,255,0.15)';">Ver como funciona</a>
           </div>
+          <p style="margin-top:1.1rem;font-size:0.75rem;color:rgba(255,255,255,0.22);">Se faltar informa&ccedil;&atilde;o, come&ccedil;amos pelo essencial e alinhamos o restante.</p>
         </div>
       </div>
     </section>
-
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 9, FOOTER
+         FOOTER
          ═══════════════════════════════════════════════════════════ -->
     <footer class="site-footer" id="footer">
       <div class="container">
@@ -1484,10 +1636,10 @@
                   stroke-linecap="round" />
               </svg>
             </a>
-            <p class="footer-brand-desc">ON4U, Soluções B2B através de Produção &amp; Criatividade, Importação &amp;
-              Exportação, Health &amp; Care e Informática.</p>
-            <address class="footer-address" style="font-style:normal;">
-              Núcleo Empresarial da Abrunheira (Zona Poente), Pavilhão 14<br>
+            <p class="footer-brand-desc">ON4U &mdash; Importação, fornecimento e distribuição internacional por pedido.</p>
+            <p class="footer-brand-desc" style="margin-top:0.35rem;font-size:0.75rem;color:rgba(255,255,255,0.3);max-width:260px;">Base em Portugal, presença em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e na Índia.</p>
+            <address class="footer-address" style="font-style:normal;margin-top:0.75rem;">
+              Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)<br>
               2710-679 Sintra, Portugal
             </address>
           </div>
@@ -1518,12 +1670,13 @@
             <p class="footer-col-title">Contactos Oficiais</p>
             <ul class="footer-list" style="margin-bottom:1.5rem;">
               <li><a href="mailto:info@on4u.pt" class="email-link">info@on4u.pt</a></li>
+              <li><a href="mailto:producao@on4u.pt" class="email-link">producao@on4u.pt</a></li>
               <li><a href="tel:+351214326102">+351 214 326 102</a></li>
               <li><a href="tel:+351214326103">+351 214 326 103</a></li>
             </ul>
-            <p class="footer-col-title" style="margin-top:1.5rem;">Certificação</p>
-            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="footer-cert">
-              <i class="fas fa-check-circle"></i> Infarmed Certificado
+            <p class="footer-col-title" style="margin-top:1.25rem;">Certificação</p>
+            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="footer-cert" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#10b981;display:inline-block;"></span> Infarmed Certificado
             </a>
           </div>
 
@@ -1803,9 +1956,8 @@
     canvas.addEventListener('mouseleave', () => tip && tip.classList.remove('is-visible'));
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       2. SCROLL-REACTIVE HERO TRANSITION
-       Progress 0 → 1 over the 170vh scroll canvas.
-       Opening  (p=0): globe centered+large, copy centered & dimmed
+       2. AUTOMATED SPRING HERO TRANSITION
+       Smooth, automatic transition once user scrolls.
        Settled  (p=1): globe right col, copy left col — normal layout
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     const heroSection  = document.getElementById('hero');
@@ -1816,80 +1968,108 @@
     const details      = document.querySelectorAll('.hero-detail');
     const heroH1       = document.getElementById('hero-h1');
 
-    // On mobile or reduced-motion: skip all transforms entirely
     const isMobile = () => window.innerWidth < 900;
-
-    function easeInOut(t) {
-      return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-    }
     function lerp(a, b, t) { return a + (b - a) * t; }
 
-    let lastProgress = -1;
+    let heroTargetP = 0;
+    let heroCurrentP = 0;
+    let lastRenderedP = -1;
 
-    function applyHeroProgress(raw) {
+    // Detect scroll to trigger automatic state
+    function onScroll() {
+      // Threshold = 100px down triggers full transition to "Settled"
+      if (window.scrollY > 100) {
+        heroTargetP = 1.0;
+      } else {
+        heroTargetP = 0.0;
+      }
+    }
+
+    function applyHeroProgressAuto(p) {
       if (reducedMotion || isMobile()) {
         heroText.style.transform     = '';
         heroText.style.opacity       = '';
         heroGlobeCol.style.transform = '';
         heroGlobeCol.style.opacity   = '';
         if (heroOpenLbl) { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
+        const heroTransLbl = document.getElementById('hero-transition-label');
+        if (heroTransLbl) heroTransLbl.style.opacity = '0';
         details.forEach(el => { el.style.opacity = ''; });
         if (heroH1) heroH1.style.opacity = '';
         return;
       }
 
-      const p = Math.max(0, Math.min(1, raw));
-      if (Math.abs(p - lastProgress) < 0.001) return;
-      lastProgress = p;
-      const e = easeInOut(p);
+      if (Math.abs(p - lastRenderedP) < 0.001) return;
+      lastRenderedP = p;
 
-      /* ── GLOBE: centered at opening, moves right to column position   ── */
-      const globeTx = lerp(-13, 0, e);
-      const globeSc = lerp(1.16, 1.0, e);
-      heroGlobeCol.style.transform = `translateX(${globeTx}vw) scale(${globeSc})`;
+      // Smoothed ease for internal properties
+      const e = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
 
-      /* ── OPENING LABEL: visible at e=0, fades out by e=0.5            ── */
-      const lblOp = Math.max(0, 1 - e / 0.5);
+      /* ── GLOBE: smoothly scales from 1.45 down to 1.0, and slides right ── */
+      const globeTx = lerp(-50, 0, e);
+      const globeSc = lerp(1.45, 1.0, e);
+      heroGlobeCol.style.transform = `translateX(${globeTx}%) scale(${globeSc})`;
+
+      /* ── OPENING LABEL: fades out abruptly to allow transition ── */
+      const phaseOut = Math.max(0, Math.min(1, p / 0.35)); // Fade out completely quickly
       if (heroOpenLbl) {
-        heroOpenLbl.style.opacity   = (lblOp * 0.95).toFixed(3);
-        heroOpenLbl.style.transform = `translate(-50%, calc(-50% + ${lerp(0, -10, e)}px))`;
-        heroOpenLbl.style.display   = lblOp < 0.01 ? 'none' : '';
+        heroOpenLbl.style.opacity   = (1 - phaseOut).toFixed(3);
+        heroOpenLbl.style.transform = `translate(-50%, calc(-55% + ${lerp(0, -25, phaseOut)}px))`;
+        heroOpenLbl.style.display   = phaseOut > 0.99 ? 'none' : '';
       }
 
-      /* ── TEXT BLOCK: hidden in first third, fades in from left        ── */
-      // textPhase: 0→1 starting at e=0.25
-      const textPhase = Math.max(0, Math.min(1, (e - 0.25) / 0.75));
-      const textTx    = lerp(-8, 0, textPhase);   // slides in from left
-      heroText.style.transform = `translateX(${textTx}vw)`;
-      heroText.style.opacity   = textPhase.toFixed(3);
+      /* ── TRANSITION LABEL: appears briefly around 0.5 ── */
+      const heroTransLbl = document.getElementById('hero-transition-label');
+      if (heroTransLbl) {
+        let transOp = 0;
+        if (e > 0.1 && e < 0.9) {
+          transOp = 1 - Math.abs(e - 0.5) * 2; // peaks at e=0.5
+        }
+        heroTransLbl.style.opacity = Math.max(0, transOp).toFixed(3);
+        heroTransLbl.style.transform = `translate(-50%, calc(-50% + ${lerp(20, -20, e)}px))`;
+      }
 
-      /* ── H1 follows same fade as text block                           ── */
-      if (heroH1) heroH1.style.opacity = textPhase.toFixed(3);
+      /* ── TEXT: slides left from edge, fades in ── */
+      const textTx  = lerp(50, 0, e);
+      const textSc  = lerp(0.9, 1.0, e);
+      
+      heroText.style.transform = `translateX(${textTx}%) scale(${textSc})`;
+      heroText.style.opacity   = Math.min(1, p / 0.5).toFixed(3);
 
-      /* ── DETAIL ELEMENTS (sub, bullets, CTAs): appear in last 35%     ── */
-      const detOp = Math.max(0, Math.min(1, (e - 0.65) / 0.35));
-      details.forEach(el => { el.style.opacity = detOp.toFixed(3); });
+      /* ── DETAILS: Fade in late ── */
+      let detailsP = 0;
+      if (e > 0.6) detailsP = (e - 0.6) / 0.4;
+      details.forEach(el => {
+        el.style.opacity = detailsP.toFixed(3);
+        if (detailsP > 0) el.style.transform = `translateY(${lerp(15, 0, detailsP)}px)`;
+      });
+      if (heroH1) heroH1.style.opacity = Math.min(1, p / 0.5).toFixed(3);
     }
 
-    function onScroll() {
-      if (!heroSection) return;
-      const rect = heroSection.getBoundingClientRect();
-      // scroll distance within the 70vh extra canvas (170vh total - 100vh stage)
-      const scrollRoom = heroSection.offsetHeight - window.innerHeight;
-      const scrolled   = Math.max(0, -rect.top);  // px scrolled into hero
-      const raw        = scrollRoom > 0 ? scrolled / scrollRoom : 1;
-      applyHeroProgress(raw);
+    // Spring logic loop handles the tweening to the target P independently of scroll position
+    function heroAnimationLoop() {
+      if (!isMobile()) {
+        heroCurrentP += (heroTargetP - heroCurrentP) * 0.08;
+        applyHeroProgressAuto(heroCurrentP);
+      }
+      requestAnimationFrame(heroAnimationLoop);
     }
 
-    // ── Init: set opening state immediately (p=0) ─────────────────
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       3. INIT & EVENT LISTENERS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     function initHero() {
       resize();
-      // Force opening transforms synchronously before first paint
-      applyHeroProgress(window.scrollY < 10 ? 0 : 1);
+      render(); // Force sync draw of graticule immediately before frame
+      // Initialize states
+      onScroll();
+      heroCurrentP = window.scrollY > 100 ? 1 : 0;
+      heroTargetP = heroCurrentP;
+      applyHeroProgressAuto(heroCurrentP);
     }
 
-    // ── Load land data ────────────────────────────────────────────
-    fetch('https://raw.githubusercontent.com/martynafford/natural-earth-geojson/master/110m/physical/ne_110m_land.json')
+    // LOAD LAND DATA locally to guarantee instant rendering
+    fetch('ne_110m_land.json')
       .then(r => r.json())
       .then(data => {
         landFeatures = data;
@@ -1905,11 +2085,38 @@
     requestAnimationFrame(() => {
       initHero();
       requestAnimationFrame(tick);
+      requestAnimationFrame(heroAnimationLoop);
     });
 
   })();
   </script>
   <script>
+    // ── Mobile nav anchor logic ────────────────────────────────
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavPanel = document.getElementById('mobile-nav');
+    if (mobileMenuBtn && mobileNavPanel) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isNowOpen = mobileNavPanel.hasAttribute('hidden');
+        if (isNowOpen) {
+          mobileNavPanel.removeAttribute('hidden');
+          mobileMenuBtn.classList.add('is-active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileNavPanel.setAttribute('hidden', '');
+          mobileMenuBtn.classList.remove('is-active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      // Close on link click
+      mobileNavPanel.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileNavPanel.setAttribute('hidden', '');
+          mobileMenuBtn.classList.remove('is-active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
     // ── Reveal-up observer (for non-scrolly sections) ────────────
     (function () {
       const els = document.querySelectorAll('.reveal-up');
