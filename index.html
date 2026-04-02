@@ -1734,8 +1734,10 @@
           style="margin:2rem auto;height:1px;max-width:384px;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);">
         </div>
 
-        <div class="logo-cloud"
-          style="overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+        <div class="logo-cloud" id="logo-cloud-container"
+          style="position:relative;overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+          <!-- Orange spotlight overlay that follows cursor -->
+          <div class="logo-spotlight" id="logo-spotlight"></div>
           <div class="logo-cloud-track">
             <!-- First set -->
             <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
@@ -1847,7 +1849,58 @@
             height: 16px;
           }
         }
+
+        /* Orange spotlight effect */
+        .logo-spotlight {
+          position: absolute;
+          pointer-events: none;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle at center,
+            rgba(249, 115, 22, 0.6) 0%,
+            rgba(249, 115, 22, 0.35) 25%,
+            rgba(249, 115, 22, 0.15) 50%,
+            transparent 70%
+          );
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          z-index: 10;
+          mix-blend-mode: screen;
+        }
+
+        .logo-cloud:hover .logo-spotlight {
+          opacity: 1;
+        }
       </style>
+
+      <script>
+        // Logo cloud spotlight effect
+        (function() {
+          const container = document.getElementById('logo-cloud-container');
+          const spotlight = document.getElementById('logo-spotlight');
+          
+          if (container && spotlight) {
+            container.addEventListener('mousemove', (e) => {
+              const rect = container.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              spotlight.style.left = x + 'px';
+              spotlight.style.top = y + 'px';
+            });
+            
+            container.addEventListener('mouseleave', () => {
+              spotlight.style.opacity = '0';
+            });
+            
+            container.addEventListener('mouseenter', () => {
+              spotlight.style.opacity = '1';
+            });
+          }
+        })();
+      </script>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -2245,7 +2298,7 @@
          2. AUTOMATED SPRING HERO TRANSITION
          Smooth, automatic transition once user scrolls.
          Settled  (p=1): globe right col, copy left col — normal layout
-      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      ━���━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
       const heroSection = document.getElementById('hero');
       const heroStage = document.getElementById('hero-stage');
       const heroText = document.getElementById('hero-text');
