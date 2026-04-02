@@ -1038,28 +1038,31 @@
       mask-image: radial-gradient(ellipse 94% 94% at 50% 50%, black 55%, transparent 100%);
     }
 
-    /* ── Marker tooltip ── */
-    .globe-marker-tip {
-      position: absolute;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
-      background: rgba(9, 9, 11, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-      padding: 0.25rem 0.5rem;
-      pointer-events: none;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 180ms ease;
-      z-index: 10;
-    }
-
-    .globe-marker-tip.is-visible {
-      opacity: 1;
-    }
+  /* ── Marker tooltip ── */
+  .globe-marker-tip {
+  position: absolute;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(12, 12, 16, 0.92);
+  border: 1px solid rgba(249, 115, 22, 0.5);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 10;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.2), 0 4px 12px rgba(0,0,0,0.4);
+  }
+  
+  .globe-marker-tip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  }
 
     /* ── CTA overrides on dark hero ── */
     .hero-stage .btn-primary {
@@ -2109,7 +2112,7 @@
       const path = d3.geoPath().projection(projection).context(ctx);
       const graticule = d3.geoGraticule()();
 
-      // ── Land dots ────────────────────────────────────────────────
+      // ── Land dots ─────────────────────────────────────���──────────
       let allDots = [];
       let landFeatures = null;
 
@@ -2217,38 +2220,102 @@
           ctx.fill();
         });
 
-        // 6. Waypoint markers (5 only)
-        WAYPOINTS.forEach(wp => {
+        // 6. Waypoint markers — ALL now orange with pulsing effects
+        const now = Date.now();
+        WAYPOINTS.forEach((wp, idx) => {
           if (!isVisible(wp.lng, wp.lat)) return;
           const p = projection([wp.lng, wp.lat]);
           if (!p) return;
           const [px, py] = p;
+          
+          // Staggered pulse timing per marker
+          const phase = idx * 0.25;
+          const t = ((now % 3200) / 3200 + phase) % 1;
+          
           if (wp.primary) {
+            // Primary marker (Portugal) — larger with stronger pulse
             if (!reducedMotion) {
-              const t = (Date.now() % 3200) / 3200;
-              const pulse = 4.5 + Math.sin(t * Math.PI * 2) * 2.8;
+              // Outer glow ring
+              const glowR = 12 + Math.sin(t * Math.PI * 2) * 4;
+              const glow = ctx.createRadialGradient(px, py, 0, px, py, glowR);
+              glow.addColorStop(0, 'rgba(249,115,22,0.4)');
+              glow.addColorStop(0.5, 'rgba(249,115,22,0.15)');
+              glow.addColorStop(1, 'transparent');
+              ctx.beginPath();
+              ctx.arc(px, py, glowR, 0, 2 * Math.PI);
+              ctx.fillStyle = glow;
+              ctx.fill();
+              
+              // Pulsing ring
+              const pulse = 5 + Math.sin(t * Math.PI * 2) * 3;
               ctx.beginPath();
               ctx.arc(px, py, pulse, 0, 2 * Math.PI);
-              ctx.strokeStyle = 'rgba(249,115,22,0.28)';
-              ctx.lineWidth = 1.2;
+              ctx.strokeStyle = 'rgba(249,115,22,0.4)';
+              ctx.lineWidth = 1.5;
               ctx.stroke();
             }
+            // Core dot
             ctx.beginPath();
-            ctx.arc(px, py, 3.5, 0, 2 * Math.PI);
+            ctx.arc(px, py, 4.5, 0, 2 * Math.PI);
             ctx.fillStyle = ORANGE;
             ctx.fill();
+            // Bright center
+            ctx.beginPath();
+            ctx.arc(px, py, 2, 0, 2 * Math.PI);
+            ctx.fillStyle = '#ffb86c';
+            ctx.fill();
           } else {
+            // Secondary markers — now also orange with pulse
+            if (!reducedMotion) {
+              // Subtle glow
+              const glowR = 8 + Math.sin(t * Math.PI * 2) * 2;
+              const glow = ctx.createRadialGradient(px, py, 0, px, py, glowR);
+              glow.addColorStop(0, 'rgba(249,115,22,0.25)');
+              glow.addColorStop(0.6, 'rgba(249,115,22,0.08)');
+              glow.addColorStop(1, 'transparent');
+              ctx.beginPath();
+              ctx.arc(px, py, glowR, 0, 2 * Math.PI);
+              ctx.fillStyle = glow;
+              ctx.fill();
+              
+              // Pulsing ring
+              const pulse = 4 + Math.sin(t * Math.PI * 2) * 1.5;
+              ctx.beginPath();
+              ctx.arc(px, py, pulse, 0, 2 * Math.PI);
+              ctx.strokeStyle = 'rgba(249,115,22,0.3)';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+            // Core dot — now orange instead of gray
             ctx.beginPath();
-            ctx.arc(px, py, 2.5, 0, 2 * Math.PI);
-            ctx.strokeStyle = NEUTRAL_MARKER;
-            ctx.lineWidth = 1;
-            ctx.stroke();
+            ctx.arc(px, py, 3, 0, 2 * Math.PI);
+            ctx.fillStyle = 'rgba(249,115,22,0.85)';
+            ctx.fill();
+            // Small bright center
             ctx.beginPath();
-            ctx.arc(px, py, 1, 0, 2 * Math.PI);
-            ctx.fillStyle = NEUTRAL_MARKER;
+            ctx.arc(px, py, 1.2, 0, 2 * Math.PI);
+            ctx.fillStyle = '#ffa54f';
             ctx.fill();
           }
         });
+
+        // 7. Floating particles around the globe for ambient life
+        if (!reducedMotion) {
+          const particleCount = 25;
+          for (let i = 0; i < particleCount; i++) {
+            const angle = ((now * 0.0001 + i * 0.25) % (Math.PI * 2));
+            const dist = radius * (1.02 + 0.12 * Math.sin(now * 0.001 + i * 0.5));
+            const px = W / 2 + Math.cos(angle) * dist;
+            const py = H / 2 + Math.sin(angle) * dist * 0.4; // flatten for 3D feel
+            const pulseAlpha = 0.15 + 0.2 * Math.sin(now * 0.002 + i * 0.7);
+            const size = 1 + Math.sin(now * 0.003 + i) * 0.5;
+            
+            ctx.beginPath();
+            ctx.arc(px, py, size, 0, 2 * Math.PI);
+            ctx.fillStyle = `rgba(249,115,22,${pulseAlpha})`;
+            ctx.fill();
+          }
+        }
       }
 
       // ── Animation loop ───────────────────────────────────────────
