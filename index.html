@@ -1840,72 +1840,90 @@
         .logo-cloud-track img {
           pointer-events: none;
           user-select: none;
-          height: 32px;
+          height: 24px;
           filter: brightness(0) invert(1);
-          opacity: 0.55;
-          transition: opacity 0.3s ease;
+          opacity: 0.5;
+          transition: filter 0.15s ease, opacity 0.15s ease;
         }
 
         @media (max-width: 768px) {
           .logo-cloud-track img {
-            height: 24px;
+            height: 18px;
           }
         }
 
-        /* Wrapper holds both the clipping carousel and the unclipped spotlight */
+        /* Wrapper for the logo cloud */
         .logo-cloud-wrapper {
           position: relative;
         }
 
-        /* Orange spotlight — sits above logos via z-index + mix-blend-mode:screen
-           White logos + orange screen = logos glow orange at cursor position     */
+        /* Hide the old spotlight div - we use per-logo tinting now */
         .logo-spotlight {
-          position: absolute;
-          pointer-events: none;
-          width: 320px;
-          height: 320px;
-          border-radius: 50%;
-          background: radial-gradient(
-            circle at center,
-            rgba(249, 115, 22, 0.95) 0%,
-            rgba(249, 115, 22, 0.65) 20%,
-            rgba(249, 115, 22, 0.30) 45%,
-            rgba(249, 115, 22, 0.08) 65%,
-            transparent 75%
-          );
-          transform: translate(-50%, -50%);
-          opacity: 0;
-          transition: opacity 0.25s ease;
-          z-index: 20;
-          mix-blend-mode: screen;
-          /* Pointer events off so it never interferes with hover/carousel */
-        }
-
-        .logo-cloud-wrapper:hover .logo-spotlight {
-          opacity: 1;
+          display: none;
         }
       </style>
 
       <script>
-        // Logo cloud spotlight — tracks cursor relative to wrapper, not clipped carousel
+        // Logo cloud spotlight — tints logos orange based on cursor distance
         (function() {
           const wrapper = document.getElementById('logo-cloud-wrapper');
-          const spotlight = document.getElementById('logo-spotlight');
+          if (!wrapper) return;
 
-          if (!wrapper || !spotlight) return;
+          const RADIUS = 120; // px — how far the effect reaches
+          let isHovering = false;
+          let cursorX = 0;
+          let cursorY = 0;
+          let rafId = null;
+
+          function updateLogos() {
+            if (!isHovering) return;
+            
+            const logos = wrapper.querySelectorAll('.logo-cloud-track img');
+            logos.forEach(img => {
+              const rect = img.getBoundingClientRect();
+              const logoCenterX = rect.left + rect.width / 2;
+              const logoCenterY = rect.top + rect.height / 2;
+              
+              const dist = Math.hypot(cursorX - logoCenterX, cursorY - logoCenterY);
+              const intensity = Math.max(0, 1 - dist / RADIUS);
+              
+              if (intensity > 0) {
+                // sepia(1) makes it brownish, then hue-rotate to orange, saturate to boost
+                // We interpolate between white (normal) and orange based on intensity
+                const sepia = intensity;
+                const saturate = 1 + intensity * 5;
+                const hueRotate = intensity * -15; // shift toward orange
+                const brightness = 1 + intensity * 0.3;
+                img.style.filter = `brightness(0) invert(1) sepia(${sepia}) saturate(${saturate}) hue-rotate(${hueRotate}deg) brightness(${brightness})`;
+                img.style.opacity = 0.5 + intensity * 0.5;
+              } else {
+                img.style.filter = 'brightness(0) invert(1)';
+                img.style.opacity = '0.5';
+              }
+            });
+            
+            rafId = requestAnimationFrame(updateLogos);
+          }
 
           wrapper.addEventListener('mousemove', (e) => {
-            const rect = wrapper.getBoundingClientRect();
-            spotlight.style.left = (e.clientX - rect.left) + 'px';
-            spotlight.style.top  = (e.clientY - rect.top)  + 'px';
-          });
-
-          wrapper.addEventListener('mouseleave', () => {
-            spotlight.style.opacity = '0';
+            cursorX = e.clientX;
+            cursorY = e.clientY;
           });
 
           wrapper.addEventListener('mouseenter', () => {
-            spotlight.style.opacity = '1';
+            isHovering = true;
+            rafId = requestAnimationFrame(updateLogos);
+          });
+
+          wrapper.addEventListener('mouseleave', () => {
+            isHovering = false;
+            if (rafId) cancelAnimationFrame(rafId);
+            // Reset all logos to default
+            const logos = wrapper.querySelectorAll('.logo-cloud-track img');
+            logos.forEach(img => {
+              img.style.filter = 'brightness(0) invert(1)';
+              img.style.opacity = '0.5';
+            });
           });
         })();
       </script>
