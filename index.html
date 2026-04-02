@@ -55,7 +55,7 @@
     .hero-sub-2 {
       font-size: 0.9rem;
       line-height: 1.6;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
       max-width: 420px;
       margin: 0 0 0.9rem;
       font-style: italic;
@@ -67,7 +67,7 @@
       font-size: 0.8rem;
       font-weight: 500;
       letter-spacing: 0.08em;
-      color: rgba(249,115,22,0.8);
+      color: rgba(249, 115, 22, 0.8);
       margin-top: 1rem;
       text-transform: uppercase;
     }
@@ -79,15 +79,17 @@
       overflow: hidden;
       aspect-ratio: 4/3;
       background: #161618;
-      border: 1px solid rgba(255,255,255,0.07);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
       cursor: pointer;
     }
+
     .pf-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
-      border-color: rgba(249,115,22,0.25);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      border-color: rgba(249, 115, 22, 0.25);
     }
+
     .pf-img {
       position: absolute;
       inset: 0;
@@ -97,19 +99,23 @@
       object-position: center;
       transition: transform 500ms ease, opacity 300ms ease;
     }
+
     .pf-card:hover .pf-img {
       transform: scale(1.05);
       opacity: 0.6;
     }
+
     .pf-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(9,9,11,0.95) 0%, rgba(9,9,11,0.3) 45%, transparent 80%);
+      background: linear-gradient(to top, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.3) 45%, transparent 80%);
       transition: background 300ms ease;
     }
+
     .pf-card:hover .pf-overlay {
-      background: linear-gradient(to top, rgba(9,9,11,0.95) 0%, rgba(249,115,22,0.15) 50%, rgba(249,115,22,0.05) 100%);
+      background: linear-gradient(to top, rgba(9, 9, 11, 0.95) 0%, rgba(249, 115, 22, 0.15) 50%, rgba(249, 115, 22, 0.05) 100%);
     }
+
     .pf-content {
       position: absolute;
       bottom: 0;
@@ -118,13 +124,14 @@
       padding: 1.2rem 1.25rem 1rem;
       z-index: 2;
     }
+
     .pf-hover-btn {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -40%);
       opacity: 0;
-      background: rgba(249,115,22,0.95);
+      background: rgba(249, 115, 22, 0.95);
       color: #fff;
       font-size: 0.8rem;
       font-weight: 600;
@@ -134,6 +141,7 @@
       z-index: 2;
       pointer-events: none;
     }
+
     .pf-card:hover .pf-hover-btn {
       opacity: 1;
       transform: translate(-50%, -50%);
@@ -144,12 +152,22 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
-    @media (max-width: 899px) { .ref-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 599px) { .ref-grid { grid-template-columns: 1fr; } }
-    
+
+    @media (max-width: 899px) {
+      .ref-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 599px) {
+      .ref-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .ref-card {
       background: #161618;
-      border: 1px solid rgba(255,255,255,0.07);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 10px;
       padding: 1.75rem 1.5rem;
       display: flex;
@@ -157,16 +175,18 @@
       align-items: flex-start;
       transition: border-color 220ms ease, box-shadow 220ms ease;
     }
+
     .ref-card:hover {
-      border-color: rgba(249,115,22,0.2);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border-color: rgba(249, 115, 22, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
+
     .hero-opening-label .ol-sub {
       display: block;
       font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.06em;
-      color: rgba(249,115,22,0.65);
+      color: rgba(249, 115, 22, 0.65);
       margin-top: 0.75rem;
       text-transform: uppercase;
     }
@@ -796,9 +816,11 @@
     /* ── Hero scroll canvas: taller than viewport to drive transition ── */
     .hero-section {
       position: relative;
-      height: 125vh;          /* Reduced height to snap efficiently to next section */
+      height: 125vh;
+      /* Reduced height to snap efficiently to next section */
       background: #09090b;
     }
+
     @media (max-width: 899px) {
       .hero-section {
         height: auto;
@@ -817,6 +839,7 @@
       background: #09090b;
       overflow: hidden;
     }
+
     /* Grid/Dots pattern */
     .hero-bg::before {
       content: '';
@@ -824,13 +847,14 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
       background-size: 24px 24px;
       /* fade-edges mask */
       -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 80%);
       mask-image: radial-gradient(ellipse at center, black, transparent 80%);
       opacity: 0.8;
     }
+
     /* Base dark fade at bottom */
     .hero-bg::after {
       content: '';
@@ -850,6 +874,7 @@
       overflow: hidden;
       z-index: 2;
     }
+
     @media (max-width: 899px) {
       .hero-stage {
         position: relative;
@@ -872,6 +897,7 @@
       padding-top: max(80px, 9vh);
       padding-bottom: max(40px, 5vh);
     }
+
     @media (max-width: 899px) {
       .hero-text {
         padding-top: 0;
@@ -883,7 +909,8 @@
     /* ── Detail elements that fade in as settled ── */
     .hero-detail {
       will-change: opacity;
-      transition: none; /* driven by JS, no CSS transition */
+      transition: none;
+      /* driven by JS, no CSS transition */
     }
 
     .hero-eyebrow {
@@ -893,7 +920,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
       margin-bottom: 1.25rem;
     }
 
@@ -909,7 +936,7 @@
     .hero-sub {
       font-size: 1rem;
       line-height: 1.65;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.55);
       max-width: 440px;
       margin: 0 0 1.1rem;
     }
@@ -929,7 +956,7 @@
       align-items: center;
       gap: 0.6rem;
       font-size: 0.875rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .hero-bullets li::before {
@@ -960,6 +987,7 @@
       padding-bottom: max(40px, 5vh);
       will-change: transform, opacity;
     }
+
     @media (max-width: 899px) {
       .hero-globe-col {
         padding-top: 0;
@@ -981,12 +1009,13 @@
       /* Loading placeholder ring — visible before land data arrives */
       border-radius: 50%;
     }
+
     .hero-globe-wrap::before {
       content: '';
       position: absolute;
       inset: 6%;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       pointer-events: none;
       z-index: 0;
     }
@@ -1016,9 +1045,9 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-      background: rgba(9,9,11,0.75);
-      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255, 255, 255, 0.75);
+      background: rgba(9, 9, 11, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 4px;
       padding: 0.25rem 0.5rem;
       pointer-events: none;
@@ -1027,6 +1056,7 @@
       transition: opacity 180ms ease;
       z-index: 10;
     }
+
     .globe-marker-tip.is-visible {
       opacity: 1;
     }
@@ -1036,10 +1066,11 @@
       background: #f97316;
       color: #fff;
     }
+
     .hero-stage .btn-primary:hover,
     .hero-stage .btn-primary:focus-visible {
       background: #ea580c;
-      box-shadow: 0 8px 24px rgba(249,115,22,0.3);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
       transform: translateY(-2px);
     }
 
@@ -1053,30 +1084,33 @@
       pointer-events: none;
       z-index: 4;
       will-change: opacity, transform;
-      background: radial-gradient(circle at center, rgba(9,9,11,0.6) 0%, transparent 80%);
+      background: radial-gradient(circle at center, rgba(9, 9, 11, 0.6) 0%, transparent 80%);
       padding: 3rem;
       width: 100%;
     }
+
     .hero-opening-label .ol-kicker {
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       margin-bottom: 0.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.75rem;
     }
+
     .hero-opening-label .ol-kicker::before,
     .hero-opening-label .ol-kicker::after {
       content: '';
       display: block;
       width: 24px;
       height: 1px;
-      background: rgba(249,115,22,0.5);
+      background: rgba(249, 115, 22, 0.5);
     }
+
     .hero-opening-label .ol-h {
       font-size: clamp(1.4rem, 2.5vw, 2.6rem);
       font-weight: 800;
@@ -1085,7 +1119,7 @@
       color: #ffffff;
       display: block;
       white-space: nowrap;
-      text-shadow: 0 4px 24px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
       margin: 0.4rem 0;
     }
 
@@ -1103,7 +1137,7 @@
       font-weight: 700;
       color: #fff;
       white-space: nowrap;
-      text-shadow: 0 4px 16px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
     }
 
     /* ── prefers-reduced-motion: skip to settled state ── */
@@ -1112,19 +1146,23 @@
         height: auto !important;
         min-height: 100svh !important;
       }
+
       .hero-stage {
         position: relative !important;
         height: auto !important;
         min-height: 100svh !important;
       }
+
       .hero-text,
       .hero-globe-col {
         transform: none !important;
         opacity: 1 !important;
       }
+
       .hero-opening-label {
         display: none !important;
       }
+
       .hero-detail {
         opacity: 1 !important;
       }
@@ -1134,18 +1172,23 @@
       .hero-opening-label {
         display: none !important;
       }
+
       .hero-detail {
         opacity: 1 !important;
       }
+
       #hero-text {
         opacity: 1 !important;
         transform: none !important;
       }
+
       #hero-globe-col {
         opacity: 1 !important;
         transform: none !important;
       }
-      .pf-grid-resp {
+
+      .pf-grid-resp,
+      .div-grid-resp {
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
       }
@@ -1158,22 +1201,26 @@
       left: 0;
       width: 100%;
       background: #09090b;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       z-index: 99;
       transform: translateY(-10px);
       transition: opacity 200ms ease, transform 200ms ease;
     }
+
     .mobile-nav:not([hidden]) {
       display: flex !important;
       opacity: 1;
       transform: translateY(0);
     }
+
     .mobile-menu-toggle.is-active .hamburger {
       background: transparent !important;
     }
+
     .mobile-menu-toggle.is-active .hamburger::before {
       transform: translateY(7px) rotate(45deg);
     }
+
     .mobile-menu-toggle.is-active .hamburger::after {
       transform: translateY(-7px) rotate(-45deg);
     }
@@ -1212,10 +1259,12 @@
             </svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Opera&ccedil;&atilde;o Internacional</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span
+                class="nav-dropdown-dot"></span>Opera&ccedil;&atilde;o Internacional</a>
             <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
             <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Inform&aacute;tica</a>
-            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produ&ccedil;&atilde;o &amp; Criatividade</a>
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produ&ccedil;&atilde;o &amp;
+              Criatividade</a>
           </div>
         </div>
         <a href="/portfolio.html" id="nav-trabalhos">Trabalhos</a>
@@ -1270,22 +1319,28 @@
           </p>
 
           <!-- H1: always visible, shifts from center to left -->
-          <h1 class="hero-h1" id="hero-h1">Fornecimento e opera&ccedil;&atilde;o internacional por pedido &mdash; com controlo.</h1>
+          <h1 class="hero-h1" id="hero-h1">Fornecimento e opera&ccedil;&atilde;o internacional por pedido, com controlo.
+          </h1>
 
           <!-- Sub + bullets + CTAs: fade in as settled -->
-          <p class="hero-sub hero-detail" id="hero-sub">Recebemos requisitos, validamos viabilidade e documenta&ccedil;&atilde;o, e coordenamos a execu&ccedil;&atilde;o at&eacute; &agrave; entrega.</p>
-          <p class="hero-sub-2 hero-detail">Sem cat&aacute;logo fixo: cada pedido &eacute; tratado como opera&ccedil;&atilde;o.</p>
+          <p class="hero-sub hero-detail" id="hero-sub">Recebemos requisitos, validamos viabilidade e
+            documenta&ccedil;&atilde;o, e coordenamos a execu&ccedil;&atilde;o at&eacute; &agrave; entrega.</p>
+          <p class="hero-sub-2 hero-detail">Sem cat&aacute;logo fixo: cada pedido &eacute; tratado como
+            opera&ccedil;&atilde;o.</p>
           <ul class="hero-bullets hero-detail" id="hero-bullets" aria-label="Diferenciais">
-            <li>Valida&ccedil;&atilde;o antes de avan&ccedil;ar (requisitos, condi&ccedil;&otilde;es e pr&oacute;ximos passos)</li>
+            <li>Valida&ccedil;&atilde;o antes de avan&ccedil;ar (requisitos, condi&ccedil;&otilde;es e pr&oacute;ximos
+              passos)</li>
             <li>Documenta&ccedil;&atilde;o integrada no processo (n&atilde;o &ldquo;no fim&rdquo;)</li>
             <li>Acompanhamento por etapas at&eacute; entrega e fecho</li>
           </ul>
           <div class="hero-ctas hero-detail" id="hero-ctas">
             <a href="/contactos.html" class="btn btn-primary" id="hero-cta-orcamento">Pedir or&ccedil;amento</a>
             <a href="#divisoes" class="btn btn-outline" id="hero-cta-divisoes"
-               style="color:rgba(255,255,255,0.72);border-color:rgba(255,255,255,0.2);">Ver como funciona</a>
+              style="color:rgba(255,255,255,0.72);border-color:rgba(255,255,255,0.2);">Ver como funciona</a>
           </div>
-          <p class="hero-micro hero-detail">Base em Portugal, com presen&ccedil;a em S&atilde;o Tom&eacute; e Pr&iacute;ncipe e Guin&eacute;-Bissau, e escrit&oacute;rios na China e na &Iacute;ndia.<br>Opera&ccedil;&atilde;o ajustada ao destino, prazo e restri&ccedil;&otilde;es do pedido.</p>
+          <p class="hero-micro hero-detail">Base em Portugal, com presen&ccedil;a em S&atilde;o Tom&eacute; e
+            Pr&iacute;ncipe e Guin&eacute;-Bissau, e escrit&oacute;rios na China e na
+            &Iacute;ndia.<br>Opera&ccedil;&atilde;o ajustada ao destino, prazo e restri&ccedil;&otilde;es do pedido.</p>
         </div>
 
         <!-- RIGHT: globe visual column -->
@@ -1298,13 +1353,15 @@
           <!-- Opening-state centered label (fades OUT as hero transitions) -->
           <div class="hero-opening-label" id="hero-opening-label" aria-hidden="true">
             <span class="ol-kicker">Opera&ccedil;&atilde;o internacional B2B</span>
-            <span class="ol-h">Importa&ccedil;&atilde;o &middot; Exporta&ccedil;&atilde;o<br>&middot; Distribui&ccedil;&atilde;o</span>
-            <span class="ol-sub">Valida&ccedil;&atilde;o &rarr; documenta&ccedil;&atilde;o &rarr; execu&ccedil;&atilde;o</span>
+            <span class="ol-h">Importa&ccedil;&atilde;o &middot; Exporta&ccedil;&atilde;o<br>&middot;
+              Distribui&ccedil;&atilde;o</span>
+            <span class="ol-sub">Valida&ccedil;&atilde;o &rarr; documenta&ccedil;&atilde;o &rarr;
+              execu&ccedil;&atilde;o</span>
           </div>
 
           <!-- Transition-state centered label -->
           <div class="hero-transition-label" id="hero-transition-label" aria-hidden="true" style="opacity: 0;">
-            Do requisito ao destino &mdash; com processo.
+            Do requisito ao destino, com processo.
           </div>
         </div>
 
@@ -1317,106 +1374,204 @@
     <section id="divisoes" style="background:#0d0d0f;border-top:1px solid rgba(255,255,255,0.055);padding:5rem 0;">
       <div class="container">
         <div class="reveal-up" style="margin-bottom:2.75rem;">
-          <span style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Divis&otilde;es</span>
-          <h2 style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin-bottom:0.6rem;line-height:1.2;">Servi&ccedil;os por linha &mdash; o mesmo padr&atilde;o: valida&ccedil;&atilde;o e execu&ccedil;&atilde;o.</h2>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;line-height:1.65;">Entradas diferentes. Processo consistente. Um ponto de contacto.</p>
+          <span
+            style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Divis&otilde;es</span>
+          <h2
+            style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin-bottom:0.6rem;line-height:1.2;">
+            Servi&ccedil;os por linha, o mesmo padr&atilde;o: valida&ccedil;&atilde;o e execu&ccedil;&atilde;o.</h2>
+          <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;line-height:1.65;">Entradas
+            diferentes. Processo consistente. Um ponto de contacto.</p>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;" class="div-grid-resp reveal-up delay-1">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;"
+          class="div-grid-resp reveal-up delay-1">
 
           <!-- Operação Internacional -->
-          <article id="card-operacao" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+          <article id="card-operacao"
+            style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
             onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
             onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
             <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 010 16"/></svg>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="10" cy="10" r="8" />
+                <path d="M2 10h16M10 2a14 14 0 010 16" />
+              </svg>
             </div>
-            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Opera&ccedil;&atilde;o Internacional</h3>
-            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">Importa&ccedil;&atilde;o, exporta&ccedil;&atilde;o e distribui&ccedil;&atilde;o por pedido, com coordena&ccedil;&atilde;o de ponta a ponta.</p>
-            <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fornecimento &amp; coordena&ccedil;&atilde;o log&iacute;stica</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Documenta&ccedil;&atilde;o e processos alfandeg&aacute;rios</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>A&eacute;reo &middot; Terrestre &middot; Mar&iacute;timo</li>
+            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Opera&ccedil;&atilde;o
+              Internacional</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">
+              Importa&ccedil;&atilde;o, exporta&ccedil;&atilde;o e distribui&ccedil;&atilde;o por pedido, com
+              coordena&ccedil;&atilde;o de ponta a ponta.</p>
+            <ul
+              style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fornecimento
+                &amp; coordena&ccedil;&atilde;o log&iacute;stica</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Documenta&ccedil;&atilde;o
+                e processos alfandeg&aacute;rios</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>A&eacute;reo
+                &middot; Terrestre &middot; Mar&iacute;timo</li>
             </ul>
-            <div style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:rgba(255,255,255,0.35);">
-              <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10b981;"></span> Certificado Pagamento Pontual
+            <div
+              style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:rgba(255,255,255,0.35);">
+              <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#10b981;"></span>
+              Certificado Pagamento Pontual
             </div>
-            <a href="/importacao-e-exportacao.html" id="div-cta-operacao" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+            <a href="/importacao-e-exportacao.html" id="div-cta-operacao"
+              style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
               onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
-              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver opera&ccedil;&atilde;o &rarr;</a>
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver
+              opera&ccedil;&atilde;o &rarr;</a>
           </article>
 
           <!-- Health & Care -->
-          <article id="card-health" class="div-card" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+          <article id="card-health" class="div-card"
+            style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
             onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
             onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
             <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
             </div>
             <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Health &amp; Care</h3>
-            <ul class="div-bullets" style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Sele&ccedil;&atilde;o por itens e envio de pedido</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Valida&ccedil;&atilde;o manual antes da proposta</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Resposta com or&ccedil;amento + pr&oacute;ximos passos</li>
+            <ul class="div-bullets"
+              style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Sele&ccedil;&atilde;o
+                por itens e envio de pedido</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Valida&ccedil;&atilde;o
+                manual antes da proposta</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Resposta
+                com or&ccedil;amento + pr&oacute;ximos passos</li>
             </ul>
-            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="cert-badge cert-badge-premium" style="margin-bottom:1.25rem;display:flex;padding:0.75rem;gap:0.75rem;background:linear-gradient(to right, rgba(16,185,129,0.05), transparent);border:1px solid rgba(16,185,129,0.15);border-radius:8px;text-decoration:none;transition:background 0.2s ease, border-color 0.2s ease;">
-              <div class="cert-badge-icon" style="flex-shrink:0;color:#10b981;display:flex;align-items:center;justify-content:center;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></svg>
+            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer"
+              class="cert-badge cert-badge-premium"
+              style="margin-bottom:1.25rem;display:flex;padding:0.75rem;gap:0.75rem;background:linear-gradient(to right, rgba(16,185,129,0.05), transparent);border:1px solid rgba(16,185,129,0.15);border-radius:8px;text-decoration:none;transition:background 0.2s ease, border-color 0.2s ease;">
+              <div class="cert-badge-icon"
+                style="flex-shrink:0;color:#10b981;display:flex;align-items:center;justify-content:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
               </div>
               <div class="cert-badge-text" style="display:flex;flex-direction:column;gap:0.15rem;">
-                <span class="cert-badge-title" style="font-size:0.75rem;font-weight:700;color:#10b981;">Distribuidor Certificado</span>
-                <span class="cert-badge-sub" style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Cert. 1866/DM/2023</span>
-                <span class="cert-badge-issuer" style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Infarmed - Autoridade Nacional</span>
+                <span class="cert-badge-title" style="font-size:0.75rem;font-weight:700;color:#10b981;">Distribuidor
+                  Certificado</span>
+                <span class="cert-badge-sub" style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Cert.
+                  1866/DM/2023</span>
+                <span class="cert-badge-issuer" style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Infarmed -
+                  Autoridade Nacional</span>
               </div>
               <div style="margin-left:auto;display:flex;align-items:center;color:rgba(255,255,255,0.2);">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="9 18 15 12 9 6" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
               </div>
             </a>
-            <a href="/health-care.html" id="div-cta-health" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+            <a href="/health-care.html" id="div-cta-health"
+              style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
               onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
-              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver Health &amp; Care &rarr;</a>
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver
+              Health &amp; Care &rarr;</a>
           </article>
 
           <!-- Informática -->
-          <article id="card-informatica" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+          <article id="card-informatica"
+            style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
             onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
             onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
             <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="11" rx="2"/><path d="M7 18h6M10 15v3"/></svg>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="4" width="16" height="11" rx="2" />
+                <path d="M7 18h6M10 15v3" />
+              </svg>
             </div>
             <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Inform&aacute;tica</h3>
-            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">Cat&aacute;logo suportado por parceiro especializado — acesso direto e encaminhamento simplificado.</p>
-            <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Acesso direto ao cat&aacute;logo</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Pedidos no ambiente dedicado</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Encaminhamento simplificado</li>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">
+              Cat&aacute;logo suportado por parceiro especializado — acesso direto e encaminhamento simplificado.</p>
+            <ul
+              style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Acesso
+                direto ao cat&aacute;logo</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Pedidos
+                no ambiente dedicado</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Encaminhamento
+                simplificado</li>
             </ul>
-            <a href="/informatica.html" id="div-cta-informatica" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+            <a href="/informatica.html" id="div-cta-informatica"
+              style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
               onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
-              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Aceder &rarr;</a>
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Aceder
+              &rarr;</a>
           </article>
 
           <!-- Produção & Criatividade -->
-          <article id="card-producao" style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+          <article id="card-producao"
+            style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
             onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
             onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
             <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><circle cx="14" cy="14" r="3"/></svg>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="3" width="6" height="6" rx="1" />
+                <rect x="11" y="3" width="6" height="6" rx="1" />
+                <rect x="3" y="11" width="6" height="6" rx="1" />
+                <circle cx="14" cy="14" r="3" />
+              </svg>
             </div>
-            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Produ&ccedil;&atilde;o &amp; Criatividade</h3>
-            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">Produ&ccedil;&atilde;o, comunica&ccedil;&atilde;o visual e execu&ccedil;&atilde;o para projetos corporativos.</p>
-            <ul style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Stands, eventos e brinde corporativo</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Impress&atilde;o, sinalética e materiais</li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fardamentos e identidade visual</li>
+            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Produ&ccedil;&atilde;o
+              &amp; Criatividade</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">
+              Produ&ccedil;&atilde;o, comunica&ccedil;&atilde;o visual e execu&ccedil;&atilde;o para projetos
+              corporativos.</p>
+            <ul
+              style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Stands,
+                eventos e brinde corporativo</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Impress&atilde;o,
+                sinalética e materiais</li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fardamentos
+                e identidade visual</li>
             </ul>
-            <a href="/producao.html" id="div-cta-producao" style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+            <a href="/producao.html" id="div-cta-producao"
+              style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
               onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
-              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver produ&ccedil;&atilde;o &rarr;</a>
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver
+              produ&ccedil;&atilde;o &rarr;</a>
           </article>
 
         </div>
-        <p class="reveal-up delay-2" style="margin-top:1.75rem;font-size:0.78rem;color:rgba(255,255,255,0.25);font-style:italic;">Sem promessas vagas: pedido &rarr; valida&ccedil;&atilde;o &rarr; proposta &rarr; execu&ccedil;&atilde;o.</p>
+        <p class="reveal-up delay-2"
+          style="margin-top:1.75rem;font-size:0.78rem;color:rgba(255,255,255,0.25);font-style:italic;">Sem promessas
+          vagas: pedido &rarr; valida&ccedil;&atilde;o &rarr; proposta &rarr; execu&ccedil;&atilde;o.</p>
       </div>
     </section>
 
@@ -1426,25 +1581,43 @@
     <section id="portfolio" style="background:#111113;border-top:1px solid rgba(255,255,255,0.055);padding:5rem 0;">
       <div class="container">
         <div class="reveal-up" style="margin-bottom:2.5rem;">
-          <span style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Trabalhos selecionados</span>
-          <h2 style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin-bottom:0.6rem;line-height:1.2;">Execu&ccedil;&atilde;o vis&iacute;vel.</h2>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;line-height:1.65;margin-bottom:1.5rem;">Exemplos de projetos e entregas onde o importante foi coordenar requisitos, prazos e opera&ccedil;&atilde;o.</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem;font-size:0.8rem;color:rgba(255,255,255,0.5);">
-            <li style="display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi pedido (requisitos)</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi validado (condi&ccedil;&otilde;es/documenta&ccedil;&atilde;o)</li>
-            <li style="display:flex;align-items:center;gap:0.5rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi entregue (resultado operacional)</li>
+          <span
+            style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Trabalhos
+            selecionados</span>
+          <h2
+            style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin-bottom:0.6rem;line-height:1.2;">
+            Execu&ccedil;&atilde;o vis&iacute;vel.</h2>
+          <p
+            style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;line-height:1.65;margin-bottom:1.5rem;">
+            Exemplos de projetos e entregas onde o importante foi coordenar requisitos, prazos e opera&ccedil;&atilde;o.
+          </p>
+          <ul
+            style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem;font-size:0.8rem;color:rgba(255,255,255,0.5);">
+            <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi pedido
+              (requisitos)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi
+              validado (condi&ccedil;&otilde;es/documenta&ccedil;&atilde;o)</li>
+            <li style="display:flex;align-items:center;gap:0.5rem;"><span
+                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;"></span>O que foi
+              entregue (resultado operacional)</li>
           </ul>
         </div>
 
-        <div class="pf-grid-resp reveal-up delay-1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;">
+        <div class="pf-grid-resp reveal-up delay-1"
+          style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;">
 
           <!-- Repsol Stand -->
           <article id="pf-repsol" class="pf-card" onclick="location.href='/portfolio.html'">
             <img src="images/stands/repsol.jpeg" alt="Stand Repsol" class="pf-img" loading="lazy">
             <div class="pf-overlay"></div>
             <div class="pf-content">
-              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Stands &amp; Eventos</p>
-              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Stand Repsol &mdash; Ativa&ccedil;&atilde;o Corporativa</h3>
+              <p
+                style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
+                Stands &amp; Eventos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Stand Repsol,
+                Ativa&ccedil;&atilde;o Corporativa</h3>
             </div>
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
@@ -1454,8 +1627,11 @@
             <img src="images/stands/santaCasa.jpg" alt="Stand Santa Casa da Misericórdia" class="pf-img" loading="lazy">
             <div class="pf-overlay"></div>
             <div class="pf-content">
-              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Stands &amp; Eventos</p>
-              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Santa Casa da Miseric&oacute;rdia &mdash; Presen&ccedil;a Institucional</h3>
+              <p
+                style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
+                Stands &amp; Eventos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Santa Casa da
+                Miseric&oacute;rdia, Presen&ccedil;a Institucional</h3>
             </div>
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
@@ -1465,19 +1641,26 @@
             <img src="images/stands/bissau.png" alt="Stand Guiné-Bissau" class="pf-img" loading="lazy">
             <div class="pf-overlay"></div>
             <div class="pf-content">
-              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Stands &amp; Eventos</p>
-              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Guin&eacute;-Bissau &mdash; Presen&ccedil;a Local &amp; Opera&ccedil;&atilde;o</h3>
+              <p
+                style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
+                Stands &amp; Eventos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Guin&eacute;-Bissau,
+                Presen&ccedil;a Local &amp; Opera&ccedil;&atilde;o</h3>
             </div>
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
 
           <!-- Banco Central STP -->
           <article id="pf-bcstp" class="pf-card" onclick="location.href='/portfolio.html'">
-            <img src="images/IV/logoBancoCentralSTP.jpg" alt="Banco Central de São Tomé e Príncipe" class="pf-img" loading="lazy">
+            <img src="images/IV/logoBancoCentralSTP.jpg" alt="Banco Central de São Tomé e Príncipe" class="pf-img"
+              loading="lazy">
             <div class="pf-overlay"></div>
             <div class="pf-content">
-              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Identidade Visual &amp; Produ&ccedil;&atilde;o</p>
-              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Banco Central &mdash; S&atilde;o Tom&eacute; e Pr&iacute;ncipe</h3>
+              <p
+                style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
+                Identidade Visual &amp; Produ&ccedil;&atilde;o</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Banco Central,
+                S&atilde;o Tom&eacute; e Pr&iacute;ncipe</h3>
             </div>
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
@@ -1487,19 +1670,26 @@
             <img src="images/IV/mockupsFF.jpg" alt="Mockups de identidade visual" class="pf-img" loading="lazy">
             <div class="pf-overlay"></div>
             <div class="pf-content">
-              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Produ&ccedil;&atilde;o &amp; Criatividade</p>
-              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Identidade Visual &amp; Materiais Corporativos</h3>
+              <p
+                style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
+                Produ&ccedil;&atilde;o &amp; Criatividade</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Identidade Visual &amp;
+                Materiais Corporativos</h3>
             </div>
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
 
           <!-- Equipamento Principal -->
           <article id="pf-equip" class="pf-card" onclick="location.href='/portfolio.html'">
-            <img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="Equipamento industrial" class="pf-img" loading="lazy">
+            <img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="Equipamento industrial" class="pf-img"
+              loading="lazy">
             <div class="pf-overlay"></div>
             <div class="pf-content">
-              <p style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">Fornecimento &amp; Equipamentos</p>
-              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Equipamento Especializado &mdash; Opera&ccedil;&atilde;o Internacional</h3>
+              <p
+                style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
+                Fornecimento &amp; Equipamentos</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Equipamento
+                Especializado, Opera&ccedil;&atilde;o Internacional</h3>
             </div>
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
@@ -1507,73 +1697,143 @@
         </div>
 
         <div class="reveal-up delay-2" style="margin-top:2.25rem;display:flex;gap:0.875rem;flex-wrap:wrap;">
-          <a href="/portfolio.html" id="portfolio-ver-mais" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:transparent;color:rgba(255,255,255,0.62);border:1.5px solid rgba(255,255,255,0.15);transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+          <a href="/portfolio.html" id="portfolio-ver-mais"
+            style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:transparent;color:rgba(255,255,255,0.62);border:1.5px solid rgba(255,255,255,0.15);transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
             onmouseenter="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.38)';this.style.background='rgba(255,255,255,0.04)';"
-            onmouseleave="this.style.color='rgba(255,255,255,0.62)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.background='transparent';">Ver trabalhos</a>
-          <a href="/contactos.html" id="portfolio-orcamento" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:#f97316;color:#fff;transition:background 220ms ease,transform 220ms ease,box-shadow 220ms ease;text-decoration:none;"
+            onmouseleave="this.style.color='rgba(255,255,255,0.62)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.background='transparent';">Ver
+            trabalhos</a>
+          <a href="/contactos.html" id="portfolio-orcamento"
+            style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:#f97316;color:#fff;transition:background 220ms ease,transform 220ms ease,box-shadow 220ms ease;text-decoration:none;"
             onmouseenter="this.style.background='#ea580c';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 22px rgba(249,115,22,0.28)';"
-            onmouseleave="this.style.background='#f97316';this.style.transform='';this.style.boxShadow='';">Pedir or&ccedil;amento</a>
+            onmouseleave="this.style.background='#f97316';this.style.transform='';this.style.boxShadow='';">Pedir
+            or&ccedil;amento</a>
         </div>
-        <p class="reveal-up" style="margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.25);font-style:italic;">Mostramos apenas o que pode ser partilhado.</p>
+        <p class="reveal-up" style="margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.25);font-style:italic;">
+          Mostramos apenas o que pode ser partilhado.</p>
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
          SECTION 5 — REFERÊNCIAS / LOGO CLOUD
     ═══════════════════════════════════════════════════════════ -->
-    <section id="referencias" style="background:#09090b;padding:6rem 0;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.055);">
+    <section id="referencias"
+      style="background:#09090b;padding:6rem 0;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.055);">
       <div class="container relative z-10">
         <!-- Glow matching demo component -->
-        <div style="position:absolute;top:-50%;left:50%;transform:translate(-50%,-50%);width:120vmin;height:120vmin;border-radius:0 0 50% 50%;background:radial-gradient(ellipse at center, rgba(255,255,255,0.04), transparent 50%);filter:blur(30px);pointer-events:none;z-index:-1;"></div>
+        <div
+          style="position:absolute;top:-50%;left:50%;transform:translate(-50%,-50%);width:120vmin;height:120vmin;border-radius:0 0 50% 50%;background:radial-gradient(ellipse at center, rgba(255,255,255,0.04), transparent 50%);filter:blur(30px);pointer-events:none;z-index:-1;">
+        </div>
 
-        <h2 style="margin-bottom:2rem;text-align:center;font-size:clamp(1.25rem, 3vw, 1.875rem);font-weight:500;color:#f5f5f7;letter-spacing:-0.025em;line-height:1.2;">
+        <h2
+          style="margin-bottom:2rem;text-align:center;font-size:clamp(1.25rem, 3vw, 1.875rem);font-weight:500;color:#f5f5f7;letter-spacing:-0.025em;line-height:1.2;">
           <span style="color:rgba(255,255,255,0.42);">Trusted by experts.</span><br>
           <span style="font-weight:600;">Used by the leaders.</span>
         </h2>
-        
-        <div style="margin:2rem auto;height:1px;max-width:384px;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);"></div>
 
-        <div class="logo-cloud" style="overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+        <div
+          style="margin:2rem auto;height:1px;max-width:384px;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);">
+        </div>
+
+        <div class="logo-cloud"
+          style="overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
           <div class="logo-cloud-track">
             <!-- First set -->
-            <img src="https://svgl.app/library/nvidia-wordmark-light.svg" alt="Nvidia Logo" loading="lazy">
-            <img src="https://svgl.app/library/supabase_wordmark_light.svg" alt="Supabase Logo" loading="lazy">
-            <img src="https://svgl.app/library/openai_wordmark_light.svg" alt="OpenAI Logo" loading="lazy">
-            <img src="https://svgl.app/library/turso-wordmark-light.svg" alt="Turso Logo" loading="lazy">
-            <img src="https://svgl.app/library/vercel_wordmark.svg" alt="Vercel Logo" loading="lazy">
-            <img src="https://svgl.app/library/github_wordmark_light.svg" alt="GitHub Logo" loading="lazy">
-            <img src="https://svgl.app/library/claude-ai-wordmark-icon_light.svg" alt="Claude AI Logo" loading="lazy">
-            <img src="https://svgl.app/library/clerk-wordmark-light.svg" alt="Clerk Logo" loading="lazy">
+            <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/adi.png" alt="adi" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/agualda-clube.png" alt="agualda-clube" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/associacao-seletiva-moda.png" alt="associacao-seletiva-moda" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/atlafina.png" alt="atlafina" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/axe.png" alt="axe" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/banco.png" alt="banco" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/blue.png" alt="blue" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/brandkey.png" alt="brandkey" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/camara-municipal-lisboa.png" alt="camara-municipal-lisboa" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/clinica-girassol.png" alt="clinica-girassol" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/compal.png" alt="compal" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/continente.png" alt="continente" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/cunha-vaz.png" alt="cunha-vaz" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/dominos.png" alt="dominos" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/dr.-oikter.png" alt="dr.-oikter" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/edge-lawyers.png" alt="edge-lawyers" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/edp.png" alt="edp" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/euro-m.png" alt="euro-m" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/flipit.png" alt="flipit" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/forum-criativa.png" alt="forum-criativa" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/linear.png" alt="linear" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/luisa-santos.png" alt="luisa-santos" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/markbiz.png" alt="markbiz" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/niu.png" alt="niu" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/soundcheck.png" alt="soundcheck" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/wmk.png" alt="wmk" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/young-network-group.png" alt="young-network-group" loading="lazy"></div>
+            
             <!-- Second set for infinite scroll loop -->
-            <img src="https://svgl.app/library/nvidia-wordmark-light.svg" alt="Nvidia Logo" loading="lazy">
-            <img src="https://svgl.app/library/supabase_wordmark_light.svg" alt="Supabase Logo" loading="lazy">
-            <img src="https://svgl.app/library/openai_wordmark_light.svg" alt="OpenAI Logo" loading="lazy">
-            <img src="https://svgl.app/library/turso-wordmark-light.svg" alt="Turso Logo" loading="lazy">
-            <img src="https://svgl.app/library/vercel_wordmark.svg" alt="Vercel Logo" loading="lazy">
-            <img src="https://svgl.app/library/github_wordmark_light.svg" alt="GitHub Logo" loading="lazy">
-            <img src="https://svgl.app/library/claude-ai-wordmark-icon_light.svg" alt="Claude AI Logo" loading="lazy">
-            <img src="https://svgl.app/library/clerk-wordmark-light.svg" alt="Clerk Logo" loading="lazy">
+            <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/adi.png" alt="adi" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/agualda-clube.png" alt="agualda-clube" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/associacao-seletiva-moda.png" alt="associacao-seletiva-moda" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/atlafina.png" alt="atlafina" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/axe.png" alt="axe" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/banco.png" alt="banco" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/blue.png" alt="blue" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/brandkey.png" alt="brandkey" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/camara-municipal-lisboa.png" alt="camara-municipal-lisboa" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/clinica-girassol.png" alt="clinica-girassol" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/compal.png" alt="compal" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/continente.png" alt="continente" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/cunha-vaz.png" alt="cunha-vaz" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/dominos.png" alt="dominos" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/dr.-oikter.png" alt="dr.-oikter" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/edge-lawyers.png" alt="edge-lawyers" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/edp.png" alt="edp" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/euro-m.png" alt="euro-m" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/flipit.png" alt="flipit" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/forum-criativa.png" alt="forum-criativa" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/linear.png" alt="linear" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/luisa-santos.png" alt="luisa-santos" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/markbiz.png" alt="markbiz" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/niu.png" alt="niu" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/soundcheck.png" alt="soundcheck" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/wmk.png" alt="wmk" loading="lazy"></div>
+            <div class="logo-cloud-item"><img src="images/clientLogos/young-network-group.png" alt="young-network-group" loading="lazy"></div>
           </div>
         </div>
 
-        <div style="margin-top:2rem;height:1px;width:100%;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);"></div>
+        <div
+          style="margin-top:2rem;height:1px;width:100%;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);">
+        </div>
       </div>
-      
+
       <style>
         /* Logo Cloud Animations & Styling */
         @keyframes scroll-logos {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-50% - 21px)); } /* 21px is half the 42px gap */
+          0% {
+            transform: translateX(0);
+          }
+
+          100% {
+            transform: translateX(calc(-50% - 21px));
+          }
+
+          /* 21px is half the 42px gap */
         }
+
         .logo-cloud-track {
           display: flex;
           width: max-content;
           gap: 42px;
           animation: scroll-logos 45s linear infinite;
         }
+
         .logo-cloud-track:hover {
-          animation-duration: 90s; /* Simulate speedOnHover deceleration */
+          animation-duration: 90s;
+          /* Simulate speedOnHover deceleration */
         }
+
         .logo-cloud-track img {
           pointer-events: none;
           user-select: none;
@@ -1582,8 +1842,11 @@
           opacity: 0.8;
           transition: opacity 0.3s ease;
         }
+
         @media (max-width: 768px) {
-          .logo-cloud-track img { height: 16px; }
+          .logo-cloud-track img {
+            height: 16px;
+          }
         }
       </style>
     </section>
@@ -1591,26 +1854,46 @@
     <!-- ═══════════════════════════════════════════════════════════
          SECTION 6 — CTA FINAL
     ═══════════════════════════════════════════════════════════ -->
-    <section id="final-cta" style="background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(249,115,22,0.07) 0%,transparent 65%),#09090b;border-top:1px solid rgba(249,115,22,0.12);padding:5rem 0;text-align:center;">
+    <section id="final-cta"
+      style="background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(249,115,22,0.07) 0%,transparent 65%),#09090b;border-top:1px solid rgba(249,115,22,0.12);padding:5rem 0;text-align:center;">
       <div class="container">
         <div class="reveal-up">
-          <span style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Pr&oacute;ximo passo</span>
-          <h2 style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin:0 auto 0.7rem;max-width:620px;line-height:1.2;">Envie o pedido. Receba proposta operacional e pr&oacute;ximos passos.</h2>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;margin:0 auto 0.65rem;line-height:1.65;text-align:center;">Partilhe o que precisa, destino e prazo. Validamos viabilidade e devolvemos uma proposta com etapas claras.</p>
-          <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1.5rem;margin:0 0 2rem;font-size:0.82rem;color:rgba(255,255,255,0.38);">
-            <li style="display:flex;align-items:center;gap:0.45rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>O que &eacute; (categoria + especifica&ccedil;&atilde;o)</li>
-            <li style="display:flex;align-items:center;gap:0.45rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Quantidade / volumes (se souber)</li>
-            <li style="display:flex;align-items:center;gap:0.45rem;"><span style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Destino e prazo desejado</li>
+          <span
+            style="display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f97316;margin-bottom:0.6rem;">Pr&oacute;ximo
+            passo</span>
+          <h2
+            style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin:0 auto 0.7rem;max-width:620px;line-height:1.2;">
+            Envie o pedido. Receba proposta operacional e pr&oacute;ximos passos.</h2>
+          <p
+            style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;margin:0 auto 0.65rem;line-height:1.65;text-align:center;">
+            Partilhe o que precisa, destino e prazo. Validamos viabilidade e devolvemos uma proposta com etapas claras.
+          </p>
+          <ul
+            style="list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1.5rem;margin:0 0 2rem;font-size:0.82rem;color:rgba(255,255,255,0.38);">
+            <li style="display:flex;align-items:center;gap:0.45rem;"><span
+                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>O
+              que &eacute; (categoria + especifica&ccedil;&atilde;o)</li>
+            <li style="display:flex;align-items:center;gap:0.45rem;"><span
+                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Quantidade
+              / volumes (se souber)</li>
+            <li style="display:flex;align-items:center;gap:0.45rem;"><span
+                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Destino
+              e prazo desejado</li>
           </ul>
           <div style="display:flex;gap:0.875rem;justify-content:center;flex-wrap:wrap;">
-            <a href="/contactos.html" id="final-cta-orcamento" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:#f97316;color:#fff;transition:background 220ms ease,transform 220ms ease,box-shadow 220ms ease;text-decoration:none;"
+            <a href="/contactos.html" id="final-cta-orcamento"
+              style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:#f97316;color:#fff;transition:background 220ms ease,transform 220ms ease,box-shadow 220ms ease;text-decoration:none;"
               onmouseenter="this.style.background='#ea580c';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 22px rgba(249,115,22,0.28)';"
-              onmouseleave="this.style.background='#f97316';this.style.transform='';this.style.boxShadow='';">Pedir or&ccedil;amento</a>
-            <a href="#divisoes" id="final-cta-how" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:transparent;color:rgba(255,255,255,0.62);border:1.5px solid rgba(255,255,255,0.15);transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+              onmouseleave="this.style.background='#f97316';this.style.transform='';this.style.boxShadow='';">Pedir
+              or&ccedil;amento</a>
+            <a href="#divisoes" id="final-cta-how"
+              style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:transparent;color:rgba(255,255,255,0.62);border:1.5px solid rgba(255,255,255,0.15);transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
               onmouseenter="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.38)';"
-              onmouseleave="this.style.color='rgba(255,255,255,0.62)';this.style.borderColor='rgba(255,255,255,0.15)';">Ver como funciona</a>
+              onmouseleave="this.style.color='rgba(255,255,255,0.62)';this.style.borderColor='rgba(255,255,255,0.15)';">Ver
+              como funciona</a>
           </div>
-          <p style="margin-top:1.1rem;font-size:0.75rem;color:rgba(255,255,255,0.22);">Se faltar informa&ccedil;&atilde;o, come&ccedil;amos pelo essencial e alinhamos o restante.</p>
+          <p style="margin-top:1.1rem;font-size:0.75rem;color:rgba(255,255,255,0.22);">Se faltar
+            informa&ccedil;&atilde;o, come&ccedil;amos pelo essencial e alinhamos o restante.</p>
         </div>
       </div>
     </section>
@@ -1636,8 +1919,10 @@
                   stroke-linecap="round" />
               </svg>
             </a>
-            <p class="footer-brand-desc">ON4U &mdash; Importação, fornecimento e distribuição internacional por pedido.</p>
-            <p class="footer-brand-desc" style="margin-top:0.35rem;font-size:0.75rem;color:rgba(255,255,255,0.3);max-width:260px;">Base em Portugal, presença em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e na Índia.</p>
+            <p class="footer-brand-desc">ON4U, Importação, fornecimento e distribuição internacional por pedido.</p>
+            <p class="footer-brand-desc"
+              style="margin-top:0.35rem;font-size:0.75rem;color:rgba(255,255,255,0.3);max-width:260px;">Base em
+              Portugal, presença em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e na Índia.</p>
             <address class="footer-address" style="font-style:normal;margin-top:0.75rem;">
               Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)<br>
               2710-679 Sintra, Portugal
@@ -1675,8 +1960,10 @@
               <li><a href="tel:+351214326103">+351 214 326 103</a></li>
             </ul>
             <p class="footer-col-title" style="margin-top:1.25rem;">Certificação</p>
-            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="footer-cert" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;">
-              <span style="width:10px;height:10px;border-radius:50%;background:#10b981;display:inline-block;"></span> Infarmed Certificado
+            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="footer-cert"
+              style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+              Infarmed Certificado
             </a>
           </div>
 
@@ -1700,395 +1987,395 @@
   <script src="script.js"></script>
   <!-- ── Hero Globe + Scroll Transition Engine ─────────────────── -->
   <script>
-  (function () {
-    'use strict';
+    (function () {
+      'use strict';
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       1. GLOBE — ON4U canvas renderer
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    const WAYPOINTS = [
-      { id: 'PT',  label: 'Portugal',             lng: -8.2245,  lat: 39.4,  primary: true  },
-      { id: 'STP', label: 'São Tomé & Príncipe',  lng:  6.6131,  lat:  0.19, primary: false },
-      { id: 'GW',  label: 'Guiné-Bissau',         lng:-15.1804,  lat: 11.8,  primary: false },
-      { id: 'CN',  label: 'China',                lng:104.0,     lat: 35.86, primary: false },
-      { id: 'IN',  label: 'Índia',                lng: 78.96,    lat: 20.59, primary: false },
-    ];
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         1. GLOBE — ON4U canvas renderer
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      const WAYPOINTS = [
+        { id: 'PT', label: 'Portugal', lng: -8.2245, lat: 39.4, primary: true },
+        { id: 'STP', label: 'São Tomé & Príncipe', lng: 6.6131, lat: 0.19, primary: false },
+        { id: 'GW', label: 'Guiné-Bissau', lng: -15.1804, lat: 11.8, primary: false },
+        { id: 'CN', label: 'China', lng: 104.0, lat: 35.86, primary: false },
+        { id: 'IN', label: 'Índia', lng: 78.96, lat: 20.59, primary: false },
+      ];
 
-    const ROTATION_SPEED  = 0.10;   // deg/frame — slow, cinematic
-    const DRAG_SENSITIVITY= 0.4;
-    const DOT_SPACING     = 15;
-    const OCEAN_COLOR     = '#080809';
-    const LAND_DOT_COLOR  = 'rgba(195,195,208,0.6)';
-    const GRATICULE_COLOR = 'rgba(255,255,255,0.07)';
-    const OUTLINE_COLOR   = 'rgba(255,255,255,0.13)';
-    const ORANGE          = '#f97316';
-    const NEUTRAL_MARKER  = 'rgba(210,210,220,0.75)';
+      const ROTATION_SPEED = 0.10;   // deg/frame — slow, cinematic
+      const DRAG_SENSITIVITY = 0.4;
+      const DOT_SPACING = 15;
+      const OCEAN_COLOR = '#080809';
+      const LAND_DOT_COLOR = 'rgba(195,195,208,0.6)';
+      const GRATICULE_COLOR = 'rgba(255,255,255,0.07)';
+      const OUTLINE_COLOR = 'rgba(255,255,255,0.13)';
+      const ORANGE = '#f97316';
+      const NEUTRAL_MARKER = 'rgba(210,210,220,0.75)';
 
-    const canvas = document.getElementById('hero-globe');
-    if (!canvas) return;
-    const wrap = canvas.parentElement;
-    const tip  = document.getElementById('globe-tip');
-    const ctx  = canvas.getContext('2d');
-    const dpr  = window.devicePixelRatio || 1;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const canvas = document.getElementById('hero-globe');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const tip = document.getElementById('globe-tip');
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let W, H, radius;
+      let W, H, radius;
 
-    // ── Projection (start facing Atlantic/Europe/Africa) ──────────
-    const rotation = [-10, -28, 0];
-    const projection = d3.geoOrthographic()
-      .scale(300).translate([300, 300]).clipAngle(90).rotate(rotation);
-    const path      = d3.geoPath().projection(projection).context(ctx);
-    const graticule = d3.geoGraticule()();
+      // ── Projection (start facing Atlantic/Europe/Africa) ──────────
+      const rotation = [-10, -28, 0];
+      const projection = d3.geoOrthographic()
+        .scale(300).translate([300, 300]).clipAngle(90).rotate(rotation);
+      const path = d3.geoPath().projection(projection).context(ctx);
+      const graticule = d3.geoGraticule()();
 
-    // ── Land dots ────────────────────────────────────────────────
-    let allDots      = [];
-    let landFeatures = null;
+      // ── Land dots ────────────────────────────────────────────────
+      let allDots = [];
+      let landFeatures = null;
 
-    function pointInPolygon(pt, ring) {
-      const [x, y] = pt; let inside = false;
-      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-        const [xi, yi] = ring[i], [xj, yj] = ring[j];
-        if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi)
-          inside = !inside;
-      }
-      return inside;
-    }
-    function pointInFeature(pt, feat) {
-      const g = feat.geometry;
-      if (g.type === 'Polygon') {
-        if (!pointInPolygon(pt, g.coordinates[0])) return false;
-        for (let i = 1; i < g.coordinates.length; i++)
-          if (pointInPolygon(pt, g.coordinates[i])) return false;
-        return true;
-      }
-      if (g.type === 'MultiPolygon') {
-        for (const poly of g.coordinates) {
-          if (!pointInPolygon(pt, poly[0])) continue;
-          let hole = false;
-          for (let i = 1; i < poly.length; i++)
-            if (pointInPolygon(pt, poly[i])) { hole = true; break; }
-          if (!hole) return true;
+      function pointInPolygon(pt, ring) {
+        const [x, y] = pt; let inside = false;
+        for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+          const [xi, yi] = ring[i], [xj, yj] = ring[j];
+          if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi)
+            inside = !inside;
         }
+        return inside;
       }
-      return false;
-    }
-    function buildDots(features) {
-      const step = DOT_SPACING * 0.08;
-      features.forEach(feat => {
-        const [[mnLng, mnLat], [mxLng, mxLat]] = d3.geoBounds(feat);
-        for (let lng = mnLng; lng <= mxLng; lng += step)
-          for (let lat = mnLat; lat <= mxLat; lat += step)
-            if (pointInFeature([lng, lat], feat)) allDots.push({ lng, lat });
-      });
-    }
-
-    // ── Resize ───────────────────────────────────────────────────
-    function resize() {
-      const rect = wrap.getBoundingClientRect();
-      W = rect.width; H = rect.height;
-      if (!W || !H) return;
-      radius = Math.min(W, H) / 2 * 0.92;
-      canvas.width  = W * dpr;
-      canvas.height = H * dpr;
-      canvas.style.width  = W + 'px';
-      canvas.style.height = H + 'px';
-      ctx.scale(dpr, dpr);
-      projection.scale(radius).translate([W / 2, H / 2]);
-    }
-
-    // ── Visibility ───────────────────────────────────────────────
-    function isVisible(lng, lat) {
-      const rot = projection.rotate();
-      return d3.geoDistance([lng, lat], [-rot[0], -rot[1]]) < Math.PI / 2;
-    }
-
-    // ── Render ───────────────────────────────────────────────────
-    // BUG FIX: graticule is drawn BEFORE the landFeatures guard
-    // so the globe always shows as a structured sphere, never a dead circle.
-    function render() {
-      if (!W || !H) return;
-      ctx.clearRect(0, 0, W, H);
-
-      // 1. Ocean base
-      ctx.beginPath();
-      ctx.arc(W / 2, H / 2, projection.scale(), 0, 2 * Math.PI);
-      ctx.fillStyle = OCEAN_COLOR;
-      ctx.fill();
-
-      // 2. Subtle outer ring (always visible — prevents dead circle)
-      ctx.strokeStyle = OUTLINE_COLOR;
-      ctx.lineWidth = 1.2;
-      ctx.stroke();
-
-      // 3. Graticule (ALWAYS rendered — no longer behind the early return)
-      ctx.beginPath();
-      path(graticule);
-      ctx.strokeStyle = GRATICULE_COLOR;
-      ctx.lineWidth = 0.6;
-      ctx.globalAlpha = 1;
-      ctx.stroke();
-
-      // 4. Land — only once fetched
-      if (!landFeatures) return;
-
-      ctx.beginPath();
-      landFeatures.features.forEach(f => path(f));
-      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-      ctx.lineWidth = 0.6;
-      ctx.stroke();
-
-      // 5. Halftone dots
-      allDots.forEach(({ lng, lat }) => {
-        if (!isVisible(lng, lat)) return;
-        const p = projection([lng, lat]);
-        if (!p) return;
-        ctx.beginPath();
-        ctx.arc(p[0], p[1], 1.1, 0, 2 * Math.PI);
-        ctx.fillStyle = LAND_DOT_COLOR;
-        ctx.fill();
-      });
-
-      // 6. Waypoint markers (5 only)
-      WAYPOINTS.forEach(wp => {
-        if (!isVisible(wp.lng, wp.lat)) return;
-        const p = projection([wp.lng, wp.lat]);
-        if (!p) return;
-        const [px, py] = p;
-        if (wp.primary) {
-          if (!reducedMotion) {
-            const t = (Date.now() % 3200) / 3200;
-            const pulse = 4.5 + Math.sin(t * Math.PI * 2) * 2.8;
-            ctx.beginPath();
-            ctx.arc(px, py, pulse, 0, 2 * Math.PI);
-            ctx.strokeStyle = 'rgba(249,115,22,0.28)';
-            ctx.lineWidth = 1.2;
-            ctx.stroke();
+      function pointInFeature(pt, feat) {
+        const g = feat.geometry;
+        if (g.type === 'Polygon') {
+          if (!pointInPolygon(pt, g.coordinates[0])) return false;
+          for (let i = 1; i < g.coordinates.length; i++)
+            if (pointInPolygon(pt, g.coordinates[i])) return false;
+          return true;
+        }
+        if (g.type === 'MultiPolygon') {
+          for (const poly of g.coordinates) {
+            if (!pointInPolygon(pt, poly[0])) continue;
+            let hole = false;
+            for (let i = 1; i < poly.length; i++)
+              if (pointInPolygon(pt, poly[i])) { hole = true; break; }
+            if (!hole) return true;
           }
+        }
+        return false;
+      }
+      function buildDots(features) {
+        const step = DOT_SPACING * 0.08;
+        features.forEach(feat => {
+          const [[mnLng, mnLat], [mxLng, mxLat]] = d3.geoBounds(feat);
+          for (let lng = mnLng; lng <= mxLng; lng += step)
+            for (let lat = mnLat; lat <= mxLat; lat += step)
+              if (pointInFeature([lng, lat], feat)) allDots.push({ lng, lat });
+        });
+      }
+
+      // ── Resize ───────────────────────────────────────────────────
+      function resize() {
+        const rect = wrap.getBoundingClientRect();
+        W = rect.width; H = rect.height;
+        if (!W || !H) return;
+        radius = Math.min(W, H) / 2 * 0.92;
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.scale(dpr, dpr);
+        projection.scale(radius).translate([W / 2, H / 2]);
+      }
+
+      // ── Visibility ───────────────────────────────────────────────
+      function isVisible(lng, lat) {
+        const rot = projection.rotate();
+        return d3.geoDistance([lng, lat], [-rot[0], -rot[1]]) < Math.PI / 2;
+      }
+
+      // ── Render ───────────────────────────────────────────────────
+      // BUG FIX: graticule is drawn BEFORE the landFeatures guard
+      // so the globe always shows as a structured sphere, never a dead circle.
+      function render() {
+        if (!W || !H) return;
+        ctx.clearRect(0, 0, W, H);
+
+        // 1. Ocean base
+        ctx.beginPath();
+        ctx.arc(W / 2, H / 2, projection.scale(), 0, 2 * Math.PI);
+        ctx.fillStyle = OCEAN_COLOR;
+        ctx.fill();
+
+        // 2. Subtle outer ring (always visible — prevents dead circle)
+        ctx.strokeStyle = OUTLINE_COLOR;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        // 3. Graticule (ALWAYS rendered — no longer behind the early return)
+        ctx.beginPath();
+        path(graticule);
+        ctx.strokeStyle = GRATICULE_COLOR;
+        ctx.lineWidth = 0.6;
+        ctx.globalAlpha = 1;
+        ctx.stroke();
+
+        // 4. Land — only once fetched
+        if (!landFeatures) return;
+
+        ctx.beginPath();
+        landFeatures.features.forEach(f => path(f));
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+
+        // 5. Halftone dots
+        allDots.forEach(({ lng, lat }) => {
+          if (!isVisible(lng, lat)) return;
+          const p = projection([lng, lat]);
+          if (!p) return;
           ctx.beginPath();
-          ctx.arc(px, py, 3.5, 0, 2 * Math.PI);
-          ctx.fillStyle = ORANGE;
+          ctx.arc(p[0], p[1], 1.1, 0, 2 * Math.PI);
+          ctx.fillStyle = LAND_DOT_COLOR;
           ctx.fill();
+        });
+
+        // 6. Waypoint markers (5 only)
+        WAYPOINTS.forEach(wp => {
+          if (!isVisible(wp.lng, wp.lat)) return;
+          const p = projection([wp.lng, wp.lat]);
+          if (!p) return;
+          const [px, py] = p;
+          if (wp.primary) {
+            if (!reducedMotion) {
+              const t = (Date.now() % 3200) / 3200;
+              const pulse = 4.5 + Math.sin(t * Math.PI * 2) * 2.8;
+              ctx.beginPath();
+              ctx.arc(px, py, pulse, 0, 2 * Math.PI);
+              ctx.strokeStyle = 'rgba(249,115,22,0.28)';
+              ctx.lineWidth = 1.2;
+              ctx.stroke();
+            }
+            ctx.beginPath();
+            ctx.arc(px, py, 3.5, 0, 2 * Math.PI);
+            ctx.fillStyle = ORANGE;
+            ctx.fill();
+          } else {
+            ctx.beginPath();
+            ctx.arc(px, py, 2.5, 0, 2 * Math.PI);
+            ctx.strokeStyle = NEUTRAL_MARKER;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(px, py, 1, 0, 2 * Math.PI);
+            ctx.fillStyle = NEUTRAL_MARKER;
+            ctx.fill();
+          }
+        });
+      }
+
+      // ── Animation loop ───────────────────────────────────────────
+      let autoRotate = !reducedMotion;
+
+      function tick() {
+        if (autoRotate) {
+          rotation[0] += ROTATION_SPEED;
+          projection.rotate(rotation);
+        }
+        render();
+        requestAnimationFrame(tick);
+      }
+
+      // ── Drag rotate ──────────────────────────────────────────────
+      canvas.addEventListener('mousedown', e => {
+        autoRotate = false;
+        const sx = e.clientX, sy = e.clientY, sr = [...rotation];
+        const onMove = me => {
+          rotation[0] = sr[0] + (me.clientX - sx) * DRAG_SENSITIVITY;
+          rotation[1] = Math.max(-80, Math.min(80, sr[1] - (me.clientY - sy) * DRAG_SENSITIVITY));
+          projection.rotate(rotation);
+        };
+        const onUp = () => {
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onUp);
+          if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2200);
+        };
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+      });
+      canvas.addEventListener('touchstart', e => {
+        autoRotate = false;
+        const t0 = e.touches[0], sx = t0.clientX, sy = t0.clientY, sr = [...rotation];
+        const onMove = te => {
+          const t = te.touches[0];
+          rotation[0] = sr[0] + (t.clientX - sx) * DRAG_SENSITIVITY;
+          rotation[1] = Math.max(-80, Math.min(80, sr[1] - (t.clientY - sy) * DRAG_SENSITIVITY));
+          projection.rotate(rotation);
+        };
+        const onEnd = () => {
+          canvas.removeEventListener('touchmove', onMove);
+          canvas.removeEventListener('touchend', onEnd);
+          if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2200);
+        };
+        canvas.addEventListener('touchmove', onMove, { passive: true });
+        canvas.addEventListener('touchend', onEnd);
+      }, { passive: true });
+
+      // ── Hover tooltip ────────────────────────────────────────────
+      const HIT = 12;
+      canvas.addEventListener('mousemove', e => {
+        if (!tip) return;
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+        let hit = null;
+        WAYPOINTS.forEach(wp => {
+          if (!isVisible(wp.lng, wp.lat)) return;
+          const p = projection([wp.lng, wp.lat]);
+          if (!p) return;
+          const dx = mx - p[0], dy = my - p[1];
+          if (dx * dx + dy * dy < HIT * HIT) hit = { wp, p };
+        });
+        if (hit) {
+          tip.textContent = hit.wp.label;
+          tip.style.left = (hit.p[0] + 14) + 'px';
+          tip.style.top = (hit.p[1] - 10) + 'px';
+          tip.classList.add('is-visible');
         } else {
-          ctx.beginPath();
-          ctx.arc(px, py, 2.5, 0, 2 * Math.PI);
-          ctx.strokeStyle = NEUTRAL_MARKER;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.arc(px, py, 1, 0, 2 * Math.PI);
-          ctx.fillStyle = NEUTRAL_MARKER;
-          ctx.fill();
+          tip.classList.remove('is-visible');
         }
       });
-    }
+      canvas.addEventListener('mouseleave', () => tip && tip.classList.remove('is-visible'));
 
-    // ── Animation loop ───────────────────────────────────────────
-    let autoRotate = !reducedMotion;
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         2. AUTOMATED SPRING HERO TRANSITION
+         Smooth, automatic transition once user scrolls.
+         Settled  (p=1): globe right col, copy left col — normal layout
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      const heroSection = document.getElementById('hero');
+      const heroStage = document.getElementById('hero-stage');
+      const heroText = document.getElementById('hero-text');
+      const heroGlobeCol = document.getElementById('hero-globe-col');
+      const heroOpenLbl = document.getElementById('hero-opening-label');
+      const details = document.querySelectorAll('.hero-detail');
+      const heroH1 = document.getElementById('hero-h1');
 
-    function tick() {
-      if (autoRotate) {
-        rotation[0] += ROTATION_SPEED;
-        projection.rotate(rotation);
+      const isMobile = () => window.innerWidth < 900;
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      let heroTargetP = 0;
+      let heroCurrentP = 0;
+      let lastRenderedP = -1;
+
+      // Detect scroll to trigger automatic state
+      function onScroll() {
+        // Threshold = 100px down triggers full transition to "Settled"
+        if (window.scrollY > 100) {
+          heroTargetP = 1.0;
+        } else {
+          heroTargetP = 0.0;
+        }
       }
-      render();
-      requestAnimationFrame(tick);
-    }
 
-    // ── Drag rotate ──────────────────────────────────────────────
-    canvas.addEventListener('mousedown', e => {
-      autoRotate = false;
-      const sx = e.clientX, sy = e.clientY, sr = [...rotation];
-      const onMove = me => {
-        rotation[0] = sr[0] + (me.clientX - sx) * DRAG_SENSITIVITY;
-        rotation[1] = Math.max(-80, Math.min(80, sr[1] - (me.clientY - sy) * DRAG_SENSITIVITY));
-        projection.rotate(rotation);
-      };
-      const onUp = () => {
-        document.removeEventListener('mousemove', onMove);
-        document.removeEventListener('mouseup', onUp);
-        if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2200);
-      };
-      document.addEventListener('mousemove', onMove);
-      document.addEventListener('mouseup', onUp);
-    });
-    canvas.addEventListener('touchstart', e => {
-      autoRotate = false;
-      const t0 = e.touches[0], sx = t0.clientX, sy = t0.clientY, sr = [...rotation];
-      const onMove = te => {
-        const t = te.touches[0];
-        rotation[0] = sr[0] + (t.clientX - sx) * DRAG_SENSITIVITY;
-        rotation[1] = Math.max(-80, Math.min(80, sr[1] - (t.clientY - sy) * DRAG_SENSITIVITY));
-        projection.rotate(rotation);
-      };
-      const onEnd = () => {
-        canvas.removeEventListener('touchmove', onMove);
-        canvas.removeEventListener('touchend', onEnd);
-        if (!reducedMotion) setTimeout(() => { autoRotate = true; }, 2200);
-      };
-      canvas.addEventListener('touchmove', onMove, { passive: true });
-      canvas.addEventListener('touchend', onEnd);
-    }, { passive: true });
+      function applyHeroProgressAuto(p) {
+        if (reducedMotion || isMobile()) {
+          heroText.style.transform = '';
+          heroText.style.opacity = '';
+          heroGlobeCol.style.transform = '';
+          heroGlobeCol.style.opacity = '';
+          if (heroOpenLbl) { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
+          const heroTransLbl = document.getElementById('hero-transition-label');
+          if (heroTransLbl) heroTransLbl.style.opacity = '0';
+          details.forEach(el => { el.style.opacity = ''; });
+          if (heroH1) heroH1.style.opacity = '';
+          return;
+        }
 
-    // ── Hover tooltip ────────────────────────────────────────────
-    const HIT = 12;
-    canvas.addEventListener('mousemove', e => {
-      if (!tip) return;
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-      let hit = null;
-      WAYPOINTS.forEach(wp => {
-        if (!isVisible(wp.lng, wp.lat)) return;
-        const p = projection([wp.lng, wp.lat]);
-        if (!p) return;
-        const dx = mx - p[0], dy = my - p[1];
-        if (dx*dx + dy*dy < HIT*HIT) hit = { wp, p };
-      });
-      if (hit) {
-        tip.textContent = hit.wp.label;
-        tip.style.left = (hit.p[0] + 14) + 'px';
-        tip.style.top  = (hit.p[1] - 10) + 'px';
-        tip.classList.add('is-visible');
-      } else {
-        tip.classList.remove('is-visible');
-      }
-    });
-    canvas.addEventListener('mouseleave', () => tip && tip.classList.remove('is-visible'));
+        if (Math.abs(p - lastRenderedP) < 0.001) return;
+        lastRenderedP = p;
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       2. AUTOMATED SPRING HERO TRANSITION
-       Smooth, automatic transition once user scrolls.
-       Settled  (p=1): globe right col, copy left col — normal layout
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    const heroSection  = document.getElementById('hero');
-    const heroStage    = document.getElementById('hero-stage');
-    const heroText     = document.getElementById('hero-text');
-    const heroGlobeCol = document.getElementById('hero-globe-col');
-    const heroOpenLbl  = document.getElementById('hero-opening-label');
-    const details      = document.querySelectorAll('.hero-detail');
-    const heroH1       = document.getElementById('hero-h1');
+        // Smoothed ease for internal properties
+        const e = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
 
-    const isMobile = () => window.innerWidth < 900;
-    function lerp(a, b, t) { return a + (b - a) * t; }
+        /* ── GLOBE: smoothly scales from 1.45 down to 1.0, and slides right ── */
+        const globeTx = lerp(-50, 0, e);
+        const globeSc = lerp(1.45, 1.0, e);
+        heroGlobeCol.style.transform = `translateX(${globeTx}%) scale(${globeSc})`;
 
-    let heroTargetP = 0;
-    let heroCurrentP = 0;
-    let lastRenderedP = -1;
+        /* ── OPENING LABEL: fades out abruptly to allow transition ── */
+        const phaseOut = Math.max(0, Math.min(1, p / 0.35)); // Fade out completely quickly
+        if (heroOpenLbl) {
+          heroOpenLbl.style.opacity = (1 - phaseOut).toFixed(3);
+          heroOpenLbl.style.transform = `translate(-50%, calc(-55% + ${lerp(0, -25, phaseOut)}px))`;
+          heroOpenLbl.style.display = phaseOut > 0.99 ? 'none' : '';
+        }
 
-    // Detect scroll to trigger automatic state
-    function onScroll() {
-      // Threshold = 100px down triggers full transition to "Settled"
-      if (window.scrollY > 100) {
-        heroTargetP = 1.0;
-      } else {
-        heroTargetP = 0.0;
-      }
-    }
-
-    function applyHeroProgressAuto(p) {
-      if (reducedMotion || isMobile()) {
-        heroText.style.transform     = '';
-        heroText.style.opacity       = '';
-        heroGlobeCol.style.transform = '';
-        heroGlobeCol.style.opacity   = '';
-        if (heroOpenLbl) { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
+        /* ── TRANSITION LABEL: appears briefly around 0.5 ── */
         const heroTransLbl = document.getElementById('hero-transition-label');
-        if (heroTransLbl) heroTransLbl.style.opacity = '0';
-        details.forEach(el => { el.style.opacity = ''; });
-        if (heroH1) heroH1.style.opacity = '';
-        return;
-      }
-
-      if (Math.abs(p - lastRenderedP) < 0.001) return;
-      lastRenderedP = p;
-
-      // Smoothed ease for internal properties
-      const e = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
-
-      /* ── GLOBE: smoothly scales from 1.45 down to 1.0, and slides right ── */
-      const globeTx = lerp(-50, 0, e);
-      const globeSc = lerp(1.45, 1.0, e);
-      heroGlobeCol.style.transform = `translateX(${globeTx}%) scale(${globeSc})`;
-
-      /* ── OPENING LABEL: fades out abruptly to allow transition ── */
-      const phaseOut = Math.max(0, Math.min(1, p / 0.35)); // Fade out completely quickly
-      if (heroOpenLbl) {
-        heroOpenLbl.style.opacity   = (1 - phaseOut).toFixed(3);
-        heroOpenLbl.style.transform = `translate(-50%, calc(-55% + ${lerp(0, -25, phaseOut)}px))`;
-        heroOpenLbl.style.display   = phaseOut > 0.99 ? 'none' : '';
-      }
-
-      /* ── TRANSITION LABEL: appears briefly around 0.5 ── */
-      const heroTransLbl = document.getElementById('hero-transition-label');
-      if (heroTransLbl) {
-        let transOp = 0;
-        if (e > 0.1 && e < 0.9) {
-          transOp = 1 - Math.abs(e - 0.5) * 2; // peaks at e=0.5
+        if (heroTransLbl) {
+          let transOp = 0;
+          if (e > 0.1 && e < 0.9) {
+            transOp = 1 - Math.abs(e - 0.5) * 2; // peaks at e=0.5
+          }
+          heroTransLbl.style.opacity = Math.max(0, transOp).toFixed(3);
+          heroTransLbl.style.transform = `translate(-50%, calc(-50% + ${lerp(20, -20, e)}px))`;
         }
-        heroTransLbl.style.opacity = Math.max(0, transOp).toFixed(3);
-        heroTransLbl.style.transform = `translate(-50%, calc(-50% + ${lerp(20, -20, e)}px))`;
+
+        /* ── TEXT: slides left from edge, fades in ── */
+        const textTx = lerp(50, 0, e);
+        const textSc = lerp(0.9, 1.0, e);
+
+        heroText.style.transform = `translateX(${textTx}%) scale(${textSc})`;
+        heroText.style.opacity = Math.min(1, p / 0.5).toFixed(3);
+
+        /* ── DETAILS: Fade in late ── */
+        let detailsP = 0;
+        if (e > 0.6) detailsP = (e - 0.6) / 0.4;
+        details.forEach(el => {
+          el.style.opacity = detailsP.toFixed(3);
+          if (detailsP > 0) el.style.transform = `translateY(${lerp(15, 0, detailsP)}px)`;
+        });
+        if (heroH1) heroH1.style.opacity = Math.min(1, p / 0.5).toFixed(3);
       }
 
-      /* ── TEXT: slides left from edge, fades in ── */
-      const textTx  = lerp(50, 0, e);
-      const textSc  = lerp(0.9, 1.0, e);
-      
-      heroText.style.transform = `translateX(${textTx}%) scale(${textSc})`;
-      heroText.style.opacity   = Math.min(1, p / 0.5).toFixed(3);
+      // Spring logic loop handles the tweening to the target P independently of scroll position
+      function heroAnimationLoop() {
+        if (!isMobile()) {
+          heroCurrentP += (heroTargetP - heroCurrentP) * 0.08;
+          applyHeroProgressAuto(heroCurrentP);
+        }
+        requestAnimationFrame(heroAnimationLoop);
+      }
 
-      /* ── DETAILS: Fade in late ── */
-      let detailsP = 0;
-      if (e > 0.6) detailsP = (e - 0.6) / 0.4;
-      details.forEach(el => {
-        el.style.opacity = detailsP.toFixed(3);
-        if (detailsP > 0) el.style.transform = `translateY(${lerp(15, 0, detailsP)}px)`;
-      });
-      if (heroH1) heroH1.style.opacity = Math.min(1, p / 0.5).toFixed(3);
-    }
-
-    // Spring logic loop handles the tweening to the target P independently of scroll position
-    function heroAnimationLoop() {
-      if (!isMobile()) {
-        heroCurrentP += (heroTargetP - heroCurrentP) * 0.08;
+      /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         3. INIT & EVENT LISTENERS
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+      function initHero() {
+        resize();
+        render(); // Force sync draw of graticule immediately before frame
+        // Initialize states
+        onScroll();
+        heroCurrentP = window.scrollY > 100 ? 1 : 0;
+        heroTargetP = heroCurrentP;
         applyHeroProgressAuto(heroCurrentP);
       }
-      requestAnimationFrame(heroAnimationLoop);
-    }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       3. INIT & EVENT LISTENERS
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    function initHero() {
-      resize();
-      render(); // Force sync draw of graticule immediately before frame
-      // Initialize states
-      onScroll();
-      heroCurrentP = window.scrollY > 100 ? 1 : 0;
-      heroTargetP = heroCurrentP;
-      applyHeroProgressAuto(heroCurrentP);
-    }
+      // LOAD LAND DATA locally to guarantee instant rendering
+      fetch('ne_110m_land.json')
+        .then(r => r.json())
+        .then(data => {
+          landFeatures = data;
+          buildDots(data.features);
+        })
+        .catch(() => {/* graceful degradation: graticule still shows */ });
 
-    // LOAD LAND DATA locally to guarantee instant rendering
-    fetch('ne_110m_land.json')
-      .then(r => r.json())
-      .then(data => {
-        landFeatures = data;
-        buildDots(data.features);
-      })
-      .catch(() => {/* graceful degradation: graticule still shows */});
+      // ── Bootstrap ────────────────────────────────────────────────
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', () => { resize(); onScroll(); });
 
-    // ── Bootstrap ────────────────────────────────────────────────
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', () => { resize(); onScroll(); });
+      // Wait one frame so layout is settled, then init
+      requestAnimationFrame(() => {
+        initHero();
+        requestAnimationFrame(tick);
+        requestAnimationFrame(heroAnimationLoop);
+      });
 
-    // Wait one frame so layout is settled, then init
-    requestAnimationFrame(() => {
-      initHero();
-      requestAnimationFrame(tick);
-      requestAnimationFrame(heroAnimationLoop);
-    });
-
-  })();
+    })();
   </script>
   <script>
     // ── Mobile nav anchor logic ────────────────────────────────
