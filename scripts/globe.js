@@ -25,19 +25,18 @@
 
   /* ── Configuration ───────────────────────────────────────── */
   var CFG = {
-    rotSpeed: 0.08,      // degrees per 16ms frame (auto-rotation)
+    rotSpeed: 0.10,      // degrees per 16ms frame
     tilt:     20,        // globe tilt forward (degrees) — shows N.hemisphere more
     startRot: 18,        // initial rotY so Portugal is front-centre
-    dragSens: 0.35,      // drag sensitivity for manual rotation
   };
 
   /* ── Key locations  [lon, lat] ───────────────────────────── */
   var LOCS = [
-    { id:'PT',  label:'PT',  fullName:'Portugal (Sede)',      lon: -8.5,  lat: 39.5,  hub: true,  r: 6 },
-    { id:'STP', label:'STP', fullName:'São Tomé e Príncipe',  lon:  6.7,  lat:  0.3,  hub: false, r: 5 },
-    { id:'GW',  label:'GW',  fullName:'Guiné-Bissau',         lon:-15.2,  lat: 11.9,  hub: false, r: 5 },
-    { id:'CN',  label:'CN',  fullName:'China',                lon:121.5,  lat: 31.2,  hub: false, r: 5 },
-    { id:'IN',  label:'IN',  fullName:'Índia',                lon: 72.9,  lat: 19.1,  hub: false, r: 5 },
+    { id:'PT',  label:'PT',  lon: -8.5,  lat: 39.5,  hub: true,  r: 5 },
+    { id:'STP', label:'STP', lon:  6.7,  lat:  0.3,  hub: false, r: 4 },
+    { id:'GW',  label:'GW',  lon:-15.2,  lat: 11.9,  hub: false, r: 4 },
+    { id:'CN',  label:'CN',  lon:121.5,  lat: 31.2,  hub: false, r: 4 },
+    { id:'IN',  label:'IN',  lon: 72.9,  lat: 19.1,  hub: false, r: 4 },
   ];
 
   /* ── Simplified continent outlines [lon, lat] ─────────────
@@ -130,46 +129,6 @@
 
   /* ── Canvas state ────────────────────────────────────────── */
   var canvas, ctx, W, H, CX, CY, R, rotY = CFG.startRot, animId, lastT = 0;
-
-  /* ── Interaction state ───────────────────────────────────── */
-  var isDragging = false;
-  var dragStartX = 0;
-  var dragStartRotY = 0;
-  var autoRotate = true;
-  var autoRotateResumeTimeout = null;
-  var hoveredLoc = null;       // currently hovered location
-  var mouseX = 0, mouseY = 0;  // current mouse position
-  var particles = [];          // floating particles for atmosphere
-
-  /* ── Particle system for ambient atmosphere ───────────────── */
-  function initParticles() {
-    particles = [];
-    for (var i = 0; i < 40; i++) {
-      var angle = Math.random() * Math.PI * 2;
-      var dist  = R * (1.05 + Math.random() * 0.25);
-      particles.push({
-        angle: angle,
-        dist:  dist,
-        speed: 0.0003 + Math.random() * 0.0006,
-        size:  1 + Math.random() * 2,
-        alpha: 0.15 + Math.random() * 0.35,
-        phase: Math.random() * Math.PI * 2,
-      });
-    }
-  }
-
-  function drawParticles(t) {
-    particles.forEach(function(p) {
-      p.angle += p.speed * (16.67); // drift slowly around globe
-      var pulse = 0.5 + 0.5 * Math.sin(t * 0.002 + p.phase);
-      var x = CX + Math.cos(p.angle) * p.dist;
-      var y = CY + Math.sin(p.angle) * p.dist * 0.3; // flatten for 3D effect
-      ctx.beginPath();
-      ctx.arc(x, y, p.size * (0.8 + pulse * 0.4), 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(249, 115, 22, ' + (p.alpha * pulse) + ')';
-      ctx.fill();
-    });
-  }
 
   /* ── Draw functions ──────────────────────────────────────── */
   function drawSphere() {
@@ -283,107 +242,46 @@
   }
 
   function drawLocations(t) {
-    var locPositions = []; // store for hit testing
-
     LOCS.forEach(function(loc) {
       var p = project(loc.lon, loc.lat, rotY);
-      loc._screenPos = p; // cache for hit testing
       if (!p.vis) return;
 
-      var isHovered = (hoveredLoc === loc);
-      var pulse = Math.sin(t * 0.003 + loc.lon * 0.1);
-      var hoverScale = isHovered ? 1.4 : 1;
-
-      /* Outer glow ring — pulsing */
-      var glowR = (loc.r + 8 + (loc.hub ? 6 : 3) * pulse) * hoverScale;
-      var g = ctx.createRadialGradient(p.sx, p.sy, 0, p.sx, p.sy, glowR + 6);
-      g.addColorStop(0, isHovered ? 'rgba(249,115,22,0.7)' : 'rgba(249,115,22,0.5)');
-      g.addColorStop(0.5, isHovered ? 'rgba(249,115,22,0.3)' : 'rgba(249,115,22,0.15)');
+      /* Glow ring */
+      var glowR = loc.r + 6 + (loc.hub ? 4 * Math.sin(t * 0.0025) : 0);
+      var g = ctx.createRadialGradient(p.sx, p.sy, 0, p.sx, p.sy, glowR + 4);
+      g.addColorStop(0, 'rgba(249,115,22,0.45)');
       g.addColorStop(1, 'transparent');
       ctx.beginPath();
-      ctx.arc(p.sx, p.sy, glowR + 6, 0, Math.PI*2);
+      ctx.arc(p.sx, p.sy, glowR + 4, 0, Math.PI*2);
       ctx.fillStyle = g;
       ctx.fill();
 
-      /* Pulsing rings (multiple) */
-      var ringCount = loc.hub ? 3 : 2;
-      for (var ri = 0; ri < ringCount; ri++) {
-        var ringPhase = (t * 0.002 + ri * 0.7) % (Math.PI * 2);
-        var ringScale = 0.5 + (ringPhase / (Math.PI * 2)) * 1.5;
-        var ringAlpha = 0.4 * (1 - ringPhase / (Math.PI * 2));
-        if (ringAlpha > 0.02) {
-          ctx.beginPath();
-          ctx.arc(p.sx, p.sy, loc.r * ringScale * hoverScale * 2, 0, Math.PI*2);
-          ctx.strokeStyle = 'rgba(249,115,22,' + ringAlpha + ')';
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-        }
+      /* Dot */
+      ctx.beginPath();
+      ctx.arc(p.sx, p.sy, loc.r, 0, Math.PI*2);
+      ctx.fillStyle = loc.hub ? C.dotHub : C.dot;
+      ctx.fill();
+
+      /* Hub pulse ring */
+      if (loc.hub) {
+        var pr = loc.r + 4 + 3 * Math.sin(t * 0.003);
+        ctx.beginPath();
+        ctx.arc(p.sx, p.sy, pr, 0, Math.PI*2);
+        ctx.strokeStyle = 'rgba(249,115,22,0.35)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
       }
 
-      /* Main dot */
-      ctx.beginPath();
-      ctx.arc(p.sx, p.sy, loc.r * hoverScale, 0, Math.PI*2);
-      var dotGrad = ctx.createRadialGradient(p.sx - loc.r*0.3, p.sy - loc.r*0.3, 0, p.sx, p.sy, loc.r * hoverScale);
-      dotGrad.addColorStop(0, loc.hub ? '#ffb86c' : '#ffa54f');
-      dotGrad.addColorStop(1, loc.hub ? C.dotHub : C.dot);
-      ctx.fillStyle = dotGrad;
-      ctx.fill();
-
-      /* Inner bright core */
-      ctx.beginPath();
-      ctx.arc(p.sx, p.sy, loc.r * 0.4 * hoverScale, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(255,255,255,0.6)';
-      ctx.fill();
-
-      /* Short label */
+      /* Label */
       ctx.font = 'bold 9px Inter,sans-serif';
       ctx.fillStyle = C.label;
-      ctx.fillText(loc.label, p.sx + loc.r * hoverScale + 5, p.sy + 3.5);
+      ctx.fillText(loc.label, p.sx + loc.r + 4, p.sy + 3.5);
     });
-  }
-
-  /* ── Draw tooltip for hovered location ───────────────────── */
-  function drawTooltip() {
-    if (!hoveredLoc || !hoveredLoc._screenPos || !hoveredLoc._screenPos.vis) return;
-
-    var p = hoveredLoc._screenPos;
-    var text = hoveredLoc.fullName;
-    ctx.font = 'bold 12px Inter, sans-serif';
-    var tw = ctx.measureText(text).width;
-    var th = 14;
-    var pad = 10;
-    var boxW = tw + pad * 2;
-    var boxH = th + pad * 1.5;
-
-    /* Position tooltip above the dot */
-    var tx = p.sx - boxW / 2;
-    var ty = p.sy - hoveredLoc.r * 2 - boxH - 8;
-
-    /* Keep on screen */
-    if (tx < 5) tx = 5;
-    if (tx + boxW > W - 5) tx = W - boxW - 5;
-    if (ty < 5) ty = p.sy + hoveredLoc.r * 2 + 8; // flip below if too high
-
-    /* Draw box */
-    ctx.fillStyle = 'rgba(12, 12, 16, 0.92)';
-    ctx.strokeStyle = 'rgba(249, 115, 22, 0.6)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.roundRect(tx, ty, boxW, boxH, 6);
-    ctx.fill();
-    ctx.stroke();
-
-    /* Draw text */
-    ctx.fillStyle = '#fff';
-    ctx.fillText(text, tx + pad, ty + th + pad * 0.35);
   }
 
   /* ── Master render ───────────────────────────────────────── */
   function render(t) {
     ctx.clearRect(0, 0, W, H);
-
-    /* Draw particles behind globe (atmosphere effect) */
-    drawParticles(t);
 
     /* Clip to sphere + small atmosphere margin */
     ctx.save();
@@ -401,9 +299,6 @@
 
     /* Atmosphere drawn outside clip */
     drawAtmosphere();
-
-    /* Tooltip drawn on top of everything */
-    drawTooltip();
   }
 
   /* ── Animation loop ──────────────────────────────────────── */
@@ -411,12 +306,7 @@
     animId = requestAnimationFrame(loop);
     var dt = lastT ? Math.min(t - lastT, 50) : 16.67;
     lastT = t;
-
-    /* Only auto-rotate when not dragging */
-    if (autoRotate && !isDragging) {
-      rotY += CFG.rotSpeed * (dt / 16.67);
-    }
-
+    rotY += CFG.rotSpeed * (dt / 16.67);
     render(t);
   }
 
@@ -439,19 +329,6 @@
     R  = Math.min(W, H) * 0.44;
   }
 
-  /* ── Hit test for locations ───────────────────────────────── */
-  function hitTestLocations(mx, my) {
-    for (var i = 0; i < LOCS.length; i++) {
-      var loc = LOCS[i];
-      if (!loc._screenPos || !loc._screenPos.vis) continue;
-      var dx = mx - loc._screenPos.sx;
-      var dy = my - loc._screenPos.sy;
-      var dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < loc.r + 12) return loc; // 12px extra for easier hit
-    }
-    return null;
-  }
-
   /* ── Init ────────────────────────────────────────────────── */
   function init() {
     canvas = document.getElementById('heroGlobe');
@@ -465,80 +342,9 @@
       return;
     }
 
-    /* Initialize particles */
-    initParticles();
-
     window.addEventListener('resize', function () {
       resize();
-      initParticles(); // reinit particles on resize
     });
-
-    /* ── Mouse/touch interaction ───────────────────────────── */
-
-    /* Drag to rotate */
-    canvas.addEventListener('mousedown', function(e) {
-      isDragging = true;
-      dragStartX = e.clientX;
-      dragStartRotY = rotY;
-      autoRotate = false;
-      clearTimeout(autoRotateResumeTimeout);
-      canvas.style.cursor = 'grabbing';
-    });
-
-    window.addEventListener('mousemove', function(e) {
-      var rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-
-      if (isDragging) {
-        var dx = e.clientX - dragStartX;
-        rotY = dragStartRotY + dx * CFG.dragSens;
-      } else {
-        /* Hit test for hover */
-        hoveredLoc = hitTestLocations(mouseX, mouseY);
-        canvas.style.cursor = hoveredLoc ? 'pointer' : 'grab';
-      }
-    });
-
-    window.addEventListener('mouseup', function() {
-      if (isDragging) {
-        isDragging = false;
-        canvas.style.cursor = hoveredLoc ? 'pointer' : 'grab';
-        /* Resume auto-rotate after 3s of inactivity */
-        autoRotateResumeTimeout = setTimeout(function() {
-          autoRotate = true;
-        }, 3000);
-      }
-    });
-
-    canvas.addEventListener('mouseleave', function() {
-      hoveredLoc = null;
-    });
-
-    /* Touch support */
-    canvas.addEventListener('touchstart', function(e) {
-      if (e.touches.length === 1) {
-        isDragging = true;
-        dragStartX = e.touches[0].clientX;
-        dragStartRotY = rotY;
-        autoRotate = false;
-        clearTimeout(autoRotateResumeTimeout);
-      }
-    }, { passive: true });
-
-    canvas.addEventListener('touchmove', function(e) {
-      if (isDragging && e.touches.length === 1) {
-        var dx = e.touches[0].clientX - dragStartX;
-        rotY = dragStartRotY + dx * CFG.dragSens;
-      }
-    }, { passive: true });
-
-    canvas.addEventListener('touchend', function() {
-      isDragging = false;
-      autoRotateResumeTimeout = setTimeout(function() {
-        autoRotate = true;
-      }, 3000);
-    }, { passive: true });
 
     /* Pause when tab hidden to save resources */
     document.addEventListener('visibilitychange', function () {
