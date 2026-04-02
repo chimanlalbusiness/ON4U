@@ -1888,17 +1888,19 @@
               const intensity = Math.max(0, 1 - dist / RADIUS);
               
               if (intensity > 0) {
-                // Strong orange glow effect using drop-shadow + color shift
-                const glowRadius = intensity * 16;
-                const glowOpacity = intensity * 0.8;
-                const saturate = 1 + intensity * 12;
-                const hueRotate = -intensity * 50; // strong orange shift
-                const brightness = 1 + intensity * 0.8;
-                
-                img.style.filter = `brightness(0) invert(1) drop-shadow(0 0 ${glowRadius}px rgba(249, 115, 22, ${glowOpacity})) saturate(${saturate}) hue-rotate(${hueRotate}deg) brightness(${brightness})`;
-                img.style.opacity = 0.6 + intensity * 0.4;
+                // sepia(1) shifts white → warm amber/orange, saturate pushes it vivid orange
+                // brightness adds the "spotlight lit up" feel the user wants
+                // NO hue-rotate — that's what was causing the purple shift
+                const sepia     = intensity;                  // 0 → 1  (white → amber)
+                const saturate  = 1 + intensity * 9;         // boost to vivid orange
+                const brightness = 1 + intensity * 0.9;      // gets brighter as cursor nears
+                const glow      = intensity * 14;            // orange drop-shadow radius
+                const glowAlpha = intensity * 0.7;
+
+                img.style.filter  = `brightness(0) invert(1) sepia(${sepia}) saturate(${saturate}) brightness(${brightness}) drop-shadow(0 0 ${glow}px rgba(249,115,22,${glowAlpha}))`;
+                img.style.opacity = 0.5 + intensity * 0.5;
               } else {
-                img.style.filter = 'brightness(0) invert(1)';
+                img.style.filter  = 'brightness(0) invert(1)';
                 img.style.opacity = '0.5';
               }
             });
@@ -1932,7 +1934,7 @@
 
     <!-- ═══════════════════════════════════════════════════════════
          SECTION 6 — CTA FINAL
-    ═══════════════════════════════════════════════════════════ -->
+    ═══════════════════════════════════════���═══════════════════ -->
     <section id="final-cta"
       style="background:radial-gradient(ellipse 60% 80% at 50% 0%,rgba(249,115,22,0.07) 0%,transparent 65%),#09090b;border-top:1px solid rgba(249,115,22,0.12);padding:5rem 0;text-align:center;">
       <div class="container">
