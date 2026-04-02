@@ -1888,14 +1888,15 @@
               const intensity = Math.max(0, 1 - dist / RADIUS);
               
               if (intensity > 0) {
-                // More intense orange effect: sepia + hue-rotate + saturate + brightness boost
-                const sepia = intensity * 0.8;
-                const saturate = 1 + intensity * 8;
-                const hueRotate = -intensity * 25; // stronger shift toward orange
-                const brightness = 1 + intensity * 0.6;
-                const contrast = 1 + intensity * 0.4;
-                img.style.filter = `brightness(0) invert(1) sepia(${sepia}) saturate(${saturate}) hue-rotate(${hueRotate}deg) brightness(${brightness}) contrast(${contrast})`;
-                img.style.opacity = 0.5 + intensity * 0.5;
+                // Strong orange glow effect using drop-shadow + color shift
+                const glowRadius = intensity * 16;
+                const glowOpacity = intensity * 0.8;
+                const saturate = 1 + intensity * 12;
+                const hueRotate = -intensity * 50; // strong orange shift
+                const brightness = 1 + intensity * 0.8;
+                
+                img.style.filter = `brightness(0) invert(1) drop-shadow(0 0 ${glowRadius}px rgba(249, 115, 22, ${glowOpacity})) saturate(${saturate}) hue-rotate(${hueRotate}deg) brightness(${brightness})`;
+                img.style.opacity = 0.6 + intensity * 0.4;
               } else {
                 img.style.filter = 'brightness(0) invert(1)';
                 img.style.opacity = '0.5';
