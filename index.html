@@ -1734,10 +1734,11 @@
           style="margin:2rem auto;height:1px;max-width:384px;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);">
         </div>
 
-        <div class="logo-cloud" id="logo-cloud-container"
-          style="position:relative;overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
-          <!-- Orange spotlight overlay that follows cursor -->
+        <div class="logo-cloud-wrapper" id="logo-cloud-wrapper">
+          <!-- Orange spotlight: lives outside overflow:hidden so it isn't clipped -->
           <div class="logo-spotlight" id="logo-spotlight"></div>
+          <div class="logo-cloud" id="logo-cloud-container"
+            style="overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
           <div class="logo-cloud-track">
             <!-- First set -->
             <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
@@ -1803,7 +1804,8 @@
             <div class="logo-cloud-item"><img src="images/clientLogos/wmk.png" alt="wmk" loading="lazy"></div>
             <div class="logo-cloud-item"><img src="images/clientLogos/young-network-group.png" alt="young-network-group" loading="lazy"></div>
           </div>
-        </div>
+          </div><!-- /.logo-cloud -->
+        </div><!-- /.logo-cloud-wrapper -->
 
         <div
           style="margin-top:2rem;height:1px;width:100%;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);">
@@ -1838,67 +1840,73 @@
         .logo-cloud-track img {
           pointer-events: none;
           user-select: none;
-          height: 20px;
+          height: 32px;
           filter: brightness(0) invert(1);
-          opacity: 0.8;
+          opacity: 0.55;
           transition: opacity 0.3s ease;
         }
 
         @media (max-width: 768px) {
           .logo-cloud-track img {
-            height: 16px;
+            height: 24px;
           }
         }
 
-        /* Orange spotlight effect */
+        /* Wrapper holds both the clipping carousel and the unclipped spotlight */
+        .logo-cloud-wrapper {
+          position: relative;
+        }
+
+        /* Orange spotlight — sits above logos via z-index + mix-blend-mode:screen
+           White logos + orange screen = logos glow orange at cursor position     */
         .logo-spotlight {
           position: absolute;
           pointer-events: none;
-          width: 200px;
-          height: 200px;
+          width: 320px;
+          height: 320px;
           border-radius: 50%;
           background: radial-gradient(
             circle at center,
-            rgba(249, 115, 22, 0.6) 0%,
-            rgba(249, 115, 22, 0.35) 25%,
-            rgba(249, 115, 22, 0.15) 50%,
-            transparent 70%
+            rgba(249, 115, 22, 0.95) 0%,
+            rgba(249, 115, 22, 0.65) 20%,
+            rgba(249, 115, 22, 0.30) 45%,
+            rgba(249, 115, 22, 0.08) 65%,
+            transparent 75%
           );
           transform: translate(-50%, -50%);
           opacity: 0;
-          transition: opacity 0.2s ease;
-          z-index: 10;
+          transition: opacity 0.25s ease;
+          z-index: 20;
           mix-blend-mode: screen;
+          /* Pointer events off so it never interferes with hover/carousel */
         }
 
-        .logo-cloud:hover .logo-spotlight {
+        .logo-cloud-wrapper:hover .logo-spotlight {
           opacity: 1;
         }
       </style>
 
       <script>
-        // Logo cloud spotlight effect
+        // Logo cloud spotlight — tracks cursor relative to wrapper, not clipped carousel
         (function() {
-          const container = document.getElementById('logo-cloud-container');
+          const wrapper = document.getElementById('logo-cloud-wrapper');
           const spotlight = document.getElementById('logo-spotlight');
-          
-          if (container && spotlight) {
-            container.addEventListener('mousemove', (e) => {
-              const rect = container.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-              spotlight.style.left = x + 'px';
-              spotlight.style.top = y + 'px';
-            });
-            
-            container.addEventListener('mouseleave', () => {
-              spotlight.style.opacity = '0';
-            });
-            
-            container.addEventListener('mouseenter', () => {
-              spotlight.style.opacity = '1';
-            });
-          }
+
+          if (!wrapper || !spotlight) return;
+
+          wrapper.addEventListener('mousemove', (e) => {
+            const rect = wrapper.getBoundingClientRect();
+            spotlight.style.left = (e.clientX - rect.left) + 'px';
+            spotlight.style.top  = (e.clientY - rect.top)  + 'px';
+          });
+
+          wrapper.addEventListener('mouseleave', () => {
+            spotlight.style.opacity = '0';
+          });
+
+          wrapper.addEventListener('mouseenter', () => {
+            spotlight.style.opacity = '1';
+          });
         })();
       </script>
     </section>
