@@ -1840,7 +1840,7 @@
         .logo-cloud-track img {
           pointer-events: none;
           user-select: none;
-          height: 24px;
+          height: 48px;
           filter: brightness(0) invert(1);
           opacity: 0.5;
           transition: filter 0.15s ease, opacity 0.15s ease;
@@ -1848,7 +1848,7 @@
 
         @media (max-width: 768px) {
           .logo-cloud-track img {
-            height: 18px;
+            height: 36px;
           }
         }
 
@@ -1888,13 +1888,13 @@
               const intensity = Math.max(0, 1 - dist / RADIUS);
               
               if (intensity > 0) {
-                // sepia(1) makes it brownish, then hue-rotate to orange, saturate to boost
-                // We interpolate between white (normal) and orange based on intensity
-                const sepia = intensity;
-                const saturate = 1 + intensity * 5;
-                const hueRotate = intensity * -15; // shift toward orange
-                const brightness = 1 + intensity * 0.3;
-                img.style.filter = `brightness(0) invert(1) sepia(${sepia}) saturate(${saturate}) hue-rotate(${hueRotate}deg) brightness(${brightness})`;
+                // More intense orange effect: sepia + hue-rotate + saturate + brightness boost
+                const sepia = intensity * 0.8;
+                const saturate = 1 + intensity * 8;
+                const hueRotate = -intensity * 25; // stronger shift toward orange
+                const brightness = 1 + intensity * 0.6;
+                const contrast = 1 + intensity * 0.4;
+                img.style.filter = `brightness(0) invert(1) sepia(${sepia}) saturate(${saturate}) hue-rotate(${hueRotate}deg) brightness(${brightness}) contrast(${contrast})`;
                 img.style.opacity = 0.5 + intensity * 0.5;
               } else {
                 img.style.filter = 'brightness(0) invert(1)';
