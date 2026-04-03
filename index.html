@@ -1123,22 +1123,6 @@
       margin: 0.4rem 0;
     }
 
-    .hero-transition-label {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      pointer-events: none;
-      z-index: 4;
-      will-change: opacity;
-      opacity: 0;
-      font-size: clamp(1.3rem, 2.2vw, 2.2rem);
-      font-weight: 700;
-      color: #fff;
-      white-space: nowrap;
-      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
-    }
 
     /* ── prefers-reduced-motion: skip to settled state ── */
     @media (prefers-reduced-motion: reduce) {
@@ -1359,10 +1343,7 @@
               execu&ccedil;&atilde;o</span>
           </div>
 
-          <!-- Transition-state centered label -->
-          <div class="hero-transition-label" id="hero-transition-label" aria-hidden="true" style="opacity: 0;">
-            Do requisito ao destino, com processo.
-          </div>
+
         </div>
 
       </div>
@@ -2350,8 +2331,6 @@
           heroGlobeCol.style.transform = '';
           heroGlobeCol.style.opacity = '';
           if (heroOpenLbl) { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
-          const heroTransLbl = document.getElementById('hero-transition-label');
-          if (heroTransLbl) heroTransLbl.style.opacity = '0';
           details.forEach(el => { el.style.opacity = ''; });
           if (heroH1) heroH1.style.opacity = '';
           return;
@@ -2376,16 +2355,7 @@
           heroOpenLbl.style.display = phaseOut > 0.99 ? 'none' : '';
         }
 
-        /* ── TRANSITION LABEL: appears briefly around 0.5 ── */
-        const heroTransLbl = document.getElementById('hero-transition-label');
-        if (heroTransLbl) {
-          let transOp = 0;
-          if (e > 0.1 && e < 0.9) {
-            transOp = 1 - Math.abs(e - 0.5) * 2; // peaks at e=0.5
-          }
-          heroTransLbl.style.opacity = Math.max(0, transOp).toFixed(3);
-          heroTransLbl.style.transform = `translate(-50%, calc(-50% + ${lerp(20, -20, e)}px))`;
-        }
+
 
         /* ── TEXT: slides left from edge, fades in ── */
         const textTx = lerp(50, 0, e);
