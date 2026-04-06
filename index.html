@@ -879,10 +879,10 @@
       .hero-stage {
         position: relative;
         height: auto;
-        min-height: 100svh;
+        min-height: auto;
         grid-template-columns: 1fr;
-        padding-top: max(80px, 10vh);
-        padding-bottom: max(40px, 5vh);
+        padding-top: max(88px, 12vh);
+        padding-bottom: max(48px, 6vh);
       }
     }
 
@@ -1159,6 +1159,7 @@
 
       .hero-detail {
         opacity: 1 !important;
+        transform: none !important;
       }
 
       #hero-text {
@@ -1166,9 +1167,22 @@
         transform: none !important;
       }
 
-      #hero-globe-col {
+      #hero-text .hero-h1 {
         opacity: 1 !important;
         transform: none !important;
+      }
+
+      #hero-text .hero-detail {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      #hero-globe-col {
+        display: none !important;
+      }
+
+      .hero-h1 {
+        font-size: clamp(1.75rem, 6vw, 2.4rem);
       }
 
       .pf-grid-resp,
@@ -1320,6 +1334,11 @@
             <a href="#divisoes" class="btn btn-outline" id="hero-cta-divisoes"
               style="color:rgba(255,255,255,0.72);border-color:rgba(255,255,255,0.2);">Ver as divisões</a>
           </div>
+          <p class="hero-micro-proof hero-detail"
+             style="font-size: 0.72rem;
+                    color: rgba(255,255,255,0.3);
+                    margin-top: 1rem;
+                    line-height: 1.5;">Base em Portugal · Presença em STP e Guiné-Bissau · Escritórios na China e Índia</p>
         </div>
 
         <!-- RIGHT: globe visual column -->
