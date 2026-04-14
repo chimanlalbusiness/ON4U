@@ -64,12 +64,65 @@
     /* ── Opening label sub text ── */
     .hero-opening-label .ol-sub {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
-      color: rgba(249, 115, 22, 0.8);
-      margin-top: 1rem;
+      letter-spacing: 0.02em;
+      color: rgba(249, 115, 22, 0.65);
+      margin-top: 0.875rem;
       text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── Cycling text rotator ── */
+    .cycling-text-container {
+      /* display:contents = no box generated at all, completely invisible */
+      display: contents;
+    }
+
+    .cycling-text-item {
+      position: absolute;
+      left: 0;
+      right: 0;
+      /* Position just below the ol-h headline within the label */
+      top: calc(100% - 2.8rem);
+      display: block;
+      text-align: center;
+      font-size: clamp(0.95rem, 1.8vw, 1.35rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1.4;
+      color: #f97316;
+      text-shadow: 0 0 20px rgba(249, 115, 22, 0.5),
+                   0 0 40px rgba(249, 115, 22, 0.2);
+      transform: translateY(30px);
+      opacity: 0;
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+
+    /* Enter: spring bounce from below */
+    .cycling-text-item.is-entering {
+      transform: translateY(0);
+      opacity: 1;
+      transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Visible/idle state */
+    .cycling-text-item.is-active {
+      transform: translateY(0);
+      opacity: 1;
+      transition: none;
+    }
+
+    /* Exit: accelerate upward */
+    .cycling-text-item.is-exiting {
+      transform: translateY(-30px);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.55, 0, 1, 0.45),
+                  opacity 0.3s cubic-bezier(0.55, 0, 1, 0.45);
     }
 
     /* ── Portfolio & References Refinement ── */
@@ -183,12 +236,13 @@
 
     .hero-opening-label .ol-sub {
       display: block;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.02em;
       color: rgba(249, 115, 22, 0.65);
-      margin-top: 0.75rem;
+      margin-top: 0.875rem;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     /* ── DIVISÕES (light section) ─────────────────────────── */
@@ -1078,9 +1132,9 @@
     /* ── Opening-state overlay: big centered label ── */
     .hero-opening-label {
       position: absolute;
-      top: 50%;
+      top: calc(50% + max(20px, 2vh));
       left: 50%;
-      transform: translate(-50%, -55%);
+      transform: translate(-50%, -50%);
       text-align: center;
       pointer-events: none;
       z-index: 4;
@@ -1091,29 +1145,27 @@
     }
 
     .hero-opening-label .ol-kicker {
-      font-size: 0.72rem;
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.65);
+      color: #ffffff;
       margin-bottom: 0.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.75rem;
+      line-height: 1;
     }
 
-    .hero-opening-label .ol-kicker::before,
-    .hero-opening-label .ol-kicker::after {
-      content: '';
+    .hero-opening-label .ol-kicker svg {
       display: block;
-      width: 24px;
-      height: 1px;
-      background: rgba(249, 115, 22, 0.5);
+      height: 28px;
+      width: auto;
     }
 
     .hero-opening-label .ol-h {
-      font-size: clamp(1.4rem, 2.5vw, 2.6rem);
+      font-size: clamp(1.1rem, 2vw, 1.65rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.15;
@@ -1121,7 +1173,7 @@
       display: block;
       white-space: nowrap;
       text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8);
-      margin: 0.4rem 0;
+      margin: 0.5rem 0;
     }
 
 
@@ -1507,14 +1559,30 @@
 
           <!-- Opening-state centered label (fades OUT as hero transitions) -->
           <div class="hero-opening-label" id="hero-opening-label" aria-hidden="true">
-            <span class="ol-kicker">Operação B2B por pedido</span>
-            <span class="ol-h">Fornecimento. Produção.<br>Operação internacional.</span>
-            <span class="ol-sub">Valida&ccedil;&atilde;o &rarr; documenta&ccedil;&atilde;o &rarr;
-              execu&ccedil;&atilde;o</span>
+            <span class="ol-kicker">
+              <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="30" r="13" stroke="#ffffff" stroke-width="14" />
+                <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="#ffffff" stroke-width="14"
+                  stroke-linecap="round" />
+                <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <circle cx="129" cy="43" r="7" fill="#f97316" />
+                <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="#ffffff" stroke-width="14"
+                  stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="ol-h">Operações B2B Internacionais</span>
+            <div class="cycling-text-container" id="cycling-text-container" aria-live="polite">
+              <span class="cycling-text-item is-active" data-index="0">Importação</span>
+              <span class="cycling-text-item" data-index="1">Exportação</span>
+              <span class="cycling-text-item" data-index="2">Sourcing</span>
+              <span class="cycling-text-item" data-index="3">Produção</span>
+              <span class="cycling-text-item" data-index="4">Distribuição</span>
+              <span class="cycling-text-item" data-index="5">Logística</span>
+            </div>
           </div>
 
-
-        </div>
+        </div> <!-- /.hero-globe-col -->
 
       </div>
     </section>
@@ -2682,6 +2750,71 @@
       e.preventDefault();
       document.getElementById('divisoes')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
+    // ── Cycling text rotator ────────────────────────────────────
+    (function () {
+      const container = document.getElementById('cycling-text-container');
+      if (!container) return;
+      const items = container.querySelectorAll('.cycling-text-item');
+      if (!items.length) return;
+
+      let current = 0;
+      const total = items.length;
+      const DISPLAY_TIME = 2500;  // how long word stays visible
+      const EXIT_DUR     = 450;   // matches CSS exit transition
+      const ENTER_DUR    = 550;   // matches CSS enter transition
+      let cycling = false;
+
+      // Set data-text attribute for the glow pseudo-element
+      items.forEach(item => {
+        item.setAttribute('data-text', item.textContent);
+      });
+
+      // First item starts visible
+      items[0].classList.add('is-active');
+
+      function cycle() {
+        if (cycling) return;
+        cycling = true;
+
+        const prev = items[current];
+
+        // Step 1: Exit current word (slide up + fade)
+        prev.classList.remove('is-active');
+        prev.classList.add('is-exiting');
+
+        // Step 2: After exit completes, bring in the next word
+        setTimeout(() => {
+          prev.classList.remove('is-exiting');
+          // Reset prev to default (offscreen below, hidden)
+
+          // Advance index
+          current = (current + 1) % total;
+          const next = items[current];
+
+          // Ensure next starts from below
+          next.classList.remove('is-active', 'is-entering', 'is-exiting');
+          // Force reflow so translateY(80px) applies
+          void next.offsetHeight;
+
+          // Enter: spring bounce up
+          next.classList.add('is-entering');
+
+          // After enter completes, settle to idle state
+          setTimeout(() => {
+            next.classList.remove('is-entering');
+            next.classList.add('is-active');
+            cycling = false;
+          }, ENTER_DUR);
+
+        }, EXIT_DUR);
+      }
+
+      // Respect reduced motion
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setInterval(cycle, DISPLAY_TIME + EXIT_DUR + ENTER_DUR);
+      }
+    })();
   </script>
 </body>
 
