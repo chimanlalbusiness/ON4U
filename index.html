@@ -95,7 +95,7 @@
       line-height: 1.4;
       color: #f97316;
       text-shadow: 0 0 20px rgba(249, 115, 22, 0.5),
-                   0 0 40px rgba(249, 115, 22, 0.2);
+        0 0 40px rgba(249, 115, 22, 0.2);
       transform: translateY(30px);
       opacity: 0;
       will-change: transform, opacity;
@@ -107,7 +107,7 @@
       transform: translateY(0);
       opacity: 1;
       transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     /* Visible/idle state */
@@ -122,7 +122,7 @@
       transform: translateY(-30px);
       opacity: 0;
       transition: transform 0.45s cubic-bezier(0.55, 0, 1, 0.45),
-                  opacity 0.3s cubic-bezier(0.55, 0, 1, 0.45);
+        opacity 0.3s cubic-bezier(0.55, 0, 1, 0.45);
     }
 
     /* ── Portfolio & References Refinement ── */
@@ -1392,6 +1392,8 @@
       transform: translateY(-7px) rotate(-45deg);
     }
   </style>
+  <script>/* Apply saved theme instantly to prevent flash */
+  if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
 </head>
 
 <body class="scrolly-body">
@@ -1439,9 +1441,27 @@
         <a href="/contactos.html" id="nav-contacto">Contacto</a>
       </nav>
 
-      <!-- CTA button -->
+      <!-- CTA button + Theme toggle -->
       <div class="header-actions">
         <a href="/contactos.html" class="btn btn-primary" id="header-cta">Pedir or&ccedil;amento</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+          <!-- Sun icon (visible in dark mode — click to switch to light) -->
+          <svg class="theme-icon theme-icon--sun" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.4058 17.7625C15.1672 17.7625 17.4058 15.5239 17.4058 12.7625C17.4058 10.0011 15.1672 7.76251 12.4058 7.76251C9.64434 7.76251 7.40576 10.0011 7.40576 12.7625C7.40576 15.5239 9.64434 17.7625 12.4058 17.7625Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 1.76251V3.76251" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 21.7625V23.7625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 4.98248L6.04598 6.40248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 19.1225L20.1856 20.5425" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.40576 12.7625H3.40576" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.4058 12.7625H23.4058" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 20.5425L6.04598 19.1225" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 6.40248L20.1856 4.98248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <!-- Moon icon (visible in light mode — click to switch to dark) -->
+          <svg class="theme-icon theme-icon--moon" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.1918 13.2013C21.0345 14.9035 20.3957 16.5257 19.35 17.8781C18.3044 19.2305 16.8953 20.2571 15.2875 20.8379C13.6797 21.4186 11.9398 21.5294 10.2713 21.1574C8.60281 20.7854 7.07479 19.9459 5.86602 18.7371C4.65725 17.5283 3.81774 16.0003 3.4457 14.3318C3.07367 12.6633 3.18451 10.9234 3.76526 9.31561C4.346 7.70783 5.37263 6.29868 6.72501 5.25307C8.07739 4.20746 9.69959 3.56862 11.4018 3.41132C10.4052 4.75958 9.92564 6.42077 10.0503 8.09273C10.175 9.76469 10.8957 11.3364 12.0812 12.5219C13.2667 13.7075 14.8384 14.4281 16.5104 14.5528C18.1823 14.6775 19.8435 14.1979 21.1918 13.2013Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
 
       <!-- Mobile toggle -->
@@ -1638,11 +1658,7 @@
                 &middot; Terrestre &middot; Mar&iacute;timo
               </li>
             </ul>
-            <div
-              style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:rgba(255,255,255,0.35);">
-              <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#f97316;"></span>
-              Certificado Pagamento Pontual
-            </div>
+
             <a href="/importacao-e-exportacao.html" id="div-cta-operacao"
               style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
               onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
@@ -1958,8 +1974,7 @@
               <!-- First set -->
               <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/adi.png" alt="adi" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/agualda-clube.png" alt="agualda-clube"
+              <div class="logo-cloud-item"><img src="images/clientLogos/CD1647_AGUALVA.png" alt="agualva-clube"
                   loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo"
                   loading="lazy"></div>
@@ -1968,7 +1983,11 @@
               <div class="logo-cloud-item"><img src="images/clientLogos/atlafina.png" alt="atlafina" loading="lazy">
               </div>
               <div class="logo-cloud-item"><img src="images/clientLogos/axe.png" alt="axe" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/banco.png" alt="banco" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Banco Central_STP.png" alt="banco-central-stp"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Republica Democratica_STP.png"
+                  alt="republica-democratica-stp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/OMS_STP.png" alt="oms-stp" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/blue.png" alt="blue" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/brandkey.png" alt="brandkey" loading="lazy">
               </div>
@@ -2005,8 +2024,7 @@
               <!-- Second set for infinite scroll loop -->
               <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/adi.png" alt="adi" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/agualda-clube.png" alt="agualda-clube"
+              <div class="logo-cloud-item"><img src="images/clientLogos/CD1647_AGUALVA.png" alt="agualva-clube"
                   loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo"
                   loading="lazy"></div>
@@ -2015,7 +2033,11 @@
               <div class="logo-cloud-item"><img src="images/clientLogos/atlafina.png" alt="atlafina" loading="lazy">
               </div>
               <div class="logo-cloud-item"><img src="images/clientLogos/axe.png" alt="axe" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/banco.png" alt="banco" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Banco Central_STP.png" alt="banco-central-stp"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Republica Democratica_STP.png"
+                  alt="republica-democratica-stp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/OMS_STP.png" alt="oms-stp" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/blue.png" alt="blue" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/brandkey.png" alt="brandkey" loading="lazy">
               </div>
@@ -2065,34 +2087,47 @@
           }
 
           100% {
-            transform: translateX(calc(-50% - 21px));
+            transform: translateX(-50%);
           }
-
-          /* 21px is half the 42px gap */
         }
 
         .logo-cloud-track {
           display: flex;
           width: max-content;
-          gap: 42px;
-          animation: scroll-logos 45s linear infinite;
+          gap: 48px;
+          animation: scroll-logos 50s linear infinite;
         }
 
         .logo-cloud-track:hover {
           animation-play-state: paused;
         }
 
+        /* Fixed-size box per logo — prevents wide logos from blowing up */
+        .logo-cloud-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 120px;
+          height: 48px;
+          flex-shrink: 0;
+        }
+
         .logo-cloud-track img {
           pointer-events: none;
           user-select: none;
-          height: 48px;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
           filter: brightness(0) invert(1);
           opacity: 0.5;
           transition: filter 0.15s ease, opacity 0.15s ease;
         }
 
         @media (max-width: 768px) {
-          .logo-cloud-track img {
+          .logo-cloud-item {
+            width: 90px;
             height: 36px;
           }
         }
@@ -2120,9 +2155,18 @@
           let cursorY = 0;
           let rafId = null;
 
+          function isLightMode() {
+            return document.documentElement.classList.contains('light-mode');
+          }
+
+          function getBaseFilter() {
+            return isLightMode() ? 'none' : 'brightness(0) invert(1)';
+          }
+
           function updateLogos() {
             if (!isHovering) return;
 
+            const light = isLightMode();
             const logos = wrapper.querySelectorAll('.logo-cloud-track img');
             logos.forEach(img => {
               const rect = img.getBoundingClientRect();
@@ -2133,20 +2177,18 @@
               const intensity = Math.max(0, 1 - dist / RADIUS);
 
               if (intensity > 0) {
-                // sepia(1) shifts white → warm amber/orange, saturate pushes it vivid orange
-                // brightness adds the "spotlight lit up" feel the user wants
-                // NO hue-rotate — that's what was causing the purple shift
-                const sepia = intensity;                  // 0 → 1  (white → amber)
-                const saturate = 1 + intensity * 9;         // boost to vivid orange
-                const brightness = 1 + intensity * 0.9;      // gets brighter as cursor nears
-                const glow = intensity * 14;            // orange drop-shadow radius
+                const sepia = intensity;
+                const saturate = 1 + intensity * 9;
+                const brightness = 1 + intensity * 0.9;
+                const glow = intensity * 14;
                 const glowAlpha = intensity * 0.7;
 
-                img.style.filter = `brightness(0) invert(1) sepia(${sepia}) saturate(${saturate}) brightness(${brightness}) drop-shadow(0 0 ${glow}px rgba(249,115,22,${glowAlpha}))`;
+                const base = light ? 'none' : 'brightness(0) invert(1)';
+                img.style.filter = `${base} sepia(${sepia}) saturate(${saturate}) brightness(${brightness}) drop-shadow(0 0 ${glow}px rgba(249,115,22,${glowAlpha}))`;
                 img.style.opacity = 0.5 + intensity * 0.5;
               } else {
-                img.style.filter = 'brightness(0) invert(1)';
-                img.style.opacity = '0.5';
+                img.style.filter = getBaseFilter();
+                img.style.opacity = light ? '0.45' : '0.5';
               }
             });
 
@@ -2166,11 +2208,11 @@
           wrapper.addEventListener('mouseleave', () => {
             isHovering = false;
             if (rafId) cancelAnimationFrame(rafId);
-            // Reset all logos to default
             const logos = wrapper.querySelectorAll('.logo-cloud-track img');
+            const light = isLightMode();
             logos.forEach(img => {
-              img.style.filter = 'brightness(0) invert(1)';
-              img.style.opacity = '0.5';
+              img.style.filter = getBaseFilter();
+              img.style.opacity = light ? '0.45' : '0.5';
             });
           });
         })();
@@ -2291,6 +2333,10 @@
               <span style="width:10px;height:10px;border-radius:50%;background:#f97316;display:inline-block;"></span>
               Infarmed Certificado
             </a>
+            <div style="margin-top:0.875rem;">
+              <img src="images/pagamento-pontual-2026.png" alt="Compromisso Pagamento Pontual 2026"
+                style="height:48px;width:auto;opacity:0.85;" loading="lazy">
+            </div>
           </div>
 
         </div>
@@ -2761,8 +2807,8 @@
       let current = 0;
       const total = items.length;
       const DISPLAY_TIME = 2500;  // how long word stays visible
-      const EXIT_DUR     = 450;   // matches CSS exit transition
-      const ENTER_DUR    = 550;   // matches CSS enter transition
+      const EXIT_DUR = 450;   // matches CSS exit transition
+      const ENTER_DUR = 550;   // matches CSS enter transition
       let cycling = false;
 
       // Set data-text attribute for the glow pseudo-element
@@ -2814,6 +2860,17 @@
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         setInterval(cycle, DISPLAY_TIME + EXIT_DUR + ENTER_DUR);
       }
+    })();
+    // ── Theme toggle ────────────────────────────────────────────
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
+      toggle.addEventListener('click', () => {
+        const html = document.documentElement;
+        const isLight = html.classList.toggle('light-mode');
+        localStorage.setItem('on4u-theme', isLight ? 'light' : 'dark');
+      });
     })();
   </script>
 </body>
