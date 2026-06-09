@@ -1,15 +1,129 @@
 <!doctype html>
 <html lang="pt-PT">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Health & Care | ON4U</title>
-  <link rel="stylesheet" href="style.css?v=11" />
-  <link rel="stylesheet" href="scrolly_styles.css?v=5" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Health &amp; Care | Sourcing de Produtos de Saúde | ON4U</title>
+  <meta name="description"
+    content="Sourcing e fornecimento de produtos de saúde por pedido. Distribuidor certificado pela Infarmed (Cert. 1866/DM/2023), com validação item a item." />
+  <link rel="canonical" href="https://www.on4u.pt/health-care.html" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ON4U" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:title" content="Health &amp; Care | Sourcing de Produtos de Saúde | ON4U" />
+  <meta property="og:description"
+    content="Distribuidor certificado pela Infarmed (Cert. 1866/DM/2023). Produtos de saúde por pedido, validados manualmente, item a item, antes da proposta." />
+  <meta property="og:url" content="https://www.on4u.pt/health-care.html" />
+  <meta property="og:image" content="https://www.on4u.pt/og/health-care.png" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Health &amp; Care | Sourcing de Produtos de Saúde | ON4U" />
+  <meta name="twitter:description"
+    content="Distribuidor certificado pela Infarmed (Cert. 1866/DM/2023). Produtos de saúde por pedido, validados item a item antes da proposta." />
+  <meta name="twitter:image" content="https://www.on4u.pt/og/health-care.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css?v=16" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>/* Apply saved theme instantly to prevent flash */
+  if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
+  <style>
+    /* canonical header mobile-nav overlay (parity across all pages) */
+    .mobile-nav{position:absolute;top:68px;left:0;width:100%;background:#09090b;border-bottom:1px solid rgba(255,255,255,0.1);z-index:99;transform:translateY(-10px);transition:opacity 200ms ease,transform 200ms ease}
+    .mobile-nav:not([hidden]){display:flex!important;opacity:1;transform:translateY(0)}
+    .mobile-menu-toggle.is-active .hamburger{background:transparent!important}
+    .mobile-menu-toggle.is-active .hamburger::before{transform:translateY(7px) rotate(45deg)}
+    .mobile-menu-toggle.is-active .hamburger::after{transform:translateY(-7px) rotate(-45deg)}
+  </style>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ON4U",
+    "url": "https://www.on4u.pt/",
+    "email": "info@on4u.pt",
+    "telephone": "+351214326102",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)",
+      "postalCode": "2710-679",
+      "addressLocality": "Sintra",
+      "addressCountry": "PT"
+    },
+    "areaServed": ["PT", "ST", "GW", "CN", "IN"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+351214326102",
+      "contactType": "sales",
+      "email": "info@on4u.pt",
+      "availableLanguage": ["pt", "en"]
+    }]
+  }
+  </script>
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Sourcing e fornecimento de produtos de saúde",
+    "provider": { "@type": "Organization", "name": "ON4U", "url": "https://www.on4u.pt/" },
+    "areaServed": ["PT", "ST", "GW", "CN", "IN"],
+    "description": "Sourcing e fornecimento de produtos de saúde por pedido, com validação manual de conformidade item a item. A ON4U é distribuidora certificada pela Infarmed — Autoridade Nacional do Medicamento e Produtos de Saúde (Cert. 1866/DM/2023).",
+    "url": "https://www.on4u.pt/health-care.html"
+  }
+  </script>
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.on4u.pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Health & Care", "item": "https://www.on4u.pt/health-care.html" }
+    ]
+  }
+  </script>
+  <!-- JSON-LD: FAQPage (mirrors visible FAQ 1:1) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "A ON4U é distribuidor certificado?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim. A ON4U é distribuidora certificada pela Infarmed — Autoridade Nacional do Medicamento e Produtos de Saúde, ao abrigo do certificado n.º 1866/DM/2023. O certificado está disponível para consulta." }
+      },
+      {
+        "@type": "Question",
+        "name": "Como é validada a conformidade dos produtos?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A validação é manual e feita item a item, antes da proposta. Revemos requisitos e documentação de cada item — só avança o que está em conformidade." }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso pedir produtos que não estão num catálogo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sim. Trabalhamos por pedido, sem catálogo fixo. Indica o que precisa e fazemos o sourcing da fonte adequada." }
+      },
+      {
+        "@type": "Question",
+        "name": "O que recebo depois de enviar o pedido?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Devolvemos um orçamento e os próximos passos. Não há compromisso até confirmar." }
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body class="scrolly-body">
+  <!-- ON4U-CANONICAL-HEADER -->
+  <a href="#main" class="skip-link">Saltar para o conteúdo</a>
   <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
@@ -23,150 +137,285 @@
       </a>
       <nav class="header-nav desktop-only" aria-label="Principal">
         <div class="nav-dropdown">
-          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
-            Serviços
-            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="2 4 6 8 10 4"/>
-            </svg>
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="nav-divisoes-btn">
+            Divisões
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 4 6 8 10 4" /></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
-            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação &amp; Exportação</a>
-            <a href="/health-care.html" role="menuitem" class="is-current"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Operação Internacional</a>
+            <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
             <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
-            <div class="nav-dropdown-divider"></div>
-            <a href="/portfolio.html" role="menuitem"><span class="nav-dropdown-dot"></span>Portfólio</a>
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
           </div>
         </div>
-        <a href="/sobre.html">Sobre</a>
-        <a href="/contactos.html">Contactos</a>
+        <a href="/portfolio.html" id="nav-trabalhos">Trabalhos</a>
+        <a href="/contactos.html" id="nav-contacto">Contacto</a>
       </nav>
       <div class="header-actions">
-        <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary" id="header-cta">Pedir orçamento</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+          <svg class="theme-icon theme-icon--sun" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.4058 17.7625C15.1672 17.7625 17.4058 15.5239 17.4058 12.7625C17.4058 10.0011 15.1672 7.76251 12.4058 7.76251C9.64434 7.76251 7.40576 10.0011 7.40576 12.7625C7.40576 15.5239 9.64434 17.7625 12.4058 17.7625Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 1.76251V3.76251" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 21.7625V23.7625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 4.98248L6.04598 6.40248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 19.1225L20.1856 20.5425" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.40576 12.7625H3.40576" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.4058 12.7625H23.4058" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 20.5425L6.04598 19.1225" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 6.40248L20.1856 4.98248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="theme-icon theme-icon--moon" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21.1918 13.2013C21.0345 14.9035 20.3957 16.5257 19.35 17.8781C18.3044 19.2305 16.8953 20.2571 15.2875 20.8379C13.6797 21.4186 11.9398 21.5294 10.2713 21.1574C8.60281 20.7854 7.07479 19.9459 5.86602 18.7371C4.65725 17.5283 3.81774 16.0003 3.4457 14.3318C3.07367 12.6633 3.18451 10.9234 3.76526 9.31561C4.346 7.70783 5.37263 6.29868 6.72501 5.25307C8.07739 4.20746 9.69959 3.56862 11.4018 3.41132C10.4052 4.75958 9.92564 6.42077 10.0503 8.09273C10.175 9.76469 10.8957 11.3364 12.0812 12.5219C13.2667 13.7075 14.8384 14.4281 16.5104 14.5528C18.1823 14.6775 19.8435 14.1979 21.1918 13.2013Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
+      <button class="mobile-menu-toggle" aria-controls="mobile-nav" aria-expanded="false" id="mobile-menu-btn" aria-label="Abrir menu">
+        <span class="hamburger"></span>
+      </button>
     </div>
+    <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Mobile">
+      <a href="/importacao-e-exportacao.html">Operação Internacional</a>
+      <a href="/health-care.html">Health &amp; Care</a>
+      <a href="/informatica.html">Informática</a>
+      <a href="/producao.html">Produção &amp; Criatividade</a>
+      <a href="/portfolio.html">Trabalhos</a>
+      <a href="/contactos.html">Contacto</a>
+      <a href="/contactos.html" class="btn btn-primary" style="margin-top:0.5rem;">Pedir orçamento</a>
+    </nav>
   </header>
+  <!-- /ON4U-CANONICAL-HEADER -->
 
-  <main class="scrolly-container">
-    <!-- Section 1: Hero -->
-    <section class="scrolly-section" id="health-hero" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Health & Care</p>
-              <h1 class="scrolly-title"><span class="text-gradient">Saúde e Bem-estar</span> com certificação rigorosa</h1>
-              <p class="scrolly-sub">Distribuidor certificado Infarmed. Fornecemos dispositivos médicos e produtos de bem-estar com validação rigorosa de requisitos e documentação.</p>
-              
-              <div style="margin-top: 2rem;">
-                <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer" class="cert-badge cert-badge-premium">
-                  <div class="cert-badge-icon">
-                    <i class="fas fa-certificate"></i>
-                  </div>
-                  <div class="cert-badge-text">
-                    <span class="cert-badge-title">Distribuidor Certificado</span>
-                    <span class="cert-badge-sub">Cert. 1866/DM/2023</span>
-                    <span class="cert-badge-issuer">Infarmed - Autoridade Nacional</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="scrolly-visual-block anim-visual">
-               <div class="hero-dashboard-card floating-card">
-                 <div class="dash-card-header">
-                   <div class="pulse-indicator"></div>
-                   <span>Certificação Ativa</span>
-                 </div>
-                 <div class="dash-card-grid">
-                   <div class="dash-card-item">
-                     <div class="dash-card-icon highlight"><i class="fas fa-stethoscope"></i></div>
-                     <div class="dash-card-content">
-                       <span class="dash-card-label">Dispositivos</span>
-                       <span class="dash-card-value">Médicos & Hospitalares</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-            </div>
-          </div>
+  <main class="pg2-main" id="main">
+
+    <!-- HERO -->
+    <section class="pg2-hero">
+      <div class="pg2-wrap">
+        <nav class="pg2-crumbs" aria-label="Caminho de navegação">
+          <ol>
+            <li><a href="/">Início</a></li>
+            <li class="sep" aria-hidden="true">›</li>
+            <li aria-current="page">Health &amp; Care</li>
+          </ol>
+        </nav>
+        <p class="pg2-eyebrow">Health &amp; Care</p>
+        <h1>Sourcing e fornecimento de produtos de saúde por pedido.</h1>
+        <p class="pg2-lede">Distribuidor certificado pela Infarmed. Indica o que precisa — validamos cada item antes de qualquer proposta.</p>
+        <div class="pg2-hero-ctas">
+          <a href="mailto:info@on4u.pt" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
+          <a href="#certificacao" class="pg2-btn pg2-btn--ghost">Ver certificação</a>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: Process -->
-    <section class="scrolly-section" id="health-process" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
+    <!-- CERTIFICAÇÃO (sobe para perto do topo — ativo de confiança) -->
+    <section class="pg2-section pg2-section--1" id="certificacao">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Conformidade</p>
+          <h2 class="pg2-h2">Distribuidor certificado pela Infarmed.</h2>
         </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Como funciona</p>
-              <h2 class="scrolly-title">Validação <span class="text-gradient">Manual</span> e Rigorosa</h2>
-              <ul class="scrolly-bullets">
-                <li>Seleção por itens e envio de pedido</li>
-                <li>Validação manual de requisitos e conformidade</li>
-                <li>Proposta com orçamento e prazos claros</li>
-              </ul>
-              <a href="/contactos.html" class="btn btn-primary mt-4">Pedir Orçamento</a>
-            </div>
-            <div class="scrolly-visual-block anim-visual">
-               <div class="validation-stack" style="width: 100%;">
-                 <div class="v-card completed">
-                   <div class="v-text">Seleção de Itens</div>
-                   <div class="v-status"><i class="fas fa-check"></i></div>
-                 </div>
-                 <div class="v-card active">
-                   <div class="v-text">Validação Manual</div>
-                   <div class="pulse-dot"></div>
-                 </div>
-                 <div class="v-card">
-                   <div class="v-text">Orçamento Final</div>
-                 </div>
-               </div>
-            </div>
+        <div class="pg2-reveal">
+          <p class="pg2-define">A ON4U é distribuidora certificada pela Infarmed — Autoridade Nacional do Medicamento e Produtos de Saúde, ao abrigo do certificado n.º&nbsp;1866/DM/2023.</p>
+          <div class="pg2-prose pg2-measure">
+            <p>A certificação está disponível para consulta. É a base sobre a qual fazemos o sourcing e o fornecimento de produtos de saúde por pedido.</p>
+          </div>
+          <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer" class="pg2-cert" style="margin-top:1.5rem;">
+            <span class="pg2-cert-shield" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </span>
+            <span class="pg2-cert-meta">
+              <span class="pg2-cert-title">Ver certificado (PDF)</span>
+              <span class="pg2-cert-sub">Cert. 1866/DM/2023</span>
+              <span class="pg2-cert-issuer">Infarmed — Autoridade Nacional do Medicamento e Produtos de Saúde</span>
+            </span>
+            <span class="pg2-cert-go" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="pg2-section pg2-section--0">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Processo</p>
+          <h2 class="pg2-h2">Como funciona.</h2>
+        </div>
+        <ol class="pg2-steps pg2-steps--row pg2-reveal" style="grid-template-columns:repeat(3,1fr);">
+          <li class="pg2-step">
+            <h3>Seleção e pedido</h3>
+            <p>Indica os itens pretendidos, com quantidades e destino, e envia o pedido. Não precisa de partir de um catálogo: o pedido define o que procuramos.</p>
+          </li>
+          <li class="pg2-step">
+            <h3>Validação manual e de conformidade</h3>
+            <p>Revemos cada item manualmente — requisitos e documentação — antes de seguir. É aqui que confirmamos que o que vai avançar está em conformidade.</p>
+          </li>
+          <li class="pg2-step">
+            <h3>Orçamento e próximos passos</h3>
+            <p>Devolvemos orçamento e os próximos passos claros, sem compromisso até confirmar.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- O QUE FORNECEMOS -->
+    <section class="pg2-section pg2-section--1">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Âmbito</p>
+          <h2 class="pg2-h2">O que fornecemos.</h2>
+        </div>
+        <div class="pg2-prose pg2-measure pg2-reveal">
+          <p>Fornecemos produtos de saúde por pedido. Em vez de um catálogo fixo, partimos do requisito: indica o que precisa e fazemos o sourcing da fonte adequada, com validação de conformidade antes da proposta.</p>
+          <p>Como a Operação Internacional está por trás do sourcing, conseguimos chegar a fornecedores fora do circuito habitual — mantendo a documentação e a conformidade como base.</p>
+          <p>O sourcing assenta na nossa <a href="/importacao-e-exportacao.html">operação internacional</a> — a mesma máquina de validação, documentação e logística.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pg2-section pg2-section--0">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Perguntas frequentes</p>
+          <h2 class="pg2-h2">Conformidade e pedidos.</h2>
+        </div>
+        <div class="pg2-faq pg2-reveal">
+          <details>
+            <summary>A ON4U é distribuidor certificado?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Sim. A ON4U é distribuidora certificada pela Infarmed — Autoridade Nacional do Medicamento e Produtos de Saúde, ao abrigo do certificado n.º 1866/DM/2023. O certificado está disponível para consulta.</div>
+          </details>
+          <details>
+            <summary>Como é validada a conformidade dos produtos?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">A validação é manual e feita item a item, antes da proposta. Revemos requisitos e documentação de cada item — só avança o que está em conformidade.</div>
+          </details>
+          <details>
+            <summary>Posso pedir produtos que não estão num catálogo?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Sim. Trabalhamos por pedido, sem catálogo fixo. Indica o que precisa e fazemos o sourcing da fonte adequada.</div>
+          </details>
+          <details>
+            <summary>O que recebo depois de enviar o pedido?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Devolvemos um orçamento e os próximos passos. Não há compromisso até confirmar.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="pg2-cta">
+      <div class="pg2-wrap">
+        <div class="pg2-reveal">
+          <p class="pg2-eyebrow pg2-eyebrow--plain" style="justify-content:center;">Próximo passo</p>
+          <h2>Diga-nos o que precisa.</h2>
+          <p>Indique os itens, as quantidades e o destino. Validamos cada item e devolvemos orçamento com os próximos passos.</p>
+          <div class="pg2-cta-actions">
+            <a href="mailto:info@on4u.pt" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
+            <a href="/contactos.html" class="pg2-btn pg2-btn--ghost">Falar connosco</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+  <!-- ON4U-CANONICAL-FOOTER -->
+  <footer class="site-footer" id="footer">
     <div class="container">
-      <div class="footer-official-grid">
+      <div class="site-footer-grid">
         <div>
-          <h4 class="footer-title">ON4U</h4>
-          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e Health & Care.</p>
+          <a href="/" aria-label="ON4U Homepage" style="display:inline-block;margin-bottom:1rem;">
+            <svg width="90" height="32" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="30" r="13" stroke="#fff" stroke-width="14" />
+              <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+              <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="129" cy="43" r="7" fill="#f97316" />
+              <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+            </svg>
+          </a>
+          <p class="footer-brand-desc">ON4U — Importação, fornecimento e distribuição internacional por pedido.</p>
+          <p class="footer-brand-desc" style="margin-top:0.35rem;font-size:0.75rem;color:rgba(255,255,255,0.3);max-width:260px;">Base em Portugal, presença em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e na Índia.</p>
+          <address class="footer-address" style="font-style:normal;margin-top:0.75rem;">
+            Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)<br>
+            2710-679 Sintra, Portugal
+          </address>
         </div>
         <div>
-          <h4 class="footer-title">Sede Portugal</h4>
-          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
-        </div>
-        <div>
-          <h4 class="footer-title">Contactos Oficiais</h4>
-          <ul class="footer-links">
-            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
-            <li>Tel: (+351) 214 326 102</li>
-            <li>Fax: (+351) 214 326 103</li>
+          <p class="footer-col-title">Divisões</p>
+          <ul class="footer-list">
+            <li><a href="/producao.html">Produção &amp; Criatividade</a></li>
+            <li><a href="/importacao-e-exportacao.html">Operação Internacional</a></li>
+            <li><a href="/health-care.html">Health &amp; Care</a></li>
+            <li><a href="/informatica.html">Informática</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-title">Certificação</h4>
-          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
-            <i class="fas fa-check-circle"></i> Infarmed Certificado
+          <p class="footer-col-title">Empresa</p>
+          <ul class="footer-list">
+            <li><a href="/portfolio.html">Portefólio</a></li>
+            <li><a href="/sobre.html">Sobre a ON4U</a></li>
+            <li><a href="/contactos.html">Contactos</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Contactos Oficiais</p>
+          <ul class="footer-list" style="margin-bottom:1.5rem;">
+            <li><a href="mailto:info@on4u.pt" class="email-link">info@on4u.pt</a></li>
+            <li><a href="mailto:producao@on4u.pt" class="email-link">producao@on4u.pt</a></li>
+            <li><a href="tel:+351214326102">+351 214 326 102</a></li>
+            <li><a href="tel:+351214326103">+351 214 326 103</a></li>
+          </ul>
+          <p class="footer-col-title" style="margin-top:1.25rem;">Certificação</p>
+          <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer" class="footer-cert" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#f97316;display:inline-block;"></span>
+            Infarmed — Cert. 1866/DM/2023
           </a>
+          <div style="margin-top:0.875rem;">
+            <img src="images/pagamento-pontual-2026.png" alt="Compromisso Pagamento Pontual 2026" style="height:48px;width:auto;opacity:0.85;" loading="lazy" onerror="this.style.display='none'">
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2026 ON4U. Todos os direitos reservados.
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-inner">
+          <span>&copy; 2026 ON4U. Todos os direitos reservados.</span>
+          <nav class="footer-legal-links" aria-label="Legal">
+            <a href="/privacidade.html">Privacidade</a>
+            <a href="/termos.html">Termos</a>
+          </nav>
+        </div>
       </div>
     </div>
   </footer>
+  <!-- /ON4U-CANONICAL-FOOTER -->
 
   <script src="script.js"></script>
+  <script>
+    /* Theme toggle — reads/writes localStorage 'on4u-theme', toggles html.light-mode */
+    (function () {
+      var toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      toggle.addEventListener('click', function () {
+        var isLight = document.documentElement.classList.toggle('light-mode');
+        localStorage.setItem('on4u-theme', isLight ? 'light' : 'dark');
+      });
+    })();
+    /* Scroll reveal — CSS-only, respects reduced-motion */
+    (function () {
+      var els = document.querySelectorAll('.pg2-reveal');
+      if (!els.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
+
 </html>

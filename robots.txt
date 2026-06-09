@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /components/
+Disallow: /maps-generated/
+Disallow: /maps-data/
+Disallow: /scripts/
+Disallow: /template.html
+
+Sitemap: https://www.on4u.pt/sitemap.xml

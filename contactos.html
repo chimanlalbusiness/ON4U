@@ -1,15 +1,82 @@
 <!doctype html>
 <html lang="pt-PT">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Contactos | ON4U</title>
-  <link rel="stylesheet" href="style.css?v=11" />
-  <link rel="stylesheet" href="scrolly_styles.css?v=5" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Contacto | Pedir Orçamento | ON4U</title>
+  <meta name="description"
+    content="Peça orçamento à ON4U: info@on4u.pt · +351 214 326 102. Sede em Sintra. Envie o requisito e receba proposta operacional e próximos passos." />
+  <link rel="canonical" href="https://www.on4u.pt/contactos.html" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ON4U" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:title" content="Contacto | Pedir Orçamento | ON4U" />
+  <meta property="og:description" content="Envie o requisito — o que precisa, destino e prazo. Validamos a viabilidade e devolvemos proposta com próximos passos. Sede em Sintra." />
+  <meta property="og:url" content="https://www.on4u.pt/contactos.html" />
+  <meta property="og:image" content="https://www.on4u.pt/og/contactos.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contacto | Pedir Orçamento | ON4U" />
+  <meta name="twitter:description" content="Envie o requisito — o que precisa, destino e prazo. Validamos e devolvemos proposta com próximos passos. Sede em Sintra." />
+  <meta name="twitter:image" content="https://www.on4u.pt/og/contactos.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css?v=16" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
+  <style>
+    .mobile-nav{position:absolute;top:68px;left:0;width:100%;background:#09090b;border-bottom:1px solid rgba(255,255,255,0.1);z-index:99;transform:translateY(-10px);transition:opacity 200ms ease,transform 200ms ease}
+    .mobile-nav:not([hidden]){display:flex!important;opacity:1;transform:translateY(0)}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contacto | ON4U",
+    "url": "https://www.on4u.pt/contactos.html",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "ON4U",
+      "url": "https://www.on4u.pt/",
+      "email": "info@on4u.pt",
+      "telephone": "+351214326102",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)",
+        "postalCode": "2710-679",
+        "addressLocality": "Sintra",
+        "addressCountry": "PT"
+      },
+      "areaServed": ["PT", "ST", "GW", "CN", "IN"],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+351214326102",
+        "contactType": "sales",
+        "email": "info@on4u.pt",
+        "availableLanguage": ["pt", "en"]
+      }]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.on4u.pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Contacto", "item": "https://www.on4u.pt/contactos.html" }
+    ]
+  }
+  </script>
 </head>
+
 <body class="scrolly-body">
+  <!-- ON4U-CANONICAL-HEADER -->
+  <a href="#main" class="skip-link">Saltar para o conteúdo</a>
   <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
@@ -23,108 +90,133 @@
       </a>
       <nav class="header-nav desktop-only" aria-label="Principal">
         <div class="nav-dropdown">
-          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
-            Serviços
-            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="2 4 6 8 10 4"/>
-            </svg>
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="nav-divisoes-btn">
+            Divisões
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 4 6 8 10 4" /></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
-            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Importação &amp; Exportação</a>
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Operação Internacional</a>
             <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
             <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
-            <div class="nav-dropdown-divider"></div>
-            <a href="/portfolio.html" role="menuitem"><span class="nav-dropdown-dot"></span>Portfólio</a>
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produção &amp; Criatividade</a>
           </div>
         </div>
-        <a href="/sobre.html">Sobre</a>
-        <a href="/contactos.html" class="is-active">Contactos</a>
+        <a href="/portfolio.html" id="nav-trabalhos">Trabalhos</a>
+        <a href="/contactos.html" id="nav-contacto">Contacto</a>
       </nav>
       <div class="header-actions">
-        <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary" id="header-cta">Pedir orçamento</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+          <svg class="theme-icon theme-icon--sun" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.4058 17.7625C15.1672 17.7625 17.4058 15.5239 17.4058 12.7625C17.4058 10.0011 15.1672 7.76251 12.4058 7.76251C9.64434 7.76251 7.40576 10.0011 7.40576 12.7625C7.40576 15.5239 9.64434 17.7625 12.4058 17.7625Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 1.76251V3.76251" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 21.7625V23.7625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 4.98248L6.04598 6.40248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 19.1225L20.1856 20.5425" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.40576 12.7625H3.40576" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.4058 12.7625H23.4058" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 20.5425L6.04598 19.1225" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 6.40248L20.1856 4.98248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="theme-icon theme-icon--moon" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21.1918 13.2013C21.0345 14.9035 20.3957 16.5257 19.35 17.8781C18.3044 19.2305 16.8953 20.2571 15.2875 20.8379C13.6797 21.4186 11.9398 21.5294 10.2713 21.1574C8.60281 20.7854 7.07479 19.9459 5.86602 18.7371C4.65725 17.5283 3.81774 16.0003 3.4457 14.3318C3.07367 12.6633 3.18451 10.9234 3.76526 9.31561C4.346 7.70783 5.37263 6.29868 6.72501 5.25307C8.07739 4.20746 9.69959 3.56862 11.4018 3.41132C10.4052 4.75958 9.92564 6.42077 10.0503 8.09273C10.175 9.76469 10.8957 11.3364 12.0812 12.5219C13.2667 13.7075 14.8384 14.4281 16.5104 14.5528C18.1823 14.6775 19.8435 14.1979 21.1918 13.2013Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
+      <button class="mobile-menu-toggle" aria-controls="mobile-nav" aria-expanded="false" id="mobile-menu-btn" aria-label="Abrir menu">
+        <span class="hamburger"></span>
+      </button>
     </div>
+    <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Mobile">
+      <a href="/importacao-e-exportacao.html">Operação Internacional</a>
+      <a href="/health-care.html">Health &amp; Care</a>
+      <a href="/informatica.html">Informática</a>
+      <a href="/producao.html">Produção &amp; Criatividade</a>
+      <a href="/portfolio.html">Trabalhos</a>
+      <a href="/contactos.html">Contacto</a>
+      <a href="/contactos.html" class="btn btn-primary" style="margin-top:0.5rem;">Pedir orçamento</a>
+    </nav>
   </header>
+  <!-- /ON4U-CANONICAL-HEADER -->
 
-  <main class="scrolly-container">
-    <!-- Section 1: Hero & Contacts Row -->
-    <section class="scrolly-section" id="contact-hero" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Fale connosco</p>
-              <h1 class="scrolly-title"><span class="text-gradient">Contactos</span> Oficiais</h1>
-              <p class="scrolly-sub">Estamos disponíveis para discutir o seu projeto. Utilize os canais oficiais para uma resposta direta e profissional.</p>
-              
-              <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-                <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                    <div class="dash-card-icon" style="flex-shrink: 0;"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>
-                        <h4 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Morada</h4>
-                        <p style="font-size: 0.85rem; opacity: 0.7;">Núcleo Empresarial da Abrunheira, Lote 11, Armazém M<br>2710-089 Sintra, Portugal</p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 1rem; align-items: center;">
-                    <div class="dash-card-icon highlight" style="flex-shrink: 0;"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <h4 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Email</h4>
-                        <a href="mailto:info@on4u.pt" style="font-size: 0.85rem; color: var(--c-accent);">info@on4u.pt</a>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="scrolly-visual-block anim-visual">
-               <div class="hero-dashboard-card floating-card">
-                 <div class="dash-card-header">
-                   <div class="pulse-indicator"></div>
-                   <span>Suporte Ativo</span>
-                 </div>
-                 <div class="dash-card-grid">
-                   <div class="dash-card-item">
-                     <div class="dash-card-icon highlight"><i class="fab fa-whatsapp"></i></div>
-                     <div class="dash-card-content">
-                       <span class="dash-card-label">WhatsApp</span>
-                       <span class="dash-card-value">Resposta Rápida</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-            </div>
-          </div>
-        </div>
+  <main class="pg2-main" id="main">
+
+    <!-- HERO -->
+    <section class="pg2-hero">
+      <div class="pg2-wrap">
+        <nav class="pg2-crumbs" aria-label="Caminho de navegação">
+          <ol>
+            <li><a href="/">Início</a></li>
+            <li class="sep" aria-hidden="true">›</li>
+            <li aria-current="page">Contacto</li>
+          </ol>
+        </nav>
+        <p class="pg2-eyebrow">Contacto</p>
+        <h1>Peça orçamento.</h1>
+        <p class="pg2-lede">Diga-nos o que precisa, o destino e o prazo. Validamos a viabilidade e devolvemos uma proposta com os próximos passos. Sem compromisso.</p>
       </div>
     </section>
 
-    <!-- Section 2: Form -->
-    <section class="scrolly-section" id="contact-form" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container scrolly-flex-col">
-          <div class="anim-text" style="width: 100%; max-width: 600px; margin: 0 auto;">
-            <div class="fact-card" style="padding: 2.5rem; background: rgba(255,255,255,0.03);">
-                <h3 style="font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Envie a sua Mensagem</h3>
-                <form>
-                  <div style="margin-bottom: 1rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Nome</label>
-                    <input type="text" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit;" placeholder="Seu nome" />
-                  </div>
-                  <div style="margin-bottom: 1rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Email</label>
-                    <input type="email" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit;" placeholder="seu@email.com" />
-                  </div>
-                  <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 500; margin-bottom: 0.5rem; color: #a1a1aa;">Mensagem</label>
-                    <textarea rows="4" style="width: 100%; padding: 0.75rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit; resize: none;" placeholder="Descreva o seu projeto..."></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-full">Enviar Pedido</button>
-                </form>
+    <!-- FORM + NAP -->
+    <section class="pg2-section pg2-section--1">
+      <div class="pg2-wrap">
+        <div class="pg2-contact">
+          <!-- Form -->
+          <div class="pg2-reveal">
+            <form class="pg2-form" action="mailto:info@on4u.pt" method="post" enctype="text/plain" aria-label="Pedido de orçamento">
+              <div class="pg2-field--row">
+                <div class="pg2-field">
+                  <label class="pg2-label" for="nome">Nome <span class="req" aria-hidden="true">*</span></label>
+                  <input class="pg2-input" type="text" id="nome" name="nome" autocomplete="name" required />
+                </div>
+                <div class="pg2-field">
+                  <label class="pg2-label" for="empresa">Empresa</label>
+                  <input class="pg2-input" type="text" id="empresa" name="empresa" autocomplete="organization" />
+                </div>
+              </div>
+              <div class="pg2-field">
+                <label class="pg2-label" for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input class="pg2-input" type="email" id="email" name="email" inputmode="email" autocomplete="email" required />
+              </div>
+              <div class="pg2-field">
+                <label class="pg2-label" for="requisito">O que precisa <span class="req" aria-hidden="true">*</span></label>
+                <textarea class="pg2-input" id="requisito" name="requisito" placeholder="Descreva o requisito — produto, serviço ou projeto." required></textarea>
+              </div>
+              <div class="pg2-field">
+                <label class="pg2-label" for="quantidade">Quantidade / volumes</label>
+                <input class="pg2-input" type="text" id="quantidade" name="quantidade" placeholder="Ex.: número de unidades, volume estimado." />
+              </div>
+              <div class="pg2-field">
+                <label class="pg2-label" for="destino">Destino e prazo</label>
+                <input class="pg2-input" type="text" id="destino" name="destino" placeholder="Onde tem de chegar e até quando." />
+              </div>
+              <button type="submit" class="pg2-btn pg2-btn--primary">Enviar pedido</button>
+              <p class="pg2-form-note">Sem compromisso. Respondemos com a viabilidade e os próximos passos.</p>
+            </form>
+          </div>
+
+          <!-- NAP -->
+          <div class="pg2-info-stack pg2-reveal">
+            <div class="pg2-info-card">
+              <h3>Email</h3>
+              <a href="mailto:info@on4u.pt">info@on4u.pt</a>
+              <a href="mailto:producao@on4u.pt">producao@on4u.pt</a>
+            </div>
+            <div class="pg2-info-card">
+              <h3>Telefone</h3>
+              <a href="tel:+351214326102">+351 214 326 102</a>
+              <a href="tel:+351214326103">+351 214 326 103</a>
+            </div>
+            <div class="pg2-info-card">
+              <h3>Morada</h3>
+              <address>
+                Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)<br>
+                2710-679 Sintra, Portugal
+              </address>
+              <div class="pg2-map">
+                <iframe title="Mapa — ON4U, Núcleo Empresarial da Abrunheira, Sintra" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=N%C3%BAcleo+Empresarial+da+Abrunheira+Sintra&output=embed"></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -132,38 +224,97 @@
     </section>
   </main>
 
-  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+  <!-- ON4U-CANONICAL-FOOTER -->
+  <footer class="site-footer" id="footer">
     <div class="container">
-      <div class="footer-official-grid">
+      <div class="site-footer-grid">
         <div>
-          <h4 class="footer-title">ON4U</h4>
-          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e Health & Care.</p>
+          <a href="/" aria-label="ON4U Homepage" style="display:inline-block;margin-bottom:1rem;">
+            <svg width="90" height="32" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="30" r="13" stroke="#fff" stroke-width="14" />
+              <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+              <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="129" cy="43" r="7" fill="#f97316" />
+              <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="#fff" stroke-width="14" stroke-linecap="round" />
+            </svg>
+          </a>
+          <p class="footer-brand-desc">ON4U — Importação, fornecimento e distribuição internacional por pedido.</p>
+          <p class="footer-brand-desc" style="margin-top:0.35rem;font-size:0.75rem;color:rgba(255,255,255,0.3);max-width:260px;">Base em Portugal, presença em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e na Índia.</p>
+          <address class="footer-address" style="font-style:normal;margin-top:0.75rem;">
+            Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)<br>
+            2710-679 Sintra, Portugal
+          </address>
         </div>
         <div>
-          <h4 class="footer-title">Sede Portugal</h4>
-          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
-        </div>
-        <div>
-          <h4 class="footer-title">Contactos Oficiais</h4>
-          <ul class="footer-links">
-            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
-            <li>Tel: (+351) 214 326 102</li>
-            <li>Fax: (+351) 214 326 103</li>
+          <p class="footer-col-title">Divisões</p>
+          <ul class="footer-list">
+            <li><a href="/producao.html">Produção &amp; Criatividade</a></li>
+            <li><a href="/importacao-e-exportacao.html">Operação Internacional</a></li>
+            <li><a href="/health-care.html">Health &amp; Care</a></li>
+            <li><a href="/informatica.html">Informática</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="footer-title">Certificação</h4>
-          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
-            <i class="fas fa-check-circle"></i> Infarmed Certificado
+          <p class="footer-col-title">Empresa</p>
+          <ul class="footer-list">
+            <li><a href="/portfolio.html">Portefólio</a></li>
+            <li><a href="/sobre.html">Sobre a ON4U</a></li>
+            <li><a href="/contactos.html">Contactos</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Contactos Oficiais</p>
+          <ul class="footer-list" style="margin-bottom:1.5rem;">
+            <li><a href="mailto:info@on4u.pt" class="email-link">info@on4u.pt</a></li>
+            <li><a href="mailto:producao@on4u.pt" class="email-link">producao@on4u.pt</a></li>
+            <li><a href="tel:+351214326102">+351 214 326 102</a></li>
+            <li><a href="tel:+351214326103">+351 214 326 103</a></li>
+          </ul>
+          <p class="footer-col-title" style="margin-top:1.25rem;">Certificação</p>
+          <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer" class="footer-cert" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#f97316;display:inline-block;"></span>
+            Infarmed — Cert. 1866/DM/2023
           </a>
+          <div style="margin-top:0.875rem;">
+            <img src="images/pagamento-pontual-2026.png" alt="Compromisso Pagamento Pontual 2026" style="height:48px;width:auto;opacity:0.85;" loading="lazy" onerror="this.style.display='none'">
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2026 ON4U. Todos os direitos reservados.
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-inner">
+          <span>&copy; 2026 ON4U. Todos os direitos reservados.</span>
+          <nav class="footer-legal-links" aria-label="Legal">
+            <a href="/privacidade.html">Privacidade</a>
+            <a href="/termos.html">Termos</a>
+          </nav>
+        </div>
       </div>
     </div>
   </footer>
+  <!-- /ON4U-CANONICAL-FOOTER -->
 
   <script src="script.js"></script>
+  <script>
+    (function () {
+      var toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      toggle.addEventListener('click', function () {
+        var isLight = document.documentElement.classList.toggle('light-mode');
+        localStorage.setItem('on4u-theme', isLight ? 'light' : 'dark');
+      });
+    })();
+    (function () {
+      var els = document.querySelectorAll('.pg2-reveal');
+      if (!els.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-in'); }); return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
+
 </html>

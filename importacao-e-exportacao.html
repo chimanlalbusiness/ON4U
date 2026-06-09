@@ -4,23 +4,107 @@
 <head>
   <meta charset="UTF-8" />
   <!-- Disable overscroll bounce using CSS to avoid weird scrolly feeling -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>ON4U | Importação, Fornecimento e Distribuição Internacional por Pedido</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Importação e Exportação B2B por Pedido | ON4U</title>
   <meta name="description"
-    content="Operação internacional B2B do requisito ao destino: validação, documentação e coordenação por etapas. Presença operacional: Portugal • São Tomé e Príncipe • Guiné-Bissau, escritórios na China e Índia. Pedir Orçamento." />
-  <link rel="stylesheet" href="style.css?v=9" />
+    content="Importação, exportação e distribuição internacional por pedido: validação, documentação e coordenação por etapas, com um único ponto de contacto." />
+  <link rel="canonical" href="https://www.on4u.pt/importacao-e-exportacao.html" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ON4U" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:title" content="Importação e Exportação B2B por Pedido | ON4U" />
+  <meta property="og:description" content="Sourcing na China e Índia, documentação aduaneira e logística aérea, terrestre e marítima — coordenados de ponta a ponta, por pedido." />
+  <meta property="og:url" content="https://www.on4u.pt/importacao-e-exportacao.html" />
+  <meta property="og:image" content="https://www.on4u.pt/og/operacao-internacional.png" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Importação e Exportação B2B por Pedido | ON4U" />
+  <meta name="twitter:description" content="Importação, exportação e distribuição internacional por pedido. Validação, documentação e coordenação por etapas, com um único ponto de contacto." />
+  <meta name="twitter:image" content="https://www.on4u.pt/og/operacao-internacional.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css?v=16" />
   <link rel="stylesheet" href="components/world-map.css" />
-  <link rel="stylesheet" href="scrolly_styles.css?v=4" />
+  <link rel="stylesheet" href="scrolly_styles.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>/* Apply saved theme instantly to prevent flash */
+  if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
+  <style>
+    /* canonical header mobile-nav overlay (parity with index/internal pages) */
+    .mobile-nav{position:absolute;top:68px;left:0;width:100%;background:#09090b;border-bottom:1px solid rgba(255,255,255,0.1);z-index:99;transform:translateY(-10px);transition:opacity 200ms ease,transform 200ms ease}
+    .mobile-nav:not([hidden]){display:flex!important;opacity:1;transform:translateY(0)}
+    .mobile-menu-toggle.is-active .hamburger{background:transparent!important}
+    .mobile-menu-toggle.is-active .hamburger::before{transform:translateY(7px) rotate(45deg)}
+    .mobile-menu-toggle.is-active .hamburger::after{transform:translateY(-7px) rotate(-45deg)}
+    /* visible breadcrumb above the pinned scrolly hero */
+    .flagship-crumbs{position:relative;z-index:30;background:#09090b;border-bottom:1px solid rgba(255,255,255,0.055);padding:0.85rem 0}
+  </style>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ON4U",
+    "url": "https://www.on4u.pt/",
+    "email": "info@on4u.pt",
+    "telephone": "+351214326102",
+    "address": { "@type": "PostalAddress", "streetAddress": "Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)", "postalCode": "2710-679", "addressLocality": "Sintra", "addressCountry": "PT" },
+    "areaServed": ["PT", "ST", "GW", "CN", "IN"],
+    "contactPoint": [{ "@type": "ContactPoint", "telephone": "+351214326102", "contactType": "sales", "email": "info@on4u.pt", "availableLanguage": ["pt", "en"] }]
+  }
+  </script>
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Importação, exportação e distribuição internacional por pedido",
+    "provider": { "@type": "Organization", "name": "ON4U", "url": "https://www.on4u.pt/" },
+    "areaServed": ["PT", "ST", "GW", "CN", "IN"],
+    "description": "Coordenação de importação, exportação, sourcing e distribuição internacional por pedido, com validação, documentação e um único ponto de contacto do requisito à entrega.",
+    "url": "https://www.on4u.pt/importacao-e-exportacao.html"
+  }
+  </script>
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.on4u.pt/" },
+      { "@type": "ListItem", "position": 2, "name": "Operação Internacional", "item": "https://www.on4u.pt/importacao-e-exportacao.html" }
+    ]
+  }
+  </script>
+  <!-- JSON-LD: FAQPage (mirrors visible FAQ 1:1) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Trabalham com catálogo fixo ou por pedido?", "acceptedAnswer": { "@type": "Answer", "text": "Por pedido. Não temos catálogo fixo — cada requisito é tratado individualmente, validado antes de avançar e acompanhado até à entrega." } },
+      { "@type": "Question", "name": "De que mercados fazem sourcing?", "acceptedAnswer": { "@type": "Answer", "text": "Temos escritórios na China e na Índia e presença operacional em São Tomé e Príncipe e na Guiné-Bissau. O sourcing parte daí, sem ficar limitado a uma origem: avaliamos a fonte que melhor responde ao requisito." } },
+      { "@type": "Question", "name": "Tratam da documentação e do processo aduaneiro?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. A documentação e os processos alfandegários são tratados desde a fase de validação — antes de avançar, confirmamos o que é necessário para o desembaraço no destino." } },
+      { "@type": "Question", "name": "Tenho um único interlocutor ou vários?", "acceptedAnswer": { "@type": "Answer", "text": "Um único ponto de contacto, do requisito à entrega. Não passamos o pedido entre intermediários." } },
+      { "@type": "Question", "name": "Como começa um pedido?", "acceptedAnswer": { "@type": "Answer", "text": "Envie o requisito com especificações, quantidades, destino e prazo. Validamos a viabilidade e devolvemos uma proposta com etapas claras. O processo é: requisito → validação → proposta → execução." } },
+      { "@type": "Question", "name": "Coordenam transporte aéreo, terrestre e marítimo?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O modo de transporte é decidido na validação, em função do prazo, do volume e do custo de cada pedido." } }
+    ]
+  }
+  </script>
 </head>
 
 <body class="scrolly-body">
-  <header class="header is-dark" data-section="header" id="top">
+  <header class="header is-dark" data-theme="dark" id="top">
     <div class="container header-inner">
+      <!-- Logo -->
       <a href="/" class="header-logo" aria-label="ON4U Homepage">
-        <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
+        <svg width="112" height="40" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="30" r="13" class="logo-text-stroke" stroke-width="14" />
           <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" class="logo-text-stroke" stroke-width="14"
             stroke-linecap="round" />
@@ -31,16 +115,83 @@
             stroke-linecap="round" />
         </svg>
       </a>
+
+      <!-- Desktop nav -->
       <nav class="header-nav desktop-only" aria-label="Principal">
-        <a href="#hero">Início</a>
-        <a href="#process">Processo</a>
-        <a href="#divisoes">Divisões</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="nav-divisoes-btn">
+            Divisões
+            <svg class="nav-dropdown-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4" />
+            </svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/importacao-e-exportacao.html" role="menuitem"><span
+                class="nav-dropdown-dot"></span>Opera&ccedil;&atilde;o Internacional</a>
+            <a href="/health-care.html" role="menuitem"><span class="nav-dropdown-dot"></span>Health &amp; Care</a>
+            <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Inform&aacute;tica</a>
+            <a href="/producao.html" role="menuitem"><span class="nav-dropdown-dot"></span>Produ&ccedil;&atilde;o &amp;
+              Criatividade</a>
+          </div>
+        </div>
+        <a href="/portfolio.html" id="nav-trabalhos">Trabalhos</a>
+
+        <a href="/contactos.html" id="nav-contacto">Contacto</a>
       </nav>
+
+      <!-- CTA button + Theme toggle -->
       <div class="header-actions">
-        <a href="https://wa.me/MESSAGE_LINK" class="btn btn-primary" target="_blank" rel="noopener">Pedir Orçamento</a>
+        <a href="/contactos.html" class="btn btn-primary" id="header-cta">Pedir or&ccedil;amento</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+          <!-- Sun icon (visible in dark mode — click to switch to light) -->
+          <svg class="theme-icon theme-icon--sun" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.4058 17.7625C15.1672 17.7625 17.4058 15.5239 17.4058 12.7625C17.4058 10.0011 15.1672 7.76251 12.4058 7.76251C9.64434 7.76251 7.40576 10.0011 7.40576 12.7625C7.40576 15.5239 9.64434 17.7625 12.4058 17.7625Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 1.76251V3.76251" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.4058 21.7625V23.7625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 4.98248L6.04598 6.40248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 19.1225L20.1856 20.5425" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.40576 12.7625H3.40576" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.4058 12.7625H23.4058" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4.62598 20.5425L6.04598 19.1225" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7656 6.40248L20.1856 4.98248" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <!-- Moon icon (visible in light mode — click to switch to dark) -->
+          <svg class="theme-icon theme-icon--moon" width="20" height="20" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.1918 13.2013C21.0345 14.9035 20.3957 16.5257 19.35 17.8781C18.3044 19.2305 16.8953 20.2571 15.2875 20.8379C13.6797 21.4186 11.9398 21.5294 10.2713 21.1574C8.60281 20.7854 7.07479 19.9459 5.86602 18.7371C4.65725 17.5283 3.81774 16.0003 3.4457 14.3318C3.07367 12.6633 3.18451 10.9234 3.76526 9.31561C4.346 7.70783 5.37263 6.29868 6.72501 5.25307C8.07739 4.20746 9.69959 3.56862 11.4018 3.41132C10.4052 4.75958 9.92564 6.42077 10.0503 8.09273C10.175 9.76469 10.8957 11.3364 12.0812 12.5219C13.2667 13.7075 14.8384 14.4281 16.5104 14.5528C18.1823 14.6775 19.8435 14.1979 21.1918 13.2013Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
+
+      <!-- Mobile toggle -->
+      <button class="mobile-menu-toggle" aria-controls="mobile-nav" aria-expanded="false" id="mobile-menu-btn"
+        aria-label="Abrir menu">
+        <span class="hamburger"></span>
+      </button>
     </div>
+
+    <!-- Mobile nav panel -->
+    <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Mobile">
+      <a href="/importacao-e-exportacao.html">Operação Internacional</a>
+      <a href="/health-care.html">Health &amp; Care</a>
+      <a href="/informatica.html">Informática</a>
+      <a href="/producao.html">Produção &amp; Criatividade</a>
+      <a href="/portfolio.html">Trabalhos</a>
+
+      <a href="/contactos.html">Contacto</a>
+      <a href="/contactos.html" class="btn btn-primary" style="margin-top:0.5rem;">Pedir orçamento</a>
+    </nav>
   </header>
+
+  <nav class="flagship-crumbs" aria-label="Caminho de navegação">
+    <div class="container">
+      <ol class="pg2-crumbs" style="margin:0;">
+        <li><a href="/">Início</a></li>
+        <li class="sep" aria-hidden="true">›</li>
+        <li aria-current="page">Operação Internacional</li>
+      </ol>
+    </div>
+  </nav>
 
   <main class="scrolly-container">
 
@@ -70,7 +221,7 @@
                     class="mobile-only">ao fecho</span></li>
               </ul>
               <div class="hero-actions" style="margin-top: 2rem;">
-                <a href="#" class="btn btn-primary">Pedir Orçamento</a>
+                <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
                 <a href="#process" class="btn btn-outline">Ver como funciona</a>
               </div>
             </div>
@@ -749,62 +900,324 @@
     </section>
   </main>
 
+  <!-- ═══════════════════════════════════════════════════════════
+       STATIC GEO BLOCKS — mirror the scrolly content in plain,
+       extractable HTML (process <ol>, "O que coordenamos" <ul>,
+       transport <table>, FAQ). Crawler/LLM-visible. Does NOT touch
+       the D3 map or the scrollytelling above.
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="pg2-main">
+
+    <!-- FAQ -->
+    <section class="pg2-section pg2-section--0">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Perguntas frequentes</p>
+          <h2 class="pg2-h2">Antes de enviar o pedido.</h2>
+        </div>
+        <div class="pg2-faq pg2-reveal">
+          <details>
+            <summary>Trabalham com catálogo fixo ou por pedido?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Por pedido. Não temos catálogo fixo — cada requisito é tratado individualmente, validado antes de avançar e acompanhado até à entrega.</div>
+          </details>
+          <details>
+            <summary>De que mercados fazem sourcing?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Temos escritórios na China e na Índia e presença operacional em São Tomé e Príncipe e na Guiné-Bissau. O sourcing parte daí, sem ficar limitado a uma origem: avaliamos a fonte que melhor responde ao requisito.</div>
+          </details>
+          <details>
+            <summary>Tratam da documentação e do processo aduaneiro?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Sim. A documentação e os processos alfandegários são tratados desde a fase de validação — antes de avançar, confirmamos o que é necessário para o desembaraço no destino.</div>
+          </details>
+          <details>
+            <summary>Tenho um único interlocutor ou vários?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Um único ponto de contacto, do requisito à entrega. Não passamos o pedido entre intermediários.</div>
+          </details>
+          <details>
+            <summary>Como começa um pedido?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Envie o requisito com especificações, quantidades, destino e prazo. Validamos a viabilidade e devolvemos uma proposta com etapas claras. O processo é: requisito → validação → proposta → execução.</div>
+          </details>
+          <details>
+            <summary>Coordenam transporte aéreo, terrestre e marítimo?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">Sim. O modo de transporte é decidido na validação, em função do prazo, do volume e do custo de cada pedido.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <!-- LIGHT ZONE: clients + divisoes share one seamless background -->
   <div class="light-zone">
 
-    <!-- CLIENTS TESTIMONIAL CAROUSEL -->
-    <section class="clients-section normal-section">
-      <div class="container">
-        <div class="clients-inner">
-          <!-- Section Header -->
-          <div class="clients-header">
-            <p class="clients-label">Confiança de empresas em todo o mundo</p>
-            <h2 class="clients-title">Parceiros que confiam em nós</h2>
-          </div>
+    <!-- CLIENTS / LOGO CLOUD (mirrors homepage #referencias) -->
+    <section id="referencias"
+      style="background:#09090b;padding:6rem 0;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.055);">
+      <div class="container relative z-10">
+        <!-- Glow matching demo component -->
+        <div
+          style="position:absolute;top:-50%;left:50%;transform:translate(-50%,-50%);width:120vmin;height:120vmin;border-radius:0 0 50% 50%;background:radial-gradient(ellipse at center, rgba(255,255,255,0.04), transparent 50%);filter:blur(30px);pointer-events:none;z-index:-1;">
+        </div>
 
-          <!-- Stats Row -->
-          <div class="clients-stats">
-            <div class="clients-stat">
-              <div class="stat-content">
-                <span class="stat-number">+15</span>
-                <span class="stat-text">Anos de experiência</span>
-              </div>
-            </div>
-            <div class="clients-stat featured">
-              <div class="stat-content">
-                <span class="stat-number">4</span>
-                <span class="stat-text">Continentes com cobertura</span>
-              </div>
-            </div>
-            <div class="clients-stat">
-              <div class="stat-content">
-                <span class="stat-number">3</span>
-                <span class="stat-text">Entidades independentes</span>
-              </div>
-            </div>
-          </div>
+        <h2
+          style="margin-bottom:2rem;text-align:center;font-size:clamp(1.25rem, 3vw, 1.875rem);font-weight:600;color:#f5f5f7;letter-spacing:-0.025em;line-height:1.2;">
+          Já trabalharam connosco.
+        </h2>
 
-          <!-- Clients Logo Carousel -->
-          <div class="clients-carousel-wrapper">
-            <div class="clients-carousel">
-              <!-- First set of logos -->
-              <div class="client-logo">EDP</div>
-              <div class="client-logo">ADI</div>
-              <div class="client-logo">Atlantica</div>
-              <div class="client-logo">AXE</div>
-              <div class="client-logo">Banco Central</div>
-              <div class="client-logo">FT</div>
-              <!-- Duplicated for seamless loop -->
-              <div class="client-logo">EDP</div>
-              <div class="client-logo">ADI</div>
-              <div class="client-logo">Atlantica</div>
-              <div class="client-logo">AXE</div>
-              <div class="client-logo">Banco Central</div>
-              <div class="client-logo">FT</div>
+        <div
+          style="margin:2rem auto;height:1px;max-width:384px;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);">
+        </div>
+
+        <div class="logo-cloud-wrapper" id="logo-cloud-wrapper">
+          <!-- Orange spotlight: lives outside overflow:hidden so it isn't clipped -->
+          <div class="logo-spotlight" id="logo-spotlight"></div>
+          <div class="logo-cloud" id="logo-cloud-container"
+            style="overflow:hidden;padding:1.5rem 0;mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+            <div class="logo-cloud-track">
+              <!-- First set -->
+              <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/CD1947_AGUALVA.svg" alt="agualva-clube"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/associacao-seletiva-moda.png"
+                  alt="associacao-seletiva-moda" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/atlafina.png" alt="atlafina" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/axe.png" alt="axe" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Banco Central_STP.png" alt="banco-central-stp"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Republica Democratica_STP.png"
+                  alt="republica-democratica-stp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/OMS_STP.png" alt="oms-stp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/blue.png" alt="blue" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/brandkey.png" alt="brandkey" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/camara-municipal-lisboa.png"
+                  alt="camara-municipal-lisboa" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/clinica-girassol.png" alt="clinica-girassol"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/compal.png" alt="compal" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/continente.png" alt="continente" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/cunha-vaz.png" alt="cunha-vaz" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/dominos.png" alt="dominos" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/dr.-oikter.png" alt="dr.-oikter" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/edge-lawyers.png" alt="edge-lawyers"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/edp.png" alt="edp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/euro-m.png" alt="euro-m" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/flipit.png" alt="flipit" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/forum-criativa.png" alt="forum-criativa"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/linear.png" alt="linear" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/luisa-santos.png" alt="luisa-santos"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/markbiz.png" alt="markbiz" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/niu.png" alt="niu" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/soundcheck.png" alt="soundcheck" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/wmk.png" alt="wmk" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/young-network-group.png"
+                  alt="young-network-group" loading="lazy"></div>
+
+              <!-- Second set for infinite scroll loop -->
+              <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/CD1947_AGUALVA.svg" alt="agualva-clube"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/associacao-seletiva-moda.png"
+                  alt="associacao-seletiva-moda" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/atlafina.png" alt="atlafina" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/axe.png" alt="axe" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Banco Central_STP.png" alt="banco-central-stp"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/Republica Democratica_STP.png"
+                  alt="republica-democratica-stp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/OMS_STP.png" alt="oms-stp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/blue.png" alt="blue" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/brandkey.png" alt="brandkey" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/camara-municipal-lisboa.png"
+                  alt="camara-municipal-lisboa" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/clinica-girassol.png" alt="clinica-girassol"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/compal.png" alt="compal" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/continente.png" alt="continente" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/cunha-vaz.png" alt="cunha-vaz" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/dominos.png" alt="dominos" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/dr.-oikter.png" alt="dr.-oikter" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/edge-lawyers.png" alt="edge-lawyers"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/edp.png" alt="edp" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/euro-m.png" alt="euro-m" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/flipit.png" alt="flipit" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/forum-criativa.png" alt="forum-criativa"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/linear.png" alt="linear" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/luisa-santos.png" alt="luisa-santos"
+                  loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/markbiz.png" alt="markbiz" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/niu.png" alt="niu" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/soundcheck.png" alt="soundcheck" loading="lazy">
+              </div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/wmk.png" alt="wmk" loading="lazy"></div>
+              <div class="logo-cloud-item"><img src="images/clientLogos/young-network-group.png"
+                  alt="young-network-group" loading="lazy"></div>
             </div>
-          </div>
+          </div><!-- /.logo-cloud -->
+        </div><!-- /.logo-cloud-wrapper -->
+
+        <div
+          style="margin-top:2rem;height:1px;width:100%;background:rgba(255,255,255,0.15);mask-image:linear-gradient(to right, transparent, black, transparent);-webkit-mask-image:linear-gradient(to right, transparent, black, transparent);">
         </div>
       </div>
+
+      <style>
+        /* Logo Cloud Animations & Styling */
+        @keyframes scroll-logos {
+          0% {
+            transform: translateX(0);
+          }
+
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .logo-cloud-track {
+          display: flex;
+          width: max-content;
+          gap: 48px;
+          animation: scroll-logos 50s linear infinite;
+        }
+
+        .logo-cloud-track:hover {
+          animation-play-state: paused;
+        }
+
+        /* Fixed-size box per logo — prevents wide logos from blowing up */
+        .logo-cloud-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 120px;
+          height: 48px;
+          flex-shrink: 0;
+        }
+
+        .logo-cloud-track img {
+          pointer-events: none;
+          user-select: none;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          filter: brightness(0) invert(1);
+          opacity: 0.5;
+          transition: filter 0.15s ease, opacity 0.15s ease;
+        }
+
+        @media (max-width: 768px) {
+          .logo-cloud-item {
+            width: 90px;
+            height: 36px;
+          }
+        }
+
+        /* Wrapper for the logo cloud */
+        .logo-cloud-wrapper {
+          position: relative;
+        }
+
+        /* Hide the old spotlight div - we use per-logo tinting now */
+        .logo-spotlight {
+          display: none;
+        }
+      </style>
+
+      <script>
+        // Logo cloud spotlight — tints logos orange based on cursor distance
+        (function () {
+          const wrapper = document.getElementById('logo-cloud-wrapper');
+          if (!wrapper) return;
+
+          const RADIUS = 120; // px — how far the effect reaches
+          let isHovering = false;
+          let cursorX = 0;
+          let cursorY = 0;
+          let rafId = null;
+
+          function isLightMode() {
+            return document.documentElement.classList.contains('light-mode');
+          }
+
+          function getBaseFilter() {
+            return isLightMode() ? 'none' : 'brightness(0) invert(1)';
+          }
+
+          function updateLogos() {
+            if (!isHovering) return;
+
+            const light = isLightMode();
+            const logos = wrapper.querySelectorAll('.logo-cloud-track img');
+            logos.forEach(img => {
+              const rect = img.getBoundingClientRect();
+              const logoCenterX = rect.left + rect.width / 2;
+              const logoCenterY = rect.top + rect.height / 2;
+
+              const dist = Math.hypot(cursorX - logoCenterX, cursorY - logoCenterY);
+              const intensity = Math.max(0, 1 - dist / RADIUS);
+
+              if (intensity > 0) {
+                const sepia = intensity;
+                const saturate = 1 + intensity * 9;
+                const brightness = 1 + intensity * 0.9;
+                const glow = intensity * 14;
+                const glowAlpha = intensity * 0.7;
+
+                const base = light ? 'none' : 'brightness(0) invert(1)';
+                img.style.filter = `${base} sepia(${sepia}) saturate(${saturate}) brightness(${brightness}) drop-shadow(0 0 ${glow}px rgba(249,115,22,${glowAlpha}))`;
+                img.style.opacity = 0.5 + intensity * 0.5;
+              } else {
+                img.style.filter = getBaseFilter();
+                img.style.opacity = light ? '0.45' : '0.5';
+              }
+            });
+
+            rafId = requestAnimationFrame(updateLogos);
+          }
+
+          wrapper.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+          });
+
+          wrapper.addEventListener('mouseenter', () => {
+            isHovering = true;
+            rafId = requestAnimationFrame(updateLogos);
+          });
+
+          wrapper.addEventListener('mouseleave', () => {
+            isHovering = false;
+            if (rafId) cancelAnimationFrame(rafId);
+            const logos = wrapper.querySelectorAll('.logo-cloud-track img');
+            const light = isLightMode();
+            logos.forEach(img => {
+              img.style.filter = getBaseFilter();
+              img.style.opacity = light ? '0.45' : '0.5';
+            });
+          });
+        })();
+      </script>
     </section>
 
     <!-- 7) DIVISÕES (Normal) -->
@@ -857,7 +1270,7 @@
             </a>
             <div class="div-footer">
               <p class="div-tagline">Produtos e equipamentos para saúde e bem-estar</p>
-              <a href="#" class="btn btn-outline btn-full">Pedir Orçamento</a>
+              <a href="/health-care.html" class="btn btn-outline btn-full">Pedir Orçamento</a>
             </div>
           </div>
 
@@ -895,7 +1308,7 @@
             </div>
             <div class="div-footer">
               <p class="div-tagline">Hardware, periféricos e soluções tecnológicas</p>
-              <a href="#" class="btn btn-outline btn-full">Aceder à área</a>
+              <a href="/informatica.html" class="btn btn-outline btn-full">Aceder à área</a>
             </div>
           </div>
 
@@ -932,7 +1345,7 @@
             </div>
             <div class="div-footer">
               <p class="div-tagline">Projetos corporativos e eventos com execução estruturada</p>
-              <a href="#" class="btn btn-outline btn-full">Falar sobre um projeto</a>
+              <a href="/producao.html" class="btn btn-outline btn-full">Falar sobre um projeto</a>
             </div>
           </div>
 
@@ -955,49 +1368,123 @@
             Validamos a viabilidade e devolvemos uma proposta com etapas claras, sem promessas vagas.</p>
         </div>
         <div class="anim-visual hero-actions" style="justify-content: center; margin-top: 2rem;">
-          <a href="#" class="btn btn-primary">Pedir Orçamento</a>
-          <a href="#" class="btn btn-outline">Falar com Operações</a>
+          <a href="/contactos.html" class="btn btn-primary">Pedir Orçamento</a>
+          <a href="/contactos.html" class="btn btn-outline">Falar com Operações</a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="footer is-dark" style="padding: 5rem 0 3rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+  <footer class="site-footer" id="footer">
     <div class="container">
-      <div class="footer-official-grid">
+      <div class="site-footer-grid">
+
+        <!-- Brand column -->
         <div>
-          <h4 class="footer-title">ON4U</h4>
-          <p class="footer-text">A resolve necessidades B2B através de Produção & Criatividade, Operação Internacional e
-            Health & Care.</p>
+          <!-- Logo -->
+          <a href="/" aria-label="ON4U Homepage" style="display:inline-block;margin-bottom:1rem;">
+            <svg width="90" height="32" viewBox="0 -10 184 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="30" r="13" stroke="#fff" stroke-width="14" />
+              <path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="#fff" stroke-width="14"
+                stroke-linecap="round" />
+              <path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <circle cx="129" cy="43" r="7" fill="#f97316" />
+              <path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="#fff" stroke-width="14"
+                stroke-linecap="round" />
+            </svg>
+          </a>
+          <p class="footer-brand-desc">ON4U, Importação, fornecimento e distribuição internacional por pedido.</p>
+          <p class="footer-brand-desc"
+            style="margin-top:0.35rem;font-size:0.75rem;color:rgba(255,255,255,0.3);max-width:260px;">Base em
+            Portugal, presença em São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e na Índia.</p>
+          <address class="footer-address" style="font-style:normal;margin-top:0.75rem;">
+            Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)<br>
+            2710-679 Sintra, Portugal
+          </address>
         </div>
+
+        <!-- Divisões -->
         <div>
-          <h4 class="footer-title">Sede Portugal</h4>
-          <p class="footer-text">Núcleo Empresarial da Abrunheira,<br>Lote 11, Armazém M<br>2710-089 Sintra</p>
-        </div>
-        <div>
-          <h4 class="footer-title">Contactos Oficiais</h4>
-          <ul class="footer-links">
-            <li>Email: <a href="mailto:info@on4u.pt">info@on4u.pt</a></li>
-            <li>Tel: (+351) 214 326 102</li>
-            <li>Fax: (+351) 214 326 103</li>
+          <p class="footer-col-title">Divisões</p>
+          <ul class="footer-list">
+            <li><a href="/producao.html">Produção &amp; Criatividade</a></li>
+            <li><a href="/importacao-e-exportacao.html">Operação Internacional</a></li>
+            <li><a href="/health-care.html">Health &amp; Care</a></li>
+            <li><a href="/informatica.html">Informática</a></li>
           </ul>
         </div>
+
+        <!-- Empresa -->
         <div>
-          <h4 class="footer-title">Certificação</h4>
-          <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer"
-            style="display: flex; gap: 0.5rem; align-items: center; color: var(--c-accent); font-size: 0.85rem; font-weight: 600;">
-            <i class="fas fa-check-circle"></i> Infarmed Certificado
-          </a>
+          <p class="footer-col-title">Empresa</p>
+          <ul class="footer-list">
+            <li><a href="/portfolio.html">Portefólio</a></li>
+            <li><a href="/sobre.html">Sobre a ON4U</a></li>
+            <li><a href="/contactos.html">Contactos</a></li>
+          </ul>
         </div>
+
+        <!-- Contactos & Certificação -->
+        <div>
+          <p class="footer-col-title">Contactos Oficiais</p>
+          <ul class="footer-list" style="margin-bottom:1.5rem;">
+            <li><a href="mailto:info@on4u.pt" class="email-link">info@on4u.pt</a></li>
+            <li><a href="mailto:producao@on4u.pt" class="email-link">producao@on4u.pt</a></li>
+            <li><a href="tel:+351214326102">+351 214 326 102</a></li>
+            <li><a href="tel:+351214326103">+351 214 326 103</a></li>
+          </ul>
+          <p class="footer-col-title" style="margin-top:1.25rem;">Certificação</p>
+          <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer" class="footer-cert"
+            style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#f97316;display:inline-block;"></span>
+            Infarmed &mdash; Cert. 1866/DM/2023
+          </a>
+          <div style="margin-top:0.875rem;">
+            <img src="images/pagamento-pontual-2026.png" alt="Compromisso Pagamento Pontual 2026"
+              style="height:48px;width:auto;opacity:0.85;" loading="lazy" onerror="this.style.display='none'">
+          </div>
+        </div>
+
       </div>
-      <div class="footer-bottom">
-        &copy; 2026 ON4U. Todos os direitos reservados.
+
+      <!-- Footer bottom bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-inner">
+          <span>&copy; 2026 ON4U. Todos os direitos reservados.</span>
+          <nav class="footer-legal-links" aria-label="Legal">
+            <a href="/privacidade.html">Privacidade</a>
+            <a href="/termos.html">Termos</a>
+          </nav>
+        </div>
       </div>
     </div>
   </footer>
 
   <script src="components/world-map.js"></script>
   <script src="script.js"></script>
+  <script>
+    (function () {
+      var toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+      toggle.addEventListener('click', function () {
+        var isLight = document.documentElement.classList.toggle('light-mode');
+        localStorage.setItem('on4u-theme', isLight ? 'light' : 'dark');
+      });
+    })();
+    /* Scroll reveal for the new static GEO blocks */
+    (function () {
+      var els = document.querySelectorAll('.pg2-reveal');
+      if (!els.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-in'); }); return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
 
 </html>

@@ -3,16 +3,103 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>ON4U | Soluções B2B, Produção, Importação, Health & Care e Informática</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ON4U | Importação, Produção e Distribuição B2B por Pedido</title>
   <meta name="description"
-    content="ON4U é uma empresa B2B organizada em quatro divisões: Produção & Criatividade, Importação & Exportação, Health & Care e Informática. Execução coordenada, pedido a pedido." />
-  <link rel="stylesheet" href="style.css?v=14" />
+    content="Empresa B2B portuguesa: importação, produção, sourcing e distribuição internacional por pedido. Um único ponto de contacto do requisito à entrega." />
+  <link rel="canonical" href="https://www.on4u.pt/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ON4U" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:title" content="ON4U | Importação, Produção e Distribuição B2B por Pedido" />
+  <meta property="og:description" content="Recebemos o requisito, validamos viabilidade e coordenamos a execução até à entrega. Sem catálogo fixo. Um único ponto de contacto." />
+  <meta property="og:url" content="https://www.on4u.pt/" />
+  <meta property="og:image" content="https://www.on4u.pt/og/home.png" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ON4U | Importação, Produção e Distribuição B2B por Pedido" />
+  <meta name="twitter:description" content="Importação, produção, sourcing e distribuição internacional por pedido. Um único ponto de contacto do requisito à entrega." />
+  <meta name="twitter:image" content="https://www.on4u.pt/og/home.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css?v=16" />
   <link rel="stylesheet" href="scrolly_styles.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- D3 v7 for globe rendering -->
+  <!-- D3 v7 for globe rendering (synchronous: inline globe init depends on it) -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ON4U",
+    "url": "https://www.on4u.pt/",
+    "email": "info@on4u.pt",
+    "telephone": "+351214326102",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)",
+      "postalCode": "2710-679",
+      "addressLocality": "Sintra",
+      "addressCountry": "PT"
+    },
+    "areaServed": ["PT", "ST", "GW", "CN", "IN"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+351214326102",
+      "contactType": "sales",
+      "email": "info@on4u.pt",
+      "availableLanguage": ["pt", "en"]
+    }]
+  }
+  </script>
+  <!-- JSON-LD: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ON4U",
+    "url": "https://www.on4u.pt/",
+    "email": "info@on4u.pt",
+    "telephone": "+351214326102",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente)",
+      "postalCode": "2710-679",
+      "addressLocality": "Sintra",
+      "addressCountry": "PT"
+    },
+    "areaServed": ["PT", "ST", "GW", "CN", "IN"]
+  }
+  </script>
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ON4U",
+    "url": "https://www.on4u.pt/",
+    "inLanguage": "pt-PT"
+  }
+  </script>
+  <!-- JSON-LD: FAQPage (1 modelo — mirrors visible FAQ on page) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "O que faz a ON4U?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A ON4U é uma empresa B2B portuguesa que coordena importação, produção, sourcing e distribuição internacional por pedido, organizada em quatro divisões: Produção & Criatividade, Operação Internacional, Health & Care e Informática. Não trabalha com catálogo fixo — cada requisito é validado antes de avançar e acompanhado por um único ponto de contacto até à entrega." }
+    }]
+  }
+  </script>
   <style>
     /* ── INDEX-ONLY OVERRIDES ─────────────────────────────── */
 
@@ -1623,6 +1710,50 @@
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;"
           class="div-grid-resp reveal-up delay-1">
 
+          <!-- Produção & Criatividade -->
+          <article id="card-producao"
+            style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
+            onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
+            onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
+            <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="3" width="6" height="6" rx="1" />
+                <rect x="11" y="3" width="6" height="6" rx="1" />
+                <rect x="3" y="11" width="6" height="6" rx="1" />
+                <circle cx="14" cy="14" r="3" />
+              </svg>
+            </div>
+            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Produ&ccedil;&atilde;o
+              &amp; Criatividade</h3>
+            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">
+              Produ&ccedil;&atilde;o, comunica&ccedil;&atilde;o visual e execu&ccedil;&atilde;o para projetos
+              corporativos.</p>
+            <ul
+              style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Stands,
+                eventos e brinde corporativo
+              </li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Impress&atilde;o,
+                sinalética e materiais
+              </li>
+              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
+                <span
+                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fardamentos
+                e identidade visual
+              </li>
+            </ul>
+            <a href="/producao.html" id="div-cta-producao"
+              style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
+              onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
+              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver
+              produ&ccedil;&atilde;o &rarr;</a>
+          </article>
+
           <!-- Operação Internacional -->
           <article id="card-operacao"
             style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
@@ -1755,51 +1886,6 @@
               onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Aceder
               &rarr;</a>
           </article>
-
-          <!-- Produção & Criatividade -->
-          <article id="card-producao"
-            style="background:#161618;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;transition:border-color 220ms ease,box-shadow 220ms ease,transform 220ms ease;position:relative;overflow:hidden;"
-            onmouseenter="this.style.borderColor='rgba(249,115,22,0.25)';this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)';this.style.transform='translateY(-2px)';"
-            onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)';this.style.boxShadow='';this.style.transform='';">
-            <div style="width:32px;height:32px;color:#f97316;margin-bottom:1rem;">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="3" y="3" width="6" height="6" rx="1" />
-                <rect x="11" y="3" width="6" height="6" rx="1" />
-                <rect x="3" y="11" width="6" height="6" rx="1" />
-                <circle cx="14" cy="14" r="3" />
-              </svg>
-            </div>
-            <h3 style="font-size:0.95rem;font-weight:700;color:#f5f5f7;margin-bottom:0.4rem;">Produ&ccedil;&atilde;o
-              &amp; Criatividade</h3>
-            <p style="font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.55;margin-bottom:1rem;">
-              Produ&ccedil;&atilde;o, comunica&ccedil;&atilde;o visual e execu&ccedil;&atilde;o para projetos
-              corporativos.</p>
-            <ul
-              style="list-style:none;padding:0;margin:0 0 1.25rem;display:flex;flex-direction:column;gap:0.38rem;flex:1;">
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
-                <span
-                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Stands,
-                eventos e brinde corporativo
-              </li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
-                <span
-                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Impress&atilde;o,
-                sinalética e materiais
-              </li>
-              <li style="font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.5rem;">
-                <span
-                  style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;"></span>Fardamentos
-                e identidade visual
-              </li>
-            </ul>
-            <a href="/producao.html" id="div-cta-producao"
-              style="display:inline-flex;align-items:center;justify-content:center;width:100%;padding:0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:transparent;transition:color 180ms ease,border-color 180ms ease,background 180ms ease;text-decoration:none;"
-              onmouseenter="this.style.color='#f97316';this.style.borderColor='rgba(249,115,22,0.35)';this.style.background='rgba(249,115,22,0.04)';"
-              onmouseleave="this.style.color='rgba(255,255,255,0.55)';this.style.borderColor='rgba(255,255,255,0.1)';this.style.background='transparent';">Ver
-              produ&ccedil;&atilde;o &rarr;</a>
-          </article>
-
         </div>
         <p class="reveal-up delay-2"
           style="margin-top:1.75rem;font-size:0.78rem;color:rgba(255,255,255,0.25);font-style:italic;">Sem promessas
@@ -1868,16 +1954,17 @@
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
 
-          <!-- Bissau Stand -->
-          <article id="pf-bissau" class="pf-card" onclick="location.href='/portfolio.html'">
-            <img src="images/stands/bissau.png" alt="Stand Guiné-Bissau" class="pf-img" loading="lazy">
+          <!-- HBD Merchandising -->
+          <article id="pf-hbd" class="pf-card" onclick="location.href='/portfolio.html'">
+            <img src="images/merchandising/hbd.jpeg" alt="Fardamentos e Merchandising HBD" class="pf-img" loading="lazy"
+              onerror="this.style.display='none'">
             <div class="pf-overlay"></div>
             <div class="pf-content">
               <p
                 style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
-                Stands &amp; Eventos</p>
-              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Guin&eacute;-Bissau,
-                Presen&ccedil;a Local &amp; Opera&ccedil;&atilde;o</h3>
+                Produ&ccedil;&atilde;o &amp; Criatividade</p>
+              <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Fardamentos e
+                Merchandising Corporativo, HBD</h3>
             </div>
             <div class="pf-hover-btn">Ver detalhes</div>
           </article>
@@ -1919,7 +2006,7 @@
             <div class="pf-content">
               <p
                 style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#f97316;margin-bottom:0.2rem;">
-                Fornecimento &amp; Equipamentos</p>
+                Fardamentos &amp; Equipamentos</p>
               <h3 style="font-size:0.85rem;font-weight:700;color:#fff;line-height:1.3;margin:0;">Equipamento
                 Especializado, Opera&ccedil;&atilde;o Internacional</h3>
             </div>
@@ -1942,6 +2029,46 @@
         </div>
         <p class="reveal-up" style="margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.25);font-style:italic;">
           Mostramos apenas o que pode ser partilhado.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 4b — COMO FUNCIONA (static, GEO-extractable <ol>)
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="como-funciona" class="pg2-section pg2-section--1" data-theme="dark" style="border-top-color:rgba(255,255,255,0.055);">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Como funciona</p>
+          <h2 class="pg2-h2">Do requisito à entrega, com um único interlocutor.</h2>
+        </div>
+        <p class="pg2-define pg2-reveal">A ON4U trabalha por pedido, sem catálogo fixo: cada requisito é validado antes de avançar e acompanhado por uma só pessoa até à entrega.</p>
+        <ol class="pg2-steps pg2-steps--row pg2-reveal">
+          <li class="pg2-step"><h3>Requisito</h3><p>Recebemos o pedido com especificações, quantidades, destino e prazo.</p></li>
+          <li class="pg2-step"><h3>Validação</h3><p>Confirmamos viabilidade, condições e documentação necessária antes de avançar.</p></li>
+          <li class="pg2-step"><h3>Proposta</h3><p>Devolvemos enquadramento, prazos e etapas de execução.</p></li>
+          <li class="pg2-step"><h3>Execução</h3><p>Coordenamos a operação por marcos até à entrega.</p></li>
+        </ol>
+        <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">Para projetos internacionais, veja como <a href="/importacao-e-exportacao.html">coordenamos a operação de ponta a ponta</a>.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 4c — PRESENÇA OPERACIONAL (static mirror of globe, GEO)
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="presenca" class="pg2-section pg2-section--2" data-theme="dark">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Presença</p>
+          <h2 class="pg2-h2">Base em Portugal. Operação em pontos-chave.</h2>
+        </div>
+        <p class="pg2-define pg2-reveal">A ON4U tem sede em Sintra (Portugal), presença operacional em São Tomé e Príncipe e na Guiné-Bissau, e escritórios na China e na Índia.</p>
+        <ul class="pg2-nodes pg2-measure pg2-reveal">
+          <li class="pg2-node"><span class="dot dot--primary"></span><span class="pg2-node-name">Portugal</span><span class="pg2-node-type">Sede</span></li>
+          <li class="pg2-node"><span class="dot"></span><span class="pg2-node-name">São Tomé e Príncipe</span><span class="pg2-node-type">Presença operacional</span></li>
+          <li class="pg2-node"><span class="dot"></span><span class="pg2-node-name">Guiné-Bissau</span><span class="pg2-node-type">Presença operacional</span></li>
+          <li class="pg2-node"><span class="dot"></span><span class="pg2-node-name">China</span><span class="pg2-node-type">Escritório</span></li>
+          <li class="pg2-node"><span class="dot"></span><span class="pg2-node-name">Índia</span><span class="pg2-node-type">Escritório</span></li>
+        </ul>
       </div>
     </section>
 
@@ -1974,7 +2101,7 @@
               <!-- First set -->
               <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/CD1647_AGUALVA.png" alt="agualva-clube"
+              <div class="logo-cloud-item"><img src="images/clientLogos/CD1947_AGUALVA.svg" alt="agualva-clube"
                   loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo"
                   loading="lazy"></div>
@@ -2024,7 +2151,7 @@
               <!-- Second set for infinite scroll loop -->
               <div class="logo-cloud-item"><img src="images/clientLogos/004.png" alt="004" loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/2riscos.png" alt="2riscos" loading="lazy"></div>
-              <div class="logo-cloud-item"><img src="images/clientLogos/CD1647_AGUALVA.png" alt="agualva-clube"
+              <div class="logo-cloud-item"><img src="images/clientLogos/CD1947_AGUALVA.svg" alt="agualva-clube"
                   loading="lazy"></div>
               <div class="logo-cloud-item"><img src="images/clientLogos/all-ways-cargo.png" alt="all-ways-cargo"
                   loading="lazy"></div>
@@ -2220,6 +2347,24 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
+         SECTION 5b — FAQ (1 modelo, mirrors FAQPage schema 1:1)
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="faq" class="pg2-section pg2-section--1" data-theme="dark" style="border-top-color:rgba(255,255,255,0.055);">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Perguntas frequentes</p>
+          <h2 class="pg2-h2">O essencial, em poucas linhas.</h2>
+        </div>
+        <div class="pg2-faq pg2-reveal">
+          <details open>
+            <summary>O que faz a ON4U?<span class="pg2-faq-mark" aria-hidden="true"></span></summary>
+            <div class="pg2-faq-body">A ON4U é uma empresa B2B portuguesa que coordena importação, produção, sourcing e distribuição internacional por pedido, organizada em quatro divisões: Produção &amp; Criatividade, Operação Internacional, Health &amp; Care e Informática. Não trabalha com catálogo fixo — cada requisito é validado antes de avançar e acompanhado por um único ponto de contacto até à entrega.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
          SECTION 6 — CTA FINAL
     ═══════════════════════════════════════���═══════════════════ -->
     <section id="final-cta"
@@ -2240,7 +2385,7 @@
             style="list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1.5rem;margin:0 0 2rem;font-size:0.82rem;color:rgba(255,255,255,0.38);">
             <li style="display:flex;align-items:center;gap:0.45rem;"><span
                 style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>O
-              que &eacute; (categoria + especifica&ccedil;&atilde;o)</li>
+              que precisa</li>
             <li style="display:flex;align-items:center;gap:0.45rem;"><span
                 style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Quantidade
               / volumes (se souber)</li>
@@ -2302,7 +2447,7 @@
             <p class="footer-col-title">Divisões</p>
             <ul class="footer-list">
               <li><a href="/producao.html">Produção &amp; Criatividade</a></li>
-              <li><a href="/importacao-e-exportacao.html">Importação &amp; Exportação</a></li>
+              <li><a href="/importacao-e-exportacao.html">Operação Internacional</a></li>
               <li><a href="/health-care.html">Health &amp; Care</a></li>
               <li><a href="/informatica.html">Informática</a></li>
             </ul>
@@ -2328,14 +2473,14 @@
               <li><a href="tel:+351214326103">+351 214 326 103</a></li>
             </ul>
             <p class="footer-col-title" style="margin-top:1.25rem;">Certificação</p>
-            <a href="https://www.infarmed.pt" target="_blank" rel="noopener noreferrer" class="footer-cert"
+            <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer" class="footer-cert"
               style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;">
               <span style="width:10px;height:10px;border-radius:50%;background:#f97316;display:inline-block;"></span>
-              Infarmed Certificado
+              Infarmed &mdash; Cert. 1866/DM/2023
             </a>
             <div style="margin-top:0.875rem;">
               <img src="images/pagamento-pontual-2026.png" alt="Compromisso Pagamento Pontual 2026"
-                style="height:48px;width:auto;opacity:0.85;" loading="lazy">
+                style="height:48px;width:auto;opacity:0.85;" loading="lazy" onerror="this.style.display='none'">
             </div>
           </div>
 
@@ -2871,6 +3016,18 @@
         const isLight = html.classList.toggle('light-mode');
         localStorage.setItem('on4u-theme', isLight ? 'light' : 'dark');
       });
+    })();
+    // ── Scroll reveal for static GEO sections (CSS-only, reduced-motion safe) ──
+    (function () {
+      var els = document.querySelectorAll('.pg2-reveal');
+      if (!els.length) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-in'); }); return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach(function (el) { io.observe(el); });
     })();
   </script>
 </body>
