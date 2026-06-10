@@ -4535,8 +4535,7 @@ html.light-mode picture {
 /* Logo carousel: in light mode cancel all per-element filters.
    The page-level invert(1) on html naturally makes dark logos visible. */
 html.light-mode .logo-cloud-track img {
-  filter: none !important;
-  opacity: 0.6 !important;
+  opacity: 0.85 !important;
 }
 
 /* Hide the radial-gradient backdrop behind hero text in light mode */

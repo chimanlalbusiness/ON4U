@@ -47,9 +47,6 @@ sobre, health-care, informatica, producao, portfolio, contactos: header/footer/t
 - Reveal-on-scroll (.pg2-reveal) funciona em uso real; screenshots de página inteira mostram vazios (artefacto de captura, não bug).
 
 ## Pendentes (antes de publicar)
-- [ ] Colocar imagem `images/merchandising/hbd.jpeg` (card HBD em index, producao, portfolio).
-- [ ] Colocar imagem `images/pagamento-pontual-2026.png` (selo no footer).
 - [ ] URL do catálogo do parceiro de Informática (CTA "Aceder ao catálogo", agora href="#").
-- [ ] Imagens Open Graph 1200×630 em `/og/*.png` (referenciadas no schema/OG).
 - [ ] Opcional: favicon.ico, páginas /privacidade.html e /termos.html.
 - [ ] Opcional: categorias publicáveis de Health & Care (se quiser sair do genérico).

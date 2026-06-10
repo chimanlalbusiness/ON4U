@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Produção &amp; Criatividade | Stands, Eventos, Fardamentos | ON4U</title>
+  <title>Pedir orçamento | ON4U</title>
   <meta name="description"
-    content="Stands, eventos, fardamentos, sinalética e identidade visual para empresas. Produção corporativa por pedido, do briefing à entrega." />
-  <link rel="canonical" href="https://www.on4u.pt/producao.html" />
+    content="Peça orçamento à ON4U em quatro passos: o que precisa, quantidade, destino e prazo. Validamos a viabilidade e respondemos com os próximos passos." />
+  <link rel="canonical" href="https://www.on4u.pt/pedido.html" />
   <meta name="robots" content="index, follow" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ON4U" />
   <meta property="og:locale" content="pt_PT" />
-  <meta property="og:title" content="Produção &amp; Criatividade | Stands, Eventos, Fardamentos | ON4U" />
-  <meta property="og:description" content="Stands e ativações, impressão e sinalética, fardamentos e identidade visual, eventos e brinde. Coordenados do briefing à entrega, por pedido." />
-  <meta property="og:url" content="https://www.on4u.pt/producao.html" />
-  <meta property="og:image" content="https://www.on4u.pt/og/producao.png" />
+  <meta property="og:title" content="Pedir orçamento | ON4U" />
+  <meta property="og:description" content="Envie o requisito em quatro passos — o que precisa, quantidade, destino e prazo. Validamos a viabilidade e respondemos com os próximos passos." />
+  <meta property="og:url" content="https://www.on4u.pt/pedido.html" />
+  <meta property="og:image" content="https://www.on4u.pt/og/pedido.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Produção &amp; Criatividade | Stands, Eventos, Fardamentos | ON4U" />
-  <meta name="twitter:description" content="Stands, eventos, fardamentos e identidade visual para empresas. Produção corporativa por pedido, do briefing à entrega." />
-  <meta name="twitter:image" content="https://www.on4u.pt/og/producao.png" />
+  <meta name="twitter:title" content="Pedir orçamento | ON4U" />
+  <meta name="twitter:description" content="Envie o requisito em quatro passos. Validamos a viabilidade e respondemos com os próximos passos." />
+  <meta name="twitter:image" content="https://www.on4u.pt/og/pedido.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,6 +30,32 @@
   <style>
     .mobile-nav{position:absolute;top:68px;left:0;width:100%;background:#09090b;border-bottom:1px solid rgba(255,255,255,0.1);z-index:99;transform:translateY(-10px);transition:opacity 200ms ease,transform 200ms ease}
     .mobile-nav:not([hidden]){display:flex!important;opacity:1;transform:translateY(0)}
+
+    /* ── Pedido multi-step flow ── */
+    .pedido-wrap{max-width:640px}
+    .pedido-progress{height:4px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden;margin-bottom:0.8rem}
+    .pedido-progress-bar{height:100%;width:25%;background:#f97316;border-radius:99px;transition:width .45s cubic-bezier(.4,0,.2,1)}
+    .pedido-count{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0 0 2.25rem}
+    .pedido-steps{position:relative}
+    .pedido-step{opacity:0;transform:translateX(34px);transition:opacity .35s ease,transform .35s cubic-bezier(.4,0,.2,1);position:absolute;top:0;left:0;width:100%;visibility:hidden;pointer-events:none}
+    .pedido-step.is-active{opacity:1;transform:translateX(0);position:relative;visibility:visible;pointer-events:auto}
+    .pedido-step.is-leaving{opacity:0;transform:translateX(-34px)}
+    .pedido-q{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:800;letter-spacing:-0.02em;color:#f5f5f7;margin:0 0 0.5rem;line-height:1.2}
+    .pedido-hint{font-size:0.9rem;color:rgba(255,255,255,0.5);margin:0 0 1.6rem;line-height:1.55}
+    .pedido-field{margin-bottom:1.1rem}
+    .pedido-grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+    @media(max-width:560px){.pedido-grid2{grid-template-columns:1fr}}
+    .pedido-input--err{border-color:#ef4444 !important}
+    .pedido-actions{display:flex;gap:0.9rem;align-items:center;margin-top:1.9rem;flex-wrap:wrap}
+    .pedido-back{background:none;border:none;color:rgba(255,255,255,0.5);font:inherit;font-size:0.85rem;font-weight:600;cursor:pointer;padding:0.5rem 0.25rem}
+    .pedido-back:hover{color:#f5f5f7}
+    .pedido-done{text-align:center;padding:1.5rem 0}
+    .pedido-done-ico{width:64px;height:64px;margin:0 auto 1.6rem;border-radius:50%;background:rgba(249,115,22,0.12);display:flex;align-items:center;justify-content:center;color:#f97316}
+    @media(max-width:560px){
+      .pedido-actions{flex-direction:column-reverse;align-items:stretch}
+      .pedido-actions .pg2-btn{width:100%}
+      .pedido-back{width:100%;text-align:center}
+    }
   </style>
 
   <script type="application/ld+json">
@@ -48,21 +74,10 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Produção, comunicação visual e eventos corporativos",
-    "provider": { "@type": "Organization", "name": "ON4U", "url": "https://www.on4u.pt/" },
-    "areaServed": ["PT", "ST", "GW", "CN", "IN"],
-    "description": "Produção de stands e ativações, impressão e sinalética, fardamentos e identidade visual, eventos e brinde corporativo para empresas — coordenados do briefing à entrega, por pedido.",
-    "url": "https://www.on4u.pt/producao.html"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.on4u.pt/" },
-      { "@type": "ListItem", "position": 2, "name": "Produção & Criatividade", "item": "https://www.on4u.pt/producao.html" }
+      { "@type": "ListItem", "position": 2, "name": "Pedir orçamento", "item": "https://www.on4u.pt/pedido.html" }
     ]
   }
   </script>
@@ -95,7 +110,7 @@
             <a href="/informatica.html" role="menuitem"><span class="nav-dropdown-dot"></span>Informática</a>
           </div>
         </div>
-        <a href="/portfolio.html" id="nav-trabalhos">Projetos</a>
+        <a href="/portfolio.html" id="nav-trabalhos">Trabalhos</a>
         <a href="/pedido.html" id="nav-contacto">Contacto</a>
       </nav>
       <div class="header-actions">
@@ -127,7 +142,7 @@
       <a href="/health-care.html">Health &amp; Care</a>
       <a href="/informatica.html">Informática</a>
 
-      <a href="/portfolio.html">Projetos</a>
+      <a href="/portfolio.html">Trabalhos</a>
       <a href="/pedido.html">Contacto</a>
       <a href="/pedido.html" class="btn btn-primary" style="margin-top:0.5rem;">Pedir orçamento</a>
     </nav>
@@ -143,112 +158,108 @@
           <ol>
             <li><a href="/">Início</a></li>
             <li class="sep" aria-hidden="true">›</li>
-            <li aria-current="page">Produção &amp; Criatividade</li>
+            <li aria-current="page">Pedir orçamento</li>
           </ol>
         </nav>
-        <p class="pg2-eyebrow">Produção &amp; Criatividade</p>
-        <h1>Produção e comunicação visual para projetos corporativos.</h1>
-        <p class="pg2-lede">Stands, eventos, fardamentos, sinalética e identidade visual — coordenados do briefing à entrega, com um único interlocutor e o prazo do evento como referência.</p>
-        <div class="pg2-hero-ctas">
-          <a href="/pedido.html" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
-          <a href="/portfolio.html" class="pg2-btn pg2-btn--ghost">Ver projetos</a>
-        </div>
+        <p class="pg2-eyebrow">Pedido</p>
+        <h1>Diga-nos o que precisa.</h1>
+        <p class="pg2-lede">Quatro passos rápidos. Validamos a viabilidade e respondemos com os próximos passos — sem compromisso.</p>
       </div>
     </section>
 
-    <!-- O QUE FAZEMOS -->
+    <!-- FLOW -->
     <section class="pg2-section pg2-section--1">
-      <div class="pg2-wrap">
-        <div class="pg2-shead pg2-reveal">
-          <p class="pg2-eyebrow">Serviços</p>
-          <h2 class="pg2-h2">O que fazemos.</h2>
+      <div class="pg2-wrap pedido-wrap">
+        <div class="pedido-progress" role="progressbar" aria-label="Progresso do pedido" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
+          <div class="pedido-progress-bar" id="pedidoBar"></div>
         </div>
-        <div class="pg2-grid pg2-grid--2 pg2-reveal">
-          <article class="pg2-card">
-            <div class="ico-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 17h18M9 21h6M12 17v4"/></svg></div>
-            <h3 class="pg2-h3">Stands e ativações corporativas</h3>
-            <p>Conceção, produção e montagem de stands e espaços de marca para feiras e eventos, coordenados para estar prontos no dia.</p>
-          </article>
-          <article class="pg2-card">
-            <div class="ico-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></div>
-            <h3 class="pg2-h3">Impressão, sinalética e materiais</h3>
-            <p>Materiais impressos, sinalética e suportes de comunicação — da arte final à produção, com consistência entre todas as peças.</p>
-          </article>
-          <article class="pg2-card">
-            <div class="ico-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></div>
-            <h3 class="pg2-h3">Fardamentos e identidade visual</h3>
-            <p>Fardamentos e aplicação da identidade visual em têxtil e materiais, para a marca aparecer igual em toda a equipa e em todos os pontos.</p>
-          </article>
-          <article class="pg2-card">
-            <div class="ico-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4z"/></svg></div>
-            <h3 class="pg2-h3">Eventos e brinde corporativo</h3>
-            <p>Organização e produção de eventos e brinde corporativo personalizado, do conceito à logística no terreno.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <p class="pedido-count" id="pedidoCount">Passo 1 de 4</p>
 
-    <!-- COMO TRABALHAMOS -->
-    <section class="pg2-section pg2-section--0">
-      <div class="pg2-wrap">
-        <div class="pg2-shead pg2-reveal">
-          <p class="pg2-eyebrow">Como trabalhamos</p>
-          <h2 class="pg2-h2">Do briefing à entrega, com uma cara só.</h2>
-        </div>
-        <p class="pg2-define pg2-reveal">Em produção aplicamos o mesmo processo do resto da ON4U: validamos antes de avançar e coordenamos a execução até ao dia. Em vez de gerir gráfica, montador e fornecedor de têxtil em separado, fala com um único interlocutor.</p>
-        <ol class="pg2-steps pg2-steps--row pg2-reveal">
-          <li class="pg2-step"><h3>Briefing</h3><p>Recebemos o que precisa: objetivo, peças, quantidades, local e data.</p></li>
-          <li class="pg2-step"><h3>Validação &amp; proposta</h3><p>Confirmamos viabilidade e prazo, e devolvemos proposta com etapas.</p></li>
-          <li class="pg2-step"><h3>Produção</h3><p>Coordenamos a produção das peças com o prazo do evento como referência.</p></li>
-          <li class="pg2-step"><h3>Entrega &amp; montagem</h3><p>Acompanhamos a entrega e a montagem no local, até estar pronto.</p></li>
-        </ol>
-        <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">Quando um projeto precisa de fornecimento ou logística internacional, ligamos à nossa <a href="/importacao-e-exportacao.html">operação internacional</a>.</p>
-      </div>
-    </section>
+        <form id="pedidoForm" class="pedido-steps" novalidate aria-label="Pedido de orçamento">
 
-    <!-- PROJETOS -->
-    <section class="pg2-section pg2-section--1">
-      <div class="pg2-wrap">
-        <div class="pg2-shead pg2-reveal">
-          <p class="pg2-eyebrow">Projetos</p>
-          <h2 class="pg2-h2">Alguns projetos.</h2>
-        </div>
-        <div class="pg2-pf-grid pg2-reveal">
-          <a class="pg2-pf" href="/portfolio.html">
-            <img src="images/stands/repsol.jpeg" alt="Stand Repsol — ativação corporativa" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Stands &amp; Eventos</span><h3>Stand Repsol — Ativação corporativa</h3></span>
-          </a>
-          <a class="pg2-pf" href="/portfolio.html">
-            <img src="images/merchandising/hbd.jpeg" alt="Fardamentos e merchandising corporativo, HBD" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.pg2-pf-ph').style.display='flex'">
-            <span class="pg2-pf-ph" aria-hidden="true" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span>
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Produção &amp; Criatividade</span><h3>Fardamentos e Merchandising Corporativo, HBD</h3></span>
-          </a>
-          <a class="pg2-pf" href="/portfolio.html">
-            <img src="images/stands/santaCasa.jpg" alt="Santa Casa da Misericórdia — presença institucional" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Stands &amp; Eventos</span><h3>Santa Casa da Misericórdia — Presença institucional</h3></span>
-          </a>
-        </div>
-        <div style="margin-top:2.25rem;" class="pg2-reveal">
-          <a href="/portfolio.html" class="pg2-link">Ver todos os projetos <span class="arr" aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section class="pg2-cta">
-      <div class="pg2-wrap">
-        <div class="pg2-reveal">
-          <p class="pg2-eyebrow pg2-eyebrow--plain" style="justify-content:center;">Próximo passo</p>
-          <h2>Tem um projeto com data marcada?</h2>
-          <p>Diga-nos o objetivo, as peças e a data. Validamos o prazo e devolvemos proposta com etapas — para chegar pronto ao dia.</p>
-          <div class="pg2-cta-actions">
-            <a href="/pedido.html" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
-            <a href="/portfolio.html" class="pg2-btn pg2-btn--ghost">Ver projetos</a>
+          <!-- Step 1 -->
+          <div class="pedido-step is-active" data-step="1">
+            <h2 class="pedido-q">O que precisa?</h2>
+            <p class="pedido-hint">Descreva o pedido — produto, serviço ou projeto.</p>
+            <div class="pedido-field">
+              <label class="pg2-label" for="p-precisa">Descreva o pedido <span class="req" aria-hidden="true">*</span></label>
+              <textarea class="pg2-input" id="p-precisa" name="precisa" required
+                placeholder="Ex.: 500 unidades de fardamento corporativo, entrega em Lisboa"></textarea>
+            </div>
+            <div class="pedido-actions">
+              <button type="button" class="pg2-btn pg2-btn--primary" data-next>Continuar &rarr;</button>
+            </div>
           </div>
-        </div>
+
+          <!-- Step 2 -->
+          <div class="pedido-step" data-step="2">
+            <h2 class="pedido-q">Quantidade e destino.</h2>
+            <p class="pedido-hint">Mesmo uma estimativa ajuda. Pode deixar em branco se ainda não souber.</p>
+            <div class="pedido-grid2">
+              <div class="pedido-field">
+                <label class="pg2-label" for="p-quantidade">Quantidade / volumes</label>
+                <input class="pg2-input" type="text" id="p-quantidade" name="quantidade" placeholder="Ex.: 500 unidades" />
+              </div>
+              <div class="pedido-field">
+                <label class="pg2-label" for="p-destino">Destino</label>
+                <input class="pg2-input" type="text" id="p-destino" name="destino" placeholder="Cidade ou país" />
+              </div>
+            </div>
+            <div class="pedido-actions">
+              <button type="button" class="pg2-btn pg2-btn--primary" data-next>Continuar &rarr;</button>
+              <button type="button" class="pedido-back" data-back>&larr; Voltar</button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="pedido-step" data-step="3">
+            <h2 class="pedido-q">Quando precisa?</h2>
+            <p class="pedido-hint">Uma data ou um prazo aproximado.</p>
+            <div class="pedido-field">
+              <label class="pg2-label" for="p-prazo">Prazo desejado</label>
+              <input class="pg2-input" type="text" id="p-prazo" name="prazo" placeholder="Ex.: até 30/07/2026, ou &quot;3 semanas&quot;" />
+            </div>
+            <div class="pedido-actions">
+              <button type="button" class="pg2-btn pg2-btn--primary" data-next>Continuar &rarr;</button>
+              <button type="button" class="pedido-back" data-back>&larr; Voltar</button>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="pedido-step" data-step="4">
+            <h2 class="pedido-q">Para onde respondemos?</h2>
+            <p class="pedido-hint">Validamos a viabilidade e respondemos com os próximos passos.</p>
+            <div class="pedido-field">
+              <label class="pg2-label" for="p-nome">Nome <span class="req" aria-hidden="true">*</span></label>
+              <input class="pg2-input" type="text" id="p-nome" name="nome" autocomplete="name" required />
+            </div>
+            <div class="pedido-field">
+              <label class="pg2-label" for="p-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input class="pg2-input" type="email" id="p-email" name="email" inputmode="email" autocomplete="email" required />
+            </div>
+            <div class="pedido-field">
+              <label class="pg2-label" for="p-empresa">Empresa <span style="color:rgba(255,255,255,0.35);font-weight:400;">(opcional)</span></label>
+              <input class="pg2-input" type="text" id="p-empresa" name="empresa" autocomplete="organization" />
+            </div>
+            <div class="pedido-actions">
+              <button type="submit" class="pg2-btn pg2-btn--primary">Enviar pedido</button>
+              <button type="button" class="pedido-back" data-back>&larr; Voltar</button>
+            </div>
+          </div>
+
+          <!-- Step 5 — confirmation -->
+          <div class="pedido-step" data-step="5">
+            <div class="pedido-done">
+              <div class="pedido-done-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="30" height="30"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h2 class="pedido-q" style="margin-bottom:0.75rem;">Obrigado.</h2>
+              <p class="pedido-hint" style="max-width:420px;margin:0 auto 1.75rem;">Vamos validar a viabilidade e responder em 24–48h úteis. Se o seu cliente de email não abriu, escreva-nos para <a href="mailto:info@on4u.pt" style="color:#f97316;text-decoration:none;">info@on4u.pt</a>.</p>
+              <a href="/" class="pg2-btn pg2-btn--ghost">Voltar ao início</a>
+            </div>
+          </div>
+
+        </form>
       </div>
     </section>
   </main>
@@ -332,6 +343,79 @@
         localStorage.setItem('on4u-theme', isLight ? 'light' : 'dark');
       });
     })();
+
+    // ── Multi-step request flow ──
+    (function () {
+      var form = document.getElementById('pedidoForm');
+      if (!form) return;
+      var steps = Array.prototype.slice.call(form.querySelectorAll('.pedido-step'));
+      var bar = document.getElementById('pedidoBar');
+      var count = document.getElementById('pedidoCount');
+      var progress = bar ? bar.parentElement : null;
+      var INPUT_STEPS = 4; // steps 1..4 collect input; step 5 is confirmation
+      var cur = 0;
+
+      function show(i) {
+        if (i < 0 || i >= steps.length) return;
+        steps.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
+        cur = i;
+        if (i < INPUT_STEPS) {
+          var pct = ((i + 1) / INPUT_STEPS) * 100;
+          if (bar) bar.style.width = pct + '%';
+          if (count) { count.textContent = 'Passo ' + (i + 1) + ' de ' + INPUT_STEPS; count.style.display = ''; }
+          if (progress) progress.setAttribute('aria-valuenow', String(i + 1));
+        } else {
+          if (bar) bar.style.width = '100%';
+          if (count) count.style.display = 'none';
+        }
+        var field = steps[i].querySelector('input, textarea');
+        if (field) { try { setTimeout(function () { field.focus(); }, 360); } catch (e) {} }
+      }
+
+      function validate(stepEl) {
+        var reqs = stepEl.querySelectorAll('[required]');
+        for (var k = 0; k < reqs.length; k++) {
+          if (!reqs[k].value.trim() || (reqs[k].type === 'email' && reqs[k].validity && !reqs[k].validity.valid)) {
+            reqs[k].classList.add('pedido-input--err');
+            reqs[k].focus();
+            return false;
+          }
+        }
+        return true;
+      }
+
+      form.addEventListener('input', function (e) {
+        if (e.target.classList) e.target.classList.remove('pedido-input--err');
+      });
+
+      form.addEventListener('click', function (e) {
+        var nx = e.target.closest('[data-next]');
+        var bk = e.target.closest('[data-back]');
+        if (nx) { e.preventDefault(); if (validate(steps[cur])) show(cur + 1); }
+        else if (bk) { e.preventDefault(); show(cur - 1); }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!validate(steps[cur])) return;
+        var g = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+        var body =
+          'O que precisa:\n' + g('precisa') + '\n\n' +
+          'Quantidade / volumes: ' + g('quantidade') + '\n' +
+          'Destino: ' + g('destino') + '\n' +
+          'Prazo: ' + g('prazo') + '\n\n' +
+          'Nome: ' + g('nome') + '\n' +
+          'Email: ' + g('email') + '\n' +
+          'Empresa: ' + g('empresa');
+        var subject = 'Pedido de orçamento — ' + (g('empresa') || g('nome') || 'ON4U');
+        try { window.location.href = 'mailto:info@on4u.pt?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); } catch (e2) {}
+        show(INPUT_STEPS); // confirmation (index 4)
+      });
+
+      show(0);
+    })();
+
+    // ── Reveal-on-scroll (shared) ──
     (function () {
       var els = document.querySelectorAll('.pg2-reveal');
       if (!els.length) return;
