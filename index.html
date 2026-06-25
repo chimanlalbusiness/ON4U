@@ -1428,8 +1428,28 @@
         transform: none !important;
       }
 
+      /* Mobile: show a compact globe at the TOP of the hero (CEO request) */
       #hero-globe-col {
-        display: none !important;
+        display: flex !important;
+        order: 0;
+        transform: none !important;
+        opacity: 1 !important;
+        padding-top: 0;
+        padding-bottom: 1.25rem;
+      }
+
+      .hero-globe-wrap {
+        max-width: 230px;
+      }
+
+      .hero-opening-label {
+        display: block !important;
+        opacity: 1 !important;
+      }
+
+      .hero-stage {
+        padding-top: 5.5rem;
+        padding-bottom: 2.5rem;
       }
 
       .hero-h1 {
@@ -2615,7 +2635,8 @@
           }
         });
 
-        // 6b. Permanent labels with simple collision avoidance
+        // 6b. Permanent labels — only on the larger (desktop) globe; the small mobile globe keeps just the dots
+        if (W >= 360) {
         ctx.font = '600 11px Inter, system-ui, sans-serif';
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'left';
@@ -2641,6 +2662,7 @@
           ctx.shadowBlur = 0;
           placedLabels.push({ x: lx, y: ly, w: tw });
         });
+        }
       }
 
       // ── Animation loop ───────────────────────────────────────────
@@ -2751,7 +2773,10 @@
           heroText.style.opacity = '';
           heroGlobeCol.style.transform = '';
           heroGlobeCol.style.opacity = '';
-          if (heroOpenLbl) { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
+          if (heroOpenLbl) {
+            if (isMobile()) { heroOpenLbl.style.opacity = '1'; heroOpenLbl.style.display = ''; }
+            else { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
+          }
           details.forEach(el => { el.style.opacity = ''; });
           if (heroH1) heroH1.style.opacity = '';
           return;

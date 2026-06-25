@@ -22,13 +22,14 @@ Decisões da reunião de 09/06/2026. Aplicar o que é implementável agora; marc
 
 7. **Flow multi-step `/pedido.html`** (nova página): 5 ecrãs — (1) O que precisa, (2) Quantidade + destino, (3) Prazo, (4) Contacto (Nome/Email/Empresa), (5) Confirmação. Barra de progresso "Passo X de 4", transição slide horizontal, dark-first, mobile-first, validação dos campos obrigatórios, submissão por `mailto:info@on4u.pt` com os campos formatados. Todos os CTAs "Pedir orçamento" e "Contacto" passaram a apontar para `/pedido.html`; o link institucional "Contactos" do footer mantém `/contactos.html` (página institucional preservada).
 
+8. **Globo no herói mobile** (follow-up do CEO — gostou do herói no desktop): o globo estava escondido em mobile (`#hero-globe-col: display:none` <900px). Passa a aparecer em versão **compacta no topo** do herói mobile (230px) com o label "Operações Internacionais" + texto a alternar; cartões das divisões mantêm-se por baixo. Os labels de texto dos waypoints só aparecem no globo grande (≥360px) — no mobile ficam só os pontos, para não sobrecarregar. Desktop inalterado.
+
 ## Implicações para o trabalho
 - Verificação em código feita (greps): B2B fora do hero, código dos labels do globo presente, "Parceiros." + logos a cores, nav reordenada (8 páginas), selo-fallback em 9 páginas, 1 só `/contactos.html` por página (o footer), CTAs → /pedido.
 - Verificação visual no browser recomendada antes de publicar (globo com labels sem colisão, flow do /pedido em mobile).
 
 ## Pendentes / TODO
-- [ ] **Imagem selo** `images/pagamento-pontual-2026.png` — continua **em falta** no repo; até existir, o footer mostra o fallback de texto.
-- [ ] **Imagem** `images/merchandising/hbd.jpeg` (card HBD) — ainda em falta (degrada via onerror).
+- [x] **Imagem selo** — resolvido: a ON4U carregou `images/compromissoPagamentoPontual.jpeg`; o footer das 9 páginas foi reapontado para esse ficheiro (com fallback de texto a manter-se como rede de segurança).
 - [ ] **TODO-1 (Morada)**: confirmar morada/código postal corretos com a ON4U antes de alterar (atual: Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente), 2710-679 Sintra). Aguarda confirmação.
 - [ ] **TODO-2 (Presença geográfica)**: reformular para dois grupos — "Presença ON4U em: Portugal, São Tomé e Príncipe, Guiné-Bissau" e "Escritórios em: China, Índia". Aplicar em footer, #presenca, /sobre.html, /importacao-e-exportacao.html. Aguarda confirmação de sede vs presença vs escritório.
 - [ ] **TODO-3 (Tracking de pedidos)**: número de referência por pedido, consultável pelo cliente, estado atualizado manualmente pela ON4U. Aguarda decisão de processo interno.
