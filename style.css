@@ -1947,6 +1947,14 @@ section.divisoes.normal-section {
   text-transform: uppercase;
 }
 
+/* The cert badge component defaults its title to white (designed for dark
+   glass cards). On a light-themed section it sits on a white card and would
+   render white-on-white. Force a dark title there — it inverts back to a
+   light title when the whole page is toggled to light mode. */
+[data-theme="light"] .cert-badge-title {
+  color: #15151a;
+}
+
 .cert-badge-sub {
   font-size: 0.7rem;
   font-weight: 600;
@@ -4722,6 +4730,10 @@ html.light-mode .header {
 /* ── Layout shell ───────────────────────────────────────────── */
 .pg2-main {
   background: var(--pg-bg-0);
+  /* Dark-first base ink: any element that forgets to set its own
+     color inherits light text (not the UA black default), so it stays
+     readable in dark mode and inverts correctly in light mode. */
+  color: var(--pg-ink);
 }
 
 .pg2-wrap {
@@ -4734,6 +4746,9 @@ html.light-mode .header {
   padding: var(--pg-sec-y) 0;
   border-top: 1px solid var(--pg-line);
   position: relative;
+  /* Same dark-first base ink for pg2 sections embedded outside .pg2-main
+     (e.g. the homepage, which uses its own page shell). */
+  color: var(--pg-ink);
 }
 
 .pg2-section--0 { background: var(--pg-bg-0); }
