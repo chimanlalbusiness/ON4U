@@ -4540,10 +4540,33 @@ html.light-mode picture {
   filter: invert(1) hue-rotate(180deg);
 }
 
-/* Logo carousel: in light mode cancel all per-element filters.
-   The page-level invert(1) on html naturally makes dark logos visible. */
+/* ------------------------------------------------------------------
+   Partner logo wall — uniform, theme-aware monochrome.
+   The source art is an inconsistent mix of white, black and full-colour
+   files, so no single backdrop holds them all (white art vanishes on the
+   light theme, black art on the dark theme). Flattening each logo to one
+   silhouette that the theme tints keeps the wall consistent and legible
+   in both modes, with no band required.
+     brightness(0) -> solid silhouette (shape preserved via alpha)
+     invert(1)     -> white
+   On the light theme the page-level invert then flips that white to a
+   soft charcoal automatically, so the same filter works for both.
+   ------------------------------------------------------------------ */
+.logo-cloud-track img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 0.7 !important;
+}
+
+.logo-cloud-item:hover img {
+  opacity: 1 !important;
+}
+
 html.light-mode .logo-cloud-track img {
-  opacity: 0.85 !important;
+  opacity: 0.62 !important;
+}
+
+html.light-mode .logo-cloud-item:hover img {
+  opacity: 0.92 !important;
 }
 
 /* Hide the radial-gradient backdrop behind hero text in light mode */
@@ -4869,7 +4892,22 @@ html.light-mode .header {
 }
 .pg2-crumbs a:hover { color: var(--pg-ink); }
 .pg2-crumbs li[aria-current] { color: var(--pg-ink-2); }
-.pg2-crumbs .sep { opacity: 0.4; }
+/* Breadcrumb separator: hide the low-sitting "›" glyph and draw a crisp,
+   centred chevron with CSS so it reads as an intentional separator. */
+.pg2-crumbs .sep {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0;            /* collapses the literal "›" character */
+  opacity: 0.4;
+}
+.pg2-crumbs .sep::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border: solid currentColor;
+  border-width: 1.4px 1.4px 0 0;   /* top + right edges → a ">" once rotated */
+  transform: rotate(45deg);
+}
 
 /* ── Buttons (page-scoped, mirror brand .btn) ───────────────── */
 .pg2-btn {

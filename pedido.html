@@ -31,27 +31,93 @@
     .mobile-nav{position:absolute;top:68px;left:0;width:100%;background:#09090b;border-bottom:1px solid rgba(255,255,255,0.1);z-index:99;transform:translateY(-10px);transition:opacity 200ms ease,transform 200ms ease}
     .mobile-nav:not([hidden]){display:flex!important;opacity:1;transform:translateY(0)}
 
-    /* ── Pedido multi-step flow ── */
-    .pedido-wrap{max-width:640px}
-    .pedido-progress{height:4px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden;margin-bottom:0.8rem}
-    .pedido-progress-bar{height:100%;width:25%;background:#f97316;border-radius:99px;transition:width .45s cubic-bezier(.4,0,.2,1)}
-    .pedido-count{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0 0 2.25rem}
-    .pedido-steps{position:relative}
-    .pedido-step{opacity:0;transform:translateX(34px);transition:opacity .35s ease,transform .35s cubic-bezier(.4,0,.2,1);position:absolute;top:0;left:0;width:100%;visibility:hidden;pointer-events:none}
+    /* ── Pedido — full-viewport interactive flow ── */
+    .pedido-stage{
+      min-height:100vh;min-height:100dvh;
+      display:flex;align-items:center;
+      background:
+        radial-gradient(ellipse 55% 45% at 88% 4%, rgba(249,115,22,0.09), transparent 60%),
+        radial-gradient(ellipse 45% 55% at 2% 96%, rgba(249,115,22,0.05), transparent 55%),
+        var(--pg-bg-0);
+      padding:clamp(5.5rem,8vw,7rem) var(--pad) clamp(2.5rem,5vw,4rem);
+    }
+    .pedido-shell{
+      width:100%;max-width:1080px;margin:0 auto;
+      display:grid;grid-template-columns:0.82fr 1.18fr;
+      gap:clamp(2rem,5vw,4.5rem);align-items:center;
+    }
+
+    /* Left — context + roadmap */
+    .pedido-aside .pg2-crumbs{margin-bottom:1.5rem;}
+    .pedido-eyebrow{
+      display:inline-flex;align-items:center;gap:0.55rem;
+      font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+      color:var(--pg-accent);margin:0 0 0.9rem;
+    }
+    .pedido-eyebrow::before{content:"";width:1.75rem;height:1px;background:var(--pg-accent);opacity:0.65;}
+    .pedido-aside h1{
+      font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;letter-spacing:-0.035em;
+      line-height:1.05;color:var(--pg-ink);margin:0 0 1rem;max-width:13ch;
+    }
+    .pedido-lede{
+      font-size:clamp(1rem,1.4vw,1.12rem);color:var(--pg-ink-2);line-height:1.55;
+      max-width:38ch;margin:0 0 2.25rem;
+    }
+    .pedido-nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.15rem;}
+    .pedido-nav li{
+      display:flex;align-items:center;gap:0.85rem;padding:0.5rem 0.45rem;border-radius:10px;
+      color:var(--pg-ink-3);font-size:0.92rem;font-weight:500;
+      transition:color .3s ease,background .3s ease;
+    }
+    .pedido-nav .dot{
+      width:30px;height:30px;border-radius:50%;border:1.5px solid var(--pg-line-strong);
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.82rem;font-weight:700;flex-shrink:0;background:transparent;color:var(--pg-ink-3);
+      transition:all .3s cubic-bezier(.4,0,.2,1);
+    }
+    .pedido-nav .dot svg{width:15px;height:15px;display:none;}
+    .pedido-nav li.is-active{color:var(--pg-ink);}
+    .pedido-nav li.is-active .dot{border-color:var(--pg-accent);background:var(--pg-accent);color:#fff;box-shadow:0 0 0 5px rgba(249,115,22,0.14);}
+    .pedido-nav li.is-done{color:var(--pg-ink-2);cursor:pointer;}
+    .pedido-nav li.is-done .dot{border-color:var(--pg-accent);background:rgba(249,115,22,0.14);color:var(--pg-accent);}
+    .pedido-nav li.is-done .dot .num{display:none;}
+    .pedido-nav li.is-done .dot svg{display:block;}
+    .pedido-nav li.is-done:hover{background:rgba(255,255,255,0.03);}
+    .pedido-nav li.is-done:hover .dot{background:var(--pg-accent);color:#fff;}
+
+    /* Right — interactive panel */
+    .pedido-panel{
+      background:linear-gradient(180deg,var(--pg-panel),var(--pg-panel-2));
+      border:1px solid var(--pg-line-strong);border-radius:18px;
+      padding:clamp(1.5rem,3vw,2.4rem);
+      box-shadow:0 30px 70px -35px rgba(0,0,0,0.7);
+    }
+    .pedido-progress{height:4px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden;margin-bottom:0.75rem}
+    .pedido-progress-bar{height:100%;width:25%;background:var(--pg-accent);border-radius:99px;transition:width .45s cubic-bezier(.4,0,.2,1)}
+    .pedido-count{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--pg-ink-3);margin:0 0 1.6rem}
+    .pedido-steps{position:relative;min-height:300px}
+    .pedido-step{opacity:0;transform:translateX(28px);transition:opacity .35s ease,transform .35s cubic-bezier(.4,0,.2,1);position:absolute;top:0;left:0;width:100%;visibility:hidden;pointer-events:none}
     .pedido-step.is-active{opacity:1;transform:translateX(0);position:relative;visibility:visible;pointer-events:auto}
-    .pedido-step.is-leaving{opacity:0;transform:translateX(-34px)}
-    .pedido-q{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:800;letter-spacing:-0.02em;color:#f5f5f7;margin:0 0 0.5rem;line-height:1.2}
-    .pedido-hint{font-size:0.9rem;color:rgba(255,255,255,0.5);margin:0 0 1.6rem;line-height:1.55}
-    .pedido-field{margin-bottom:1.1rem}
-    .pedido-grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
-    @media(max-width:560px){.pedido-grid2{grid-template-columns:1fr}}
+    .pedido-step.is-leaving{opacity:0;transform:translateX(-28px)}
+    .pedido-q{font-size:clamp(1.3rem,2.6vw,1.85rem);font-weight:800;letter-spacing:-0.02em;color:var(--pg-ink);margin:0 0 0.5rem;line-height:1.2}
+    .pedido-hint{font-size:0.9rem;color:var(--pg-ink-3);margin:0 0 1.5rem;line-height:1.55}
+    .pedido-field{margin-bottom:1.05rem}
+    .pedido-grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.05rem}
     .pedido-input--err{border-color:#ef4444 !important}
-    .pedido-actions{display:flex;gap:0.9rem;align-items:center;margin-top:1.9rem;flex-wrap:wrap}
-    .pedido-back{background:none;border:none;color:rgba(255,255,255,0.5);font:inherit;font-size:0.85rem;font-weight:600;cursor:pointer;padding:0.5rem 0.25rem}
-    .pedido-back:hover{color:#f5f5f7}
+    .pedido-actions{display:flex;gap:0.9rem;align-items:center;margin-top:1.75rem;flex-wrap:wrap}
+    .pedido-back{background:none;border:none;color:var(--pg-ink-3);font:inherit;font-size:0.85rem;font-weight:600;cursor:pointer;padding:0.5rem 0.25rem;transition:color .2s ease}
+    .pedido-back:hover{color:var(--pg-ink)}
     .pedido-done{text-align:center;padding:1.5rem 0}
-    .pedido-done-ico{width:64px;height:64px;margin:0 auto 1.6rem;border-radius:50%;background:rgba(249,115,22,0.12);display:flex;align-items:center;justify-content:center;color:#f97316}
+    .pedido-done-ico{width:64px;height:64px;margin:0 auto 1.6rem;border-radius:50%;background:rgba(249,115,22,0.12);display:flex;align-items:center;justify-content:center;color:var(--pg-accent)}
+
+    @media(max-width:880px){
+      .pedido-shell{grid-template-columns:1fr;gap:1.75rem}
+      .pedido-nav{display:none}
+      .pedido-lede{margin-bottom:0.25rem}
+      .pedido-steps{min-height:0}
+    }
     @media(max-width:560px){
+      .pedido-grid2{grid-template-columns:1fr}
       .pedido-actions{flex-direction:column-reverse;align-items:stretch}
       .pedido-actions .pg2-btn{width:100%}
       .pedido-back{width:100%;text-align:center}
@@ -151,31 +217,39 @@
 
   <main class="pg2-main" id="main">
 
-    <!-- HERO -->
-    <section class="pg2-hero">
-      <div class="pg2-wrap">
-        <nav class="pg2-crumbs" aria-label="Caminho de navegação">
-          <ol>
-            <li><a href="/">Início</a></li>
-            <li class="sep" aria-hidden="true">›</li>
-            <li aria-current="page">Pedir orçamento</li>
+    <!-- FULL-VIEWPORT REQUEST FLOW -->
+    <section class="pedido-stage">
+      <div class="pedido-shell">
+
+        <!-- Left: context + interactive roadmap -->
+        <aside class="pedido-aside">
+          <nav class="pg2-crumbs" aria-label="Caminho de navegação">
+            <ol>
+              <li><a href="/">Início</a></li>
+              <li class="sep" aria-hidden="true">›</li>
+              <li aria-current="page">Pedir orçamento</li>
+            </ol>
+          </nav>
+          <p class="pedido-eyebrow">Pedido</p>
+          <h1>Diga-nos o que precisa.</h1>
+          <p class="pedido-lede">Quatro passos rápidos. Validamos a viabilidade e respondemos com os próximos passos — sem compromisso.</p>
+
+          <ol class="pedido-nav" aria-hidden="true">
+            <li data-stepnav="0"><span class="dot"><span class="num">1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">O que precisa</span></li>
+            <li data-stepnav="1"><span class="dot"><span class="num">2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Quantidade e destino</span></li>
+            <li data-stepnav="2"><span class="dot"><span class="num">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Prazo</span></li>
+            <li data-stepnav="3"><span class="dot"><span class="num">4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Contacto</span></li>
           </ol>
-        </nav>
-        <p class="pg2-eyebrow">Pedido</p>
-        <h1>Diga-nos o que precisa.</h1>
-        <p class="pg2-lede">Quatro passos rápidos. Validamos a viabilidade e respondemos com os próximos passos — sem compromisso.</p>
-      </div>
-    </section>
+        </aside>
 
-    <!-- FLOW -->
-    <section class="pg2-section pg2-section--1">
-      <div class="pg2-wrap pedido-wrap">
-        <div class="pedido-progress" role="progressbar" aria-label="Progresso do pedido" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
-          <div class="pedido-progress-bar" id="pedidoBar"></div>
-        </div>
-        <p class="pedido-count" id="pedidoCount">Passo 1 de 4</p>
+        <!-- Right: interactive panel -->
+        <div class="pedido-panel">
+          <div class="pedido-progress" role="progressbar" aria-label="Progresso do pedido" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
+            <div class="pedido-progress-bar" id="pedidoBar"></div>
+          </div>
+          <p class="pedido-count" id="pedidoCount">Passo 1 de 4</p>
 
-        <form id="pedidoForm" class="pedido-steps" novalidate aria-label="Pedido de orçamento">
+          <form id="pedidoForm" class="pedido-steps" novalidate aria-label="Pedido de orçamento">
 
           <!-- Step 1 -->
           <div class="pedido-step is-active" data-step="1">
@@ -259,8 +333,10 @@
             </div>
           </div>
 
-        </form>
-      </div>
+          </form>
+        </div><!-- /.pedido-panel -->
+
+      </div><!-- /.pedido-shell -->
     </section>
   </main>
 
@@ -352,6 +428,7 @@
       var bar = document.getElementById('pedidoBar');
       var count = document.getElementById('pedidoCount');
       var progress = bar ? bar.parentElement : null;
+      var navItems = Array.prototype.slice.call(document.querySelectorAll('.pedido-nav li'));
       var INPUT_STEPS = 4; // steps 1..4 collect input; step 5 is confirmation
       var cur = 0;
 
@@ -359,6 +436,11 @@
         if (i < 0 || i >= steps.length) return;
         steps.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
         cur = i;
+        // Sync the left-rail roadmap: passed steps = done, current = active.
+        navItems.forEach(function (li, n) {
+          li.classList.toggle('is-active', n === i && i < INPUT_STEPS);
+          li.classList.toggle('is-done', n < i);
+        });
         if (i < INPUT_STEPS) {
           var pct = ((i + 1) / INPUT_STEPS) * 100;
           if (bar) bar.style.width = pct + '%';
@@ -410,6 +492,13 @@
         var subject = 'Pedido de orçamento — ' + (g('empresa') || g('nome') || 'ON4U');
         try { window.location.href = 'mailto:info@on4u.pt?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); } catch (e2) {}
         show(INPUT_STEPS); // confirmation (index 4)
+      });
+
+      // Click a completed roadmap step to jump back to it.
+      navItems.forEach(function (li, n) {
+        li.addEventListener('click', function () {
+          if (li.classList.contains('is-done')) show(n);
+        });
       });
 
       show(0);
