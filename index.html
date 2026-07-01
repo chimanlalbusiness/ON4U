@@ -1697,7 +1697,6 @@
                   stroke-linecap="round" />
               </svg>
             </span>
-            <span class="ol-h">Operações Internacionais</span>
             <div class="cycling-text-container" id="cycling-text-container" aria-live="polite">
               <span class="cycling-text-item is-active" data-index="0">Importação</span>
               <span class="cycling-text-item" data-index="1">Exportação</span>
@@ -1906,6 +1905,127 @@
               &rarr;</a>
           </article>
         </div>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             DIVISÕES — 3 LAYOUT VARIANTS to compare. Pick one, then delete
+             the other two <div class="vblock"> blocks + remove the CSS rule
+             ".div-grid-resp{display:none}" to restore, OR delete the old
+             grid above and keep only the chosen variant.
+             ══════════════════════════════════════════════════════════════ -->
+        <div class="vstack reveal-up delay-1">
+
+          <!-- ===== VARIANT dv-a : Palco interativo (split-stage) ===== -->
+          <div class="vblock" data-variant="dv-a">
+            <div class="vlabel"><span class="vlabel-tag">Opção A</span><span class="vlabel-name">Palco interativo</span><span class="vlabel-hint">passa/clica à esquerda &rarr;</span></div>
+            <div class="dv-a">
+              <input class="dva-r" type="radio" name="dva" id="dva-1" checked>
+              <input class="dva-r" type="radio" name="dva" id="dva-2">
+              <input class="dva-r" type="radio" name="dva" id="dva-3">
+              <input class="dva-r" type="radio" name="dva" id="dva-4">
+              <div class="dva-grid">
+                <div class="dva-list">
+                  <label class="dva-tab" for="dva-1"><span class="dva-n">01</span><span class="dva-t">Produção &amp; Criatividade</span></label>
+                  <label class="dva-tab" for="dva-2"><span class="dva-n">02</span><span class="dva-t">Operação Internacional</span></label>
+                  <label class="dva-tab" for="dva-3"><span class="dva-n">03</span><span class="dva-t">Health &amp; Care</span></label>
+                  <label class="dva-tab" for="dva-4"><span class="dva-n">04</span><span class="dva-t">Informática</span></label>
+                </div>
+                <div class="dva-stage">
+                  <article class="dva-panel">
+                    <div class="dva-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><circle cx="14" cy="14" r="3"/></svg></div>
+                    <h3>Produção &amp; Criatividade</h3>
+                    <p>Produção, comunicação visual e execução para projetos corporativos.</p>
+                    <ul class="dva-b"><li>Stands, eventos e brinde corporativo</li><li>Impressão, sinalética e materiais</li><li>Fardamentos e identidade visual</li></ul>
+                    <a class="dva-cta" href="/producao.html">Ver produção &rarr;</a>
+                  </article>
+                  <article class="dva-panel">
+                    <div class="dva-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 010 16"/></svg></div>
+                    <h3>Operação Internacional</h3>
+                    <p>Importação, exportação e distribuição por pedido, com coordenação de ponta a ponta.</p>
+                    <ul class="dva-b"><li>Fornecimento &amp; coordenação logística</li><li>Documentação e processos alfandegários</li><li>Aéreo &middot; Terrestre &middot; Marítimo</li></ul>
+                    <a class="dva-cta" href="/importacao-e-exportacao.html">Ver operação &rarr;</a>
+                  </article>
+                  <article class="dva-panel">
+                    <div class="dva-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                    <h3>Health &amp; Care</h3>
+                    <ul class="dva-b"><li>Seleção por itens e envio de pedido</li><li>Validação manual antes da proposta</li><li>Resposta com orçamento + próximos passos</li></ul>
+                    <span class="dva-chip">Distribuidor Certificado &middot; Infarmed 1866/DM/2023</span>
+                    <a class="dva-cta" href="/health-care.html">Ver Health &amp; Care &rarr;</a>
+                  </article>
+                  <article class="dva-panel">
+                    <div class="dva-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="11" rx="2"/><path d="M7 18h6M10 15v3"/></svg></div>
+                    <h3>Informática</h3>
+                    <p>Catálogo suportado por parceiro especializado — acesso direto e encaminhamento simplificado.</p>
+                    <ul class="dva-b"><li>Acesso direto ao catálogo</li><li>Pedidos no ambiente dedicado</li><li>Encaminhamento simplificado</li></ul>
+                    <a class="dva-cta" href="/informatica.html">Aceder &rarr;</a>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== VARIANT dv-b : Índice tipográfico ===== -->
+          <div class="vblock" data-variant="dv-b">
+            <div class="vlabel"><span class="vlabel-tag">Opção B</span><span class="vlabel-name">Índice tipográfico</span><span class="vlabel-hint">passa o rato sobre uma linha</span></div>
+            <div class="dv-b">
+              <a class="dvb-row" href="/producao.html">
+                <span class="dvb-n">01</span>
+                <span class="dvb-main"><span class="dvb-t">Produção &amp; Criatividade</span><span class="dvb-d">Produção, comunicação visual e execução para projetos corporativos.</span></span>
+                <span class="dvb-tags">Design &middot; Stands &middot; Materiais</span>
+                <span class="dvb-arw">&rarr;</span>
+              </a>
+              <a class="dvb-row" href="/importacao-e-exportacao.html">
+                <span class="dvb-n">02</span>
+                <span class="dvb-main"><span class="dvb-t">Operação Internacional</span><span class="dvb-d">Importação, exportação e distribuição por pedido, com coordenação de ponta a ponta.</span></span>
+                <span class="dvb-tags">Import &middot; Export &middot; Distribuição</span>
+                <span class="dvb-arw">&rarr;</span>
+              </a>
+              <a class="dvb-row" href="/health-care.html">
+                <span class="dvb-n">03</span>
+                <span class="dvb-main"><span class="dvb-t">Health &amp; Care</span><span class="dvb-d">Seleção por itens e envio de pedido</span></span>
+                <span class="dvb-tags">Sourcing &middot; Fornecimento</span>
+                <span class="dvb-arw">&rarr;</span>
+              </a>
+              <a class="dvb-row" href="/informatica.html">
+                <span class="dvb-n">04</span>
+                <span class="dvb-main"><span class="dvb-t">Informática</span><span class="dvb-d">Catálogo suportado por parceiro especializado — acesso direto e encaminhamento simplificado.</span></span>
+                <span class="dvb-tags">Catálogo &middot; Equipamento</span>
+                <span class="dvb-arw">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- ===== VARIANT dv-c : Bento mosaico ===== -->
+          <div class="vblock" data-variant="dv-c">
+            <div class="vlabel"><span class="vlabel-tag">Opção C</span><span class="vlabel-name">Bento mosaico</span><span class="vlabel-hint">tamanhos assimétricos</span></div>
+            <div class="dv-c">
+              <a class="dvc-tile dvc-hero" href="/producao.html">
+                <div class="dvc-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><circle cx="14" cy="14" r="3"/></svg></div>
+                <h3>Produção &amp; Criatividade</h3>
+                <p>Produção, comunicação visual e execução para projetos corporativos.</p>
+                <span class="dvc-go">Ver produção &rarr;</span>
+              </a>
+              <a class="dvc-tile dvc-health" href="/health-care.html">
+                <h3>Health &amp; Care</h3>
+                <p>Seleção por itens e envio de pedido</p>
+                <span class="dvc-go">Ver Health &amp; Care &rarr;</span>
+              </a>
+              <a class="dvc-tile dvc-it" href="/informatica.html">
+                <h3>Informática</h3>
+                <p>Catálogo via parceiro especializado.</p>
+                <span class="dvc-go">Aceder &rarr;</span>
+              </a>
+              <a class="dvc-tile dvc-wide" href="/importacao-e-exportacao.html">
+                <div class="dvc-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 010 16"/></svg></div>
+                <h3>Operação Internacional</h3>
+                <p>Importação, exportação e distribuição por pedido, com coordenação de ponta a ponta.</p>
+                <span class="dvc-go">Ver operação &rarr;</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <!-- ══════════════════ /DIVISÕES VARIANTS ══════════════════ -->
+
         <p class="reveal-up delay-2"
           style="margin-top:1.75rem;font-size:0.78rem;color:rgba(255,255,255,0.25);font-style:italic;">Sem promessas
           vagas: pedido &rarr; valida&ccedil;&atilde;o &rarr; proposta &rarr; execu&ccedil;&atilde;o.</p>
@@ -2067,6 +2187,52 @@
           <li class="pg2-step"><h3>Proposta</h3><p>Devolvemos enquadramento, prazos e etapas de execução.</p></li>
           <li class="pg2-step"><h3>Execução</h3><p>Coordenamos a operação por marcos até à entrega.</p></li>
         </ol>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             COMO FUNCIONA — 3 LAYOUT VARIANTS to compare. Pick one, then
+             delete the other two <div class="vblock"> blocks + remove the CSS
+             rule "#como-funciona .pg2-steps--row{display:none}" to restore.
+             ══════════════════════════════════════════════════════════════ -->
+        <div class="vstack pg2-reveal">
+
+          <!-- ===== VARIANT pv-a : Rota (route line) ===== -->
+          <div class="vblock" data-variant="pv-a">
+            <div class="vlabel"><span class="vlabel-tag">Opção A</span><span class="vlabel-name">Rota</span><span class="vlabel-hint">o processo como um percurso</span></div>
+            <div class="pv-a">
+              <div class="pva-track">
+                <div class="pva-line" aria-hidden="true"></div>
+                <div class="pva-stop"><span class="pva-dot"></span><div class="pva-card"><span class="pva-k">01</span><h4>Requisito</h4><p>Recebemos o pedido com especificações, quantidades, destino e prazo.</p></div></div>
+                <div class="pva-stop"><span class="pva-dot"></span><div class="pva-card"><span class="pva-k">02</span><h4>Validação</h4><p>Confirmamos viabilidade, condições e documentação necessária antes de avançar.</p></div></div>
+                <div class="pva-stop"><span class="pva-dot"></span><div class="pva-card"><span class="pva-k">03</span><h4>Proposta</h4><p>Devolvemos enquadramento, prazos e etapas de execução.</p></div></div>
+                <div class="pva-stop"><span class="pva-dot"></span><div class="pva-card"><span class="pva-k">04</span><h4>Execução</h4><p>Coordenamos a operação por marcos até à entrega.</p></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== VARIANT pv-b : Frase (statement flow) ===== -->
+          <div class="vblock" data-variant="pv-b">
+            <div class="vlabel"><span class="vlabel-tag">Opção B</span><span class="vlabel-name">Frase</span><span class="vlabel-hint">tipografia, sem caixas</span></div>
+            <div class="pv-b">
+              <p class="pvb-line"><span class="pvb-v">Recebemos</span> o requisito <span class="pvb-a">&rarr;</span> <span class="pvb-v">validamos</span> a viabilidade <span class="pvb-a">&rarr;</span> <span class="pvb-v">devolvemos</span> a proposta <span class="pvb-a">&rarr;</span> <span class="pvb-v">coordenamos</span> a execução até à entrega.</p>
+            </div>
+          </div>
+
+          <!-- ===== VARIANT pv-c : Linha (staggered timeline) ===== -->
+          <div class="vblock" data-variant="pv-c">
+            <div class="vlabel"><span class="vlabel-tag">Opção C</span><span class="vlabel-name">Linha</span><span class="vlabel-hint">marcos alternados</span></div>
+            <div class="pv-c">
+              <div class="pvc-track">
+                <div class="pvc-node"><div class="pvc-box"><span class="pvc-k">01</span><h4>Requisito</h4><p>Recebemos o pedido com especificações, quantidades, destino e prazo.</p></div><span class="pvc-dot"></span></div>
+                <div class="pvc-node"><div class="pvc-box"><span class="pvc-k">02</span><h4>Validação</h4><p>Confirmamos viabilidade, condições e documentação necessária antes de avançar.</p></div><span class="pvc-dot"></span></div>
+                <div class="pvc-node"><div class="pvc-box"><span class="pvc-k">03</span><h4>Proposta</h4><p>Devolvemos enquadramento, prazos e etapas de execução.</p></div><span class="pvc-dot"></span></div>
+                <div class="pvc-node"><div class="pvc-box"><span class="pvc-k">04</span><h4>Execução</h4><p>Coordenamos a operação por marcos até à entrega.</p></div><span class="pvc-dot"></span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- ══════════════════ /COMO FUNCIONA VARIANTS ══════════════════ -->
+
         <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">Para projetos internacionais, veja como <a href="/importacao-e-exportacao.html">coordenamos a operação de ponta a ponta</a>.</p>
       </div>
     </section>
@@ -2325,22 +2491,6 @@
           <h2
             style="font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-0.025em;color:#f5f5f7;margin:0 auto 0.7rem;max-width:620px;line-height:1.2;">
             Envie o pedido. Receba proposta operacional e pr&oacute;ximos passos.</h2>
-          <p
-            style="font-size:0.95rem;color:rgba(255,255,255,0.42);max-width:520px;margin:0 auto 0.65rem;line-height:1.65;text-align:center;">
-            Partilhe o que precisa, destino e prazo. Validamos viabilidade e devolvemos uma proposta com etapas claras.
-          </p>
-          <ul
-            style="list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1.5rem;margin:0 0 2rem;font-size:0.82rem;color:rgba(255,255,255,0.38);">
-            <li style="display:flex;align-items:center;gap:0.45rem;"><span
-                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>O
-              que precisa</li>
-            <li style="display:flex;align-items:center;gap:0.45rem;"><span
-                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Quantidade
-              / volumes (se souber)</li>
-            <li style="display:flex;align-items:center;gap:0.45rem;"><span
-                style="width:4px;height:4px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;"></span>Destino
-              e prazo desejado</li>
-          </ul>
           <div style="display:flex;gap:0.875rem;justify-content:center;flex-wrap:wrap;">
             <a href="/pedido.html" id="final-cta-orcamento"
               style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0.72rem 1.6rem;border-radius:8px;font-weight:600;font-size:0.9rem;background:#f97316;color:#fff;transition:background 220ms ease,transform 220ms ease,box-shadow 220ms ease;text-decoration:none;"
