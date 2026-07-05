@@ -136,23 +136,96 @@
 
   <main class="pg2-main" id="main">
 
-    <!-- HERO -->
-    <section class="pg2-hero">
-      <div class="pg2-wrap">
-        <nav class="pg2-crumbs" aria-label="Caminho de navegação">
-          <ol>
-            <li><a href="/">Início</a></li>
-            <li class="sep" aria-hidden="true">›</li>
-            <li aria-current="page">Produção &amp; Criatividade</li>
-          </ol>
-        </nav>
-        <p class="pg2-eyebrow">Produção &amp; Criatividade</p>
-        <h1>Produção e comunicação visual para projetos corporativos.</h1>
-        <p class="pg2-lede">Stands, eventos, fardamentos, sinalética e identidade visual — coordenados do briefing à entrega, com um único interlocutor e o prazo do evento como referência.</p>
-        <div class="pg2-hero-ctas">
-          <a href="/pedido.html" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
-          <a href="/portfolio.html" class="pg2-btn pg2-btn--ghost">Ver projetos</a>
+    <!-- CINEMATIC HERO — drafting tools settle into a blueprint -->
+    <section class="svc-cine" data-cine>
+      <div class="cine-stage">
+        <div class="cine-bg cine-bg--grid" aria-hidden="true"></div>
+
+        <div class="cine-objs" aria-hidden="true">
+          <!-- Ruler -->
+          <div class="cine-obj" style="left:56%;top:12%;" data-depth="0.9"
+               data-from="x:240,y:-160,rx:52,ry:24,rz:-40,s:1.45" data-to="rx:10,ry:-8,rz:-10">
+            <svg width="300" viewBox="0 0 320 76" fill="none" stroke="rgba(245,245,247,.72)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="10" width="304" height="40" rx="6" fill="rgba(255,255,255,.045)"/>
+              <path d="M8 50 l8 14 h288 l8 -14" opacity=".5"/>
+              <path d="M32 10v12 M52 10v18 M72 10v12 M92 10v12 M112 10v18 M132 10v12 M152 10v12 M192 10v12 M212 10v18 M232 10v12 M252 10v12 M272 10v18 M292 10v12"/>
+              <path d="M172 10v22" stroke="#f97316" stroke-width="2.2"/>
+            </svg>
+          </div>
+          <!-- Drafting compass -->
+          <div class="cine-obj" style="left:76%;top:36%;" data-depth="1.15"
+               data-from="x:260,y:140,rx:-30,ry:40,rz:34,s:1.35" data-to="rx:6,ry:14,rz:10">
+            <svg width="170" viewBox="0 0 180 220" fill="none" stroke="rgba(245,245,247,.72)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="90" cy="26" r="10" fill="rgba(255,255,255,.05)"/>
+              <path d="M90 16 v-10"/>
+              <path d="M84 34 L48 190"/>
+              <path d="M96 34 L132 178"/>
+              <path d="M48 190 l-5 16" stroke="#f97316" stroke-width="2.2"/>
+              <path d="M132 178 l8 18" stroke="#f97316" stroke-width="2.2"/>
+              <path d="M36 208 A 130 130 0 0 0 150 202" stroke-dasharray="4 8" opacity=".55"/>
+            </svg>
+          </div>
+          <!-- Set square -->
+          <div class="cine-obj" style="left:52%;top:62%;" data-depth="0.8"
+               data-from="y:300,rx:60,rz:-60,s:1.25" data-to="rx:14,rz:-16">
+            <svg width="190" viewBox="0 0 200 170" fill="none" stroke="rgba(245,245,247,.7)" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M10 160 L190 160 L10 12 Z" fill="rgba(255,255,255,.04)"/>
+              <path d="M52 138 L138 138 L52 68 Z" opacity=".75"/>
+              <path d="M34 148 v-8 M54 148 v-8 M74 148 v-8 M94 148 v-8 M114 148 v-8" opacity=".5"/>
+              <circle cx="30" cy="140" r="3" fill="#f97316" stroke="none"/>
+            </svg>
+          </div>
+          <!-- Pencil -->
+          <div class="cine-obj" style="left:1%;top:76%;" data-depth="0.5"
+               data-from="x:-300,rz:60,s:1.2,o:.85" data-to="rz:28,o:.55">
+            <svg width="210" viewBox="0 0 220 60" fill="none" stroke="rgba(245,245,247,.7)" stroke-width="1.5" stroke-linejoin="round">
+              <rect x="44" y="18" width="150" height="24" rx="4" fill="rgba(255,255,255,.04)"/>
+              <path d="M44 18 L14 30 L44 42" fill="rgba(255,255,255,.06)"/>
+              <path d="M14 30 L26 25 L26 35 Z" fill="#f97316" stroke="#f97316"/>
+              <path d="M62 18 v24 M176 18 v24" opacity=".5"/>
+              <rect x="194" y="16" width="16" height="28" rx="5" opacity=".8"/>
+            </svg>
+          </div>
+          <!-- Wireframe cube -->
+          <div class="cine-obj cine-obj--xl" style="left:5%;top:8%;" data-depth="0.6"
+               data-from="y:-220,rx:70,ry:60,s:1.2,o:.8" data-to="rx:22,ry:32,o:.5">
+            <svg width="140" viewBox="0 0 150 150" fill="none" stroke="rgba(245,245,247,.6)" stroke-width="1.4" stroke-linejoin="round">
+              <rect x="22" y="40" width="76" height="76" rx="3"/>
+              <rect x="52" y="18" width="76" height="76" rx="3" opacity=".7"/>
+              <path d="M22 40 L52 18 M98 40 L128 18 M22 116 L52 94 M98 116 L128 94"/>
+              <circle cx="52" cy="18" r="3" fill="#f97316" stroke="none"/>
+            </svg>
+          </div>
+          <!-- Gyro rings -->
+          <div class="cine-obj cine-obj--xl" style="left:87%;top:7%;" data-depth="1.4"
+               data-from="x:180,ry:-160,s:1.3,o:.8" data-to="ry:-24,o:.55">
+            <svg width="140" viewBox="0 0 150 150" fill="none" stroke="rgba(245,245,247,.6)" stroke-width="1.4">
+              <circle cx="75" cy="75" r="58"/>
+              <ellipse cx="75" cy="75" rx="58" ry="22" opacity=".7"/>
+              <ellipse cx="75" cy="75" rx="24" ry="58" opacity=".5"/>
+              <circle cx="75" cy="75" r="4" fill="#f97316" stroke="none"/>
+            </svg>
+          </div>
         </div>
+
+        <div class="pg2-wrap cine-copy">
+          <nav class="pg2-crumbs" aria-label="Caminho de navegação">
+            <ol>
+              <li><a href="/">Início</a></li>
+              <li class="sep" aria-hidden="true">›</li>
+              <li aria-current="page">Produção &amp; Criatividade</li>
+            </ol>
+          </nav>
+          <p class="pg2-eyebrow">Produção &amp; Criatividade</p>
+          <h1 class="cine-h1">Produção e comunicação visual para projetos corporativos.</h1>
+          <p class="cine-lede cine-fade" data-at="0.08">Stands, eventos, fardamentos, sinalética e identidade visual — coordenados do briefing à entrega, com um único interlocutor e o prazo do evento como referência.</p>
+          <div class="cine-ctas cine-fade" data-at="0.16">
+            <a href="/pedido.html" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
+            <a href="/portfolio.html" class="pg2-btn pg2-btn--ghost">Ver projetos</a>
+          </div>
+        </div>
+
+        <div class="cine-hint" aria-hidden="true">Deslize para explorar</div>
       </div>
     </section>
 

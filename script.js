@@ -459,7 +459,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "Compromisso Pagamento Pontual 2026": "On-Time Payment Commitment 2026",
     "© 2026 ON4U. Todos os direitos reservados.": "© 2026 ON4U. All rights reserved.",
     "Privacidade": "Privacy",
-    "Termos": "Terms"
+    "Termos": "Terms",
+    "Deslize para explorar": "Scroll to explore"
   };
 
   var origText = new WeakMap();   // text node -> original PT value
@@ -576,4 +577,185 @@ document.addEventListener("DOMContentLoaded", () => {
   function init() { buildSwitcher(); if (current() === 'en') apply('en'); }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
   else { init(); }
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Living glass — proximity-aware 3D tilt + cursor spotlight.
+   One pointer listener feeds one rAF loop. Every card reacts when
+   the cursor enters a detection ZONE around it (not only on hover):
+   it eases (lerps) toward a tilt / lift / glow that leans toward the
+   pointer, so it feels alive and never teleports into position.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-step, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-bento-tile, .im-stack-card, .im-rail, .im-pipe, .im-manifest';
+  var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-step, .pg2-pf, .pf-card, .im-bento-tile';
+  var ZONE = 120;      // px of detection margin around each card
+  var MAXTILT = 6;     // deg
+  var MAXLIFT = 8;     // px
+  var EASE = 0.14;     // lerp factor toward target (higher = snappier)
+  var px = -99999, py = -99999;
+  var cards = [];
+  var running = false;
+
+  function collect() {
+    Array.prototype.forEach.call(document.querySelectorAll(GLOW_SEL + ', ' + TILT_SEL), function (el) {
+      if (el.dataset.living) return;
+      el.dataset.living = '1';
+      var spot = el.matches(GLOW_SEL);
+      var tilt = !REDUCED && el.matches(TILT_SEL);
+      if (spot) el.classList.add('glass-spot');
+      if (tilt) el.classList.add('glass-tilt');
+      cards.push({ el: el, spot: spot, tilt: tilt, rx: 0, ry: 0, lift: 0, glow: 0, mx: 50, my: 50 });
+    });
+  }
+
+  function kick() { if (!running) { running = true; requestAnimationFrame(loop); } }
+  function onMove(e) { px = e.clientX; py = e.clientY; kick(); }
+  function onLeave() { px = -99999; py = -99999; kick(); }
+
+  function loop() {
+    var keep = false;
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i], el = c.el, r = el.getBoundingClientRect();
+      if (!r.width || !r.height) continue;
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      // shortest distance from cursor to the card's edges (0 when inside)
+      var ddx = Math.max(r.left - px, 0, px - r.right);
+      var ddy = Math.max(r.top - py, 0, py - r.bottom);
+      var dist = Math.sqrt(ddx * ddx + ddy * ddy);
+      var prox = dist <= 0 ? 1 : Math.max(0, 1 - dist / ZONE);   // 1 inside → 0 at ZONE edge
+      // offset of cursor from card centre, normalised (leans out beyond the card)
+      var ox = Math.max(-1.5, Math.min(1.5, (px - cx) / (r.width / 2)));
+      var oy = Math.max(-1.5, Math.min(1.5, (py - cy) / (r.height / 2)));
+      var tRX = -oy * MAXTILT * prox, tRY = ox * MAXTILT * prox;
+      var tLift = -MAXLIFT * prox, tGlow = prox;
+      var tmx = ((px - r.left) / r.width) * 100, tmy = ((py - r.top) / r.height) * 100;
+      // ease current → target
+      c.rx += (tRX - c.rx) * EASE;
+      c.ry += (tRY - c.ry) * EASE;
+      c.lift += (tLift - c.lift) * EASE;
+      c.glow += (tGlow - c.glow) * EASE;
+      if (prox > 0.001) { c.mx += (tmx - c.mx) * EASE; c.my += (tmy - c.my) * EASE; }
+      if (c.tilt) {
+        el.style.setProperty('--rx', c.rx.toFixed(2) + 'deg');
+        el.style.setProperty('--ry', c.ry.toFixed(2) + 'deg');
+        el.style.setProperty('--lift', c.lift.toFixed(2) + 'px');
+      }
+      if (c.spot) {
+        el.style.setProperty('--glow', c.glow.toFixed(3));
+        el.style.setProperty('--mx', c.mx.toFixed(1) + '%');
+        el.style.setProperty('--my', c.my.toFixed(1) + '%');
+      }
+      if (prox > 0.001 || Math.abs(c.rx) > 0.02 || Math.abs(c.ry) > 0.02 || c.glow > 0.01 || Math.abs(c.lift) > 0.05) keep = true;
+    }
+    if (keep) requestAnimationFrame(loop); else running = false;
+  }
+
+  function start() {
+    collect();
+    window.addEventListener('pointermove', onMove, { passive: true });
+    window.addEventListener('pointerdown', onMove, { passive: true });
+    window.addEventListener('blur', onLeave);
+    document.documentElement.addEventListener('mouseleave', onLeave);
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', start); }
+  else { start(); }
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Cinematic service-hero engine.
+   A [data-cine] section is a tall scroll runway with a sticky stage.
+   Scroll progress p (0→1, eased) interpolates every [data-obj] from
+   its data-from pose to its data-to pose (x/y px, s scale, rx/ry/rz
+   deg, o opacity), reveals .cine-fade copy at data-at thresholds, and
+   draws [data-draw] strokes via dashoffset. Pointer adds a small
+   per-depth parallax. Reduced motion → everything settled (p=1).
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DEF = { x: 0, y: 0, s: 1, rx: 0, ry: 0, rz: 0, o: 1 };
+  var sections = [], pmx = 0, pmy = 0, ticking = false;
+
+  function parse(str) {
+    var out = {};
+    (str || '').split(',').forEach(function (kv) {
+      var p = kv.split(':');
+      if (p.length === 2) { var v = parseFloat(p[1]); if (isFinite(v)) out[p[0].trim()] = v; }
+    });
+    return out;
+  }
+  function ease(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function collect() {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-cine]'), function (sec) {
+      var s = { el: sec, objs: [], fades: [], draws: [] };
+      Array.prototype.forEach.call(sec.querySelectorAll('.cine-obj'), function (el) {
+        s.objs.push({
+          el: el,
+          from: Object.assign({}, DEF, parse(el.getAttribute('data-from'))),
+          to: Object.assign({}, DEF, parse(el.getAttribute('data-to'))),
+          depth: parseFloat(el.getAttribute('data-depth') || '0.6')
+        });
+      });
+      Array.prototype.forEach.call(sec.querySelectorAll('.cine-fade'), function (el) {
+        s.fades.push({ el: el, at: parseFloat(el.getAttribute('data-at') || '0.1') });
+      });
+      Array.prototype.forEach.call(sec.querySelectorAll('[data-draw]'), function (el) {
+        try {
+          var len = el.getTotalLength();
+          el.style.strokeDasharray = len;
+          el.style.strokeDashoffset = len;
+          s.draws.push({ el: el, len: len });
+        } catch (e) { /* non-geometry element: skip */ }
+      });
+      sections.push(s);
+    });
+  }
+
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+    sections.forEach(function (s) {
+      var r = s.el.getBoundingClientRect();
+      var runway = r.height - vh;
+      var p = (REDUCED || runway <= 0) ? 1 : Math.max(0, Math.min(1, -r.top / runway));
+      var e = ease(p);
+      s.el.style.setProperty('--p', p.toFixed(4));
+      if (r.bottom < -80 || r.top > vh + 80) return; // section offscreen
+      s.objs.forEach(function (o) {
+        var v = {}, k;
+        for (k in DEF) v[k] = o.from[k] + (o.to[k] - o.from[k]) * e;
+        var x = v.x + pmx * o.depth * 30, y = v.y + pmy * o.depth * 19;
+        o.el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)' +
+          ' rotateX(' + v.rx.toFixed(1) + 'deg) rotateY(' + v.ry.toFixed(1) + 'deg) rotateZ(' + v.rz.toFixed(1) + 'deg)' +
+          ' scale(' + Math.max(0.01, v.s).toFixed(3) + ')';
+        o.el.style.opacity = Math.max(0, Math.min(1, v.o)).toFixed(3);
+      });
+      s.fades.forEach(function (f) { if (e >= f.at) f.el.classList.add('is-in'); });
+      s.draws.forEach(function (d) { d.el.style.strokeDashoffset = (d.len * (1 - e)).toFixed(1); });
+    });
+  }
+  function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+
+  function start() {
+    collect();
+    if (!sections.length) return;
+    window.addEventListener('scroll', req, { passive: true });
+    window.addEventListener('resize', req, { passive: true });
+    if (!REDUCED) {
+      window.addEventListener('pointermove', function (ev) {
+        pmx = (ev.clientX / window.innerWidth - 0.5) * 2;
+        pmy = (ev.clientY / window.innerHeight - 0.5) * 2;
+        req();
+      }, { passive: true });
+    }
+    // If the visitor lingers without scrolling, stage the copy in anyway.
+    setTimeout(function () {
+      sections.forEach(function (s) { s.fades.forEach(function (f) { f.el.classList.add('is-in'); }); });
+    }, 1900);
+    update();
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', start); }
+  else { start(); }
 })();

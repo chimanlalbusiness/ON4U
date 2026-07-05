@@ -29,9 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="style.css?v=16" />
   <link rel="stylesheet" href="components/world-map.css" />
-  <link rel="stylesheet" href="scrolly_styles.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script>/* Apply saved theme instantly to prevent flash */
   if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
   <style>
@@ -41,8 +39,6 @@
     .mobile-menu-toggle.is-active .hamburger{background:transparent!important}
     .mobile-menu-toggle.is-active .hamburger::before{transform:translateY(7px) rotate(45deg)}
     .mobile-menu-toggle.is-active .hamburger::after{transform:translateY(-7px) rotate(-45deg)}
-    /* visible breadcrumb above the pinned scrolly hero */
-    .flagship-crumbs{position:relative;z-index:30;background:#09090b;border-bottom:1px solid rgba(255,255,255,0.055);padding:0.85rem 0}
   </style>
 
   <!-- JSON-LD: Organization -->
@@ -182,619 +178,295 @@
     </nav>
   </header>
 
-  <nav class="flagship-crumbs" aria-label="Caminho de navegação">
-    <div class="container">
-      <ol class="pg2-crumbs" style="margin:0;">
-        <li><a href="/">Início</a></li>
-        <li class="sep" aria-hidden="true">›</li>
-        <li aria-current="page">Operação Internacional</li>
-      </ol>
-    </div>
-  </nav>
+<main class="pg2-main" id="main">
 
-  <main class="scrolly-container">
+    <!-- CINEMATIC HERO — cargo objects settle around the copy -->
+    <section class="svc-cine" id="hero" data-cine>
+      <div class="cine-stage">
+        <div class="cine-bg cine-bg--grid" aria-hidden="true"></div>
 
-    <!-- 1) HERO (Pinned) -->
-    <section class="scrolly-section" id="hero" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
+        <div class="cine-objs" aria-hidden="true">
+          <!-- Route arc: draws itself with scroll -->
+          <div class="cine-obj cine-obj--wide" style="left:6%;top:56%;" data-depth="0.25"
+               data-from="y:70,o:0" data-to="o:.55">
+            <svg width="880" viewBox="0 0 900 300" fill="none" stroke-width="1.8" stroke-linecap="round">
+              <path data-draw stroke="rgba(249,115,22,.55)" d="M20 250 C 200 60, 480 40, 640 140 S 860 240, 878 90"/>
+              <circle cx="20" cy="250" r="5" fill="#f97316" stroke="none"/>
+              <circle cx="878" cy="90" r="6" stroke="rgba(245,245,247,.6)"/>
+            </svg>
+          </div>
+          <!-- Plane (top view) -->
+          <div class="cine-obj" style="left:64%;top:12%;" data-depth="1.1"
+               data-from="x:-320,y:200,rz:-42,s:1.35" data-to="rz:8">
+            <svg width="170" viewBox="0 0 200 200" fill="none" stroke="rgba(245,245,247,.75)" stroke-width="1.6" stroke-linejoin="round">
+              <path d="M100 18 C 106 40 106 58 104 74 L 178 118 L 178 134 L 104 112 L 102 152 L 126 170 L 126 182 L 100 174 L 74 182 L 74 170 L 98 152 L 96 112 L 22 134 L 22 118 L 96 74 C 94 58 94 40 100 18 Z" fill="rgba(255,255,255,.05)"/>
+              <circle cx="100" cy="96" r="3" fill="#f97316" stroke="none"/>
+            </svg>
+          </div>
+          <!-- Iso container -->
+          <div class="cine-obj" style="left:76%;top:52%;" data-depth="0.85"
+               data-from="x:260,y:180,ry:-44,rz:12,s:1.3" data-to="ry:-16,rz:0">
+            <svg width="210" viewBox="0 0 240 180" fill="none" stroke="rgba(245,245,247,.72)" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M20 60 L120 20 L220 60 L220 130 L120 170 L20 130 Z" fill="rgba(255,255,255,.04)"/>
+              <path d="M20 60 L120 100 L220 60 M120 100 V170" opacity=".8"/>
+              <path d="M40 76 v52 M60 84 v52 M80 92 v52 M100 100 v52" opacity=".45"/>
+              <path d="M140 92 v52 M160 84 v52 M180 76 v52 M200 68 v52" opacity=".45"/>
+              <path d="M120 100 V170" stroke="#f97316" opacity=".9"/>
+            </svg>
+          </div>
+          <!-- Cargo ship -->
+          <div class="cine-obj cine-obj--xl" style="left:2%;top:68%;" data-depth="0.5"
+               data-from="x:-260,s:1.15,o:.85" data-to="o:.55">
+            <svg width="240" viewBox="0 0 260 150" fill="none" stroke="rgba(245,245,247,.7)" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M18 96 L242 96 L222 128 L44 128 Z" fill="rgba(255,255,255,.05)"/>
+              <rect x="176" y="58" width="34" height="38" rx="2" opacity=".85"/>
+              <path d="M182 66 h22 M182 76 h22" opacity=".5"/>
+              <rect x="52" y="72" width="30" height="24" rx="2"/>
+              <rect x="86" y="72" width="30" height="24" rx="2" stroke="#f97316"/>
+              <rect x="120" y="72" width="30" height="24" rx="2"/>
+              <rect x="70" y="48" width="30" height="24" rx="2" opacity=".7"/>
+              <rect x="104" y="48" width="30" height="24" rx="2" opacity=".7"/>
+              <path d="M10 140 q10 -8 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" opacity=".4"/>
+            </svg>
+          </div>
+          <!-- Compass rose -->
+          <div class="cine-obj cine-obj--xl" style="left:6%;top:9%;" data-depth="1.3"
+               data-from="rz:-130,s:1.25,o:.75" data-to="rz:0,o:.5">
+            <svg width="130" viewBox="0 0 130 130" fill="none" stroke="rgba(245,245,247,.6)" stroke-width="1.4">
+              <circle cx="65" cy="65" r="52"/>
+              <circle cx="65" cy="65" r="38" opacity=".5" stroke-dasharray="3 7"/>
+              <path d="M65 13 v14 M65 103 v14 M13 65 h14 M103 65 h14" opacity=".7"/>
+              <path d="M65 34 L74 65 L65 96 L56 65 Z" fill="rgba(249,115,22,.2)" stroke="#f97316"/>
+            </svg>
+          </div>
         </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Operação internacional por pedido</p>
-              <h1 class="scrolly-title"><span class="text-gradient">Importação,</span> fornecimento e <span
-                  class="text-gradient">distribuição</span> com controlo operacional</h1>
-              <p class="scrolly-sub">
-                <span class="hide-mobile">Coordenamos operações internacionais do requisito ao destino, com validação,
-                  documentação e acompanhamento por etapas. Para equipas de Operações e Logística que precisam de
-                  clareza antes de comprometer prazos, custos e execução.</span>
-                <span class="mobile-only">Do requisito ao destino: validação, documentação e coordenação por
-                  etapas.</span>
-              </p>
-              <ul class="scrolly-bullets">
-                <li>Requisitos confirmados<span class="hide-mobile"> antes de avançar</span></li>
-                <li>Documentação <span class="hide-mobile">integrada </span>desde o início</li>
-                <li>Um ponto de contacto até <span class="hide-mobile">à entrega e fecho</span><span
-                    class="mobile-only">ao fecho</span></li>
+
+        <div class="pg2-wrap cine-copy">
+          <nav class="pg2-crumbs" aria-label="Caminho de navegação">
+            <ol>
+              <li><a href="/">Início</a></li>
+              <li class="sep" aria-hidden="true">›</li>
+              <li aria-current="page">Operação Internacional</li>
+            </ol>
+          </nav>
+          <p class="pg2-eyebrow">Operação internacional por pedido</p>
+          <h1 class="cine-h1">Importação, fornecimento e distribuição internacional por pedido, com controlo.</h1>
+          <p class="cine-lede cine-fade" data-at="0.08">Recebemos o requisito, validamos viabilidade e documentação, e coordenamos sourcing, transporte e desembaraço aduaneiro até à entrega — com um único interlocutor.</p>
+          <div class="cine-ctas cine-fade" data-at="0.16">
+            <a href="/pedido.html" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
+            <a href="#process" class="pg2-btn pg2-btn--ghost">Ver como funciona</a>
+          </div>
+          <ul class="cine-chips cine-fade" data-at="0.24">
+            <li>Requisitos confirmados antes de avançar</li>
+            <li>Documentação integrada desde o início</li>
+            <li>Um ponto de contacto até ao fecho</li>
+          </ul>
+        </div>
+
+        <div class="cine-hint" aria-hidden="true">Deslize para explorar</div>
+      </div>
+    </section>
+
+    <!-- PRESENÇA OPERACIONAL -->
+    <section class="pg2-section pg2-section--1" id="presence">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Presença operacional</p>
+          <h2 class="pg2-h2">Base e presença em pontos-chave para a operação internacional.</h2>
+        </div>
+        <p class="pg2-lede pg2-measure pg2-reveal">Sede em Portugal, presença operacional em São Tomé e Príncipe e na Guiné-Bissau, e escritórios na China e na Índia — perto da origem e do destino da maioria dos pedidos.</p>
+        <div class="im-bento pg2-reveal">
+          <article class="im-bento-tile im-bento-pt">
+            <span class="im-bento-watermark" aria-hidden="true">PT</span>
+            <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <h3>Base em Portugal</h3>
+            <p>Coordenação central, validação e próximos passos.</p>
+            <span class="im-tag">Sede</span>
+          </article>
+          <article class="im-bento-tile im-bento-stp">
+            <h3>STP &bull; Bissau</h3>
+            <p>Suporte local para alinhamentos e execução.</p>
+            <span class="im-tag">Presença operacional</span>
+          </article>
+          <article class="im-bento-tile im-bento-asia">
+            <h3>China e Índia</h3>
+            <p>Escritórios de apoio à origem e sourcing.</p>
+            <span class="im-tag">Escritórios</span>
+          </article>
+          <article class="im-bento-tile im-bento-wide">
+            <div>
+              <h3>Rede de parceiros</h3>
+              <p>Transporte, manuseamento e processos locais — execução por destino.</p>
+            </div>
+            <span class="im-tag">Execução local</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REDE DE EXECUÇÃO -->
+    <section class="pg2-section pg2-section--2" id="network">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Rede de execução</p>
+          <h2 class="pg2-h2">Coordenação internacional do fornecimento à entrega.</h2>
+        </div>
+        <p class="pg2-lede pg2-measure pg2-reveal">Uma só equipa liga fornecedor, transporte e destino. Não passamos o pedido de mão em mão entre intermediários: coordenamos cada etapa e respondemos por todas.</p>
+        <ul class="pg2-reveal" style="list-style:none;padding:0;margin:0 0 2.25rem;display:flex;flex-direction:column;gap:0.6rem;max-width:62ch;">
+          <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Etapas definidas conforme origem, destino, prazo e restrições do pedido</li>
+          <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Articulação entre recolha, expedição, processos aduaneiros e entrega (quando necessário)</li>
+          <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Seguimento por marcos operacionais até ao fecho</li>
+        </ul>
+        <div class="im-rail pg2-reveal" role="list" aria-label="Modos de transporte">
+          <div class="im-rail-line" aria-hidden="true"></div>
+          <div class="im-rail-seg" role="listitem">
+            <div class="im-rail-ico"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round"><path d="M100 18 C 106 40 106 58 104 74 L 178 118 L 178 134 L 104 112 L 102 152 L 126 170 L 126 182 L 100 174 L 74 182 L 74 170 L 98 152 L 96 112 L 22 134 L 22 118 L 96 74 C 94 58 94 40 100 18 Z"/></svg></div>
+            <h3>Aéreo</h3>
+            <p>Prazos curtos, volumes mais pequenos ou alto valor.</p>
+          </div>
+          <div class="im-rail-seg" role="listitem">
+            <div class="im-rail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h18l-2.5 6h-13z"/><path d="M6 14V8h12v6"/><path d="M10 8V5h4v3"/><path d="M2 21q2-1.5 4 0t4 0t4 0t4 0t4 0"/></svg></div>
+            <h3>Marítimo</h3>
+            <p>Volumes maiores em que o custo pesa mais do que o prazo.</p>
+          </div>
+          <div class="im-rail-seg" role="listitem">
+            <div class="im-rail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg></div>
+            <h3>Rodoviário</h3>
+            <p>Origens e destinos por rota rodoviária, em prazos intermédios.</p>
+          </div>
+        </div>
+        <p class="pg2-reveal" style="margin-top:1.75rem;"><a class="pg2-link" href="#process">Ver o processo completo <span aria-hidden="true">&rarr;</span></a></p>
+      </div>
+    </section>
+
+    <!-- CENTRO OPERACIONAL -->
+    <section class="pg2-section pg2-section--1" id="hub">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Centro operacional</p>
+          <h2 class="pg2-h2">Um ponto de controlo para validar, coordenar e executar.</h2>
+        </div>
+        <p class="pg2-lede pg2-measure pg2-reveal">Antes de qualquer compromisso, confirmamos viabilidade, condições e documentação. É o filtro que evita surpresas na alfândega, no prazo ou na qualidade.</p>
+        <div class="im-pipe pg2-reveal">
+          <div class="im-pipe-stage">
+            <span class="im-pipe-k">01</span>
+            <div>
+              <h3>Controlo</h3>
+              <p>Requisitos e próximos passos sempre claros.</p>
+            </div>
+          </div>
+          <div class="im-pipe-arrow" aria-hidden="true">&rarr;</div>
+          <div class="im-pipe-stage">
+            <span class="im-pipe-k">02</span>
+            <div>
+              <h3>Validação</h3>
+              <p>Viabilidade confirmada antes de avançar.</p>
+            </div>
+          </div>
+          <div class="im-pipe-arrow" aria-hidden="true">&rarr;</div>
+          <div class="im-pipe-stage">
+            <span class="im-pipe-k">03</span>
+            <div>
+              <h3>Execução</h3>
+              <p>Coordenação contínua até à entrega e fecho.</p>
+            </div>
+          </div>
+        </div>
+        <p class="pg2-form-note pg2-reveal" style="margin-top:1.5rem;">Pedido &rarr; confirmação &rarr; validação &rarr; proposta + próximos passos.</p>
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="pg2-section pg2-section--0" id="process">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">Como trabalhamos</p>
+          <h2 class="pg2-h2">Processo curto, claro e auditável.</h2>
+        </div>
+        <p class="pg2-lede pg2-measure pg2-reveal">Sem atalhos. Cada fase reduz risco antes de avançar para a seguinte.</p>
+        <ol class="im-stack pg2-reveal">
+          <li class="im-stack-card" style="--i:0;">
+            <span class="im-stack-k" aria-hidden="true">01</span>
+            <div>
+              <h3>Requisitos</h3>
+              <p>Especificações, quantidades, destino, prazo e restrições. Tudo o que define o pedido fica registado antes de qualquer compromisso.</p>
+            </div>
+          </li>
+          <li class="im-stack-card" style="--i:1;">
+            <span class="im-stack-k" aria-hidden="true">02</span>
+            <div>
+              <h3>Validação</h3>
+              <p>Viabilidade, condições e documentação necessária. É aqui que se decide o modo de transporte e o que o desembaraço exige.</p>
+            </div>
+          </li>
+          <li class="im-stack-card" style="--i:2;">
+            <span class="im-stack-k" aria-hidden="true">03</span>
+            <div>
+              <h3>Proposta &amp; Planeamento</h3>
+              <p>Enquadramento, prazos e etapas de execução — devolvidos como proposta clara, sem promessas vagas.</p>
+            </div>
+          </li>
+          <li class="im-stack-card" style="--i:3;">
+            <span class="im-stack-k" aria-hidden="true">04</span>
+            <div>
+              <h3>Execução &amp; Acompanhamento</h3>
+              <p>Coordenação operacional por marcos até à entrega, com um único ponto de contacto do início ao fecho.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">Para o nosso modelo completo, veja <a href="/sobre.html">como trabalhamos</a>.</p>
+      </div>
+    </section>
+
+    <!-- O QUE COORDENAMOS — bloco factual -->
+    <section class="pg2-section pg2-section--1" id="coordenamos">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-reveal">
+          <p class="pg2-eyebrow">O que coordenamos</p>
+          <h2 class="pg2-h2">O que tratamos num pedido internacional.</h2>
+        </div>
+        <p class="pg2-lede pg2-measure pg2-reveal">A Operação Internacional da ON4U coordena importação, exportação, sourcing e distribuição por pedido — incluindo documentação, processos alfandegários e transporte aéreo, terrestre e marítimo.</p>
+        <div class="im-manifest pg2-reveal">
+          <div class="im-stamp" aria-hidden="true"><span>ON4U<br>por pedido</span></div>
+          <div class="im-manifest-grid">
+            <div>
+              <p class="im-manifest-title">Âmbito coordenado</p>
+              <ul class="im-checklist">
+                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Importação</strong> — entrada de mercadoria de fornecedores internacionais para Portugal e outros destinos.</span></li>
+                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Exportação</strong> — colocação de mercadoria de origem portuguesa em mercados internacionais.</span></li>
+                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Sourcing</strong> — identificação e validação de fornecedores, com origem na China e na Índia, entre outros.</span></li>
+                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Consolidação</strong> — agregação de encomendas para otimizar transporte e custo.</span></li>
+                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Documentação e processos alfandegários</strong> — preparação e acompanhamento da documentação necessária ao desembaraço.</span></li>
+                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Distribuição</strong> — entrega no destino final, dentro ou fora de Portugal.</span></li>
               </ul>
-              <div class="hero-actions" style="margin-top: 2rem;">
-                <a href="/pedido.html" class="btn btn-primary">Pedir Orçamento</a>
-                <a href="#process" class="btn btn-outline">Ver como funciona</a>
-              </div>
             </div>
-            <div class="scrolly-visual-block anim-visual">
-              <div class="hero-dashboard-card floating-card">
-
-                <div class="dash-card-header">
-                  <div class="pulse-indicator"></div>
-                  <span>Sistema Ativo</span>
-                </div>
-
-                <div class="dash-card-grid">
-                  <div class="dash-card-item">
-                    <div class="dash-card-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <path
-                          d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                        </path>
-                      </svg>
-                    </div>
-                    <div class="dash-card-content">
-                      <span class="dash-card-label">Cobertura</span>
-                      <span class="dash-card-value">Internacional (por destino e projeto)</span>
-                    </div>
-                  </div>
-
-                  <div class="dash-card-item">
-                    <div class="dash-card-icon highlight">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                          d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                        </path>
-                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                      </svg>
-                    </div>
-                    <div class="dash-card-content">
-                      <span class="dash-card-label">Modos</span>
-                      <span class="dash-card-value">Importação &bull; Exportação &bull; Distribuição</span>
-                    </div>
-                  </div>
-
-                  <div class="dash-card-item">
-                    <div class="dash-card-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                      </svg>
-                    </div>
-                    <div class="dash-card-content">
-                      <span class="dash-card-label"><span class="hide-mobile">Confiança/</span>Processo</span>
-                      <span class="dash-card-value">Checkpoints &bull; Documentação &bull; <span
-                          class="hide-mobile">Coordenação até ao fecho</span><span
-                          class="mobile-only">Acompanhamento</span></span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="dash-card-footer">
-                  <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                  </div>
-                  <span>Acompanhamento por etapas</span>
-                </div>
-
-              </div>
+            <div>
+              <p class="im-manifest-title">Modos de transporte</p>
+              <table class="pg2-table">
+                <thead><tr><th>Modo</th><th>Quando faz sentido</th></tr></thead>
+                <tbody>
+                  <tr><td>Aéreo</td><td>Prazos curtos, volumes mais pequenos ou alto valor.</td></tr>
+                  <tr><td>Terrestre</td><td>Origens e destinos por rota rodoviária, dentro de prazos intermédios.</td></tr>
+                  <tr><td>Marítimo</td><td>Volumes maiores em que o custo pesa mais do que o prazo.</td></tr>
+                </tbody>
+              </table>
+              <p class="pg2-form-note">O modo é decidido na fase de validação, em função de prazo, volume e custo do pedido.</p>
             </div>
           </div>
         </div>
+        <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">Para produtos de saúde de fonte certificada, veja <a href="/health-care.html">produtos de saúde por pedido</a>.</p>
       </div>
     </section>
 
-    <section class="scrolly-section" id="presence" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
+    <!-- COBERTURA / MAPA -->
+    <section class="pg2-section pg2-section--2" id="map-hub">
+      <div class="pg2-wrap">
+        <div class="pg2-shead pg2-shead--center pg2-reveal">
+          <p class="pg2-eyebrow">Cobertura</p>
+          <h2 class="pg2-h2">Base em Portugal. Operação internacional ajustada a cada destino.</h2>
+          <p class="pg2-lede" style="margin-bottom:0;">Definida pelo destino, pelo tipo de fornecimento e pelas exigências do projeto.</p>
         </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Presença operacional</p>
-              <h2 class="scrolly-title"><span class="text-gradient">Base e presença</span> em pontos-chave para
-                coordenar melhor cada operação</h2>
-              <p class="scrolly-sub">
-                <span class="hide-mobile">Estrutura desenhada para reduzir fricção entre origem, documentação, expedição
-                  e destino, com coordenação contínua ao longo do processo.</span>
-                <span class="mobile-only">Reduz fricção entre origem, documentos, expedição e destino.</span>
-              </p>
-            </div>
-            <div class="scrolly-visual-block grid-cards anim-visual">
-
-              <!-- HQ -->
-              <div class="fact-card hover-lift">
-                <div class="fact-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" width="28" height="28">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                </div>
-                <h4>Base em Portugal</h4>
-                <p>Coordenação central da operação.</p>
-                <div class="fact-card-expand">
-                  <p>Coordenação central, validação e próximos passos.</p>
-                </div>
-              </div>
-
-              <!-- Africa office -->
-              <div class="fact-card hover-lift">
-                <div class="fact-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" width="28" height="28">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <h4>STP &bull; Bissau</h4>
-                <p>Suporte local para execução.</p>
-                <div class="fact-card-expand">
-                  <p>Suporte local para alinhamentos e execução.</p>
-                </div>
-              </div>
-
-              <!-- Asia offices -->
-              <div class="fact-card hover-lift">
-                <div class="fact-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" width="28" height="28">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path
-                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                </div>
-                <h4>Escritórios na China e Índia</h4>
-                <p>Apoio à origem e sourcing.</p>
-                <div class="fact-card-expand">
-                  <p>Apoio à origem e coordenação do fornecimento.</p>
-                </div>
-              </div>
-
-              <!-- Partner network -->
-              <div class="fact-card hover-lift">
-                <div class="fact-card-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" width="28" height="28">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-                <h4>Rede de parceiros</h4>
-                <p>Execução local por destino.</p>
-                <div class="fact-card-expand">
-                  <p>Transporte, manuseamento e processos locais.</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3) DISTRIBUTION NETWORK (Pinned) -->
-    <section class="scrolly-section" id="network" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Rede de execução</p>
-              <h2 class="scrolly-title"><span class="text-gradient">Coordenação internacional</span> do fornecimento à
-                entrega</h2>
-              <ul class="scrolly-bullets">
-                <li>Etapas definidas <span class="hide-mobile">conforme </span><span class="mobile-only">por
-                  </span>origem, destino, prazo e restrições<span class="hide-mobile"> do pedido</span></li>
-                <li><span class="hide-mobile">Articulação entre </span><span class="mobile-only">Coordenação de
-                  </span><span class="hide-mobile">recolha, </span>expedição, <span class="hide-mobile">processos
-                    aduaneiros</span><span class="mobile-only">documentação</span> e entrega <span
-                    class="hide-mobile">,</span>(quando necessário)</li>
-                <li>Seguimento por marcos<span class="hide-mobile"> operacionais</span> até ao fecho</li>
-              </ul>
-              <p class="proof-line"><span class="hide-mobile">Equipa ON4U e parceiros locais coordenados para dar
-                  continuidade à operação do início ao fim.</span><span class="mobile-only">Equipa ON4U + parceiros
-                  locais ao longo do processo.</span></p>
-              <a href="#process" class="cta-micro mt-4">Ver <span class="hide-mobile">o </span>processo <span
-                  class="hide-mobile">completo </span>&rarr;</a>
-            </div>
-            <div class="scrolly-visual-block anim-visual">
-              <div class="route-rail-wrapper">
-                <div class="route-rail-header">
-                  <div class="pulse-indicator"></div>
-                  <span>Rastreio Operacional</span>
-                </div>
-
-                <!-- Transport Modes -->
-                <div class="transport-modes">
-                  <div class="transport-mode">
-                    <div class="transport-icon"><i class="fas fa-plane"></i></div>
-                    <span>Aéreo</span>
-                  </div>
-                  <div class="transport-mode">
-                    <div class="transport-icon"><i class="fas fa-ship"></i></div>
-                    <span>Marítimo</span>
-                  </div>
-                  <div class="transport-mode">
-                    <div class="transport-icon"><i class="fas fa-truck"></i></div>
-                    <span>Rodoviário</span>
-                  </div>
-                </div>
-
-                <div class="route-divider"></div>
-
-                <div class="route-rail">
-                  <div class="route-node completed">
-                    <div class="node-point"></div>
-                    <div class="node-label">Origem</div>
-                  </div>
-                  <div class="route-edge completed"></div>
-                  <div class="route-node active">
-                    <div class="node-point"></div>
-                    <div class="node-label">Despacho</div>
-                  </div>
-                  <div class="route-edge"></div>
-                  <div class="route-node">
-                    <div class="node-point"></div>
-                    <div class="node-label">Destino</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4) OPERATIONAL HUB (Pinned) -->
-    <section class="scrolly-section" id="hub" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container">
-          <div class="scrolly-grid">
-            <div class="scrolly-text-block anim-text">
-              <p class="scrolly-eyebrow">Centro operacional</p>
-              <h2 class="scrolly-title">Um ponto de controlo para <span class="text-gradient">validar<span
-                    class="hide-mobile">, coordenar</span> e executar</span></h2>
-              <p class="scrolly-sub">
-                <span class="hide-mobile">Numa operação internacional, os problemas começam muitas vezes antes da
-                  expedição: requisitos incompletos, documentação fora de tempo, decisões sem validação suficiente.
-                  Centralizamos estes pontos para aumentar previsibilidade e reduzir falhas evitáveis.</span>
-                <span class="mobile-only">Evita falhas típicas: requisitos incompletos e documentação fora de
-                  tempo.</span>
-              </p>
-              <ul class="scrolly-bullets">
-                <li><strong>Controlo:</strong> requisitos<span class="hide-mobile"> e próximos passos sempre</span><span
-                    class="mobile-only"> e próximos passos</span> claros</li>
-                <li><strong>Validação:</strong> <span class="hide-mobile">confirmação de viabilidade</span><span
-                    class="mobile-only">confirmar</span> antes de avançar</li>
-                <li><strong>Execução:</strong> coordenação<span class="hide-mobile"> contínua</span> até <span
-                    class="hide-mobile">à </span>entrega e <span class="hide-mobile">encerramento</span><span
-                    class="mobile-only">fecho</span></li>
-              </ul>
-              <p class="proof-line">
-                <span class="hide-mobile">Depois do pedido, confirmamos requisitos, validamos a viabilidade e enviamos
-                  proposta com próximos passos.</span>
-                <span class="mobile-only">Pedido &rarr; confirmação &rarr; validação &rarr; proposta + próximos
-                  passos.</span>
-              </p>
-            </div>
-            <div class="scrolly-visual-block anim-visual">
-              <div class="validation-stack">
-                <div class="v-card completed">
-                  <div class="v-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" width="20" height="20">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                      <polyline points="14 2 14 8 20 8"></polyline>
-                      <line x1="16" y1="13" x2="8" y2="13"></line>
-                      <line x1="16" y1="17" x2="8" y2="17"></line>
-                      <polyline points="10 9 9 9 8 9"></polyline>
-                    </svg>
-                  </div>
-                  <div class="v-text">Requisitos Claros</div>
-                  <div class="v-status">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" width="16" height="16">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </div>
-                </div>
-
-                <div class="v-card completed">
-                  <div class="v-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" width="20" height="20">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="12"></line>
-                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                    </svg>
-                  </div>
-                  <div class="v-text">Validação de Viabilidade</div>
-                  <div class="v-status">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" width="16" height="16">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                  </div>
-                </div>
-
-                <div class="v-card active">
-                  <div class="v-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" width="20" height="20">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
-                  </div>
-                  <div class="v-text">Execução Ponta a Ponta</div>
-                  <div class="v-status">
-                    <div class="pulse-dot"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5) PROCESS FLOW (Pinned) -->
-    <section class="scrolly-section" id="process" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container scrolly-flex-col">
-          <div class="text-center anim-text" style="margin-bottom: 1rem;">
-            <p class="scrolly-eyebrow">Como trabalhamos</p>
-            <h2 class="scrolly-title">Processo <span class="text-gradient">curto, claro e auditável</span></h2>
-            <p class="scrolly-sub">Sem atalhos. Cada fase reduz risco antes de avançar para a seguinte.</p>
-          </div>
-          <div class="processo-layout anim-visual" style="width: 100%;">
-            <div class="processo-phases-wrap">
-              <div class="processo-phases scrolly-dynamic-phases">
-                <div class="processo-phase" data-phase="1">
-                  <div class="phase-rail">
-                    <div class="phase-dot"></div>
-                    <div class="phase-line"></div>
-                  </div>
-                  <div class="phase-body">
-                    <h3>Requisitos</h3>
-                    <p>Especificações, quantidades, destino, prazo e restrições</p>
-                  </div>
-                </div>
-                <div class="processo-phase" data-phase="2">
-                  <div class="phase-rail">
-                    <div class="phase-dot"></div>
-                    <div class="phase-line"></div>
-                  </div>
-                  <div class="phase-body">
-                    <h3>Validação</h3>
-                    <p>Viabilidade, condições e documentação necessária</p>
-                  </div>
-                </div>
-                <div class="processo-phase" data-phase="3">
-                  <div class="phase-rail">
-                    <div class="phase-dot"></div>
-                    <div class="phase-line"></div>
-                  </div>
-                  <div class="phase-body">
-                    <h3>Proposta & Planeamento</h3>
-                    <p>Enquadramento, prazos e etapas de execução</p>
-                  </div>
-                </div>
-                <div class="processo-phase" data-phase="4">
-                  <div class="phase-rail">
-                    <div class="phase-dot"></div>
-                  </div>
-                  <div class="phase-body">
-                    <h3>Execução & Acompanhamento</h3>
-                    <p>Coordenação operacional por marcos até entrega</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Mobile Vertical Stepper (hidden on desktop) -->
-            <div class="processo-mobile-stepper" aria-label="Fluxo do processo">
-              <div class="mobile-step is-active" data-step="1">
-                <div class="step-indicator">
-                  <div class="step-dot">1</div>
-                </div>
-                <div class="step-content">
-                  <span class="step-label">Fase 1</span>
-                  <h4 class="step-title">Pedido</h4>
-                  <p class="step-desc">Receção dos requisitos: especificações, quantidades, destino e prazo.</p>
-                </div>
-              </div>
-              <div class="mobile-step" data-step="2">
-                <div class="step-indicator">
-                  <div class="step-dot">2</div>
-                </div>
-                <div class="step-content">
-                  <span class="step-label">Fase 2</span>
-                  <h4 class="step-title">Validação</h4>
-                  <p class="step-desc">Análise de viabilidade, condições e documentação necessária.</p>
-                </div>
-              </div>
-              <div class="mobile-step" data-step="3">
-                <div class="step-indicator">
-                  <div class="step-dot">3</div>
-                </div>
-                <div class="step-content">
-                  <span class="step-label">Fase 3</span>
-                  <h4 class="step-title">Orçamento & Logística</h4>
-                  <p class="step-desc">Proposta detalhada com planeamento de transporte e prazos.</p>
-                </div>
-              </div>
-              <div class="mobile-step" data-step="4">
-                <div class="step-indicator">
-                  <div class="step-dot">4</div>
-                </div>
-                <div class="step-content">
-                  <span class="step-label">Fase 4</span>
-                  <h4 class="step-title">Entrega Internacional</h4>
-                  <p class="step-desc">Coordenação operacional por marcos até entrega final.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="processo-diagram" aria-label="Diagrama de fluxo do pedido" style="height:100%;">
-              <svg class="modern-flow-svg" viewBox="0 0 500 240" preserveAspectRatio="xMidYMid meet" fill="none"
-                xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
-                <defs>
-                  <pattern id="diag-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
-                  </pattern>
-
-                  <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#f97316" stop-opacity="0.3"></stop>
-                    <stop offset="100%" stop-color="#f97316" stop-opacity="0"></stop>
-                  </radialGradient>
-
-                  <!-- Thin Arrow markers -->
-                  <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                    <polygon points="0 0, 6 2, 0 4" fill="#374151" class="arrow-tip" />
-                  </marker>
-                  <marker id="arrowhead-active" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                    <polygon points="0 0, 6 2, 0 4" fill="#f97316" />
-                  </marker>
-                </defs>
-
-                <rect width="100%" height="100%" fill="url(#diag-grid)" rx="12" />
-
-                <!-- Master Layout Base Path (Static Dark) -->
-                <!-- Start(30,120) > Pedido(110,120) > Validar(190,120) -->
-                <!-- Validar Splits: up to Orcamento(280,60) & down to Logistica(280,180) -->
-                <!-- Branch merges: to Entrega(430,120) -->
-                <path class="flow-base-path"
-                  d="M 30 120 L 110 120 L 190 120 L 220 120 C 240 120, 240 60, 280 60 L 360 60 C 390 60, 390 120, 430 120 M 190 120 L 220 120 C 240 120, 240 180, 280 180 L 360 180 C 390 180, 390 120, 430 120"
-                  stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-
-                <!-- Dynamic Path Outlines (Highlighted states based on active branch) -->
-                <!-- Phase 1: Start to Pedido -->
-                <path class="flow-link active-overlay p1-path" data-phase-target="1" d="M 30 120 L 110 120"
-                  stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowhead-active)" />
-                <!-- Phase 2: Pedido to Validar -->
-                <path class="flow-link active-overlay p2-path" data-phase-target="2" d="M 110 120 L 190 120"
-                  stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowhead-active)" />
-                <!-- Phase 3: Validar to Branches -->
-                <path class="flow-link active-overlay p3-path" data-phase-target="3"
-                  d="M 190 120 L 220 120 C 240 120, 240 60, 280 60 M 190 120 L 220 120 C 240 120, 240 180, 280 180"
-                  stroke="#f97316" stroke-width="1.5" />
-                <path class="flow-link active-overlay p3-arrow" data-phase-target="3"
-                  d="M 270 60 L 280 60 M 270 180 L 280 180" stroke="#f97316" stroke-width="1.5"
-                  marker-end="url(#arrowhead-active)" />
-                <!-- Phase 4: Branches to Merge (Entrega) -->
-                <path class="flow-link active-overlay p4-path" data-phase-target="4"
-                  d="M 280 60 L 360 60 C 390 60, 390 120, 430 120 M 280 180 L 360 180 C 390 180, 390 120, 430 120"
-                  stroke="#f97316" stroke-width="1.5" />
-                <path class="flow-link active-overlay p4-arrow" data-phase-target="4" d="M 420 120 L 430 120"
-                  stroke="#f97316" stroke-width="1.5" marker-end="url(#arrowhead-active)" />
-
-                <!-- Single SVG Marker Ball -->
-                <circle class="flow-ball" cx="30" cy="120" r="4" fill="#f97316" />
-
-                <!-- Nodes -->
-                <g class="flow-nodes">
-                  <!-- Start Node (Circle) -->
-                  <g class="flow-node" data-node="start">
-                    <circle class="node-bg" cx="30" cy="120" r="8" fill="#111827" stroke="#374151" stroke-width="1.5" />
-                    <!-- No text -->
-                  </g>
-
-                  <!-- Phase 1: Pedido (Rounded Rect) -->
-                  <g class="flow-node" data-node="pedido">
-                    <rect class="node-bg" x="80" y="105" width="60" height="30" rx="6" fill="#111827" stroke="#374151"
-                      stroke-width="1.5" />
-                    <circle class="node-glow" cx="110" cy="120" r="40" fill="url(#node-glow)" opacity="0"
-                      pointer-events="none" />
-                    <text x="110" y="124" text-anchor="middle" font-size="10" font-weight="600" fill="#9ca3af"
-                      font-family="Inter, sans-serif" class="node-text">Pedido</text>
-                  </g>
-
-                  <!-- Phase 2: Validação (Diamond) -->
-                  <g class="flow-node" data-node="validacao">
-                    <polygon class="node-bg" points="190,95 215,120 190,145 165,120" fill="#111827" stroke="#374151"
-                      stroke-width="1.5" stroke-linejoin="round" />
-                    <circle class="node-glow" cx="190" cy="120" r="40" fill="url(#node-glow)" opacity="0"
-                      pointer-events="none" />
-                    <text x="190" y="123" text-anchor="middle" font-size="9" font-weight="600" fill="#9ca3af"
-                      font-family="Inter, sans-serif" class="node-text">Validar</text>
-                  </g>
-
-                  <!-- Phase 3A: Orçamento (Parallelogram) -->
-                  <g class="flow-node" data-node="orcamento">
-                    <polygon class="node-bg" points="280,45 345,45 340,75 275,75" fill="#111827" stroke="#374151"
-                      stroke-width="1.5" stroke-linejoin="round" />
-                    <circle class="node-glow" cx="310" cy="60" r="40" fill="url(#node-glow)" opacity="0"
-                      pointer-events="none" />
-                    <text x="310" y="64" text-anchor="middle" font-size="10" font-weight="600" fill="#9ca3af"
-                      font-family="Inter, sans-serif" class="node-text">Orçamento</text>
-                  </g>
-
-                  <!-- Phase 3B: Logística (Process) -->
-                  <g class="flow-node" data-node="logistica">
-                    <rect class="node-bg" x="280" y="165" width="60" height="30" rx="4" fill="#111827" stroke="#374151"
-                      stroke-width="1.5" />
-                    <circle class="node-glow" cx="310" cy="180" r="40" fill="url(#node-glow)" opacity="0"
-                      pointer-events="none" />
-                    <text x="310" y="184" text-anchor="middle" font-size="10" font-weight="600" fill="#9ca3af"
-                      font-family="Inter, sans-serif" class="node-text">Logística</text>
-                  </g>
-
-                  <!-- Phase 4: Final Capsule -->
-                  <g class="flow-node" data-node="entrega">
-                    <rect class="node-bg" x="380" y="105" width="100" height="30" rx="15" fill="#111827"
-                      stroke="#374151" stroke-width="1.5" />
-                    <circle class="node-glow" cx="430" cy="120" r="50" fill="url(#node-glow)" opacity="0"
-                      pointer-events="none" />
-                    <text x="430" y="124" text-anchor="middle" font-size="9" font-weight="700" fill="#9ca3af"
-                      font-family="Inter, sans-serif" class="node-text">Entrega Internacional</text>
-                  </g>
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6) GLOBAL REACH MAP (Pinned) -->
-    <section class="scrolly-section" id="map-hub" data-theme="dark">
-      <div class="scrolly-sticky">
-        <div class="scrolly-bg">
-          <div class="scrolly-glow"></div>
-        </div>
-        <div class="scrolly-content container scrolly-flex-col">
-          <div class="text-center anim-text map-header" style="z-index: 10;">
-            <p class="scrolly-eyebrow">Cobertura</p>
-            <h2 class="scrolly-title"><span class="text-gradient">Base em Portugal.</span> Operação internacional
-              ajustada a cada destino</h2>
-            <p class="proof-line">Operação ajustada ao destino, ao tipo de fornecimento e às exigências do projeto.</p>
-          </div>
-
-          <div class="map-component-wrapper anim-visual transition-slow" style="width:100%; margin: -4rem 0;">
+        <div class="map-component-wrapper" style="width:100%;">
             <div class="map-container" data-element="map" aria-label="Mapa de operação internacional">
               <svg class="map-svg" viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
@@ -890,20 +562,15 @@
             </div>
           </div>
 
-          <!-- Simplified caption row: only modes, no disconnected pills -->
-          <p class="proof-line text-center mt-4 anim-visual" style="font-size:0.85rem;opacity:0.65;">
-            Importação &bull; Exportação &bull; Distribuição internacional por pedido
-          </p>
-        </div>
+        <p class="pg2-form-note pg2-reveal" style="text-align:center;margin-top:1.25rem;">Importação &bull; Exportação &bull; Distribuição internacional por pedido</p>
       </div>
     </section>
   </main>
 
   <!-- ═══════════════════════════════════════════════════════════
-       STATIC GEO BLOCKS — mirror the scrolly content in plain,
-       extractable HTML (process <ol>, "O que coordenamos" <ul>,
-       transport <table>, FAQ). Crawler/LLM-visible. Does NOT touch
-       the D3 map or the scrollytelling above.
+       FAQ — espelha 1:1 o schema FAQPage do <head>. O processo e o
+       bloco "O que coordenamos" vivem agora no corpo da página, em
+       HTML estático.
        ═══════════════════════════════════════════════════════════ -->
   <div class="pg2-main">
 
@@ -944,8 +611,6 @@
     </section>
   </div>
 
-  <!-- LIGHT ZONE: clients + divisoes share one seamless background -->
-  <div class="light-zone">
 
     <!-- CLIENTS / LOGO CLOUD (mirrors homepage #referencias) -->
     <section id="referencias"
@@ -1148,156 +813,81 @@
 
     </section>
 
-    <!-- 7) DIVISÕES (Normal) -->
-    <section class="divisoes normal-section" id="divisoes" data-theme="light">
-      <div class="container">
-        <div class="section-header text-center">
-          <p class="overline">Linhas com foco dedicado</p>
-          <h2 style="font-size: 2rem; margin-bottom: 1rem;">Três frentes, um único padrão: processo e execução</h2>
-          <p class="proof-line">Estruturas diferentes conforme a necessidade, mantendo
-            validação, documentação e acompanhamento como base.</p>
-          <div class="sep sep-center"></div>
-        </div>
-
-        <div class="divisoes-grid">
-
-          <div class="div-card">
-            <div class="dif-card-accent"></div>
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-              </svg>
-            </div>
-            <h3>Health &amp; Care</h3>
-            <ul class="div-bullets">
-              <li>Seleção por itens e envio de pedido para orçamento</li>
-              <li>Validação manual antes da proposta (requisitos e documentação)</li>
-              <li>Resposta com orçamento + próximos passos</li>
-            </ul>
-            <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer"
-              class="cert-badge cert-badge-premium">
-              <div class="cert-badge-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <polyline points="9 12 11 14 15 10" />
-                </svg>
-              </div>
-              <div class="cert-badge-text">
-                <span class="cert-badge-title">Distribuidor Certificado</span>
-                <span class="cert-badge-sub">Cert. 1866/DM/2023</span>
-                <span class="cert-badge-issuer">Infarmed - Autoridade Nacional</span>
-              </div>
-              <svg class="cert-badge-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14"
-                height="14">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </a>
-            <div class="div-footer">
-              <p class="div-tagline">Produtos e equipamentos para saúde e bem-estar</p>
-              <a href="/health-care.html" class="btn btn-outline btn-full">Pedir Orçamento</a>
-            </div>
-          </div>
-
-          <div class="div-card">
-            <div class="dif-card-accent"></div>
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-            </div>
-            <h3>Informática</h3>
-            <ul class="div-bullets">
-              <li>Catálogo dedicado suportado por parceiro especializado</li>
-              <li>Identidade ON4U para consistência e confiança</li>
-              <li>Fluxo simples para consulta e pedido</li>
-            </ul>
-            <div class="div-meta">
-              <span class="div-meta-tag">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Parceiro certificado
-              </span>
-              <span class="div-meta-tag">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Catálogo ativo
-              </span>
-            </div>
-            <div class="div-footer">
-              <p class="div-tagline">Hardware, periféricos e soluções tecnológicas</p>
-              <a href="/informatica.html" class="btn btn-outline btn-full">Aceder à área</a>
-            </div>
-          </div>
-
-          <div class="div-card">
-            <div class="dif-card-accent"></div>
-            <div class="div-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-            </div>
-            <h3>Produção &amp; Criatividade</h3>
-            <ul class="div-bullets">
-              <li>Apoio a projetos corporativos (ex.: eventos/stands) quando aplicável</li>
-              <li>Coordenação de produção com foco em prazos e execução</li>
-              <li>Integração com a operação internacional quando necessário</li>
-            </ul>
-            <div class="div-meta">
-              <span class="div-meta-tag">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Eventos & stands
-              </span>
-              <span class="div-meta-tag">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Coordenação total
-              </span>
-            </div>
-            <div class="div-footer">
-              <p class="div-tagline">Projetos corporativos e eventos com execução estruturada</p>
-              <a href="/producao.html" class="btn btn-outline btn-full">Falar sobre um projeto</a>
-            </div>
-          </div>
-
-        </div>
+  <!-- TRÊS FRENTES / DIVISÕES -->
+  <section class="pg2-section pg2-section--1" id="divisoes">
+    <div class="pg2-wrap">
+      <div class="pg2-shead pg2-shead--center pg2-reveal">
+        <p class="pg2-eyebrow">Linhas com foco dedicado</p>
+        <h2 class="pg2-h2">Três frentes, um único padrão: processo e execução.</h2>
+        <p class="pg2-lede" style="margin-bottom:0;">Estruturas diferentes conforme a necessidade, mantendo validação, documentação e acompanhamento como base.</p>
       </div>
-    </section>
+      <div class="pg2-grid pg2-grid--3 pg2-reveal">
 
-  </div><!-- /.light-zone -->
+        <article class="pg2-card">
+          <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3 class="pg2-h3">Health &amp; Care</h3>
+          <ul style="list-style:none;padding:0;margin:0 0 1.1rem;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Seleção por itens e envio de pedido para orçamento</li>
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Validação manual antes da proposta (requisitos e documentação)</li>
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Resposta com orçamento + próximos passos</li>
+          </ul>
+          <a href="documents/Certificado-1866_DM_2023.pdf" target="_blank" rel="noopener noreferrer"
+            style="margin:0 0 1.1rem;display:flex;padding:0.75rem;gap:0.75rem;background:linear-gradient(to right, rgba(249,115,22,0.06), transparent);border:1px solid rgba(249,115,22,0.2);border-radius:10px;text-decoration:none;">
+            <span style="flex-shrink:0;color:#f97316;display:flex;align-items:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+            <span style="display:flex;flex-direction:column;gap:0.15rem;">
+              <span style="font-size:0.75rem;font-weight:700;color:#f97316;">Distribuidor Certificado</span>
+              <span style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Cert. 1866/DM/2023</span>
+              <span style="font-size:0.65rem;color:rgba(255,255,255,0.4);">Infarmed - Autoridade Nacional</span>
+            </span>
+          </a>
+          <div class="pg2-card-spacer"></div>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.42);margin:0 0 0.9rem;">Produtos e equipamentos para saúde e bem-estar</p>
+          <a href="/health-care.html" class="pg2-btn pg2-btn--ghost" style="width:100%;">Pedir orçamento</a>
+        </article>
 
-  <!-- 8) FINAL CTA (Pinned) -->
-  <section class="scrolly-section" id="final-cta" data-theme="dark">
-    <div class="scrolly-sticky">
-      <div class="scrolly-bg">
-        <div class="scrolly-glow"></div>
+        <article class="pg2-card">
+          <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3 class="pg2-h3">Informática</h3>
+          <ul style="list-style:none;padding:0;margin:0 0 1.1rem;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Catálogo dedicado suportado por parceiro especializado</li>
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Identidade ON4U para consistência e confiança</li>
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Fluxo simples para consulta e pedido</li>
+          </ul>
+          <p style="font-size:0.72rem;color:rgba(249,115,22,0.85);font-weight:600;margin:0 0 1.1rem;">Parceiro certificado &middot; Catálogo ativo</p>
+          <div class="pg2-card-spacer"></div>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.42);margin:0 0 0.9rem;">Hardware, periféricos e soluções tecnológicas</p>
+          <a href="/informatica.html" class="pg2-btn pg2-btn--ghost" style="width:100%;">Aceder à área</a>
+        </article>
+
+        <article class="pg2-card">
+          <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <h3 class="pg2-h3">Produção &amp; Criatividade</h3>
+          <ul style="list-style:none;padding:0;margin:0 0 1.1rem;display:flex;flex-direction:column;gap:0.45rem;">
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Apoio a projetos corporativos (ex.: eventos/stands) quando aplicável</li>
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Coordenação de produção com foco em prazos e execução</li>
+            <li style="font-size:0.83rem;color:rgba(255,255,255,0.55);display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;"><span style="width:4px;height:4px;border-radius:50%;background:rgba(249,115,22,0.55);flex-shrink:0;display:inline-block;margin-top:0.5rem;"></span>Integração com a operação internacional quando necessário</li>
+          </ul>
+          <p style="font-size:0.72rem;color:rgba(249,115,22,0.85);font-weight:600;margin:0 0 1.1rem;">Eventos &amp; stands &middot; Coordenação total</p>
+          <div class="pg2-card-spacer"></div>
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.42);margin:0 0 0.9rem;">Projetos corporativos e eventos com execução estruturada</p>
+          <a href="/producao.html" class="pg2-btn pg2-btn--ghost" style="width:100%;">Falar sobre um projeto</a>
+        </article>
+
       </div>
-      <div class="scrolly-content container scrolly-flex-col text-center">
-        <div class="anim-text" style="max-width: 800px;">
-          <h2 class="scrolly-title">Envie o pedido. Receba proposta operacional e próximos passos.</h2>
-          <p class="scrolly-sub mt-4" style="margin: 1.5rem auto 2.5rem auto;">Partilhe o que precisa, destino e prazo.
-            Validamos a viabilidade e devolvemos uma proposta com etapas claras, sem promessas vagas.</p>
-        </div>
-        <div class="anim-visual hero-actions" style="justify-content: center; margin-top: 2rem;">
-          <a href="/pedido.html" class="btn btn-primary">Pedir Orçamento</a>
-          <a href="/pedido.html" class="btn btn-outline">Falar com Operações</a>
+    </div>
+  </section>
+
+
+  <!-- CTA FINAL -->
+  <section class="pg2-cta" id="final-cta">
+    <div class="pg2-wrap">
+      <div class="pg2-reveal">
+        <p class="pg2-eyebrow pg2-eyebrow--plain" style="justify-content:center;">Próximo passo</p>
+        <h2>Envie o pedido. Receba proposta operacional e próximos passos.</h2>
+        <p>Partilhe o que precisa, destino e prazo. Validamos a viabilidade e devolvemos uma proposta com etapas claras, sem promessas vagas.</p>
+        <div class="pg2-cta-actions">
+          <a href="/pedido.html" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
+          <a href="/pedido.html" class="pg2-btn pg2-btn--ghost">Falar com Operações</a>
         </div>
       </div>
     </div>

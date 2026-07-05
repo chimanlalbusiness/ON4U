@@ -189,23 +189,87 @@
 
   <main class="pg2-main" id="main">
 
-    <!-- HERO -->
-    <section class="pg2-hero">
-      <div class="pg2-wrap">
-        <nav class="pg2-crumbs" aria-label="Caminho de navegação">
-          <ol>
-            <li><a href="/">Início</a></li>
-            <li class="sep" aria-hidden="true">›</li>
-            <li aria-current="page">Health &amp; Care</li>
-          </ol>
-        </nav>
-        <p class="pg2-eyebrow">Health &amp; Care</p>
-        <h1>Sourcing e fornecimento de produtos de saúde por pedido.</h1>
-        <p class="pg2-lede">Distribuidor certificado pela Infarmed. Indica o que precisa — validamos cada item antes de qualquer proposta.</p>
-        <div class="pg2-hero-ctas">
-          <a href="mailto:info@on4u.pt" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
-          <a href="#certificacao" class="pg2-btn pg2-btn--ghost">Ver certificação</a>
+    <!-- CINEMATIC HERO — health objects settle around the copy -->
+    <section class="svc-cine" data-cine>
+      <div class="cine-stage">
+        <div class="cine-bg cine-bg--grid" aria-hidden="true"></div>
+
+        <div class="cine-objs" aria-hidden="true">
+          <!-- ECG line: draws itself with scroll -->
+          <div class="cine-obj cine-obj--wide" style="left:8%;top:42%;" data-depth="0.3"
+               data-from="x:80,o:0" data-to="o:.85">
+            <svg width="880" viewBox="0 0 900 160" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline data-draw stroke="#f97316" opacity=".8"
+                points="10,80 170,80 200,80 216,42 238,120 254,80 410,80 440,80 454,50 474,112 488,80 640,80 672,80 686,56 704,104 717,80 890,80"/>
+            </svg>
+          </div>
+          <!-- Capsule -->
+          <div class="cine-obj" style="left:70%;top:16%;" data-depth="1.1"
+               data-from="x:240,y:-140,rz:50,s:1.35" data-to="rz:18">
+            <svg width="180" viewBox="0 0 190 90" fill="none" stroke="rgba(245,245,247,.75)" stroke-width="1.6">
+              <rect x="12" y="20" width="166" height="50" rx="25" fill="rgba(255,255,255,.05)"/>
+              <path d="M95 20 v50"/>
+              <path d="M95 20 h58 a25 25 0 0 1 0 50 h-58 z" fill="rgba(249,115,22,.16)" stroke="none"/>
+              <path d="M30 36 q9 -8 20 -8" opacity=".55"/>
+            </svg>
+          </div>
+          <!-- Medical cross -->
+          <div class="cine-obj" style="left:78%;top:54%;" data-depth="0.9"
+               data-from="y:220,rx:50,s:1.3" data-to="rx:8">
+            <svg width="120" viewBox="0 0 130 130" fill="none" stroke="rgba(245,245,247,.72)" stroke-width="1.6">
+              <rect x="8" y="8" width="114" height="114" rx="26" fill="rgba(255,255,255,.04)"/>
+              <path d="M65 40 v50 M40 65 h50" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <!-- Certification shield (Infarmed) -->
+          <div class="cine-obj" style="left:56%;top:68%;" data-depth="0.7"
+               data-from="y:260,rz:20,s:1.2,o:.95" data-to="rz:-6,o:.9">
+            <svg width="130" viewBox="0 0 140 160" fill="none" stroke="rgba(245,245,247,.72)" stroke-width="1.6" stroke-linejoin="round">
+              <path d="M70 10 L126 32 V78 C126 118 102 142 70 152 C38 142 14 118 14 78 V32 Z" fill="rgba(255,255,255,.04)"/>
+              <path d="M46 80 L64 98 L96 62" stroke="#f97316" stroke-width="3"/>
+            </svg>
+          </div>
+          <!-- Molecule -->
+          <div class="cine-obj cine-obj--xl" style="left:4%;top:9%;" data-depth="0.6"
+               data-from="y:-200,rz:-40,s:1.2,o:.8" data-to="o:.5">
+            <svg width="180" viewBox="0 0 190 150" fill="none" stroke="rgba(245,245,247,.6)" stroke-width="1.4" stroke-linejoin="round">
+              <path d="M50 34 L73 47 L73 73 L50 86 L27 73 L27 47 Z"/>
+              <path d="M119 47 L142 60 L142 86 L119 99 L96 86 L96 60 Z" opacity=".75"/>
+              <path d="M73 60 L96 73" opacity=".7"/>
+              <circle cx="50" cy="34" r="4" fill="#f97316" stroke="none"/>
+              <circle cx="142" cy="86" r="3.5" fill="rgba(245,245,247,.55)" stroke="none"/>
+            </svg>
+          </div>
+          <!-- Vial -->
+          <div class="cine-obj cine-obj--xl" style="left:2%;top:62%;" data-depth="0.5"
+               data-from="x:-220,rz:-24,s:1.2,o:.85" data-to="rz:-8,o:.55">
+            <svg width="80" viewBox="0 0 90 150" fill="none" stroke="rgba(245,245,247,.7)" stroke-width="1.5" stroke-linejoin="round">
+              <rect x="26" y="16" width="38" height="14" rx="4" fill="rgba(255,255,255,.06)"/>
+              <path d="M32 46 V30 h26 v16"/>
+              <rect x="20" y="46" width="50" height="94" rx="12" fill="rgba(255,255,255,.04)"/>
+              <path d="M20 92 h50" stroke="#f97316" opacity=".8"/>
+            </svg>
+          </div>
         </div>
+
+        <div class="pg2-wrap cine-copy">
+          <nav class="pg2-crumbs" aria-label="Caminho de navegação">
+            <ol>
+              <li><a href="/">Início</a></li>
+              <li class="sep" aria-hidden="true">›</li>
+              <li aria-current="page">Health &amp; Care</li>
+            </ol>
+          </nav>
+          <p class="pg2-eyebrow">Health &amp; Care</p>
+          <h1 class="cine-h1">Sourcing e fornecimento de produtos de saúde por pedido.</h1>
+          <p class="cine-lede cine-fade" data-at="0.08">Distribuidor certificado pela Infarmed. Indica o que precisa — validamos cada item antes de qualquer proposta.</p>
+          <div class="cine-ctas cine-fade" data-at="0.16">
+            <a href="mailto:info@on4u.pt" class="pg2-btn pg2-btn--primary">Pedir orçamento</a>
+            <a href="#certificacao" class="pg2-btn pg2-btn--ghost">Ver certificação</a>
+          </div>
+        </div>
+
+        <div class="cine-hint" aria-hidden="true">Deslize para explorar</div>
       </div>
     </section>
 
