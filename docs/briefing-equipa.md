@@ -32,12 +32,10 @@ O site já vai preparado para ser encontrado no Google e por assistentes de IA. 
 
 ## O que ainda precisamos de vós
 1. **Imagem do trabalho HBD** (fardamentos/merchandising) para mostrar no portfólio.
-2. **Confirmar a morada e código postal.**
-3. **Clarificar a presença geográfica** — qual é sede, qual é presença, quais são escritórios (Portugal, São Tomé e Príncipe, Guiné-Bissau, China, Índia).
-4. **Link do catálogo de Informática** (o botão fica ativo assim que o tiverem).
-5. *(Opcional)* categorias de Health & Care que possamos listar.
+2. **Link do catálogo de Informática** (o botão fica ativo assim que o tiverem).
+3. *(Opcional)* categorias de Health & Care que possamos listar.
 
-> O selo "Pagamento Pontual" já ficou resolvido.
+> Já resolvidos: selo "Pagamento Pontual"; morada nova (Núcleo Empresarial da Abrunheira — Zona Poente, Armazém 14, 2635-634 Rio de Mouro); e a identidade **ON4U Group** com a presença geográfica.
 
 ---
 

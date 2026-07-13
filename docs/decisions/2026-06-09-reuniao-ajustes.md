@@ -30,7 +30,7 @@ Decisões da reunião de 09/06/2026. Aplicar o que é implementável agora; marc
 
 ## Pendentes / TODO
 - [x] **Imagem selo** — resolvido: a ON4U carregou `images/compromissoPagamentoPontual.jpeg`; o footer das 9 páginas foi reapontado para esse ficheiro (com fallback de texto a manter-se como rede de segurança).
-- [ ] **TODO-1 (Morada)**: confirmar morada/código postal corretos com a ON4U antes de alterar (atual: Lote 14, Núcleo Empresarial da Abrunheira (Zona Poente), 2710-679 Sintra). Aguarda confirmação.
-- [ ] **TODO-2 (Presença geográfica)**: reformular para dois grupos — "Presença ON4U em: Portugal, São Tomé e Príncipe, Guiné-Bissau" e "Escritórios em: China, Índia". Aplicar em footer, #presenca, /sobre.html, /importacao-e-exportacao.html. Aguarda confirmação de sede vs presença vs escritório.
+- [x] **TODO-1 (Morada)** — resolvido (13/07/2026): morada nova confirmada pela ON4U. Aplicada em todas as 9 páginas (blocos visíveis, `streetAddress`/`postalCode`/`addressLocality` no JSON-LD, embed do Google Maps, e metas "Sede em Rio de Mouro"): **Núcleo Empresarial da Abrunheira (Zona Poente), Armazém 14, 2635-634 Rio de Mouro**. (Antes: Lote 14 · 2710-679 Sintra.)
+- [x] **TODO-2 (Presença geográfica)** — resolvido (13/07/2026): confirmado como **ON4U Group**. Presença em Portugal, São Tomé e Príncipe e Guiné-Bissau; escritórios na China e na Índia. Texto de presença (index + /sobre) e footer-brand-desc das 9 páginas atualizados para "ON4U Group"; `legalName: "ON4U Group"` adicionado ao schema Organization (8 páginas).
 - [ ] **TODO-3 (Tracking de pedidos)**: número de referência por pedido, consultável pelo cliente, estado atualizado manualmente pela ON4U. Aguarda decisão de processo interno.
 - [ ] URL do catálogo do parceiro de Informática (CTA ainda `href="#"`); imagens OG `/og/*.png`; favicon; /privacidade.html + /termos.html (pendentes anteriores).

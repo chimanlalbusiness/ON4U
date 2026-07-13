@@ -5791,14 +5791,26 @@ textarea.pg2-input { resize: vertical; min-height: 130px; line-height: 1.6; }
    hue-rotate keeps the bg orange → nonsense contrast. Counter-invert
    the whole control (same trick as images) so it renders exactly as
    designed: orange fill, white text. ─────────────────────────────── */
+html.light-mode .btn-primary,
 html.light-mode .pg2-btn--primary,
-html.light-mode .scrolly-section .btn-primary,
 html.light-mode a[style*="background:#f97316"],
 html.light-mode #header-cta,
-html.light-mode .mobile-nav .btn-primary,
+html.light-mode .nav-dropdown-menu,
 html.light-mode .pedido-nav li.is-active .dot,
 html.light-mode .pedido-nav li.is-done:hover .dot {
   filter: invert(1) hue-rotate(180deg);
+}
+
+/* Light mode: black display headings read heavier on white than the same
+   glyphs white-on-dark. Ease the weight so they don't overpower. */
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode .pg2-h2,
+html.light-mode .pg2-h3,
+html.light-mode .scrolly-title,
+html.light-mode .hero-title {
+  font-weight: 680;
 }
 
 /* ══════════════════════════════════════════════════════════════
