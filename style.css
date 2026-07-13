@@ -5331,6 +5331,36 @@ html.light-mode .header {
 }
 .pg2-node .pg2-node-name { font-size: 0.95rem; font-weight: 600; color: var(--pg-ink); }
 .pg2-node .pg2-node-type { margin-left: auto; font-size: 0.78rem; color: var(--pg-ink-3); }
+/* Escritório = hollow ring, so the legend matches the map's ring nodes */
+.pg2-node .dot--ring { background: none; border: 1.5px solid var(--pg-accent); box-shadow: none; }
+
+/* ── Presença: two-column "alcance + presença" panel ──────────── */
+.pg2-net {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-top: 2.5rem;
+  border: 1px solid var(--pg-line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.75rem 2rem 2.25rem;
+}
+.pg2-net-cap {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pg-accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+.pg2-net-col--map .map-component-wrapper { margin-top: 0 !important; }
+.pg2-net-col--map .map-container { height: 340px; margin-bottom: 0; }
+.pg2-net-col--list .pg2-nodes { margin-top: 0; }
+@media (max-width: 860px) {
+  .pg2-net { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.5rem 1.25rem 1.75rem; }
+  .pg2-net-col--map .map-container { height: 300px; }
+}
 
 /* ── Section header helper ──────────────────────────────────── */
 .pg2-shead { margin-bottom: 2.75rem; }
