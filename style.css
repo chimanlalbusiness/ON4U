@@ -5813,6 +5813,19 @@ html.light-mode .hero-title {
   font-weight: 680;
 }
 
+/* Light mode: portfolio tiles were washing out and meshing with the light
+   background — the dark legibility gradient inverts to white, and light-image
+   cards (logo/letterhead/placeholder) dissolve into the page. Counter-invert
+   the whole tile so it renders as designed (a crisp dark gallery card), and
+   cancel the per-image counter-invert inside it so photos stay true colour
+   (tile-invert + page-invert already net to identity for the image). */
+html.light-mode .pg2-pf {
+  filter: invert(1) hue-rotate(180deg);
+}
+html.light-mode .pg2-pf img {
+  filter: none;
+}
+
 /* ══════════════════════════════════════════════════════════════
    IMPORTAÇÃO page — varied section layouts (anti card-grid).
    im-bento: asymmetric mosaic · im-rail: one connected transport
