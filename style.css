@@ -5849,10 +5849,12 @@ html.light-mode .hero-title {
    the whole tile so it renders as designed (a crisp dark gallery card), and
    cancel the per-image counter-invert inside it so photos stay true colour
    (tile-invert + page-invert already net to identity for the image). */
-html.light-mode .pg2-pf {
+html.light-mode .pg2-pf,
+html.light-mode .pf-card {
   filter: invert(1) hue-rotate(180deg);
 }
-html.light-mode .pg2-pf img {
+html.light-mode .pg2-pf img,
+html.light-mode .pf-card img {
   filter: none;
 }
 
