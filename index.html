@@ -3025,15 +3025,12 @@
       }
 
       function applyHeroProgressAuto(p) {
-        if (reducedMotion || isMobile()) {
+        if (reducedMotion) {
           heroText.style.transform = '';
           heroText.style.opacity = '';
           heroGlobeCol.style.transform = '';
           heroGlobeCol.style.opacity = '';
-          if (heroOpenLbl) {
-            if (isMobile()) { heroOpenLbl.style.opacity = '1'; heroOpenLbl.style.display = ''; }
-            else { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
-          }
+          if (heroOpenLbl) { heroOpenLbl.style.opacity = '0'; heroOpenLbl.style.display = 'none'; }
           details.forEach(el => { el.style.opacity = ''; });
           if (heroH1) heroH1.style.opacity = '';
           return;
@@ -3044,6 +3041,29 @@
 
         // Smoothed ease for internal properties
         const e = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
+
+        /* ── MOBILE: vertical cinematic — globe owns the opening frame,
+           label fades on scroll, copy springs up from below. ── */
+        if (isMobile()) {
+          heroGlobeCol.style.transform = `translateY(${lerp(0, -10, e)}px) scale(${lerp(1.08, 0.92, e)})`;
+          const mPhase = Math.max(0, Math.min(1, p / 0.35));
+          if (heroOpenLbl) {
+            heroOpenLbl.style.opacity = (1 - mPhase).toFixed(3);
+            heroOpenLbl.style.transform = `translate(-50%, calc(-55% + ${lerp(0, -20, mPhase)}px))`;
+            heroOpenLbl.style.display = mPhase > 0.99 ? 'none' : '';
+          }
+          heroText.style.transform = `translateY(${lerp(36, 0, e)}px)`;
+          heroText.style.opacity = Math.min(1, p / 0.5).toFixed(3);
+          let mDetails = 0;
+          if (e > 0.45) mDetails = (e - 0.45) / 0.55;
+          details.forEach(el => {
+            el.style.opacity = mDetails.toFixed(3);
+            if (mDetails > 0) el.style.transform = `translateY(${lerp(12, 0, mDetails)}px)`;
+          });
+          if (heroH1) heroH1.style.opacity = Math.min(1, p / 0.4).toFixed(3);
+          if (heroStage) heroStage.classList.toggle('is-settled', p > 0.5);
+          return;
+        }
 
         /* ── GLOBE: smoothly scales from 1.45 down to 1.0, and slides right ── */
         const globeTx = lerp(-50, 0, e);
@@ -3079,10 +3099,8 @@
 
       // Spring logic loop handles the tweening to the target P independently of scroll position
       function heroAnimationLoop() {
-        if (!isMobile()) {
-          heroCurrentP += (heroTargetP - heroCurrentP) * 0.08;
-          applyHeroProgressAuto(heroCurrentP);
-        }
+        heroCurrentP += (heroTargetP - heroCurrentP) * 0.08;
+        applyHeroProgressAuto(heroCurrentP);
         requestAnimationFrame(heroAnimationLoop);
       }
 
@@ -3122,31 +3140,8 @@
     })();
   </script>
   <script>
-    // ── Mobile nav anchor logic ────────────────────────────────
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileNavPanel = document.getElementById('mobile-nav');
-    if (mobileMenuBtn && mobileNavPanel) {
-      mobileMenuBtn.addEventListener('click', () => {
-        const isNowOpen = mobileNavPanel.hasAttribute('hidden');
-        if (isNowOpen) {
-          mobileNavPanel.removeAttribute('hidden');
-          mobileMenuBtn.classList.add('is-active');
-          mobileMenuBtn.setAttribute('aria-expanded', 'true');
-        } else {
-          mobileNavPanel.setAttribute('hidden', '');
-          mobileMenuBtn.classList.remove('is-active');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-      // Close on link click
-      mobileNavPanel.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          mobileNavPanel.setAttribute('hidden', '');
-          mobileMenuBtn.classList.remove('is-active');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
+    // Mobile nav toggling lives in script.js (aria-expanded driven) —
+    // a second handler here would double-toggle and cancel itself out.
 
     // ── Reveal-up observer (for non-scrolly sections) ────────────
     (function () {
