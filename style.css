@@ -504,6 +504,13 @@ button {
   background: rgba(249,115,22,0.07);
   color: var(--c-accent) !important;
 }
+/* The popover is dark glass in both themes, but the base link colour is the
+   light-theme --c-text (#000) → near-invisible on the dark panel. Force light
+   text + a dark-appropriate hover; the light-mode counter-invert then keeps it
+   light-on-dark there too. Keep the current item accent-orange. */
+.nav-dropdown-menu a { color: var(--pg-ink) !important; }
+.nav-dropdown-menu a:hover { color: var(--pg-ink) !important; background: rgba(255, 255, 255, 0.07) !important; }
+.nav-dropdown-menu a.is-current { color: var(--pg-accent) !important; }
 
 .nav-dropdown-menu a::after {
   display: none !important; /* kill the active underline pseudo-el */
