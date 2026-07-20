@@ -1155,7 +1155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Each variant maps entry progress e (0 → 1) to a transform. Distinct motions
   // so different sections don't feel copy-pasted.
-  function variantTransform(variant, e, side) {
+  function variantTransform(variant, e, side, tS, rS) {
     var q = 1 - e, phi, tx = 0, ty = 0, tz = 0, rx = 0, ry = 0, rz = 0;
     if (variant === "deck") {            // dealt in from one side along a single arc
       phi = q * 1.15;
@@ -1170,8 +1170,9 @@ document.addEventListener("DOMContentLoaded", () => {
       tx = side * Math.sin(phi) * 300; tz = -(1 - Math.cos(phi)) * 760; ty = -(1 - Math.cos(phi)) * 60;
       rx = q * 16; ry = -side * (phi * RAD) * 0.72; rz = side * q * -3;
     }
-    return "translate3d(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px," + tz.toFixed(1) + "px) rotateX(" +
-      rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) rotateZ(" + rz.toFixed(2) + "deg)";
+    // tS/rS scale the motion down on small screens (gentler on mobile)
+    return "translate3d(" + (tx * tS).toFixed(1) + "px," + (ty * tS).toFixed(1) + "px," + (tz * tS).toFixed(1) + "px) rotateX(" +
+      (rx * rS).toFixed(2) + "deg) rotateY(" + (ry * rS).toFixed(2) + "deg) rotateZ(" + (rz * rS).toFixed(2) + "deg)";
   }
 
   function init() {
@@ -1213,6 +1214,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function frame() {
       ticking = false;
       var vh = window.innerHeight;
+      var mob = window.innerWidth < 640;          // gentler 3D on phones
+      var tS = mob ? 0.5 : 1, rS = mob ? 0.62 : 1;
       for (var gi = 0; gi < groups.length; gi++) {
         var g = groups[gi];
         var items = g.children, N = items.length;
@@ -1237,7 +1240,7 @@ document.addEventListener("DOMContentLoaded", () => {
           item.__r3d = "anim";
           var e = smooth(p);
           var side = (item.offsetLeft + item.offsetWidth / 2) < gMid ? -1 : 1;
-          item.style.transform = variantTransform(variant, e, side);
+          item.style.transform = variantTransform(variant, e, side, tS, rS);
           var op = e * 1.7; if (op > 1) op = 1;
           item.style.opacity = op.toFixed(3);
         }
