@@ -981,7 +981,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (el.dataset.living) return;
       el.dataset.living = '1';
       var spot = el.matches(GLOW_SEL);
-      var tilt = !REDUCED && el.matches(TILT_SEL);
+      var tilt = !REDUCED && el.matches(TILT_SEL); // inner cards keep hover-tilt; route3d animates the wrapper
       if (spot) el.classList.add('glass-spot');
       if (tilt) el.classList.add('glass-tilt');
       cards.push({ el: el, spot: spot, tilt: tilt, rx: 0, ry: 0, lift: 0, glow: 0, mx: 50, my: 50 });
@@ -1136,4 +1136,118 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', start); }
   else { start(); }
+})();
+
+/* ──────────────────────────────────────────────────────────────
+   3D "route" reveal — cards sweep in from depth along a curved,
+   staggered arc as their section scroll-scrubs into view, then
+   release to the hover-tilt once settled. Applied to any element
+   with class .route3d; its direct children are the items.
+   Skipped for reduced-motion (items shown flat).
+   ────────────────────────────────────────────────────────────── */
+(function () {
+  var mq = window.matchMedia;
+  var REDUCE = mq && mq("(prefers-reduced-motion: reduce)").matches;
+  var RAD = 57.29578;
+  function smooth(t) { return t * t * (3 - 2 * t); } // soft start + soft landing, visible mid-motion
+  // per-variant stagger between items in a row (rows also stagger by position)
+  var STAG = { wings: 0.05, deck: 0.13, rise: 0.09, flip: 0.09 };
+
+  // Each variant maps entry progress e (0 → 1) to a transform. Distinct motions
+  // so different sections don't feel copy-pasted.
+  function variantTransform(variant, e, side) {
+    var q = 1 - e, phi, tx = 0, ty = 0, tz = 0, rx = 0, ry = 0, rz = 0;
+    if (variant === "deck") {            // dealt in from one side along a single arc
+      phi = q * 1.15;
+      tx = Math.sin(phi) * 540; tz = -(1 - Math.cos(phi)) * 640; ty = -(1 - Math.cos(phi)) * 24;
+      rx = q * 5; ry = -(phi * RAD) * 0.5; rz = q * -4;
+    } else if (variant === "rise") {     // rise up from below with a forward tilt
+      ty = q * 150; tz = -q * 240; rx = q * 26;
+    } else if (variant === "flip") {     // flip up on the X axis out of depth
+      ty = q * 26; tz = -q * 440; rx = q * -74;
+    } else {                             // wings — columns swing in from their own side
+      phi = q * 1.3;
+      tx = side * Math.sin(phi) * 300; tz = -(1 - Math.cos(phi)) * 760; ty = -(1 - Math.cos(phi)) * 60;
+      rx = q * 16; ry = -side * (phi * RAD) * 0.72; rz = side * q * -3;
+    }
+    return "translate3d(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px," + tz.toFixed(1) + "px) rotateX(" +
+      rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) rotateZ(" + rz.toFixed(2) + "deg)";
+  }
+
+  function init() {
+    var groups = [].slice.call(document.querySelectorAll(".route3d"));
+    if (!groups.length) return;
+
+    groups.forEach(function (g) {
+      g.__variant = g.getAttribute("data-r3d") || "wings";
+      var isList = g.tagName === "OL" || g.tagName === "UL";
+      g.__list = isList;
+      var kids = [].slice.call(g.children);
+      if (isList) {
+        // <li> can't hold a <div> wrapper cleanly → animate the li directly and
+        // hand it fully to route3d (drop the hover-tilt class so it can't clobber).
+        kids.forEach(function (li) { li.classList.remove("glass-tilt"); li.style.willChange = "transform, opacity"; });
+      } else {
+        // wrap each child so the reveal animates the wrapper while the inner
+        // card keeps its own hover-tilt (the two never fight over `transform`).
+        kids.forEach(function (child) {
+          if (!child.classList.contains("route3d-item")) {
+            var w = document.createElement("div");
+            w.className = "route3d-item";
+            g.insertBefore(w, child);
+            w.appendChild(child);
+          }
+        });
+        [].slice.call(g.children).forEach(function (w) { w.style.willChange = "transform, opacity"; });
+      }
+    });
+
+    if (REDUCE) {
+      groups.forEach(function (g) {
+        [].slice.call(g.children).forEach(function (c) { c.style.opacity = "1"; c.style.transform = "none"; });
+      });
+      return;
+    }
+
+    var ticking = false;
+    function frame() {
+      ticking = false;
+      var vh = window.innerHeight;
+      for (var gi = 0; gi < groups.length; gi++) {
+        var g = groups[gi];
+        var items = g.children, N = items.length;
+        var variant = g.__variant, stag = STAG[variant] || 0.06;
+        var gRect = g.getBoundingClientRect();   // group is untransformed — stable
+        var gMid = g.clientWidth / 2;
+        for (var i = 0; i < N; i++) {
+          var item = items[i];
+          // progress from the item's OWN layout position (offsetTop is stable
+          // under transforms) → settle by mid-viewport; index stagger sequences
+          // items within a row (rows already stagger by their position).
+          var cardTop = gRect.top + item.offsetTop;
+          var pPos = (1.05 * vh - cardTop) / (0.43 * vh);
+          pPos = pPos < 0 ? 0 : pPos > 1 ? 1 : pPos;
+          var denom = 1 - i * stag; if (denom < 0.4) denom = 0.4;
+          var p = (pPos - i * stag) / denom;
+          p = p < 0 ? 0 : p > 1 ? 1 : p;
+          if (p >= 0.999) {
+            if (item.__r3d !== "set") { item.style.transform = ""; item.style.opacity = ""; item.__r3d = "set"; }
+            continue;
+          }
+          item.__r3d = "anim";
+          var e = smooth(p);
+          var side = (item.offsetLeft + item.offsetWidth / 2) < gMid ? -1 : 1;
+          item.style.transform = variantTransform(variant, e, side);
+          var op = e * 1.7; if (op > 1) op = 1;
+          item.style.opacity = op.toFixed(3);
+        }
+      }
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    frame();
+  }
+  if (document.readyState !== "loading") init();
+  else document.addEventListener("DOMContentLoaded", init);
 })();

@@ -5369,6 +5369,29 @@ html.light-mode .header {
   .pg2-net-col--map .map-container { height: 300px; }
 }
 
+/* ── 3D "route" reveal ─────────────────────────────────────────────────
+   Cards arc in from depth along a curved, staggered path as the section
+   scroll-scrubs into view (see route3d engine in script.js), then release
+   to the hover-tilt once settled. Opacity/transform are driven by JS; this
+   only sets the 3D stage. Reduced-motion + no-JS just show the cards. ─── */
+.route3d {
+  perspective: 1000px;
+  perspective-origin: 50% 42%;
+}
+.route3d > * {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: none !important; /* scrub tracks scroll directly — no transform lag */
+}
+/* wrapper: the reveal animates this; the inner card keeps its own hover-tilt */
+.route3d-item { display: flex; }
+.route3d-item > * { flex: 1 1 auto; width: 100%; }
+/* clip the host section so cards sweeping in from the side add no scrollbars */
+.pg2-section:has(.route3d) { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .route3d > *, .route3d-item > * { transform: none !important; opacity: 1 !important; }
+}
+
 /* ── Section header helper ──────────────────────────────────── */
 .pg2-shead { margin-bottom: 2.75rem; }
 .pg2-shead--center { text-align: center; margin-left: auto; margin-right: auto; max-width: 640px; }
