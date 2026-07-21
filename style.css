@@ -5853,12 +5853,27 @@ textarea.pg2-input { resize: vertical; min-height: 130px; line-height: 1.6; }
    designed: orange fill, white text. ─────────────────────────────── */
 html.light-mode .btn-primary,
 html.light-mode .pg2-btn--primary,
-html.light-mode a[style*="background:#f97316"],
+html.light-mode #portfolio-orcamento,
+html.light-mode #final-cta-orcamento,
 html.light-mode #header-cta,
 html.light-mode .nav-dropdown-menu,
 html.light-mode .pedido-nav li.is-active .dot,
 html.light-mode .pedido-nav li.is-done:hover .dot {
   filter: invert(1) hue-rotate(180deg);
+}
+/* The two inline orange CTAs are counter-inverted by id (above) rather than by
+   their inline background, because their JS hover handler rewrites that
+   background (#f97316 → #ea580c, then re-serialised to rgb()), which would drop
+   an attribute-based match and flip the white label to black on hover. */
+
+/* Light mode: outline buttons on hover. The base :hover fill uses the
+   light-theme --c-bg-subtle (#f9fafb, opaque) which the page-invert turns into
+   near-black. Use translucent values that invert to a subtle dark fill/border
+   instead (text already inverts to dark correctly). */
+html.light-mode .btn-outline:hover,
+html.light-mode .btn-outline:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 /* Light mode: black display headings read heavier on white than the same
