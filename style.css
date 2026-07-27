@@ -6522,3 +6522,154 @@ html.light-mode .pf-card img {
              translateY(var(--lift, 0px)) !important;
   will-change: transform;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Interactive service visual cards (.svc-vcard, producao.html).
+   Vanilla port of the layered "animated card" pattern: grid +
+   radial glow + donut ring + capability chips that fan out.
+   Desktop plays on :hover; touch devices get .is-live from JS
+   when the card is centred in view. Dark-first — the light theme
+   comes from the global invert filter. ═══════════════════════ */
+.svc-vcard { padding: 0; overflow: hidden; }
+.svc-visual {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  flex: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+}
+.svc-vgrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(148, 148, 155, 0.11) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 148, 155, 0.11) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, #000 55%, transparent 100%);
+}
+.svc-vglow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 52% 56% at 50% 52%, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.07) 45%, transparent 75%);
+}
+.svc-vrise {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(249, 115, 22, 0.3), rgba(249, 115, 22, 0.05) 55%, transparent 78%);
+  opacity: 0;
+  transition: opacity 600ms cubic-bezier(0.6, 0.6, 0, 1);
+}
+.svc-donut {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 118px;
+  height: 118px;
+  transform: translate(-50%, -50%) scale(0.94);
+  transition: transform 700ms cubic-bezier(0.6, 0.6, 0, 1);
+  z-index: 2;
+}
+.svc-ring { width: 100%; height: 100%; transform: rotate(-90deg); }
+.svc-ring-track { fill: none; stroke: rgba(255, 255, 255, 0.13); stroke-width: 9; }
+.svc-ring-fill {
+  fill: none;
+  stroke: var(--pg-accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 251.33;
+  stroke-dashoffset: 216; /* ~14% resting fill */
+  filter: drop-shadow(0 0 7px rgba(249, 115, 22, 0.45));
+  transition: stroke-dashoffset 1100ms cubic-bezier(0.6, 0.6, 0, 1);
+}
+.svc-donut-ico {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pg-ink);
+}
+.svc-donut-ico svg { width: 30px; height: 30px; }
+.svc-vtag {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.62rem;
+  border-radius: 9px;
+  background: rgba(9, 9, 11, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  transition: opacity 450ms ease, transform 600ms cubic-bezier(0.6, 0.6, 0, 1);
+  z-index: 3;
+}
+.svc-vtag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pg-accent);
+  flex: none;
+}
+.svc-chips { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.svc-chip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.26rem 0.58rem;
+  border-radius: 99px;
+  background: rgba(9, 9, 11, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 450ms ease var(--d, 0ms), transform 650ms cubic-bezier(0.6, 0.6, 0, 1) var(--d, 0ms);
+}
+.svc-chip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pg-accent);
+  flex: none;
+}
+.svc-chip:nth-child(even)::before { background: #fdba74; }
+.svc-vbody { padding: 1.35rem 1.5rem 1.6rem; border-top: 1px solid var(--pg-line); }
+.svc-vbody .pg2-h3 { margin: 0 0 0.45rem; }
+
+/* active state — hover on desktop, .is-live (in view) on touch */
+.svc-vcard:hover .svc-vrise, .svc-vcard.is-live .svc-vrise { opacity: 1; }
+.svc-vcard:hover .svc-donut, .svc-vcard.is-live .svc-donut { transform: translate(-50%, -50%) scale(1.08); }
+.svc-vcard:hover .svc-ring-fill, .svc-vcard.is-live .svc-ring-fill { stroke-dashoffset: 0; }
+.svc-vcard:hover .svc-vtag, .svc-vcard.is-live .svc-vtag { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+.svc-vcard:hover .svc-chip, .svc-vcard.is-live .svc-chip {
+  opacity: 1;
+  transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px));
+}
+
+@media (max-width: 600px) {
+  .svc-vcard { padding: 0; }
+  .svc-visual { height: 172px; }
+  .svc-chip { font-size: 0.6rem; }
+  .svc-vbody { padding: 1.25rem 1.35rem 1.45rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-vrise, .svc-donut, .svc-ring-fill, .svc-vtag, .svc-chip { transition: none !important; }
+}

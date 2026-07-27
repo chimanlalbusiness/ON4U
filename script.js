@@ -747,6 +747,30 @@ document.addEventListener("DOMContentLoaded", () => {
     "Stand Repsol — ativação corporativa": "Repsol stand — corporate activation",
     "Stand Santa Casa da Misericórdia": "Santa Casa da Misericórdia Stand",
     "Stands e ativações corporativas": "Stands and corporate activations",
+    "Prontos no dia do evento": "Ready on the event day",
+    "Da arte final à produção": "From final artwork to production",
+    "A marca em toda a equipa": "The brand across the whole team",
+    "Do conceito ao terreno": "From concept to the ground",
+    "Conceção": "Concept",
+    "Feiras": "Trade shows",
+    "Montagem": "Assembly",
+    "Eventos": "Events",
+    "Espaços de marca": "Brand spaces",
+    "Arte final": "Final artwork",
+    "Grande formato": "Large format",
+    "Sinalética": "Signage",
+    "Vinil": "Vinyl",
+    "Expositores": "Displays",
+    "Acabamentos": "Finishing",
+    "Fardamentos": "Uniforms",
+    "Bordado": "Embroidery",
+    "Serigrafia": "Screen printing",
+    "Têxtil": "Textiles",
+    "Identidade": "Identity",
+    "Conceito": "Concept",
+    "Brindes": "Gifts",
+    "Personalização": "Personalization",
+    "No terreno": "On the ground",
     "Stands, eventos, fardamentos, sinalética e identidade visual — coordenados do briefing à entrega, com um único interlocutor e o prazo do evento como referência.": "Stands, events, uniforms, signage, and visual identity — coordinated from briefing to delivery, with a single point of contact and the event deadline as the reference.",
     "Stands, eventos, fardamentos, sinalética e identidade visual.": "Stands, events, uniforms, signage, and visual identity.",
     "Suporte local para alinhamentos e execução.": "Local support for alignment and execution.",
@@ -1151,7 +1175,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var RAD = 57.29578;
   function smooth(t) { return t * t * (3 - 2 * t); } // soft start + soft landing, visible mid-motion
   // per-variant stagger between items in a row (rows also stagger by position)
-  var STAG = { wings: 0.05, deck: 0.13, rise: 0.09, flip: 0.09 };
+  var STAG = { wings: 0.09, deck: 0.14, rise: 0.1, flip: 0.1 };
 
   // Each variant maps entry progress e (0 → 1) to a transform. Distinct motions
   // so different sections don't feel copy-pasted.
@@ -1167,7 +1191,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ty = q * 26; tz = -q * 440; rx = q * -74;
     } else {                             // wings — columns swing in from their own side
       phi = q * 1.3;
-      tx = side * Math.sin(phi) * 300; tz = -(1 - Math.cos(phi)) * 760; ty = -(1 - Math.cos(phi)) * 60;
+      tx = side * Math.sin(phi) * 330; tz = -(1 - Math.cos(phi)) * 820; ty = -(1 - Math.cos(phi)) * 60;
       rx = q * 16; ry = -side * (phi * RAD) * 0.72; rz = side * q * -3;
     }
     // tS/rS scale the motion down on small screens (gentler on mobile)
@@ -1225,10 +1249,11 @@ document.addEventListener("DOMContentLoaded", () => {
         for (var i = 0; i < N; i++) {
           var item = items[i];
           // progress from the item's OWN layout position (offsetTop is stable
-          // under transforms) → settle by mid-viewport; index stagger sequences
-          // items within a row (rows already stagger by their position).
+          // under transforms). Starts only once the card actually enters the
+          // viewport and scrubs over ~0.6vh of travel, so the visitor rides
+          // the whole motion instead of arriving at the settled state.
           var cardTop = gRect.top + item.offsetTop;
-          var pPos = (1.05 * vh - cardTop) / (0.43 * vh);
+          var pPos = (1.02 * vh - cardTop) / (0.62 * vh);
           pPos = pPos < 0 ? 0 : pPos > 1 ? 1 : pPos;
           var denom = 1 - i * stag; if (denom < 0.4) denom = 0.4;
           var p = (pPos - i * stag) / denom;
@@ -1253,4 +1278,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (document.readyState !== "loading") init();
   else document.addEventListener("DOMContentLoaded", init);
+})();
+
+/* ──────────────────────────────────────────────────────────────
+   Service visual cards (.svc-vcard) — touch devices have no hover,
+   so the card's interactive state plays via .is-live when the card
+   is mostly in view (and rewinds when it leaves, so it can replay).
+   ────────────────────────────────────────────────────────────── */
+(function () {
+  var cards = document.querySelectorAll(".svc-vcard");
+  if (!cards.length) return;
+  if (!window.matchMedia("(hover: none)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!("IntersectionObserver" in window)) {
+    [].forEach.call(cards, function (c) { c.classList.add("is-live"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      e.target.classList.toggle("is-live", e.intersectionRatio >= 0.55);
+    });
+  }, { threshold: [0.1, 0.55] });
+  [].forEach.call(cards, function (c) { io.observe(c); });
 })();
