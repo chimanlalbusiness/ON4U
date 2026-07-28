@@ -6673,3 +6673,66 @@ html.light-mode .pf-card img {
 @media (prefers-reduced-motion: reduce) {
   .svc-vrise, .svc-donut, .svc-ring-fill, .svc-vtag, .svc-chip { transition: none !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Process flow rail (.pg2-steps--row) — the numbered steps read
+   as one connected route: an animated dashed track threads through
+   circular number nodes that sit half-above each card. Hover fills
+   the node orange. The track collapses on narrow screens where the
+   grid wraps (nodes alone carry the sequence there). ═══════════ */
+.pg2-steps--row { position: relative; padding-top: 26px; gap: 1.4rem; }
+.pg2-steps--row::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 2%;
+  right: 2%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(249, 115, 22, 0.5) 0 9px, transparent 9px 22px);
+  z-index: 0;
+}
+.pg2-steps--row::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: calc(2% - 10px);
+  border: 6px solid transparent;
+  border-left: 9px solid rgba(249, 115, 22, 0.75);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pg2-steps--row::before { animation: imDash 1.6s linear infinite; }
+}
+.pg2-steps--row .pg2-step { padding: 2.1rem 1.4rem 1.6rem; text-align: center; }
+.pg2-steps--row .pg2-step::before {
+  position: absolute;
+  top: -23px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin: 0;
+  background: var(--pg-bg-1);
+  border: 1px solid rgba(249, 115, 22, 0.5);
+  color: var(--pg-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  /* opaque halo masks the dashed track right around the node */
+  box-shadow: 0 0 0 5px var(--pg-bg-0), 0 0 18px -4px rgba(249, 115, 22, 0.35);
+  transition: background 260ms ease, color 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+  z-index: 2;
+}
+.pg2-steps--row .pg2-step:hover::before {
+  background: var(--pg-accent);
+  border-color: var(--pg-accent);
+  color: #0b0b0d;
+  box-shadow: 0 0 0 5px var(--pg-bg-0), 0 0 28px -2px rgba(249, 115, 22, 0.6);
+}
+.pg2-steps--row .pg2-step h3 { margin-top: 0.35rem; }
+@media (max-width: 900px) {
+  .pg2-steps--row::before, .pg2-steps--row::after { display: none; }
+  .pg2-steps--row { padding-top: 24px; row-gap: 2.3rem; }
+}

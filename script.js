@@ -1249,11 +1249,12 @@ document.addEventListener("DOMContentLoaded", () => {
         for (var i = 0; i < N; i++) {
           var item = items[i];
           // progress from the item's OWN layout position (offsetTop is stable
-          // under transforms). Starts only once the card actually enters the
-          // viewport and scrubs over ~0.6vh of travel, so the visitor rides
-          // the whole motion instead of arriving at the settled state.
+          // under transforms). Starts the moment the card enters the viewport
+          // (so the whole motion happens on-screen) and settles quickly, once
+          // its top clears ~two-thirds of the viewport — fully done well
+          // before the visitor's reading zone.
           var cardTop = gRect.top + item.offsetTop;
-          var pPos = (1.02 * vh - cardTop) / (0.62 * vh);
+          var pPos = (1.0 * vh - cardTop) / (0.32 * vh);
           pPos = pPos < 0 ? 0 : pPos > 1 ? 1 : pPos;
           var denom = 1 - i * stag; if (denom < 0.4) denom = 0.4;
           var p = (pPos - i * stag) / denom;
