@@ -5178,7 +5178,9 @@ html.light-mode .header {
   transition: border-color 220ms ease, transform 220ms ease;
 }
 .pg2-step:hover { border-color: rgba(249, 115, 22, 0.22); transform: translateY(-2px); }
-.pg2-step::before {
+/* number lives on ::after — ::before belongs to the .glass-spot
+   cursor-spotlight overlay that script.js adds to every step */
+.pg2-step::after {
   content: counter(pg2step, decimal-leading-zero);
   display: block;
   font-size: 0.85rem;
@@ -6764,7 +6766,7 @@ html.light-mode .pf-item img {
   .pg2-steps--row::before { animation: imDash 1.6s linear infinite; }
 }
 .pg2-steps--row .pg2-step { padding: 2.1rem 1.4rem 1.6rem; text-align: center; }
-.pg2-steps--row .pg2-step::before {
+.pg2-steps--row .pg2-step::after {
   position: absolute;
   top: -23px;
   left: 50%;
@@ -6786,7 +6788,7 @@ html.light-mode .pf-item img {
   transition: background 260ms ease, color 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
   z-index: 2;
 }
-.pg2-steps--row .pg2-step:hover::before {
+.pg2-steps--row .pg2-step:hover::after {
   background: var(--pg-accent);
   border-color: var(--pg-accent);
   color: #0b0b0d;
