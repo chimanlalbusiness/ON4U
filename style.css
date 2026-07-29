@@ -5498,6 +5498,65 @@ html.light-mode .header {
 .pg2-chip.is-active { color: var(--pg-accent); border-color: var(--pg-accent); background: var(--pg-accent-soft); }
 .pg2-chip:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: 2px; }
 
+/* ── Portfolio: projects grouped in theme boxes ─────────────── */
+.pf-themes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+@media (max-width: 760px) { .pf-themes { grid-template-columns: 1fr; gap: 1.1rem; } }
+.pf-theme {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 1.4rem 1.5rem;
+  border-radius: 18px;
+  background: var(--pg-panel);
+  border: 1px solid var(--pg-line);
+  transition: border-color 320ms ease, box-shadow 320ms ease;
+}
+.pf-theme:hover { border-color: rgba(249, 115, 22, 0.28); box-shadow: 0 20px 46px -22px rgba(0, 0, 0, 0.7); }
+.pf-theme-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.05rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--pg-line);
+}
+.pf-theme-title { font-size: 1.15rem; font-weight: 700; color: var(--pg-ink); margin: 0; letter-spacing: -0.01em; }
+.pf-theme-count { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; color: var(--pg-accent); white-space: nowrap; }
+.pf-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
+}
+.pf-theme-grid > .pf-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.pf-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--pg-line);
+  text-decoration: none;
+}
+.pf-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease, opacity 320ms ease; }
+.pf-item:hover img { transform: scale(1.06); opacity: 0.72; }
+.pf-item-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.12); }
+.pf-item-ph svg { width: 40px; height: 40px; }
+.pf-item-grad { position: absolute; inset: 0; background: linear-gradient(to top, rgba(9, 9, 11, 0.94) 0%, rgba(9, 9, 11, 0.2) 55%, transparent 82%); }
+.pf-item-label {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 0.85rem 0.9rem 0.8rem;
+  z-index: 2;
+  font-size: 0.8rem; font-weight: 600; line-height: 1.3; color: #fff;
+}
+@media (max-width: 420px) { .pf-item-label { font-size: 0.74rem; } }
+
 /* ── Contact form ───────────────────────────────────────────── */
 .pg2-contact {
   display: grid;
@@ -5895,11 +5954,13 @@ html.light-mode .hero-title {
    cancel the per-image counter-invert inside it so photos stay true colour
    (tile-invert + page-invert already net to identity for the image). */
 html.light-mode .pg2-pf,
-html.light-mode .pf-card {
+html.light-mode .pf-card,
+html.light-mode .pf-item {
   filter: invert(1) hue-rotate(180deg);
 }
 html.light-mode .pg2-pf img,
-html.light-mode .pf-card img {
+html.light-mode .pf-card img,
+html.light-mode .pf-item img {
   filter: none;
 }
 

@@ -103,7 +103,7 @@
           </div>
         </div>
         <a href="/portfolio.html" id="nav-trabalhos">Projetos</a>
-        <a href="/pedido.html" id="nav-contacto">Contacto</a>
+        <a href="/contactos.html" id="nav-contacto">Contacto</a>
       </nav>
       <div class="header-actions">
         <a href="/pedido.html" class="btn btn-primary" id="header-cta">Pedir orçamento</a>
@@ -162,58 +162,86 @@
     <!-- GRID -->
     <section class="pg2-section pg2-section--1">
       <div class="pg2-wrap">
-        <div class="pg2-chips pg2-reveal" role="group" aria-label="Filtrar projetos por categoria" id="pf-filters">
-          <button class="pg2-chip is-active" data-filter="all" aria-pressed="true">Todos</button>
-          <button class="pg2-chip" data-filter="stands" aria-pressed="false">Stands &amp; Eventos</button>
-          <button class="pg2-chip" data-filter="iv" aria-pressed="false">Identidade Visual</button>
-          <button class="pg2-chip" data-filter="producao" aria-pressed="false">Produção &amp; Criatividade</button>
-          <button class="pg2-chip" data-filter="operacao" aria-pressed="false">Operação Internacional</button>
-          <button class="pg2-chip" data-filter="equip" aria-pressed="false">Fardamentos &amp; Equipamentos</button>
-        </div>
+        <div class="pf-themes route3d" id="pf-themes" data-r3d="rise">
 
-        <div class="pg2-pf-grid pg2-reveal" id="pf-grid">
-          <a class="pg2-pf" href="/producao.html" data-cat="stands">
-            <img src="images/stands/repsol.jpeg" alt="Stand Repsol — ativação corporativa" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Stands &amp; Eventos</span><h3>Stand Repsol — Ativação corporativa</h3></span>
-          </a>
-          <a class="pg2-pf" href="/producao.html" data-cat="stands">
-            <img src="images/stands/santaCasa.jpg" alt="Santa Casa da Misericórdia — presença institucional" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Stands &amp; Eventos</span><h3>Santa Casa da Misericórdia — Presença institucional</h3></span>
-          </a>
-          <a class="pg2-pf" href="/importacao-e-exportacao.html" data-cat="operacao">
-            <img src="images/stands/bissau.png" alt="Guiné-Bissau — presença local e operação" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Operação Internacional</span><h3>Guiné-Bissau — Presença local &amp; operação</h3></span>
-          </a>
-          <a class="pg2-pf" href="/producao.html" data-cat="iv">
-            <img src="images/clientLogos/Banco Central_STP.png" alt="Banco Central de São Tomé e Príncipe — identidade visual" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.pg2-pf-ph').style.display='flex'">
-            <span class="pg2-pf-ph" aria-hidden="true" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 7l9-4 9 4M8 20v-6h8v6"/></svg></span>
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Identidade Visual</span><h3>Banco Central, São Tomé e Príncipe — Identidade visual</h3></span>
-          </a>
-          <a class="pg2-pf" href="/producao.html" data-cat="iv producao">
-            <img src="images/IV/mockupsFF.jpg" alt="Identidade visual e materiais corporativos — mockups" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Produção &amp; Criatividade</span><h3>Identidade visual &amp; materiais corporativos</h3></span>
-          </a>
-          <a class="pg2-pf" href="/producao.html" data-cat="producao equip">
-            <img src="images/merchandising/hbd.jpeg" alt="Fardamentos e merchandising corporativo, HBD" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.pg2-pf-ph').style.display='flex'">
-            <span class="pg2-pf-ph" aria-hidden="true" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span>
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Produção &amp; Criatividade</span><h3>Fardamentos e Merchandising Corporativo, HBD</h3></span>
-          </a>
-          <a class="pg2-pf" href="/importacao-e-exportacao.html" data-cat="operacao equip">
-            <img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="Equipamento especializado — operação internacional" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Fardamentos &amp; Equipamentos</span><h3>Equipamento especializado — Operação internacional</h3></span>
-          </a>
-          <a class="pg2-pf" href="/importacao-e-exportacao.html" data-cat="operacao equip">
-            <img src="images/equipamentos/todosEquipamentos.jpeg" alt="Equipamento e fornecimento — operação internacional" loading="lazy">
-            <span class="pg2-pf-grad" aria-hidden="true"></span>
-            <span class="pg2-pf-body"><span class="pg2-pf-tag">Fardamentos &amp; Equipamentos</span><h3>Equipamento &amp; Fornecimento</h3></span>
-          </a>
+          <article class="pf-theme">
+            <header class="pf-theme-head">
+              <h2 class="pf-theme-title">Stands &amp; Eventos</h2>
+              <span class="pf-theme-count">3 projetos</span>
+            </header>
+            <div class="pf-theme-grid">
+              <a class="pf-item" href="/producao.html">
+                <img src="images/stands/repsol.jpeg" alt="Stand Repsol — ativação corporativa" loading="lazy">
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Stand Repsol — Ativação corporativa</span>
+              </a>
+              <a class="pf-item" href="/producao.html">
+                <img src="images/stands/santaCasa.jpg" alt="Santa Casa da Misericórdia — presença institucional" loading="lazy">
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Santa Casa da Misericórdia — Presença institucional</span>
+              </a>
+              <a class="pf-item" href="/importacao-e-exportacao.html">
+                <img src="images/stands/bissau.png" alt="Guiné-Bissau — presença local e operação" loading="lazy">
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Guiné-Bissau — Presença local &amp; operação</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="pf-theme">
+            <header class="pf-theme-head">
+              <h2 class="pf-theme-title">Identidade Visual</h2>
+              <span class="pf-theme-count">1 projeto</span>
+            </header>
+            <div class="pf-theme-grid">
+              <a class="pf-item" href="/producao.html">
+                <img src="images/clientLogos/Banco Central_STP.png" alt="Banco Central de São Tomé e Príncipe — identidade visual" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.pf-item-ph').style.display='flex'">
+                <span class="pf-item-ph" aria-hidden="true" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 7l9-4 9 4M8 20v-6h8v6"/></svg></span>
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Banco Central, São Tomé e Príncipe — Identidade visual</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="pf-theme">
+            <header class="pf-theme-head">
+              <h2 class="pf-theme-title">Produção &amp; Criatividade</h2>
+              <span class="pf-theme-count">2 projetos</span>
+            </header>
+            <div class="pf-theme-grid">
+              <a class="pf-item" href="/producao.html">
+                <img src="images/IV/mockupsFF.jpg" alt="Identidade visual e materiais corporativos — mockups" loading="lazy">
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Identidade visual &amp; materiais corporativos</span>
+              </a>
+              <a class="pf-item" href="/producao.html">
+                <img src="images/merchandising/hbd.jpeg" alt="Fardamentos e merchandising corporativo, HBD" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.pf-item-ph').style.display='flex'">
+                <span class="pf-item-ph" aria-hidden="true" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span>
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Fardamentos e Merchandising Corporativo, HBD</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="pf-theme">
+            <header class="pf-theme-head">
+              <h2 class="pf-theme-title">Fardamentos &amp; Equipamentos</h2>
+              <span class="pf-theme-count">2 projetos</span>
+            </header>
+            <div class="pf-theme-grid">
+              <a class="pf-item" href="/importacao-e-exportacao.html">
+                <img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="Equipamento especializado — operação internacional" loading="lazy">
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Equipamento especializado — Operação internacional</span>
+              </a>
+              <a class="pf-item" href="/importacao-e-exportacao.html">
+                <img src="images/equipamentos/todosEquipamentos.jpeg" alt="Equipamento e fornecimento — operação internacional" loading="lazy">
+                <span class="pf-item-grad" aria-hidden="true"></span>
+                <span class="pf-item-label">Equipamento &amp; Fornecimento</span>
+              </a>
+            </div>
+          </article>
+
         </div>
 
         <p class="pg2-prose pg2-reveal" style="margin-top:2rem;font-style:italic;color:rgba(255,255,255,0.35);">Mostramos apenas o que pode ser partilhado.</p>
@@ -312,27 +340,6 @@
       toggle.addEventListener('click', function () {
         var isLight = document.documentElement.classList.toggle('light-mode');
         localStorage.setItem('on4u-theme', isLight ? 'light' : 'dark');
-      });
-    })();
-    /* Portfolio filter */
-    (function () {
-      var filters = document.getElementById('pf-filters');
-      var grid = document.getElementById('pf-grid');
-      if (!filters || !grid) return;
-      var cards = Array.prototype.slice.call(grid.querySelectorAll('.pg2-pf'));
-      filters.addEventListener('click', function (e) {
-        var btn = e.target.closest('.pg2-chip');
-        if (!btn) return;
-        var f = btn.getAttribute('data-filter');
-        filters.querySelectorAll('.pg2-chip').forEach(function (c) {
-          var on = c === btn;
-          c.classList.toggle('is-active', on);
-          c.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-        cards.forEach(function (card) {
-          var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
-          card.classList.toggle('is-hidden', !(f === 'all' || cats.indexOf(f) !== -1));
-        });
       });
     })();
     (function () {
