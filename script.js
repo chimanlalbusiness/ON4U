@@ -1081,13 +1081,16 @@ document.addEventListener("DOMContentLoaded", () => {
    and a fan would just look like crooked cards.
    ══════════════════════════════════════════════════════════════ */
 (function () {
+  // A *static* 3D pose is not motion, so reduced-motion still gets the resting
+  // fan — it only skips the parts that actually move (cursor/scroll lean).
   var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (REDUCE) return;
   var rails = [].slice.call(document.querySelectorAll(".pg2-steps--row"));
   if (!rails.length) return;
 
-  var ARC = 6;        // deg on the outermost card — enough to read as a fan,
-                      // small enough that adjacent cards don't visually collide
+  // deg on the outermost card — enough to read as a fan, small enough that
+  // adjacent cards don't visually collide. Reduced motion gets a touch more,
+  // since the resting pose is the only depth cue it will ever see.
+  var ARC = REDUCE ? 8 : 6;
   var GTILT = 3.2;    // deg of group lean
   var TOUCH = window.matchMedia("(hover: none)").matches;
   var px = -99999, py = -99999, ticking = false;
@@ -1133,6 +1136,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function kick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
   layoutArc();
+
+  var rt = null;
+  window.addEventListener("resize", function () {
+    if (rt) clearTimeout(rt);
+    rt = setTimeout(function () { layoutArc(); if (!REDUCE) kick(); }, 120);
+  }, { passive: true });
+
+  if (REDUCE) return;   // resting fan only — nothing below this moves
   kick();
 
   if (TOUCH) {
@@ -1149,11 +1160,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  var rt = null;
-  window.addEventListener("resize", function () {
-    if (rt) clearTimeout(rt);
-    rt = setTimeout(function () { layoutArc(); kick(); }, 120);
-  }, { passive: true });
 })();
 
 /* ══════════════════════════════════════════════════════════════
@@ -1337,7 +1343,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (REDUCE) {
       groups.forEach(function (g) {
-        [].slice.call(g.children).forEach(function (c) { c.style.opacity = "1"; c.style.transform = "none"; });
+        [].slice.call(g.children).forEach(function (c) {
+          c.style.opacity = "1";
+          // list cards keep their stylesheet transform (the rail's resting fan
+          // is a static pose, not motion); wrappers flatten outright
+          if (!g.__list) c.style.transform = "none";
+        });
       });
       return;
     }
