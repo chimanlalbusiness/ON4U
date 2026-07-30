@@ -5388,6 +5388,23 @@ html.light-mode .header {
 /* wrapper: the reveal animates this; the inner card keeps its own hover-tilt */
 .route3d-item { display: flex; }
 .route3d-item > * { flex: 1 1 auto; width: 100%; }
+
+/* A list group has no wrapper to animate (an <li> can't take one cleanly), so
+   the reveal and the hover-tilt would both want `transform` on the same node.
+   Compose them instead: JS publishes the reveal as --r3d and the cursor lean
+   as --rx/--ry/--lift, and both fold into one chain here — so list cards also
+   release to the hover-tilt once settled, instead of going static after the
+   reveal. Perspective comes from .route3d, so it's one shared vanishing point. */
+.route3d > li { transform: var(--r3d, none); }
+.route3d > li.r3d-tilt {
+  /* --r3d falls back to an identity *function*, not `none`: once the reveal
+     settles it is removed, and `transform: none rotateX(...)` is invalid CSS
+     that would drop the whole declaration and kill the tilt. */
+  transform: var(--r3d, translateZ(0))
+             rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+             translateY(var(--lift, 0px));
+  will-change: transform;
+}
 /* clip the host section so cards sweeping in from the side add no scrollbars */
 .pg2-section:has(.route3d) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {

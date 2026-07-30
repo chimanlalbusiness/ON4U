@@ -1199,6 +1199,15 @@ document.addEventListener("DOMContentLoaded", () => {
       (rx * rS).toFixed(2) + "deg) rotateY(" + (ry * rS).toFixed(2) + "deg) rotateZ(" + (rz * rS).toFixed(2) + "deg)";
   }
 
+  // Wrappers own their `transform` outright. List items publish the reveal as
+  // --r3d instead, so the stylesheet can fold the hover-tilt into the same
+  // transform chain (see .route3d > li.r3d-tilt).
+  function setPose(g, item, value) {
+    if (!g.__list) { item.style.transform = value || ""; return; }
+    if (value) item.style.setProperty("--r3d", value);
+    else item.style.removeProperty("--r3d");
+  }
+
   function init() {
     var groups = [].slice.call(document.querySelectorAll(".route3d"));
     if (!groups.length) return;
@@ -1209,9 +1218,17 @@ document.addEventListener("DOMContentLoaded", () => {
       g.__list = isList;
       var kids = [].slice.call(g.children);
       if (isList) {
-        // <li> can't hold a <div> wrapper cleanly → animate the li directly and
-        // hand it fully to route3d (drop the hover-tilt class so it can't clobber).
-        kids.forEach(function (li) { li.classList.remove("glass-tilt"); li.style.willChange = "transform, opacity"; });
+        // <li> can't hold a <div> wrapper cleanly → animate the li directly.
+        // glass-tilt sets `transform` with !important, which would clobber the
+        // reveal, so swap it for r3d-tilt: the reveal writes --r3d, the
+        // living-glass loop keeps writing --rx/--ry/--lift, and CSS composes
+        // both into one chain. That's what lets a list card still "release to
+        // the hover-tilt once settled" instead of going dead after the reveal.
+        kids.forEach(function (li) {
+          li.classList.remove("glass-tilt");
+          li.classList.add("r3d-tilt");
+          li.style.willChange = "transform, opacity";
+        });
       } else {
         // wrap each child so the reveal animates the wrapper while the inner
         // card keeps its own hover-tilt (the two never fight over `transform`).
@@ -1260,13 +1277,13 @@ document.addEventListener("DOMContentLoaded", () => {
           var p = (pPos - i * stag) / denom;
           p = p < 0 ? 0 : p > 1 ? 1 : p;
           if (p >= 0.999) {
-            if (item.__r3d !== "set") { item.style.transform = ""; item.style.opacity = ""; item.__r3d = "set"; }
+            if (item.__r3d !== "set") { setPose(g, item, ""); item.style.opacity = ""; item.__r3d = "set"; }
             continue;
           }
           item.__r3d = "anim";
           var e = smooth(p);
           var side = (item.offsetLeft + item.offsetWidth / 2) < gMid ? -1 : 1;
-          item.style.transform = variantTransform(variant, e, side, tS, rS);
+          setPose(g, item, variantTransform(variant, e, side, tS, rS));
           var op = e * 1.7; if (op > 1) op = 1;
           item.style.opacity = op.toFixed(3);
         }
