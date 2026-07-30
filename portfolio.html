@@ -25,6 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="style.css?v=16" />
+  <link rel="stylesheet" href="fan-carousel.css?v=1" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
   <style>
@@ -159,9 +160,49 @@
       </div>
     </section>
 
-    <!-- GRID -->
+    <!-- GRID — montra em leque + índice organizado por tema -->
     <section class="pg2-section pg2-section--1">
       <div class="pg2-wrap">
+        <div class="fan-wrap" aria-label="Montra de projetos">
+          <div class="fan" data-fan data-fan-variant="photo" data-fan-spread="30">
+            <a class="fan-card" href="/producao.html">
+              <img src="images/stands/repsol.jpeg" alt="Stand Repsol — ativação corporativa" loading="lazy">
+              <span class="fan-card-grad" aria-hidden="true"></span>
+              <span class="fan-card-body"><span class="fan-card-title">Stand Repsol — Ativação corporativa</span></span>
+            </a>
+            <a class="fan-card" href="/producao.html">
+              <img src="images/stands/santaCasa.jpg" alt="Santa Casa da Misericórdia — presença institucional" loading="lazy">
+              <span class="fan-card-grad" aria-hidden="true"></span>
+              <span class="fan-card-body"><span class="fan-card-title">Santa Casa da Misericórdia — Presença institucional</span></span>
+            </a>
+            <a class="fan-card" href="/importacao-e-exportacao.html">
+              <img src="images/stands/bissau.png" alt="Guiné-Bissau — presença local e operação" loading="lazy">
+              <span class="fan-card-grad" aria-hidden="true"></span>
+              <span class="fan-card-body"><span class="fan-card-title">Guiné-Bissau — Presença local &amp; operação</span></span>
+            </a>
+            <a class="fan-card" href="/producao.html">
+              <img src="images/IV/mockupsFF.jpg" alt="Identidade visual e materiais corporativos" loading="lazy">
+              <span class="fan-card-grad" aria-hidden="true"></span>
+              <span class="fan-card-body"><span class="fan-card-title">Identidade visual &amp; materiais corporativos</span></span>
+            </a>
+            <a class="fan-card" href="/producao.html">
+              <img src="images/IV/logoBancoCentralSTP.jpg" alt="Banco Central de São Tomé e Príncipe — identidade visual" loading="lazy">
+              <span class="fan-card-grad" aria-hidden="true"></span>
+              <span class="fan-card-body"><span class="fan-card-title">Banco Central, São Tomé e Príncipe — Identidade visual</span></span>
+            </a>
+            <a class="fan-card" href="/importacao-e-exportacao.html">
+              <img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="Equipamento especializado — operação internacional" loading="lazy">
+              <span class="fan-card-grad" aria-hidden="true"></span>
+              <span class="fan-card-body"><span class="fan-card-title">Equipamento especializado — Operação internacional</span></span>
+            </a>
+            <a class="fan-card" href="/importacao-e-exportacao.html">
+              <img src="images/equipamentos/todosEquipamentos.jpeg" alt="Equipamento e fornecimento — operação internacional" loading="lazy">
+              <span class="fan-card-grad" aria-hidden="true"></span>
+              <span class="fan-card-body"><span class="fan-card-title">Equipamento &amp; Fornecimento</span></span>
+            </a>
+          </div>
+        </div>
+
         <div class="pf-themes route3d" id="pf-themes" data-r3d="rise">
 
           <article class="pf-theme">
@@ -333,6 +374,7 @@
   <!-- /ON4U-CANONICAL-FOOTER -->
 
   <script src="script.js"></script>
+  <script src="fan-carousel.js?v=1"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');
