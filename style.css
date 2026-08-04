@@ -5983,36 +5983,100 @@ html.light-mode .pf-item img {
 
 /* shared near-opaque glass surface (stack needs opacity to overlap) */
 .im-bento-tile, .im-rail, .im-pipe, .im-manifest, .im-stack-card {
-  background: linear-gradient(165deg, rgba(30, 30, 34, 0.92), rgba(19, 19, 22, 0.94));
+  /* warm key-light from the top-left over the glass base — panels read as
+     lit objects, not flat fills */
+  background:
+    radial-gradient(120% 90% at 14% 0%, rgba(249, 115, 22, 0.075), transparent 46%),
+    linear-gradient(165deg, rgba(32, 31, 35, 0.93), rgba(17, 17, 20, 0.95));
   border: 1px solid rgba(255, 255, 255, 0.09);
   -webkit-backdrop-filter: blur(14px) saturate(1.15);
   backdrop-filter: blur(14px) saturate(1.15);
   box-shadow: 0 22px 48px -22px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   border-radius: 20px;
 }
+/* Lit edge: a 1px gradient ring — bright where the key-light hits (top-left),
+   falling to neutral. Drawn by masking a gradient-filled overlay down to its
+   outer 1px; only engages where mask-composite exists, otherwise the plain
+   border above stands. */
+@supports ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+  .im-bento-tile, .im-rail, .im-pipe, .im-manifest, .im-stack-card { border-color: transparent; }
+  .im-bento-tile::after, .im-rail::after, .im-pipe::after, .im-manifest::after, .im-stack-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;   /* padding-box edge: survives overflow:hidden on the tiles */
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(160deg,
+      rgba(249, 115, 22, 0.55), rgba(255, 255, 255, 0.16) 26%,
+      rgba(255, 255, 255, 0.06) 55%, rgba(249, 115, 22, 0.16));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
 
 /* ── route strip (presença) — the four locations laid out as the
    order's journey: origem → coordenação → destino, partners below.
    Equal-weight cards (content parity, no filler heights); the hub
    card (PT) carries the accent monogram to anchor the middle. ── */
-.im-route { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 0.85rem; }
+.im-route { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 0.6rem; }
 .im-bento-tile { position: relative; overflow: hidden; padding: 1.6rem; display: flex; flex-direction: column; gap: 0.45rem; transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease; }
 .im-bento-tile:hover { border-color: rgba(249, 115, 22, 0.35); }
-.im-route-arrow { display: flex; align-items: center; color: var(--pg-accent); opacity: 0.6; font-size: 1.2rem; }
+/* connector: a dashed leg with an arrowhead — route notation, not typography */
+.im-route-arrow {
+  position: relative;
+  width: 2.6rem;
+  align-self: center;
+  height: 2px;
+  font-size: 0;
+  background: repeating-linear-gradient(90deg, rgba(249, 115, 22, 0.65) 0 6px, transparent 6px 13px);
+}
+.im-route-arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left: 7px solid rgba(249, 115, 22, 0.8);
+}
+/* cartographic dot-field behind the monogram zone */
+.im-route-card {
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1.4px),
+    radial-gradient(120% 90% at 14% 0%, rgba(249, 115, 22, 0.09), transparent 46%),
+    linear-gradient(165deg, rgba(32, 31, 35, 0.93), rgba(17, 17, 20, 0.95));
+  background-size: 16px 16px, auto, auto;
+  background-position: 0 0, 0 0, 0 0;
+}
 .im-route-role { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--pg-ink-3); }
 .im-route-code {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
-  margin: 0.6rem 0 0.8rem;
+  margin: 0.7rem 0 1rem;
   color: transparent;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.08));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.07));
   -webkit-background-clip: text;
   background-clip: text;
 }
-.im-route-card--hub .im-route-code { background: linear-gradient(135deg, #fb923c, rgba(249, 115, 22, 0.45)); -webkit-background-clip: text; background-clip: text; }
-.im-route-card--hub { border-color: rgba(249, 115, 22, 0.22); }
+.im-route-card--hub .im-route-code {
+  background: linear-gradient(135deg, #fdba74, #f97316 60%, rgba(249, 115, 22, 0.55));
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.38));
+}
+.im-route-card--hub {
+  background:
+    radial-gradient(rgba(249, 115, 22, 0.07) 1px, transparent 1.4px),
+    radial-gradient(130% 100% at 50% 0%, rgba(249, 115, 22, 0.14), transparent 52%),
+    linear-gradient(165deg, rgba(36, 30, 26, 0.94), rgba(19, 16, 14, 0.96));
+  background-size: 16px 16px, auto, auto;
+  box-shadow: 0 22px 48px -22px rgba(0, 0, 0, 0.65), 0 24px 70px -28px rgba(249, 115, 22, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
 .im-route-card h3 { font-size: 1.02rem; font-weight: 700; color: var(--pg-ink); margin: 0; }
 .im-route-card p { font-size: 0.85rem; color: var(--pg-ink-3); line-height: 1.55; margin: 0; }
 .im-route-card p { margin-bottom: 0.9rem; }
@@ -6024,40 +6088,78 @@ html.light-mode .pf-item img {
 .im-route-wide p { font-size: 0.85rem; color: var(--pg-ink-3); line-height: 1.55; margin: 0; }
 .im-route-wide .im-tag { margin-top: 0; margin-left: auto; flex-shrink: 0; }
 
+/* ── hub card: the lit ring burns brighter where the route converges ── */
+.im-route-card--hub::after {
+  background: linear-gradient(160deg,
+    rgba(249, 115, 22, 0.85), rgba(249, 115, 22, 0.3) 34%,
+    rgba(255, 255, 255, 0.1) 62%, rgba(249, 115, 22, 0.4));
+}
+
 /* ── transport rail (rede) — one strip, not three cards ── */
-.im-rail { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); padding: 2.4rem 0 0.4rem; overflow: hidden; }
+.im-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2.4rem 0 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 22px 48px -22px rgba(0, 0, 0, 0.65),
+              0 34px 80px -34px rgba(249, 115, 22, 0.22),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
 .im-rail-line { position: absolute; top: 1.45rem; left: 5%; right: 5%; height: 2px; background: repeating-linear-gradient(90deg, rgba(249, 115, 22, 0.55) 0 9px, transparent 9px 22px); }
 @media (prefers-reduced-motion: no-preference) { .im-rail-line { animation: imDash 1.6s linear infinite; } }
 @keyframes imDash { to { background-position: 44px 0; } }
 .im-rail-seg { padding: 0.4rem 1.6rem 1.6rem; position: relative; }
 .im-rail-seg + .im-rail-seg { border-left: 1px solid rgba(255, 255, 255, 0.07); }
-.im-rail-seg::before { content: ""; position: absolute; top: -1.35rem; left: 1.6rem; width: 12px; height: 12px; border-radius: 50%; background: var(--pg-accent); box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15); }
-.im-rail-ico { width: 30px; height: 30px; color: var(--pg-accent); margin: 0.4rem 0 0.7rem; }
-.im-rail-ico svg { width: 100%; height: 100%; }
-.im-rail-seg h3 { font-size: 1rem; font-weight: 700; color: var(--pg-ink); margin: 0 0 0.35rem; }
+.im-rail-seg::before { content: ""; position: absolute; top: -1.35rem; left: 1.6rem; width: 12px; height: 12px; border-radius: 50%; background: var(--pg-accent); box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15), 0 0 16px rgba(249, 115, 22, 0.55); }
+.im-rail-ico {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  margin: 0.5rem 0 0.9rem;
+  color: var(--pg-accent);
+  background: linear-gradient(150deg, rgba(249, 115, 22, 0.16), rgba(249, 115, 22, 0.04));
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 6px 18px -8px rgba(249, 115, 22, 0.4);
+}
+.im-rail-ico svg { width: 26px; height: 26px; }
+.im-rail-seg h3 { font-size: 1.08rem; font-weight: 700; color: var(--pg-ink); margin: 0 0 0.35rem; }
 .im-rail-seg p { font-size: 0.85rem; color: var(--pg-ink-3); line-height: 1.55; margin: 0; }
 
 /* ── filter panel (centro operacional) — three checks, one panel.
    Deliberately NOT numbered steps: the journey lives in #process
    below; this is what gets verified before any commitment. ── */
-.im-pipe { display: flex; align-items: stretch; padding: 1.9rem 1.6rem; gap: 0; }
+.im-pipe { position: relative; display: flex; align-items: stretch; padding: 1.9rem 1.6rem; gap: 0; }
 .im-pipe-stage { flex: 1; display: flex; gap: 0.9rem; padding: 0 1.4rem; }
 .im-pipe-stage:first-child { padding-left: 0.6rem; }
 .im-pipe-stage + .im-pipe-stage { border-left: 1px solid rgba(255, 255, 255, 0.08); }
 .im-pipe-check {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   margin-top: 0.1rem;
   border-radius: 50%;
-  border: 1px solid rgba(249, 115, 22, 0.5);
+  border: 1px solid rgba(249, 115, 22, 0.55);
   color: var(--pg-accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 800;
+  background: radial-gradient(circle at 32% 28%, rgba(249, 115, 22, 0.22), rgba(249, 115, 22, 0.05));
+  box-shadow: 0 0 16px -2px rgba(249, 115, 22, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
+
+/* ── section ambience: each band gets its own low bloom so the page has
+   a light rhythm instead of one uniform black (ids are page-local) ── */
+#presence { background-image: radial-gradient(58% 46% at 84% 4%, rgba(249, 115, 22, 0.055), transparent 70%); }
+#network  { background-image: radial-gradient(56% 44% at 10% 92%, rgba(249, 115, 22, 0.05), transparent 70%); }
+#hub      { background-image: radial-gradient(50% 42% at 88% 80%, rgba(249, 115, 22, 0.045), transparent 70%); }
+#process  { background-image: radial-gradient(72% 38% at 50% 0%, rgba(249, 115, 22, 0.055), transparent 70%); }
+#coordenamos { background-image: radial-gradient(56% 46% at 12% 8%, rgba(249, 115, 22, 0.05), transparent 70%); }
 .im-pipe-stage h3 { font-size: 1rem; font-weight: 700; color: var(--pg-ink); margin: 0 0 0.3rem; }
 .im-pipe-stage p { font-size: 0.85rem; color: var(--pg-ink-3); line-height: 1.55; margin: 0; }
 
@@ -6068,14 +6170,24 @@ html.light-mode .pf-item img {
   position: sticky;
   top: calc(100px + var(--i, 0) * 3rem);
   display: flex;
-  gap: 1.5rem;
+  gap: 1.6rem;
   align-items: flex-start;
-  padding: 1.9rem 2rem 2.2rem;
-  min-height: 11rem;
+  padding: 1.8rem 2rem;
   border-radius: 22px;
   box-shadow: 0 -18px 44px -26px rgba(0, 0, 0, 0.85), 0 26px 52px -24px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.09);
 }
-.im-stack-k { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--pg-accent); font-variant-numeric: tabular-nums; line-height: 1; opacity: 0.9; }
+.im-stack-k {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  line-height: 0.9;
+  min-width: 3.4rem;
+  color: transparent;
+  background: linear-gradient(160deg, #fdba74 8%, #f97316 55%, rgba(249, 115, 22, 0.35));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 .im-stack-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--pg-ink); margin: 0.15rem 0 0.5rem; }
 .im-stack-card p { font-size: 0.95rem; color: var(--pg-ink-2); line-height: 1.65; margin: 0; }
 
