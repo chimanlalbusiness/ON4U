@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=21" />
+  <link rel="stylesheet" href="style.css?v=22" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
@@ -276,32 +276,38 @@
           <h2 class="pg2-h2">Base e presença em pontos-chave para a operação internacional.</h2>
         </div>
         <p class="pg2-lede pg2-measure pg2-reveal">Sede em Portugal, presença operacional em São Tomé e Príncipe e na Guiné-Bissau, e escritórios na China e na Índia — perto da origem e do destino da maioria dos pedidos.</p>
-        <div class="im-bento pg2-reveal">
-          <article class="im-bento-tile im-bento-pt">
-            <span class="im-bento-watermark" aria-hidden="true">PT</span>
-            <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-            <h3>Base em Portugal</h3>
-            <p>Coordenação central, validação e próximos passos.</p>
-            <span class="im-tag">Sede</span>
-          </article>
-          <article class="im-bento-tile im-bento-stp">
-            <h3>São Tomé e Príncipe &bull; Guiné-Bissau</h3>
-            <p>Suporte local para alinhamentos e execução.</p>
-            <span class="im-tag">Presença operacional</span>
-          </article>
-          <article class="im-bento-tile im-bento-asia">
+        <div class="im-route pg2-reveal">
+          <article class="im-bento-tile im-route-card">
+            <span class="im-route-role">Origem &amp; sourcing</span>
+            <span class="im-route-code" aria-hidden="true">CN &middot; IN</span>
             <h3>China e Índia</h3>
             <p>Escritórios de apoio à origem e sourcing.</p>
             <span class="im-tag">Escritórios</span>
           </article>
-          <article class="im-bento-tile im-bento-wide">
-            <div>
-              <h3>Rede de parceiros</h3>
-              <p>Transporte, manuseamento e processos locais — execução por destino.</p>
-            </div>
-            <span class="im-tag">Execução local</span>
+          <span class="im-route-arrow" aria-hidden="true">&rarr;</span>
+          <article class="im-bento-tile im-route-card im-route-card--hub">
+            <span class="im-route-role">Coordenação central</span>
+            <span class="im-route-code" aria-hidden="true">PT</span>
+            <h3>Base em Portugal</h3>
+            <p>Coordenação central, validação e próximos passos.</p>
+            <span class="im-tag">Sede</span>
+          </article>
+          <span class="im-route-arrow" aria-hidden="true">&rarr;</span>
+          <article class="im-bento-tile im-route-card">
+            <span class="im-route-role">Destino &amp; execução</span>
+            <span class="im-route-code" aria-hidden="true">ST &middot; GW</span>
+            <h3>São Tomé e Príncipe &bull; Guiné-Bissau</h3>
+            <p>Suporte local para alinhamentos e execução.</p>
+            <span class="im-tag">Presença operacional</span>
           </article>
         </div>
+        <article class="im-bento-tile im-route-wide pg2-reveal">
+          <div>
+            <h3>Rede de parceiros</h3>
+            <p>Transporte, manuseamento e processos locais — execução por destino.</p>
+          </div>
+          <span class="im-tag">Execução local</span>
+        </article>
       </div>
     </section>
 
@@ -321,7 +327,7 @@
         <div class="im-rail pg2-reveal" role="list" aria-label="Modos de transporte">
           <div class="im-rail-line" aria-hidden="true"></div>
           <div class="im-rail-seg" role="listitem">
-            <div class="im-rail-ico"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round"><path d="M100 18 C 106 40 106 58 104 74 L 178 118 L 178 134 L 104 112 L 102 152 L 126 170 L 126 182 L 100 174 L 74 182 L 74 170 L 98 152 L 96 112 L 22 134 L 22 118 L 96 74 C 94 58 94 40 100 18 Z"/></svg></div>
+            <div class="im-rail-ico"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="15" stroke-linejoin="round"><path d="M100 18 C 106 40 106 58 104 74 L 178 118 L 178 134 L 104 112 L 102 152 L 126 170 L 126 182 L 100 174 L 74 182 L 74 170 L 98 152 L 96 112 L 22 134 L 22 118 L 96 74 C 94 58 94 40 100 18 Z"/></svg></div>
             <h3>Aéreo</h3>
             <p>Prazos curtos, volumes mais pequenos ou de alto valor.</p>
           </div>
@@ -350,26 +356,24 @@
         <p class="pg2-lede pg2-measure pg2-reveal">Antes de qualquer compromisso, confirmamos viabilidade, condições e documentação. É o filtro que evita surpresas na alfândega, no prazo ou na qualidade.</p>
         <div class="im-pipe pg2-reveal">
           <div class="im-pipe-stage">
-            <span class="im-pipe-k">01</span>
+            <span class="im-pipe-check" aria-hidden="true">&check;</span>
             <div>
-              <h3>Controlo</h3>
-              <p>Requisitos e próximos passos sempre claros.</p>
+              <h3>Viabilidade</h3>
+              <p>Prazo, quantidades e origem confirmados antes de qualquer compromisso.</p>
             </div>
           </div>
-          <div class="im-pipe-arrow" aria-hidden="true">&rarr;</div>
           <div class="im-pipe-stage">
-            <span class="im-pipe-k">02</span>
+            <span class="im-pipe-check" aria-hidden="true">&check;</span>
             <div>
-              <h3>Validação</h3>
-              <p>Viabilidade confirmada antes de avançar.</p>
+              <h3>Condições</h3>
+              <p>Custo total e modo de transporte fechados antes de avançar.</p>
             </div>
           </div>
-          <div class="im-pipe-arrow" aria-hidden="true">&rarr;</div>
           <div class="im-pipe-stage">
-            <span class="im-pipe-k">03</span>
+            <span class="im-pipe-check" aria-hidden="true">&check;</span>
             <div>
-              <h3>Execução</h3>
-              <p>Coordenação contínua até à entrega e fecho.</p>
+              <h3>Documentação</h3>
+              <p>Requisitos de licenciamento e desembaraço verificados antes do embarque.</p>
             </div>
           </div>
         </div>
@@ -980,7 +984,7 @@
   </footer>
 
   <script src="components/world-map.js"></script>
-  <script src="script.js?v=21"></script>
+  <script src="script.js?v=22"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');
