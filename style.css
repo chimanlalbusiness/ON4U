@@ -6586,6 +6586,15 @@ html.light-mode .pf-item img {
 /* keep real content above the glow */
 .glass-spot > * { position: relative; z-index: 1; }
 
+/* .glass-spot forces position:relative to anchor its glow overlay, and it lands
+   later in this file than .im-stack-card's `position: sticky` at equal
+   specificity — so script.js adding the class silently downgraded the process
+   stack to relative. `top` then shifted each card *down* instead of pinning it,
+   pushing step 04 clean out of its section, where the next section painted over
+   it. Re-assert sticky at higher specificity; a sticky box anchors ::before
+   just as well as a relative one. */
+.im-stack-card.glass-spot { position: sticky; }
+
 /* 3D tilt — the card face pivots toward the cursor (vars set by JS). */
 .glass-tilt {
   transform: perspective(780px)
