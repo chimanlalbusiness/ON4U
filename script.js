@@ -990,8 +990,10 @@ document.addEventListener("DOMContentLoaded", () => {
    ══════════════════════════════════════════════════════════════ */
 (function () {
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-step, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-bento-tile, .im-stack-card, .im-rail, .im-pipe, .im-manifest';
-  var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-step, .pg2-pf, .pf-card, .im-bento-tile';
+  // .pg2-step is deliberately absent from both: the process steps are plain
+  // cards — no cursor spotlight, no tilt, no motion of any kind.
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-bento-tile, .im-stack-card, .im-rail, .im-pipe, .im-manifest';
+  var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card, .im-bento-tile';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg
   var MAXLIFT = 8;     // px
@@ -1063,103 +1065,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', start); }
   else { start(); }
-})();
-
-/* ══════════════════════════════════════════════════════════════
-   Process rail — persistent 3D presence (.pg2-steps--row).
-
-   The reveal and the hover-tilt both only fire on an event; between
-   them the row sits perfectly flat, which is why it reads as "static
-   cards". This gives the rail a resting 3D pose instead: each card
-   takes a small --arc so the four sit on a shallow fan facing the
-   reader, and the group leans via --gx/--gy — toward the cursor where
-   there is one, otherwise with scroll position. Composes with the
-   reveal (--r3d) and the hover-tilt (--rx/--ry/--lift); see
-   .route3d > li.r3d-tilt in style.css.
-
-   The arc is dropped below 900px, where the row wraps to 2/1 columns
-   and a fan would just look like crooked cards.
-   ══════════════════════════════════════════════════════════════ */
-(function () {
-  // A *static* 3D pose is not motion, so reduced-motion still gets the resting
-  // fan — it only skips the parts that actually move (cursor/scroll lean).
-  var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var rails = [].slice.call(document.querySelectorAll(".pg2-steps--row"));
-  if (!rails.length) return;
-
-  // deg on the outermost card — enough to read as a fan, small enough that
-  // adjacent cards don't visually collide. Reduced motion gets a touch more,
-  // since the resting pose is the only depth cue it will ever see.
-  var ARC = REDUCE ? 8 : 6;
-  var GTILT = 3.2;    // deg of group lean
-  var TOUCH = window.matchMedia("(hover: none)").matches;
-  var px = -99999, py = -99999, ticking = false;
-
-  function layoutArc() {
-    var wide = window.innerWidth >= 900;
-    rails.forEach(function (rail) {
-      var kids = rail.children, n = kids.length, half = (n - 1) / 2;
-      for (var i = 0; i < n; i++) {
-        // -1 … +1 across the row; negative angle turns the left card's
-        // face inward, so the fan is concave toward the reader
-        var d = half > 0 ? (i - half) / half : 0;
-        kids[i].style.setProperty("--arc", wide ? (d * -ARC).toFixed(2) + "deg" : "0deg");
-      }
-    });
-  }
-
-  function frame() {
-    ticking = false;
-    var vh = window.innerHeight;
-    rails.forEach(function (rail) {
-      var r = rail.getBoundingClientRect();
-      if (!r.height || r.bottom < -200 || r.top > vh + 200) return;   // offscreen
-      var gy, gx;
-      if (TOUCH) {
-        // no cursor: ease the lean out as the rail rises to mid-screen,
-        // so it turns to face the reader on the way in
-        var p = 1 - Math.min(1, Math.max(0, (r.top + r.height / 2) / vh));
-        gy = (1 - p) * GTILT * 1.6;
-        gx = 0;
-      } else if (px < -9999) {
-        gy = 0; gx = 0;              // cursor not seen yet — rest square-on
-      } else {
-        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        gy = Math.max(-1, Math.min(1, (px - cx) / (r.width / 2))) * GTILT;
-        gx = Math.max(-1, Math.min(1, (cy - py) / (vh / 2))) * GTILT * 0.5;
-      }
-      rail.style.setProperty("--gy", gy.toFixed(2) + "deg");
-      rail.style.setProperty("--gx", gx.toFixed(2) + "deg");
-    });
-  }
-
-  function kick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
-
-  layoutArc();
-
-  var rt = null;
-  window.addEventListener("resize", function () {
-    if (rt) clearTimeout(rt);
-    rt = setTimeout(function () { layoutArc(); if (!REDUCE) kick(); }, 120);
-  }, { passive: true });
-
-  if (REDUCE) return;   // resting fan only — nothing below this moves
-  kick();
-
-  if (TOUCH) {
-    window.addEventListener("scroll", kick, { passive: true });
-  } else {
-    window.addEventListener("pointermove", function (e) { px = e.clientX; py = e.clientY; kick(); }, { passive: true });
-    window.addEventListener("scroll", kick, { passive: true });
-    document.documentElement.addEventListener("mouseleave", function () {
-      px = -99999; py = -99999;
-      rails.forEach(function (rail) {
-        rail.style.setProperty("--gy", "0deg");
-        rail.style.setProperty("--gx", "0deg");
-      });
-    });
-  }
-
 })();
 
 /* ══════════════════════════════════════════════════════════════
