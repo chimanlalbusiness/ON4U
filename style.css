@@ -6905,3 +6905,21 @@ html.light-mode .pf-item img {
    in order because they are laid out in order. ═════════════════ */
 .pg2-steps--row { gap: 1.4rem; }
 .pg2-steps--row .pg2-step { padding: 1.7rem 1.4rem; text-align: center; }
+
+/* ══════════════════════════════════════════════════════════════
+   "Compromisso Pagamento Pontual" seal — the supplied asset is a
+   JPEG (no alpha) whose pill-shaped orange badge sits on a white
+   plate, so on the dark footer it showed as a white box with the
+   badge inside. HQ asked for the plate gone.
+
+   Measured from the file (676x247): the badge's content box is
+   x 6-659, y 4-240, and fitting the left edge profile gives a corner
+   radius of ~115px on a 237px-tall badge — i.e. a stadium/pill. So
+   clip to that exact shape: trim the 1-2% white margin per side and
+   round the ends fully. No new asset needed, and it stays correct if
+   HQ later supplies a transparent PNG (a clip over already-transparent
+   pixels is a no-op).
+   ══════════════════════════════════════════════════════════════ */
+img[src*="compromissoPagamentoPontual"] {
+  clip-path: inset(1.6% 2.4% 2.4% 0.9% round 999px);
+}
