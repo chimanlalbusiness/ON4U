@@ -994,7 +994,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // cards — no cursor spotlight, no tilt, no motion of any kind.
   // importacao's hairline panels glow as whole frames; their cells and the
   // process rows stay flat (no tilt, no per-cell spotlight)
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route, .im-route-wide, .im-rail, .im-pipe, .im-manifest';
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route, .im-route-wide, .im-rail, .im-pipe, .im-flow, .im-manifest';
   var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg
@@ -1393,4 +1393,70 @@ document.addEventListener("DOMContentLoaded", () => {
       if (willOpen) setOpen(cell, true);
     });
   });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Process flowchart (importacao #process).
+   Desktop: the section is a runway and the wrap is pinned; scroll
+   progress through the runway picks the phase (1–4). Each phase lights
+   its phase row, the nodes reached so far, the links up to it, and
+   moves the marker along the path. Below 900px nothing pins: the phase
+   nearest the viewport centre leads, and rows are clickable everywhere.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var root = document.querySelector("[data-flow]");
+  if (!root) return;
+  var section = root.closest(".im-flow-section");
+  var phases = [].slice.call(root.querySelectorAll(".im-flow-phase"));
+  var nodes = [].slice.call(root.querySelectorAll(".im-flow-node"));
+  var links = [].slice.call(root.querySelectorAll(".im-flow-link"));
+  var ball = root.querySelector(".im-flow-ball");
+  if (!section || !phases.length) return;
+
+  var NODES = {
+    1: ["start", "pedido"],
+    2: ["start", "pedido", "validacao"],
+    3: ["start", "pedido", "validacao", "proposta", "planeamento"],
+    4: ["start", "pedido", "validacao", "proposta", "planeamento", "execucao"]
+  };
+  var BALL = { 1: [130, 86], 2: [130, 180], 3: [130, 235], 4: [130, 437] };   // viewBox units (start 130,30)
+  var stacked = window.matchMedia("(max-width: 899px), (max-height: 859px)");   // no pin on narrow or short viewports
+  var current = 0, ticking = false;
+
+  function setPhase(n) {
+    if (n === current) return;
+    current = n;
+    phases.forEach(function (p) { p.classList.toggle("is-active", +p.getAttribute("data-phase") === n); });
+    nodes.forEach(function (g) { g.classList.toggle("is-active", NODES[n].indexOf(g.getAttribute("data-node")) !== -1); });
+    links.forEach(function (l) { l.classList.toggle("is-active", +l.getAttribute("data-phase-target") <= n); });
+    if (ball) ball.style.transform = "translate(" + (BALL[n][0] - 130) + "px," + (BALL[n][1] - 30) + "px)";
+  }
+
+  function frame() {
+    ticking = false;
+    if (stacked.matches) {
+      var mid = window.innerHeight * 0.45, best = 1, bestD = Infinity;
+      phases.forEach(function (p) {
+        var r = p.getBoundingClientRect();
+        var d = Math.abs((r.top + r.height / 2) - mid);
+        if (d < bestD) { bestD = d; best = +p.getAttribute("data-phase"); }
+      });
+      setPhase(best);
+    } else {
+      var top = section.getBoundingClientRect().top + window.scrollY;
+      var run = Math.max(1, section.offsetHeight - window.innerHeight);
+      var p = (window.scrollY - top) / run;
+      p = p < 0 ? 0 : p > 1 ? 1 : p;
+      setPhase(p < 0.25 ? 1 : p < 0.5 ? 2 : p < 0.75 ? 3 : 4);
+    }
+  }
+  function kick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+
+  phases.forEach(function (p) {
+    p.addEventListener("click", function () { setPhase(+p.getAttribute("data-phase")); });
+  });
+  window.addEventListener("scroll", kick, { passive: true });
+  window.addEventListener("resize", kick, { passive: true });
+  setPhase(1);
+  kick();
 })();

@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=27" />
+  <link rel="stylesheet" href="style.css?v=28" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
@@ -382,45 +382,94 @@
       </div>
     </section>
 
-    <!-- PROCESSO -->
-    <section class="pg2-section pg2-section--0" id="process">
-      <div class="pg2-wrap">
+    <!-- PROCESSO — scroll-driven flowchart -->
+    <section class="pg2-section pg2-section--0 im-flow-section" id="process">
+      <div class="pg2-wrap im-flow-pin">
         <div class="pg2-shead pg2-reveal">
           <p class="pg2-eyebrow">Como trabalhamos</p>
           <h2 class="pg2-h2">Processo curto, claro e auditável.</h2>
         </div>
         <p class="pg2-lede pg2-measure pg2-reveal">Sem atalhos. Cada fase reduz risco antes de avançar para a seguinte.</p>
-        <ol class="im-stack pg2-reveal">
-          <li class="im-stack-card">
-            <span class="im-stack-k" aria-hidden="true">01</span>
-            <div>
-              <h3>Requisitos</h3>
-              <p>Especificações, quantidades, destino, prazo e restrições. Tudo o que define o pedido fica registado antes de qualquer compromisso.</p>
-            </div>
-          </li>
-          <li class="im-stack-card">
-            <span class="im-stack-k" aria-hidden="true">02</span>
-            <div>
-              <h3>Validação</h3>
-              <p>Viabilidade, condições e documentação necessária. É aqui que se decide o modo de transporte e o que o desembaraço exige.</p>
-            </div>
-          </li>
-          <li class="im-stack-card">
-            <span class="im-stack-k" aria-hidden="true">03</span>
-            <div>
-              <h3>Proposta &amp; Planeamento</h3>
-              <p>Enquadramento, prazos e etapas de execução — devolvidos como proposta clara, sem promessas vagas.</p>
-            </div>
-          </li>
-          <li class="im-stack-card">
-            <span class="im-stack-k" aria-hidden="true">04</span>
-            <div>
-              <h3>Execução &amp; Acompanhamento</h3>
-              <p>Coordenação operacional por marcos até à entrega, com um único ponto de contacto do início ao fecho.</p>
-            </div>
-          </li>
-        </ol>
-        <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">Para o nosso modelo completo, veja <a href="/sobre.html">como trabalhamos</a>.</p>
+        <div class="im-flow pg2-reveal" data-flow>
+          <ol class="im-flow-phases">
+            <li class="im-flow-phase is-active" data-phase="1">
+              <span class="im-flow-k" aria-hidden="true">01</span>
+              <div>
+                <h3>Requisitos</h3>
+                <p>Especificações, quantidades, destino, prazo e restrições. Tudo o que define o pedido fica registado antes de qualquer compromisso.</p>
+              </div>
+            </li>
+            <li class="im-flow-phase" data-phase="2">
+              <span class="im-flow-k" aria-hidden="true">02</span>
+              <div>
+                <h3>Validação</h3>
+                <p>Viabilidade, condições e documentação necessária. É aqui que se decide o modo de transporte e o que o desembaraço exige.</p>
+              </div>
+            </li>
+            <li class="im-flow-phase" data-phase="3">
+              <span class="im-flow-k" aria-hidden="true">03</span>
+              <div>
+                <h3>Proposta &amp; Planeamento</h3>
+                <p>Enquadramento, prazos e etapas de execução — devolvidos como proposta clara, sem promessas vagas.</p>
+              </div>
+            </li>
+            <li class="im-flow-phase" data-phase="4">
+              <span class="im-flow-k" aria-hidden="true">04</span>
+              <div>
+                <h3>Execução &amp; Acompanhamento</h3>
+                <p>Coordenação operacional por marcos até à entrega, com um único ponto de contacto do início ao fecho.</p>
+              </div>
+            </li>
+          </ol>
+          <div class="im-flow-diagram" role="img" aria-label="Diagrama do fluxo do pedido: pedido, validação, proposta e planeamento em paralelo, execução">
+            <svg class="im-flow-svg" viewBox="0 0 260 470" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true">
+              <defs>
+                <radialGradient id="imNodeGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#f97316" stop-opacity="0.28"/>
+                  <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+                </radialGradient>
+                <marker id="imArrowOn" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#f97316"/></marker>
+              </defs>
+              <path class="im-flow-base" d="M130 38 L130 70 M130 102 L130 150 M130 210 L130 235 C130 255,65 255,65 285 M130 210 L130 235 C130 255,196 255,196 284 M65 315 L65 350 C65 385,130 385,130 420 M196 316 L196 350 C196 385,130 385,130 420"/>
+              <path class="im-flow-link" data-phase-target="1" pathLength="1" d="M130 38 L130 70" marker-end="url(#imArrowOn)"/>
+              <path class="im-flow-link" data-phase-target="2" pathLength="1" d="M130 102 L130 150" marker-end="url(#imArrowOn)"/>
+              <path class="im-flow-link" data-phase-target="3" pathLength="1" d="M130 210 L130 235 C130 255,65 255,65 285" marker-end="url(#imArrowOn)"/>
+              <path class="im-flow-link" data-phase-target="3" pathLength="1" d="M130 210 L130 235 C130 255,196 255,196 284" marker-end="url(#imArrowOn)"/>
+              <path class="im-flow-link" data-phase-target="4" pathLength="1" d="M65 315 L65 350 C65 385,130 385,130 420" marker-end="url(#imArrowOn)"/>
+              <path class="im-flow-link" data-phase-target="4" pathLength="1" d="M196 316 L196 350 C196 385,130 385,130 420"/>
+              <circle class="im-flow-ball" cx="130" cy="30" r="4"/>
+              <g class="im-flow-node" data-node="start"><circle class="im-flow-nbg" cx="130" cy="30" r="8"/></g>
+              <g class="im-flow-node" data-node="pedido">
+                <rect class="im-flow-nbg" x="95" y="70" width="70" height="32" rx="6"/>
+                <circle class="im-flow-nglow" cx="130" cy="86" r="42"/>
+                <text x="130" y="90" class="im-flow-ntext">Pedido</text>
+              </g>
+              <g class="im-flow-node" data-node="validacao">
+                <polygon class="im-flow-nbg" points="130,150 168,180 130,210 92,180"/>
+                <circle class="im-flow-nglow" cx="130" cy="180" r="44"/>
+                <text x="130" y="183" class="im-flow-ntext im-flow-ntext--s">Validação</text>
+              </g>
+              <g class="im-flow-node" data-node="proposta">
+                <polygon class="im-flow-nbg" points="32,285 104,285 98,315 26,315"/>
+                <circle class="im-flow-nglow" cx="65" cy="300" r="42"/>
+                <text x="65" y="304" class="im-flow-ntext">Proposta</text>
+              </g>
+              <g class="im-flow-node" data-node="planeamento">
+                <rect class="im-flow-nbg" x="158" y="284" width="76" height="32" rx="4"/>
+                <circle class="im-flow-nglow" cx="196" cy="300" r="42"/>
+                <text x="196" y="304" class="im-flow-ntext im-flow-ntext--s">Planeamento</text>
+              </g>
+              <g class="im-flow-node" data-node="execucao">
+                <rect class="im-flow-nbg" x="70" y="420" width="120" height="34" rx="17"/>
+                <circle class="im-flow-nglow" cx="130" cy="437" r="52"/>
+                <text x="130" y="441" class="im-flow-ntext">Execução</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="pg2-wrap im-flow-after">
+        <p class="pg2-prose pg2-reveal">Para o nosso modelo completo, veja <a href="/sobre.html">como trabalhamos</a>.</p>
       </div>
     </section>
 
@@ -985,7 +1034,7 @@
   </footer>
 
   <script src="components/world-map.js"></script>
-  <script src="script.js?v=27"></script>
+  <script src="script.js?v=28"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');
