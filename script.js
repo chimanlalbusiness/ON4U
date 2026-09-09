@@ -992,8 +992,10 @@ document.addEventListener("DOMContentLoaded", () => {
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // .pg2-step is deliberately absent from both: the process steps are plain
   // cards — no cursor spotlight, no tilt, no motion of any kind.
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-bento-tile, .im-stack-card, .im-rail, .im-pipe, .im-manifest';
-  var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card, .im-bento-tile';
+  // importacao's hairline panels glow as whole frames; their cells and the
+  // process rows stay flat (no tilt, no per-cell spotlight)
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route, .im-route-wide, .im-rail, .im-pipe, .im-manifest';
+  var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg
   var MAXLIFT = 8;     // px
