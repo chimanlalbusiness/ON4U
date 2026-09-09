@@ -6088,7 +6088,7 @@ html.light-mode .pf-item img {
 .im-flow-pin .pg2-shead { margin-bottom: 1rem; }
 .im-flow-pin .pg2-lede { margin-bottom: 0; }
 .im-flow-pin .im-flow { margin-top: 1.6rem; }
-.im-flow-after { margin-top: 1.5rem; }
+.im-flow-note { margin-top: 1.25rem; }
 .im-flow { display: grid; grid-template-columns: 1fr 1.25fr; align-items: stretch; }
 .im-flow-phases { list-style: none; margin: 0; padding: 1rem var(--im-pad); display: flex; flex-direction: column; justify-content: center; }
 .im-flow-phase { position: relative; display: flex; gap: 1.25rem; align-items: flex-start; padding: 0.85rem 0 0.85rem 1.1rem; opacity: 0.42; cursor: pointer; transition: opacity 320ms ease; }
@@ -6109,7 +6109,7 @@ html.light-mode .pf-item img {
   padding: 1.5rem; border-left: 1px solid var(--im-line); border-radius: 0 17px 17px 0;
   background: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.4px) 0 0 / 16px 16px;
 }
-.im-flow-svg { width: 100%; height: 100%; max-height: 520px; display: block; overflow: visible; }
+.im-flow-svg { width: 100%; height: 100%; max-height: 470px; display: block; overflow: visible; }
 .im-flow-base { stroke: rgba(255, 255, 255, 0.14); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .im-flow-link { stroke: var(--pg-accent); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 1; transition: opacity 120ms ease; }
 .im-flow-link.is-active { opacity: 1; animation: imFlowDraw 480ms ease-out forwards; }
