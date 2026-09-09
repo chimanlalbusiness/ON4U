@@ -1358,8 +1358,16 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.className = "im-route-hit";
     btn.setAttribute("aria-expanded", "false");
     btn.innerHTML = '<span class="im-sr">Ver detalhe: ' + (cell.getAttribute("data-map") || "") + "</span>";
-    cell.appendChild(hint);
-    cell.appendChild(more);
+    var cta = document.createElement("span");
+    cta.className = "im-route-cta";
+    cta.appendChild(hint);
+    cta.appendChild(more);
+    var foot = document.createElement("div");
+    foot.className = "im-route-foot";
+    var tag = cell.querySelector(".im-tag");
+    if (tag) foot.appendChild(tag);
+    foot.appendChild(cta);
+    cell.appendChild(foot);
     cell.appendChild(btn);
     btn.addEventListener("click", function () {
       var willOpen = !cell.classList.contains("is-open");
