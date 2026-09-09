@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=26" />
+  <link rel="stylesheet" href="style.css?v=27" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
@@ -277,25 +277,28 @@
         </div>
         <p class="pg2-lede pg2-measure pg2-reveal">Sede em Portugal, presença operacional em São Tomé e Príncipe e na Guiné-Bissau, e escritórios na China e na Índia — perto da origem e do destino da maioria dos pedidos.</p>
         <div class="im-route pg2-reveal">
-          <article class="im-route-cell">
+          <article class="im-route-cell" data-map="China e Índia">
             <span class="im-route-ghost" aria-hidden="true">CN&middot;IN</span>
             <span class="im-route-role">Origem &amp; sourcing</span>
             <h3>China e Índia</h3>
             <p>Escritórios de apoio à origem e sourcing.</p>
+            <span class="im-route-meta">Fuso horário &middot; China UTC+8 &middot; Índia UTC+5:30</span>
             <span class="im-tag">Escritórios</span>
           </article>
-          <article class="im-route-cell im-route-cell--hub">
+          <article class="im-route-cell im-route-cell--hub" data-map="Base em Portugal">
             <span class="im-route-ghost" aria-hidden="true">PT</span>
             <span class="im-route-role">Coordenação central</span>
             <h3>Base em Portugal</h3>
             <p>Coordenação central, validação e próximos passos.</p>
+            <span class="im-route-meta">Rio de Mouro, Sintra &middot; 38.77° N, 9.33° W &middot; UTC+0</span>
             <span class="im-tag">Sede</span>
           </article>
-          <article class="im-route-cell">
+          <article class="im-route-cell" data-map="São Tomé e Príncipe e Guiné-Bissau">
             <span class="im-route-ghost" aria-hidden="true">ST&middot;GW</span>
             <span class="im-route-role">Destino &amp; execução</span>
             <h3>São Tomé e Príncipe &bull; Guiné-Bissau</h3>
             <p>Suporte local para alinhamentos e execução.</p>
+            <span class="im-route-meta">Fuso horário &middot; UTC+0, o mesmo de Lisboa no inverno</span>
             <span class="im-tag">Presença operacional</span>
           </article>
         </div>
@@ -982,7 +985,7 @@
   </footer>
 
   <script src="components/world-map.js"></script>
-  <script src="script.js?v=26"></script>
+  <script src="script.js?v=27"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');

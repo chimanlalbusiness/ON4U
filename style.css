@@ -6035,6 +6035,69 @@ html.light-mode .pf-item img {
 .im-route-wide p { font-size: 0.93rem; color: var(--pg-ink-3); line-height: 1.6; margin: 0; }
 .im-route-wide .im-tag { margin-top: 0; margin-left: auto; flex-shrink: 0; }
 
+/* ── expandable location cells — a click reveals an abstract map layer
+   behind the copy (roads draw in, blocks settle, the pin drops) and a
+   mono meta line. One open at a time. Built to survive reduced-motion:
+   the click still answers, just without the choreography. ── */
+.im-route-cell { min-height: 23rem; transition: min-height 520ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.im-route-cell.is-open { min-height: 31rem; }
+.im-route-cell > .im-route-role, .im-route-cell > h3, .im-route-cell > p,
+.im-route-cell > .im-route-meta, .im-route-cell > .im-tag { z-index: 1; }
+.im-route-hit { position: absolute; inset: 0; z-index: 3; background: transparent; border: 0; padding: 0; margin: 0; cursor: pointer; border-radius: inherit; }
+.im-route-hit:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: -5px; border-radius: 14px; }
+.im-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.im-route-meta {
+  position: relative; display: block; margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem; letter-spacing: 0.02em; color: var(--pg-ink-3);
+  max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 380ms ease, opacity 320ms ease 80ms, margin 380ms ease;
+}
+.im-route-cell.is-open .im-route-meta { max-height: 3rem; opacity: 1; margin: -0.7rem 0 1.3rem; }
+/* title underline grows on hover / open, as in the reference */
+.im-route-cell h3::after {
+  content: ""; display: block; height: 1px; margin-top: 0.55rem;
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.6), rgba(249, 115, 22, 0.25) 55%, transparent);
+  transform: scaleX(0.3); transform-origin: 0 50%; transition: transform 420ms ease;
+}
+.im-route-cell:hover h3::after, .im-route-cell.is-open h3::after { transform: scaleX(1); }
+/* affordance: a "+" that turns into "×" */
+.im-route-more {
+  position: absolute; right: 1.3rem; bottom: 1.35rem; z-index: 2;
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16); color: var(--pg-ink-3);
+  transition: transform 320ms ease, border-color 220ms ease, color 220ms ease;
+}
+.im-route-more::before, .im-route-more::after { content: ""; position: absolute; left: 50%; top: 50%; background: currentColor; transform: translate(-50%, -50%); }
+.im-route-more::before { width: 10px; height: 1.5px; }
+.im-route-more::after { width: 1.5px; height: 10px; }
+.im-route-cell:hover .im-route-more { border-color: rgba(249, 115, 22, 0.5); color: var(--pg-accent); }
+.im-route-cell.is-open .im-route-more { transform: rotate(45deg); color: var(--pg-accent); border-color: rgba(249, 115, 22, 0.5); }
+.im-route-ghost { transition: opacity 300ms ease; }
+.im-route-cell.is-open .im-route-ghost { opacity: 0; }
+/* the map layer */
+.im-map { position: absolute; inset: 0; z-index: 0; opacity: 0; pointer-events: none; background: rgba(255, 255, 255, 0.025); transition: opacity 420ms ease 60ms; }
+.im-route-cell:first-child .im-map { border-radius: 17px 0 0 17px; }
+.im-route-cell:last-child .im-map { border-radius: 0 17px 17px 0; }
+.im-route-cell.is-open .im-map { opacity: 1; }
+.im-map::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(180deg, rgba(10, 10, 11, 0.1) 0%, rgba(10, 10, 11, 0.5) 42%, rgba(10, 10, 11, 0.94) 100%); }
+.im-map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.im-road { stroke: rgba(255, 255, 255, 0.26); vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 700ms ease var(--d, 0s); }
+.im-road--a { stroke-width: 3px; }
+.im-road--b { stroke-width: 2px; stroke: rgba(255, 255, 255, 0.17); }
+.im-road--c { stroke-width: 1px; stroke: rgba(255, 255, 255, 0.1); }
+.im-route-cell.is-open .im-road { stroke-dashoffset: 0; }
+.im-map-b { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); border-radius: 3px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.1); opacity: 0; transform: scale(0.8); transition: opacity 360ms ease var(--d, 0s), transform 360ms ease var(--d, 0s); }
+.im-route-cell.is-open .im-map-b { opacity: 1; transform: none; }
+.im-map-pin { position: absolute; left: 50%; top: 74%; width: 34px; height: 34px; fill: var(--pg-accent); filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.55)); transform: translate(-50%, -150%) scale(0); transition: transform 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 260ms; }
+.im-map-pin circle { fill: var(--im-panel); }
+.im-route-cell.is-open .im-map-pin { transform: translate(-50%, -100%) scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  .im-route-cell, .im-route-meta, .im-route-ghost, .im-route-more, .im-map, .im-road, .im-map-b, .im-map-pin, .im-route-cell h3::after {
+    transition-duration: 180ms; transition-delay: 0s; transition-timing-function: ease;
+  }
+}
+
 /* ── 2 · transport rail (Feature 76) — the dashed line IS the panel's top
    edge, one dot per column sitting on it, icons in bordered tiles below ── */
 .im-rail { display: grid; grid-template-columns: repeat(3, 1fr); border-top-color: transparent; }
@@ -6113,6 +6176,10 @@ html.light-mode .pf-item img {
   .im-route-cell + .im-route-cell::before { top: 0; left: 50%; transform: translate(-50%, -50%) rotate(90deg); }
   .im-route-cell + .im-route-cell::after  { top: 0; left: 50%; transform: translate(-50%, calc(-50% + 13px)) rotate(135deg); }
   .im-route-ghost { font-size: 4rem; }
+  .im-route-cell { min-height: 0; }
+  .im-route-cell.is-open { min-height: 27rem; }
+  .im-route-cell:first-child .im-map { border-radius: 17px 17px 0 0; }
+  .im-route-cell:last-child .im-map { border-radius: 0 0 17px 17px; }
   .im-route-wide { flex-direction: column; align-items: flex-start; }
   .im-route-wide .im-tag { margin-left: 0; margin-top: 0.7rem; }
   .im-rail { grid-template-columns: 1fr; }

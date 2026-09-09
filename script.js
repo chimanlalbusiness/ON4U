@@ -1328,3 +1328,69 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: [0.1, 0.55] });
   [].forEach.call(cards, function (c) { io.observe(c); });
 })();
+
+/* ══════════════════════════════════════════════════════════════
+   Expandable location cells (importacao presence route).
+   Each [data-map] cell gets a full-cell button, a "+" affordance and
+   an abstract map layer (roads / blocks / pin) that the stylesheet
+   reveals on .is-open. One cell open at a time. The map is injected
+   here so the markup stays plain copy for anyone without JS.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var cells = [].slice.call(document.querySelectorAll(".im-route-cell[data-map]"));
+  if (!cells.length) return;
+
+  // x1,y1,x2,y2 (viewBox %), weight class, draw delay (s)
+  var ROADS = [
+    [0, 35, 100, 35, "a", 0], [0, 65, 100, 65, "a", 0.1],
+    [30, 0, 30, 100, "b", 0.2], [70, 0, 70, 100, "b", 0.3],
+    [0, 20, 100, 20, "c", 0.4], [0, 50, 100, 50, "c", 0.45], [0, 80, 100, 80, "c", 0.5],
+    [15, 0, 15, 100, "c", 0.55], [45, 0, 45, 100, "c", 0.6], [55, 0, 55, 100, "c", 0.65], [85, 0, 85, 100, "c", 0.7]
+  ];
+  // x, y, w, h (%), settle delay (s)
+  var BLOCKS = [[10, 40, 15, 20, 0.5], [35, 15, 12, 15, 0.6], [75, 70, 18, 18, 0.7], [80, 20, 10, 25, 0.55], [5, 55, 8, 12, 0.65], [75, 8, 14, 10, 0.75]];
+
+  function mapMarkup(id) {
+    var s = '<div class="im-map" id="' + id + '" aria-hidden="true">' +
+      '<svg class="im-map-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">';
+    ROADS.forEach(function (r) {
+      s += '<line x1="' + r[0] + '" y1="' + r[1] + '" x2="' + r[2] + '" y2="' + r[3] + '" pathLength="1" class="im-road im-road--' + r[4] + '" style="--d:' + r[5] + 's"/>';
+    });
+    s += '</svg>';
+    BLOCKS.forEach(function (b) {
+      s += '<span class="im-map-b" style="--x:' + b[0] + '%;--y:' + b[1] + '%;--w:' + b[2] + '%;--h:' + b[3] + '%;--d:' + b[4] + 's"></span>';
+    });
+    s += '<svg class="im-map-pin" viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>';
+    return s;
+  }
+
+  function setOpen(cell, open) {
+    cell.classList.toggle("is-open", open);
+    cell.querySelector(".im-route-hit").setAttribute("aria-expanded", open ? "true" : "false");
+    cell.querySelector(".im-map").setAttribute("aria-hidden", open ? "false" : "true");
+  }
+
+  cells.forEach(function (cell, i) {
+    var id = "im-map-" + i;
+    var more = document.createElement("span");
+    more.className = "im-route-more";
+    more.setAttribute("aria-hidden", "true");
+    cell.appendChild(more);
+    cell.insertAdjacentHTML("beforeend", mapMarkup(id));
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "im-route-hit";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", id);
+    btn.innerHTML = '<span class="im-sr">Ver localização: ' + (cell.getAttribute("data-map") || "") + "</span>";
+    cell.appendChild(btn);
+
+    btn.addEventListener("click", function () {
+      var willOpen = !cell.classList.contains("is-open");
+      cells.forEach(function (c) { setOpen(c, false); });
+      if (willOpen) setOpen(cell, true);
+    });
+  });
+})();
