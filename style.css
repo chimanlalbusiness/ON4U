@@ -6726,8 +6726,8 @@ html.light-mode .pf-item img {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
-              rgba(249, 115, 22, 0.18), rgba(249, 115, 22, 0.05) 35%, transparent 62%);
+  background: radial-gradient(150px circle at var(--mx, 50%) var(--my, 50%),
+              rgba(249, 115, 22, 0.09), rgba(249, 115, 22, 0.025) 35%, transparent 62%);
   opacity: var(--glow, 0);   /* JS ramps this with cursor proximity */
   pointer-events: none;
   /* Behind the content, above the card's own background: negative z inside the
