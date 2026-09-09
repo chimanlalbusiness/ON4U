@@ -5985,8 +5985,8 @@ html.light-mode .pf-item img {
 :root { --im-line: rgba(255, 255, 255, 0.1); --im-panel: #0a0a0b;
         --im-pad: clamp(1.9rem, 3.4vw, 3rem); --im-pad-y: clamp(2.4rem, 4vw, 3.4rem); }
 #presence, #network, #hub, #process, #coordenamos { padding-top: clamp(5.5rem, 9vw, 8.5rem); padding-bottom: clamp(5.5rem, 9vw, 8.5rem); }
-.im-route, .im-rail, .im-pipe, .im-flow, .im-manifest { margin-top: clamp(2.75rem, 5vw, 4.25rem); }
-.im-route-cell, .im-route-wide, .im-rail, .im-pipe, .im-flow, .im-manifest {
+.im-route, .im-show, .im-pipe, .im-flow, .im-manifest { margin-top: clamp(2.75rem, 5vw, 4.25rem); }
+.im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-manifest {
   position: relative;
   background: var(--im-panel);
   border: 1px solid var(--im-line);
@@ -6056,19 +6056,119 @@ html.light-mode .pf-item img {
   .im-route-cell:hover, .im-route-cell:focus-within { transform: none; }
 }
 
-/* ── 2 · transport rail (Feature 76) — the dashed line IS the panel's top
-   edge, one dot per column sitting on it, icons in bordered tiles below ── */
-.im-rail { display: grid; grid-template-columns: repeat(3, 1fr); border-top-color: transparent; }
-.im-rail-line { position: absolute; top: -1px; left: 18px; right: 18px; height: 1px; background: repeating-linear-gradient(90deg, rgba(249, 115, 22, 0.6) 0 8px, transparent 8px 18px); }
-@media (prefers-reduced-motion: no-preference) { .im-rail-line { animation: imDash 1.6s linear infinite; } }
-@keyframes imDash { to { background-position: 36px 0; } }
-.im-rail-seg { position: relative; padding: calc(var(--im-pad-y) + 0.4rem) var(--im-pad) var(--im-pad-y); }
-.im-rail-seg + .im-rail-seg { border-left: 1px solid var(--im-line); }
-.im-rail-seg::before { content: ""; position: absolute; top: -7px; left: var(--im-pad); width: 12px; height: 12px; border-radius: 50%; background: var(--pg-accent); box-shadow: 0 0 0 3px var(--im-panel); }
-.im-rail-ico { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin: 0 0 1.5rem; color: var(--pg-accent); background: rgba(249, 115, 22, 0.06); border: 1px solid rgba(249, 115, 22, 0.3); }
-.im-rail-ico svg { width: 26px; height: 26px; }
-.im-rail-seg h3 { font-size: 1.2rem; font-weight: 700; color: var(--pg-ink); margin: 0 0 0.55rem; }
-.im-rail-seg p { font-size: 0.95rem; color: var(--pg-ink-3); line-height: 1.65; margin: 0; }
+/* ── 2 · transport showcase — one stage, three modes. The active mode's
+   icon stands on a circular stage, extruded in real 3D (a stack of
+   layers along z, face lit from above) and lightly tilted by the
+   pointer; opposite it, the mode's profile on the three criteria the
+   validation phase decides on (prazo, volume, custo). The island at the
+   bottom switches mode: the columns trade sides, the icon re-enters,
+   the copy re-flows and the markers glide. Reduced motion keeps only
+   cross-fades; the 3D icon still reads as 3D because it rests tilted. ── */
+#network { overflow: hidden; }
+.im-show { position: relative; --show-accent: #f59e0b; --show-rgb: 245, 158, 11; --show-side: #7c2d12; }
+.im-show[data-mode="maritimo"] { --show-accent: #f97316; --show-rgb: 249, 115, 22; }
+.im-show[data-mode="rodoviario"] { --show-accent: #ea580c; --show-rgb: 234, 88, 12; }
+/* ambient wash on the stage's side of the section */
+.im-show::before, .im-show::after { content: ""; position: absolute; top: -25%; bottom: -25%; width: 70%; pointer-events: none; opacity: 0; transition: opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1); }
+.im-show::before { left: -28%; background: radial-gradient(circle at 35% 50%, rgba(var(--show-rgb), 0.13), transparent 58%); }
+.im-show::after { right: -28%; background: radial-gradient(circle at 65% 50%, rgba(var(--show-rgb), 0.13), transparent 58%); }
+.im-show[data-side="left"]::before, .im-show[data-side="right"]::after { opacity: 1; }
+
+.im-show-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2.5rem, 6vw, 6rem); min-height: clamp(520px, 62vh, 640px); }
+.im-show-stage { position: relative; justify-self: center; width: min(100%, 430px); display: flex; flex-direction: column; align-items: center; }
+.im-show[data-side="right"] .im-show-stage { order: 2; }
+
+/* stage: orbit, halo, disc, 3D icon, floor shadow, status pill */
+.im-show-disc-wrap { position: relative; width: 100%; aspect-ratio: 1; }
+.im-show-orbit { position: absolute; inset: -13%; border-radius: 50%; border: 1px dashed rgba(255, 255, 255, 0.1); border-left-color: rgba(var(--show-rgb), 0.55); animation: imShowSpin 26s linear infinite; }
+.im-show-halo { position: absolute; inset: 6%; border-radius: 50%; background: rgba(var(--show-rgb), 0.32); filter: blur(54px); transition: background-color 900ms ease; animation: imShowBreathe 4s ease-in-out infinite; }
+.im-show-disc { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.07); background: rgba(0, 0, 0, 0.3); box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.9), inset 0 0 0 1px rgba(255, 255, 255, 0.02); overflow: hidden; }
+.im-show-shadow { position: absolute; left: 50%; top: 79%; width: 56%; height: 13%; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.62), transparent 66%); }
+.im-show-float { position: absolute; inset: 0; animation: imShowFloat 6s ease-in-out infinite; }
+.im-show-icon { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; visibility: hidden; --spin: -30deg; --fly: -80px; }
+.im-show[data-side="right"] .im-show-icon { --spin: 30deg; --fly: 80px; }
+.im-show-icon.is-active { opacity: 1; visibility: visible; }
+.im-show.is-in .im-show-icon.is-active { animation: imShowIconIn 760ms cubic-bezier(0.34, 1.4, 0.64, 1); }
+.im-show-icon.is-leaving { opacity: 1; visibility: visible; animation: imShowIconOut 260ms ease forwards; }
+.im-show-3d { position: relative; width: 56%; aspect-ratio: 1; transform-style: preserve-3d; transform: perspective(900px) rotateX(calc(14deg + var(--tx, 0deg))) rotateY(calc(-24deg + var(--ty, 0deg))); }
+.im-show-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; fill: var(--show-side); transform: translateZ(calc(var(--i, 0) * -1.6px)); }
+.im-show-icon[data-mode-icon="aereo"] .im-show-layer--top { fill: url(#imShowGradAereo); }
+.im-show-icon[data-mode-icon="maritimo"] .im-show-layer--top { fill: url(#imShowGradMaritimo); }
+.im-show-icon[data-mode-icon="rodoviario"] .im-show-layer--top { fill: url(#imShowGradRodoviario); }
+/* light theme inverts the page; counter-invert each layer (leaf nodes, so the
+   filter cannot flatten the 3D stack) and the object keeps its lit face */
+html.light-mode .im-show-layer { filter: invert(1) hue-rotate(180deg); }
+.im-show-status { position: relative; z-index: 2; margin-top: -1.15rem; display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.55rem 1rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(10, 10, 11, 0.86); backdrop-filter: blur(10px); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pg-ink-3); white-space: nowrap; }
+.im-show-status i { width: 6px; height: 6px; border-radius: 50%; background: var(--show-accent); box-shadow: 0 0 10px var(--show-accent); transition: background-color 600ms ease; animation: imShowPulse 2s ease-in-out infinite; }
+
+/* copy column: mode text (swapped), profile card and note (constant) */
+.im-show-copy { width: 100%; max-width: 440px; justify-self: start; display: flex; flex-direction: column; align-items: flex-start; }
+.im-show[data-side="right"] .im-show-copy { justify-self: end; align-items: flex-end; text-align: right; }
+.im-show-text { width: 100%; }
+.im-show-panel { display: none; flex-direction: column; align-items: flex-start; }
+.im-show[data-side="right"] .im-show-panel { align-items: flex-end; }
+.im-show-panel.is-active { display: flex; }
+.im-show.is-in .im-show-panel.is-active > * { animation: imShowUp 640ms cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 90ms); }
+.im-show-panel.is-leaving { animation: imShowDown 200ms ease forwards; }
+.im-show-panel.is-leaving > * { animation: none; }
+.im-show-eyebrow { margin: 0; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pg-ink-3); }
+.im-show-title { margin: 0.6rem 0 0.75rem; font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.04; color: var(--pg-ink); background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.55) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.im-show-lede { margin: 0 0 1.8rem; max-width: 36ch; font-size: 1rem; line-height: 1.65; color: var(--pg-ink-2); }
+.im-show-card { width: 100%; padding: 1.5rem 1.5rem 1.35rem; background: rgba(255, 255, 255, 0.025); display: flex; flex-direction: column; gap: 1.3rem; }
+.im-show-scale { display: flex; flex-direction: column; gap: 0.55rem; }
+.im-show-scale-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.88rem; color: var(--pg-ink-2); }
+.im-show[data-side="right"] .im-show-scale-head { flex-direction: row-reverse; }
+.im-show-scale-head span { display: inline-flex; align-items: center; gap: 0.5rem; }
+.im-show-scale-head svg { width: 15px; height: 15px; color: var(--pg-ink-3); }
+.im-show-scale-head b { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--show-accent); transition: color 600ms ease; }
+.im-show-track { position: relative; height: 6px; border-radius: 99px; background: rgba(255, 255, 255, 0.08); }
+.im-show-fill { position: absolute; left: 0; top: 0; bottom: 0; width: calc((var(--lvl, 1) - 1) * 50%); border-radius: 99px; background: linear-gradient(90deg, rgba(var(--show-rgb), 0.25), var(--show-accent)); transition: width 760ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.im-show-tick { position: absolute; top: 50%; width: 2px; height: 2px; margin: -1px 0 0 -1px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); }
+.im-show-tick:nth-of-type(1) { left: 0; }
+.im-show-tick:nth-of-type(2) { left: 50%; }
+.im-show-tick:nth-of-type(3) { left: 100%; }
+.im-show-marker { position: absolute; top: 50%; left: calc((var(--lvl, 1) - 1) * 50%); width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--show-accent); box-shadow: 0 0 0 4px rgba(var(--show-rgb), 0.18), 0 0 16px rgba(var(--show-rgb), 0.6); transition: left 760ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 600ms ease, box-shadow 600ms ease; }
+.im-show-ticks { display: flex; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pg-ink-3); }
+.im-show-ticks span { flex: 1; text-align: center; }
+.im-show-ticks span:first-child { text-align: left; }
+.im-show-ticks span:last-child { text-align: right; }
+.im-show-card .pg2-link { margin-top: 0.15rem; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.im-show[data-side="right"] .im-show-card .pg2-link { align-self: flex-end; }
+.im-show-foot { margin: 1.25rem 0 0; display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.86rem; color: var(--pg-ink-3); }
+.im-show-foot svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--show-accent); transition: color 600ms ease; }
+.im-show[data-side="right"] .im-show-foot { flex-direction: row-reverse; }
+
+/* island switcher */
+.im-show-switch-wrap { position: relative; z-index: 1; display: flex; justify-content: center; margin-top: clamp(2.5rem, 5vw, 4rem); }
+.im-show-switch { --tab-w: 8.25rem; --tab-h: 3rem; position: relative; display: inline-flex; gap: 4px; padding: 6px; border-radius: 999px; background: rgba(14, 14, 16, 0.86); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); }
+.im-show-thumb { position: absolute; top: 6px; left: 6px; width: var(--tab-w); height: var(--tab-h); border-radius: 999px; background: linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); transform: translateX(calc(var(--i, 0) * (var(--tab-w) + 4px))); transition: transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.im-show-thumb::after { content: ""; position: absolute; left: 50%; bottom: -2px; width: 22px; height: 3px; margin-left: -11px; border-radius: 99px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent); }
+.im-show-tab { position: relative; z-index: 1; width: var(--tab-w); height: var(--tab-h); border: 0; border-radius: 999px; background: transparent; color: var(--pg-ink-3); font: inherit; font-size: 0.86rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; transition: color 300ms ease; }
+.im-show-tab:hover { color: var(--pg-ink-2); }
+.im-show-tab[aria-selected="true"] { color: #fff; }
+.im-show-tab svg { width: 17px; height: 17px; fill: currentColor; }
+.im-show-tab:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: 2px; }
+
+@keyframes imShowSpin { to { transform: rotate(360deg); } }
+@keyframes imShowBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes imShowFloat { 0%, 100% { transform: translateY(-8px); } 50% { transform: translateY(8px); } }
+@keyframes imShowPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes imShowIconIn { from { opacity: 0; transform: translateX(var(--fly)) rotate(var(--spin)) scale(1.5); filter: blur(15px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes imShowIconOut { to { opacity: 0; transform: scale(0.6); filter: blur(20px); } }
+@keyframes imShowUp { from { opacity: 0; transform: translateY(20px); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes imShowDown { to { opacity: 0; transform: translateY(-10px); filter: blur(5px); } }
+@keyframes imShowFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes imShowFadeOut { to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .im-show-orbit, .im-show-halo, .im-show-float, .im-show-status i { animation: none; }
+  .im-show.is-in .im-show-icon.is-active { animation: imShowFade 260ms ease; }
+  .im-show-icon.is-leaving { animation: imShowFadeOut 150ms ease forwards; }
+  .im-show.is-in .im-show-panel.is-active > * { animation: imShowFade 320ms ease both; animation-delay: calc(var(--i, 0) * 45ms); }
+  .im-show-panel.is-leaving { animation: imShowFadeOut 150ms ease forwards; }
+  .im-show-fill, .im-show-marker, .im-show-thumb { transition-duration: 260ms; }
+  .im-show::before, .im-show::after { transition-duration: 400ms; }
+}
 
 /* ── 3 · validation panel (Feature 76 config) — three checks split by
    dividers, an orange gradient hairline on the top edge ── */
@@ -6181,9 +6281,16 @@ html.light-mode .pf-item img {
   .im-coast { margin: 1.2rem 0 1.1rem; }
   .im-route-wide { flex-direction: column; align-items: flex-start; }
   .im-route-wide .im-tag { margin-left: 0; margin-top: 0.7rem; }
-  .im-rail { grid-template-columns: 1fr; }
-  .im-rail-seg + .im-rail-seg { border-left: none; border-top: 1px solid var(--im-line); }
-  .im-rail-seg:not(:first-child)::before { display: none; }
+  .im-show-grid { grid-template-columns: 1fr; gap: 2.6rem; min-height: 0; }
+  .im-show[data-side="right"] .im-show-stage { order: 0; }
+  .im-show-stage { width: min(78vw, 320px); }
+  .im-show-copy, .im-show[data-side="right"] .im-show-copy { max-width: none; justify-self: stretch; align-items: flex-start; text-align: left; }
+  .im-show[data-side="right"] .im-show-panel { align-items: flex-start; }
+  .im-show[data-side="right"] .im-show-scale-head, .im-show[data-side="right"] .im-show-foot { flex-direction: row; }
+  .im-show[data-side="right"] .im-show-card .pg2-link { align-self: flex-start; }
+  .im-show-switch { --tab-w: clamp(5.4rem, 27vw, 6.6rem); --tab-h: 2.8rem; }
+  .im-show-tab { font-size: 0.8rem; gap: 0.4rem; }
+  .im-show::before, .im-show::after { width: 100%; left: 0; right: 0; }
   .im-pipe { flex-direction: column; gap: 1.2rem; }
   .im-pipe-stage, .im-pipe-stage:first-child { padding: 0; }
   .im-pipe-stage + .im-pipe-stage { border-left: none; border-top: 1px solid var(--im-line); padding-top: 1.2rem; }

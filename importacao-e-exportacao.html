@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=32" />
+  <link rel="stylesheet" href="style.css?v=33" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
@@ -352,25 +352,81 @@
           <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Articulação entre recolha, expedição, processos aduaneiros e entrega (quando necessário)</li>
           <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Seguimento por marcos operacionais até ao fecho</li>
         </ul>
-        <div class="im-rail pg2-reveal" role="list" aria-label="Modos de transporte">
-          <div class="im-rail-line" aria-hidden="true"></div>
-          <div class="im-rail-seg" role="listitem">
-            <div class="im-rail-ico"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="15" stroke-linejoin="round"><path d="M100 18 C 106 40 106 58 104 74 L 178 118 L 178 134 L 104 112 L 102 152 L 126 170 L 126 182 L 100 174 L 74 182 L 74 170 L 98 152 L 96 112 L 22 134 L 22 118 L 96 74 C 94 58 94 40 100 18 Z"/></svg></div>
-            <h3>Aéreo</h3>
-            <p>Prazos curtos, volumes mais pequenos ou de alto valor.</p>
+        <div class="im-show pg2-reveal" data-show data-mode="aereo" data-side="left">
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="imShowGradAereo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="0.45" stop-color="#f59e0b"/><stop offset="1" stop-color="#b45309"/></linearGradient>
+              <linearGradient id="imShowGradMaritimo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fed7aa"/><stop offset="0.45" stop-color="#f97316"/><stop offset="1" stop-color="#c2410c"/></linearGradient>
+              <linearGradient id="imShowGradRodoviario" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdba74"/><stop offset="0.45" stop-color="#ea580c"/><stop offset="1" stop-color="#9a3412"/></linearGradient>
+              <symbol id="imIcoAereo" viewBox="0 0 160 160"><path d="M80 6 C84 6 89 14 90 30 L90 58 L152 100 L152 112 L90 88 L90 122 L116 140 L116 149 L90 140 L88 152 L72 152 L70 140 L44 149 L44 140 L70 122 L70 88 L8 112 L8 100 L70 58 L70 30 C71 14 76 6 80 6 Z"/></symbol>
+              <symbol id="imIcoMaritimo" viewBox="0 0 160 160"><path d="M10 94 H150 L138 122 H22 Z M18 58 H44 V94 H18 Z M22 48 H40 V58 H22 Z M27 38 H35 V48 H27 Z M50 80 H70 V94 H50 Z M73 80 H93 V94 H73 Z M96 80 H116 V94 H96 Z M119 80 H136 V94 H119 Z M54 66 H74 V79 H54 Z M77 66 H97 V79 H77 Z M100 66 H120 V79 H100 Z M58 52 H78 V65 H58 Z M81 52 H101 V65 H81 Z"/></symbol>
+              <symbol id="imIcoRodoviario" viewBox="0 0 160 160"><path fill-rule="evenodd" d="M12 34 H104 V56 H126 L146 80 V102 H12 Z M110 62 H124 L138 80 H110 Z M24 114 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 M31.5 114 a4.5 4.5 0 1 0 9 0 a4.5 4.5 0 1 0 -9 0 M110 114 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 M117.5 114 a4.5 4.5 0 1 0 9 0 a4.5 4.5 0 1 0 -9 0"/></symbol>
+            </defs>
+          </svg>
+          <div class="im-show-grid">
+            <div class="im-show-stage" aria-hidden="true">
+              <div class="im-show-disc-wrap">
+                <div class="im-show-orbit"></div>
+                <div class="im-show-halo"></div>
+                <div class="im-show-disc">
+                  <div class="im-show-shadow"></div>
+                  <div class="im-show-float">
+                    <div class="im-show-icon is-active" data-mode-icon="aereo"><div class="im-show-3d"><svg class="im-show-layer im-show-layer--top" style="--i:0" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:1" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:2" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:3" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:4" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:5" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:6" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:7" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:8" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:9" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:10" aria-hidden="true"><use href="#imIcoAereo"/></svg><svg class="im-show-layer" style="--i:11" aria-hidden="true"><use href="#imIcoAereo"/></svg></div></div>
+                    <div class="im-show-icon" data-mode-icon="maritimo"><div class="im-show-3d"><svg class="im-show-layer im-show-layer--top" style="--i:0" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:1" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:2" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:3" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:4" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:5" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:6" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:7" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:8" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:9" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:10" aria-hidden="true"><use href="#imIcoMaritimo"/></svg><svg class="im-show-layer" style="--i:11" aria-hidden="true"><use href="#imIcoMaritimo"/></svg></div></div>
+                    <div class="im-show-icon" data-mode-icon="rodoviario"><div class="im-show-3d"><svg class="im-show-layer im-show-layer--top" style="--i:0" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:1" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:2" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:3" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:4" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:5" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:6" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:7" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:8" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:9" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:10" aria-hidden="true"><use href="#imIcoRodoviario"/></svg><svg class="im-show-layer" style="--i:11" aria-hidden="true"><use href="#imIcoRodoviario"/></svg></div></div>
+                  </div>
+                </div>
+              </div>
+              <span class="im-show-status"><i></i>Uma só equipa</span>
+            </div>
+            <div class="im-show-copy">
+              <div class="im-show-text">
+                <div class="im-show-panel is-active" data-mode-panel="aereo" role="tabpanel" id="im-show-p-aereo" aria-labelledby="im-show-t-aereo">
+                  <p class="im-show-eyebrow" style="--i:0">Transporte aéreo</p>
+                  <h3 class="im-show-title" style="--i:1">Quando o prazo manda.</h3>
+                  <p class="im-show-lede" style="--i:2">Prazos curtos, volumes mais pequenos ou de alto valor.</p>
+                </div>
+                <div class="im-show-panel" data-mode-panel="maritimo" role="tabpanel" id="im-show-p-maritimo" aria-labelledby="im-show-t-maritimo">
+                  <p class="im-show-eyebrow" style="--i:0">Transporte marítimo</p>
+                  <h3 class="im-show-title" style="--i:1">Quando o volume manda.</h3>
+                  <p class="im-show-lede" style="--i:2">Volumes maiores em que o custo pesa mais do que o prazo.</p>
+                </div>
+                <div class="im-show-panel" data-mode-panel="rodoviario" role="tabpanel" id="im-show-p-rodoviario" aria-labelledby="im-show-t-rodoviario">
+                  <p class="im-show-eyebrow" style="--i:0">Transporte rodoviário</p>
+                  <h3 class="im-show-title" style="--i:1">Entre o prazo e o custo.</h3>
+                  <p class="im-show-lede" style="--i:2">Origens e destinos por rota rodoviária, em prazos intermédios.</p>
+                </div>
+              </div>
+              <div class="im-show-card">
+                <div class="im-show-scale" data-scale="prazo" style="--lvl:1">
+                  <div class="im-show-scale-head"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Prazo</span><b data-scale-value>Curto</b></div>
+                  <div class="im-show-track"><span class="im-show-fill"></span><i class="im-show-tick"></i><i class="im-show-tick"></i><i class="im-show-tick"></i><span class="im-show-marker"></span></div>
+                  <div class="im-show-ticks"><span>Curto</span><span>Médio</span><span>Longo</span></div>
+                </div>
+                <div class="im-show-scale" data-scale="volume" style="--lvl:1">
+                  <div class="im-show-scale-head"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>Volume</span><b data-scale-value>Pequeno</b></div>
+                  <div class="im-show-track"><span class="im-show-fill"></span><i class="im-show-tick"></i><i class="im-show-tick"></i><i class="im-show-tick"></i><span class="im-show-marker"></span></div>
+                  <div class="im-show-ticks"><span>Pequeno</span><span>Médio</span><span>Grande</span></div>
+                </div>
+                <div class="im-show-scale" data-scale="custo" style="--lvl:3">
+                  <div class="im-show-scale-head"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Custo</span><b data-scale-value>Alto</b></div>
+                  <div class="im-show-track"><span class="im-show-fill"></span><i class="im-show-tick"></i><i class="im-show-tick"></i><i class="im-show-tick"></i><span class="im-show-marker"></span></div>
+                  <div class="im-show-ticks"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+                </div>
+                <a class="pg2-link" href="#process">Ver o processo completo <span aria-hidden="true">&rarr;</span></a>
+              </div>
+              <p class="im-show-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Modo decidido na fase de validação</p>
+            </div>
           </div>
-          <div class="im-rail-seg" role="listitem">
-            <div class="im-rail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h18l-2.5 6h-13z"/><path d="M6 14V8h12v6"/><path d="M10 8V5h4v3"/><path d="M2 21q2-1.5 4 0t4 0t4 0t4 0t4 0"/></svg></div>
-            <h3>Marítimo</h3>
-            <p>Volumes maiores em que o custo pesa mais do que o prazo.</p>
-          </div>
-          <div class="im-rail-seg" role="listitem">
-            <div class="im-rail-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg></div>
-            <h3>Rodoviário</h3>
-            <p>Origens e destinos por rota rodoviária, em prazos intermédios.</p>
+          <div class="im-show-switch-wrap">
+            <div class="im-show-switch" role="tablist" aria-label="Modo de transporte">
+              <span class="im-show-thumb" aria-hidden="true" style="--i:0"></span>
+              <button class="im-show-tab" role="tab" type="button" id="im-show-t-aereo" aria-selected="true" aria-controls="im-show-p-aereo" tabindex="0" data-mode-tab="aereo" data-side="left" data-prazo="1" data-prazo-label="Curto" data-volume="1" data-volume-label="Pequeno" data-custo="3" data-custo-label="Alto"><svg aria-hidden="true"><use href="#imIcoAereo"/></svg>Aéreo</button>
+              <button class="im-show-tab" role="tab" type="button" id="im-show-t-maritimo" aria-selected="false" aria-controls="im-show-p-maritimo" tabindex="-1" data-mode-tab="maritimo" data-side="right" data-prazo="3" data-prazo-label="Longo" data-volume="3" data-volume-label="Grande" data-custo="1" data-custo-label="Baixo"><svg aria-hidden="true"><use href="#imIcoMaritimo"/></svg>Marítimo</button>
+              <button class="im-show-tab" role="tab" type="button" id="im-show-t-rodoviario" aria-selected="false" aria-controls="im-show-p-rodoviario" tabindex="-1" data-mode-tab="rodoviario" data-side="left" data-prazo="2" data-prazo-label="Médio" data-volume="2" data-volume-label="Médio" data-custo="2" data-custo-label="Médio"><svg aria-hidden="true"><use href="#imIcoRodoviario"/></svg>Rodoviário</button>
+            </div>
           </div>
         </div>
-        <p class="pg2-reveal" style="margin-top:1.75rem;"><a class="pg2-link" href="#process">Ver o processo completo <span aria-hidden="true">&rarr;</span></a></p>
       </div>
     </section>
 
@@ -526,7 +582,7 @@
                 <thead><tr><th>Modo</th><th>Quando faz sentido</th></tr></thead>
                 <tbody>
                   <tr><td>Aéreo</td><td>Prazos curtos, volumes mais pequenos ou de alto valor.</td></tr>
-                  <tr><td>Terrestre</td><td>Origens e destinos por rota rodoviária, dentro de prazos intermédios.</td></tr>
+                  <tr><td>Rodoviário</td><td>Origens e destinos por rota rodoviária, em prazos intermédios.</td></tr>
                   <tr><td>Marítimo</td><td>Volumes maiores em que o custo pesa mais do que o prazo.</td></tr>
                 </tbody>
               </table>
@@ -1059,7 +1115,7 @@
   </footer>
 
   <script src="components/world-map.js"></script>
-  <script src="script.js?v=32"></script>
+  <script src="script.js?v=33"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');

@@ -994,7 +994,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // cards — no cursor spotlight, no tilt, no motion of any kind.
   // importacao's hairline panels glow as whole frames; their cells and the
   // process rows stay flat (no tilt, no per-cell spotlight)
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-rail, .im-pipe, .im-flow, .im-manifest';
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-manifest';
   var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg
@@ -1375,6 +1375,133 @@ document.addEventListener("DOMContentLoaded", () => {
       if (willOpen) setOpen(cell, true);
     });
   });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Transport showcase (importacao #network). One stage, three modes:
+   the island switches mode, the columns trade sides (FLIP), the old
+   icon and copy leave, the new ones enter and the profile markers
+   glide. Reduced motion: the CSS keeps only cross-fades and the FLIP
+   is skipped. The 3D icon follows the pointer on fine-pointer devices.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var root = document.querySelector("[data-show]");
+  if (!root) return;
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tabs = [].slice.call(root.querySelectorAll("[data-mode-tab]"));
+  var panels = [].slice.call(root.querySelectorAll("[data-mode-panel]"));
+  var icons = [].slice.call(root.querySelectorAll("[data-mode-icon]"));
+  var scales = [].slice.call(root.querySelectorAll("[data-scale]"));
+  var stage = root.querySelector(".im-show-stage");
+  var copy = root.querySelector(".im-show-copy");
+  var thumb = root.querySelector(".im-show-thumb");
+  var OUT = REDUCED ? 150 : 200;   // how long the leaving copy/icon take (mirrors the CSS)
+  var current = root.getAttribute("data-mode");
+  var busy = false;
+
+  function byMode(list, attr, mode) {
+    for (var i = 0; i < list.length; i++) if (list[i].getAttribute(attr) === mode) return list[i];
+    return null;
+  }
+
+  function selectTab(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+    });
+    if (thumb) thumb.style.setProperty("--i", tabs.indexOf(tab));
+  }
+
+  function applyProfile(tab) {
+    scales.forEach(function (s) {
+      var key = s.getAttribute("data-scale");
+      s.style.setProperty("--lvl", tab.getAttribute("data-" + key) || "1");
+      var v = s.querySelector("[data-scale-value]");
+      if (v) v.textContent = tab.getAttribute("data-" + key + "-label") || "";
+    });
+  }
+
+  // FLIP: measure, swap sides, measure again, play the difference away
+  function tradeSides(fn) {
+    if (REDUCED) { fn(); return; }
+    var els = [stage, copy];
+    var before = els.map(function (el) { return el.getBoundingClientRect(); });
+    fn();
+    els.forEach(function (el, i) {
+      var after = el.getBoundingClientRect();
+      var dx = before[i].left - after.left, dy = before[i].top - after.top;
+      if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+      el.style.transition = "none";
+      el.style.transform = "translate(" + dx.toFixed(1) + "px," + dy.toFixed(1) + "px)";
+      void el.offsetWidth;
+      el.style.transition = "transform 780ms cubic-bezier(0.2, 0.8, 0.2, 1)";
+      el.style.transform = "";
+      el.addEventListener("transitionend", function done() {
+        el.style.transition = "";
+        el.removeEventListener("transitionend", done);
+      });
+    });
+  }
+
+  function show(mode) {
+    if (busy || mode === current) return;
+    var tab = byMode(tabs, "data-mode-tab", mode);
+    if (!tab) return;
+    busy = true;
+    selectTab(tab);
+    var oldPanel = byMode(panels, "data-mode-panel", current), newPanel = byMode(panels, "data-mode-panel", mode);
+    var oldIcon = byMode(icons, "data-mode-icon", current), newIcon = byMode(icons, "data-mode-icon", mode);
+    if (oldPanel) oldPanel.classList.add("is-leaving");
+    if (oldIcon) oldIcon.classList.add("is-leaving");
+    setTimeout(function () {
+      if (oldPanel) oldPanel.classList.remove("is-active", "is-leaving");
+      if (oldIcon) oldIcon.classList.remove("is-active", "is-leaving");
+      tradeSides(function () {
+        root.setAttribute("data-mode", mode);
+        root.setAttribute("data-side", tab.getAttribute("data-side") || "left");
+        applyProfile(tab);
+        if (newPanel) newPanel.classList.add("is-active");
+        if (newIcon) newIcon.classList.add("is-active");
+      });
+      current = mode;
+      busy = false;
+    }, OUT);
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () { show(tab.getAttribute("data-mode-tab")); });
+    tab.addEventListener("keydown", function (e) {
+      var i = tabs.indexOf(tab), n = tabs.length, j = -1;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") j = (i + 1) % n;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") j = (i - 1 + n) % n;
+      else if (e.key === "Home") j = 0;
+      else if (e.key === "End") j = n - 1;
+      if (j < 0) return;
+      e.preventDefault();
+      tabs[j].focus();
+      show(tabs[j].getAttribute("data-mode-tab"));
+    });
+  });
+
+  // pointer tilt on the 3D icon (fine pointers, motion allowed)
+  if (!REDUCED && stage && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var disc = root.querySelector(".im-show-disc");
+    var rx = 0, ry = 0, tx = 0, ty = 0, raf = 0;
+    var tick = function () {
+      rx += (tx - rx) * 0.12; ry += (ty - ry) * 0.12;
+      disc.style.setProperty("--tx", rx.toFixed(2) + "deg");
+      disc.style.setProperty("--ty", ry.toFixed(2) + "deg");
+      raf = (Math.abs(tx - rx) > 0.05 || Math.abs(ty - ry) > 0.05) ? requestAnimationFrame(tick) : 0;
+    };
+    var kick = function () { if (!raf) raf = requestAnimationFrame(tick); };
+    stage.addEventListener("pointermove", function (e) {
+      var r = disc.getBoundingClientRect();
+      var ox = (e.clientX - r.left) / r.width - 0.5, oy = (e.clientY - r.top) / r.height - 0.5;
+      tx = -oy * 20; ty = ox * 24; kick();
+    }, { passive: true });
+    stage.addEventListener("pointerleave", function () { tx = 0; ty = 0; kick(); });
+  }
 })();
 
 /* ══════════════════════════════════════════════════════════════
