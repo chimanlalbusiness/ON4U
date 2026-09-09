@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=34" />
+  <link rel="stylesheet" href="style.css?v=35" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
@@ -343,15 +343,10 @@
     <section class="pg2-section pg2-section--2" id="network">
       <div class="pg2-wrap">
         <div class="pg2-shead pg2-reveal">
-          <p class="pg2-eyebrow">Rede de execução</p>
-          <h2 class="pg2-h2">Coordenação internacional do fornecimento à entrega.</h2>
+          <p class="pg2-eyebrow">Modo de transporte</p>
+          <h2 class="pg2-h2">O modo muda com o pedido. Quem responde, não.</h2>
         </div>
-        <p class="pg2-lede pg2-measure pg2-reveal">Uma só equipa liga fornecedor, transporte e destino. Não passamos o pedido de mão em mão entre intermediários: coordenamos cada etapa e respondemos por todas.</p>
-        <ul class="pg2-reveal" style="list-style:none;padding:0;margin:0 0 2.25rem;display:flex;flex-direction:column;gap:0.6rem;max-width:62ch;">
-          <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Etapas definidas conforme origem, destino, prazo e restrições do pedido</li>
-          <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Articulação entre recolha, expedição, processos aduaneiros e entrega (quando necessário)</li>
-          <li style="font-size:0.95rem;color:rgba(255,255,255,0.72);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;"><span style="width:5px;height:5px;border-radius:50%;background:#f97316;flex-shrink:0;display:inline-block;margin-top:0.55rem;"></span>Seguimento por marcos operacionais até ao fecho</li>
-        </ul>
+        <p class="pg2-lede pg2-measure pg2-reveal">Decidido pelo prazo, volume e custo do pedido, executado pela mesma equipa que responde por ele até à entrega.</p>
         <div class="im-show pg2-reveal" data-show data-mode="aereo" data-side="left">
           <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
             <defs>
@@ -384,17 +379,17 @@
                 <div class="im-show-panel is-active" data-mode-panel="aereo" role="tabpanel" id="im-show-p-aereo" aria-labelledby="im-show-t-aereo">
                   <p class="im-show-eyebrow" style="--i:0">Transporte aéreo</p>
                   <h3 class="im-show-title" style="--i:1">Quando o prazo manda.</h3>
-                  <p class="im-show-lede" style="--i:2">Prazos curtos, volumes mais pequenos ou de alto valor.</p>
+                  <p class="im-show-lede" style="--i:2">Prazo curto, pouco volume ou alto valor. Custa mais, chega antes.</p>
                 </div>
                 <div class="im-show-panel" data-mode-panel="maritimo" role="tabpanel" id="im-show-p-maritimo" aria-labelledby="im-show-t-maritimo">
                   <p class="im-show-eyebrow" style="--i:0">Transporte marítimo</p>
                   <h3 class="im-show-title" style="--i:1">Quando o volume manda.</h3>
-                  <p class="im-show-lede" style="--i:2">Volumes maiores em que o custo pesa mais do que o prazo.</p>
+                  <p class="im-show-lede" style="--i:2">Grande volume e margem de prazo. Custa menos, demora mais.</p>
                 </div>
                 <div class="im-show-panel" data-mode-panel="rodoviario" role="tabpanel" id="im-show-p-rodoviario" aria-labelledby="im-show-t-rodoviario">
                   <p class="im-show-eyebrow" style="--i:0">Transporte rodoviário</p>
-                  <h3 class="im-show-title" style="--i:1">Entre o prazo e o custo.</h3>
-                  <p class="im-show-lede" style="--i:2">Origens e destinos por rota rodoviária, em prazos intermédios.</p>
+                  <h3 class="im-show-title" style="--i:1">Quando a rota manda.</h3>
+                  <p class="im-show-lede" style="--i:2">Origem e destino ligados por estrada. Custo e prazo intermédios.</p>
                 </div>
               </div>
               <div class="im-show-card">
@@ -1115,7 +1110,7 @@
   </footer>
 
   <script src="components/world-map.js"></script>
-  <script src="script.js?v=34"></script>
+  <script src="script.js?v=35"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');
