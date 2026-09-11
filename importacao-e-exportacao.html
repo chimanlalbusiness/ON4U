@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=35" />
+  <link rel="stylesheet" href="style.css?v=36" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
@@ -557,34 +557,48 @@
           <h2 class="pg2-h2">O que tratamos num pedido internacional.</h2>
         </div>
         <p class="pg2-lede pg2-measure pg2-reveal">A Operação Internacional da ON4U coordena importação, exportação, sourcing e distribuição por pedido, incluindo documentação, processos alfandegários e transporte aéreo, terrestre e marítimo.</p>
-        <div class="im-manifest pg2-reveal">
-          <div class="im-stamp" aria-hidden="true"><span>ON4U<br>por pedido</span></div>
-          <div class="im-manifest-grid">
-            <div>
-              <p class="im-manifest-title">Âmbito coordenado</p>
-              <ul class="im-checklist">
-                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Importação</strong>: entrada de mercadoria de fornecedores internacionais para Portugal e outros destinos.</span></li>
-                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Exportação</strong>: colocação de mercadoria em mercados internacionais, de origem portuguesa ou estrangeira.</span></li>
-                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Sourcing</strong>: identificação e validação de fornecedores, com origem na China e na Índia, entre outros.</span></li>
-                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Consolidação</strong>: agregação de encomendas para otimizar transporte e custo.</span></li>
-                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Documentação e processos alfandegários</strong>: preparação e acompanhamento da documentação necessária ao desembaraço.</span></li>
-                <li><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Distribuição</strong>: entrega no destino final, dentro ou fora de Portugal.</span></li>
-              </ul>
-            </div>
-            <div>
-              <p class="im-manifest-title">Modos de transporte</p>
-              <table class="pg2-table">
-                <thead><tr><th>Modo</th><th>Quando faz sentido</th></tr></thead>
-                <tbody>
-                  <tr><td>Aéreo</td><td>Prazos curtos, volumes mais pequenos ou de alto valor.</td></tr>
-                  <tr><td>Rodoviário</td><td>Origens e destinos por rota rodoviária, em prazos intermédios.</td></tr>
-                  <tr><td>Marítimo</td><td>Volumes maiores em que o custo pesa mais do que o prazo.</td></tr>
-                </tbody>
-              </table>
-              <p class="pg2-form-note">O modo é decidido na fase de validação, em função de prazo, volume e custo do pedido.</p>
+        <div class="im-scope pg2-reveal" data-scope>
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="imScopeGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fed7aa"/><stop offset="0.45" stop-color="#f97316"/><stop offset="1" stop-color="#c2410c"/></linearGradient>
+              <symbol id="imScope-importacao" viewBox="0 0 160 160"><path d="M26 86 H134 V142 H26 Z M42 86 V126 H118 V86 Z M72 14 H88 V72 H72 Z M52 70 H108 L80 104 Z"/></symbol>
+              <symbol id="imScope-exportacao" viewBox="0 0 160 160"><path d="M26 86 H134 V142 H26 Z M42 86 V126 H118 V86 Z M80 14 L108 50 H52 Z M72 48 H88 V118 H72 Z"/></symbol>
+              <symbol id="imScope-sourcing" viewBox="0 0 160 160"><path fill-rule="evenodd" d="M30 66 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0 M42 66 a26 26 0 1 0 52 0 a26 26 0 1 0 -52 0 M86 96 L96 86 L146 136 L136 146 Z"/></symbol>
+              <symbol id="imScope-consolidacao" viewBox="0 0 160 160"><path d="M26 92 H74 V140 H26 Z M86 92 H134 V140 H86 Z M56 40 H104 V88 H56 Z"/></symbol>
+              <symbol id="imScope-aduana" viewBox="0 0 160 160"><path fill-rule="evenodd" d="M40 16 H98 L124 42 V144 H40 Z M56 52 V60 H108 V52 Z M56 70 V78 H108 V70 Z M76 114 a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0 M85 114 a13 13 0 1 1 26 0 a13 13 0 1 1 -26 0"/></symbol>
+              <symbol id="imScope-distribuicao" viewBox="0 0 160 160"><path fill-rule="evenodd" d="M36 64 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0 M44 86 H116 L80 150 Z M62 64 a18 18 0 1 0 36 0 a18 18 0 1 0 -36 0"/></symbol>
+            </defs>
+          </svg>
+          <ol class="im-scope-list">
+            <li class="im-scope-row is-on" data-scope-item="importacao"><span class="im-scope-num">01</span><div><h3>Importação</h3><p>Entrada de mercadoria de fornecedores internacionais para Portugal e outros destinos.</p></div><span class="im-scope-arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span></li>
+            <li class="im-scope-row" data-scope-item="exportacao"><span class="im-scope-num">02</span><div><h3>Exportação</h3><p>Colocação de mercadoria em mercados internacionais, de origem portuguesa ou estrangeira.</p></div><span class="im-scope-arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span></li>
+            <li class="im-scope-row" data-scope-item="sourcing"><span class="im-scope-num">03</span><div><h3>Sourcing</h3><p>Identificação e validação de fornecedores, com origem na China e na Índia, entre outros.</p></div><span class="im-scope-arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span></li>
+            <li class="im-scope-row" data-scope-item="consolidacao"><span class="im-scope-num">04</span><div><h3>Consolidação</h3><p>Agregação de encomendas para otimizar transporte e custo.</p></div><span class="im-scope-arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span></li>
+            <li class="im-scope-row" data-scope-item="aduana" data-short="Documentação e alfândegas"><span class="im-scope-num">05</span><div><h3>Documentação e processos alfandegários</h3><p>Preparação e acompanhamento da documentação necessária ao desembaraço.</p></div><span class="im-scope-arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span></li>
+            <li class="im-scope-row" data-scope-item="distribuicao"><span class="im-scope-num">06</span><div><h3>Distribuição</h3><p>Entrega no destino final, dentro ou fora de Portugal.</p></div><span class="im-scope-arr"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span></li>
+          </ol>
+          <div class="im-scope-stage" aria-hidden="true">
+            <div class="im-scope-frame">
+              <div class="im-scope-obj" data-scope-tilt>
+                <div class="im-scope-glow"></div>
+                <div class="im-scope-ring"></div>
+                <span class="im-scope-ghost" data-scope-ghost>01</span>
+                <div class="im-scope-floor"></div>
+                <div class="im-scope-ico is-on" data-scope-ico="importacao"><div class="im-scope-3d"><svg class="im-scope-layer im-scope-layer--top" style="--i:0" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:1" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:2" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:3" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:4" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:5" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:6" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:7" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:8" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:9" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:10" aria-hidden="true"><use href="#imScope-importacao"/></svg><svg class="im-scope-layer" style="--i:11" aria-hidden="true"><use href="#imScope-importacao"/></svg></div></div>
+                <div class="im-scope-ico" data-scope-ico="exportacao"><div class="im-scope-3d"><svg class="im-scope-layer im-scope-layer--top" style="--i:0" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:1" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:2" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:3" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:4" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:5" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:6" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:7" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:8" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:9" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:10" aria-hidden="true"><use href="#imScope-exportacao"/></svg><svg class="im-scope-layer" style="--i:11" aria-hidden="true"><use href="#imScope-exportacao"/></svg></div></div>
+                <div class="im-scope-ico" data-scope-ico="sourcing"><div class="im-scope-3d"><svg class="im-scope-layer im-scope-layer--top" style="--i:0" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:1" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:2" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:3" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:4" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:5" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:6" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:7" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:8" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:9" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:10" aria-hidden="true"><use href="#imScope-sourcing"/></svg><svg class="im-scope-layer" style="--i:11" aria-hidden="true"><use href="#imScope-sourcing"/></svg></div></div>
+                <div class="im-scope-ico" data-scope-ico="consolidacao"><div class="im-scope-3d"><svg class="im-scope-layer im-scope-layer--top" style="--i:0" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:1" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:2" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:3" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:4" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:5" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:6" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:7" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:8" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:9" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:10" aria-hidden="true"><use href="#imScope-consolidacao"/></svg><svg class="im-scope-layer" style="--i:11" aria-hidden="true"><use href="#imScope-consolidacao"/></svg></div></div>
+                <div class="im-scope-ico" data-scope-ico="aduana"><div class="im-scope-3d"><svg class="im-scope-layer im-scope-layer--top" style="--i:0" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:1" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:2" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:3" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:4" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:5" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:6" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:7" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:8" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:9" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:10" aria-hidden="true"><use href="#imScope-aduana"/></svg><svg class="im-scope-layer" style="--i:11" aria-hidden="true"><use href="#imScope-aduana"/></svg></div></div>
+                <div class="im-scope-ico" data-scope-ico="distribuicao"><div class="im-scope-3d"><svg class="im-scope-layer im-scope-layer--top" style="--i:0" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:1" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:2" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:3" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:4" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:5" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:6" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:7" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:8" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:9" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:10" aria-hidden="true"><use href="#imScope-distribuicao"/></svg><svg class="im-scope-layer" style="--i:11" aria-hidden="true"><use href="#imScope-distribuicao"/></svg></div></div>
+                <div class="im-scope-foot">
+                  <span class="im-scope-pill"><i></i>ON4U por pedido</span>
+                  <span class="im-scope-label" data-scope-label><b>01</b> &middot; Importação</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">O modo de transporte, aéreo, marítimo ou rodoviário, é decidido na fase de validação, em função de prazo, volume e custo do pedido.</p>
         <p class="pg2-prose pg2-reveal" style="margin-top:1.75rem;">Para produtos de saúde de fonte certificada, veja <a href="/health-care.html">produtos de saúde por pedido</a>.</p>
       </div>
     </section>
@@ -1110,7 +1124,7 @@
   </footer>
 
   <script src="components/world-map.js"></script>
-  <script src="script.js?v=35"></script>
+  <script src="script.js?v=36"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');

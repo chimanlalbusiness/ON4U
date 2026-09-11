@@ -994,7 +994,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // cards — no cursor spotlight, no tilt, no motion of any kind.
   // importacao's hairline panels glow as whole frames; their cells and the
   // process rows stay flat (no tilt, no per-cell spotlight)
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-manifest';
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-scope-frame';
   var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg
@@ -1501,6 +1501,89 @@ document.addEventListener("DOMContentLoaded", () => {
       tx = -oy * 20; ty = ox * 24; kick();
     }, { passive: true });
     stage.addEventListener("pointerleave", function () { tx = 0; ty = 0; kick(); });
+  }
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Scope ledger (importacao #coordenamos). The hovered line drives the
+   stage: its icon, its ghost numeral and its label. Without a fine
+   pointer the line nearest the viewport centre leads instead, so the
+   stage still tells a story on a phone. Everything the stage shows is
+   already written in the line, so the stage is aria-hidden and nothing
+   is keyboard-only.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var root = document.querySelector("[data-scope]");
+  if (!root) return;
+  var rows = [].slice.call(root.querySelectorAll("[data-scope-item]"));
+  var icos = [].slice.call(root.querySelectorAll("[data-scope-ico]"));
+  var ghost = root.querySelector("[data-scope-ghost]");
+  var label = root.querySelector("[data-scope-label]");
+  var current = null;
+
+  function pick(row) {
+    if (!row || row === current) return;
+    current = row;
+    var id = row.getAttribute("data-scope-item");
+    var num = row.querySelector(".im-scope-num").textContent;
+    var title = row.getAttribute("data-short") || row.querySelector("h3").textContent;
+    rows.forEach(function (r) { r.classList.toggle("is-on", r === row); });
+    icos.forEach(function (i) { i.classList.toggle("is-on", i.getAttribute("data-scope-ico") === id); });
+    if (ghost) ghost.textContent = num;
+    if (label) label.innerHTML = "<b>" + num + "</b> \u00b7 " + title;
+  }
+
+  rows.forEach(function (row) {
+    row.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") pick(row); });
+    row.addEventListener("click", function () { pick(row); });
+  });
+
+  // Stacked layout (or no mouse): the line nearest 45% of the viewport leads,
+  // so the pinned stage keeps changing as you read. On a wide screen the
+  // pointer is in charge instead.
+  var scrollLed = function () {
+    return window.matchMedia("(max-width: 820px)").matches ||
+           !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  };
+  {
+    var ticking = false;
+    var lead = function () {
+      ticking = false;
+      if (!scrollLed()) return;
+      var mark = window.innerHeight * 0.45, best = null, bestD = Infinity;
+      rows.forEach(function (r) {
+        var b = r.getBoundingClientRect();
+        if (b.bottom < 0 || b.top > window.innerHeight) return;
+        var d = Math.abs(b.top + b.height / 2 - mark);
+        if (d < bestD) { bestD = d; best = r; }
+      });
+      pick(best);
+    };
+    var req = function () { if (!ticking) { ticking = true; requestAnimationFrame(lead); } };
+    window.addEventListener("scroll", req, { passive: true });
+    window.addEventListener("resize", req, { passive: true });
+    lead();
+  }
+
+  // pointer tilt on the object
+  var obj = root.querySelector("[data-scope-tilt]");
+  if (obj && !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var rx = 0, ry = 0, tx = 0, ty = 0, raf = 0;
+    var tick = function () {
+      rx += (tx - rx) * 0.12; ry += (ty - ry) * 0.12;
+      obj.style.setProperty("--tx", rx.toFixed(2) + "deg");
+      obj.style.setProperty("--ty", ry.toFixed(2) + "deg");
+      raf = (Math.abs(tx - rx) > 0.05 || Math.abs(ty - ry) > 0.05) ? requestAnimationFrame(tick) : 0;
+    };
+    var kick = function () { if (!raf) raf = requestAnimationFrame(tick); };
+    obj.addEventListener("pointermove", function (e) {
+      var r = obj.getBoundingClientRect();
+      tx = -((e.clientY - r.top) / r.height - 0.5) * 20;
+      ty = ((e.clientX - r.left) / r.width - 0.5) * 24;
+      kick();
+    }, { passive: true });
+    obj.addEventListener("pointerleave", function () { tx = 0; ty = 0; kick(); });
   }
 })();
 
