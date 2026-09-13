@@ -7048,6 +7048,88 @@ html.light-mode .pr-3d-layer { filter: invert(1) hue-rotate(180deg); }
 }
 
 /* ══════════════════════════════════════════════════════════════
+   Health & Care ─────────────────────────────────────────────────
+   1 · certification: the copy keeps its place; opposite it a stage
+   holds the certificate as an object: a shield extruded in real 3D,
+   brushed-steel face, bevel rim, the check cut through the face to an
+   orange enamel layer beneath, and a specular band that sweeps the
+   face (rests as a fixed highlight under reduced motion). ═════════ */
+.hc-cert { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.hc-cert-copy .pg2-shead { margin-bottom: 1.4rem; }
+.hc-cert-stage { position: relative; }
+.hc-cert-frame { position: relative; width: min(100%, 460px); aspect-ratio: 1; margin: 0 auto; border-radius: 26px; border: 1px solid var(--im-line); background: var(--im-panel); overflow: clip; }
+.hc-cert-glow { position: absolute; left: 50%; top: 50%; width: 110%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle closest-side, rgba(249, 115, 22, 0.26), rgba(249, 115, 22, 0.07) 48%, transparent 100%); }
+.hc-cert-ring { position: absolute; left: 50%; top: 50%; width: 76%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 1px dashed rgba(249, 115, 22, 0.22); }
+@media (prefers-reduced-motion: no-preference) { .hc-cert-ring { animation: imScopeSpin 34s linear infinite; } }
+.hc-cert-floor { position: absolute; left: 50%; top: 79%; width: 46%; height: 10%; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7), transparent 66%); }
+.hc-shield { position: absolute; left: 50%; top: 47%; width: 58%; aspect-ratio: 1; transform: translate(-50%, -50%); }
+.hc-shield-3d { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: perspective(760px) rotateX(calc(16deg + var(--tx, 0deg))) rotateY(calc(-28deg + var(--ty, 0deg))); }
+.hc-shield-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; fill: #6b7686; transform: translateZ(calc(var(--i, 0) * -2.2px)); }
+.hc-shield-layer:nth-child(2) { fill: #f97316; }                 /* enamel showing through the cut */
+.hc-shield-layer:nth-child(n+6) { fill: #4a5462; }               /* the rim darkens with depth */
+.hc-shield-layer:nth-child(n+11) { fill: #262e3a; }
+.hc-shield-layer--top { filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.35)); }
+.hc-shield-gloss { position: absolute; inset: 0; width: 100%; height: 100%; transform: translateZ(0.8px); pointer-events: none; mix-blend-mode: screen; }
+.hc-shield-band { transform: skewX(-20deg) translateX(70px); }
+@media (prefers-reduced-motion: no-preference) {
+  .hc-shield-band { animation: hcSweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+}
+@keyframes hcSweep { 0%, 58% { transform: skewX(-20deg) translateX(-30px); } 100% { transform: skewX(-20deg) translateX(250px); } }
+html.light-mode .hc-shield-layer, html.light-mode .hc-shield-gloss { filter: invert(1) hue-rotate(180deg); }
+.hc-cert-foot { position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.hc-cert-tag { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-ink-3); }
+
+/* 2 · process as an ECG: the trace draws left to right with the scroll
+   (scroll-linked, so it reads under reduced motion too); each step sits
+   on the R peak of its beat and lights when the trace reaches it. */
+.hc-ecg { margin-top: clamp(2rem, 4vw, 3rem); }
+.hc-ecg-trace { position: relative; }
+.hc-ecg-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hc-ecg-base { stroke: rgba(255, 255, 255, 0.1); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.hc-ecg-live { stroke: var(--pg-accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; filter: url(#hcEcgGlow); }
+.hc-ecg-head { fill: #fff; opacity: 0; filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.9)); }
+.hc-ecg.is-live .hc-ecg-head { opacity: 1; }
+.hc-ecg-node .hc-ecg-dot { fill: var(--im-panel); stroke: rgba(255, 255, 255, 0.28); stroke-width: 2; transition: fill 260ms ease, stroke 260ms ease; }
+.hc-ecg-node .hc-ecg-halo { fill: rgba(249, 115, 22, 0.16); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.4); transition: opacity 320ms ease, transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hc-ecg-node.is-lit .hc-ecg-dot { fill: var(--pg-accent); stroke: #fff; }
+.hc-ecg-node.is-lit .hc-ecg-halo { opacity: 1; transform: scale(1); }
+.hc-ecg-steps { list-style: none; margin: 0.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.hc-ecg-step { position: relative; text-align: center; padding: 1.4rem 1.2rem 0; opacity: 0.35; transform: translateY(6px); transition: opacity 360ms ease, transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hc-ecg-step::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 1rem; background: rgba(249, 115, 22, 0.5); }
+.hc-ecg-step.is-lit { opacity: 1; transform: none; }
+.hc-ecg-k { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-accent); margin-bottom: 0.55rem; }
+.hc-ecg-step h3 { margin: 0 0 0.45rem; font-size: 1.08rem; font-weight: 700; color: var(--pg-ink); }
+.hc-ecg-step p { margin: 0; font-size: 0.92rem; line-height: 1.6; color: var(--pg-ink-3); max-width: 30ch; margin-inline: auto; }
+
+/* 3 · scope, set as a spread: one big line, two columns on a hairline,
+   the link line, three summary tags. Same words. */
+.hc-scope { display: flex; flex-direction: column; gap: 1.6rem; }
+.hc-scope-lead { margin: 0; font-size: clamp(1.5rem, 2.9vw, 2.35rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; color: var(--pg-ink); max-width: 22ch; background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hc-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(1.6rem, 4vw, 3.5rem); }
+.hc-scope-grid p { margin: 0; font-size: 1.02rem; line-height: 1.7; color: var(--pg-ink-2); }
+.hc-scope-grid p + p { border-left: 1px solid var(--im-line); padding-left: clamp(1.6rem, 4vw, 3.5rem); }
+.hc-scope-grid p::first-letter { color: var(--pg-accent); font-weight: 700; }
+.hc-scope-foot { margin: 0; font-size: 0.98rem; line-height: 1.65; color: var(--pg-ink-3); max-width: 62ch; }
+.hc-scope-foot a { color: var(--pg-accent); text-decoration: none; border-bottom: 1px solid rgba(249, 115, 22, 0.4); }
+.hc-scope-tags { list-style: none; margin: 0.2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.hc-scope-tags li { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pg-accent); border: 1px solid rgba(249, 115, 22, 0.35); border-radius: 99px; padding: 0.34rem 0.7rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hc-ecg-step, .hc-ecg-node .hc-ecg-dot, .hc-ecg-node .hc-ecg-halo { transition-duration: 160ms; }
+}
+@media (max-width: 900px) {
+  .hc-cert { grid-template-columns: 1fr; gap: 2rem; }
+  .hc-cert-stage { order: -1; }
+  .hc-cert-frame { width: min(100%, 360px); }
+  .hc-ecg-steps { grid-template-columns: 1fr; gap: 0.4rem; margin-top: 0.4rem; }
+  .hc-ecg-step { text-align: left; padding: 1rem 0 1rem 1.1rem; }
+  .hc-ecg-step::before { left: 0; top: 1.1rem; width: 2px; height: 1.4rem; }
+  .hc-ecg-step p { margin-inline: 0; max-width: none; }
+  .hc-scope-grid { grid-template-columns: 1fr; gap: 1.2rem 0; }
+  .hc-scope-grid p + p { border-left: 0; padding-left: 0; border-top: 1px solid var(--im-line); padding-top: 1.2rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
    "Compromisso Pagamento Pontual" seal — the supplied asset is a
    JPEG (no alpha) whose pill-shaped orange badge sits on a white
    plate, so on the dark footer it showed as a white box with the

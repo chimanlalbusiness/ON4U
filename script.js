@@ -961,7 +961,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "Fase 02": "Phase 02",
     "Fase 03": "Phase 03",
     "Fase 04": "Phase 04",
-    "Fases do processo": "Process phases"
+    "Fases do processo": "Process phases",
+    "Passo 01": "Step 01",
+    "Passo 02": "Step 02",
+    "Passo 03": "Step 03",
+    "Fornecemos produtos de saúde por pedido.": "We supply health products on demand.",
+    "Em vez de um catálogo fixo, partimos do requisito: indica o que precisa e fazemos o sourcing da fonte adequada, com validação de conformidade antes da proposta.": "Instead of a fixed catalog, we start from the requirement: tell us what you need and we source it from the right supplier, with compliance validated before the proposal.",
+    "Em resumo": "In short",
+    "Sem catálogo fixo": "No fixed catalog",
+    "Por pedido": "On demand",
+    "Conformidade validada antes da proposta": "Compliance validated before the proposal"
   };
 
   var origText = new WeakMap();   // text node -> original PT value
@@ -1151,7 +1160,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // cards — no cursor spotlight, no tilt, no motion of any kind.
   // importacao's hairline panels glow as whole frames; their cells and the
   // process rows stay flat (no tilt, no per-cell spotlight)
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-scope-frame, .pr-flow-step';
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-scope-frame, .pr-flow-step, .hc-cert-frame';
   var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg
@@ -1738,6 +1747,71 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
     obj.addEventListener("pointerleave", function () { tx = 0; ty = 0; kick(); });
   }
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Health & Care: the certificate shield follows the pointer (fine
+   pointers, motion allowed), and the ECG trace is drawn by the scroll:
+   progress runs while the trace travels from 88% to 35% of the
+   viewport height; each step lights when the trace reaches its beat.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var shield = document.querySelector("[data-shield-tilt]");
+  if (shield && !REDUCED && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var frame = shield.closest(".hc-cert-frame") || shield;
+    var rx = 0, ry = 0, tx = 0, ty = 0, raf = 0;
+    var tick = function () {
+      rx += (tx - rx) * 0.12; ry += (ty - ry) * 0.12;
+      shield.style.setProperty("--tx", rx.toFixed(2) + "deg");
+      shield.style.setProperty("--ty", ry.toFixed(2) + "deg");
+      raf = (Math.abs(tx - rx) > 0.05 || Math.abs(ty - ry) > 0.05) ? requestAnimationFrame(tick) : 0;
+    };
+    var kick = function () { if (!raf) raf = requestAnimationFrame(tick); };
+    frame.addEventListener("pointermove", function (e) {
+      var r = frame.getBoundingClientRect();
+      tx = -((e.clientY - r.top) / r.height - 0.5) * 22;
+      ty = ((e.clientX - r.left) / r.width - 0.5) * 26;
+      kick();
+    }, { passive: true });
+    frame.addEventListener("pointerleave", function () { tx = 0; ty = 0; kick(); });
+  }
+
+  var ecg = document.querySelector("[data-ecg]");
+  if (!ecg) return;
+  var live = ecg.querySelector("[data-ecg-live]");
+  var head = ecg.querySelector("[data-ecg-head]");
+  var nodes = [].slice.call(ecg.querySelectorAll(".hc-ecg-node"));
+  var steps = [].slice.call(ecg.querySelectorAll(".hc-ecg-step"));
+  var trace = ecg.querySelector(".hc-ecg-trace");
+  if (!live || !trace) return;
+  var total = live.getTotalLength();
+  // each beat's share of the path: the fraction of length at its x
+  function fracAt(x) {
+    var lo = 0, hi = total;
+    for (var i = 0; i < 24; i++) { var mid = (lo + hi) / 2; if (live.getPointAtLength(mid).x < x) lo = mid; else hi = mid; }
+    return lo / total;
+  }
+  var beats = nodes.map(function (n) { return fracAt(+n.getAttribute("data-x")); });
+  var ticking = false, last = -1;
+
+  function frame() {
+    ticking = false;
+    var r = trace.getBoundingClientRect(), vh = window.innerHeight;
+    var p = (vh * 0.88 - r.top) / (vh * 0.53);
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    if (p === last) return;
+    last = p;
+    live.style.strokeDashoffset = (1 - p).toFixed(4);
+    ecg.classList.toggle("is-live", p > 0 && p < 1);
+    if (head) { var pt = live.getPointAtLength(total * p); head.setAttribute("cx", pt.x.toFixed(1)); head.setAttribute("cy", pt.y.toFixed(1)); }
+    nodes.forEach(function (n, i) { n.classList.toggle("is-lit", p >= beats[i] - 0.005); });
+    steps.forEach(function (s, i) { s.classList.toggle("is-lit", p >= beats[i] - 0.005); });
+  }
+  function kick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  window.addEventListener("scroll", kick, { passive: true });
+  window.addEventListener("resize", kick, { passive: true });
+  frame();
 })();
 
 /* ══════════════════════════════════════════════════════════════
