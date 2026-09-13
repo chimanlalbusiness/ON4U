@@ -513,6 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Como funciona.": "How it works.",
     "Como trabalhamos": "How we work",
     "Como trabalhamos.": "How we work.",
+    "Em produção aplicamos o mesmo processo que corre em toda a ON4U: validamos antes de avançar e coordenamos a execução até ao dia. Em vez de gerir gráfica, montador e fornecedor de têxtil em separado, fala com um único interlocutor.": "In production we apply the same process that runs across ON4U: we validate before moving forward and coordinate execution up to the day. Instead of managing the printer, the fitter and the textile supplier separately, you talk to a single point of contact.",
     "Como é validada a conformidade dos produtos?": "How is product compliance validated?",
     "Conceção, produção e montagem de stands e espaços de marca para feiras e eventos, coordenados para estar prontos no dia.": "Design, production, and assembly of stands and brand spaces for trade shows and events, coordinated to be ready on the day.",
     "Confirmamos viabilidade e prazo, e devolvemos proposta com etapas.": "We confirm feasibility and deadline, and return a proposal with stages.",
@@ -994,7 +995,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // cards — no cursor spotlight, no tilt, no motion of any kind.
   // importacao's hairline panels glow as whole frames; their cells and the
   // process rows stay flat (no tilt, no per-cell spotlight)
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-scope-frame';
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-scope-frame, .pr-flow-step';
   var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg

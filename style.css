@@ -6993,6 +6993,42 @@ html.light-mode .im-scope-layer { filter: invert(1) hue-rotate(180deg); }
 .pg2-steps--row .pg2-step { padding: 1.7rem 1.4rem; text-align: center; }
 
 /* ══════════════════════════════════════════════════════════════
+   Production: how we work (.pr-flow) — four hairline steps joined by
+   dashed arrows, each fronted by an extruded 3D icon (the importacao
+   technique: a stack of <use> layers along z, gradient-lit face).
+   Static-first: the object reads at rest; hover lifts the card, warms
+   the edge and turns the object a little further. No numerals, no
+   reveal choreography: the arrows carry the order. ═══════════════ */
+.pr-flow { list-style: none; margin: clamp(2.5rem, 4.5vw, 3.5rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.4rem; align-items: stretch; }
+.pr-flow-step { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.9rem 1.4rem 1.75rem; border-radius: 18px; border: 1px solid var(--im-line); background: var(--im-panel); transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 240ms ease, box-shadow 320ms ease; }
+.pr-flow-step:hover { transform: translateY(-4px); border-color: rgba(249, 115, 22, 0.45); box-shadow: 0 24px 44px -28px rgba(0, 0, 0, 0.85); }
+.pr-flow-link { position: absolute; left: -2.8rem; top: 50%; width: 2.2rem; height: 2px; background: repeating-linear-gradient(90deg, rgba(249, 115, 22, 0.7) 0 5px, transparent 5px 10px); pointer-events: none; }
+.pr-flow-link::after { content: ""; position: absolute; right: -2px; top: 50%; width: 7px; height: 7px; border-top: 1.5px solid #f97316; border-right: 1.5px solid #f97316; transform: translateY(-50%) rotate(45deg); }
+.pr-flow-ico { position: relative; width: 104px; aspect-ratio: 1; margin: 0 auto 1.15rem; }
+.pr-flow-halo { position: absolute; inset: -32%; border-radius: 50%; background: radial-gradient(circle closest-side, rgba(249, 115, 22, 0.24), transparent); opacity: 0.8; transition: opacity 300ms ease; pointer-events: none; }
+.pr-flow-step:hover .pr-flow-halo { opacity: 1; }
+.pr-3d { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: perspective(600px) rotateX(14deg) rotateY(-24deg); transition: transform 460ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.pr-flow-step:hover .pr-3d { transform: perspective(600px) rotateX(20deg) rotateY(-34deg) translateY(-3px); }
+.pr-3d-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; fill: #7c2d12; transform: translateZ(calc(var(--i, 0) * -1px)); }
+.pr-3d-layer--top { fill: url(#prGrad); }
+html.light-mode .pr-3d-layer { filter: invert(1) hue-rotate(180deg); }
+.pr-flow-txt { display: flex; flex-direction: column; gap: 0.35rem; }
+.pr-flow-step h3 { margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--pg-ink); }
+.pr-flow-step p { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--pg-ink-3); max-width: 26ch; }
+@media (prefers-reduced-motion: reduce) {
+  .pr-flow-step, .pr-3d, .pr-flow-halo { transition: none; }
+  .pr-flow-step:hover { transform: none; }
+}
+@media (max-width: 900px) {
+  .pr-flow { grid-template-columns: 1fr; gap: 3rem; }
+  .pr-flow-link { left: 50%; top: -2.6rem; width: 2px; height: 2.2rem; transform: translateX(-50%); background: repeating-linear-gradient(180deg, rgba(249, 115, 22, 0.7) 0 5px, transparent 5px 10px); }
+  .pr-flow-link::after { right: auto; left: 50%; top: auto; bottom: -2px; transform: translateX(-50%) rotate(135deg); }
+  .pr-flow-step { flex-direction: row; text-align: left; align-items: center; gap: 1.2rem; padding: 1.3rem 1.3rem; }
+  .pr-flow-ico { width: 84px; margin: 0; flex-shrink: 0; }
+  .pr-flow-step p { max-width: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════
    "Compromisso Pagamento Pontual" seal — the supplied asset is a
    JPEG (no alpha) whose pill-shaped orange badge sits on a white
    plate, so on the dark footer it showed as a white box with the
