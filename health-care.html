@@ -28,7 +28,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=41" />
+  <link rel="stylesheet" href="style.css?v=42" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
   if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
@@ -346,24 +346,30 @@
     </section>
 
     <!-- COMO FUNCIONA -->
-    <section class="pg2-section pg2-section--0" id="hc-processo">
-      <div class="pg2-wrap">
+    <section class="pg2-section pg2-section--0 hc-ecg-section" id="hc-processo">
+      <div class="pg2-wrap hc-ecg-pin">
         <div class="pg2-shead pg2-reveal">
           <p class="pg2-eyebrow">Processo</p>
           <h2 class="pg2-h2">Como funciona.</h2>
         </div>
         <div class="hc-ecg pg2-reveal" data-ecg>
-          <div class="hc-ecg-trace" aria-hidden="true">
-            <svg class="hc-ecg-svg" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid meet" fill="none">
+          <div class="hc-ecg-stage" aria-hidden="true">
+            <div class="hc-ecg-glow"></div>
+            <svg class="hc-ecg-svg" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid meet" fill="none">
               <defs>
-                <filter id="hcEcgGlow" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <filter id="hcGlowWide" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
+                <filter id="hcGlowSoft" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur stdDeviation="5"/></filter>
+                <filter id="hcGlowHead" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
               </defs>
-              <path class="hc-ecg-base" d="M0 150 L110 150 Q125 132 140 150 L170 150 L178 160 L200 36 L210 184 L218 150 Q240 118 262 150 L510 150 Q525 132 540 150 L570 150 L578 160 L600 36 L610 184 L618 150 Q640 118 662 150 L910 150 Q925 132 940 150 L970 150 L978 160 L1000 36 L1010 184 L1018 150 Q1040 118 1062 150 L1200 150"/>
-              <path class="hc-ecg-live" d="M0 150 L110 150 Q125 132 140 150 L170 150 L178 160 L200 36 L210 184 L218 150 Q240 118 262 150 L510 150 Q525 132 540 150 L570 150 L578 160 L600 36 L610 184 L618 150 Q640 118 662 150 L910 150 Q925 132 940 150 L970 150 L978 160 L1000 36 L1010 184 L1018 150 Q1040 118 1062 150 L1200 150" pathLength="1" data-ecg-live/>
-              <g class="hc-ecg-node" data-x="200"><circle class="hc-ecg-halo" cx="200" cy="36" r="16"/><circle class="hc-ecg-dot" cx="200" cy="36" r="6"/></g>
-              <g class="hc-ecg-node" data-x="600"><circle class="hc-ecg-halo" cx="600" cy="36" r="16"/><circle class="hc-ecg-dot" cx="600" cy="36" r="6"/></g>
-              <g class="hc-ecg-node" data-x="1000"><circle class="hc-ecg-halo" cx="1000" cy="36" r="16"/><circle class="hc-ecg-dot" cx="1000" cy="36" r="6"/></g>
-              <circle class="hc-ecg-head" r="5" cx="0" cy="150" data-ecg-head/>
+              <path class="hc-ecg-bloom" d="M0 232 L140 232 Q200 176 260 232 L520 232 L548 266 L600 40 L652 340 L690 232 L940 232 Q1000 156 1060 232 L1200 232"/>
+              <path class="hc-ecg-base" d="M0 232 L140 232 Q200 176 260 232 L520 232 L548 266 L600 40 L652 340 L690 232 L940 232 Q1000 156 1060 232 L1200 232"/>
+              <path class="hc-ecg-live-bloom" d="M0 232 L140 232 Q200 176 260 232 L520 232 L548 266 L600 40 L652 340 L690 232 L940 232 Q1000 156 1060 232 L1200 232" pathLength="1" data-ecg-live/>
+              <path class="hc-ecg-live" d="M0 232 L140 232 Q200 176 260 232 L520 232 L548 266 L600 40 L652 340 L690 232 L940 232 Q1000 156 1060 232 L1200 232" pathLength="1" data-ecg-live/>
+              <path class="hc-ecg-core" d="M0 232 L140 232 Q200 176 260 232 L520 232 L548 266 L600 40 L652 340 L690 232 L940 232 Q1000 156 1060 232 L1200 232" pathLength="1" data-ecg-live/>
+              <g class="hc-ecg-node" data-x="200"><circle class="hc-ecg-halo" cx="200" cy="204" r="22"/><circle class="hc-ecg-dot" cx="200" cy="204" r="7"/></g>
+              <g class="hc-ecg-node" data-x="600"><circle class="hc-ecg-halo" cx="600" cy="40" r="22"/><circle class="hc-ecg-dot" cx="600" cy="40" r="7"/></g>
+              <g class="hc-ecg-node" data-x="1000"><circle class="hc-ecg-halo" cx="1000" cy="194" r="22"/><circle class="hc-ecg-dot" cx="1000" cy="194" r="7"/></g>
+              <g class="hc-ecg-head" data-ecg-head><circle class="hc-ecg-head-halo" r="20"/><circle class="hc-ecg-head-dot" r="6"/></g>
             </svg>
           </div>
           <ol class="hc-ecg-steps">
@@ -511,7 +517,7 @@
   </footer>
   <!-- /ON4U-CANONICAL-FOOTER -->
 
-  <script src="script.js?v=41"></script>
+  <script src="script.js?v=42"></script>
   <script>
     /* Theme toggle — reads/writes localStorage 'on4u-theme', toggles html.light-mode */
     (function () {

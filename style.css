@@ -7085,27 +7085,51 @@ html.light-mode .hc-glass, html.light-mode .hc-shield-gloss { filter: invert(1) 
 .hc-cert-foot { position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .hc-cert-tag { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-ink-3); }
 
-/* 2 · process as an ECG: the trace draws left to right with the scroll
-   (scroll-linked, so it reads under reduced motion too); each step sits
-   on the R peak of its beat and lights when the trace reaches it. */
-.hc-ecg { margin-top: clamp(2rem, 4vw, 3rem); }
-.hc-ecg-trace { position: relative; }
-.hc-ecg-svg { display: block; width: 100%; height: auto; overflow: visible; }
-.hc-ecg-base { stroke: rgba(255, 255, 255, 0.1); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.hc-ecg-live { stroke: var(--pg-accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; filter: url(#hcEcgGlow); }
-.hc-ecg-head { fill: #fff; opacity: 0; filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.9)); }
+/* 2 · process as one heartbeat. A single P-QRS-T beat spans the frame
+   (the three steps sit on P, R and T, which are the three column
+   centres); the whole trace is lit like a monitor and a hot head runs
+   along it as you scroll, brightening the part it has passed and lighting
+   each step as it reaches it. Wide, tall viewports pin the frame and the
+   runway drives the head; narrow or short ones stack and the frame's
+   position in the viewport drives it. */
+.hc-ecg-section { min-height: 220vh; }
+.hc-ecg-pin { position: sticky; top: 4.75rem; min-height: calc(100vh - 4.75rem); display: flex; flex-direction: column; justify-content: center; }
+.hc-ecg-pin .pg2-shead { margin-bottom: 1.2rem; }
+.hc-ecg { margin-top: 0.4rem; }
+.hc-ecg-stage { position: relative; border-radius: 18px; border: 1px solid var(--im-line); background: var(--im-panel); overflow: clip; padding: 1.2rem 1.4rem; }
+.hc-ecg-stage::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 100% 28px, linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 28px 100%; mask-image: radial-gradient(ellipse at 50% 45%, #000 40%, transparent 95%); -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 40%, transparent 95%); pointer-events: none; }
+.hc-ecg-glow { position: absolute; left: 50%; top: 44%; width: 70%; aspect-ratio: 1.6; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(ellipse closest-side, rgba(249, 115, 22, 0.28), rgba(249, 115, 22, 0.08) 50%, transparent 100%); pointer-events: none; }
+.hc-ecg-svg { position: relative; display: block; width: 100%; height: auto; overflow: visible; }
+.hc-ecg-bloom { stroke: rgba(249, 115, 22, 0.35); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; filter: url(#hcGlowWide); }
+.hc-ecg-base { stroke: rgba(249, 115, 22, 0.55); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; filter: url(#hcGlowSoft); }
+.hc-ecg-live-bloom { stroke: rgba(249, 115, 22, 0.9); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; filter: url(#hcGlowWide); }
+.hc-ecg-live { stroke: var(--pg-accent); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.hc-ecg-core { stroke: rgba(255, 255, 255, 0.9); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.hc-ecg-head { opacity: 0; transition: opacity 200ms ease; }
 .hc-ecg.is-live .hc-ecg-head { opacity: 1; }
-.hc-ecg-node .hc-ecg-dot { fill: var(--im-panel); stroke: rgba(255, 255, 255, 0.28); stroke-width: 2; transition: fill 260ms ease, stroke 260ms ease; }
-.hc-ecg-node .hc-ecg-halo { fill: rgba(249, 115, 22, 0.16); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.4); transition: opacity 320ms ease, transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hc-ecg-head-halo { fill: rgba(249, 115, 22, 0.85); filter: url(#hcGlowHead); }
+.hc-ecg-head-dot { fill: #fff; }
+.hc-ecg-node .hc-ecg-dot { fill: var(--im-panel); stroke: rgba(255, 255, 255, 0.3); stroke-width: 2.5; transition: fill 260ms ease, stroke 260ms ease; }
+.hc-ecg-node .hc-ecg-halo { fill: rgba(249, 115, 22, 0.22); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.4); transition: opacity 320ms ease, transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .hc-ecg-node.is-lit .hc-ecg-dot { fill: var(--pg-accent); stroke: #fff; }
 .hc-ecg-node.is-lit .hc-ecg-halo { opacity: 1; transform: scale(1); }
-.hc-ecg-steps { list-style: none; margin: 0.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
-.hc-ecg-step { position: relative; text-align: center; padding: 1.4rem 1.2rem 0; opacity: 0.35; transform: translateY(6px); transition: opacity 360ms ease, transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
-.hc-ecg-step::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 1rem; background: rgba(249, 115, 22, 0.5); }
+.hc-ecg-steps { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.hc-ecg-step { position: relative; text-align: center; padding: 1.3rem 1.2rem 0; opacity: 0.35; transform: translateY(6px); transition: opacity 360ms ease, transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.hc-ecg-step::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 0.9rem; background: rgba(249, 115, 22, 0.5); }
 .hc-ecg-step.is-lit { opacity: 1; transform: none; }
-.hc-ecg-k { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-accent); margin-bottom: 0.55rem; }
-.hc-ecg-step h3 { margin: 0 0 0.45rem; font-size: 1.08rem; font-weight: 700; color: var(--pg-ink); }
-.hc-ecg-step p { margin: 0; font-size: 0.92rem; line-height: 1.6; color: var(--pg-ink-3); max-width: 30ch; margin-inline: auto; }
+.hc-ecg-k { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-accent); margin-bottom: 0.5rem; }
+.hc-ecg-step h3 { margin: 0 0 0.4rem; font-size: 1.06rem; font-weight: 700; color: var(--pg-ink); }
+.hc-ecg-step p { margin: 0; font-size: 0.9rem; line-height: 1.58; color: var(--pg-ink-3); max-width: 30ch; margin-inline: auto; }
+@media (max-width: 899px), (max-height: 859px) {
+  .hc-ecg-section { min-height: 0; }
+  .hc-ecg-pin { position: static; min-height: 0; display: block; }
+  .hc-ecg-pin .pg2-shead { margin-bottom: 2.4rem; }
+  .hc-ecg-stage { padding: 0.9rem 0.8rem; }
+  .hc-ecg-steps { grid-template-columns: 1fr; gap: 0.4rem; margin-top: 0.6rem; }
+  .hc-ecg-step { text-align: left; padding: 1rem 0 1rem 1.1rem; }
+  .hc-ecg-step::before { left: 0; top: 1.1rem; width: 2px; height: 1.4rem; }
+  .hc-ecg-step p { margin-inline: 0; max-width: none; }
+}
 
 /* 3 · scope, set as a spread: one big line, two columns on a hairline,
    the link line, three summary tags. Same words. */
@@ -7127,10 +7151,6 @@ html.light-mode .hc-glass, html.light-mode .hc-shield-gloss { filter: invert(1) 
   .hc-cert { grid-template-columns: 1fr; gap: 2rem; }
   .hc-cert-stage { order: -1; }
   .hc-cert-frame { width: min(100%, 360px); }
-  .hc-ecg-steps { grid-template-columns: 1fr; gap: 0.4rem; margin-top: 0.4rem; }
-  .hc-ecg-step { text-align: left; padding: 1rem 0 1rem 1.1rem; }
-  .hc-ecg-step::before { left: 0; top: 1.1rem; width: 2px; height: 1.4rem; }
-  .hc-ecg-step p { margin-inline: 0; max-width: none; }
   .hc-scope-grid { grid-template-columns: 1fr; gap: 1.2rem 0; }
   .hc-scope-grid p + p { border-left: 0; padding-left: 0; border-top: 1px solid var(--im-line); padding-top: 1.2rem; }
 }
