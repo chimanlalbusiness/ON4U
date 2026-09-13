@@ -956,7 +956,12 @@ document.addEventListener("DOMContentLoaded", () => {
     "Descreva o requisito: produto, serviço ou projeto.": "Describe the requirement: product, service or project.",
     "Mapa: ON4U, Núcleo Empresarial da Abrunheira, Rio de Mouro": "Map: ON4U, Núcleo Empresarial da Abrunheira, Rio de Mouro",
     "Quatro passos rápidos. Validamos a viabilidade e respondemos com os próximos passos, sem compromisso.": "Four quick steps. We validate feasibility and reply with the next steps, no commitment.",
-    "Descreva o pedido: produto, serviço ou projeto.": "Describe the request: product, service or project."
+    "Descreva o pedido: produto, serviço ou projeto.": "Describe the request: product, service or project.",
+    "Fase 01": "Phase 01",
+    "Fase 02": "Phase 02",
+    "Fase 03": "Phase 03",
+    "Fase 04": "Phase 04",
+    "Fases do processo": "Process phases"
   };
 
   var origText = new WeakMap();   // text node -> original PT value
@@ -1737,21 +1742,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ══════════════════════════════════════════════════════════════
    Process flowchart (importacao #process).
-   Desktop: the section is a runway and the wrap is pinned; scroll
-   progress through the runway picks the phase (1–4). Each phase lights
-   its phase row, the nodes reached so far, the links up to it, and
-   moves the marker along the path. Below 900px nothing pins: the phase
-   nearest the viewport centre leads, and rows are clickable everywhere.
+   Wide, tall viewports: the wrap is pinned and scroll progress through
+   the runway picks the phase (1-4); the island at the bottom jumps the
+   scroll to a phase so the two never disagree. Each phase lights its
+   caption, the nodes reached so far, the links up to it, and moves the
+   marker along the path (both diagrams carry their own stops). Narrow
+   or short viewports stack: no pin, the caption nearest the viewport
+   centre leads, captions are clickable.
    ══════════════════════════════════════════════════════════════ */
 (function () {
   var root = document.querySelector("[data-flow]");
   if (!root) return;
   var section = root.closest(".im-flow-section");
-  var phases = [].slice.call(root.querySelectorAll(".im-flow-phase"));
+  var caps = [].slice.call(root.querySelectorAll(".im-flow-cap"));
   var nodes = [].slice.call(root.querySelectorAll(".im-flow-node"));
   var links = [].slice.call(root.querySelectorAll(".im-flow-link"));
-  var ball = root.querySelector(".im-flow-ball");
-  if (!section || !phases.length) return;
+  var balls = [].slice.call(root.querySelectorAll(".im-flow-ball"));
+  var tabs = [].slice.call(document.querySelectorAll("[data-flow-tab]"));
+  var thumb = document.querySelector("[data-flow-thumb]");
+  if (!section || !caps.length) return;
 
   var NODES = {
     1: ["start", "pedido"],
@@ -1759,41 +1768,78 @@ document.addEventListener("DOMContentLoaded", () => {
     3: ["start", "pedido", "validacao", "proposta", "planeamento"],
     4: ["start", "pedido", "validacao", "proposta", "planeamento", "execucao"]
   };
-  var BALL = { 1: [130, 86], 2: [130, 180], 3: [130, 235], 4: [130, 437] };   // viewBox units (start 130,30)
-  var stacked = window.matchMedia("(max-width: 899px), (max-height: 859px)");   // no pin on narrow or short viewports
+  var stacked = window.matchMedia("(max-width: 899px), (max-height: 859px)");
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var current = 0, ticking = false;
 
   function setPhase(n) {
     if (n === current) return;
     current = n;
-    phases.forEach(function (p) { p.classList.toggle("is-active", +p.getAttribute("data-phase") === n); });
+    caps.forEach(function (c) { c.classList.toggle("is-active", +c.getAttribute("data-phase") === n); });
     nodes.forEach(function (g) { g.classList.toggle("is-active", NODES[n].indexOf(g.getAttribute("data-node")) !== -1); });
     links.forEach(function (l) { l.classList.toggle("is-active", +l.getAttribute("data-phase-target") <= n); });
-    if (ball) ball.style.transform = "translate(" + (BALL[n][0] - 130) + "px," + (BALL[n][1] - 30) + "px)";
+    balls.forEach(function (b) {
+      var o = (b.getAttribute("data-origin") || "0,0").split(",");
+      var stop = (b.getAttribute("data-stops") || "").split(";")[n - 1];
+      if (!stop) return;
+      var xy = stop.split(",");
+      b.style.transform = "translate(" + (xy[0] - o[0]) + "px," + (xy[1] - o[1]) + "px)";
+    });
+    tabs.forEach(function (t) {
+      var on = +t.getAttribute("data-flow-tab") === n;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+    });
+    if (thumb) thumb.style.setProperty("--i", n - 1);
+  }
+
+  function runway() {
+    var top = section.getBoundingClientRect().top + window.scrollY;
+    return { top: top, run: Math.max(1, section.offsetHeight - window.innerHeight) };
   }
 
   function frame() {
     ticking = false;
     if (stacked.matches) {
       var mid = window.innerHeight * 0.45, best = 1, bestD = Infinity;
-      phases.forEach(function (p) {
-        var r = p.getBoundingClientRect();
+      caps.forEach(function (c) {
+        var r = c.getBoundingClientRect();
         var d = Math.abs((r.top + r.height / 2) - mid);
-        if (d < bestD) { bestD = d; best = +p.getAttribute("data-phase"); }
+        if (d < bestD) { bestD = d; best = +c.getAttribute("data-phase"); }
       });
       setPhase(best);
     } else {
-      var top = section.getBoundingClientRect().top + window.scrollY;
-      var run = Math.max(1, section.offsetHeight - window.innerHeight);
-      var p = (window.scrollY - top) / run;
+      var rw = runway();
+      var p = (window.scrollY - rw.top) / rw.run;
       p = p < 0 ? 0 : p > 1 ? 1 : p;
       setPhase(p < 0.25 ? 1 : p < 0.5 ? 2 : p < 0.75 ? 3 : 4);
     }
   }
   function kick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
-  phases.forEach(function (p) {
-    p.addEventListener("click", function () { setPhase(+p.getAttribute("data-phase")); });
+  // island: jump the scroll to the phase's slice of the runway when pinned,
+  // otherwise just switch
+  function jump(n) {
+    if (stacked.matches) { setPhase(n); return; }
+    var rw = runway();
+    window.scrollTo({ top: Math.round(rw.top + rw.run * ((n - 1) / 4 + 0.04)), behavior: REDUCED ? "auto" : "smooth" });
+  }
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () { jump(+tab.getAttribute("data-flow-tab")); });
+    tab.addEventListener("keydown", function (e) {
+      var i = tabs.indexOf(tab), n = tabs.length, k = -1;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") k = (i + 1) % n;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") k = (i - 1 + n) % n;
+      else if (e.key === "Home") k = 0;
+      else if (e.key === "End") k = n - 1;
+      if (k < 0) return;
+      e.preventDefault();
+      tabs[k].focus();
+      jump(+tabs[k].getAttribute("data-flow-tab"));
+    });
+  });
+  caps.forEach(function (c) {
+    c.addEventListener("click", function () { if (stacked.matches) setPhase(+c.getAttribute("data-phase")); });
   });
   window.addEventListener("scroll", kick, { passive: true });
   window.addEventListener("resize", kick, { passive: true });

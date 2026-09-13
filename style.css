@@ -6190,33 +6190,23 @@ html.light-mode .im-show-layer { filter: invert(1) hue-rotate(180deg); }
    while the phase list and the diagram advance with scroll: links draw
    in orange, nodes light up, the marker travels the path. Stacked and
    click/scroll-led below 900px. ── */
+/* ── 4 · process — the diagram is the hero: a wide left-to-right
+   flowchart in the frame, the active phase's caption beside it (ghost
+   numeral, phase kicker, title, one paragraph) and an island of four
+   phases at the bottom, the transport showcase's pattern. On wide, tall
+   viewports the wrap pins and the runway (240vh) drives the phase; the
+   island jumps the scroll to a phase. Narrow or short viewports stack:
+   vertical diagram, all four captions as rows, the one nearest the
+   viewport centre leading, no pin. ── */
 .im-flow-section { min-height: 240vh; }
 .im-flow-pin { position: sticky; top: 4.75rem; min-height: calc(100vh - 4.75rem); display: flex; flex-direction: column; justify-content: center; }
-.im-flow-pin .pg2-shead { margin-bottom: 1rem; }
+.im-flow-pin .pg2-shead { margin-bottom: 0.8rem; }
 .im-flow-pin .pg2-lede { margin-bottom: 0; }
-.im-flow-pin .im-flow { margin-top: 1.6rem; }
-.im-flow-note { margin-top: 1.25rem; }
-.im-flow { display: grid; grid-template-columns: 1fr 1.25fr; align-items: stretch; }
-.im-flow-phases { list-style: none; margin: 0; padding: 1rem var(--im-pad); display: flex; flex-direction: column; justify-content: center; }
-.im-flow-phase { position: relative; display: flex; gap: 1.25rem; align-items: flex-start; padding: 0.85rem 0 0.85rem 1.1rem; opacity: 0.42; cursor: pointer; transition: opacity 320ms ease; }
-.im-flow-phase + .im-flow-phase { border-top: 1px solid var(--im-line); }
-.im-flow-phase::before { content: ""; position: absolute; left: 0; top: 0.85rem; bottom: 0.85rem; width: 2px; background: var(--pg-accent); transform: scaleY(0); transform-origin: 50% 0; transition: transform 320ms ease; }
-.im-flow-phase.is-active { opacity: 1; }
-.im-flow-phase.is-active::before { transform: scaleY(1); }
-.im-flow-k {
-  font-size: 2.1rem; font-weight: 800; letter-spacing: -0.05em; line-height: 0.9; min-width: 3rem;
-  font-variant-numeric: tabular-nums; color: transparent;
-  background: linear-gradient(180deg, #fb923c, rgba(249, 115, 22, 0.35));
-  -webkit-background-clip: text; background-clip: text;
-}
-.im-flow-phase h3 { font-size: 1.05rem; font-weight: 700; color: var(--pg-ink); margin: 0.1rem 0 0.3rem; }
-.im-flow-phase p { font-size: 0.9rem; color: var(--pg-ink-2); line-height: 1.55; margin: 0; }
-.im-flow-diagram {
-  position: relative; display: flex; align-items: center; justify-content: center;
-  padding: 1.5rem; border-left: 1px solid var(--im-line); border-radius: 0 17px 17px 0;
-  background: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.4px) 0 0 / 16px 16px;
-}
-.im-flow-svg { width: 100%; height: 100%; max-height: 470px; display: block; overflow: visible; }
+.im-flow-pin .im-flow { margin-top: 1.5rem; }
+.im-flow { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: stretch; min-height: clamp(360px, 46vh, 520px); }
+.im-flow-stage { position: relative; display: flex; align-items: center; justify-content: center; padding: 1.4rem 1.6rem; border-right: 1px solid var(--im-line); border-radius: 17px 0 0 17px; background: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.4px) 0 0 / 16px 16px; }
+.im-flow-svg { width: 100%; height: auto; max-height: min(44vh, 480px); display: block; overflow: visible; }
+.im-flow-svg--v { display: none; }
 .im-flow-base { stroke: rgba(255, 255, 255, 0.14); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .im-flow-link { stroke: var(--pg-accent); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 1; transition: opacity 120ms ease; }
 .im-flow-link.is-active { opacity: 1; animation: imFlowDraw 480ms ease-out forwards; }
@@ -6224,29 +6214,57 @@ html.light-mode .im-show-layer { filter: invert(1) hue-rotate(180deg); }
 .im-flow-ball { fill: var(--pg-accent); filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.7)); transition: transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .im-flow-nbg { fill: var(--im-panel); stroke: rgba(255, 255, 255, 0.2); stroke-width: 1.5; stroke-linejoin: round; transition: stroke 300ms ease, fill 300ms ease; }
 .im-flow-nglow { fill: url(#imNodeGlow); opacity: 0; pointer-events: none; transition: opacity 300ms ease; }
+.im-flow-svg--v .im-flow-nglow { fill: url(#imNodeGlowV); }
 .im-flow-ntext { fill: rgba(255, 255, 255, 0.55); font-family: Inter, system-ui, sans-serif; font-size: 10px; font-weight: 600; text-anchor: middle; pointer-events: none; transition: fill 300ms ease; }
 .im-flow-ntext--s { font-size: 8.5px; }
+.im-flow-svg--h .im-flow-ntext { font-size: 12.5px; }
+.im-flow-svg--h .im-flow-ntext--s { font-size: 11px; }
 .im-flow-node.is-active .im-flow-nbg { stroke: var(--pg-accent); fill: rgba(249, 115, 22, 0.1); }
 .im-flow-node.is-active .im-flow-nglow { opacity: 1; }
 .im-flow-node.is-active .im-flow-ntext { fill: #fff; }
+/* caption: one phase at a time on wide layouts */
+.im-flow-caps { position: relative; display: flex; flex-direction: column; justify-content: center; padding: var(--im-pad-y) var(--im-pad); overflow: hidden; }
+.im-flow-cap { position: relative; display: none; flex-direction: column; gap: 0.6rem; }
+.im-flow-cap.is-active { display: flex; animation: imCapIn 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.im-flow-ghost { position: absolute; right: -0.4rem; top: -3.4rem; font-size: clamp(6rem, 9vw, 8.5rem); font-weight: 800; letter-spacing: -0.06em; line-height: 1; color: rgba(255, 255, 255, 0.05); font-variant-numeric: tabular-nums; pointer-events: none; }
+.im-flow-cap-k { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-accent); }
+.im-flow-cap h3 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--pg-ink); }
+.im-flow-cap p { margin: 0.2rem 0 0; font-size: 1rem; line-height: 1.65; color: var(--pg-ink-2); max-width: 40ch; }
+@keyframes imCapIn { from { opacity: 0; transform: translateY(14px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+/* island */
+.im-flow-island-wrap { display: flex; justify-content: center; margin-top: 1.4rem; }
+.im-flow-island { --tab-w: 9.25rem; --tab-h: 2.9rem; }
+.im-flow-tab { gap: 0.6rem; }
+.im-flow-tab b { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; color: var(--pg-ink-3); transition: color 300ms ease; }
+.im-flow-tab[aria-selected="true"] b { color: var(--pg-accent); }
+.im-flow-note { margin-top: 1rem; text-align: center; }
 @media (prefers-reduced-motion: reduce) {
   .im-flow-ball { transition: none; }
   .im-flow-link.is-active { animation: none; stroke-dashoffset: 0; }
   .im-flow-nglow { display: none; }
+  .im-flow-cap.is-active { animation: imScopeFade 220ms ease; }
 }
-/* short viewports cannot hold the pinned block — fall back to the stacked logic */
-@media (max-height: 859px) and (min-width: 900px) {
-  .im-flow-section { min-height: 0; }
-  .im-flow-pin { position: static; min-height: 0; display: block; }
-}
-@media (max-width: 899px) {
+@media (max-width: 899px), (max-height: 859px) {
   .im-flow-section { min-height: 0; }
   .im-flow-pin { position: static; min-height: 0; display: block; }
   .im-flow-pin .pg2-shead { margin-bottom: 2.75rem; }
   .im-flow-pin .pg2-lede { margin-bottom: 1.25rem; }
-  .im-flow { grid-template-columns: 1fr; }
-  .im-flow-diagram { border-left: 0; border-top: 1px solid var(--im-line); border-radius: 0 0 17px 17px; padding: 1.5rem; }
-  .im-flow-svg { height: auto; max-height: 460px; }
+  .im-flow { grid-template-columns: 1fr; min-height: 0; }
+  .im-flow-stage { border-right: 0; border-bottom: 1px solid var(--im-line); border-radius: 17px 17px 0 0; padding: 1.4rem; }
+  .im-flow-svg--h { display: none; }
+  .im-flow-svg--v { display: block; max-height: 440px; }
+  .im-flow-caps { padding: 0.5rem var(--im-pad) 0.9rem; }
+  .im-flow-cap, .im-flow-cap.is-active { display: flex; gap: 0.35rem; padding: 1rem 0 1rem 1.1rem; opacity: 0.45; animation: none; cursor: pointer; transition: opacity 320ms ease; }
+  .im-flow-cap + .im-flow-cap { border-top: 1px solid var(--im-line); }
+  .im-flow-cap::before { content: ""; position: absolute; left: 0; top: 1rem; bottom: 1rem; width: 2px; background: var(--pg-accent); transform: scaleY(0); transform-origin: 50% 0; transition: transform 320ms ease; }
+  .im-flow-cap.is-active { opacity: 1; }
+  .im-flow-cap.is-active::before { transform: scaleY(1); }
+  .im-flow-ghost { display: none; }
+  .im-flow-cap-k { font-size: 0.64rem; }
+  .im-flow-cap h3 { font-size: 1.1rem; }
+  .im-flow-cap p { font-size: 0.92rem; max-width: none; }
+  .im-flow-island-wrap { display: none; }
+  .im-flow-note { text-align: left; margin-top: 1.25rem; }
 }
 
 /* ── 5 · scope ledger + stage — the six lines are the substance, so they
