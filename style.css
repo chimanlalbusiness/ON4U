@@ -7061,21 +7061,27 @@ html.light-mode .pr-3d-layer { filter: invert(1) hue-rotate(180deg); }
 .hc-cert-glow { position: absolute; left: 50%; top: 50%; width: 110%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle closest-side, rgba(249, 115, 22, 0.26), rgba(249, 115, 22, 0.07) 48%, transparent 100%); }
 .hc-cert-ring { position: absolute; left: 50%; top: 50%; width: 76%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 1px dashed rgba(249, 115, 22, 0.22); }
 @media (prefers-reduced-motion: no-preference) { .hc-cert-ring { animation: imScopeSpin 34s linear infinite; } }
-.hc-cert-floor { position: absolute; left: 50%; top: 79%; width: 46%; height: 10%; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7), transparent 66%); }
+.hc-cert-floor { position: absolute; left: 50%; top: 79%; width: 50%; height: 11%; transform: translate(-50%, -50%); background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.42), rgba(0, 0, 0, 0.55) 42%, transparent 68%); }
 .hc-shield { position: absolute; left: 50%; top: 47%; width: 58%; aspect-ratio: 1; transform: translate(-50%, -50%); }
 .hc-shield-3d { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: perspective(760px) rotateX(calc(16deg + var(--tx, 0deg))) rotateY(calc(-28deg + var(--ty, 0deg))); }
-.hc-shield-layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; fill: #6b7686; transform: translateZ(calc(var(--i, 0) * -2.2px)); }
-.hc-shield-layer:nth-child(2) { fill: #f97316; }                 /* enamel showing through the cut */
-.hc-shield-layer:nth-child(n+6) { fill: #4a5462; }               /* the rim darkens with depth */
-.hc-shield-layer:nth-child(n+11) { fill: #262e3a; }
-.hc-shield-layer--top { filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.35)); }
-.hc-shield-gloss { position: absolute; inset: 0; width: 100%; height: 100%; transform: translateZ(0.8px); pointer-events: none; mix-blend-mode: screen; }
+/* Orange glass: every slab is the same orange at a low alpha; where the
+   slabs overlap along the thickness the alpha stacks up into the deep
+   edge tint, where they don't (the hollow) you see straight through.
+   The face adds its own alpha gradient and two edge lights; a frosted
+   HTML layer clipped to the frame blurs whatever sits behind it. */
+.hc-glass { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; transform: translateZ(calc(var(--i, 0) * -2.2px)); }
+.hc-glass--side { fill: rgba(249, 115, 22, 0.07); }
+.hc-glass--face { filter: drop-shadow(0 6px 10px rgba(249, 115, 22, 0.1)); }
+.hc-glass--check { fill: rgba(249, 115, 22, 0.08); transform: translateZ(calc(4px + var(--i, 0) * -2.2px)); }
+.hc-glass--checkface { transform: translateZ(4px); filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.35)); }
+.hc-frost { position: absolute; inset: 0; transform: translateZ(0.05px); clip-path: url(#hcFrostClip); background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); pointer-events: none; }
+.hc-shield-gloss { position: absolute; inset: 0; width: 100%; height: 100%; transform: translateZ(0.9px); pointer-events: none; mix-blend-mode: screen; }
 .hc-shield-band { transform: skewX(-20deg) translateX(70px); }
 @media (prefers-reduced-motion: no-preference) {
   .hc-shield-band { animation: hcSweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 }
 @keyframes hcSweep { 0%, 58% { transform: skewX(-20deg) translateX(-30px); } 100% { transform: skewX(-20deg) translateX(250px); } }
-html.light-mode .hc-shield-layer, html.light-mode .hc-shield-gloss { filter: invert(1) hue-rotate(180deg); }
+html.light-mode .hc-glass, html.light-mode .hc-shield-gloss { filter: invert(1) hue-rotate(180deg); }
 .hc-cert-foot { position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .hc-cert-tag { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-ink-3); }
 
