@@ -856,7 +856,107 @@ document.addEventListener("DOMContentLoaded", () => {
     "— entrada de mercadoria de fornecedores internacionais para Portugal e outros destinos.": "— bringing in goods from international suppliers to Portugal and other destinations.",
     "— entrega no destino final, dentro ou fora de Portugal.": "— delivery to the final destination, inside or outside Portugal.",
     "— identificação e validação de fornecedores, com origem na China e na Índia, entre outros.": "— identifying and validating suppliers, sourcing from China and India, among others.",
-    "— preparação e acompanhamento da documentação necessária ao desembaraço.": "— preparing and tracking the documentation required for customs clearance."
+    "— preparação e acompanhamento da documentação necessária ao desembaraço.": "— preparing and tracking the documentation required for customs clearance.",
+    "Sem catálogo fixo: cada pedido é tratado individualmente": "No fixed catalog: each request is handled individually",
+    "Catálogo suportado por parceiro especializado: acesso direto e encaminhamento simplificado.": "A catalog backed by a specialized partner: direct access and simplified request routing.",
+    "Sem promessas vagas: pedido → proposta → validação → execução.": "No vague promises: request → proposal → validation → execution.",
+    "A ON4U tem presença em Portugal, São Tomé e Príncipe e Guiné-Bissau, e escritórios na China e na Índia.": "ON4U has a presence in Portugal, São Tomé e Príncipe and Guiné-Bissau, and offices in China and India.",
+    "A ON4U é uma empresa B2B portuguesa que coordena importação, produção, sourcing e distribuição nacional e internacional por pedido, organizada em quatro divisões: Produção & Criatividade, Operação Internacional, Health & Care e Informática. Sem catálogo fixo: cada requisito é tratado individualmente, validado antes de avançar e acompanhado por um único ponto de contacto até à entrega.": "ON4U is a Portuguese B2B company that coordinates on-demand import, production, sourcing and domestic and international distribution, organized into four divisions: Production & Creative, International Operations, Health & Care and IT. No fixed catalog: each requirement is handled individually, validated before moving forward and followed by a single point of contact through to delivery.",
+    "ON4U Group · Importação, fornecimento e distribuição nacional e internacional por pedido.": "ON4U Group · On-demand domestic and international import, supply and distribution.",
+    "ON4U: Soluções Operacionais": "ON4U: Operational Solutions",
+    "Recebemos o requisito, validamos viabilidade e documentação, e coordenamos sourcing, transporte e desembaraço aduaneiro até à entrega, com um único interlocutor.": "We receive the requirement, validate feasibility and documentation, and coordinate sourcing, transport and customs clearance through to delivery, with a single point of contact.",
+    "Sede em Portugal, presença operacional em São Tomé e Príncipe e na Guiné-Bissau, e escritórios na China e na Índia, perto da origem e do destino da maioria dos pedidos.": "Headquartered in Portugal, with an operational presence in São Tomé e Príncipe and Guiné-Bissau, and offices in China and India, close to where most requests start and end.",
+    "Origem & sourcing": "Origin & sourcing",
+    "Fuso horário · China UTC+8 · Índia UTC+5:30": "Time zone · China UTC+8 · India UTC+5:30",
+    "Ver detalhe": "See details",
+    "Fechar": "Close",
+    "Ver detalhe: China e Índia": "See details: China and India",
+    "Ver detalhe: Base em Portugal": "See details: Based in Portugal",
+    "Ver detalhe: São Tomé e Príncipe e Guiné-Bissau": "See details: São Tomé e Príncipe and Guiné-Bissau",
+    "Coordenação central": "Central coordination",
+    "Destino & execução": "Destination & execution",
+    "Fuso horário · UTC+0, o mesmo de Lisboa no inverno": "Time zone · UTC+0, the same as Lisbon in winter",
+    "Transporte, manuseamento e processos locais: execução por destino.": "Transport, handling and local procedures: execution per destination.",
+    "Modo de transporte": "Transport mode",
+    "O modo muda com o pedido. Quem responde, não.": "The mode changes with the request. Who answers for it does not.",
+    "Decidido pelo prazo, volume e custo do pedido, executado pela mesma equipa que responde por ele até à entrega.": "Decided by the request's deadline, volume and cost, and carried out by the same team that answers for it through to delivery.",
+    "Uma só equipa": "One team",
+    "Transporte aéreo": "Air freight",
+    "Transporte marítimo": "Sea freight",
+    "Transporte rodoviário": "Road freight",
+    "Quando o prazo manda.": "When the deadline rules.",
+    "Quando o volume manda.": "When volume rules.",
+    "Quando a rota manda.": "When the route rules.",
+    "Prazo curto, pouco volume ou alto valor. Custa mais, chega antes.": "Short deadline, low volume or high value. Costs more, arrives sooner.",
+    "Grande volume e margem de prazo. Custa menos, demora mais.": "Large volume and room on the deadline. Costs less, takes longer.",
+    "Origem e destino ligados por estrada. Custo e prazo intermédios.": "Origin and destination linked by road. Mid-range cost and deadline.",
+    "Curto": "Short",
+    "Médio": "Medium",
+    "Longo": "Long",
+    "Volume": "Volume",
+    "Pequeno": "Small",
+    "Grande": "Large",
+    "Custo": "Cost",
+    "Alto": "High",
+    "Baixo": "Low",
+    "Modo decidido na fase de validação": "Mode decided at the validation stage",
+    "Viabilidade": "Feasibility",
+    "Condições": "Terms",
+    "Documentação": "Documentation",
+    "Prazo, quantidades e origem confirmados antes de qualquer compromisso.": "Deadline, quantities and origin confirmed before any commitment.",
+    "Custo total e modo de transporte fechados antes de avançar.": "Total cost and transport mode settled before moving forward.",
+    "Requisitos de licenciamento e desembaraço verificados antes do embarque.": "Licensing and clearance requirements checked before shipping.",
+    "Enquadramento, prazos e etapas de execução, devolvidos como proposta clara, sem promessas vagas.": "Scope, deadlines and execution stages, returned as a clear proposal, with no vague promises.",
+    "Planeamento": "Planning",
+    "A Operação Internacional da ON4U coordena importação, exportação, sourcing e distribuição por pedido, incluindo documentação, processos alfandegários e transporte aéreo, terrestre e marítimo.": "ON4U's International Operations coordinates on-demand import, export, sourcing and distribution, including documentation, customs procedures and air, road and sea transport.",
+    "Entrada de mercadoria de fornecedores internacionais para Portugal e outros destinos.": "Bringing in goods from international suppliers to Portugal and other destinations.",
+    "Colocação de mercadoria em mercados internacionais, de origem portuguesa ou estrangeira.": "Placing goods in international markets, of Portuguese or foreign origin.",
+    "Identificação e validação de fornecedores, com origem na China e na Índia, entre outros.": "Identifying and validating suppliers, sourcing from China and India, among others.",
+    "Agregação de encomendas para otimizar transporte e custo.": "Grouping orders to optimize transport and cost.",
+    "Preparação e acompanhamento da documentação necessária ao desembaraço.": "Preparing and tracking the documentation required for customs clearance.",
+    "Entrega no destino final, dentro ou fora de Portugal.": "Delivery to the final destination, inside or outside Portugal.",
+    "Documentação e alfândegas": "Documentation & customs",
+    "O modo de transporte, aéreo, marítimo ou rodoviário, é decidido na fase de validação, em função de prazo, volume e custo do pedido.": "The transport mode, air, sea or road, is decided at the validation stage, according to the request's deadline, volume and cost.",
+    "Por pedido, sem catálogo fixo: cada requisito é tratado individualmente, validado antes de avançar e acompanhado até à entrega.": "On demand, with no fixed catalog: each requirement is handled individually, validated before moving forward and followed through to delivery.",
+    "Sim. A documentação e os processos alfandegários são tratados desde a fase de validação. Antes de avançar, confirmamos o que é necessário para o desembaraço no destino.": "Yes. Documentation and customs procedures are handled from the validation stage. Before moving forward, we confirm what clearance at the destination requires.",
+    "Envie o requisito com especificações, quantidades, destino e prazo. Validamos a viabilidade e devolvemos uma proposta com etapas claras. O processo é: requisito → proposta → validação → execução.": "Send the requirement with specifications, quantities, destination and deadline. We validate feasibility and return a proposal with clear stages. The process is: requirement → proposal → validation → execution.",
+    "Diagrama do fluxo do pedido: pedido, validação, proposta e planeamento em paralelo, execução": "Request flow diagram: request, validation, proposal and planning in parallel, execution",
+    "Stands, eventos, fardamentos, sinalética e identidade visual, coordenados do briefing à entrega, com um único interlocutor e o prazo do evento como referência.": "Stands, events, uniforms, signage and visual identity, coordinated from briefing to delivery, with a single point of contact and the event date as the reference.",
+    "Materiais impressos, sinalética e suportes de comunicação, da arte final à produção, com consistência entre todas as peças.": "Printed materials, signage and communication supports, from final artwork to production, with consistency across every piece.",
+    "Stand Repsol: Ativação corporativa": "Repsol stand: Corporate activation",
+    "Santa Casa da Misericórdia: Presença institucional": "Santa Casa da Misericórdia: Institutional presence",
+    "Stand Repsol: ativação corporativa": "Repsol stand: corporate activation",
+    "Santa Casa da Misericórdia: presença institucional": "Santa Casa da Misericórdia: institutional presence",
+    "Diga-nos o objetivo, as peças e a data. Validamos o prazo e devolvemos proposta com etapas, para chegar pronto ao dia.": "Tell us the objective, the pieces and the date. We validate the deadline and return a proposal with stages, so it's ready on the day.",
+    "Distribuidor certificado pela Infarmed. Indica o que precisa. Validamos cada item antes de qualquer proposta.": "Infarmed-certified distributor. Tell us what you need. We validate every item before any proposal.",
+    "A ON4U é distribuidora certificada pela Infarmed, Autoridade Nacional do Medicamento e Produtos de Saúde, ao abrigo do certificado n.º 1866/DM/2023.": "ON4U is a distributor certified by Infarmed, the National Authority of Medicines and Health Products, under certificate no. 1866/DM/2023.",
+    "Infarmed, Autoridade Nacional do Medicamento e Produtos de Saúde": "Infarmed, the National Authority of Medicines and Health Products",
+    "Revemos cada item manualmente (requisitos e documentação) antes de seguir. É aqui que confirmamos que o que vai avançar está em conformidade.": "We review each item manually (requirements and documentation) before proceeding. This is where we confirm that what moves forward is compliant.",
+    "Como a Operação Internacional está por trás do sourcing, conseguimos chegar a fornecedores fora do circuito habitual, mantendo a documentação e a conformidade como base.": "Because International Operations is behind the sourcing, we can reach suppliers outside the usual circuit, keeping documentation and compliance as the foundation.",
+    ": a mesma máquina de validação, documentação e logística.": ": the same validation, documentation and logistics machine.",
+    "Sim. A ON4U é distribuidora certificada pela Infarmed, Autoridade Nacional do Medicamento e Produtos de Saúde, ao abrigo do certificado n.º 1866/DM/2023. O certificado está disponível para consulta.": "Yes. ON4U is a distributor certified by Infarmed, the National Authority of Medicines and Health Products, under certificate no. 1866/DM/2023. The certificate is available for review.",
+    "A validação é manual e feita item a item, antes da proposta. Revemos requisitos e documentação de cada item. Só avança o que está em conformidade.": "Validation is manual and done item by item, before the proposal. We review each item's requirements and documentation. Only what is compliant moves forward.",
+    "Catálogo dedicado, suportado por parceiro especializado, com acesso direto e encaminhamento simplificado dos pedidos.": "A dedicated catalog, backed by a specialized partner, with direct access and simplified request routing.",
+    "A divisão de Informática assenta num catálogo dedicado, mantido com um parceiro especializado em equipamento informático. O acesso é direto e o pedido é encaminhado de forma simplificada, com a identidade ON4U a garantir consistência.": "The IT division is built on a dedicated catalog, maintained with a partner specialized in IT equipment. Access is direct and requests are routed in a simplified way, with the ON4U identity ensuring consistency.",
+    "Aceda ao catálogo do parceiro ou envie o requisito diretamente. Tratamos do encaminhamento.": "Access the partner's catalog or send your requirement directly. We handle the routing.",
+    "ON4U, empresa B2B de fornecimento por pedido.": "ON4U, a B2B on-demand supply company.",
+    "Sem catálogo fixo: cada necessidade é tratada individualmente, validada antes de avançar e executada com um único ponto de contacto até à entrega.": "No fixed catalog: each need is handled individually, validated before moving forward and carried out with a single point of contact through to delivery.",
+    "Operamos em quatro divisões sobre o mesmo processo: Produção & Criatividade, Operação Internacional, Health & Care e Informática. A mesma máquina de sourcing, validação e logística serve as quatro: muda o que se entrega, não a forma como se trabalha.": "We operate four divisions on the same process: Production & Creative, International Operations, Health & Care and IT. The same sourcing, validation and logistics machine serves all four: what is delivered changes, how we work does not.",
+    "3 projetos": "3 projects",
+    "2 projetos": "2 projects",
+    "1 projeto": "1 project",
+    "Guiné-Bissau: Presença local & operação": "Guiné-Bissau: Local presence & operations",
+    "Banco Central, São Tomé e Príncipe: Identidade visual": "Central Bank, São Tomé e Príncipe: Visual identity",
+    "Equipamento especializado: Operação internacional": "Specialized equipment: International operations",
+    "Guiné-Bissau: presença local e operação": "Guiné-Bissau: local presence and operations",
+    "Banco Central de São Tomé e Príncipe: identidade visual": "Central Bank of São Tomé e Príncipe: visual identity",
+    "Identidade visual e materiais corporativos, mockups": "Visual identity and corporate materials, mockups",
+    "Equipamento especializado: operação internacional": "Specialized equipment: international operations",
+    "Equipamento e fornecimento: operação internacional": "Equipment and supply: international operations",
+    "Descreva o requisito: produto, serviço ou projeto.": "Describe the requirement: product, service or project.",
+    "Mapa: ON4U, Núcleo Empresarial da Abrunheira, Rio de Mouro": "Map: ON4U, Núcleo Empresarial da Abrunheira, Rio de Mouro",
+    "Quatro passos rápidos. Validamos a viabilidade e respondemos com os próximos passos, sem compromisso.": "Four quick steps. We validate feasibility and reply with the next steps, no commitment.",
+    "Descreva o pedido: produto, serviço ou projeto.": "Describe the request: product, service or project."
   };
 
   var origText = new WeakMap();   // text node -> original PT value
@@ -910,6 +1010,57 @@ document.addEventListener("DOMContentLoaded", () => {
       for (var a in store) { if (Object.prototype.hasOwnProperty.call(store, a)) el.setAttribute(a, store[a]); }
     });
     document.documentElement.lang = 'pt-PT';
+  }
+
+  // Anything written into the DOM after load (a hint a module injects, a
+  // label swapped on click, a counter) goes through DICT the same way while
+  // EN is active, and records its PT so switching back still restores it.
+  // Writes only happen when the value actually changes, so the observer
+  // never feeds itself.
+  function translateNode(n) {
+    var en = DICT[norm(n.nodeValue || '')];
+    if (!en) return;
+    var lead = (n.nodeValue.match(/^\s*/) || [''])[0];
+    var trail = (n.nodeValue.match(/\s*$/) || [''])[0];
+    var next = lead + en + trail;
+    if (n.nodeValue === next) return;
+    if (!origText.has(n)) origText.set(n, n.nodeValue);
+    n.nodeValue = next;
+  }
+  function translateAttrs(el) {
+    if (el.nodeType !== 1) return;
+    ATTRS.forEach(function (a) {
+      if (!el.hasAttribute(a)) return;
+      var en = DICT[norm(el.getAttribute(a))];
+      if (!en || el.getAttribute(a) === en) return;
+      if (!origAttr.has(el)) origAttr.set(el, {});
+      var store = origAttr.get(el);
+      if (!(a in store)) store[a] = el.getAttribute(a);
+      el.setAttribute(a, en);
+    });
+  }
+  function translateTree(root) {
+    if (root.nodeType === 3) { translateNode(root); return; }
+    if (root.nodeType !== 1) return;
+    var tag = root.nodeName;
+    if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return;
+    translateAttrs(root);
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+    var n;
+    while ((n = walker.nextNode())) {
+      if (n.nodeType === 3) translateNode(n); else translateAttrs(n);
+    }
+  }
+  function watch() {
+    if (!('MutationObserver' in window) || !document.body) return;
+    new MutationObserver(function (records) {
+      if (current() !== 'en') return;
+      records.forEach(function (r) {
+        if (r.type === 'characterData') translateNode(r.target);
+        else if (r.type === 'attributes') translateAttrs(r.target);
+        else Array.prototype.forEach.call(r.addedNodes, translateTree);
+      });
+    }).observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS });
   }
 
   function current() { return localStorage.getItem(STORAGE) === 'en' ? 'en' : 'pt'; }
@@ -977,7 +1128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return DICT[norm(String(s))] || s;
   };
 
-  function init() { buildSwitcher(); if (current() === 'en') apply('en'); }
+  function init() { buildSwitcher(); if (current() === 'en') apply('en'); watch(); }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
   else { init(); }
 })();
@@ -1531,7 +1682,7 @@ document.addEventListener("DOMContentLoaded", () => {
     rows.forEach(function (r) { r.classList.toggle("is-on", r === row); });
     icos.forEach(function (i) { i.classList.toggle("is-on", i.getAttribute("data-scope-ico") === id); });
     if (ghost) ghost.textContent = num;
-    if (label) label.innerHTML = "<b>" + num + "</b> \u00b7 " + title;
+    if (label) label.innerHTML = "<b>" + num + "</b> \u00b7 <span>" + title + "</span>";
   }
 
   rows.forEach(function (row) {
@@ -1539,19 +1690,15 @@ document.addEventListener("DOMContentLoaded", () => {
     row.addEventListener("click", function () { pick(row); });
   });
 
-  // Stacked layout (or no mouse): the line nearest 45% of the viewport leads,
-  // so the pinned stage keeps changing as you read. On a wide screen the
-  // pointer is in charge instead.
-  var scrollLed = function () {
-    return window.matchMedia("(max-width: 820px)").matches ||
-           !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  };
+  // Scroll leads everywhere: the line nearest the middle of the viewport
+  // (where the object sits) is the active one, so the stage changes as you
+  // read, with no hover needed. Hovering a line still picks it; the next
+  // scroll takes over again.
   {
     var ticking = false;
     var lead = function () {
       ticking = false;
-      if (!scrollLed()) return;
-      var mark = window.innerHeight * 0.45, best = null, bestD = Infinity;
+      var mark = window.innerHeight * 0.5, best = null, bestD = Infinity;
       rows.forEach(function (r) {
         var b = r.getBoundingClientRect();
         if (b.bottom < 0 || b.top > window.innerHeight) return;

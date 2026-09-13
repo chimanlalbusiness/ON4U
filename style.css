@@ -6265,7 +6265,8 @@ html.light-mode .im-show-layer { filter: invert(1) hue-rotate(180deg); }
 .im-scope-num { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: rgba(255, 255, 255, 0.14); font-variant-numeric: tabular-nums; transition: color 260ms ease; }
 .im-scope-row.is-on .im-scope-num { color: var(--pg-accent); }
 .im-scope-row h3 { margin: 0.35rem 0; font-size: 1.12rem; font-weight: 700; color: var(--pg-ink); }
-.im-scope-row p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--pg-ink-3); }
+.im-scope-row p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: var(--pg-ink-3); transition: color 260ms ease; }
+.im-scope-row.is-on p { color: var(--pg-ink-2); }
 .im-scope-arr { align-self: center; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.14); display: grid; place-items: center; color: var(--pg-ink-3); opacity: 0; transform: translateX(-6px); transition: opacity 220ms ease, transform 220ms ease, border-color 220ms ease, color 220ms ease; }
 .im-scope-arr svg { width: 12px; height: 12px; }
 .im-scope-row.is-on .im-scope-arr { opacity: 1; transform: none; border-color: rgba(249, 115, 22, 0.5); color: var(--pg-accent); }
