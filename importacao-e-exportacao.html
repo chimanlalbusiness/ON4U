@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=42" />
+  <link rel="stylesheet" href="style.css?v=46" />
   <link rel="stylesheet" href="components/world-map.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>/* Apply saved theme instantly to prevent flash */
@@ -470,91 +470,73 @@
         <p class="pg2-lede pg2-measure pg2-reveal">Sem atalhos. Cada fase reduz risco antes de avançar para a seguinte.</p>
         <div class="im-flow pg2-reveal" data-flow>
           <div class="im-flow-stage" role="img" aria-label="Diagrama do fluxo do pedido: pedido, validação, proposta e planeamento em paralelo, execução">
-            <svg class="im-flow-svg im-flow-svg--h" viewBox="0 0 620 340" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true">
+            <svg class="im-flow-svg im-flow-svg--h" viewBox="33 0 600 340" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true" data-flow-svg data-axis="x" data-range="62,606" data-starts="62,192,348,490" data-ends="162,308,452,606">
               <defs>
                 <radialGradient id="imNodeGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#f97316" stop-opacity="0.28"/>
+                  <stop offset="0%" stop-color="#f97316" stop-opacity="0.3"/>
                   <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
                 </radialGradient>
-                <marker id="imArrowOn" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#f97316"/></marker>
+                <linearGradient id="imWipeH" gradientUnits="userSpaceOnUse" x1="46" y1="0" x2="62" y2="0" data-wipe>
+                  <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
+                </linearGradient>
+                <mask id="imWipeMaskH" maskUnits="userSpaceOnUse" x="0" y="0" width="680" height="340">
+                  <rect x="0" y="0" width="680" height="340" fill="url(#imWipeH)"/>
+                </mask>
+                <g id="imFlowGeoH">
+                  <path class="im-flow-geo-line" d="M160 170 L194 170 M306 170 C332 170,332 86,356 86 M306 170 C332 170,332 254,352 254 M446 86 C470 86,470 170,492 170 M448 254 C470 254,470 170,492 170"/>
+                  <rect class="im-flow-geo-node" x="62" y="148" width="100" height="44" rx="8"/>
+                  <polygon class="im-flow-geo-node" points="250,130 308,170 250,210 192,170"/>
+                  <polygon class="im-flow-geo-node" points="356,66 452,66 444,106 348,106"/>
+                  <rect class="im-flow-geo-node" x="350" y="234" width="100" height="40" rx="6"/>
+                  <rect class="im-flow-geo-node" x="490" y="146" width="116" height="48" rx="24"/>
+                  <text x="112" y="175" class="im-flow-ntext">Pedido</text>
+                  <text x="250" y="174" class="im-flow-ntext im-flow-ntext--s">Validação</text>
+                  <text x="400" y="91" class="im-flow-ntext">Proposta</text>
+                  <text x="400" y="259" class="im-flow-ntext im-flow-ntext--s">Planeamento</text>
+                  <text x="548" y="176" class="im-flow-ntext">Execução</text>
+                </g>
               </defs>
-              <path class="im-flow-base" d="M36 170 L62 170 M162 170 L192 170 M308 170 C332 170,332 86,356 86 M308 170 C332 170,332 254,350 254 M452 86 C472 86,472 170,490 170 M450 254 C472 254,472 170,490 170"/>
-              <path class="im-flow-link" data-phase-target="1" pathLength="1" d="M36 170 L62 170" marker-end="url(#imArrowOn)"/>
-              <path class="im-flow-link" data-phase-target="2" pathLength="1" d="M162 170 L192 170" marker-end="url(#imArrowOn)"/>
-              <path class="im-flow-link" data-phase-target="3" pathLength="1" d="M308 170 C332 170,332 86,356 86" marker-end="url(#imArrowOn)"/>
-              <path class="im-flow-link" data-phase-target="3" pathLength="1" d="M308 170 C332 170,332 254,350 254" marker-end="url(#imArrowOn)"/>
-              <path class="im-flow-link" data-phase-target="4" pathLength="1" d="M452 86 C472 86,472 170,490 170" marker-end="url(#imArrowOn)"/>
-              <path class="im-flow-link" data-phase-target="4" pathLength="1" d="M450 254 C472 254,472 170,490 170"/>
-              <circle class="im-flow-ball" cx="28" cy="170" r="5" data-origin="28,170" data-stops="112,170;250,170;332,170;548,170"/>
-              <g class="im-flow-node" data-node="start"><circle class="im-flow-nbg" cx="28" cy="170" r="9"/></g>
-              <g class="im-flow-node" data-node="pedido">
-                <rect class="im-flow-nbg" x="62" y="148" width="100" height="44" rx="8"/>
-                <circle class="im-flow-nglow" cx="112" cy="170" r="54"/>
-                <text x="112" y="175" class="im-flow-ntext">Pedido</text>
-              </g>
-              <g class="im-flow-node" data-node="validacao">
-                <polygon class="im-flow-nbg" points="250,130 308,170 250,210 192,170"/>
-                <circle class="im-flow-nglow" cx="250" cy="170" r="56"/>
-                <text x="250" y="174" class="im-flow-ntext im-flow-ntext--s">Validação</text>
-              </g>
-              <g class="im-flow-node" data-node="proposta">
-                <polygon class="im-flow-nbg" points="356,66 452,66 444,106 348,106"/>
-                <circle class="im-flow-nglow" cx="400" cy="86" r="50"/>
-                <text x="400" y="91" class="im-flow-ntext">Proposta</text>
-              </g>
-              <g class="im-flow-node" data-node="planeamento">
-                <rect class="im-flow-nbg" x="350" y="234" width="100" height="40" rx="6"/>
-                <circle class="im-flow-nglow" cx="400" cy="254" r="50"/>
-                <text x="400" y="259" class="im-flow-ntext im-flow-ntext--s">Planeamento</text>
-              </g>
-              <g class="im-flow-node" data-node="execucao">
-                <rect class="im-flow-nbg" x="490" y="146" width="116" height="48" rx="24"/>
-                <circle class="im-flow-nglow" cx="548" cy="170" r="60"/>
-                <text x="548" y="176" class="im-flow-ntext">Execução</text>
-              </g>
+              <circle class="im-flow-nglow" cx="112" cy="170" r="56" data-span="62,162"/>
+              <circle class="im-flow-nglow" cx="250" cy="170" r="58" data-span="192,308"/>
+              <circle class="im-flow-nglow" cx="400" cy="86" r="52" data-span="348,452"/>
+              <circle class="im-flow-nglow" cx="400" cy="254" r="52" data-span="350,450"/>
+              <circle class="im-flow-nglow" cx="548" cy="170" r="62" data-span="490,606"/>
+              <use href="#imFlowGeoH" class="im-flow-base"/>
+              <use href="#imFlowGeoH" class="im-flow-lit" mask="url(#imWipeMaskH)"/>
             </svg>
-            <svg class="im-flow-svg im-flow-svg--v" viewBox="0 0 260 470" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true">
+            <svg class="im-flow-svg im-flow-svg--v" viewBox="0 32 260 470" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true" data-flow-svg data-axis="y" data-range="70,454" data-starts="70,150,284,420" data-ends="102,210,316,454">
               <defs>
                 <radialGradient id="imNodeGlowV" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#f97316" stop-opacity="0.28"/>
+                  <stop offset="0%" stop-color="#f97316" stop-opacity="0.3"/>
                   <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
                 </radialGradient>
-                <marker id="imArrowOnV" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="#f97316"/></marker>
+                <linearGradient id="imWipeV" gradientUnits="userSpaceOnUse" x1="0" y1="54" x2="0" y2="70" data-wipe>
+                  <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
+                </linearGradient>
+                <mask id="imWipeMaskV" maskUnits="userSpaceOnUse" x="0" y="0" width="260" height="520">
+                  <rect x="0" y="0" width="260" height="520" fill="url(#imWipeV)"/>
+                </mask>
+                <g id="imFlowGeoV">
+                  <path class="im-flow-geo-line" d="M130 100 L130 152 M130 208 L130 235 C130 255,65 255,65 287 M130 208 L130 235 C130 255,196 255,196 286 M65 313 L65 350 C65 385,130 385,130 422 M196 314 L196 350 C196 385,130 385,130 422"/>
+                  <rect class="im-flow-geo-node" x="95" y="70" width="70" height="32" rx="6"/>
+                  <polygon class="im-flow-geo-node" points="130,150 168,180 130,210 92,180"/>
+                  <polygon class="im-flow-geo-node" points="32,285 104,285 98,315 26,315"/>
+                  <rect class="im-flow-geo-node" x="158" y="284" width="76" height="32" rx="4"/>
+                  <rect class="im-flow-geo-node" x="70" y="420" width="120" height="34" rx="17"/>
+                  <text x="130" y="90" class="im-flow-ntext">Pedido</text>
+                  <text x="130" y="183" class="im-flow-ntext im-flow-ntext--s">Validação</text>
+                  <text x="65" y="304" class="im-flow-ntext">Proposta</text>
+                  <text x="196" y="304" class="im-flow-ntext im-flow-ntext--s">Planeamento</text>
+                  <text x="130" y="441" class="im-flow-ntext">Execução</text>
+                </g>
               </defs>
-              <path class="im-flow-base" d="M130 38 L130 70 M130 102 L130 150 M130 210 L130 235 C130 255,65 255,65 285 M130 210 L130 235 C130 255,196 255,196 284 M65 315 L65 350 C65 385,130 385,130 420 M196 316 L196 350 C196 385,130 385,130 420"/>
-              <path class="im-flow-link" data-phase-target="1" pathLength="1" d="M130 38 L130 70" marker-end="url(#imArrowOnV)"/>
-              <path class="im-flow-link" data-phase-target="2" pathLength="1" d="M130 102 L130 150" marker-end="url(#imArrowOnV)"/>
-              <path class="im-flow-link" data-phase-target="3" pathLength="1" d="M130 210 L130 235 C130 255,65 255,65 285" marker-end="url(#imArrowOnV)"/>
-              <path class="im-flow-link" data-phase-target="3" pathLength="1" d="M130 210 L130 235 C130 255,196 255,196 284" marker-end="url(#imArrowOnV)"/>
-              <path class="im-flow-link" data-phase-target="4" pathLength="1" d="M65 315 L65 350 C65 385,130 385,130 420" marker-end="url(#imArrowOnV)"/>
-              <path class="im-flow-link" data-phase-target="4" pathLength="1" d="M196 316 L196 350 C196 385,130 385,130 420"/>
-              <circle class="im-flow-ball" cx="130" cy="30" r="4" data-origin="130,30" data-stops="130,86;130,180;130,235;130,437"/>
-              <g class="im-flow-node" data-node="start"><circle class="im-flow-nbg" cx="130" cy="30" r="8"/></g>
-              <g class="im-flow-node" data-node="pedido">
-                <rect class="im-flow-nbg" x="95" y="70" width="70" height="32" rx="6"/>
-                <circle class="im-flow-nglow" cx="130" cy="86" r="42"/>
-                <text x="130" y="90" class="im-flow-ntext">Pedido</text>
-              </g>
-              <g class="im-flow-node" data-node="validacao">
-                <polygon class="im-flow-nbg" points="130,150 168,180 130,210 92,180"/>
-                <circle class="im-flow-nglow" cx="130" cy="180" r="44"/>
-                <text x="130" y="183" class="im-flow-ntext im-flow-ntext--s">Validação</text>
-              </g>
-              <g class="im-flow-node" data-node="proposta">
-                <polygon class="im-flow-nbg" points="32,285 104,285 98,315 26,315"/>
-                <circle class="im-flow-nglow" cx="65" cy="300" r="42"/>
-                <text x="65" y="304" class="im-flow-ntext">Proposta</text>
-              </g>
-              <g class="im-flow-node" data-node="planeamento">
-                <rect class="im-flow-nbg" x="158" y="284" width="76" height="32" rx="4"/>
-                <circle class="im-flow-nglow" cx="196" cy="300" r="42"/>
-                <text x="196" y="304" class="im-flow-ntext im-flow-ntext--s">Planeamento</text>
-              </g>
-              <g class="im-flow-node" data-node="execucao">
-                <rect class="im-flow-nbg" x="70" y="420" width="120" height="34" rx="17"/>
-                <circle class="im-flow-nglow" cx="130" cy="437" r="52"/>
-                <text x="130" y="441" class="im-flow-ntext">Execução</text>
-              </g>
+              <circle class="im-flow-nglow" cx="130" cy="86" r="42" data-span="70,102"/>
+              <circle class="im-flow-nglow" cx="130" cy="180" r="44" data-span="150,210"/>
+              <circle class="im-flow-nglow" cx="65" cy="300" r="42" data-span="285,315"/>
+              <circle class="im-flow-nglow" cx="196" cy="300" r="42" data-span="284,316"/>
+              <circle class="im-flow-nglow" cx="130" cy="437" r="52" data-span="420,454"/>
+              <use href="#imFlowGeoV" class="im-flow-base"/>
+              <use href="#imFlowGeoV" class="im-flow-lit" mask="url(#imWipeMaskV)"/>
             </svg>
           </div>
           <div class="im-flow-caps">
@@ -1172,7 +1154,7 @@
   </footer>
 
   <script src="components/world-map.js"></script>
-  <script src="script.js?v=42"></script>
+  <script src="script.js?v=46"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');

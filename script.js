@@ -970,7 +970,54 @@ document.addEventListener("DOMContentLoaded", () => {
     "Em resumo": "In short",
     "Sem catálogo fixo": "No fixed catalog",
     "Por pedido": "On demand",
-    "Conformidade validada antes da proposta": "Compliance validated before the proposal"
+    "Conformidade validada antes da proposta": "Compliance validated before the proposal",
+    "Autoridade Nacional do Medicamento e Produtos de Saúde": "National Authority of Medicines and Health Products",
+    "Certificado n.º 1866/DM/2023": "Certificate no. 1866/DM/2023",
+    "Ver PDF": "View PDF",
+    "Fornecemos produtos de saúde por pedido, sem catálogo fixo.": "We supply health products on demand, with no fixed catalog.",
+    "Produtos de saúde": "Health products",
+    "de catálogo": "from a catalog",
+    "por pedido.": "on demand.",
+    "Partimos do requisito e fazemos o sourcing da fonte adequada, com validação de conformidade antes da proposta.": "We start from the requirement and source it from the right supplier, with compliance validated before the proposal.",
+    "Fora do circuito habitual": "Beyond the usual circuit",
+    "Chegamos a fornecedores fora do circuito habitual através da nossa": "We reach suppliers beyond the usual circuit through our",
+    ", com a documentação e a conformidade como base.": ", with documentation and compliance as the foundation.",
+    "Catálogo do parceiro": "Partner catalog",
+    "Enviar pedido": "Send request",
+    "Encaminhado": "Routed",
+    "Pelo catálogo": "Through the catalog",
+    "Pelo requisito": "Through a requirement",
+    "Acede ao catálogo": "Open the catalog",
+    "O catálogo do parceiro, a partir desta página.": "The partner catalog, straight from this page.",
+    "Escolhe o que precisa": "Choose what you need",
+    "O pedido é encaminhado para a ON4U.": "Your request is routed to ON4U.",
+    "Envia o requisito": "Send the requirement",
+    "Diretamente, se preferir. Nós tratamos do encaminhamento.": "Directly, if you prefer. We take care of the routing.",
+    "Um só interlocutor": "One point of contact",
+    "A ON4U trata do encaminhamento e acompanha até à resposta.": "ON4U handles the routing and follows it through to the answer.",
+    "Fora do catálogo": "Beyond the catalog",
+    "projetos": "projects",
+    "áreas": "areas",
+    "Parceiros": "Partners",
+    "Stand Repsol": "Repsol stand",
+    "Ativação corporativa": "Corporate activation",
+    "Presença institucional": "Institutional presence",
+    "Presença local & operação": "Local presence & operations",
+    "Banco Central de São Tomé e Príncipe": "Central Bank of São Tomé e Príncipe",
+    "Identidade visual": "Visual identity",
+    "Materiais corporativos": "Corporate materials",
+    "Fardamentos & merchandising corporativo": "Corporate uniforms & merchandising",
+    "Equipamento especializado": "Specialized equipment",
+    "Operação internacional": "International operations",
+    "Equipamento & fornecimento": "Equipment & supply",
+    "Stand Repsol: Ativação corporativa": "Repsol stand: Corporate activation",
+    "Santa Casa da Misericórdia: Presença institucional": "Santa Casa da Misericórdia: Institutional presence",
+    "Guiné-Bissau: Presença local & operação": "Guiné-Bissau: Local presence & operations",
+    "Banco Central de São Tomé e Príncipe: Identidade visual": "Central Bank of São Tomé e Príncipe: Visual identity",
+    "Materiais corporativos: Identidade visual": "Corporate materials: Visual identity",
+    "HBD: Fardamentos & merchandising corporativo": "HBD: Corporate uniforms & merchandising",
+    "Equipamento especializado: Operação internacional": "Specialized equipment: International operations",
+    "Equipamento & fornecimento: Operação internacional": "Equipment & supply: International operations"
   };
 
   var origText = new WeakMap();   // text node -> original PT value
@@ -1160,7 +1207,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // cards — no cursor spotlight, no tilt, no motion of any kind.
   // importacao's hairline panels glow as whole frames; their cells and the
   // process rows stay flat (no tilt, no per-cell spotlight)
-  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-scope-frame, .pr-flow-step, .hc-cert-frame';
+  var GLOW_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-faq details, #final-cta .reveal-up, .pg2-cta .pg2-reveal, .im-route-cell, .im-route-wide, .im-show-card, .im-pipe, .im-flow, .im-scope-frame, .pr-flow-step';
   var TILT_SEL = '.dvc-tile, .pvc-box, .pg2-node, .pg2-card, .pg2-pf, .pf-card';
   var ZONE = 120;      // px of detection margin around each card
   var MAXTILT = 6;     // deg
@@ -1758,9 +1805,31 @@ document.addEventListener("DOMContentLoaded", () => {
    ══════════════════════════════════════════════════════════════ */
 (function () {
   var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // certificate spotlight: the shield powers up as its section arrives.
+  // --ignite runs 0 to 1 while the stage travels from the bottom of the
+  // viewport to a little above the middle; CSS glow and the 3D scene read it.
+  var spot = document.querySelector("[data-spot]");
+  var spotStage = spot && spot.querySelector("[data-spot-stage]");
+  if (spot && spotStage) {
+    var spotTick = false, spotLast = -1;
+    var spotPaint = function () {
+      spotTick = false;
+      var r = spotStage.getBoundingClientRect(), vh = window.innerHeight;
+      var v = (vh - r.top) / (vh * 0.55 + r.height * 0.25);
+      v = v < 0 ? 0 : v > 1 ? 1 : v;
+      v = Math.round(v * 1000) / 1000;
+      if (v === spotLast) return;
+      spotLast = v;
+      spot.style.setProperty("--ignite", v);
+    };
+    var spotAsk = function () { if (!spotTick) { spotTick = true; requestAnimationFrame(spotPaint); } };
+    window.addEventListener("scroll", spotAsk, { passive: true });
+    window.addEventListener("resize", spotAsk, { passive: true });
+    spotPaint();
+  }
   var shield = document.querySelector("[data-shield-tilt]");
   if (shield && !REDUCED && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    var stageEl = shield.closest(".hc-cert-frame") || shield;
+    var stageEl = shield.closest("[data-spot-stage]") || shield;
     var rx = 0, ry = 0, tx = 0, ty = 0, raf = 0;
     var tilt = function () {
       rx += (tx - rx) * 0.12; ry += (ty - ry) * 0.12;
@@ -1830,55 +1899,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ══════════════════════════════════════════════════════════════
    Process flowchart (importacao #process).
-   Wide, tall viewports: the wrap is pinned and scroll progress through
-   the runway picks the phase (1-4); the island at the bottom jumps the
-   scroll to a phase so the two never disagree. Each phase lights its
-   caption, the nodes reached so far, the links up to it, and moves the
-   marker along the path (both diagrams carry their own stops). Narrow
-   or short viewports stack: no pin, the caption nearest the viewport
-   centre leads, captions are clickable.
+   The diagram has no marker: its own lines and nodes colour themselves
+   as you scroll. Each SVG carries its axis, the span the flow covers and
+   where every phase starts and ends; one continuous progress value moves
+   a feathered mask edge along that axis (left to right on the wide
+   diagram, top to bottom on the stacked one), fades each node's glow in
+   as the edge crosses it, and names the phase from the furthest node the
+   edge has entered. Wide, tall viewports pin the wrap and the runway
+   drives progress; the island jumps to the scroll position where that
+   phase's node is fully lit. Narrow or short viewports stack: the stage's
+   position in the viewport drives the colour and the caption nearest the
+   viewport centre leads.
    ══════════════════════════════════════════════════════════════ */
 (function () {
   var root = document.querySelector("[data-flow]");
   if (!root) return;
   var section = root.closest(".im-flow-section");
+  var stage = root.querySelector(".im-flow-stage");
   var caps = [].slice.call(root.querySelectorAll(".im-flow-cap"));
-  var nodes = [].slice.call(root.querySelectorAll(".im-flow-node"));
-  var links = [].slice.call(root.querySelectorAll(".im-flow-link"));
-  var balls = [].slice.call(root.querySelectorAll(".im-flow-ball"));
   var tabs = [].slice.call(document.querySelectorAll("[data-flow-tab]"));
   var thumb = document.querySelector("[data-flow-thumb]");
-  if (!section || !caps.length) return;
+  if (!section || !stage || !caps.length) return;
 
-  var NODES = {
-    1: ["start", "pedido"],
-    2: ["start", "pedido", "validacao"],
-    3: ["start", "pedido", "validacao", "proposta", "planeamento"],
-    4: ["start", "pedido", "validacao", "proposta", "planeamento", "execucao"]
-  };
+  var FEATHER = 16;
+  var nums = function (el, attr) { return (el.getAttribute(attr) || "").split(",").map(Number); };
+  var diagrams = [].slice.call(root.querySelectorAll("[data-flow-svg]")).map(function (svg) {
+    var range = nums(svg, "data-range");
+    return {
+      svg: svg,
+      axis: svg.getAttribute("data-axis"),
+      a: range[0], b: range[1],
+      starts: nums(svg, "data-starts"),
+      ends: nums(svg, "data-ends"),
+      wipe: svg.querySelector("[data-wipe]"),
+      glows: [].slice.call(svg.querySelectorAll("[data-span]")).map(function (g) {
+        var span = nums(g, "data-span");
+        return { el: g, a: span[0], b: span[1] };
+      })
+    };
+  });
   var stacked = window.matchMedia("(max-width: 899px), (max-height: 859px)");
   var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var current = 0, ticking = false;
+  var current = 0, ticking = false, lastP = -1, lastMode = null;
 
   function setPhase(n) {
     if (n === current) return;
     current = n;
     caps.forEach(function (c) { c.classList.toggle("is-active", +c.getAttribute("data-phase") === n); });
-    nodes.forEach(function (g) { g.classList.toggle("is-active", NODES[n].indexOf(g.getAttribute("data-node")) !== -1); });
-    links.forEach(function (l) { l.classList.toggle("is-active", +l.getAttribute("data-phase-target") <= n); });
-    balls.forEach(function (b) {
-      var o = (b.getAttribute("data-origin") || "0,0").split(",");
-      var stop = (b.getAttribute("data-stops") || "").split(";")[n - 1];
-      if (!stop) return;
-      var xy = stop.split(",");
-      b.style.transform = "translate(" + (xy[0] - o[0]) + "px," + (xy[1] - o[1]) + "px)";
-    });
     tabs.forEach(function (t) {
       var on = +t.getAttribute("data-flow-tab") === n;
       t.setAttribute("aria-selected", on ? "true" : "false");
       t.tabIndex = on ? 0 : -1;
     });
     if (thumb) thumb.style.setProperty("--i", n - 1);
+  }
+
+  // the edge travels from the flow's start to just past its end, so p = 1
+  // leaves the last node completely lit
+  function edgeAt(d, p) { return d.a + p * (d.b - d.a + FEATHER); }
+
+  function paintDiagram(d, p) {
+    var edge = edgeAt(d, p), from = edge - FEATHER;
+    if (d.wipe) {
+      d.wipe.setAttribute(d.axis === "y" ? "y1" : "x1", from.toFixed(2));
+      d.wipe.setAttribute(d.axis === "y" ? "y2" : "x2", edge.toFixed(2));
+    }
+    d.glows.forEach(function (g) {
+      var f = (from - g.a) / (g.b - g.a);
+      g.el.style.opacity = (f <= 0 ? 0 : f >= 1 ? 1 : f).toFixed(3);
+    });
+    var n = 1;
+    d.starts.forEach(function (st, i) { if (edge - FEATHER / 2 > st) n = i + 1; });
+    return n;
+  }
+
+  function shown() {
+    for (var i = 0; i < diagrams.length; i++) if (diagrams[i].svg.getBoundingClientRect().width > 0) return diagrams[i];
+    return diagrams[0];
   }
 
   function runway() {
@@ -1888,29 +1985,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function frame() {
     ticking = false;
-    if (stacked.matches) {
+    var p, mode = stacked.matches ? "stack" : "pin";
+    if (mode === "stack") {
+      var r = stage.getBoundingClientRect(), vh = window.innerHeight;
+      p = (vh * 0.8 - r.top) / (vh * 0.4 + r.height);
+    } else {
+      var rw = runway();
+      p = (window.scrollY - rw.top) / rw.run;
+    }
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    if (p === lastP && mode === lastMode) return;
+    lastP = p; lastMode = mode;
+    var d = shown(), phase = 1;
+    diagrams.forEach(function (x) { var n = paintDiagram(x, p); if (x === d) phase = n; });
+    if (mode === "stack") {
       var mid = window.innerHeight * 0.45, best = 1, bestD = Infinity;
       caps.forEach(function (c) {
-        var r = c.getBoundingClientRect();
-        var d = Math.abs((r.top + r.height / 2) - mid);
-        if (d < bestD) { bestD = d; best = +c.getAttribute("data-phase"); }
+        var cr = c.getBoundingClientRect();
+        var dist = Math.abs((cr.top + cr.height / 2) - mid);
+        if (dist < bestD) { bestD = dist; best = +c.getAttribute("data-phase"); }
       });
       setPhase(best);
     } else {
-      var rw = runway();
-      var p = (window.scrollY - rw.top) / rw.run;
-      p = p < 0 ? 0 : p > 1 ? 1 : p;
-      setPhase(p < 0.25 ? 1 : p < 0.5 ? 2 : p < 0.75 ? 3 : 4);
+      setPhase(phase);
     }
   }
   function kick() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
-  // island: jump the scroll to the phase's slice of the runway when pinned,
-  // otherwise just switch
+  // island: when pinned, scroll to where the phase's node has just been
+  // fully coloured; otherwise just switch the caption
   function jump(n) {
     if (stacked.matches) { setPhase(n); return; }
-    var rw = runway();
-    window.scrollTo({ top: Math.round(rw.top + rw.run * ((n - 1) / 4 + 0.04)), behavior: REDUCED ? "auto" : "smooth" });
+    var d = shown(), rw = runway();
+    var end = d.ends[n - 1];
+    var p = (end + FEATHER - d.a) / (d.b - d.a + FEATHER) + 0.01;
+    p = p > 1 ? 1 : p;
+    window.scrollTo({ top: Math.round(rw.top + rw.run * p), behavior: REDUCED ? "auto" : "smooth" });
   }
   tabs.forEach(function (tab) {
     tab.addEventListener("click", function () { jump(+tab.getAttribute("data-flow-tab")); });
@@ -1933,4 +2043,243 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", kick, { passive: true });
   setPhase(1);
   kick();
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Health & Care scope sentence (#ambito). While the display block
+   crosses the viewport, the first half of the journey strikes through
+   "de catálogo" (--strike) and the second half fills "por pedido."
+   (--fill). Each note lights once its line is done. Scroll-linked
+   drawing only, so it runs the same under reduced motion.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var kin = document.querySelector("[data-kin]");
+  if (!kin) return;
+  var notes = [].slice.call(kin.querySelectorAll("[data-kin-note]"));
+  var ticking = false, last = -1;
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function paint() {
+    ticking = false;
+    var r = kin.getBoundingClientRect(), vh = window.innerHeight;
+    var p = clamp((vh * 0.82 - r.top) / (vh * 0.5));
+    p = Math.round(p * 1000) / 1000;
+    if (p === last) return;
+    last = p;
+    kin.style.setProperty("--strike", clamp(p * 2).toFixed(3));
+    kin.style.setProperty("--fill", clamp((p - 0.5) * 2).toFixed(3));
+    notes.forEach(function (n) { n.classList.toggle("is-on", p >= +n.getAttribute("data-kin-note")); });
+  }
+  function ask() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  window.addEventListener("scroll", ask, { passive: true });
+  window.addEventListener("resize", ask, { passive: true });
+  paint();
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Informática service window (#servico). One progress value picks the
+   step: 0 before the section starts, then 1 (the grid opens), 2 (an item
+   goes into the ON4U order panel), 3 (sent, routed). The window gets
+   .is-s1 to .is-s3 cumulatively; features up to the step are lit and the
+   current one carries the bar. Wide, tall viewports pin the section and
+   use its runway (a feature click jumps there); narrow or short ones use
+   the window position in the viewport.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var sec = document.querySelector("[data-svc]");
+  if (!sec) return;
+  var win = sec.querySelector(".it-win");
+  var feats = [].slice.call(sec.querySelectorAll(".it-feat"));
+  if (!win || !feats.length) return;
+  var stacked = window.matchMedia("(max-width: 899px), (max-height: 859px)");
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var EDGES = [0.06, 0.38, 0.7];
+  var ticking = false, current = -1;
+
+  function setStep(n) {
+    if (n === current) return;
+    current = n;
+    for (var k = 1; k <= 3; k++) win.classList.toggle("is-s" + k, n >= k);
+    feats.forEach(function (f) {
+      var st = +f.getAttribute("data-step");
+      f.classList.toggle("is-on", st <= Math.max(n, 1));
+      f.classList.toggle("is-cur", st === Math.max(n, 1));
+    });
+  }
+  function runway() {
+    var top = sec.getBoundingClientRect().top + window.scrollY;
+    return { top: top, run: Math.max(1, sec.offsetHeight - window.innerHeight) };
+  }
+  function paint() {
+    ticking = false;
+    var p;
+    if (stacked.matches) {
+      var r = win.getBoundingClientRect(), vh = window.innerHeight;
+      p = (vh * 0.9 - r.top) / (vh * 0.45 + r.height * 0.5);
+    } else {
+      var rw = runway();
+      p = (window.scrollY - rw.top) / rw.run;
+    }
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    setStep(p < EDGES[0] ? 0 : p < EDGES[1] ? 1 : p < EDGES[2] ? 2 : 3);
+  }
+  function ask() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  feats.forEach(function (f) {
+    f.addEventListener("click", function () {
+      if (stacked.matches) return;
+      var n = +f.getAttribute("data-step"), rw = runway();
+      var at = n === 1 ? (EDGES[0] + EDGES[1]) / 2 : n === 2 ? (EDGES[1] + EDGES[2]) / 2 : (EDGES[2] + 1) / 2;
+      window.scrollTo({ top: Math.round(rw.top + rw.run * at), behavior: REDUCED ? "auto" : "smooth" });
+    });
+  });
+  window.addEventListener("scroll", ask, { passive: true });
+  window.addEventListener("resize", ask, { passive: true });
+  paint();
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Informática route map (#como-aceder). A colour front crosses the map
+   as the block moves up the viewport: along x when the lanes sit side by
+   side with the hub, along y when everything stacks. Every [data-lit]
+   piece gets its own share of the front as --lit (0 to 1) and is marked
+   .is-lit past the middle. The merge curves are rebuilt in pixels from
+   where the two outgoing wires end and where the hub is centred, so they
+   stay attached whatever the copy length or language.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var map = document.querySelector("[data-routes]");
+  if (!map) return;
+  var sec = map.closest(".it-access");
+  var pin = map.closest(".it-access-pin");
+  // must match the CSS that pins .it-access-pin
+  var pinned = window.matchMedia("(min-width: 900px) and (min-height: 720px)");
+  var REST_IN = 0.1, REST_OUT = 0.16;
+  var parts = [].slice.call(map.querySelectorAll("[data-lit]"));
+  var merge = map.querySelector(".it-merge");
+  var hub = map.querySelector(".it-hub");
+  var outs = [].slice.call(map.querySelectorAll(".it-wire--out"));
+  var stacked = window.matchMedia("(max-width: 899px)");
+  var FEATHER = 24;
+  var ticking = false;
+  var NS = "http://www.w3.org/2000/svg";
+
+  function layoutMerge() {
+    if (!merge || !hub || outs.length < 2 || stacked.matches) return;
+    var svg = merge.querySelector("svg");
+    var m = merge.getBoundingClientRect();
+    if (!svg || !m.width || !m.height) return;
+    var hr = hub.getBoundingClientRect();
+    var yh = hr.top + hr.height / 2 - m.top;
+    var ys = outs.map(function (w) { var r = w.getBoundingClientRect(); return r.top + r.height / 2 - m.top; });
+    var W = m.width, cx = W * 0.5;
+    var curve = function (y0) { return "M0 " + y0.toFixed(1) + " C" + cx.toFixed(1) + " " + y0.toFixed(1) + "," + cx.toFixed(1) + " " + yh.toFixed(1) + "," + W.toFixed(1) + " " + yh.toFixed(1); };
+    svg.setAttribute("viewBox", "0 0 " + W.toFixed(1) + " " + m.height.toFixed(1));
+    svg.setAttribute("preserveAspectRatio", "none");
+    var base = svg.querySelector(".it-merge-base");
+    var lits = svg.querySelectorAll(".it-merge-lit");
+    if (base) { base.setAttribute("d", curve(ys[0]) + " " + curve(ys[1])); base.removeAttribute("vector-effect"); }
+    [].forEach.call(lits, function (l, i) { l.setAttribute("d", curve(ys[i])); l.removeAttribute("vector-effect"); });
+  }
+
+  function paint() {
+    ticking = false;
+    var r = map.getBoundingClientRect(), vh = window.innerHeight;
+    var p;
+    if (pinned.matches && sec && pin) {
+      // share of the pinned travel: 0 the moment the wrap sticks (map centred),
+      // 1 when it is about to release; a short rest at each end keeps the map
+      // still and uncoloured on arrival and complete before it leaves
+      var cs = getComputedStyle(sec);
+      var padT = parseFloat(cs.paddingTop) || 0, padB = parseFloat(cs.paddingBottom) || 0;
+      var stickTop = parseFloat(getComputedStyle(pin).top) || 0;
+      var travel = sec.clientHeight - padT - padB - pin.offsetHeight;
+      var raw = travel > 1 ? (stickTop - (sec.getBoundingClientRect().top + padT)) / travel : 1;
+      p = (raw - REST_IN) / (1 - REST_IN - REST_OUT);
+    } else {
+      // stacked: start once the map is well inside the viewport, finish as its
+      // bottom passes the lower third
+      p = (vh * 0.72 - r.top) / Math.max(1, r.height + vh * 0.05);
+    }
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    var alongY = stacked.matches;
+    var start = alongY ? r.top : r.left;
+    var span = alongY ? r.height : r.width;
+    var front = start + p * (span + FEATHER) - FEATHER / 2;
+    parts.forEach(function (el) {
+      var b = el.getBoundingClientRect();
+      var a = alongY ? b.top : b.left, len = alongY ? b.height : b.width;
+      var v = len > 0 ? (front - a) / len : 0;
+      v = v < 0 ? 0 : v > 1 ? 1 : v;
+      el.style.setProperty("--lit", v.toFixed(3));
+      el.classList.toggle("is-lit", v >= 0.5);
+      if (el === merge) {
+        [].forEach.call(el.querySelectorAll(".it-merge-lit"), function (l) { l.style.strokeDashoffset = (1 - v).toFixed(3); });
+      }
+    });
+  }
+  function ask() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  function relayout() { layoutMerge(); ask(); }
+  window.addEventListener("scroll", ask, { passive: true });
+  window.addEventListener("resize", relayout, { passive: true });
+  if ("ResizeObserver" in window) new ResizeObserver(relayout).observe(map);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+  relayout();
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Projetos editorial index (portfolio). On wide viewports the row whose
+   centre is nearest the middle of the visible area is active: its type
+   lights and the pinned stage cross-fades to its photograph, with the
+   counter and progress bar following. Hovering a row previews it; leaving
+   the list returns to the scroll choice. Narrow viewports show every row
+   with its photo inline, so nothing is active there.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var root = document.querySelector("[data-pf-index]");
+  if (!root) return;
+  var list = root.querySelector(".pf-list");
+  var rows = [].slice.call(root.querySelectorAll(".pf-row"));
+  var shots = [].slice.call(root.querySelectorAll(".pf-shot"));
+  var now = root.querySelector("[data-pf-now]");
+  var bar = root.querySelector("[data-pf-bar]");
+  if (!rows.length) return;
+  var wide = window.matchMedia("(min-width: 900px)");
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+  var scrollIdx = 0, shown = -1, hoverIdx = -1, ticking = false;
+
+  function show(i) {
+    if (i === shown) return;
+    shown = i;
+    rows.forEach(function (r, k) { r.classList.toggle("is-on", k === i); });
+    shots.forEach(function (s, k) { s.classList.toggle("is-on", k === i); });
+    if (now) now.textContent = (i < 9 ? "0" : "") + (i + 1);
+    if (bar) bar.style.setProperty("--pf-p", ((i + 1) / rows.length).toFixed(3));
+  }
+  function pick() {
+    ticking = false;
+    if (!wide.matches) return;
+    var mid = (window.innerHeight + 76) / 2, best = 0, bestD = Infinity;
+    rows.forEach(function (r, k) {
+      var b = r.getBoundingClientRect();
+      var d = Math.abs(b.top + b.height / 2 - mid);
+      if (d < bestD) { bestD = d; best = k; }
+    });
+    scrollIdx = best;
+    show(hoverIdx >= 0 ? hoverIdx : scrollIdx);
+  }
+  function ask() { if (!ticking) { ticking = true; requestAnimationFrame(pick); } }
+  rows.forEach(function (r, k) {
+    r.addEventListener("mouseenter", function () {
+      if (!wide.matches || !fine.matches) return;
+      hoverIdx = k;
+      show(k);
+    });
+    r.addEventListener("focusin", function () { if (wide.matches) { hoverIdx = k; show(k); } });
+  });
+  if (list) {
+    list.addEventListener("mouseleave", function () { hoverIdx = -1; show(scrollIdx); });
+    list.addEventListener("focusout", function (e) { if (!list.contains(e.relatedTarget)) { hoverIdx = -1; show(scrollIdx); } });
+  }
+  window.addEventListener("scroll", ask, { passive: true });
+  window.addEventListener("resize", ask, { passive: true });
+  pick();
 })();

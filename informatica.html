@@ -24,7 +24,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=42" />
+  <link rel="stylesheet" href="style.css?v=46" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
   <style>
@@ -216,43 +216,115 @@
       </div>
     </section>
 
-    <!-- O SERVIÇO -->
-    <section class="pg2-section pg2-section--1">
-      <div class="pg2-wrap">
-        <div class="pg2-shead pg2-reveal">
-          <p class="pg2-eyebrow">O serviço</p>
-          <h2 class="pg2-h2">Catálogo suportado por parceiro especializado.</h2>
+    <!-- O SERVIÇO: o catálogo como objeto. As três características acendem a
+         janela por partes: a grelha, o pedido no ambiente ON4U, o envio. -->
+    <section class="pg2-section pg2-section--1 it-svc" id="servico" data-svc>
+      <div class="pg2-wrap it-svc-pin">
+        <div class="it-svc-head">
+          <div class="pg2-shead pg2-reveal">
+            <p class="pg2-eyebrow">O serviço</p>
+            <h2 class="pg2-h2">Catálogo suportado por parceiro especializado.</h2>
+          </div>
         </div>
-        <div class="pg2-prose pg2-measure pg2-reveal">
-          <p>A divisão de Informática assenta num catálogo dedicado, mantido com um parceiro especializado em equipamento informático. O acesso é direto e o pedido é encaminhado de forma simplificada, com a identidade ON4U a garantir consistência.</p>
-        </div>
-        <div class="pg2-table-wrap pg2-reveal">
-          <table class="pg2-table">
-            <caption>Como funciona o acesso ao catálogo de Informática.</caption>
-            <thead>
-              <tr><th scope="col">Característica</th><th scope="col">O que significa</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Acesso direto ao catálogo</th><td>Consulta o equipamento disponível sem intermediários.</td></tr>
-              <tr><th scope="row">Pedidos num ambiente dedicado</th><td>Feitos de forma direta, com a identidade ON4U.</td></tr>
-              <tr><th scope="row">Encaminhamento simplificado</th><td>O pedido segue direto para quem o trata.</td></tr>
-            </tbody>
-          </table>
+        <div class="it-svc-body pg2-reveal">
+          <ol class="it-feats">
+            <li class="it-feat is-on" data-step="1"><span class="it-feat-n">01</span><div><h3>Acesso direto ao catálogo</h3><p>Consulta o equipamento disponível sem intermediários.</p></div></li>
+            <li class="it-feat" data-step="2"><span class="it-feat-n">02</span><div><h3>Pedidos num ambiente dedicado</h3><p>Feitos de forma direta, com a identidade ON4U.</p></div></li>
+            <li class="it-feat" data-step="3"><span class="it-feat-n">03</span><div><h3>Encaminhamento simplificado</h3><p>O pedido segue direto para quem o trata.</p></div></li>
+          </ol>
+          <div class="it-win" data-step="1" aria-hidden="true">
+            <div class="it-win-glow"></div>
+            <div class="it-win-bar">
+              <span class="it-win-dots"><i></i><i></i><i></i></span>
+              <span class="it-win-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Catálogo do parceiro</span></span>
+              <span class="it-win-brand"><svg class="it-logo" viewBox="0 -10 184 65" fill="none" aria-hidden="true"><circle cx="20" cy="30" r="13" stroke="currentColor" stroke-width="14"/><path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="currentColor" stroke-width="14" stroke-linecap="round"/><path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><circle cx="129" cy="43" r="7" fill="#f97316"/><path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="currentColor" stroke-width="14" stroke-linecap="round"/></svg></span>
+            </div>
+            <div class="it-win-body">
+              <div class="it-win-side">
+                <i class="it-sk it-sk--h"></i>
+                <span class="it-filter is-on"><i></i><i class="it-sk"></i></span>
+                <span class="it-filter"><i></i><i class="it-sk it-sk--m"></i></span>
+                <span class="it-filter"><i></i><i class="it-sk it-sk--s"></i></span>
+                <span class="it-filter"><i></i><i class="it-sk"></i></span>
+                <i class="it-sk it-sk--h it-sk--gap"></i>
+                <span class="it-filter"><i></i><i class="it-sk it-sk--m"></i></span>
+                <span class="it-filter"><i></i><i class="it-sk it-sk--s"></i></span>
+              </div>
+              <div class="it-win-grid">
+                <div class="it-card" style="--i:0"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card it-card--pick" style="--i:1"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:2"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="1.5"/><path d="M10 7h4M10 10h4"/><circle cx="12" cy="16.5" r="1"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:3"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="1.5"/><path d="M6 10.5h.01M9.5 10.5h.01M13 10.5h.01M16.5 10.5h.01M7 13.8h10"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:4"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:5"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M11 18h2"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:6"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="1.5"/><path d="M7 14h10v7H7z"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:7"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="13" width="18" height="6" rx="1.5"/><path d="M7 16h.01M11 16h.01M16 9.5a5 5 0 0 0-8 0M18.8 6.8a9 9 0 0 0-13.6 0"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:8"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v3"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:9"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:10"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="6"/><circle cx="12" cy="10" r="2"/><path d="M8 20h8M12 16v4"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+                <div class="it-card" style="--i:11"><span class="it-card-art"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 14h.01M11 14h6"/></svg></span><i class="it-sk it-sk--t"></i><i class="it-sk it-sk--s"></i><span class="it-card-add"></span></div>
+              </div>
+              <div class="it-order">
+                <div class="it-order-head"><span>Pedido</span><svg class="it-logo" viewBox="0 -10 184 65" fill="none" aria-hidden="true"><circle cx="20" cy="30" r="13" stroke="currentColor" stroke-width="14"/><path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="currentColor" stroke-width="14" stroke-linecap="round"/><path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><circle cx="129" cy="43" r="7" fill="#f97316"/><path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="currentColor" stroke-width="14" stroke-linecap="round"/></svg></div>
+                <div class="it-order-row"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg><i class="it-sk"></i><b>×2</b></div>
+                <div class="it-order-row it-order-row--b"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="1.5"/><path d="M6 10.5h.01M9.5 10.5h.01M13 10.5h.01M16.5 10.5h.01M7 13.8h10"/></svg><i class="it-sk it-sk--m"></i><b>×2</b></div>
+                <div class="it-order-foot">
+                  <span class="it-order-send">Enviar pedido</span>
+                  <span class="it-order-status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Encaminhado</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- COMO ACEDER -->
-    <section class="pg2-section pg2-section--0">
-      <div class="pg2-wrap">
+    <!-- COMO ACEDER: duas entradas, um só interlocutor. As ligações colorem-se
+         com o scroll, da entrada até à ON4U. -->
+    <section class="pg2-section pg2-section--0 it-access" id="como-aceder">
+      <div class="pg2-wrap it-access-pin">
         <div class="pg2-shead pg2-reveal">
           <p class="pg2-eyebrow">Como aceder</p>
           <h2 class="pg2-h2">Como acede e quem trata.</h2>
         </div>
-        <div class="pg2-prose pg2-measure pg2-reveal">
-          <p>Acede ao catálogo do parceiro a partir desta página. Escolhe o que precisa e o pedido é encaminhado para a ON4U, que acompanha até à resposta. Se preferir, pode enviar o requisito diretamente e nós tratamos do encaminhamento.</p>
-          <p>Para fornecimento fora do catálogo, esta divisão liga à nossa <a href="/importacao-e-exportacao.html">operação internacional</a>.</p>
+        <div class="it-routes pg2-reveal" data-routes>
+          <div class="it-lanes">
+            <div class="it-lane">
+              <p class="it-lane-k">Pelo catálogo</p>
+              <div class="it-stop" data-lit>
+                <span class="it-stop-ico"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span>
+                <div><h3>Acede ao catálogo</h3><p>O catálogo do parceiro, a partir desta página.</p></div>
+              </div>
+              <span class="it-wire" data-lit></span>
+              <div class="it-stop" data-lit>
+                <span class="it-stop-ico"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h2l2.2 10.2a1 1 0 0 0 1 .8h8.4a1 1 0 0 0 1-.76L20 9H7"/><circle cx="10" cy="19.5" r="1.2"/><circle cx="17" cy="19.5" r="1.2"/></svg></span>
+                <div><h3>Escolhe o que precisa</h3><p>O pedido é encaminhado para a ON4U.</p></div>
+              </div>
+              <span class="it-wire it-wire--out" data-lit></span>
+            </div>
+            <div class="it-lane">
+              <p class="it-lane-k">Pelo requisito</p>
+              <div class="it-stop" data-lit>
+                <span class="it-stop-ico"><svg class="it-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+                <div><h3>Envia o requisito</h3><p>Diretamente, se preferir. Nós tratamos do encaminhamento.</p></div>
+              </div>
+              <span class="it-wire it-wire--out it-wire--long" data-lit></span>
+            </div>
+          </div>
+          <div class="it-merge" data-lit>
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
+              <path class="it-merge-base" d="M0 25 C55 25,45 50,100 50 M0 75 C55 75,45 50,100 50" vector-effect="non-scaling-stroke"/>
+              <path class="it-merge-lit" d="M0 25 C55 25,45 50,100 50" pathLength="1" vector-effect="non-scaling-stroke"/>
+              <path class="it-merge-lit" d="M0 75 C55 75,45 50,100 50" pathLength="1" vector-effect="non-scaling-stroke"/>
+            </svg>
+          </div>
+          <div class="it-hub" data-lit>
+            <span class="it-hub-mark"><svg class="it-logo" viewBox="0 -10 184 65" fill="none" aria-hidden="true"><circle cx="20" cy="30" r="13" stroke="currentColor" stroke-width="14"/><path d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" stroke="currentColor" stroke-width="14" stroke-linecap="round"/><path d="M 129 0 L 103 24 L 129 24" stroke="#f97316" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><circle cx="129" cy="43" r="7" fill="#f97316"/><path d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" stroke="currentColor" stroke-width="14" stroke-linecap="round"/></svg></span>
+            <h3>Um só interlocutor</h3>
+            <p>A ON4U trata do encaminhamento e acompanha até à resposta.</p>
+          </div>
         </div>
+        <p class="it-routes-foot pg2-reveal"><span class="it-routes-foot-k">Fora do catálogo</span><span>Para fornecimento fora do catálogo, esta divisão liga à nossa <a href="/importacao-e-exportacao.html">operação internacional</a>.</span></p>
       </div>
     </section>
 
@@ -342,7 +414,7 @@
   </footer>
   <!-- /ON4U-CANONICAL-FOOTER -->
 
-  <script src="script.js?v=42"></script>
+  <script src="script.js?v=46"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');
