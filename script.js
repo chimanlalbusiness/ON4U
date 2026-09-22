@@ -1017,7 +1017,59 @@ document.addEventListener("DOMContentLoaded", () => {
     "Materiais corporativos: Identidade visual": "Corporate materials: Visual identity",
     "HBD: Fardamentos & merchandising corporativo": "HBD: Corporate uniforms & merchandising",
     "Equipamento especializado: Operação internacional": "Specialized equipment: International operations",
-    "Equipamento & fornecimento: Operação internacional": "Equipment & supply: International operations"
+    "Equipamento & fornecimento: Operação internacional": "Equipment & supply: International operations",
+    "Oficina": "Workshop",
+    "Da oficina ao evento.": "From workshop to event.",
+    "Cada estrutura é cortada, montada e acabada em oficina antes de seguir para o local.": "Every structure is cut, assembled and finished in the workshop before it goes on site.",
+    "Placas": "Panels",
+    "Corte": "Cutting",
+    "Estrutura": "Frame",
+    "Montagem": "Assembly",
+    "Acabamento": "Finishing",
+    "Pronto a seguir": "Ready to ship",
+    "A carregar ON4U": "Loading ON4U",
+    "Oficina, placas": "Workshop, panels",
+    "Oficina, corte": "Workshop, cutting",
+    "Oficina, estrutura": "Workshop, frame",
+    "Oficina, montagem": "Workshop, assembly",
+    "Oficina, acabamento": "Workshop, finishing",
+    "Oficina, pronto a seguir": "Workshop, ready to ship",
+    "Domino's Pizza": "Domino's Pizza",
+    "Stand de marca": "Brand stand",
+    "Espaço de marca em evento": "Brand space at an event",
+    "Presença em evento": "Event presence",
+    "Papelaria & estacionário": "Stationery",
+    "Merchandising": "Merchandising",
+    "TAAG": "TAAG",
+    "Fardamentos & merchandising": "Uniforms & merchandising",
+    "Fitas personalizadas": "Custom lanyards",
+    "Pólos & chapéus": "Polo shirts & hats",
+    "OMS São Tomé e Príncipe": "WHO São Tomé e Príncipe",
+    "Merchandising institucional": "Institutional merchandising",
+    "Equipamentos desportivos": "Sportswear kits",
+    "Equipas & eventos particulares": "Teams & private events",
+    "Equipamentos personalizados": "Custom kits",
+    "Impressão & Sinalética": "Print & Signage",
+    "Viaturas CD Agualva": "CD Agualva vehicles",
+    "Decoração de viaturas": "Vehicle graphics",
+    "Telas impressas": "Printed canvases",
+    "4 projetos": "4 projects",
+    "5 projetos": "5 projects",
+    "8 projetos": "8 projects",
+    "Domino's Pizza: Stand de marca": "Domino's Pizza: Brand stand",
+    "Unitel: Stand de marca": "Unitel: Brand stand",
+    "Royal Canin: Stand de marca": "Royal Canin: Brand stand",
+    "Martini: Espaço de marca em evento": "Martini: Brand space at an event",
+    "Made of Lisboa: Presença em evento": "Made of Lisboa: Event presence",
+    "Materiais corporativos: Papelaria & estacionário": "Corporate materials: Stationery",
+    "TAAG: Fardamentos & merchandising": "TAAG: Uniforms & merchandising",
+    "Globalog: Fitas personalizadas": "Globalog: Custom lanyards",
+    "OMALI: Pólos & chapéus": "OMALI: Polo shirts & hats",
+    "OMS São Tomé e Príncipe: Merchandising institucional": "WHO São Tomé e Príncipe: Institutional merchandising",
+    "Ecobank: Equipamentos desportivos": "Ecobank: Sportswear kits",
+    "Equipas & eventos particulares: Equipamentos personalizados": "Teams & private events: Custom kits",
+    "Viaturas CD Agualva: Decoração de viaturas": "CD Agualva vehicles: Vehicle graphics",
+    "Telas impressas: LX Shisha Factory · TMC Logistics": "Printed canvases: LX Shisha Factory · TMC Logistics"
   };
 
   var origText = new WeakMap();   // text node -> original PT value
@@ -2244,19 +2296,40 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!rows.length) return;
   var wide = window.matchMedia("(min-width: 900px)");
   var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
-  var scrollIdx = 0, shown = -1, hoverIdx = -1, ticking = false;
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var scrollIdx = 0, shown = -1, hoverIdx = -1, ticking = false, timer = 0;
+
+  // the active project's photos cross-fade every few seconds; extra photos get
+  // their src only once their project is first shown. Reduced motion keeps the
+  // first photo.
+  function frame(shot, n) {
+    var imgs = shot.querySelectorAll("img"), dots = shot.querySelectorAll(".pf-dots i");
+    [].forEach.call(imgs, function (im, k) { im.classList.toggle("is-on", k === n); });
+    [].forEach.call(dots, function (d, k) { d.classList.toggle("is-on", k === n); });
+  }
+  function gallery(shot) {
+    clearInterval(timer);
+    if (!shot) return;
+    var imgs = shot.querySelectorAll("img");
+    [].forEach.call(imgs, function (im) { var s = im.getAttribute("data-src"); if (s) { im.src = s; im.removeAttribute("data-src"); } });
+    frame(shot, 0);
+    if (REDUCED || imgs.length < 2) return;
+    var n = 0;
+    timer = setInterval(function () { n = (n + 1) % imgs.length; frame(shot, n); }, 2800);
+  }
 
   function show(i) {
     if (i === shown) return;
     shown = i;
     rows.forEach(function (r, k) { r.classList.toggle("is-on", k === i); });
     shots.forEach(function (s, k) { s.classList.toggle("is-on", k === i); });
+    gallery(shots[i]);
     if (now) now.textContent = (i < 9 ? "0" : "") + (i + 1);
     if (bar) bar.style.setProperty("--pf-p", ((i + 1) / rows.length).toFixed(3));
   }
   function pick() {
     ticking = false;
-    if (!wide.matches) return;
+    if (!wide.matches) { clearInterval(timer); shown = -1; return; }
     var mid = (window.innerHeight + 76) / 2, best = 0, bestD = Infinity;
     rows.forEach(function (r, k) {
       var b = r.getBoundingClientRect();
@@ -2282,4 +2355,47 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", ask, { passive: true });
   window.addEventListener("resize", ask, { passive: true });
   pick();
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   Produção workshop strip (#oficina). While the section is pinned, the
+   share of its travel (with a short rest at each end) slides the track
+   so its last frame ends at the right gutter, lights every frame the
+   scroll has reached and fills the rail. Outside the pinned layout the
+   strip is native horizontal scroll and every frame stays lit.
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var sec = document.querySelector("[data-shop]");
+  if (!sec) return;
+  var pin = sec.querySelector(".pr-shop-pin");
+  var track = sec.querySelector("[data-shop-track]");
+  var frames = [].slice.call(sec.querySelectorAll(".pr-shop-frame"));
+  if (!pin || !track || !frames.length) return;
+  var pinned = window.matchMedia("(min-width: 900px) and (min-height: 720px) and (prefers-reduced-motion: no-preference)");
+  var REST_IN = 0.06, REST_OUT = 0.1, ticking = false;
+  function paint() {
+    ticking = false;
+    if (!pinned.matches) {
+      track.style.removeProperty("--shop-x");
+      frames.forEach(function (f) { f.classList.add("is-lit"); });
+      return;
+    }
+    var cs = getComputedStyle(sec);
+    var padT = parseFloat(cs.paddingTop) || 0, padB = parseFloat(cs.paddingBottom) || 0;
+    var stickTop = parseFloat(getComputedStyle(pin).top) || 0;
+    var travel = sec.clientHeight - padT - padB - pin.offsetHeight;
+    var raw = travel > 1 ? (stickTop - (sec.getBoundingClientRect().top + padT)) / travel : 1;
+    var p = (raw - REST_IN) / (1 - REST_IN - REST_OUT);
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    var over = Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
+    track.style.setProperty("--shop-x", (-over * p).toFixed(1) + "px");
+    sec.style.setProperty("--shop-p", p.toFixed(4));
+    var reach = p * (frames.length - 1) + 0.5;
+    frames.forEach(function (f, i) { f.classList.toggle("is-lit", i <= reach); });
+  }
+  function ask() { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }
+  window.addEventListener("scroll", ask, { passive: true });
+  window.addEventListener("resize", ask, { passive: true });
+  if (pinned.addEventListener) pinned.addEventListener("change", ask);
+  paint();
 })();

@@ -7383,7 +7383,13 @@ html.light-mode .pf-logo img { filter: brightness(0) invert(1); opacity: 0.55; }
 .pf-stage-frame { position: relative; aspect-ratio: 4 / 3; border-radius: 18px; border: 1px solid var(--im-line); background: var(--im-panel); overflow: clip; box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.9); }
 .pf-shot { position: absolute; inset: 0; opacity: 0; transform: scale(1.045); transition: opacity 600ms ease, transform 1100ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .pf-shot.is-on { opacity: 1; transform: none; }
-.pf-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* a project can hold several photos: they sit stacked and cross-fade while the
+   project is active (script.js); extra photos only get their src on activation */
+.pf-shot img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 700ms ease; }
+.pf-shot img.is-on { opacity: 1; }
+.pf-dots { position: absolute; top: 0.9rem; right: 0.9rem; z-index: 2; display: flex; gap: 0.35rem; padding: 0.38rem 0.5rem; border-radius: 999px; background: rgba(9, 9, 11, 0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.pf-dots i { width: 0.42rem; height: 0.42rem; border-radius: 50%; background: rgba(255, 255, 255, 0.38); transition: background-color 300ms ease, transform 300ms ease; }
+.pf-dots i.is-on { background: var(--pg-accent); transform: scale(1.25); }
 .pf-shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, rgba(9, 9, 11, 0.78) 100%); pointer-events: none; }
 .pf-plate { display: none; }
 .is-plate > .pf-plate { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; padding: 1.5rem; text-align: center; background: radial-gradient(circle at 50% 44%, rgba(249, 115, 22, 0.13), transparent 62%), var(--im-panel); }
@@ -7408,8 +7414,97 @@ html.light-mode .pf-logo img { filter: brightness(0) invert(1); opacity: 0.55; }
   .pf-row-n { padding-top: 0.55rem; }
   .pf-row-shot { grid-area: shot; position: relative; display: block; aspect-ratio: 16 / 10; margin-bottom: 0.4rem; border-radius: 14px; border: 1px solid var(--im-line); background: var(--im-panel); overflow: clip; container-type: inline-size; }
   .pf-row-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .pf-row-shot.is-plate { display: block; }
   .pf-row-n { opacity: 1; }
   .pf-row-title { font-size: clamp(1.55rem, 7vw, 2.1rem); color: var(--pg-ink); }
   .pf-row-sub { opacity: 1; color: var(--pg-ink-2); }
   .pf-row-go { opacity: 1; width: 2.1rem; height: 2.1rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Produção · da oficina ao evento. Six real workshop photos on one
+   track. Wide, tall viewports pin the section and the runway slides the
+   track left; a frame lights (full opacity, orange number) once the
+   scroll reaches it and the rail under the strip fills with the same
+   progress. Narrow or short viewports, and reduced motion, get a plain
+   horizontal strip that scrolls by touch, every frame lit.
+   ══════════════════════════════════════════════════════════════ */
+.pr-shop { --shop-p: 0; min-height: 300vh; padding-block: clamp(1rem, 2.5vw, 2rem); }
+.pr-shop-pin { position: sticky; top: 4.75rem; min-height: calc(100vh - 4.75rem); display: flex; flex-direction: column; justify-content: center; gap: clamp(1.4rem, 3vh, 2.2rem); overflow: clip; }
+/* in a column flexbox the auto side margins of .pg2-wrap would shrink it to its content and centre it */
+.pr-shop-pin > .pg2-wrap { width: 100%; }
+.pr-shop-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 0.8rem 3rem; }
+.pr-shop-head .pg2-shead { margin-bottom: 0; }
+.pr-shop-head .pg2-h2 { margin-bottom: 0; }
+.pr-shop-lede { margin: 0; max-width: 42ch; font-size: 0.98rem; line-height: 1.6; color: var(--pg-ink-3); }
+.pr-shop-viewport { position: relative; container-type: inline-size; -webkit-user-select: none; user-select: none; }
+.pr-shop-track { --gutter: max(var(--pad), calc((100cqw - 1120px) / 2 + var(--pad))); list-style: none; margin: 0; padding: 0 var(--gutter); display: flex; align-items: flex-end; gap: clamp(1rem, 2vw, 1.6rem); width: max-content; transform: translate3d(var(--shop-x, 0px), 0, 0); will-change: transform; }
+.pr-shop-frame { flex: none; height: clamp(240px, 48vh, 500px); aspect-ratio: var(--ar); max-width: 82vw; }
+/* not yet reached: a neutral wash over the photo (not opacity, which the light
+   theme's page inversion turns blue-grey) and a dimmed caption */
+.pr-shop-shot::after { content: ""; position: absolute; inset: 0; background: var(--pg-bg-2); opacity: 0.68; transition: opacity 450ms ease; pointer-events: none; }
+.pr-shop-frame.is-lit .pr-shop-shot::after { opacity: 0; }
+.pr-shop-frame figcaption { opacity: 0.45; transition: opacity 450ms ease; }
+.pr-shop-frame.is-lit figcaption { opacity: 1; }
+.pr-shop-frame figure { margin: 0; height: 100%; display: flex; flex-direction: column; gap: 0.75rem; }
+.pr-shop-shot { position: relative; flex: 1; min-height: 0; border-radius: 16px; border: 1px solid var(--im-line); background: var(--im-panel); overflow: clip; }
+.pr-shop-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pr-shop-frame figcaption { display: flex; align-items: baseline; gap: 0.6rem; font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; color: var(--pg-ink); }
+.pr-shop-frame figcaption b { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; color: var(--pg-ink-3); transition: color 450ms ease; }
+.pr-shop-frame.is-lit figcaption b { color: var(--pg-accent); }
+.pr-shop-rail { position: relative; height: 1px; background: rgba(255, 255, 255, 0.14); }
+.pr-shop-rail i { position: absolute; left: 0; right: 0; top: -0.5px; height: 2px; background: var(--pg-accent); box-shadow: 0 0 8px rgba(249, 115, 22, 0.6); transform-origin: 0 50%; transform: scaleX(var(--shop-p)); }
+@media (max-width: 899px), (max-height: 719px), (prefers-reduced-motion: reduce) {
+  .pr-shop { min-height: 0; padding-block: var(--pg-sec-y); }
+  .pr-shop-pin { position: static; min-height: 0; display: block; overflow: visible; }
+  .pr-shop-head { margin-bottom: 1.6rem; }
+  .pr-shop-viewport { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .pr-shop-viewport::-webkit-scrollbar { display: none; }
+  .pr-shop-track { transform: none; will-change: auto; }
+  .pr-shop-frame { height: clamp(220px, 58vw, 360px); scroll-snap-align: center; }
+  .pr-shop-frame figcaption b { color: var(--pg-accent); }
+  .pr-shop-rail { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Entry loader. Shown only while html.on4u-loading is set (the inline
+   head script sets it on the first page of a visit). A dotted wireframe
+   globe turns behind the ON4U mark, which draws itself stroke by stroke;
+   a hairline under it fills with real progress (--lp: parsed, loaded,
+   globe drawn). On exit the globe expands and fades outward, handing
+   over to the hero globe that sits in the same place. Reduced motion:
+   the mark is drawn from the start, nothing spins, the exit is a fade.
+   ══════════════════════════════════════════════════════════════ */
+#on4u-loader { display: none; }
+/* scrollbar space stays reserved so nothing shifts when the loader leaves */
+html.on4u-loading { overflow: hidden; scrollbar-gutter: stable; }
+html.on4u-loading #on4u-loader { position: fixed; inset: 0; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(1.6rem, 4vh, 2.4rem); background: #09090b; transition: opacity 650ms ease, visibility 0s linear 650ms; }
+html.on4u-loaded #on4u-loader { opacity: 0; visibility: hidden; }
+.ld-core { position: relative; width: min(58vw, 340px); aspect-ratio: 1; display: grid; place-items: center; transition: transform 750ms cubic-bezier(0.6, 0, 0.2, 1), opacity 650ms ease; }
+/* exit: the mark leaves first (the hero has its own centred logo), then the ring
+   grows to roughly the hero globe's size as the veil fades */
+html.on4u-loaded .ld-core { transform: scale(2); opacity: 0; }
+.ld-logo { transition: opacity 220ms ease; }
+html.on4u-loaded .ld-logo { opacity: 0; }
+.ld-glow { position: absolute; left: 50%; top: 50%; width: 150%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle closest-side, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.05) 55%, transparent 100%); }
+.ld-globe { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.12); background: radial-gradient(rgba(195, 195, 208, 0.3) 1px, transparent 1.4px) 0 0 / 13px 13px; -webkit-mask-image: radial-gradient(circle closest-side, #000 72%, transparent 100%); mask-image: radial-gradient(circle closest-side, #000 72%, transparent 100%); perspective: 900px; }
+.ld-mer { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(249, 115, 22, 0.42); animation: ldTurn 3.2s linear infinite; }
+.ld-mer--b { animation-delay: -1.6s; border-color: rgba(255, 255, 255, 0.18); }
+.ld-eq { position: absolute; left: 0; right: 0; top: 50%; height: 30%; transform: translateY(-50%); border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.1); }
+@keyframes ldTurn { from { transform: rotateY(0deg); } to { transform: rotateY(180deg); } }
+.ld-logo { position: relative; width: 44%; height: auto; overflow: visible; filter: drop-shadow(0 0 18px rgba(9, 9, 11, 0.9)); }
+/* strokes start invisible: a zero-length dash with round caps would still paint a speck */
+.ld-s { stroke: #fff; stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: ldDraw 650ms cubic-bezier(0.55, 0, 0.25, 1) var(--d, 0ms) forwards; }
+.ld-o { stroke: #f97316; }
+.ld-dot { fill: #f97316; transform-box: fill-box; transform-origin: center; transform: scale(0); animation: ldPop 380ms cubic-bezier(0.3, 1.6, 0.5, 1) 560ms forwards; }
+@keyframes ldDraw { 0% { opacity: 0; } 12% { opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } }
+@keyframes ldPop { to { transform: scale(1); } }
+.ld-rail { position: relative; width: clamp(110px, 14vw, 150px); height: 1px; background: rgba(255, 255, 255, 0.14); overflow: visible; }
+.ld-rail i { position: absolute; left: 0; right: 0; top: -0.5px; height: 2px; background: #f97316; box-shadow: 0 0 10px rgba(249, 115, 22, 0.7); transform-origin: 0 50%; transform: scaleX(var(--lp, 0.12)); transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+@media (prefers-reduced-motion: reduce) {
+  .ld-mer { animation: none; transform: rotateY(60deg); }
+  .ld-mer--b { transform: rotateY(-60deg); }
+  .ld-s { animation: none; stroke-dashoffset: 0; opacity: 1; }
+  .ld-dot { animation: none; transform: none; }
+  html.on4u-loaded .ld-core { transform: none; }
 }

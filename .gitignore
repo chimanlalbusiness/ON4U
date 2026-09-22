@@ -1,2 +1,27 @@
 .playwright-mcp/
 preview-*.html
+
+# Windows thumbnail caches
+Thumbs.db
+
+# Original photos stay local; the site uses the web copies in
+# images/projects/ and images/workshop/ (converted to ~100 KB WebP)
+images/stands/woodworking/
+images/stands/dominos.jpg
+images/stands/dominos2.jpg
+images/stands/madeOfLisboa.jpg
+images/stands/martini.png
+images/stands/royalCanin.jpeg
+images/stands/unitel.jpg
+images/stands/unitel2.jpg
+images/merchandising/Globalog/
+images/merchandising/OMALI/
+images/merchandising/OMS/
+images/merchandising/TAAG/
+images/equipamentos/Ecobanck/
+images/equipamentos/Eventos Particulares/
+images/CarDecals/
+images/Canvas/
+images/VisualIdentity/
+
+images/merchandising/HBD/

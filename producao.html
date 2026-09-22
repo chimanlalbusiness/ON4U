@@ -24,7 +24,37 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=46" />
+  <script>/* Entry loader: first page of a visit only. Holds until the page has
+     loaded (and, on the homepage, until the globe has drawn), at least 1.1 s
+     so it never flashes, at most 5 s so it never traps anyone. */
+  (function () {
+    var d = document.documentElement;
+    try { if (sessionStorage.getItem('on4u-intro')) return; sessionStorage.setItem('on4u-intro', '1'); } catch (e) { return; }
+    d.classList.add('on4u-loading');
+    d.style.setProperty('--lp', '0.12');
+    var t0 = Date.now(), MIN = 1100, MAX = 5000, done = false, loaded = false, globe = !!window.__on4uGlobeReady;
+    function set(v) { d.style.setProperty('--lp', String(v)); }
+    function finish() {
+      if (done) return; done = true;
+      setTimeout(function () {
+        set(1);
+        setTimeout(function () {
+          d.classList.add('on4u-loaded');
+          setTimeout(function () {
+            d.classList.remove('on4u-loading', 'on4u-loaded');
+            var el = document.getElementById('on4u-loader'); if (el) el.parentNode.removeChild(el);
+          }, 750);
+        }, 260);
+      }, Math.max(0, MIN - (Date.now() - t0)));
+    }
+    function check() { if (loaded && (globe || !document.getElementById('hero-globe'))) finish(); }
+    document.addEventListener('DOMContentLoaded', function () { set(0.45); });
+    window.addEventListener('load', function () { loaded = true; set(0.8); check(); });
+    document.addEventListener('on4u:globe-ready', function () { globe = true; set(0.92); check(); });
+    setTimeout(finish, MAX);
+  })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=48" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
   <style>
@@ -70,6 +100,14 @@
 </head>
 
 <body class="scrolly-body">
+  <div id="on4u-loader" role="status" aria-label="A carregar ON4U">
+    <div class="ld-core" aria-hidden="true">
+      <div class="ld-glow"></div>
+      <div class="ld-globe"><i class="ld-mer"></i><i class="ld-mer ld-mer--b"></i><i class="ld-eq"></i></div>
+      <svg class="ld-logo" viewBox="0 -10 184 65" fill="none"><circle class="ld-s" style="--d:0ms" cx="20" cy="30" r="13" pathLength="1"/><path class="ld-s" style="--d:80ms" d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" pathLength="1"/><path class="ld-s ld-o" style="--d:160ms" d="M 129 0 L 103 24 L 129 24" pathLength="1"/><circle class="ld-dot" cx="129" cy="43" r="7"/><path class="ld-s" style="--d:240ms" d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" pathLength="1"/></svg>
+    </div>
+    <div class="ld-rail" aria-hidden="true"><i></i></div>
+  </div>
   <!-- ON4U-CANONICAL-HEADER -->
   <a href="#main" class="skip-link">Saltar para o conteúdo</a>
   <header class="header is-dark" data-theme="dark" id="top">
@@ -365,6 +403,66 @@
       </div>
     </section>
 
+    <!-- OFICINA: seis fotografias reais da construção de um stand, da placa ao
+         stand embalado; a faixa desliza com o scroll e cada etapa acende quando é
+         alcançada. Em ecrãs estreitos ou com movimento reduzido é uma faixa normal. -->
+    <section class="pg2-section pg2-section--2 pr-shop" id="oficina" data-shop>
+      <div class="pr-shop-pin">
+        <div class="pg2-wrap">
+          <div class="pr-shop-head pg2-reveal">
+            <div class="pg2-shead">
+              <p class="pg2-eyebrow">Oficina</p>
+              <h2 class="pg2-h2">Da oficina ao evento.</h2>
+            </div>
+            <p class="pr-shop-lede">Cada estrutura é cortada, montada e acabada em oficina antes de seguir para o local.</p>
+          </div>
+        </div>
+        <div class="pr-shop-viewport" data-shop-viewport>
+          <ol class="pr-shop-track" data-shop-track>
+            <li class="pr-shop-frame" style="--ar:1600 / 1067">
+              <figure>
+                <span class="pr-shop-shot"><img src="images/workshop/oficina-01.webp" alt="Oficina, placas" width="1600" height="1067" loading="lazy" decoding="async"></span>
+                <figcaption><b>01</b>Placas</figcaption>
+              </figure>
+            </li>
+            <li class="pr-shop-frame" style="--ar:1067 / 1600">
+              <figure>
+                <span class="pr-shop-shot"><img src="images/workshop/oficina-02.webp" alt="Oficina, corte" width="1067" height="1600" loading="lazy" decoding="async"></span>
+                <figcaption><b>02</b>Corte</figcaption>
+              </figure>
+            </li>
+            <li class="pr-shop-frame" style="--ar:1067 / 1600">
+              <figure>
+                <span class="pr-shop-shot"><img src="images/workshop/oficina-03.webp" alt="Oficina, estrutura" width="1067" height="1600" loading="lazy" decoding="async"></span>
+                <figcaption><b>03</b>Estrutura</figcaption>
+              </figure>
+            </li>
+            <li class="pr-shop-frame" style="--ar:1600 / 1067">
+              <figure>
+                <span class="pr-shop-shot"><img src="images/workshop/oficina-04.webp" alt="Oficina, montagem" width="1600" height="1067" loading="lazy" decoding="async"></span>
+                <figcaption><b>04</b>Montagem</figcaption>
+              </figure>
+            </li>
+            <li class="pr-shop-frame" style="--ar:1600 / 1067">
+              <figure>
+                <span class="pr-shop-shot"><img src="images/workshop/oficina-05.webp" alt="Oficina, acabamento" width="1600" height="1067" loading="lazy" decoding="async"></span>
+                <figcaption><b>05</b>Acabamento</figcaption>
+              </figure>
+            </li>
+            <li class="pr-shop-frame" style="--ar:1600 / 1067">
+              <figure>
+                <span class="pr-shop-shot"><img src="images/workshop/oficina-06.webp" alt="Oficina, pronto a seguir" width="1600" height="1067" loading="lazy" decoding="async"></span>
+                <figcaption><b>06</b>Pronto a seguir</figcaption>
+              </figure>
+            </li>
+          </ol>
+        </div>
+        <div class="pg2-wrap">
+          <div class="pr-shop-rail" aria-hidden="true"><i data-shop-bar></i></div>
+        </div>
+      </div>
+    </section>
+
     <!-- PROJETOS -->
     <section class="pg2-section pg2-section--1">
       <div class="pg2-wrap">
@@ -379,7 +477,7 @@
             <span class="pg2-pf-body"><span class="pg2-pf-tag">Stands &amp; Eventos</span><h3>Stand Repsol: Ativação corporativa</h3></span>
           </a>
           <a class="pg2-pf" href="/portfolio.html">
-            <img src="images/merchandising/hbd.jpeg" alt="Fardamentos e merchandising corporativo, HBD" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.pg2-pf-ph').style.display='flex'">
+            <img src="images/projects/hbd-01.webp" alt="Fardamentos e merchandising corporativo, HBD" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.pg2-pf-ph').style.display='flex'">
             <span class="pg2-pf-ph" aria-hidden="true" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span>
             <span class="pg2-pf-grad" aria-hidden="true"></span>
             <span class="pg2-pf-body"><span class="pg2-pf-tag">Produção &amp; Criatividade</span><h3>Fardamentos e Merchandising Corporativo, HBD</h3></span>
@@ -481,7 +579,7 @@
   </footer>
   <!-- /ON4U-CANONICAL-FOOTER -->
 
-  <script src="script.js?v=46"></script>
+  <script src="script.js?v=48"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');

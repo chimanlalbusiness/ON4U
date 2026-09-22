@@ -24,7 +24,37 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=46" />
+  <script>/* Entry loader: first page of a visit only. Holds until the page has
+     loaded (and, on the homepage, until the globe has drawn), at least 1.1 s
+     so it never flashes, at most 5 s so it never traps anyone. */
+  (function () {
+    var d = document.documentElement;
+    try { if (sessionStorage.getItem('on4u-intro')) return; sessionStorage.setItem('on4u-intro', '1'); } catch (e) { return; }
+    d.classList.add('on4u-loading');
+    d.style.setProperty('--lp', '0.12');
+    var t0 = Date.now(), MIN = 1100, MAX = 5000, done = false, loaded = false, globe = !!window.__on4uGlobeReady;
+    function set(v) { d.style.setProperty('--lp', String(v)); }
+    function finish() {
+      if (done) return; done = true;
+      setTimeout(function () {
+        set(1);
+        setTimeout(function () {
+          d.classList.add('on4u-loaded');
+          setTimeout(function () {
+            d.classList.remove('on4u-loading', 'on4u-loaded');
+            var el = document.getElementById('on4u-loader'); if (el) el.parentNode.removeChild(el);
+          }, 750);
+        }, 260);
+      }, Math.max(0, MIN - (Date.now() - t0)));
+    }
+    function check() { if (loaded && (globe || !document.getElementById('hero-globe'))) finish(); }
+    document.addEventListener('DOMContentLoaded', function () { set(0.45); });
+    window.addEventListener('load', function () { loaded = true; set(0.8); check(); });
+    document.addEventListener('on4u:globe-ready', function () { globe = true; set(0.92); check(); });
+    setTimeout(finish, MAX);
+  })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=48" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>if(localStorage.getItem('on4u-theme')==='light')document.documentElement.classList.add('light-mode');</script>
   <style>
@@ -65,17 +95,38 @@
       { "@type": "ListItem", "position": 1, "name": "Stand Repsol: Ativação corporativa" },
       { "@type": "ListItem", "position": 2, "name": "Santa Casa da Misericórdia: Presença institucional" },
       { "@type": "ListItem", "position": 3, "name": "Guiné-Bissau: Presença local & operação" },
-      { "@type": "ListItem", "position": 4, "name": "Banco Central de São Tomé e Príncipe: Identidade visual" },
-      { "@type": "ListItem", "position": 5, "name": "Materiais corporativos: Identidade visual" },
-      { "@type": "ListItem", "position": 6, "name": "HBD: Fardamentos & merchandising corporativo" },
-      { "@type": "ListItem", "position": 7, "name": "Equipamento especializado: Operação internacional" },
-      { "@type": "ListItem", "position": 8, "name": "Equipamento & fornecimento: Operação internacional" }
+      { "@type": "ListItem", "position": 4, "name": "Domino's Pizza: Stand de marca" },
+      { "@type": "ListItem", "position": 5, "name": "Unitel: Stand de marca" },
+      { "@type": "ListItem", "position": 6, "name": "Royal Canin: Stand de marca" },
+      { "@type": "ListItem", "position": 7, "name": "Martini: Espaço de marca em evento" },
+      { "@type": "ListItem", "position": 8, "name": "Made of Lisboa: Presença em evento" },
+      { "@type": "ListItem", "position": 9, "name": "Banco Central de São Tomé e Príncipe: Identidade visual" },
+      { "@type": "ListItem", "position": 10, "name": "Materiais corporativos: Papelaria & estacionário" },
+      { "@type": "ListItem", "position": 11, "name": "TAAG: Fardamentos & merchandising" },
+      { "@type": "ListItem", "position": 12, "name": "Globalog: Fitas personalizadas" },
+      { "@type": "ListItem", "position": 13, "name": "OMALI: Pólos & chapéus" },
+      { "@type": "ListItem", "position": 14, "name": "OMS São Tomé e Príncipe: Merchandising institucional" },
+      { "@type": "ListItem", "position": 15, "name": "HBD: Fardamentos & merchandising corporativo" },
+      { "@type": "ListItem", "position": 16, "name": "Ecobank: Equipamentos desportivos" },
+      { "@type": "ListItem", "position": 17, "name": "Equipas & eventos particulares: Equipamentos personalizados" },
+      { "@type": "ListItem", "position": 18, "name": "Equipamento especializado: Operação internacional" },
+      { "@type": "ListItem", "position": 19, "name": "Equipamento & fornecimento: Operação internacional" },
+      { "@type": "ListItem", "position": 20, "name": "Viaturas CD Agualva: Decoração de viaturas" },
+      { "@type": "ListItem", "position": 21, "name": "Telas impressas: LX Shisha Factory · TMC Logistics" }
     ]
   }
   </script>
 </head>
 
 <body class="scrolly-body">
+  <div id="on4u-loader" role="status" aria-label="A carregar ON4U">
+    <div class="ld-core" aria-hidden="true">
+      <div class="ld-glow"></div>
+      <div class="ld-globe"><i class="ld-mer"></i><i class="ld-mer ld-mer--b"></i><i class="ld-eq"></i></div>
+      <svg class="ld-logo" viewBox="0 -10 184 65" fill="none"><circle class="ld-s" style="--d:0ms" cx="20" cy="30" r="13" pathLength="1"/><path class="ld-s" style="--d:80ms" d="M 55 43 L 55 30 A 13 13 0 0 1 81 30 L 81 43" pathLength="1"/><path class="ld-s ld-o" style="--d:160ms" d="M 129 0 L 103 24 L 129 24" pathLength="1"/><circle class="ld-dot" cx="129" cy="43" r="7"/><path class="ld-s" style="--d:240ms" d="M 151 17 L 151 30 A 13 13 0 0 0 177 30 L 177 17" pathLength="1"/></svg>
+    </div>
+    <div class="ld-rail" aria-hidden="true"><i></i></div>
+  </div>
   <!-- ON4U-CANONICAL-HEADER -->
   <a href="#main" class="skip-link">Saltar para o conteúdo</a>
   <header class="header is-dark" data-theme="dark" id="top">
@@ -156,7 +207,7 @@
         <p class="pg2-eyebrow">Projetos</p>
         <h1>Projetos e referências.</h1>
         <p class="pg2-lede">Projetos onde o que importou foi coordenar requisitos, prazos e operação. Mostramos só o que pode ser partilhado.</p>
-        <p class="pf-meta"><span><b>08</b>projetos</span><span><b>04</b>áreas</span></p>
+        <p class="pf-meta"><span><b>21</b>projetos</span><span><b>05</b>áreas</span></p>
       </div>
     </section>
 
@@ -169,10 +220,9 @@
       </div>
     </section>
 
-    <!-- ÍNDICE EDITORIAL: os projetos como sumário em tipografia grande; o palco
-         fixo mostra a fotografia do projeto ativo. Quando houver factos por
-         projeto (pedido, validação, entrega), cada linha ganha esse bloco e o
-         palco passa a mostrá-lo: a estrutura já está pronta para isso. -->
+    <!-- ÍNDICE EDITORIAL: os projetos agrupados por área, em tipografia grande; o
+         palco fixo mostra as fotografias do projeto ativo (a primeira carrega com a
+         página, as restantes só quando o projeto fica ativo). -->
     <section class="pg2-section pg2-section--1 pf-index-section">
       <div class="pg2-wrap">
         <div class="pf-index" data-pf-index>
@@ -180,121 +230,272 @@
             <section class="pf-group" aria-labelledby="pf-group-1">
               <header class="pf-group-head">
                 <h2 class="pf-group-title" id="pf-group-1">Stands &amp; Eventos</h2>
-                <span class="pf-group-count">3 projetos</span>
+                <span class="pf-group-count">8 projetos</span>
               </header>
-              <ol class="pf-group-list">
-            <li class="pf-row is-on" data-pf="0">
-              <a class="pf-row-link" href="/producao.html">
-                <span class="pf-row-shot"><img src="images/stands/repsol.jpeg" alt="Stand Repsol: Ativação corporativa" loading="lazy" decoding="async" style="object-position:50% 50%"></span>
-                <span class="pf-row-n">01</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">Stand Repsol</span>
-                  <span class="pf-row-sub">Ativação corporativa</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
-            <li class="pf-row" data-pf="1">
-              <a class="pf-row-link" href="/producao.html">
-                <span class="pf-row-shot"><img src="images/stands/santaCasa.jpg" alt="Santa Casa da Misericórdia: Presença institucional" loading="lazy" decoding="async" style="object-position:50% 50%"></span>
-                <span class="pf-row-n">02</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">Santa Casa da Misericórdia</span>
-                  <span class="pf-row-sub">Presença institucional</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
-            <li class="pf-row" data-pf="2">
-              <a class="pf-row-link" href="/importacao-e-exportacao.html">
-                <span class="pf-row-shot"><img src="images/stands/bissau.png" alt="Guiné-Bissau: Presença local &amp; operação" loading="lazy" decoding="async" style="object-position:50% 50%"></span>
-                <span class="pf-row-n">03</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">Guiné-Bissau</span>
-                  <span class="pf-row-sub">Presença local &amp; operação</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
+              <ol class="pf-group-list" start="1">
+                <li class="pf-row is-on" data-pf="0">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/repsol-01.webp" alt="Stand Repsol: Ativação corporativa" width="1400" height="788" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">01</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Stand Repsol</span>
+                      <span class="pf-row-sub">Ativação corporativa</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="1">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/santa-casa-01.webp" alt="Santa Casa da Misericórdia: Presença institucional" width="1400" height="788" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">02</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Santa Casa da Misericórdia</span>
+                      <span class="pf-row-sub">Presença institucional</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="2">
+                  <a class="pf-row-link" href="/importacao-e-exportacao.html">
+                    <span class="pf-row-shot"><img src="images/projects/bissau-01.webp" alt="Guiné-Bissau: Presença local &amp; operação" width="1280" height="960" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">03</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Guiné-Bissau</span>
+                      <span class="pf-row-sub">Presença local &amp; operação</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="3">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/dominos-01.webp" alt="Domino&#x27;s Pizza: Stand de marca" width="1400" height="786" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">04</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Domino's Pizza</span>
+                      <span class="pf-row-sub">Stand de marca</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="4">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/unitel-01.webp" alt="Unitel: Stand de marca" width="1280" height="720" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">05</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Unitel</span>
+                      <span class="pf-row-sub">Stand de marca</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="5">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/royal-canin-01.webp" alt="Royal Canin: Stand de marca" width="1400" height="1050" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">06</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Royal Canin</span>
+                      <span class="pf-row-sub">Stand de marca</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="6">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/martini-01.webp" alt="Martini: Espaço de marca em evento" width="1400" height="789" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">07</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Martini</span>
+                      <span class="pf-row-sub">Espaço de marca em evento</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="7">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/made-of-lisboa-01.webp" alt="Made of Lisboa: Presença em evento" width="786" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">08</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Made of Lisboa</span>
+                      <span class="pf-row-sub">Presença em evento</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
               </ol>
             </section>
             <section class="pf-group" aria-labelledby="pf-group-2">
               <header class="pf-group-head">
                 <h2 class="pf-group-title" id="pf-group-2">Identidade Visual</h2>
-                <span class="pf-group-count">1 projeto</span>
+                <span class="pf-group-count">2 projetos</span>
               </header>
-              <ol class="pf-group-list">
-            <li class="pf-row" data-pf="3">
-              <a class="pf-row-link" href="/producao.html">
-                <span class="pf-row-shot"><img src="images/IV/logoBancoCentralSTP.jpg" alt="Banco Central de São Tomé e Príncipe: Identidade visual" loading="lazy" decoding="async" style="object-position:40% 40%"></span>
-                <span class="pf-row-n">04</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">Banco Central de São Tomé e Príncipe</span>
-                  <span class="pf-row-sub">Identidade visual</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
+              <ol class="pf-group-list" start="9">
+                <li class="pf-row" data-pf="8">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/banco-central-01.webp" alt="Banco Central de São Tomé e Príncipe: Identidade visual" width="1400" height="952" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">09</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Banco Central de São Tomé e Príncipe</span>
+                      <span class="pf-row-sub">Identidade visual</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="9">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/materiais-corporativos-01.webp" alt="Materiais corporativos: Papelaria &amp; estacionário" width="1400" height="1050" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">10</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Materiais corporativos</span>
+                      <span class="pf-row-sub">Papelaria &amp; estacionário</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
               </ol>
             </section>
             <section class="pf-group" aria-labelledby="pf-group-3">
               <header class="pf-group-head">
-                <h2 class="pf-group-title" id="pf-group-3">Produção &amp; Criatividade</h2>
-                <span class="pf-group-count">2 projetos</span>
+                <h2 class="pf-group-title" id="pf-group-3">Merchandising</h2>
+                <span class="pf-group-count">5 projetos</span>
               </header>
-              <ol class="pf-group-list">
-            <li class="pf-row" data-pf="4">
-              <a class="pf-row-link" href="/producao.html">
-                <span class="pf-row-shot"><img src="images/IV/mockupsFF.jpg" alt="Materiais corporativos: Identidade visual" loading="lazy" decoding="async" style="object-position:50% 50%"></span>
-                <span class="pf-row-n">05</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">Materiais corporativos</span>
-                  <span class="pf-row-sub">Identidade visual</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
-            <li class="pf-row" data-pf="5">
-              <a class="pf-row-link" href="/producao.html">
-                <span class="pf-row-shot"><span class="pf-plate" aria-hidden="true"><b>HBD</b><i>Fardamentos &amp; merchandising corporativo</i></span><img src="images/merchandising/hbd.jpeg" alt="HBD: Fardamentos &amp; merchandising corporativo" loading="lazy" decoding="async" style="object-position:50% 50%" onerror="this.parentElement.classList.add('is-plate');this.remove()"></span>
-                <span class="pf-row-n">06</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">HBD</span>
-                  <span class="pf-row-sub">Fardamentos &amp; merchandising corporativo</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
+              <ol class="pf-group-list" start="11">
+                <li class="pf-row" data-pf="10">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/taag-01.webp" alt="TAAG: Fardamentos &amp; merchandising" width="1132" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">11</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">TAAG</span>
+                      <span class="pf-row-sub">Fardamentos &amp; merchandising</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="11">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/globalog-01.webp" alt="Globalog: Fitas personalizadas" width="1050" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">12</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Globalog</span>
+                      <span class="pf-row-sub">Fitas personalizadas</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="12">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/omali-01.webp" alt="OMALI: Pólos &amp; chapéus" width="1400" height="933" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">13</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">OMALI</span>
+                      <span class="pf-row-sub">Pólos &amp; chapéus</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="13">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/oms-01.webp" alt="OMS São Tomé e Príncipe: Merchandising institucional" width="1050" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">14</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">OMS São Tomé e Príncipe</span>
+                      <span class="pf-row-sub">Merchandising institucional</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="14">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/hbd-01.webp" alt="HBD: Fardamentos &amp; merchandising corporativo" width="1400" height="933" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">15</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">HBD</span>
+                      <span class="pf-row-sub">Fardamentos &amp; merchandising corporativo</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
               </ol>
             </section>
             <section class="pf-group" aria-labelledby="pf-group-4">
               <header class="pf-group-head">
                 <h2 class="pf-group-title" id="pf-group-4">Fardamentos &amp; Equipamentos</h2>
+                <span class="pf-group-count">4 projetos</span>
+              </header>
+              <ol class="pf-group-list" start="16">
+                <li class="pf-row" data-pf="15">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/ecobank-01.webp" alt="Ecobank: Equipamentos desportivos" width="1050" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">16</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Ecobank</span>
+                      <span class="pf-row-sub">Equipamentos desportivos</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="16">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/equipas-01.webp" alt="Equipas &amp; eventos particulares: Equipamentos personalizados" width="1050" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">17</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Equipas &amp; eventos particulares</span>
+                      <span class="pf-row-sub">Equipamentos personalizados</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="17">
+                  <a class="pf-row-link" href="/importacao-e-exportacao.html">
+                    <span class="pf-row-shot"><img src="images/projects/equipamento-especializado-01.webp" alt="Equipamento especializado: Operação internacional" width="1050" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">18</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Equipamento especializado</span>
+                      <span class="pf-row-sub">Operação internacional</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="18">
+                  <a class="pf-row-link" href="/importacao-e-exportacao.html">
+                    <span class="pf-row-shot"><img src="images/projects/equipamento-fornecimento-01.webp" alt="Equipamento &amp; fornecimento: Operação internacional" width="1050" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">19</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Equipamento &amp; fornecimento</span>
+                      <span class="pf-row-sub">Operação internacional</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+              </ol>
+            </section>
+            <section class="pf-group" aria-labelledby="pf-group-5">
+              <header class="pf-group-head">
+                <h2 class="pf-group-title" id="pf-group-5">Impressão &amp; Sinalética</h2>
                 <span class="pf-group-count">2 projetos</span>
               </header>
-              <ol class="pf-group-list">
-            <li class="pf-row" data-pf="6">
-              <a class="pf-row-link" href="/importacao-e-exportacao.html">
-                <span class="pf-row-shot"><img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="Equipamento especializado: Operação internacional" loading="lazy" decoding="async" style="object-position:50% 42%"></span>
-                <span class="pf-row-n">07</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">Equipamento especializado</span>
-                  <span class="pf-row-sub">Operação internacional</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
-            <li class="pf-row" data-pf="7">
-              <a class="pf-row-link" href="/importacao-e-exportacao.html">
-                <span class="pf-row-shot"><img src="images/equipamentos/todosEquipamentos.jpeg" alt="Equipamento &amp; fornecimento: Operação internacional" loading="lazy" decoding="async" style="object-position:50% 45%"></span>
-                <span class="pf-row-n">08</span>
-                <span class="pf-row-main">
-                  <span class="pf-row-title">Equipamento &amp; fornecimento</span>
-                  <span class="pf-row-sub">Operação internacional</span>
-                </span>
-                <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-              </a>
-            </li>
+              <ol class="pf-group-list" start="20">
+                <li class="pf-row" data-pf="19">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/viaturas-cd-agualva-01.webp" alt="Viaturas CD Agualva: Decoração de viaturas" width="1400" height="1050" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">20</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Viaturas CD Agualva</span>
+                      <span class="pf-row-sub">Decoração de viaturas</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
+                <li class="pf-row" data-pf="20">
+                  <a class="pf-row-link" href="/producao.html">
+                    <span class="pf-row-shot"><img src="images/projects/telas-impressas-01.webp" alt="Telas impressas: LX Shisha Factory · TMC Logistics" width="1050" height="1400" loading="lazy" decoding="async"></span>
+                    <span class="pf-row-n">21</span>
+                    <span class="pf-row-main">
+                      <span class="pf-row-title">Telas impressas</span>
+                      <span class="pf-row-sub">LX Shisha Factory · TMC Logistics</span>
+                    </span>
+                    <span class="pf-row-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+                  </a>
+                </li>
               </ol>
             </section>
           </div>
@@ -302,15 +503,28 @@
             <div class="pf-stage-sticky">
               <div class="pf-stage-glow"></div>
               <div class="pf-stage-frame">
-            <div class="pf-shot is-on" data-pf="0"><img src="images/stands/repsol.jpeg" alt="" decoding="async" style="object-position:50% 50%"></div>
-            <div class="pf-shot" data-pf="1"><img src="images/stands/santaCasa.jpg" alt="" decoding="async" style="object-position:50% 50%"></div>
-            <div class="pf-shot" data-pf="2"><img src="images/stands/bissau.png" alt="" decoding="async" style="object-position:50% 50%"></div>
-            <div class="pf-shot" data-pf="3"><img src="images/IV/logoBancoCentralSTP.jpg" alt="" decoding="async" style="object-position:40% 40%"></div>
-            <div class="pf-shot" data-pf="4"><img src="images/IV/mockupsFF.jpg" alt="" decoding="async" style="object-position:50% 50%"></div>
-            <div class="pf-shot" data-pf="5"><span class="pf-plate" aria-hidden="true"><b>HBD</b><i>Fardamentos &amp; merchandising corporativo</i></span><img src="images/merchandising/hbd.jpeg" alt="" decoding="async" style="object-position:50% 50%" onerror="this.parentElement.classList.add('is-plate');this.remove()"></div>
-            <div class="pf-shot" data-pf="6"><img src="images/equipamentos/equipamentoPrincipal.jpeg" alt="" decoding="async" style="object-position:50% 42%"></div>
-            <div class="pf-shot" data-pf="7"><img src="images/equipamentos/todosEquipamentos.jpeg" alt="" decoding="async" style="object-position:50% 45%"></div>
-                <div class="pf-stage-foot"><span class="pf-stage-count"><b data-pf-now>01</b><i>/</i>08</span><span class="pf-stage-bar"><i data-pf-bar></i></span></div>
+                <div class="pf-shot is-on" data-pf="0"><img class="is-on" src="images/projects/repsol-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="1"><img class="is-on" src="images/projects/santa-casa-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="2"><img class="is-on" src="images/projects/bissau-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="3"><img class="is-on" src="images/projects/dominos-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/dominos-02.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i></span></div>
+                <div class="pf-shot" data-pf="4"><img class="is-on" src="images/projects/unitel-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/unitel-02.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i></span></div>
+                <div class="pf-shot" data-pf="5"><img class="is-on" src="images/projects/royal-canin-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="6"><img class="is-on" src="images/projects/martini-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="7"><img class="is-on" src="images/projects/made-of-lisboa-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="8"><img class="is-on" src="images/projects/banco-central-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/banco-central-02.webp" alt="" decoding="async"><img data-src="images/projects/banco-central-03.webp" alt="" decoding="async"><img data-src="images/projects/banco-central-04.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i><i></i><i></i></span></div>
+                <div class="pf-shot" data-pf="9"><img class="is-on" src="images/projects/materiais-corporativos-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="10"><img class="is-on" src="images/projects/taag-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/taag-02.webp" alt="" decoding="async"><img data-src="images/projects/taag-03.webp" alt="" decoding="async"><img data-src="images/projects/taag-04.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i><i></i><i></i></span></div>
+                <div class="pf-shot" data-pf="11"><img class="is-on" src="images/projects/globalog-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/globalog-02.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i></span></div>
+                <div class="pf-shot" data-pf="12"><img class="is-on" src="images/projects/omali-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/omali-02.webp" alt="" decoding="async"><img data-src="images/projects/omali-03.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i><i></i></span></div>
+                <div class="pf-shot" data-pf="13"><img class="is-on" src="images/projects/oms-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/oms-02.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i></span></div>
+                <div class="pf-shot" data-pf="14"><img class="is-on" src="images/projects/hbd-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="15"><img class="is-on" src="images/projects/ecobank-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/ecobank-02.webp" alt="" decoding="async"><img data-src="images/projects/ecobank-03.webp" alt="" decoding="async"><img data-src="images/projects/ecobank-04.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i><i></i><i></i></span></div>
+                <div class="pf-shot" data-pf="16"><img class="is-on" src="images/projects/equipas-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/equipas-02.webp" alt="" decoding="async"><img data-src="images/projects/equipas-03.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i><i></i></span></div>
+                <div class="pf-shot" data-pf="17"><img class="is-on" src="images/projects/equipamento-especializado-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="18"><img class="is-on" src="images/projects/equipamento-fornecimento-01.webp" alt="" loading="lazy" decoding="async"></div>
+                <div class="pf-shot" data-pf="19"><img class="is-on" src="images/projects/viaturas-cd-agualva-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/viaturas-cd-agualva-02.webp" alt="" decoding="async"><img data-src="images/projects/viaturas-cd-agualva-03.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i><i></i></span></div>
+                <div class="pf-shot" data-pf="20"><img class="is-on" src="images/projects/telas-impressas-01.webp" alt="" loading="lazy" decoding="async"><img data-src="images/projects/telas-impressas-02.webp" alt="" decoding="async"><span class="pf-dots"><i class="is-on"></i><i></i></span></div>
+                <div class="pf-stage-foot"><span class="pf-stage-count"><b data-pf-now>01</b><i>/</i>21</span><span class="pf-stage-bar"><i data-pf-bar></i></span></div>
               </div>
             </div>
           </div>
@@ -402,7 +616,7 @@
   </footer>
   <!-- /ON4U-CANONICAL-FOOTER -->
 
-  <script src="script.js?v=46"></script>
+  <script src="script.js?v=48"></script>
   <script>
     (function () {
       var toggle = document.getElementById('theme-toggle');
