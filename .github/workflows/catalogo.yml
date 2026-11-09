@@ -1,0 +1,75 @@
+name: Catálogo Databox
+
+# Refreshes catalogo/data from the Databox DATA STREAM feed and commits it;
+# Vercel then redeploys the site. Databox regenerates its files ~hourly.
+#
+# Needs three repository secrets (Settings → Secrets and variables → Actions):
+#   DATABOX_FTP_HOST  DATABOX_FTP_USER  DATABOX_FTP_PASS
+# Without them every step after the check is skipped (the run stays green).
+#
+# Product photos: not handled here yet. Waiting on the choice of photo
+# storage (see scripts/catalogo/README.md).
+
+on:
+  schedule:
+    - cron: '17 5 * * *'        # daily ~05:17 UTC (only runs from the default branch)
+  workflow_dispatch:             # "Run workflow" button (default branch)
+  push:                          # TEMP: lets us test on the feature branch. Remove before merging.
+    branches: [catalogo-databox]
+    paths: ['.github/workflows/catalogo.yml']
+
+permissions:
+  contents: write                # to commit the refreshed data
+
+concurrency:
+  group: catalogo-databox
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DATABOX_FTP_HOST: ${{ secrets.DATABOX_FTP_HOST }}
+      DATABOX_FTP_USER: ${{ secrets.DATABOX_FTP_USER }}
+      DATABOX_FTP_PASS: ${{ secrets.DATABOX_FTP_PASS }}
+    steps:
+      - name: Check secrets
+        id: check
+        run: |
+          if [ -n "$DATABOX_FTP_HOST" ] && [ -n "$DATABOX_FTP_USER" ] && [ -n "$DATABOX_FTP_PASS" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Databox FTP secrets are not set; skipping the catalogue refresh."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ok == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.ok == 'true'
+        with:
+          node-version: 24
+
+      - name: Download Databox files
+        if: steps.check.outputs.ok == 'true'
+        run: bash scripts/catalogo/fetch.sh
+
+      - name: Build catalogue data
+        if: steps.check.outputs.ok == 'true'
+        run: node scripts/catalogo/build.mjs   # fails (and keeps the old data) if the feed looks broken
+
+      - name: Commit and push changes
+        if: steps.check.outputs.ok == 'true'
+        run: |
+          git add catalogo/data catalogo.html
+          if git diff --cached --quiet; then
+            echo "No catalogue changes."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Catalogue: Databox refresh $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"

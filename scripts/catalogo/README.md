@@ -31,6 +31,17 @@ npm run build                                   # catalogo/data/ + links em cata
 npm run photos -- --group monitores --limit 200 # opcional: fotos para pré-visualização local
 ```
 
+## Atualização automática (GitHub Actions)
+
+O workflow `.github/workflows/catalogo.yml` corre todos os dias (~05:17 UTC): `fetch.sh` → `build.mjs` →
+commit de `catalogo/data/`. O Vercel publica a seguir. Também pode ser corrido à mão: **Actions →
+Catálogo Databox → Run workflow**.
+
+Precisa de três *secrets* no repositório (**Settings → Secrets and variables → Actions → New repository secret**):
+`DATABOX_FTP_HOST`, `DATABOX_FTP_USER`, `DATABOX_FTP_PASS`. Sem eles, o job termina sem fazer nada.
+
+As fotos ainda não estão no workflow: falta decidir onde ficam guardadas (Vercel Blob no plano Pro, ou no próprio repositório).
+
 ## O que é gerado
 
 | Ficheiro | Conteúdo |
