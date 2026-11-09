@@ -142,4 +142,6 @@ Ferramenta de importação e regras em [`scripts/catalogo/README.md`](../scripts
 - **Mostra**: Disponível · Em reposição · Por encomenda. "Não disponível" fica de fora. Nunca mostra referências internas da Databox.
 - **Repo público**: só os dados publicados entram no git. Ficheiros em bruto (`.databox/`), fotos locais e credenciais estão no `.gitignore`.
 - **Ficheiros**: `catalogo.html` · `catalogo.css` · `catalogo.js` · `catalogo/data/` (gerado) · `scripts/catalogo/` (importação). Textos EN no `DICT` do `script.js`.
-- **Por fazer**: fotos em produção (Vercel Blob) e atualização automática diária (GitHub Action com as credenciais em *secrets*). Até lá, os artigos mostram o ícone da categoria.
+- **Fotos**: no R2 da Cloudflare (bucket `on4u-catalogo`), servidas pelo Worker do site em `/catalogo/fotos/`. Quando um artigo não tem foto, aparece o ícone da categoria.
+- **Atualização diária**: `.github/workflows/catalogo.yml` (dados → fotos novas → commit → deploy).
+- **Alojamento**: o site passou da Vercel para um Cloudflare Worker (09/11/2026). Ver [`cloudflare/README.md`](../cloudflare/README.md).

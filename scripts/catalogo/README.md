@@ -34,13 +34,20 @@ npm run photos -- --group monitores --limit 200 # opcional: fotos para pré-visu
 ## Atualização automática (GitHub Actions)
 
 O workflow `.github/workflows/catalogo.yml` corre todos os dias (~05:17 UTC): `fetch.sh` → `build.mjs` →
-commit de `catalogo/data/`. O Vercel publica a seguir. Também pode ser corrido à mão: **Actions →
-Catálogo Databox → Run workflow**.
+`photos.mjs --upload` (fotos novas para o R2) → commit de `catalogo/data/` e `r2-fotos.txt` → deploy na
+Cloudflare (ver `cloudflare/README.md`). Também pode ser corrido à mão: **Actions → Catálogo Databox → Run workflow**.
 
-Precisa de três *secrets* no repositório (**Settings → Secrets and variables → Actions → New repository secret**):
-`DATABOX_FTP_HOST`, `DATABOX_FTP_USER`, `DATABOX_FTP_PASS`. Sem eles, o job termina sem fazer nada.
+*Secrets* do repositório (**Settings → Secrets and variables → Actions**):
 
-As fotos ainda não estão no workflow: falta decidir onde ficam guardadas (Vercel Blob no plano Pro, ou no próprio repositório).
+- `DATABOX_FTP_HOST`, `DATABOX_FTP_USER`, `DATABOX_FTP_PASS`: sem eles o job não faz nada.
+- `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`: sem eles os dados atualizam na mesma, mas as fotos e o deploy ficam por fazer.
+
+## Fotos (R2)
+
+As fotos ficam no bucket R2 `on4u-catalogo` (`fotos/<chave>.webp`) e o site serve-as em `/catalogo/fotos/`.
+O `r2-fotos.txt` lista as chaves que já estão no bucket, por isso cada execução só descarrega, converte e
+carrega as fotos novas. O carregamento usa a API da Cloudflare (~1.200 pedidos por 5 min), com pausas e
+novas tentativas. Se o token expirar a meio, o progresso fica guardado e basta voltar a correr.
 
 ## O que é gerado
 

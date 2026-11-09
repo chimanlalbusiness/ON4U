@@ -47,7 +47,9 @@ Nenhum. Os ficheiros são servidos tal como estão. As fontes vêm do Google Fon
 
 ## Deploy
 
-Qualquer host estático (Vercel, Netlify, Cloudflare Pages, S3). Apontar para a raiz.
+**Cloudflare Workers** (static assets + fotos do catálogo no R2). Publicação automática pelo GitHub Actions em
+cada push para `main` e no refresh diário do catálogo. Ver [`cloudflare/README.md`](cloudflare/README.md),
+incluindo os passos para ligar o domínio on4u.pt.
 
 - **Domínio canónico**: `https://www.on4u.pt` — configurar redirect de não-www → www e http → https no host.
 - Confirmar que `/` serve `index.html` (canonical da home é `/`, não `/index.html`).

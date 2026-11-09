@@ -31,5 +31,9 @@ images/merchandising/HBD/
 .databox/
 catalogo/fotos/
 scripts/catalogo/node_modules/
+cloudflare/node_modules/
+.wrangler/
+# Cloudflare deploy output (cloudflare/build-site.mjs)
+dist/
 .env
 .env.*

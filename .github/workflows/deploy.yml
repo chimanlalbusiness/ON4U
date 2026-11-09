@@ -1,0 +1,55 @@
+name: Deploy to Cloudflare
+
+# Deploys the website (cloudflare/wrangler.jsonc: static files + R2 photos) on
+# every push to main. The daily catalogue job (catalogo.yml) deploys on its own,
+# because pushes made by GitHub Actions don't trigger other workflows.
+#
+# Repository secrets: CLOUDFLARE_API_TOKEN (Workers Scripts: Edit),
+# CLOUDFLARE_ACCOUNT_ID. Without them the run is skipped (stays green).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-cloudflare
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Check secrets
+        id: check
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Cloudflare secrets are not set; skipping the deploy."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ok == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.ok == 'true'
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+
+      - name: Deploy
+        if: steps.check.outputs.ok == 'true'
+        working-directory: cloudflare
+        run: |
+          npm ci
+          npx wrangler deploy

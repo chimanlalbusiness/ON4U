@@ -1,0 +1,13 @@
+{
+  "name": "on4u-cloudflare",
+  "private": true,
+  "description": "Deploys the ON4U website to Cloudflare Workers (static assets + R2 product photos).",
+  "scripts": {
+    "build": "node build-site.mjs",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "4.159.0"
+  }
+}

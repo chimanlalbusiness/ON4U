@@ -1,14 +1,13 @@
 name: Catálogo Databox
 
-# Refreshes catalogo/data from the Databox DATA STREAM feed and commits it;
-# Vercel then redeploys the site. Databox regenerates its files ~hourly.
+# Daily: Databox feed → catalogo/data → new product photos to R2 → commit →
+# deploy to Cloudflare. Databox regenerates its files about hourly.
 #
-# Needs three repository secrets (Settings → Secrets and variables → Actions):
-#   DATABOX_FTP_HOST  DATABOX_FTP_USER  DATABOX_FTP_PASS
-# Without them every step after the check is skipped (the run stays green).
-#
-# Product photos: not handled here yet. Waiting on the choice of photo
-# storage (see scripts/catalogo/README.md).
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   DATABOX_FTP_HOST  DATABOX_FTP_USER  DATABOX_FTP_PASS          (required)
+#   CLOUDFLARE_API_TOKEN  CLOUDFLARE_ACCOUNT_ID                   (photos + deploy)
+# Without the Databox secrets the run is skipped; without the Cloudflare ones
+# the data is still refreshed and committed, but photos and deploy are skipped.
 
 on:
   schedule:
@@ -16,7 +15,7 @@ on:
   workflow_dispatch:             # "Run workflow" button (default branch)
   push:                          # TEMP: lets us test on the feature branch. Remove before merging.
     branches: [catalogo-databox]
-    paths: ['.github/workflows/catalogo.yml', 'scripts/catalogo/**']
+    paths: ['.github/workflows/catalogo.yml', 'scripts/catalogo/**', 'cloudflare/**']
 
 permissions:
   contents: write                # to commit the refreshed data
@@ -28,11 +27,13 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120         # the very first photo upload can take a while
     env:
       DATABOX_FTP_HOST: ${{ secrets.DATABOX_FTP_HOST }}
       DATABOX_FTP_USER: ${{ secrets.DATABOX_FTP_USER }}
       DATABOX_FTP_PASS: ${{ secrets.DATABOX_FTP_PASS }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - name: Check secrets
         id: check
@@ -43,6 +44,12 @@ jobs:
             echo "::warning::Databox FTP secrets are not set; skipping the catalogue refresh."
             echo "ok=false" >> "$GITHUB_OUTPUT"
           fi
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "cf=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Cloudflare secrets are not set; photos and deploy will be skipped."
+            echo "cf=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - uses: actions/checkout@v4
         if: steps.check.outputs.ok == 'true'
@@ -51,6 +58,10 @@ jobs:
         if: steps.check.outputs.ok == 'true'
         with:
           node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            scripts/catalogo/package-lock.json
+            cloudflare/package-lock.json
 
       - name: Download Databox files
         if: steps.check.outputs.ok == 'true'
@@ -60,12 +71,22 @@ jobs:
         if: steps.check.outputs.ok == 'true'
         run: node scripts/catalogo/build.mjs   # fails (and keeps the old data) if the feed looks broken
 
+      - name: Upload new photos to R2
+        if: steps.check.outputs.ok == 'true' && steps.check.outputs.cf == 'true'
+        continue-on-error: true      # a photo problem must not block the data refresh
+        working-directory: scripts/catalogo
+        run: |
+          npm ci
+          node photos.mjs --upload
+
       - name: Commit and push changes
+        id: commit
         if: steps.check.outputs.ok == 'true'
         run: |
-          git add catalogo/data catalogo.html
+          git add catalogo/data catalogo.html scripts/catalogo/r2-fotos.txt
           if git diff --cached --quiet; then
             echo "No catalogue changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name 'github-actions[bot]'
@@ -73,3 +94,11 @@ jobs:
           git commit -m "Catalogue: Databox refresh $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to Cloudflare
+        if: steps.commit.outputs.changed == 'true' && steps.check.outputs.cf == 'true' && github.ref_name == 'main'
+        working-directory: cloudflare
+        run: |
+          npm ci
+          npx wrangler deploy
