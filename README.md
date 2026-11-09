@@ -10,7 +10,8 @@ Site estático (HTML + CSS + JS vanilla) da ON4U: importação, produção e ope
 ├── importacao-e-exportacao.html .... Operação Internacional (flagship: scrolly + mapa D3 + blocos GEO estáticos)
 ├── health-care.html ................ Health & Care (certificação Infarmed, processo, FAQ)
 ├── producao.html ................... Produção & Criatividade (serviços, processo, trabalhos)
-├── informatica.html ................ Informática (catálogo via parceiro)
+├── informatica.html ................ Informática (entrada para o catálogo)
+├── catalogo.html · catalogo.{css,js} Catálogo Databox por orçamento (dados em catalogo/data/)
 ├── portfolio.html .................. Trabalhos (grid filtrável)
 ├── sobre.html ...................... Sobre (modelo, divisões, presença, NAP)
 ├── contactos.html .................. Contacto (formulário, NAP, Maps embed)
@@ -18,6 +19,7 @@ Site estático (HTML + CSS + JS vanilla) da ON4U: importação, produção e ope
 ├── scrolly_styles.css .............. Estilos do scrollytelling (flagship)
 ├── script.js ....................... Header, mobile nav, scrolly engine
 ├── components/world-map.{js,css} ... Mapa mundo D3 (flagship)
+├── scripts/catalogo/ ............... Importação do feed Databox → catalogo/data (ver README lá)
 ├── sitemap.xml · robots.txt ........ SEO técnico
 ├── images/ · documents/ ............ Assets
 └── docs/ ........................... seo-strategy.md · architecture.md · copy/*.md

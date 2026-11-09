@@ -25,3 +25,11 @@ images/Canvas/
 images/VisualIdentity/
 
 images/merchandising/HBD/
+
+# Databox catalogue (scripts/catalogo): raw supplier files, local photo
+# previews and credentials never go in git. The repo is public.
+.databox/
+catalogo/fotos/
+scripts/catalogo/node_modules/
+.env
+.env.*

@@ -1,0 +1,14 @@
+{
+  "name": "on4u-catalogo",
+  "private": true,
+  "description": "Imports the Databox DATA STREAM feed into the static catalogue (catalogo.html). Kept separate from the site's root package.json so the Vercel deploy never installs it.",
+  "type": "module",
+  "scripts": {
+    "fetch": "bash fetch.sh",
+    "build": "node build.mjs",
+    "photos": "node photos.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

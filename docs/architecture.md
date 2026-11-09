@@ -125,7 +125,21 @@ Construído à volta de, sem alterar a lógica:
 ## Itens a preencher pelo Marco (TODO)
 
 1. **Imagens em falta** (referência mantida com `onerror` para degradar limpo): `images/merchandising/hbd.jpeg`, `images/pagamento-pontual-2026.png`.
-2. **Informática**: `href="#"` do botão "Aceder ao catálogo" — substituir pelo URL do parceiro (2 sítios: hero + CTA final, marcados com `<!-- TODO -->`).
+2. ~~**Informática**: `href="#"` do botão "Aceder ao catálogo"~~. Feito (09/11/2026): aponta para `/catalogo.html` (ver secção Catálogo abaixo).
 3. **Imagens OG** 1200×630 por página em `/og/*.png` (referenciadas no head; criar a partir da marca).
 4. **Health & Care**: secção "O que fornecemos" mantida genérica por instrução do briefing (sem listar categorias).
 5. **Lat/long da sede e horário** — não incluídos no LocalBusiness schema (só com confirmação). Maps embed usa pesquisa por nome do núcleo empresarial.
+
+---
+
+## Catálogo (Informática) — 09/11/2026
+
+Catálogo próprio em `/catalogo.html`, alimentado pelo feed **DATA STREAM** da Databox (parceiro).
+Ferramenta de importação e regras em [`scripts/catalogo/README.md`](../scripts/catalogo/README.md).
+
+- **Por orçamento, sem preços**. Fluxo igual à animação da página de Informática: escolher artigos → lista do pedido → `pedido.html` (passo 1 pré-preenchido com quantidade, nome, ref. do fabricante e EAN).
+- **Estático**: `catalogo/data/index.json` (~275 KB comprimido, ~14,5 mil artigos) é pesquisado e filtrado no browser. As características carregam por artigo, de 64 ficheiros em `catalogo/data/d/`. Sem servidor nem base de dados.
+- **Mostra**: Disponível · Em reposição · Por encomenda. "Não disponível" fica de fora. Nunca mostra referências internas da Databox.
+- **Repo público**: só os dados publicados entram no git. Ficheiros em bruto (`.databox/`), fotos locais e credenciais estão no `.gitignore`.
+- **Ficheiros**: `catalogo.html` · `catalogo.css` · `catalogo.js` · `catalogo/data/` (gerado) · `scripts/catalogo/` (importação). Textos EN no `DICT` do `script.js`.
+- **Por fazer**: fotos em produção (Vercel Blob) e atualização automática diária (GitHub Action com as credenciais em *secrets*). Até lá, os artigos mostram o ícone da categoria.
