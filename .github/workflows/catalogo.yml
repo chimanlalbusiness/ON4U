@@ -16,7 +16,7 @@ on:
   workflow_dispatch:             # "Run workflow" button (default branch)
   push:                          # TEMP: lets us test on the feature branch. Remove before merging.
     branches: [catalogo-databox]
-    paths: ['.github/workflows/catalogo.yml']
+    paths: ['.github/workflows/catalogo.yml', 'scripts/catalogo/**']
 
 permissions:
   contents: write                # to commit the refreshed data

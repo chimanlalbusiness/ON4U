@@ -1,2 +1,5 @@
 # Shell scripts must keep LF line endings, or bash fails on Windows checkouts.
 *.sh text eol=lf
+# Generated catalogue data: written with LF on every OS (local or GitHub Actions),
+# so keep it LF in the working copy too (no phantom diffs or CRLF warnings).
+catalogo/data/** text eol=lf

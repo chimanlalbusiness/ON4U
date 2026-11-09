@@ -25,19 +25,31 @@ auth() {
 }
 
 # get <remote path> <local name> [extra curl args...]
+# Downloads to .part and only replaces the file when curl succeeded.
+# --retry-all-errors: Databox's server sometimes resets connections, which
+# curl does not treat as transient by default.
 get() {
   local remote="$1" name="$2"; shift 2
   echo "  ↓ $remote"
-  auth | curl -sS -K - --retry 3 --retry-delay 10 --connect-timeout 30 --max-time 900 \
-    -R "$@" -o "$OUT/$name.part" "ftp://$DATABOX_FTP_HOST/$remote"
-  mv -f "$OUT/$name.part" "$OUT/$name"
+  if auth | curl -sS -K - --retry 3 --retry-all-errors --retry-delay 15 --connect-timeout 30 --max-time 900 \
+      -R "$@" -o "$OUT/$name.part" "ftp://$DATABOX_FTP_HOST/$remote"; then
+    mv -f "$OUT/$name.part" "$OUT/$name"
+  else
+    local rc=$?
+    rm -f "$OUT/$name.part"
+    return "$rc"
+  fi
 }
 
 echo "Databox → $OUT"
 get "CatArtDatabox.txt" "CatArtDatabox.txt"
 get "StockSDatabox.txt" "StockSDatabox.txt"
 get "Geral/AgrupTipos_Join.csv" "AgrupTipos_Join.csv"
-# Name-only listing (NLST): the detailed LIST of this ~28k-file folder is
-# too slow on Databox's server and times out.
-get "Geral/FOTOS/" "fotos-list.txt" -l
-echo "Done: $(wc -l < "$OUT/CatArtDatabox.txt") catalogue lines, $(wc -l < "$OUT/fotos-list.txt") photos listed."
+# Photo list: name-only listing (NLST); the detailed LIST of this ~28k-file
+# folder times out on Databox's server. Optional: without it, build.mjs keeps
+# the photo assignments already published in catalogo/data/index.json.
+if ! get "Geral/FOTOS/" "fotos-list.txt" -l; then
+  echo "  ! Photo list unavailable this run; the build will reuse the current photo assignments."
+fi
+photos="$( [ -f "$OUT/fotos-list.txt" ] && wc -l < "$OUT/fotos-list.txt" || echo 0 )"
+echo "Done: $(wc -l < "$OUT/CatArtDatabox.txt") catalogue lines, $photos photos listed."

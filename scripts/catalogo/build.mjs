@@ -97,7 +97,17 @@ const fotosPath = path.join(IN, 'fotos-list.txt');
 const fotoFiles = fs.existsSync(fotosPath)
   ? fs.readFileSync(fotosPath, 'latin1').split(/\r?\n/).filter(f => /\.(jpe?g|png|webp)$/i.test(f.trim()))
   : [];
-if (!fotoFiles.length) console.warn('! No photo list (fotos-list.txt): products will show icons only.');
+// Without a photo list (Databox's server sometimes drops that listing), keep
+// the photo keys already published, matched by EAN, rather than losing them.
+let previousPhotos = null;
+if (!fotoFiles.length) {
+  previousPhotos = new Map();
+  const prev = path.join(OUT, 'index.json');
+  if (fs.existsSync(prev)) {
+    for (const it of JSON.parse(fs.readFileSync(prev, 'utf8')).items) if (it[6]) previousPhotos.set(it[0], it[6]);
+  }
+  console.warn(`! No photo list (fotos-list.txt): reusing ${previousPhotos.size} published photo assignments.`);
+}
 
 const stock = new Map(stk.rows.map(r => [r.EAN, { code: parseInt(r.STATSTK, 10), next: isoDate(r.PROXENT) }]));
 const coverage = cat.rows.filter(r => stock.has(r.EAN)).length / Math.max(1, cat.rows.length);
@@ -169,6 +179,7 @@ for (const foto of [...new Set(products.map(p => p.foto))].filter(f => remotePho
   photoKeyOf.set(foto, key);
   photosMap[key] = remotePhoto.get(foto);
 }
+const photoOf = p => (previousPhotos ? previousPhotos.get(p.ean) : photoKeyOf.get(p.foto)) || '';
 
 // ── Dictionaries ───────────────────────────────────────────────────────────
 const brands = [...new Set(products.map(p => p.brand))].sort(collator.compare);
@@ -188,7 +199,7 @@ if (new Set(groups.map(g => g.id)).size !== groups.length) fail('Two groups shar
 
 // ── Write ──────────────────────────────────────────────────────────────────
 const updated = new Date(Math.max(cat.mtime, stk.mtime)).toISOString();
-const items = products.map(p => [p.ean, p.name, p.pn, brandIx.get(p.brand), typeIx.get(p.type), p.stock, photoKeyOf.get(p.foto) || '']);
+const items = products.map(p => [p.ean, p.name, p.pn, brandIx.get(p.brand), typeIx.get(p.type), p.stock, photoOf(p)]);
 const J = v => JSON.stringify(v);
 const indexJson =
   '{\n' +
@@ -229,6 +240,6 @@ if (fs.existsSync(PAGE)) {
 
 const kb = f => `${(fs.statSync(f).size / 1024).toFixed(0)} KB`;
 console.log(`✔ ${products.length} products · ${brands.length} brands · ${types.length} types · ${groups.length} groups`);
-console.log(`  photos: ${Object.keys(photosMap).length} keys for ${products.filter(p => photoKeyOf.has(p.foto)).length} products`);
+console.log(`  photos: ${products.filter(p => photoOf(p)).length} products with a photo` + (previousPhotos ? ' (reused, no photo list)' : `, ${Object.keys(photosMap).length} files`));
 console.log(`  skipped: ${Object.entries(skipped).map(([k, v]) => `${k} ${v}`).join(', ')}`);
 console.log(`  index.json ${kb(path.join(OUT, 'index.json'))} · data updated ${updated}`);
