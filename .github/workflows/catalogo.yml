@@ -83,7 +83,8 @@ jobs:
         id: commit
         if: steps.check.outputs.ok == 'true'
         run: |
-          git add catalogo/data catalogo.html scripts/catalogo/r2-fotos.txt
+          git add catalogo/data catalogo.html
+          [ -f scripts/catalogo/r2-fotos.txt ] && git add scripts/catalogo/r2-fotos.txt   # only exists after the first photo upload
           if git diff --cached --quiet; then
             echo "No catalogue changes."
             echo "changed=false" >> "$GITHUB_OUTPUT"
