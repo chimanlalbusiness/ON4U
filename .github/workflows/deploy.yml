@@ -9,7 +9,7 @@ name: Deploy to Cloudflare
 
 on:
   push:
-    branches: [main]
+    branches: [main, catalogo-databox]   # TEMP: catalogo-databox lets us test before merging. Remove it then.
   workflow_dispatch:
 
 permissions:
