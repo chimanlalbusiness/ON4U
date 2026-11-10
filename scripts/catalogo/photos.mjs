@@ -8,6 +8,8 @@
  *     --group <a,b>                    only products in these category slugs
  *     --limit <n>                      at most n photos this run
  *     --out <dir>                      where WebP files are written (default catalogo/fotos, gitignored)
+ *     --local-only                     never download; only handle photos already converted in --out
+ *     --rate <n>                       upload requests per second (default 3; the API allows ~4)
  *
  * r2-fotos.txt (committed) lists the keys already in the bucket, so the daily
  * job only downloads and uploads new photos. A photo already converted in
@@ -50,6 +52,7 @@ if (args.group) {
 const uploaded = new Set(fs.existsSync(MANIFEST) ? fs.readFileSync(MANIFEST, 'utf8').split(/\r?\n/).filter(Boolean) : []);
 const local = k => path.join(OUT, `${k}.webp`);
 keys = UPLOAD ? keys.filter(k => !uploaded.has(k)) : keys.filter(k => !fs.existsSync(local(k)));
+if (args['local-only']) keys = keys.filter(k => fs.existsSync(local(k))); // never download: upload what is already converted
 if (args.limit) keys = keys.slice(0, Number(args.limit));
 const toFetch = keys.filter(k => !fs.existsSync(local(k)));
 console.log(`${keys.length} photos this run` + (UPLOAD ? ` (${uploaded.size} already in R2, ${toFetch.length} to download)` : ''));
@@ -141,9 +144,11 @@ if (UPLOAD) {
       const k = ready[next++];
       if (await put(k)) { uploaded.add(k); done++; } else if (!stop) failedUpload++;
       if (done % 200 === 0) { saveManifest(); console.log(`  uploaded ${done}/${ready.length}`); }
-      await sleep(250 * 4); // 4 workers × 1 req/s ≈ 4 req/s, under the API limit
+      await sleep(pause);
     }
   }
+  // --rate <req/s> (default 3): 4 workers share it; the API allows ~4/s (1,200 per 5 min).
+  const pause = Math.max(0, 4000 / (Number(args.rate) || 3) - 300); // minus ~300 ms typical request time
   await Promise.all([worker(), worker(), worker(), worker()]);
   saveManifest();
   console.log(`✔ ${done} uploaded to R2 (${uploaded.size} total in r2-fotos.txt)` + (failedUpload ? `, ${failedUpload} failed` : ''));
