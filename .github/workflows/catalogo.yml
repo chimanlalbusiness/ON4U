@@ -13,15 +13,12 @@ on:
   schedule:
     - cron: '17 5 * * *'        # daily ~05:17 UTC (only runs from the default branch)
   workflow_dispatch:             # "Run workflow" button (default branch)
-  push:                          # TEMP: lets us test on the feature branch. Remove before merging.
-    branches: [catalogo-databox]
-    paths: ['.github/workflows/catalogo.yml', 'scripts/catalogo/**', 'cloudflare/**']
 
 permissions:
   contents: write                # to commit the refreshed data
 
 concurrency:
-  group: catalogo-databox
+  group: catalogo-refresh
   cancel-in-progress: false
 
 jobs:
