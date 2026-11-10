@@ -250,8 +250,9 @@
     var key;
     if (S.sort === 'name') key = function (a, b) { return a.idx - b.idx; };
     else if (S.sort === 'brand') key = function (a, b) { return a.b - b.b || a.idx - b.idx; };
-    // default: availability, then products that have a photo, then name
-    else key = function (a, b) { return STOCK_RANK[a.s] - STOCK_RANK[b.s] || (!a.photo - !b.photo) || a.idx - b.idx; };
+    // default "Relevância": products with a photo first (≈1/3 have none from
+    // Databox), then by availability, then name
+    else key = function (a, b) { return (!a.photo - !b.photo) || STOCK_RANK[a.s] - STOCK_RANK[b.s] || a.idx - b.idx; };
     results.sort(function (a, b) { return (exact ? top(a) - top(b) : 0) || key(a, b); });
   }
 
@@ -273,23 +274,52 @@
     li.appendChild(a);
     return li;
   }
+  // Big categories (Acessórios has ~50 types) would bury the products under
+  // chips: show the most common few and let the rest open on demand.
+  var TYPES_SHOWN = 8;
+  var typesOpen = false;
+  var lastTypeN = new Map();
+  function typeLabel(t) {
+    var name = D.types[t].name;
+    // inside "Acessórios…" categories, "Acessórios Audio" reads better as "Audio"
+    if (S.g >= 0 && /^Acessórios/.test(D.groups[S.g].name) && /^Acessórios ./.test(name)) {
+      name = name.slice('Acessórios '.length);
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+    return name;
+  }
   function renderTypes(typeN) {
+    lastTypeN = typeN;
     var box = $('cat-types');
     var types = S.g >= 0 ? D.groups[S.g].types.filter(function (t) { return typeN.get(t) || t === S.t; }) : [];
     if (types.length < 2) { box.hidden = true; box.replaceChildren(); return; }
+    types.sort(function (a, b) { return (typeN.get(b) || 0) - (typeN.get(a) || 0) || a - b; }); // most common first
+    var collapsible = types.length > TYPES_SHOWN + 2;
+    var shown = collapsible && !typesOpen ? types.slice(0, TYPES_SHOWN) : types;
+    if (S.t >= 0 && shown.indexOf(S.t) < 0) shown = shown.concat([S.t]); // keep the selected type visible
     var frag = document.createDocumentFragment();
     var all = 0; typeN.forEach(function (n) { all += n; });
     frag.appendChild(chip(-1, 'Tudo', all));
-    types.forEach(function (t) { frag.appendChild(chip(t, D.types[t].name, typeN.get(t) || 0)); });
+    shown.forEach(function (t) { frag.appendChild(chip(t, typeLabel(t), typeN.get(t) || 0, D.types[t].name)); });
+    if (collapsible) {
+      var more = el('button', 'pg2-chip cat-chip-more');
+      more.type = 'button';
+      more.setAttribute('data-more', '');
+      more.setAttribute('aria-expanded', typesOpen ? 'true' : 'false');
+      if (typesOpen) more.appendChild(el('span', null, 'Mostrar menos'));
+      else { more.appendChild(el('span', null, 'Mais tipos')); more.appendChild(el('small', null, '+' + fmt(types.length - TYPES_SHOWN))); }
+      frag.appendChild(more);
+    }
     box.replaceChildren(frag);
     box.hidden = false;
   }
-  function chip(t, name, n) {
+  function chip(t, label, n, fullName) {
     var b = el('button', 'pg2-chip' + (S.t === t ? ' is-active' : ''));
     b.type = 'button';
     b.setAttribute('data-ti', t);
     b.setAttribute('aria-pressed', S.t === t ? 'true' : 'false');
-    b.appendChild(el('span', null, name));
+    if (fullName && fullName !== label) b.title = fullName;
+    b.appendChild(el('span', null, label));
     b.appendChild(el('small', null, fmt(n)));
     return b;
   }
@@ -580,11 +610,19 @@
       e.preventDefault();
       S.g = Number(a.getAttribute('data-gi'));
       S.t = -1;
+      typesOpen = false;
       update();
       closeMobileFilters();
       scrollToResults();
     });
     $('cat-types').addEventListener('click', function (e) {
+      if (e.target.closest('[data-more]')) {
+        typesOpen = !typesOpen;
+        renderTypes(lastTypeN);
+        var toggle = $('cat-types').querySelector('[data-more]');
+        if (toggle) toggle.focus();
+        return;
+      }
       var b = e.target.closest('[data-ti]');
       if (!b) return;
       S.t = Number(b.getAttribute('data-ti'));

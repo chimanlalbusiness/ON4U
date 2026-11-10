@@ -123,6 +123,9 @@
   color-scheme: dark;
 }
 .cat-side .cat-select { padding-top: 0.7rem; padding-bottom: 0.7rem; font-size: 0.9rem; }
+/* The open list is drawn by the OS (white on Windows) and ignores the page's
+   dark theme and the light-mode invert: give options explicit, readable colours. */
+.cat-select option { color: #18181b; background-color: #ffffff; }
 
 .cat-stockf label {
   display: flex;
@@ -177,6 +180,8 @@
 .cat-types { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1.25rem; }
 .cat-types .pg2-chip { font-size: 0.75rem; padding: 0.42rem 0.85rem; }
 .cat-types .pg2-chip small { margin-left: 0.35rem; opacity: 0.6; font-variant-numeric: tabular-nums; }
+.cat-types .cat-chip-more { border-style: dashed; color: var(--pg-ink-3); }
+.cat-types .cat-chip-more:hover { color: var(--pg-ink); }
 @media (max-width: 560px) {
   /* one swipeable row instead of a wall of chips above the products */
   .cat-types {
