@@ -530,8 +530,37 @@
           'Empresa: ' + g('empresa');
         var subject = 'Pedido de orçamento: ' + (g('empresa') || g('nome') || 'ON4U');
         try { window.location.href = 'mailto:info@on4u.pt?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body); } catch (e2) {}
+        // The catalogue list is now in the request text, so start fresh next time.
+        if (fromCatalog) { try { localStorage.removeItem(CATALOG_KEY); } catch (e3) {} }
         show(INPUT_STEPS); // confirmation (index 4)
       });
+
+      // Pre-fill from the request list built on catalogo.html (localStorage).
+      // Each line carries the EAN + manufacturer ref so ON4U can order it.
+      var CATALOG_KEY = 'on4u-catalogo-pedido';
+      var fromCatalog = false;
+      try {
+        var picked = JSON.parse(localStorage.getItem(CATALOG_KEY) || '[]');
+        var need = form.querySelector('[name="precisa"]');
+        if (Array.isArray(picked) && picked.length && need && !need.value.trim()) {
+          var units = 0;
+          var lines = picked.map(function (x) {
+            units += Number(x.q) || 0;
+            var name = String(x.n || '');
+            if (name.length > 80) name = name.slice(0, 79) + '…';
+            return '- ' + x.q + ' × ' + name + (x.r ? ' (Ref. ' + x.r + ')' : '') + ' · EAN ' + x.e;
+          });
+          need.value = 'Artigos do catálogo:\n' + lines.join('\n') + '\n\nObservações: ';
+          need.style.height = Math.min(need.scrollHeight + 6, 380) + 'px'; // show the list without scrolling
+          var qtyField = form.querySelector('[name="quantidade"]');
+          if (qtyField && !qtyField.value.trim()) {
+            qtyField.value = picked.length + (picked.length === 1 ? ' artigo' : ' artigos') + ', ' + units + (units === 1 ? ' unidade' : ' unidades');
+          }
+          var hint = need.closest('.pedido-step').querySelector('.pedido-hint');
+          if (hint) hint.textContent = 'Os artigos que escolheu no catálogo já estão incluídos. Pode acrescentar observações.';
+          fromCatalog = true;
+        }
+      } catch (e4) {}
 
       // Click a completed roadmap step to jump back to it.
       navItems.forEach(function (li, n) {

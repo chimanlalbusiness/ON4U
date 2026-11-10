@@ -1,0 +1,18 @@
+{
+  "remote": {
+    "catalogue": "CatArtDatabox.txt",
+    "stock": "StockSDatabox.txt",
+    "groups": "Geral/AgrupTipos_Join.csv",
+    "photosDir": "Geral/FOTOS/"
+  },
+  "showStock": [1, 2, 3],
+  "excludeTypes": ["Acessórios NAOSITE", "Indefinida"],
+  "excludeGroups": [],
+  "excludeBrands": [],
+  "otherGroup": "Outros",
+  "detailBuckets": 64,
+  "photoBase": "/catalogo/fotos/",
+  "r2": { "bucket": "on4u-catalogo", "prefix": "fotos/" },
+  "photoSize": 600,
+  "minProducts": 8000
+}

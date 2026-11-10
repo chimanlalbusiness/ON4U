@@ -10,7 +10,8 @@ Site estático (HTML + CSS + JS vanilla) da ON4U: importação, produção e ope
 ├── importacao-e-exportacao.html .... Operação Internacional (flagship: scrolly + mapa D3 + blocos GEO estáticos)
 ├── health-care.html ................ Health & Care (certificação Infarmed, processo, FAQ)
 ├── producao.html ................... Produção & Criatividade (serviços, processo, trabalhos)
-├── informatica.html ................ Informática (catálogo via parceiro)
+├── informatica.html ................ Informática (entrada para o catálogo)
+├── catalogo.html · catalogo.{css,js} Catálogo Databox por orçamento (dados em catalogo/data/)
 ├── portfolio.html .................. Trabalhos (grid filtrável)
 ├── sobre.html ...................... Sobre (modelo, divisões, presença, NAP)
 ├── contactos.html .................. Contacto (formulário, NAP, Maps embed)
@@ -18,6 +19,7 @@ Site estático (HTML + CSS + JS vanilla) da ON4U: importação, produção e ope
 ├── scrolly_styles.css .............. Estilos do scrollytelling (flagship)
 ├── script.js ....................... Header, mobile nav, scrolly engine
 ├── components/world-map.{js,css} ... Mapa mundo D3 (flagship)
+├── scripts/catalogo/ ............... Importação do feed Databox → catalogo/data (ver README lá)
 ├── sitemap.xml · robots.txt ........ SEO técnico
 ├── images/ · documents/ ............ Assets
 └── docs/ ........................... seo-strategy.md · architecture.md · copy/*.md
@@ -45,7 +47,9 @@ Nenhum. Os ficheiros são servidos tal como estão. As fontes vêm do Google Fon
 
 ## Deploy
 
-Qualquer host estático (Vercel, Netlify, Cloudflare Pages, S3). Apontar para a raiz.
+**Cloudflare Workers** (static assets + fotos do catálogo no R2). Publicação automática pelo GitHub Actions em
+cada push para `main` e no refresh diário do catálogo. Ver [`cloudflare/README.md`](cloudflare/README.md),
+incluindo os passos para ligar o domínio on4u.pt.
 
 - **Domínio canónico**: `https://www.on4u.pt` — configurar redirect de não-www → www e http → https no host.
 - Confirmar que `/` serve `index.html` (canonical da home é `/`, não `/index.html`).

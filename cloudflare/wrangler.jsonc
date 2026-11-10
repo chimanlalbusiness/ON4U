@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // ON4U website on Cloudflare Workers: static files + product photos from R2.
+  // Deployed by GitHub Actions (.github/workflows/deploy.yml and catalogo.yml).
+  // The account ID is not stored here (public repo): set CLOUDFLARE_ACCOUNT_ID.
+  //   cd cloudflare && npm ci && npx wrangler deploy
+  "name": "on4u",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "build": { "command": "node build-site.mjs" },
+  "assets": {
+    "directory": "../dist",
+    "binding": "ASSETS",
+    // Serve /page.html as-is (no redirect to /page): keeps the existing links and canonical URLs.
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
+  "r2_buckets": [
+    { "binding": "FOTOS", "bucket_name": "on4u-catalogo" }
+  ]
+}
