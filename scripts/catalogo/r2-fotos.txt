@@ -817,9 +817,11 @@
 50hfl5214u12
 51915
 51b2000
+51b2x00
 51ef0960aa000
 51ef1040aa000
 51ef1040aa001
+51ef1110aa000
 51f2h00
 51mf1705aa001
 51mf8465aa000
@@ -1269,6 +1271,7 @@
 65oled82012
 65pus781012
 65pus831912
+65pus840012
 65pus891912
 65pus895912
 66s0z00
@@ -1365,6 +1368,7 @@
 7710-409
 772c9aa
 77l0w00
+77l0zk0
 77l2hc0
 77l2hk0
 77l2hm0
@@ -1385,6 +1389,7 @@
 78c0zk0
 78c20c0
 78c20m0
+78c2ume
 78c2uye
 78c2xc0
 78c2xk0
@@ -1511,6 +1516,7 @@
 9654n
 97-865
 9791464m
+9791464t
 9791464v
 97924128p
 97924128t
@@ -1611,6 +1617,7 @@ ab123014
 ab123018
 ab123511
 ab123512
+ab123801
 ab125801
 ab128501
 ab128512
@@ -2506,6 +2513,7 @@ bro1032
 broads1600w
 broads1800wun1
 broads4100re1
+broads4300nre1
 broba7000
 brobtd180bk
 brobtd180clval
@@ -2599,6 +2607,7 @@ bromfcl5710dwre1
 bromfcl6710dwre1
 bromfcl6910dnre1
 bromfcl8340cdwre
+bromfcl8390cdwre
 bromfcl9570cdwre
 bromfcl9570cdwt3
 bromfcl9630cdnre1
@@ -2643,6 +2652,7 @@ broptd460btvpur1
 broptd610btvpur1
 bropte110vpur1
 bropte310btvpql1
+bropte560btvpql1
 broptp300btre1
 broptp710bthz1
 bropur-c0001
@@ -2811,6 +2821,7 @@ c950x2kg
 c950x2mg
 c950x2yg
 c950x73g
+c950x76g
 ca25yr03g
 ca25yr03w
 ca35yr03g
@@ -2937,6 +2948,7 @@ can3022c002
 can3025c002
 can3027c002
 can3028c002
+can3085c004ab
 can3109c026
 can3149c003
 can3150c003
@@ -2949,6 +2961,7 @@ can3421v854
 can3480b002aa
 can3483b002
 can3484b002aa
+can3488c001
 can3489c001
 can3490c001
 can3491c001
@@ -2988,6 +3001,7 @@ can5102c002
 can5106c002
 can5166b001ab
 can5209c003
+can5224b001
 can5227b001
 can5272c001aa
 can5276c001aa
@@ -3000,6 +3014,7 @@ can5484b001
 can5639c002
 can5640c002
 can5693c001
+can5730b001aa
 can5730b002ab
 can5730b003ab
 can5779c006
@@ -4211,10 +4226,12 @@ eap225
 eap225-outdoor
 eap235-wall
 eap265hd
+eap610-outdoor
 eap610gp-desktop
 eap615-wall_5-pk
 eap615gp-wall
 eap620hd
+eap625-outdoorhd
 eap650
 eap650-desktop
 eap650-outdoor
@@ -4280,6 +4297,7 @@ ec1316
 ec1319
 ec1320
 ec1322
+ec1323
 ec1324
 ec1325
 ec1330
@@ -5396,6 +5414,7 @@ fw-43ez20l
 fw-50bz30l
 fw-50ez20l
 fw-55bz30l
+fw-55bz40l
 fw-55ez20l
 fw-65bz30l
 fw-65bz35l
@@ -5415,6 +5434,7 @@ fwa-st3l
 fwc10uf
 fwd-32w8001
 fwd-48a90k
+fwd-50s35
 fwd-55a80l
 fwd-55a90j
 fwd-55a95k
@@ -6473,6 +6493,7 @@ jblt205black
 jblt210black
 jblt290blk
 jblt290sil
+jblt305cblack
 jblt310c
 jblt310c-white
 jblt520bt-white
@@ -7343,6 +7364,7 @@ napocl600m
 napocm610m
 napocvr001
 napodm1020
+napodm1050
 napodm1100
 napodm1101
 napodm1120
@@ -7359,9 +7381,12 @@ napodm3200
 napodm3210
 napodm5100
 napodm6200
+napoe11-2480
+napoe43-4080
 napoergo100
 napoergo500
 napofm1800b-m
+napofm400b
 napoga750
 napogc2100
 napogc2200
@@ -7379,6 +7404,7 @@ napompm003
 napopfmt220t
 napopwm1500b
 naporfc001
+napos11-2080
 napos169-2080
 napos43-2080
 napost11-1280
@@ -7424,6 +7450,7 @@ napowm253t
 napowm254f
 napowm254t
 napowm260f
+napowm260t
 napowm400f
 napowm400t
 napowm4060f
@@ -7488,6 +7515,7 @@ oan-2090
 oan-2121
 oan-4102
 oan-4121
+oc200
 oc300
 oc400
 osx010000
@@ -7762,6 +7790,7 @@ rddbcr2000gn
 rdfm1110si
 rdfm1200bk
 re200
+re315
 re655be
 re700x
 re705x
@@ -8107,6 +8136,7 @@ sm5110lsa-10
 smo650sil4eeu1
 snnpc5chat
 snv3s1000g
+snv3s2000g
 snv3s4000g
 snv3s500g
 snv3sm31t0
@@ -8323,6 +8353,7 @@ tar150900
 tar250910
 tar300
 tar320512
+tar330612
 tar550510
 taramb581gl
 taramb582gl
@@ -8330,12 +8361,16 @@ taramb586gl
 taramm163amgl
 taramm16501amgl
 taramm16502amgl
+taramm165amgl
 taramp13eu
+taramu81amgl
 taramw584gl
 tarapa107eu
 tarapa108eu
 tarasf238w9eu
 tarasp86rgl
+tarawe810gl
+tarawe81eu
 tarawu100205gl
 tarcn600gl
 tarcuct02beu
@@ -8365,6 +8400,7 @@ tartbr003eu
 tartbr022eu
 tartbr038gl
 tartbs574gl
+tartbs576gl
 tartbs64602gl
 tartbs64702gl
 tartbs92501gl
@@ -8382,7 +8418,9 @@ tarthz93211gl
 tarthz935gl
 tarthz957
 tartsb913eu
+tartsb960gl
 tartsb962gl
+tartss866gl
 tartss929gl
 tartss930gl
 tartss931gl
@@ -8461,8 +8499,10 @@ tl-sf1006p
 tl-sf1008d
 tl-sf1008lp
 tl-sf1016d
+tl-sf1024
 tl-sf1024d
 tl-sg1005d
+tl-sg1005lp
 tl-sg1005p
 tl-sg1005p-pd
 tl-sg1006pp
@@ -8487,6 +8527,7 @@ tl-sg116
 tl-sg116e
 tl-sg116p
 tl-sg1210mp
+tl-sg1210p
 tl-sg1218mp
 tl-sg1218mpe
 tl-sg1428pe
@@ -8496,6 +8537,7 @@ tl-sg2210mp
 tl-sg2210p
 tl-sg2218
 tl-sg2218p
+tl-sg2428p
 tl-sg3210xhp-m2
 tl-sg3428mp
 tl-sg3428x
@@ -8540,6 +8582,7 @@ tl-wpa4220
 tl-wpa4220kit
 tl-wpa4220tkit
 tl-wpa4221kit
+tl-wpa4226kit
 tl-wpa7617
 tl-wpa7617kit
 tl-wpa8631p
@@ -8735,6 +8778,7 @@ ubn-usg
 ubpx700
 uc-dac-sfp
 uc-patch-rj45-bk
+uc400
 ucg-max
 uck-g2
 uck-g2-plus
@@ -8748,6 +8792,7 @@ udr-eu
 ue200
 ue300
 ue300c
+ue306
 ue330
 uh5020c
 uh700
@@ -9671,6 +9716,7 @@ zd22042-d0eg00ez
 zd22042-t0eg00ez
 zd23042-30ec00ez
 zd23042-30eg00ez
+zd23042-d0ec00ez
 zd41022-d0e000ez
 zd4a022-d0em00ez
 zd4a042-30ee00ez
