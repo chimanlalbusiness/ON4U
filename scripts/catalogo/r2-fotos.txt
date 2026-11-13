@@ -463,6 +463,7 @@
 24b7500
 24b7501
 24b7502
+24b7511
 24b7512
 24b7513
 24b7514
@@ -555,6 +556,7 @@
 27m2c550100
 27m2n3201a00
 27m2n850000
+280017
 280027
 280121
 280314
@@ -607,6 +609,7 @@
 327533
 32bdl3511q00
 32bdl3650q00
+32bdl3751t00
 32bdl4650d00
 32dm66d
 32e1n1800la00
@@ -695,6 +698,7 @@
 395662
 395663
 395667
+3p1300ud
 3p1300ui
 3p1700ud
 3p1700ui
@@ -1201,6 +1205,7 @@
 650183
 650310
 650311
+650315
 650322
 650323
 650325
@@ -1228,6 +1233,7 @@
 650500
 650601
 650606
+650607
 650610
 650611
 650613
@@ -3530,6 +3536,7 @@ dgs-2000-52mp
 dgs-3130-30tse
 dgs-3130-54se
 dgs-3630-28pcsi
+dgs-3630-28scsi
 dgs-3630-28tcsi
 dgs-3630-52pcsi
 dgs-3630-52tcsi
@@ -4154,6 +4161,7 @@ dsr-250n
 dss-1000
 dsx-a210ui
 dt70128gb
+dt70256gb
 dt7064gb
 dtduo3cg3128gb
 dtduo3cg3256gb
@@ -7290,6 +7298,7 @@ md120ui
 md330uir
 md330uled
 md720uis
+mdrex15apb
 mdrex15apw
 mdrex15lpb
 mdrzx110app
@@ -8014,6 +8023,7 @@ samsm-x520nzsreu
 samsm-x526bzareu
 samsm-x620nzapeu
 samsm-x620nzareu
+samsm-x626bzareu
 samsm-x626bzsreu
 samsp-lff3claxxxe
 samstn-km24cxen
@@ -8059,6 +8069,7 @@ sdcit264gb
 sdcs3128gb
 sdcs31tb
 sdcs3256gb
+sdcs3512gb
 sdcs364gb
 sdg4128gb
 sdg41tb
@@ -8102,6 +8113,7 @@ sennexp80
 sennhd100black
 sennhd2_30gwhite
 sennhd300pro
+sennhd508598
 sennhde2020dii
 sennhspessecsobk
 sennhzp27
@@ -8606,6 +8618,7 @@ tl-sg1005p
 tl-sg1005p-pd
 tl-sg1006pp
 tl-sg1008d
+tl-sg1008mp
 tl-sg1008p
 tl-sg1016
 tl-sg1016d
@@ -9112,6 +9125,7 @@ ver49922
 ver49923
 ver49924
 ver49966
+ver53023
 ver53111
 ver53177
 ver53230
