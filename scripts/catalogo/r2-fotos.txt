@@ -211,6 +211,7 @@
 128351
 128352
 128353
+128354
 128355
 128356
 128357
@@ -259,6 +260,7 @@
 129504
 129964
 129967
+129968
 133348
 133384
 133385
@@ -1270,6 +1272,7 @@
 65bdl4511d00
 65bdl4650d00
 65bdl6005x00
+65dm66d
 65hfl6214u12
 65mled92012
 65oled77012
@@ -2534,6 +2537,7 @@ brodcpl2627dwxlr
 brodcpl2660dwre1
 brodcpt580dwre1
 brodk-n55224
+brodk11204
 brodk11208
 brodk11219
 brodk11240
@@ -2546,8 +2550,12 @@ brodk44605
 brodkbu99
 brodr-1050
 brodr-2300
+brodr-243cl
 brodr-3400
+brodr-421cl
 brodr248cl
+brodr2510
+brodr3600
 brods640tj1
 brofax-2845
 brohll2865dwre1
@@ -2574,6 +2582,7 @@ brolc3237bk
 brolc3237c
 brolc3237m
 brolc3237y
+brolc421xlbk
 brolc421xlc
 brolc421xlm
 brolc421xlval
@@ -2699,6 +2708,7 @@ brotn-247m
 brotn-247y
 brotn-325bk
 brotn-3430
+brotn-3480
 brotn-421bk
 brotn-421c
 brotn-421m
@@ -2713,6 +2723,7 @@ brotn2420twin
 brotn243cmyk
 brotn248bk
 brotn248val
+brotn248xlbk
 brotn248xlc
 brotn248xlm
 brotn248xly
@@ -2725,6 +2736,7 @@ brotn2510xxl
 brotn3600
 brotn3600xl
 brotn3600xxl
+brotze-233
 brotze-251
 brotze-421
 brotze-n231
@@ -3453,6 +3465,7 @@ dell570-aamh
 dell580-adhj
 dell634-byks
 dell634-cvdt
+dell634-cvfm
 dell770-bbic
 dell770-bckw
 dell770-bcyu
@@ -6297,6 +6310,7 @@ hpw1390a
 hpw1390x
 hpw1470a
 hpw1470x
+hpw1490a
 hpw1490x
 hpw1530x
 hpw2004a
@@ -7173,6 +7187,7 @@ log960-001057
 log960-001063
 log960-001076
 log960-001088
+log960-001102
 log960-001106
 log960-001218
 log960-001224
