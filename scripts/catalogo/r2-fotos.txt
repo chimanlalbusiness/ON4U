@@ -2335,6 +2335,7 @@ archertx20e
 archertx20uh
 archertx20uplus
 archertx3000e
+archertx50e
 archertxe72e
 archertxe75e
 archerxr500v
@@ -2929,6 +2930,7 @@ can2405c003
 can2469c002aa
 can2470c002aa
 can2471c001aa
+can2497b001ac
 can2641b002aa
 can2642b002aa
 can2643b002aa
@@ -3431,6 +3433,7 @@ decos73-pack
 decox10-4g_1-pac
 decox10_2-pack
 decox10_3-pack
+decox505g1pack
 decox552-pack
 decox553-pack
 dehu30wtw
@@ -5655,6 +5658,8 @@ h65m95eux
 haloh30g_3-pack
 haloh47be_2-pack
 haloh50g_3-pack
+haloh60x_2-pack
+haloh60x_3-pack
 haloh80x_2-pack
 haloh80x_3-pack
 hat3300-4t
@@ -6942,6 +6947,7 @@ lg27tnf3k-s_aeu
 lg29u511a-b
 lg30ew5tp-a
 lg32hl710sw
+lg32ln340cbld
 lg32ln661hbla
 lg32lq630b6la
 lg32lq631c
@@ -7126,6 +7132,7 @@ lh43qbcebgcxen
 lh43qhcebgcxen
 lh43qmbtbgcxen
 lh43qmcepgcxen
+lh46ombebgbxen
 lh46vmbubgbxen
 lh50qbcebgcxen
 lh50qhcebgcxen
@@ -7137,6 +7144,7 @@ lh55vhcebgbxen
 lh55vmcebgbxen
 lh55vmcrbgbxen
 lh65qhcebgcxen
+lh65qmcebgcxen
 lh75omaebgbxen
 lh75qbcebgcxen
 lh75qhcebgcxen
@@ -7910,6 +7918,8 @@ rdfm1110si
 rdfm1200bk
 re200
 re315
+re450
+re505x
 re655be
 re700x
 re705x
@@ -8455,6 +8465,7 @@ tapmstbaselnv3
 tapoa200
 tapoc216
 tapoh100
+tapoh500
 tapol510e_2pack
 tapol610
 tapol630
@@ -8471,6 +8482,7 @@ tapos200b
 tapos200d
 tapos210
 tapos220
+tapot100
 tapot110
 tapot300
 tapot310
@@ -8699,6 +8711,7 @@ tl-sx3206hpp
 tl-wa1201
 tl-wa801n
 tl-wa850re
+tl-wa854re
 tl-wa860re
 tl-wn725n
 tl-wn781nd
@@ -8710,6 +8723,7 @@ tl-wpa4220kit
 tl-wpa4220tkit
 tl-wpa4221kit
 tl-wpa4226kit
+tl-wpa7517kit
 tl-wpa7617
 tl-wpa7617kit
 tl-wpa8631p
@@ -8921,6 +8935,7 @@ ue300
 ue300c
 ue306
 ue330
+uh400
 uh5020c
 uh700
 uhubu2420bk
@@ -9113,6 +9128,8 @@ ver49353
 ver49362
 ver49363
 ver49364
+ver49373
+ver49374
 ver49455
 ver49456
 ver49514
