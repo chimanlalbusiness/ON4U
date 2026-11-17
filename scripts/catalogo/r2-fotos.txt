@@ -733,6 +733,7 @@
 41bdl7224l00
 41bdl7424l00
 438806
+439p100
 43bdl3117p00
 43bfl221412
 43hfl511412
@@ -1851,6 +1852,7 @@ aoc27g42e
 aocag246fk
 aocag276fk
 aocag276qzd
+aocag276qzd2
 aocag326ud
 aocag346ucd
 aocag456uczd
@@ -2357,6 +2359,7 @@ aveacesmontagem
 aver064ausb--cdd
 aver064ausb--cds
 aver61u3210000am
+averbproexpspk10
 averbu110
 averbu111
 averc20i
@@ -2378,7 +2381,9 @@ averptz330
 aversb-520
 aversupoiniversal
 avertripod
+averue1
 avervb350
+avervbpro_vesamo
 avespeakfon520pr
 b004-dp2ua2-k
 b004-dpua4-k
@@ -3195,6 +3200,7 @@ cm2100adw
 cm230adn
 cnbcoolstand1f
 cocoakit
+comandovb-cam130
 comet2_1
 con100753407101
 conabby04b
@@ -4129,6 +4135,7 @@ ds20-425bl2
 ds22-840bl6
 ds22-840wh6
 ds2208-sr7u2100sg
+ds225
 ds2278-sr7u2100p
 ds42-430bl12
 ds42-430bl14
@@ -6305,6 +6312,8 @@ hpt6m03ae
 hpt6m07ae
 hpt6m11ae
 hpt6m15ae
+hpt6n03ae
+hpt6n04ae
 hpt8w15a
 hpt8w16a
 hpw1106a
@@ -6313,6 +6322,7 @@ hpw1335x
 hpw1350a
 hpw1390a
 hpw1390x
+hpw1420a
 hpw1470a
 hpw1470x
 hpw1490a
@@ -7710,6 +7720,7 @@ pb6ud
 pb8tud
 pbe-2ac-400
 pbe-5ac-gen2-eu
+pc1224ad6k01
 pc520ad2k01
 pc810ab4k01
 pc820ad4k01
@@ -7982,6 +7993,7 @@ sa400s37480g
 sa400s37960g
 saa5
 saa5hubmic
+sambn59-01323a
 sambw-mip70pa
 samcy-ljrnpfen
 samcy-tf65brcxen
@@ -8454,6 +8466,7 @@ t650h11e
 tab530910
 tae1105bl00
 tae1105wt00
+tah2005bk00
 tah4209bl00
 tah4209pk00
 tah6506bk00
@@ -8488,6 +8501,7 @@ tapot300
 tapot310
 tapot315
 tar150900
+tar160900
 tar250910
 tar300
 tar320512
@@ -9030,7 +9044,9 @@ vb130
 vb130screenmont
 vb130wallmount
 vb370a
+vbpro_expmic10
 vbpro_expmic20
+vbproexpspk20
 vc-g3-flex-eu
 vc520pro3
 vcac118bk
