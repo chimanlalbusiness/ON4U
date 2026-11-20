@@ -1412,6 +1412,7 @@
 78c0zk0
 78c20c0
 78c20m0
+78c2uce
 78c2ume
 78c2uye
 78c2xc0
@@ -1977,6 +1978,7 @@ apcar8442
 apcar8602a
 apcbe500g2-gr
 apcbe650g2-gr
+apcbe850g2-gr
 apcbgm2200b-gr
 apcbr1200g-gr
 apcbr1500gi
@@ -2376,6 +2378,7 @@ averbproexpspk10
 averbu110
 averbu111
 averc20i
+avercabousb10m
 avercam130
 avercam130conten
 avercam340supo
@@ -2482,6 +2485,7 @@ bbu161b107035
 bbu201b109035
 bcm01uf
 bcqz1_cee
+bdl7j000102058
 bdm02uf
 bdps1700k
 beamer-w050black
@@ -2725,6 +2729,7 @@ brotn-2310
 brotn-2320
 brotn-2410
 brotn-2420
+brotn-243bk
 brotn-243y
 brotn-247bk
 brotn-247m
@@ -2763,6 +2768,7 @@ brotn3600xxl
 brotze-233
 brotze-251
 brotze-421
+brotze-651
 brotze-n231
 brotze-s231
 brotze-s251
@@ -2775,6 +2781,7 @@ brotze541
 brotze631
 brotze661
 brotzec31
+brotzefa4
 brotzefx231
 brotzefx641
 brotzepr955
@@ -2793,6 +2800,7 @@ bthtir10wt
 btkidscat
 btkidsdog
 btkidskoala
+btls20rgbw
 btm05uf
 bttag10wt
 bv-71
@@ -3163,6 +3171,7 @@ candycsoec10te-s
 candymic201ex
 candymic20gdfn
 canfx10
+canmp1211-ltsc
 cas-7302
 cas-7304
 cas-7305
@@ -3534,6 +3543,7 @@ dellp3425we
 dellpf6r3
 dellrcf75
 dells2725qs
+dells3225qs
 dells3425dw
 dellsd25
 dellsd25tb4
@@ -5456,6 +5466,7 @@ fel8041801
 fel8056501
 fel8064101
 fel9112101
+fel9112201
 fel9114120
 fel9894901
 fell9894501
@@ -7191,6 +7202,7 @@ lh75qmcebgcxen
 lh75wafwlgcxen
 lh85qbcebgcxen
 lh86wafwlgcxen
+lh98qhcebgcxen
 li4278-trbu0100z
 lmp-h201
 lmp-h202
@@ -8048,6 +8060,7 @@ samep-p5400tbege
 samep-t1510nbegeu
 samep-t2510nbege
 samep-t2510nwege
+samep-t4511xbege
 samhg32cf800euxe
 samhg32ej690wexe
 samhg32t5300ezxen
@@ -8340,6 +8353,7 @@ sog-pad02xxl
 sog-padhxxrgb
 sog-rfxpg
 sog-rwf1080rs
+sog-rwp2
 sog-rwpabk
 sog-std5
 sog-ve1200
@@ -8864,6 +8878,7 @@ ts-133
 ts-1673au-rp-16g
 ts-216g
 ts-233
+ts-264-8g
 ts-432pxu-2g
 ts-433-4g
 ts-832px-4g
@@ -9024,6 +9039,7 @@ upb15uf
 upb25uf
 upbk65w30000bk
 upbkpd30000bk
+ups102r2rt2b035
 ups103r2rt0b035
 ups103r2rt2n035
 ups153r6rt2n035
@@ -9088,6 +9104,7 @@ vcfi221hep
 vchh250gy
 vcon3456at
 vcon3463bk
+ve-nb8
 ver31843
 ver31844
 ver31845
@@ -9629,6 +9646,7 @@ wifiln51crgb
 wifilrc10e14
 wifilrc10e27
 wifilrc10gu10
+wifilrc20e27
 wifip110fwt
 wifip121fwt
 wifip121fwt3
