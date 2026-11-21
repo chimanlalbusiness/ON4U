@@ -1220,6 +1220,7 @@
 650310
 650311
 650315
+650321
 650322
 650323
 650325
@@ -1885,6 +1886,7 @@ aocq27g4zr
 aocq27p3cv
 aocq27u3cv
 aocu27b3a
+aocu27b3af
 aocu27g4r
 aocu27u3cv
 aocvesa-p1
@@ -2776,6 +2778,7 @@ brotze111
 brotze121
 brotze211
 brotze231
+brotze241
 brotze334
 brotze541
 brotze631
@@ -9952,8 +9955,10 @@ zeus04e
 zeus04em
 zeus05e
 zeus51e1k
+zeus51e2k
 zeus51e3k
 zeus51e6k
+zeus52es2k
 zeus52es3k
 zq32-a0e04te-00
 zq32-a0w01re-00
