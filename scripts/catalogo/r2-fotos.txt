@@ -67,9 +67,12 @@
 05095bk11045
 05095gs06407
 05095gs08407
+05103210mb
 05103210si
 052_5075
 05301000bl
+05303000bl
+05501000sn
 05602000mb
 062_7300
 097s04907
@@ -190,6 +193,7 @@
 119383
 119385
 119386
+119390
 119392
 119432
 119433
@@ -207,6 +211,7 @@
 125297
 125298
 125461
+12834107
 128346
 128347
 128351
@@ -564,14 +569,17 @@
 27m2c550100
 27m2n3201a00
 27m2n850000
+280001
 280017
 280027
+280115
 280121
 280314
 280315
 280316
 280317
 280318
+280322
 280323
 280325
 280602
@@ -673,8 +681,13 @@
 351003
 351004
 351010
+351020
+351021
 351022
+351023
 351024
+351025
+351027
 351028
 351029
 35s8500
@@ -729,6 +742,7 @@
 40146807
 401493
 40451007
+404531
 404546
 40b1u5601h00
 40pfs600012
@@ -752,6 +766,8 @@
 44bdl8128l00
 44bdl8139l00
 44bdl8148l00
+45050014320200
+45050014326010
 451059
 451068
 451071
@@ -1145,6 +1161,7 @@
 625429
 625430
 625431
+625432
 625435
 625437
 625438
@@ -1216,6 +1233,7 @@
 650161
 650166
 650167
+650170
 650183
 650310
 650311
@@ -1245,8 +1263,10 @@
 650406
 650407
 650408
+650442
 650500
 650601
+650603
 650606
 650607
 650610
@@ -1373,6 +1393,7 @@
 75pus831912
 76013
 761302
+761312
 767210
 767211
 7680gsr-2usb-1-r
@@ -3368,6 +3389,7 @@ ctl-4100k-s
 ctl-4100wle-s
 ctl-a2100hc
 ctl-a2100hk
+ctl-a2100hm
 ctl-a2100hy
 cts-sx10n-k9
 custodio01bn
@@ -4297,8 +4319,10 @@ eap225-outdoor
 eap235-wall
 eap245
 eap265hd
+eap610
 eap610-outdoor
 eap610gp-desktop
+eap615-wall
 eap615-wall_5-pk
 eap615gp-wall
 eap620hd
@@ -4580,6 +4604,7 @@ epsc11ck76401
 epsc11ck77401
 epsc11ck89402
 epsc11ck92402
+epsc11cl31401
 epsc11cl32401
 epsc11cl35401
 epsc11cl37401
@@ -4925,6 +4950,7 @@ epsc31cl27101p0
 epsc31cl27102
 epsc31cl27102p0
 epsc31cl27141
+epsc31cl27142
 epsc31cl28102
 epsc31cl28102p0
 epsc31cl47101
@@ -5363,6 +5389,7 @@ ew7018
 ew7025
 ew7056
 ew7070
+ew7075
 ew9005
 ew9006
 ew9630
@@ -5434,6 +5461,7 @@ fel4621501
 fel4622001
 fel4632001
 fel4633001
+fel4653601
 fel4656301
 fel4657401
 fel4680101
@@ -5879,6 +5907,7 @@ hp726537-b21
 hp734811-b21
 hp775612-b21
 hp7m1d5aa
+hp7md66f
 hp7md72f
 hp7n7b9aa
 hp7ps84a
@@ -7205,6 +7234,7 @@ lh75qmcebgcxen
 lh75wafwlgcxen
 lh85qbcebgcxen
 lh86wafwlgcxen
+lh98bedhlguxen
 lh98qhcebgcxen
 li4278-trbu0100z
 lmp-h201
@@ -7365,6 +7395,7 @@ mc100cm
 mc110cs
 mc200cm
 mc210cs
+mc211cs-2
 mc220l
 mc420l
 mcam2424bk
@@ -7533,6 +7564,7 @@ napo274
 napo276
 napo293
 napo295
+napo340w
 napo350
 napo350w
 napo360w
@@ -7561,6 +7593,7 @@ napodm6200
 napoe11-2480
 napoe43-4080
 napoergo100
+napoergo110
 napoergo450
 napoergo500
 napofm1800b-m
@@ -7584,6 +7617,7 @@ napompm003
 napopfmt220t
 napopwm1500b
 naporfc001
+napos11-1800
 napos11-2080
 napos169-2080
 napos43-2080
@@ -8076,6 +8110,9 @@ samlh24kmc3bgcxe
 samlh55omnesgbxe
 samls24d400gauxe
 samls27d800uauxe
+samls27dg602suxe
+samls27dg612suxe
+samls27fg812suxe
 samls32dg802suxe
 samls34c652vauxe
 samls49cg954euxen
@@ -8283,6 +8320,8 @@ sfyr2s2t0
 sfyr2s4t0
 sg110-24-eu
 sg2005p-pd
+sg2428lp
+sg2452lp
 sg250-08hp-k9-eu
 sg250-18-k9-eu
 sg250-26hp-k9-eu
@@ -8329,6 +8368,7 @@ ske750clr4eeu1
 ske825bss3eeu1
 slnvrc01cwt
 sm5110lsa-10
+sm5110lsb-10
 smo650sil4eeu1
 snnpc5chat
 snv3s1000g
@@ -8556,6 +8596,7 @@ tar300
 tar320512
 tar330612
 tar550510
+tarach114eu
 taramb581gl
 taramb582gl
 taramb586gl
@@ -8569,10 +8610,12 @@ taramw584gl
 tarapa107eu
 tarapa108eu
 tarasf238w9eu
+tarasp001glx
 tarasp86rgl
 tarawe810gl
 tarawe81eu
 tarawu100205gl
+tarcn01
 tarcn600gl
 tarcuct02beu
 tarcuct02ua14eu
@@ -8589,6 +8632,7 @@ tarpa410e
 tartbb013eu
 tartbb58602gl
 tartbb58802gl
+tartbb635gl
 tartbb636gl
 tartbb641gl
 tartbb64904gl
@@ -8611,10 +8655,12 @@ tartcg662gl
 tartcg717
 tarteb01
 tarthd927gl
+tarthd935gl
 tarthd965glz
 tarthz784gl
 tarthz785gl
 tarthz865gl
+tarthz904gl
 tarthz93211gl
 tarthz935gl
 tarthz957
@@ -8687,6 +8733,7 @@ tl-pa7027pkit
 tl-poe10r
 tl-poe150s
 tl-poe160s
+tl-poe170s
 tl-poe2412g
 tl-poe4818g
 tl-poe4824g
@@ -8720,6 +8767,7 @@ tl-sg1024de
 tl-sg1048
 tl-sg105-m2
 tl-sg105e
+tl-sg105pe
 tl-sg105s
 tl-sg108-m2
 tl-sg108e
@@ -8777,6 +8825,7 @@ tl-wa801n
 tl-wa850re
 tl-wa854re
 tl-wa860re
+tl-wn722n
 tl-wn725n
 tl-wn781nd
 tl-wn821n
@@ -9172,6 +9221,7 @@ ver44024
 ver44034
 ver44082
 ver44084
+ver44085
 ver44087
 ver47041
 ver47042
@@ -9268,6 +9318,7 @@ vigic340i_6mm
 vigic340s_4mm
 vigic350_2_8mm
 vigic350_4mm
+vigic420i_2_8mm
 vigic420i_4mm
 vigic430i_4mm
 vigic440-w_4mm
@@ -9942,6 +9993,8 @@ zd41022-d0e000ez
 zd4a022-d0em00ez
 zd4a042-30ee00ez
 zd4a042-30ew02ez
+zd4a042-d0ee00ez
+zd4a042-d0em00ez
 zd51013-d0ee00fz
 zd6a042-30ef00ez
 zd6a042-d0ef00ez
