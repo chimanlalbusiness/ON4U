@@ -2784,11 +2784,10 @@
 
       // ── Projection (start facing Atlantic/Europe/Africa) ──────────
       const rotation = [-10, -28, 0];
-      // precision(0): no adaptive resampling. The 110m coastlines and the 2.5°
-      // graticule are already dense, and resampling them every frame was the
-      // largest remaining cost of the rotation.
+      // Keep d3's default adaptive resampling: without it the graticule is drawn
+      // as straight chords between its vertices instead of curved lines.
       const projection = d3.geoOrthographic()
-        .scale(300).translate([300, 300]).clipAngle(90).rotate(rotation).precision(0);
+        .scale(300).translate([300, 300]).clipAngle(90).rotate(rotation);
       const path = d3.geoPath().projection(projection).context(ctx);
       const graticule = d3.geoGraticule()();
 

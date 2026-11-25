@@ -2376,83 +2376,67 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 /* ══════════════════════════════════════════════════════════════
-   Projetos editorial index (portfolio). On wide viewports the row whose
-   centre is nearest the middle of the visible area is active: its type
-   lights and the pinned stage cross-fades to its photograph, with the
-   counter and progress bar following. Hovering a row previews it; leaving
-   the list returns to the scroll choice. Narrow viewports show every row
-   with its photo inline, so nothing is active there.
+   Projetos gallery (portfolio). Each tile is a plain link to its photo,
+   so it still works without script. With script it opens a dialog;
+   arrows, keys and a swipe walk the photos of the same area, and a click
+   outside the photo or Esc closes it.
    ══════════════════════════════════════════════════════════════ */
 (function () {
-  var root = document.querySelector("[data-pf-index]");
-  if (!root) return;
-  var list = root.querySelector(".pf-list");
-  var rows = [].slice.call(root.querySelectorAll(".pf-row"));
-  var shots = [].slice.call(root.querySelectorAll(".pf-shot"));
-  var now = root.querySelector("[data-pf-now]");
-  var bar = root.querySelector("[data-pf-bar]");
-  if (!rows.length) return;
-  var wide = window.matchMedia("(min-width: 900px)");
-  var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
-  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var scrollIdx = 0, shown = -1, hoverIdx = -1, ticking = false, timer = 0;
+  var tiles = [].slice.call(document.querySelectorAll(".pf-tile"));
+  if (!tiles.length || typeof HTMLDialogElement !== "function") return;
+  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>';
+  var dlg = document.createElement("dialog");
+  dlg.className = "pf-lb";
+  dlg.setAttribute("aria-label", "Fotografia ampliada");
+  dlg.setAttribute("tabindex", "-1"); // focus goes to the dialog on open, not to the first arrow
+  dlg.innerHTML =
+    '<img class="pf-lb-img" alt="">' +
+    '<p class="pf-lb-count" aria-live="polite"></p>' +
+    '<button type="button" class="pf-lb-btn pf-lb-prev" aria-label="Fotografia anterior">' + ARROW + '</button>' +
+    '<button type="button" class="pf-lb-btn pf-lb-next" aria-label="Fotografia seguinte">' + ARROW.replace('d="M15 6l-6 6 6 6"', 'd="M9 6l6 6-6 6"') + '</button>' +
+    '<button type="button" class="pf-lb-btn pf-lb-close" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';
+  document.body.appendChild(dlg);
+  var img = dlg.querySelector(".pf-lb-img"), count = dlg.querySelector(".pf-lb-count");
+  var prev = dlg.querySelector(".pf-lb-prev"), next = dlg.querySelector(".pf-lb-next");
+  var set = [], i = 0, x0 = null;
 
-  // the active project's photos cross-fade every few seconds; extra photos get
-  // their src only once their project is first shown. Reduced motion keeps the
-  // first photo.
-  function frame(shot, n) {
-    var imgs = shot.querySelectorAll("img"), dots = shot.querySelectorAll(".pf-dots i");
-    [].forEach.call(imgs, function (im, k) { im.classList.toggle("is-on", k === n); });
-    [].forEach.call(dots, function (d, k) { d.classList.toggle("is-on", k === n); });
+  function paint() {
+    var t = set[i], thumb = t.querySelector("img");
+    img.src = t.getAttribute("href");
+    img.alt = thumb ? thumb.alt : "";
+    count.textContent = (i + 1) + " / " + set.length;
+    prev.hidden = next.hidden = set.length < 2;
+    if (set.length > 1) { new Image().src = set[(i + 1) % set.length].getAttribute("href"); }
   }
-  function gallery(shot) {
-    clearInterval(timer);
-    if (!shot) return;
-    var imgs = shot.querySelectorAll("img");
-    [].forEach.call(imgs, function (im) { var s = im.getAttribute("data-src"); if (s) { im.src = s; im.removeAttribute("data-src"); } });
-    frame(shot, 0);
-    if (REDUCED || imgs.length < 2) return;
-    var n = 0;
-    timer = setInterval(function () { n = (n + 1) % imgs.length; frame(shot, n); }, 2800);
-  }
+  function go(d) { if (set.length < 2) return; i = (i + d + set.length) % set.length; paint(); }
 
-  function show(i) {
-    if (i === shown) return;
-    shown = i;
-    rows.forEach(function (r, k) { r.classList.toggle("is-on", k === i); });
-    shots.forEach(function (s, k) { s.classList.toggle("is-on", k === i); });
-    gallery(shots[i]);
-    if (now) now.textContent = (i < 9 ? "0" : "") + (i + 1);
-    if (bar) bar.style.setProperty("--pf-p", ((i + 1) / rows.length).toFixed(3));
-  }
-  function pick() {
-    ticking = false;
-    if (!wide.matches) { clearInterval(timer); shown = -1; return; }
-    var mid = (window.innerHeight + 76) / 2, best = 0, bestD = Infinity;
-    rows.forEach(function (r, k) {
-      var b = r.getBoundingClientRect();
-      var d = Math.abs(b.top + b.height / 2 - mid);
-      if (d < bestD) { bestD = d; best = k; }
+  tiles.forEach(function (t) {
+    t.addEventListener("click", function (e) {
+      if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      var group = t.closest(".pf-group") || document;
+      set = [].slice.call(group.querySelectorAll(".pf-tile"));
+      i = set.indexOf(t);
+      paint();
+      dlg.showModal();
+      dlg.focus();
     });
-    scrollIdx = best;
-    show(hoverIdx >= 0 ? hoverIdx : scrollIdx);
-  }
-  function ask() { if (!ticking) { ticking = true; requestAnimationFrame(pick); } }
-  rows.forEach(function (r, k) {
-    r.addEventListener("mouseenter", function () {
-      if (!wide.matches || !fine.matches) return;
-      hoverIdx = k;
-      show(k);
-    });
-    r.addEventListener("focusin", function () { if (wide.matches) { hoverIdx = k; show(k); } });
   });
-  if (list) {
-    list.addEventListener("mouseleave", function () { hoverIdx = -1; show(scrollIdx); });
-    list.addEventListener("focusout", function (e) { if (!list.contains(e.relatedTarget)) { hoverIdx = -1; show(scrollIdx); } });
-  }
-  window.addEventListener("scroll", ask, { passive: true });
-  window.addEventListener("resize", ask, { passive: true });
-  pick();
+  prev.addEventListener("click", function () { go(-1); });
+  next.addEventListener("click", function () { go(1); });
+  dlg.querySelector(".pf-lb-close").addEventListener("click", function () { dlg.close(); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+  });
+  dlg.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  dlg.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 45) go(dx < 0 ? 1 : -1);
+  });
+  dlg.addEventListener("close", function () { img.removeAttribute("src"); });
 })();
 
 /* ══════════════════════════════════════════════════════════════
