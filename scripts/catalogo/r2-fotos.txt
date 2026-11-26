@@ -2531,6 +2531,7 @@ bm2300aw
 bm2300w
 bm4200dw
 bm4240adw
+bm4300adw
 bm5220adw
 bnk05uf
 booksedm01bu
@@ -2576,6 +2577,7 @@ broads1800wun1
 broads4100re1
 broads4300nre1
 broba7000
+brobae001
 brobtd180bk
 brobtd180clval
 brobtd180m
@@ -2616,6 +2618,7 @@ brohll9310cdwre1
 brohll9430cdnre1
 brohse211e
 broj763z1
+brolc229xlvalbp
 brolc3213c
 brolc3213m
 brolc3217bk
@@ -2742,6 +2745,7 @@ brotc4
 brotd-2120n
 brotd2020axx1
 brotd2135nxx1
+brotd2350d300
 brotd4420tnz1
 brotd4520dnxx1
 brotd4520tnz1
@@ -3330,6 +3334,7 @@ conhubbies08b
 conhubbies08bp
 conhubbies10b
 conlorcan03b
+conorazio02pt
 conozul03be
 conpolona03bda
 conregas01b
@@ -3553,6 +3558,7 @@ dellcp7625s
 dellctkrg
 dellj5f96
 dellkb740-gy-r-p
+dellkb813-bk
 dellkc5fc
 dellkm5221wbkb-por
 dellkm7120w-gy-por
@@ -7476,6 +7482,7 @@ mst1e4-00003
 mst3yr-00006
 mst8wx-00006
 mst8x8-00174
+mst8xb-00149
 mst8xb-00196
 mstejq-00006
 msteju-00006
@@ -7632,6 +7639,7 @@ napost11-1280
 napost11-1530
 naposw1100
 naposw1120
+napot11-1280
 napovw1000
 napovw1008
 napovw131
@@ -8905,7 +8913,9 @@ trust24795
 trust24820
 trust24900
 trust24907
+trust24908
 trust24970
+trust24986
 trust24990
 trust25064
 trust25065
@@ -8915,6 +8925,8 @@ trust25089
 trust25110
 trust25123
 trust25128
+trust25129
+trust25130
 trust25144
 trust25145
 trust25184
@@ -9198,6 +9210,7 @@ ver32157
 ver32158
 ver32173
 ver32174
+ver32190
 ver32202
 ver32203
 ver32204
@@ -9606,6 +9619,7 @@ vsls921wu
 vslsc520wu
 vsmontd1630-3
 vsmontd2230
+vsmontd2430
 vsmontd2760
 vsnmp-302w
 vsnmp580-w
@@ -9627,8 +9641,10 @@ vstd2423
 vstd2465
 vstrs10
 vsva220-h
+vsva240-h-2
 vsva2408-hdj
 vsva3209-2k-mhd
+vsva3209-mh
 vsvb-stnd-001-2c
 vsvb-stnd-002
 vsvb-stnd-003
