@@ -212,6 +212,7 @@
 125298
 125461
 12834107
+128345
 128346
 128347
 128351
@@ -532,6 +533,7 @@
 255230
 255311
 255316
+255511
 255522
 255532
 25558307
@@ -543,6 +545,7 @@
 26599-999-999
 26699-999-999
 272b1g00
+272s1ae00
 272s1mh00
 273s100
 2740-209
@@ -1867,6 +1870,7 @@ anir2503bk700
 anor5002bk700
 anor5003bk700
 anor5g20wt
+aoc22b2heu
 aoc24b31h
 aoc24b3ca2
 aoc24b3ha2
@@ -1881,6 +1885,7 @@ aoc24p3cv
 aoc24v5cwbk
 aoc25g42e
 aoc25g4sre
+aoc25g4sxu
 aoc27b31h
 aoc27b3cf2
 aoc27e3qaf
@@ -5785,6 +5790,7 @@ hkonyxstu09grey
 ho1400g2d-2usb-1
 hp142257-003
 hp160
+hp169l0aa
 hp1aj39aa
 hp1e7d6ut
 hp1p3k6aa
@@ -5795,6 +5801,7 @@ hp1vv24ae
 hp1y4d0ut
 hp20g05a
 hp20g07a
+hp21y56aa
 hp253449-b21
 hp265d9aa
 hp28b54a
@@ -5942,6 +5949,7 @@ hp8q4w2a
 hp8r3u1ut
 hp8x228a6
 hp8x530aa
+hp8x534aa
 hp8y2k9aa
 hp8y2r2aa
 hp9d9l6ut
@@ -9155,6 +9163,7 @@ uvc-g5-flex
 uvc-g5-pro
 var4006
 var4103
+var4106
 var4223
 var4914
 var56616
